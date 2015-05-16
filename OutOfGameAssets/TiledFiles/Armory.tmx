@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="50" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../Tiles for Group/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <tileset firstgid="225" name="obj_misk_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tiles for Group/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1249" name="terrain" tilewidth="32" tileheight="32">
+  <image source="../Tiles for Group/terrain.png" width="672" height="736"/>
+ </tileset>
+ <tileset firstgid="1732" name="terrain_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tiles for Group/terrain_atlas.png" width="1024" height="1024"/>
+  <terraintypes>
+   <terrain name="Floor" tile="-1"/>
+  </terraintypes>
+  <tile id="481" terrain=",,,0"/>
+  <tile id="482" terrain=",,0,0"/>
+  <tile id="483" terrain=",,0,"/>
+  <tile id="513" terrain=",0,,0"/>
+  <tile id="514" terrain="0,0,0,0"/>
+  <tile id="515" terrain="0,,0,"/>
+  <tile id="545" terrain=",0,,0"/>
+  <tile id="546" terrain="0,0,0,0"/>
+  <tile id="547" terrain="0,,0,"/>
+  <tile id="577" terrain=",0,,"/>
+  <tile id="578" terrain="0,0,,"/>
+  <tile id="579" terrain="0,,,"/>
+ </tileset>
+ <tileset firstgid="2756" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tiles for Group/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="3780" name="cottage" tilewidth="32" tileheight="32">
+  <image source="../Tiles for Group/cottage.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="4036" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tiles for Group/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="5060" name="InteriorComp2" tilewidth="32" tileheight="32">
+  <image source="../Tiled/InteriorComp2.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="5316" name="InteriorItemsComp" tilewidth="32" tileheight="32">
+  <image source="../Tiled/InteriorItemsComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="5572" name="ShelfComp" tilewidth="32" tileheight="32">
+  <image source="../Tiled/ShelfComp.png" width="512" height="512"/>
+ </tileset>
+ <layer name="Floor" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt0kEKgCAQheHZVHr/M1QnqU5iXqPZCDIUyCS06P9g4CHoQ1QEwN/MQWTRWUNb9th036mTdVKV7fquc7zoKPtLziaXbm9HMh3lLLve4x7ZdNzdr0dHesj123gMUWTUmWJb7sH7PwEAAADgCxc2SjzU
+  </data>
+ </layer>
+ <layer name="Door" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzUENADAIBLB7Lhn+NSJjKniQtQaaAMBOfeePU/MHAADwhwcpwAEI
+  </data>
+ </layer>
+ <layer name="Character" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20KP6AAAAAAgLcBE4gAAQ==
+  </data>
+ </layer>
+ <layer name="Wall" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt07EJgEAMQNH0Zk9xEnECW+tbwFF0E20OzIGlwiWQ7j9IefwUFxEAPUYVKSqbZyb1NeyN1ME3JdDwotFn1fzGntho+x82Z2Kj7X/Z3IHG/HGDb/v3BpfAPwEAAACALA81FT8l
+  </data>
+ </layer>
+ <layer name="Furnaces" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzTEKgDAQBMDjbFLklTZ+yX+kyfMULERIp4WQGVi2OW4jgL/a67jfWvNOP3+2+uwtr7ssEUv5ZhMAAABmdwAYgQdh
+  </data>
+ </layer>
+ <layer name="Counter" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzcEJwCAQRcHtIIcl/VmbzcQOTDkxFQjxEJAZWP7psREA/2pnlC/dlaPN+a7oo79zvvWI8t7aNwAAAHb2AMeAFRI=
+  </data>
+ </layer>
+</map>

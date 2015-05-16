@@ -1,0 +1,4 @@
+PrologueCave_CheckedAllSpots 
+-Created during the PrologueCave after the player has interracted with all of the locations while looking for his daughter
+-Cannot progress further into the cave until this key is created.
+-No special flags, either the key exists or it doesn't.

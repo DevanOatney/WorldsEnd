@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="50" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tiled/ATlas/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="obj_misk_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tiled/ATlas/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2049" name="woodlandinn" tilewidth="32" tileheight="32">
+  <image source="../Tiled/New folder/woodlandinn.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="2305" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../Tiled/New folder/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <tileset firstgid="2529" name="InteriorComp2" tilewidth="32" tileheight="32">
+  <image source="../Tiled/InteriorComp2.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="2785" name="InteriorItemsComp" tilewidth="32" tileheight="32">
+  <image source="../Tiled/InteriorItemsComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="3041" name="ShelfComp" tilewidth="32" tileheight="32">
+  <image source="../Tiled/ShelfComp.png" width="512" height="512"/>
+ </tileset>
+ <layer name="Floor" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztz7ENgDAMRFGX3n9BvIEZAQoQ1glSENyg/xpHieLTmQFAj8XNwu+n3r2V+9+17MnjnH69nXO2R83S3I4emtXRI2R/Z4+QPrM9dNasr3qM5myPp1wAAAAA/7UBw6VTRw==
+  </data>
+ </layer>
+ <layer name="Character" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20KP6AAAAAAgLcBE4gAAQ==
+  </data>
+ </layer>
+ <layer name="Wall" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt07EJACEQRUFD+8cCrMEKrjRBDE1W8BCZgR8pvGhTAm7S8lgN7NtplMB2G8H/GhonGmF/NVb3PN9Wdw4AADygA7s3ORM=
+  </data>
+ </layer>
+ <layer name="Shelves" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzTEOQEAURdFXm9kEu6OjGztG6BEyr6OmEvckN/kzxf8SgD8agjS6yZWFVLnF8+xaz52ro9TE5zdW79rcHq6/0/Nxeyfv71/cAAAAAADgKzIeDA01
+  </data>
+ </layer>
+ <layer name="Counter / Shelves" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt0EEKgCAQhWE3idY6z+IV7QZ1pc5T6wS3go8sCPo/GGbzZgbGGAB/dIxa7hRzNcOk5ayYq5nF2dBxw/p27a70u4JvV3Slf13Kv146/q1Y8/7t5RsAAAAA8LQLyvwHsw==
+  </data>
+ </layer>
+ <layer name="Chairs" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzbEJACAMAEG7TOYoruYignOJ2Fpqqjv4+ksBgDd6/H/MhMc24pSpJjxawgMAALhbnl4DuQ==
+  </data>
+ </layer>
+</map>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="9" height="11" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="DoorComp1" tilewidth="32" tileheight="32">
+  <image source="../Tiled/DoorComp1.png" width="192" height="192"/>
+ </tileset>
+ <tileset firstgid="37" name="ShelfComp" tilewidth="32" tileheight="32">
+  <image source="../Tiled/ShelfComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="293" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../Tiled/New folder/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <tileset firstgid="517" name="woodlandinn" tilewidth="32" tileheight="32">
+  <image source="../Tiled/New folder/woodlandinn.png" width="512" height="512"/>
+  <terraintypes>
+   <terrain name="Floor" tile="-1"/>
+  </terraintypes>
+  <tile id="222" terrain="0,0,0,0"/>
+  <tile id="223" terrain="0,0,0,0"/>
+  <tile id="238" terrain="0,0,0,0"/>
+  <tile id="239" terrain="0,0,0,0"/>
+ </tileset>
+ <tileset firstgid="773" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tiled/Tilesets/Atlas/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1797" name="terrain_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tiled/Tilesets/Atlas/terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="Floor" width="9" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAu+MyEiXGpeYxHDbLcYwLmELLrCRMqTYmbnxBpF8zdpNgFAEvLKpY=
+  </data>
+ </layer>
+ <layer name="Stairs" width="9" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAdmMzKcICQmmIi1AQToWY4AADXygOp
+  </data>
+ </layer>
+ <layer name="Walls / Banister" width="9" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAOqDIyMKhhweqMCDWuQPYMJgi+B8T3gfgBEJujqQEBPaD4OyB+D8Qf8Kj5B8T/gZiBGbcaZECuGnRACzWhOMIwHKoGAG29D+E=
+  </data>
+ </layer>
+ <layer name="Door" width="9" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAuUKKyeSMJAAArhAAj
+  </data>
+ </layer>
+</map>
