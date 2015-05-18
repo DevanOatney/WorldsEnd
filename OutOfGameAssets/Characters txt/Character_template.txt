@@ -1,0 +1,14 @@
+Character Template
+
+Character name:
+Recruitment status:
+Description:
+	Head:
+	Body type:
+	Clothing:
+Personality:
+Starting stats:
+Stat Growth type:
+Starting Equipment:
+Weapon Level:
+Reference pictures:
