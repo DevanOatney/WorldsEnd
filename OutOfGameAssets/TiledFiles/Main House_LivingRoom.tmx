@@ -1,40 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="50" tilewidth="32" tileheight="32" nextobjectid="1">
  <tileset firstgid="1" name="InteriorComp2" tilewidth="32" tileheight="32">
-  <image source="../Tiled/InteriorComp2.png" width="512" height="512"/>
+  <image source="../../../../../../../Tiled/InteriorComp2.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="257" name="base_out_atlas" tilewidth="32" tileheight="32">
-  <image source="../Tiled/Tilesets/Atlas/base_out_atlas.png" width="1024" height="1024"/>
+  <image source="../../../../../../../Tiled/Tilesets/Atlas/base_out_atlas.png" width="1024" height="1024"/>
  </tileset>
  <tileset firstgid="1281" name="terrain_atlas" tilewidth="32" tileheight="32">
-  <image source="../Tiled/Tilesets/Atlas/terrain_atlas.png" width="1024" height="1024"/>
+  <image source="../../../../../../../Tiled/Tilesets/Atlas/terrain_atlas.png" width="1024" height="1024"/>
  </tileset>
  <tileset firstgid="2305" name="DoorComp1" tilewidth="32" tileheight="32">
-  <image source="../Tiled/DoorComp1.png" width="192" height="192"/>
+  <image source="../../../../../../../Tiled/DoorComp1.png" width="192" height="192"/>
  </tileset>
  <tileset firstgid="2341" name="InteriorItemsComp" tilewidth="32" tileheight="32">
-  <image source="../Tiled/InteriorItemsComp.png" width="512" height="512"/>
+  <image source="../../../../../../../Tiled/InteriorItemsComp.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="2597" name="ShelfComp" tilewidth="32" tileheight="32">
-  <image source="../Tiled/ShelfComp.png" width="512" height="512"/>
+  <image source="../../../../../../../Tiled/ShelfComp.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="2853" name="house_inside" tilewidth="32" tileheight="32">
-  <image source="../Tiled/New folder/house_inside.png" width="512" height="448"/>
+  <image source="../../../../../../../Tiled/New folder/house_inside.png" width="512" height="448"/>
  </tileset>
  <tileset firstgid="3077" name="woodlandinn" tilewidth="32" tileheight="32">
-  <image source="../Tiled/New folder/woodlandinn.png" width="512" height="512"/>
+  <image source="../../../../../../../Tiled/New folder/woodlandinn.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="3333" name="InteriorComp2" tilewidth="32" tileheight="32">
-  <image source="../Tiled/InteriorComp2.png" width="512" height="512"/>
+  <image source="../../../../../../../Tiled/InteriorComp2.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="3589" name="InteriorItemsComp" tilewidth="32" tileheight="32">
-  <image source="../Tiled/InteriorItemsComp.png" width="512" height="512"/>
+  <image source="../../../../../../../Tiled/InteriorItemsComp.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="3845" name="ShelfComp" tilewidth="32" tileheight="32">
-  <image source="../Tiled/ShelfComp.png" width="512" height="512"/>
+  <image source="../../../../../../../Tiled/ShelfComp.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="4101" name="ChestComp" tilewidth="32" tileheight="32">
-  <image source="../Tiled/ChestComp.png" width="384" height="512"/>
+  <image source="../../../../../../../Tiled/ChestComp.png" width="384" height="512"/>
+ </tileset>
+ <tileset firstgid="4293" name="Red" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/Red.png" width="1914" height="822"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.0869565" y="0.0434783" width="32.0435" height="31.9565"/>
+   </objectgroup>
+  </tile>
  </tileset>
  <layer name="Floor" width="25" height="50">
   <data encoding="base64" compression="zlib">
@@ -43,7 +51,7 @@
  </layer>
  <layer name="Stairs 2" width="25" height="50">
   <data encoding="base64" compression="zlib">
-   eJztzbENABAARcHfaaxiNqNYyWhiCBJy17zyJbyu1czdXs4/xoUHAAAAwI8WGfkD+A==
+   eJztzUERAAAEADA/cUVRWQoebiuwCL6o3D/64AAAAAD4aABqwAEN
   </data>
  </layer>
  <layer name="Wall" width="25" height="50">
@@ -59,6 +67,21 @@
  <layer name="Sink" width="25" height="50">
   <data encoding="base64" compression="zlib">
    eJzt0DkNACAAA0B2/FvBAChAAkoIgZ2JZ7hLOrdpCJyQ4usF/8oXvhkddaUc7GtxBgAAAGCnA1dzBsE=
+  </data>
+ </layer>
+ <layer name="Character" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20KP6AAAAAAgLcBE4gAAQ==
+  </data>
+ </layer>
+ <layer name="Collisions" width="25" height="50" opacity="0.24">
+  <data encoding="base64" compression="zlib">
+   eJztw0EJAAAIBLCLYP8+9vJtA5ENlgD80rUDAADABQPj4ANV
+  </data>
+ </layer>
+ <layer name="Collision" width="25" height="50" opacity="0.29">
+  <data encoding="base64" compression="zlib">
+   eJzt07ENACAIBEBGcP993MsNDCYUoncJ3YevPuJdc5zfrR3ZTJeOzI8OHZns7x27DVTsAwAAALpYS6Ezlw==
   </data>
  </layer>
 </map>

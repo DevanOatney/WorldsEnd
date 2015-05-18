@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="50" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Red" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/Red.png" width="1914" height="822"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="0.130435" y="-0.0434783" width="31.7391" height="32.087"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="1476" name="woodlandinn" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/New folder/woodlandinn.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="1732" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/New folder/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <tileset firstgid="1956" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/ATlas/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2980" name="obj_misk_atlas" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/ATlas/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="4004" name="terrain_atlas" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/Tilesets/Atlas/terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="5028" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/Tilesets/Atlas/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="6052" name="InteriorComp2" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/InteriorComp2.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="6308" name="InteriorItemsComp" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/InteriorItemsComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="6564" name="BedComp" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/BedComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="6820" name="DoorComp1" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/DoorComp1.png" width="192" height="192"/>
+ </tileset>
+ <layer name="Floor" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt0TEKACAIhWEn73+GukFdsCACB2t6RMP/QQgOyVMzAL8pblb9XJUz2nw9qQrxzzhv9xVZbrtSZTntSLmrFzfP7qHOkc0DAAAAACwDZ14pXg==
+  </data>
+ </layer>
+ <layer name="Wall" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2B4gE42hgXEYArtYFglxcAQzoYbA9UcoNQOItSM2jFqx2C0AyWvneDAni8psQMdvOCgpmmjYBSMglEwCkbBKBgFo2AUjIJRQFsAAA6KKn0=
+  </data>
+ </layer>
+ <layer name="Character" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20KP6AAAAAAgLcBE4gAAQ==
+  </data>
+ </layer>
+ <layer name="Tables / Stoves" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztz7EJgDAUhOHXWaWOCziLDiLoAO6gg4gRwU4U3Mc9PLC0kwSb/4PjQYo7Ygbgq9Gb1ZnZpLsowcfrLtyTTZ2dNnbdUzkibvzpcmn7e/UPiTeC+ueIG2v+fivVXyX+R6P+NvEGAAAAAMDsBnT4DVQ=
+  </data>
+ </layer>
+ <layer name="Chairs" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzTERAAAIBKCPYf8+djKCm4MHBUgA2HT9egAAALg3aF8Byw==
+  </data>
+ </layer>
+ <layer name="Collisions" width="25" height="50" opacity="0.45">
+  <data encoding="base64" compression="zlib">
+   eJzt0zEKACAMQ9F6/0u7lqJFSJfIf+AiNUHBCOAP63E5dOSuvFdn1A51Rjk/+VZdvlPHKcftHjVr+n/c+gAAAADAwQaFAQA8
+  </data>
+ </layer>
+</map>

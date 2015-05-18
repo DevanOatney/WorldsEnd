@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="9" height="11" tilewidth="32" tileheight="32" nextobjectid="1">
  <tileset firstgid="1" name="DoorComp1" tilewidth="32" tileheight="32">
-  <image source="../Tiled/DoorComp1.png" width="192" height="192"/>
+  <image source="../../../../../../../Tiled/DoorComp1.png" width="192" height="192"/>
  </tileset>
  <tileset firstgid="37" name="ShelfComp" tilewidth="32" tileheight="32">
-  <image source="../Tiled/ShelfComp.png" width="512" height="512"/>
+  <image source="../../../../../../../Tiled/ShelfComp.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="293" name="house_inside" tilewidth="32" tileheight="32">
-  <image source="../Tiled/New folder/house_inside.png" width="512" height="448"/>
+  <image source="../../../../../../../Tiled/New folder/house_inside.png" width="512" height="448"/>
  </tileset>
  <tileset firstgid="517" name="woodlandinn" tilewidth="32" tileheight="32">
-  <image source="../Tiled/New folder/woodlandinn.png" width="512" height="512"/>
+  <image source="../../../../../../../Tiled/New folder/woodlandinn.png" width="512" height="512"/>
   <terraintypes>
    <terrain name="Floor" tile="-1"/>
   </terraintypes>
@@ -20,10 +20,21 @@
   <tile id="239" terrain="0,0,0,0"/>
  </tileset>
  <tileset firstgid="773" name="base_out_atlas" tilewidth="32" tileheight="32">
-  <image source="../Tiled/Tilesets/Atlas/base_out_atlas.png" width="1024" height="1024"/>
+  <image source="../../../../../../../Tiled/Tilesets/Atlas/base_out_atlas.png" width="1024" height="1024"/>
  </tileset>
  <tileset firstgid="1797" name="terrain_atlas" tilewidth="32" tileheight="32">
-  <image source="../Tiled/Tilesets/Atlas/terrain_atlas.png" width="1024" height="1024"/>
+  <image source="../../../../../../../Tiled/Tilesets/Atlas/terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2821" name="Red" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Tiled/Red.png" width="1914" height="822"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="0.0869565" y="0.0869565" width="32" height="32.0435"/>
+    <object id="0" x="0.130435" y="0.130435">
+     <polyline points="0,0 31.913,0.0434783 31.9565,31.913 0,0.0434783"/>
+    </object>
+   </objectgroup>
+  </tile>
  </tileset>
  <layer name="Floor" width="9" height="11">
   <data encoding="base64" compression="zlib">
@@ -37,12 +48,22 @@
  </layer>
  <layer name="Walls / Banister" width="9" height="11">
   <data encoding="base64" compression="zlib">
-   eJxjYCAOqDIyMKhhweqMCDWuQPYMJgi+B8T3gfgBEJujqQEBPaD4OyB+D8Qf8Kj5B8T/gZiBGbcaZECuGnRACzWhOMIwHKoGAG29D+E=
+   eJxjYCAOqDIyMKhhweqMCDWuQPYMJgi+B8T3gfgBEJujqYGBd0C590D8AY+af0C5/0DMwIxbDTIYzGpCcYRhOFQNAMc2DyE=
   </data>
  </layer>
- <layer name="Door" width="9" height="11">
+ <layer name="Door" width="9" height="11" opacity="0.42">
   <data encoding="base64" compression="zlib">
    eJxjYKAuUKKyeSMJAAArhAAj
+  </data>
+ </layer>
+ <layer name="Character" width="9" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFgwUAAAGMAAE=
+  </data>
+ </layer>
+ <layer name="Collision" width="9" height="11" opacity="0.39">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAOsHLjxshqcKlFV4NNPblq0N05mNXgC0MA4DkCYQ==
   </data>
  </layer>
 </map>
