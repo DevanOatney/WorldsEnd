@@ -1,0 +1,13 @@
+HP
+POW
+DEF
+SPD
+EFFECTIVE LEVEL
+
+
+EX:
+200
+15
+5
+2
+8

@@ -17,6 +17,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 		public int m_nCost = -1;
 		//amount that the player has.
 		public int m_nAmountCarried = 0;
+		public string m_szItemDescription = "";
 	}
 	// Use this for initialization
 	void Start ()
@@ -31,6 +32,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 	{
 		m_lItems.Clear();
 		string[] itemLines = m_taWares.text.Split('\n');
+		Debug.Log(itemLines);
 		foreach(string item in itemLines)
 		{
 			string[] piece = item.Split(',');
@@ -42,7 +44,8 @@ public class NPC_ArmorMerchantScript : NPCScript
 				Debug.Log("Merchant item loading data failed");
 			else
 			{
-
+				newItem.m_nAmountCarried = cItem.m_nItemCount;
+				newItem.m_szItemDescription = dc.GetItemFromDictionary(newItem.m_szItemName).m_szDescription;
 			}
 			m_lItems.Add(newItem);
 		}
@@ -65,6 +68,12 @@ public class NPC_ArmorMerchantScript : NPCScript
 		if(m_bShowScreen == true)
 		{
 			GUI.Box(new Rect(0, 0, 200, 200), "");
+			float yPos = 0;
+			foreach(MerchantItem item in m_lItems)
+			{
+				GUI.Label(new Rect(0, yPos, 100, 18), item.m_szItemName);
+				yPos += 20;
+			}
 		}
 	}
 

@@ -1,0 +1,30 @@
+HP
+POW
+DEF
+SPD
+LEVEL
+RACE
+CLASS
+CHEST ARMOR
+TRINKET
+DESCRIPTION
+AMOUNT OF SPELLS KNOWN
+SPELL NAME
+
+
+
+
+
+EX:
+12
+5
+0
+3
+1
+Human
+Guard
+Healing Armor
+NULL
+Trying to make sure Matt doesn't get himself killed...
+1
+Kind Rain
