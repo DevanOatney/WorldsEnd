@@ -8,6 +8,7 @@ public class InonEventHandler : BaseEventSystemScript
 	public GameObject[] Phase1_waypoints;
 	public GameObject[] Phase2_waypoints;
 	public GameObject[] Phase3_waypoints;
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -91,6 +92,7 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject[] gObjs = GameObject.FindGameObjectsWithTag("Merchant");
 			foreach(GameObject g in gObjs)
 			{
+				g.GetComponent<NPC_ArmorMerchantScript>().ActivateMerchantScreen();
 			}
 		}
 			break;

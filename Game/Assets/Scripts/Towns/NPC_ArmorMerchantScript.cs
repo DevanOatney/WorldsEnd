@@ -4,7 +4,10 @@ using System.Collections.Generic;
 
 public class NPC_ArmorMerchantScript : NPCScript
 {
-
+	//flag for if the player has interracted with the merchant and their shop is about to open.
+	bool m_bAboutToBeActive = false;
+	bool m_bShowScreen = false;
+	public TextAsset m_taWares;
 	// Use this for initialization
 	void Start ()
 	{
@@ -16,8 +19,22 @@ public class NPC_ArmorMerchantScript : NPCScript
 	void Update () 
 	{
 		HandleMovement();
+		HandleMerchanting();
 	}
-	
+
+	void HandleMerchanting()
+	{
+
+	}
+
+	void OnGUI()
+	{
+		if(m_bShowScreen == true)
+		{
+			GUI.Box(new Rect(0, 0, 200, 200), "");
+		}
+	}
+
 	//Get the direction the NPC is looking
 	Vector2 GetNPCFacing()
 	{
@@ -59,6 +76,8 @@ public class NPC_ArmorMerchantScript : NPCScript
 		{
 			if(GetComponent<MessageHandler>())
 			{
+				//set to about to be active
+				m_bAboutToBeActive = true;
 				m_bIsMoving = false;
 				m_bIsBeingInterractedWith = true;
 				if(m_szDialoguePath != "")
@@ -67,4 +86,17 @@ public class NPC_ArmorMerchantScript : NPCScript
 		}
 	}
 
+	public void ActivateMerchantScreen()
+	{
+		if(m_bAboutToBeActive == true)
+		{
+			m_bAboutToBeActive = false;
+			m_bShowScreen = true;
+			GameObject player = GameObject.Find("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+		}
+	}
 }
