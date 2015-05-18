@@ -38,7 +38,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 			string[] piece = item.Split(',');
 			MerchantItem newItem = new MerchantItem();
 			newItem.m_szItemName = piece[0].Trim();
-			newItem.m_nCost = int.Parse(piece[1].Trim());
+			newItem.m_nCost = int.Parse(piece[2].Trim());
 			DCScript.CharactersItems cItem = dc.GetItemFromInventory(newItem.m_szItemName);
 			if(cItem == null)
 				Debug.Log("Merchant item loading data failed");
