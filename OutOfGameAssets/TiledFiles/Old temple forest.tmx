@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Grass and dirt" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Tileset_GrassDirt_Bottom.png" width="320" height="224"/>
+ </tileset>
+ <tileset firstgid="71" name="HighContrastGrass" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/HighContrastGrass.png" width="192" height="256"/>
+  <terraintypes>
+   <terrain name="Dirt Path" tile="19"/>
+  </terraintypes>
+  <tile id="19" terrain="0,0,0,0">
+   <properties>
+    <property name="Dirt" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="119" name="grass and dirt 2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Dirt.png" width="96" height="128"/>
+  <terraintypes>
+   <terrain name="Path 2" tile="-1"/>
+  </terraintypes>
+  <tile id="7" terrain="0,0,0,0"/>
+ </tileset>
+ <tileset firstgid="131" name="trees" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/PlantComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="387" name="terrian comp." tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrain.png" width="672" height="736"/>
+  <terraintypes>
+   <terrain name="Path" tile="-1"/>
+  </terraintypes>
+  <tile id="1" terrain="0,0,,"/>
+  <tile id="23" terrain=",,0,0"/>
+  <tile id="64" terrain="0,0,0,0"/>
+ </tileset>
+ <tileset firstgid="870" name="bases" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="Grass" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1bEVgzAMQEEzV4qMw/4bpFATNWDAtiju3lNHpY/trbW2vWSob6BHVt1Aj6y6gRZZdQc9sln7/f6NHv30eJcVPT4d3xNWvhH7wRBWt3A+jo38x8/GfXXuzs5n3FuahFk7v3pvEWa8zXfOF+Hp3kedG8LTd1iPsVbsWo9+1R30yKo76NHPrgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADq/ACyvyOj
+  </data>
+ </layer>
+ <layer name="Path" width="100" height="100">
+  <properties>
+   <property name="Auto path" value=""/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1EEOgjAARFG8/6HUO6h3UOsdbGJdQGJCoYmzeC+ZsIFNPzBN+7wOn5FBjyx6ZNEjix5Zih5RfB9Z9MiiR5beHt/7l2OMnvNcNih6DPHrHV87+m0967KixbFeT21nfWb2nPNWl/rste2mx8w//i16ZLnXBo+2px4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADDMG9CaZp0=
+  </data>
+ </layer>
+ <layer name="water" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztzgEJAAAIA7CDOe1fwxgKbgmWAAAAAADc1rU9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4JMBbDoAYQ==
+  </data>
+ </layer>
+ <layer name="tree base" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt18sNgCAMAFAuOrsjOJ6jeCMGjSF8DMH3bqRwKaSlITCarTJOW3uyTvOfxrOsjfZQln+Aj2T17Ip6fyzlZ/+oV8+I96x3D8HfAC7UJWbkXQOTuM2Lb/VN7evOHAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwJMTlZ0H1g==
+  </data>
+ </layer>
+ <layer name="foliage" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2L1OwzAUBtDIwNuwIn4mxAyMMNM+fnemDNhCUZDJjZI0ZkDnSFdyq0aK/MW+Trtuu8c0jp9S/Dv+xpY8+ja3QiePFm7zPN7luk/xOBLlcbyIr+m7MZPPy3Pu/H96zvP4kus1xePI3PqYy4TYR57HQ65jiscR/Xx/LfYrtlu6X5X9p9TP/b/OQ68+39r9ai6PJa7TdLHNVB7lnLQkD/PexvBM1+tjmG9rYF99VS0cnIcXGXp2Kw9yaOot/a7o+1Kn6vr6M7HSp6P53koe86LneKj3nfvwqRszuLnSR9aI1kLpAWXt1O+HU1qeCfi29r9CmQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAe/oC6alFmA==
+  </data>
+ </layer>
+ <layer name="tree top" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt18kNAjEMBdBcpk3WPlj7YFgqARrDDRANihXm8J7kW3JxrG+llHzHoZRT1HloO0OOW/T4HvWo9HrKGXI8o8evqHel11PO8N06+raJ2urfLLTk/SLuLKNW3jJNS97v4s4+6uA90rTk/SXujFFX79GVHTMv/hQ5subanyJH1lz7U+Qw1/Py61zX8s1O76+Wb3Z6f7V8k3391fLNTgcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgP/5AFyjM8c=
+  </data>
+ </layer>
+</map>
