@@ -1,0 +1,11 @@
+Healing Herb,0,50,75,Heals single unit for 50 hp.
+Grenade,2,75,100,Deals 75 damage to single target.
+Shrubbery,1,25,2000,Heals groups for 25 hp.
+Holy-nade,3,50,75,Deals 50 damage to enemies.
+Healing Tonic,0,100,60,Heals single unit for 100 hp.
+Big Boom,3,100,100,Deals 100 damage to enemies.
+Anti-Toxin,0,0,9,Cures Poison.
+Needle,0,0,9,Cures Stone.
+Elixer,0,0,9,Cures Ailments.
+Poke,2,1,1,Deals 1 damage to single target.
+Big Poke,3,2,1,Deals 2 damage to enemies.

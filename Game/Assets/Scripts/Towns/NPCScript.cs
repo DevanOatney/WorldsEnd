@@ -4,20 +4,20 @@ using System.Collections.Generic;
 
 public class NPCScript : MonoBehaviour 
 {
-	enum FACINGDIR {eDOWN, eLEFT, eRIGHT, eUP}
+	protected enum FACINGDIR {eDOWN, eLEFT, eRIGHT, eUP}
 	public int m_nFacingDir = 0;
 	public TextAsset m_taPathing;
 	public bool m_bActive = false;
 	public string m_szDialoguePath = "";
 
-	float m_fWalkingSpeed = 2.0f;
-	bool m_bIsMoving = false;
-	bool m_bIsBeingInterractedWith = false;
-	float m_fTimer = 0.0f;
-	int m_nStepsIter = 0;
-	Animator m_aAnim;
+	protected float m_fWalkingSpeed = 2.0f;
+	protected bool m_bIsMoving = false;
+	protected bool m_bIsBeingInterractedWith = false;
+	protected float m_fTimer = 0.0f;
+	protected int m_nStepsIter = 0;
+	protected Animator m_aAnim;
 
-	class cSteps
+	protected class cSteps
 	{
 		//direction to face
 		public int nDirection;
@@ -29,7 +29,7 @@ public class NPCScript : MonoBehaviour
 		public bool bOneShot;
 	}
 
-	List<cSteps> m_lSteps = new List<cSteps>();
+	protected List<cSteps> m_lSteps = new List<cSteps>();
 
 	// Use this for initialization
 	void Start ()
@@ -38,7 +38,7 @@ public class NPCScript : MonoBehaviour
 		LoadSteps();
 	}
 
-	void HandleMovement()
+	protected void HandleMovement()
 	{
 		if(m_bActive == true)
 		{

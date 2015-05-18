@@ -1,0 +1,11 @@
+A1|1|Devan|Sounds/Voice/Primus_BossEncounterDialogue1|Matt, look out! The OtherApplicant is right infront of us!|3|A2
+A2|2|1|2|His resume and character references won't defeat me!|A3|He's so...beautiful!|A4
+A3|1|Devan|Sounds/Voice/Primus_BossEncounterDialogue2|That's the spirit Matt. Let's defeat him, together, once and for all!|1|A5
+A4|1|Devan|Sounds/Voice/Primus_BossEncounterDialogue3|Oh no... All hope is lost! You've got to fight it Matt!|8|A2
+A5|3|ReadyToFight
+A6|2|2|2|His character references... they're too strong!|A7|Something seems off...|A7
+A7|1|Devan|Sounds/Voice/Primus_BossEncounterDialogue4|Something's definitely wrong about those character references!|2|A8
+A8|1|Devan|Sounds/Voice/Primus_BossEncounterDialogue5|Yes! They must be fake references!! Quick, let's try this again!|4|A9
+A9|3|FinalBattle
+A10|1|Devan|Sounds/Voice/Primus_BossEncounterDialogue6|Matt, we've finally defeated the OtherApplicant, his tyrany is over!|5|A11
+A11|3|Victory

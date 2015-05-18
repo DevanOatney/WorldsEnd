@@ -1,0 +1,3 @@
+A1|1|||You should go cross over that bridge|0|A3
+A2|1|||You've seen all there is to see|0|A3
+A3|3|EndDialogue

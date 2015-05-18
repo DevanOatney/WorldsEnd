@@ -1,0 +1,12 @@
+15
+4
+0
+4
+1
+Human
+Ranger
+Leather Armor
+NULL
+Out to save the world from evil things!
+1
+Thunder
