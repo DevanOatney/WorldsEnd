@@ -1,0 +1,553 @@
+fileFormatVersion: 2
+guid: 6686ce92723a17d419ee056fd61ce83a
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: LSSH_Backgrounds_0
+    21300002: LSSH_Backgrounds_1
+    21300004: LSSH_Backgrounds_2
+    21300006: LSSH_Backgrounds_3
+    21300008: LSSH_Backgrounds_4
+    21300010: LSSH_Backgrounds_5
+    21300012: LSSH_Backgrounds_6
+    21300014: LSSH_Backgrounds_7
+    21300016: LSSH_Backgrounds_8
+    21300018: LSSH_Backgrounds_9
+    21300020: LSSH_Backgrounds_10
+    21300022: LSSH_Backgrounds_11
+    21300024: LSSH_Backgrounds_12
+    21300026: LSSH_Backgrounds_13
+    21300028: LSSH_Backgrounds_14
+    21300030: LSSH_Backgrounds_15
+    21300032: LSSH_Backgrounds_16
+    21300034: LSSH_Backgrounds_17
+    21300036: LSSH_Backgrounds_18
+    21300038: LSSH_Backgrounds_19
+    21300040: LSSH_Backgrounds_20
+    21300042: LSSH_Backgrounds_21
+    21300044: LSSH_Backgrounds_22
+    21300046: LSSH_Backgrounds_23
+    21300048: LSSH_Backgrounds_24
+    21300050: LSSH_Backgrounds_25
+    21300052: LSSH_Backgrounds_26
+    21300054: LSSH_Backgrounds_27
+    21300056: LSSH_Backgrounds_28
+    21300058: LSSH_Backgrounds_29
+    21300060: LSSH_Backgrounds_30
+    21300062: LSSH_Backgrounds_31
+    21300064: LSSH_Backgrounds_32
+    21300066: LSSH_Backgrounds_33
+    21300068: LSSH_Backgrounds_34
+    21300070: LSSH_Backgrounds_35
+    21300072: LSSH_Backgrounds_36
+    21300074: LSSH_Backgrounds_37
+    21300076: LSSH_Backgrounds_38
+    21300078: LSSH_Backgrounds_39
+    21300080: LSSH_Backgrounds_40
+    21300082: LSSH_Backgrounds_41
+    21300084: LSSH_Backgrounds_42
+    21300086: LSSH_Backgrounds_43
+    21300088: LSSH_Backgrounds_44
+    21300090: LSSH_Backgrounds_45
+    21300092: LSSH_Backgrounds_46
+    21300094: LSSH_Backgrounds_48
+    21300096: LSSH_Backgrounds_49
+    21300098: LSSH_Backgrounds_50
+    21300100: LSSH_Backgrounds_52
+    21300102: LSSH_Backgrounds_53
+    21300104: LSSH_Backgrounds_54
+    21300106: LSSH_Backgrounds_56
+    21300108: LSSH_Backgrounds_57
+    21300110: LSSH_Backgrounds_58
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: LSSH_Backgrounds_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7784
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_1
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 7784
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_2
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 7784
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7376
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_5
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 7376
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_6
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 7376
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6968
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_9
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 6968
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_10
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 6968
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6560
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_13
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 6560
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_14
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 6560
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6152
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_17
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 6152
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_18
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 6152
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5744
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_21
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 5744
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_22
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 5744
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5336
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_25
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 5336
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_26
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 5336
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4928
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_29
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 4928
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_30
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 4928
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4520
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_33
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 4520
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_34
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 4520
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4112
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_37
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 4112
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_38
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 4112
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3704
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_41
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 3704
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_42
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 3704
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3296
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_45
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 3296
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_46
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 3296
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2888
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_49
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 2888
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_50
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 2888
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2480
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_53
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 2480
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_54
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 2480
+        width: 720
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2079
+        width: 720
+        height: 401
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_57
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 2081
+        width: 720
+        height: 399
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LSSH_Backgrounds_58
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 2081
+        width: 720
+        height: 399
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
