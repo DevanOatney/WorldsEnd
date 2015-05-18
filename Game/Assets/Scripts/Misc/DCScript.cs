@@ -79,6 +79,16 @@ public class DCScript : MonoBehaviour
 	List<CharactersItems> m_lInventory = new List<CharactersItems>();
 	public List<CharactersItems> GetInventory() {return m_lInventory;}
 	public void SetInventory(List<CharactersItems> inv) {m_lInventory = inv;}
+	//returns null if item not found... shouldn't theoretically happen but.. meh
+	public CharactersItems GetItemFromInventory(string itemName)
+	{
+		foreach(CharactersItems i in m_lInventory)
+		{
+			if(i.m_szItemName == itemName)
+				return i;
+		}
+		return null;
+	}
 	public void AddItem(CharactersItems item)
 	{
 		int iter = 0;

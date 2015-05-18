@@ -8,13 +8,46 @@ public class NPC_ArmorMerchantScript : NPCScript
 	bool m_bAboutToBeActive = false;
 	bool m_bShowScreen = false;
 	public TextAsset m_taWares;
+	List<MerchantItem> m_lItems = new List<MerchantItem>();
+	DCScript dc;
+
+	class MerchantItem
+	{
+		public string m_szItemName = "";
+		public int m_nCost = -1;
+		//amount that the player has.
+		public int m_nAmountCarried = 0;
+	}
 	// Use this for initialization
 	void Start ()
 	{
+		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		m_aAnim = GetComponent<Animator>();
 		LoadSteps();
+		LoadItems();
 	}
-	
+
+	void LoadItems()
+	{
+		m_lItems.Clear();
+		string[] itemLines = m_taWares.text.Split('\n');
+		foreach(string item in itemLines)
+		{
+			string[] piece = item.Split(',');
+			MerchantItem newItem = new MerchantItem();
+			newItem.m_szItemName = piece[0].Trim();
+			newItem.m_nCost = int.Parse(piece[1].Trim());
+			DCScript.CharactersItems cItem = dc.GetItemFromInventory(newItem.m_szItemName);
+			if(cItem == null)
+				Debug.Log("Merchant item loading data failed");
+			else
+			{
+
+			}
+			m_lItems.Add(newItem);
+		}
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
