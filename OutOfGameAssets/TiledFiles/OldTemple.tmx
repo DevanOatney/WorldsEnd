@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="BedComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BedComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="1281" name="BridgeComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BridgeComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="1537" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2561" name="cave" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/cave.png" width="256" height="336"/>
+ </tileset>
+ <tileset firstgid="2641" name="ChestComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/ChestComp.png" width="384" height="512"/>
+ </tileset>
+ <tileset firstgid="2833" name="cottage" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/cottage.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="3089" name="DoorComp1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/DoorComp1.png" width="192" height="192"/>
+ </tileset>
+ <tileset firstgid="3125" name="DoorComp2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/DoorComp2.png" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="3221" name="DoorComp3" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/DoorComp3.png" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="3317" name="Edited Tile Set 2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Edited Tile Set 2.png" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="3437" name="Edited Tile Set" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Edited Tile Set.png" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="3557" name="HighContrastGrass" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/HighContrastGrass.png" width="192" height="256"/>
+ </tileset>
+ <tileset firstgid="3605" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <tileset firstgid="3829" name="Inq - Medieval" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq - Medieval.png" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="3949" name="Inq - Snowy Mountains" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq - Snowy Mountains.png" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="4069" name="Inq XP Doors" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP Doors.png" width="128" height="256"/>
+ </tileset>
+ <tileset firstgid="4101" name="Inq XP Doors2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP Doors2.png" width="128" height="256"/>
+ </tileset>
+ <tileset firstgid="4133" name="Inq XP MT - Beach2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Beach2.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4145" name="Inq XP MT - Dirt" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Dirt.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4157" name="Inq XP MT - Long Grass2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Long Grass2.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4169" name="Inq XP MT - Mud" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Mud.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4181" name="Inq XP MT - Road 2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Road 2.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4193" name="Inq XP MT - Road" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Road.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4205" name="Inq XP MT - Water1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Water1.png" width="384" height="128"/>
+ </tileset>
+ <tileset firstgid="4253" name="terrain_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="5277" name="terrain" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrain.png" width="672" height="736"/>
+ </tileset>
+ <layer name="Ground" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztm2tu2zAQBuUeos1BBaQ3cU9i+yg9SdqflWoLYT7vS04TFOQMsIjhyBKyI3K5lDNN0/T1yzW+LfG0hMVpifMSl0LsOTY6vn1/FDYXrY+fh9dcnIph5XN77ySvo897r0dxsnnwfET5VAcVX+r5nJwLH76PNkfzLaoesjETXQsfdl4tH/P0Nm/e/X6e7n1Ux89IPjYHno/zdJ+jNTwf1ryvvrI6MfJ8tTl4Xhz8WuL7wfeh93vrxMu95rXig/FxdbD+7S/Lz98FH1vMRmie1YXOX4yPV6Ia7tVlPS7zoS6sz+g4s8bI/HFp+G/YfBzX8XGLS9GNV9/bdZd131vHq0tv/dA7urZSNxqXYO1lOdF1QHuve+NDfbe/7x3tzfW1urLWwtE4mad7b9F8FR0zQg2xfFg9ieXDmuO9XGtvkfnwztE72fiIfOytKe14iearqK70jua86sOrC1rDvbzvCb1Gz1g+svkq2luszl+V8K7RM5rvqo+ofmRr5T1jwTpnz2z53lvPrfx7/bzVh0Q+LBej+nhyfGR9vHrw3GT9h7fXNboPXXdFe/GeD2/fK1vvWvsr+Ng3Prw1luclquH4sHvC9/qo7I9kPkatH23NsDzs8VHZF8nWuJHbnqnWcX1O4s0l1X2TPT50vuuZrG608Xx7VhX5qO4rVvuPkeaqlaxuRHOVd/9W8vzo+Oidf+Gj4kJrS7X/wEfdR/TcKOu3s/WV1d+M4sPa0816waoLby22Z79klFq+UvGhtTzzoT271cPvqedWj98rVR/H27Nzy4dXk6O8Rvsl3p5Xzx42vP7PWvMem+8zqI9or+q9+4kj+VixnHg9iI4TnZes+1v9VOuHdZ4RqIyR9vVRvvdjrUstB38j+C6Rfq/I8jkC1TlLnVTyqvHj8HZdrZGdfwSyvsOau6JcRsdF59R9fy96x9vbrfxf4SPXsZzp+3DFupc/mpH670f4TBcr+Ij5bB8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMofN5VCNQ==
+  </data>
+ </layer>
+ <layer name="Building (collision)" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1zFu1EAUgOGJIu1KlKuUcBMogIqcAQrgBBwB0sYXgDQRNeQMiJIDUFEANXABIjEWsTIZZliv144W/H3SUxTLWUXvzzi7IUzvdBHCu57zPpvXi2v4Bf8Bb/ZCeJvM2d6w1ym1+BznS2W+alI0Vo9SiydrptRk7qbo0adFrcncjd1jkxalJnM3Zo8hLfImczdWj21apE3m6MONaV738RYtns60ReujHjtrrOdVq9bjfpx7ydzVo+pb3P/3ZH707PFs9ee1Wo921yf7IZzH+bRfvk+PYY6zDmmXv/X4edHjXI9JNRc92i7P405fFOYo61G672hx+Tpsrj0n3TSry3MzdJ86bOblQQiv4pwc/P4+f24dJ03ar91+by5DuLW8+jPpNR3G0e22KXRJ3Y57v7Ncf43xNaur56T1MO79UXY+0mu57vmXd6affHe1Pa7bcX6u2E7pbNR09z2Ic6jDtaqdi7xdk7wXYJja33fXIN35uudV0/NsMZ5u52mrTZ5zsIvyz4L8n/L/P7oDALCrtnmv6n0uAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABT+wVfaMzv
+  </data>
+ </layer>
+ <layer name="Top" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt10ty00AUBVBlEpOpk03AgM8UWAPgKbACDcwcWAF7ASZZFN4F3RV35amrbRQkK3zOqXol2ZI9eFf9Udct68t6WPG7+pzTaeXQuqe+n/m1elvn0ypOo+5v3ffdgflLNqeV+/rjPPX/fJhBrn49vC6P04l9fbDquovVTf93YWz01XU5zOPDkbU69v/QfGVctH0967pvob6fjfvd5kgeZUxcXN5UzCF/7sNY6WUxMDWPZ/tjGS+7qucxh1J9GC8lk/x9/B/uZrseHjf7ntbzUOv5L7nETEoeW3lMsgm5xDxiv+uxkfXhvqwcD82DDD2/6roXqV5eta+XPOLaUM9VfdX/ep3J5DHO25TDu1TvD+SR5d5uw5pQ6nHa1z4J9XR1u87X8x7jfEw5fEr1+UgeUX7Or/fnr1L/X4d6s7q9Zjwsr/V+YZ97P2Tx55HJ3+FhyuSRXPhHeb7vx6/eBVnWmHfBOch9nLu+C/6upXKnrV5/lsodAGibsle1z53flL2qfe78puxV7XMBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOD/8hN554Ix
+  </data>
+ </layer>
+ <layer name="Top 2" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1tENgjAUBVBmYBNHYY1+6B6dmhDTWF/aoKbVD89JSKCUn3spZVl+J6/3o5zzfWl99HAcaX0eO8R7jBPzTCHrFDpJoQedjFXnmUPO9Tcqh3VTz9fHWLGTVvZFfa2LOXp99DoqzzDP2Rrp7fPM0co8dhHn6mOO+F/byjqOtfYWxonfqt673/v/Yo7byX5d1kmZd9HJFCXX7cV8tzfn85mrfAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAODv7TbDPmI=
+  </data>
+ </layer>
+</map>
