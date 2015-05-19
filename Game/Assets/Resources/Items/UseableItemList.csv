@@ -1,11 +1,15 @@
-Healing Herb,0,50,75,Heals single unit for 50 hp.
+Flask,0,20%,3,Heals single unit for 20% hp.
 Grenade,2,75,100,Deals 75 damage to single target.
-Shrubbery,1,25,2000,Heals groups for 25 hp.
-Holy-nade,3,50,75,Deals 50 damage to enemies.
-Healing Tonic,0,100,60,Heals single unit for 100 hp.
-Big Boom,3,100,100,Deals 100 damage to enemies.
-Anti-Toxin,0,0,9,Cures Poison.
+Shrubbery,1,50%,2000,Heals groups for 50% hp.
+Holy-nade,3,500,75,Deals 500 damage to enemies.
+Tonic,0,50%,10,Heals single unit for 100 hp.
+Granade,3,100,20,Deals 100 damage to enemies.
+Anti-Venom,0,0,5,Cures Poison.
 Needle,0,0,9,Cures Stone.
-Elixer,0,0,9,Cures Ailments.
-Poke,2,1,1,Deals 1 damage to single target.
-Big Poke,3,2,1,Deals 2 damage to enemies.
+All Heal,0,100%,100,Cures Ailments and 100% hp
+Pebble,2,1,1,Deals 1 damage to single target.
+Gravel,3,2,1,Deals 2 damage to enemies.
+Mist,1,20%,50,Heal all for 20% hp
+Rejuv Mist,1,100%,75,Heal all for 100% hp
+Smoke,3,0%,5,Runs from Battle 50% of time
+Poison Smoke,3,0%,8,"Runs from Battle 50% of time. If run fails, Poisons enemy 50% of time"

@@ -1,2 +1,0 @@
-Leather Armor,Chest Armor,100
-Healing Herb,Single Heal,50
