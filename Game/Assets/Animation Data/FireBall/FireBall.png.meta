@@ -1,9 +1,27 @@
 fileFormatVersion: 2
-guid: e52892ce611257b44a5224fd8af542e3
-timeCreated: 1431913291
-licenseType: Free
+guid: 3e6da2aa779ca1940ba13bb025768ff4
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: FireBall_0
+    21300002: FireBall_1
+    21300004: FireBall_2
+    21300006: FireBall_3
+    21300008: FireBall_4
+    21300010: FireBall_5
+    21300012: FireBall_6
+    21300014: FireBall_7
+    21300016: FireBall_8
+    21300018: FireBall_9
+    21300020: FireBall_10
+    21300022: FireBall_11
+    21300024: FireBall_12
+    21300026: FireBall_13
+    21300028: FireBall_14
+    21300030: FireBall_15
+    21300032: FireBall_16
+    21300034: FireBall_17
+    21300036: FireBall_18
+    21300038: FireBall_19
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,22 +40,18 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
-  cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,8 +62,206 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: FireBall_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 765
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_1
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 765
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 680
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_3
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 680
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 595
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_5
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 595
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 510
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_7
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 510
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 425
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_9
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 425
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 340
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_11
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 340
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 255
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_13
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 255
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 170
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_15
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 170
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 85
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_17
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 85
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireBall_19
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 0
+        width: 184
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 
