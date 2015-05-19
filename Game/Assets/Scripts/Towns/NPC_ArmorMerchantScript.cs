@@ -74,7 +74,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 
 
 			//Draw the background for BUY/SELL/EXIT
-			GUI.Box (new Rect(0, 0, screenWidth * 0.295f, screenHeight * 0.285f), "BUY\nSELL\nEXIT");
+			//GUI.Box (new Rect(0, 0, screenWidth * 0.295f, screenHeight * 0.285f), "BUY\nSELL\nEXIT");
 
 
 
