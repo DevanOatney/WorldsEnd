@@ -1,5 +1,5 @@
 A1|1|Callan|...uugh...*ahem*...What time is it!?! Oh no! I'm going to be late for the ceremony. That sneaky sister of mine is always trying to be one step ahead of me. But not today! I wonder if Dad left a note or something.|1|A2
-A2|1|Narrator|After hours of watching you oversleep, your lazy ass is ready to move, but wait! You have no idea how! That's why I'm here to guide you from a slug-licking plebian to an illustrious master of your destiny.|To move... Press W,A,S,D. When you're done playing around...|A3|
+A2|1|Narrator|After hours of watching you oversleep, your lazy ass is ready to move, but wait! You have no idea how! That's why I'm here to guide you from a slug-licking plebian to an illustrious master of your destiny.|To move... Use the Up,Down,Left and Right Arrows. When you're done playing around...|A3|
 A3|1|Narrator|Oh, well this is embarassing. I wasn't expecting you to be able master walking so quickly. It appears your youthful zealous and inability to understand just how weak you are might be your saving grace.|A4|
 A4|1|Callan| Wow, I'll take that as a compliment!|1|A5
 A5|1|Narrator|Ofcourse you would... Let's get on with the show. Your dad left you a note on the desk over there. If you don't know how to pick it up, use the E key. Apart from picking items up, it will also let you talk to other people.|A6
