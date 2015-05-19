@@ -176,12 +176,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 				m_bShouldMove = true;
 				m_aAnim.SetBool("m_bMoveRight", true);
 				m_nFacingDir = 2;
-				//if(transform.localScale.x > 0)
-				//{
-				//	//Set the scale in inverse so that you face right instead of left
-				//	Vector3 scale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				//	transform.localScale = scale;
-				//}
 			}
 				break;
 			case (int)States.eWALKDOWN:
@@ -294,13 +288,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		}
 		else if(Input.GetKey(KeyCode.RightArrow))
 		{
-			//Make sure we're not already facing right, otherwise it'll just keep toggling
-			//if(m_nFacingDir != 2)
-			//{
-				//Set the scale in inverse so that you face right instead of left
-				//Vector3 scale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				//transform.localScale = scale;
-			//}
 			moveDir = 2;
 			m_nFacingDir = 2;
 			m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
