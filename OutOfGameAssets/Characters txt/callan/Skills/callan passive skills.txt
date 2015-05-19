@@ -1,0 +1,16 @@
+Passive Skills
+
+Dodge- Chance to dodge attacks 
+20%,30%,40%,50%,60%
+
+Bow Master- Increase chance to hit plus a bonus to DMG.
+5%/3%,10%/5%,15%/7%,20%/10%,30%/20%
+
+Lover of Life- Player gains health each time an ally is healed and gains more life when healed.
+5%/10%,7%/13%,10%/15%,12%/17%,15%/20%
+
+Lay of the land- increases player initive and DEF.
+20%/5%,25%/10%,30%/15%,35%/20%,50%/25% ( at the 30% mark all allys gain 25% to initive and 15% def.)
+
+Known Enemy- player and allies have an increased critical chance.
+5%,10%,25%
