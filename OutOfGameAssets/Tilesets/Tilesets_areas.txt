@@ -1,4 +1,10 @@
 Inon:cottage,terrain_atlas,thatched-roof,terrain,base_out_atlas,build_atlas,obj_misk_atlas,woodlandinn,doorcomp1,red (collisions)
-Main Char. room:house_inside,terrain_atlas,base_out_atlas,woodlandinn,inerioritemscomp,ineriorcomp2,shelfcomp,doorcomp1,plantcomp,bedcomp,chestcomp,red (collisions)
-Main house_hallway:
-Main house_livingroom:
+Main Char.Room:house_inside,terrain_atlas,base_out_atlas, woodlandinn, interioritemscomp, interiorcomp2,shelfcomp,doorcomp1,plantcomp,bedcomp,chestcomp,red (collisions)
+Main house_hallway:DoorComp1,ShelfComp,House_inside,Woodlandinn,Base_out_atlas,Terrain_atlas,Red
+Main house_livingroom:InteriorComp2,base_out_atlas, terrain_atlas, DoorComp1,InteriorItemsComp,ShelfComp, house_inside, woodlandinn, interiorcomp2, interioritemscomp, ChestComp, red
+Armory:house_inside,obj_misk_atlas,terrain,terrain_atlas,base_out_atlas,cottage,build_atlas,InteriorComp2,InteriorItemsComp,ShelfComp,Red
+Farm House:Red,woodlandinn,house_inside,build_atlas,obj_misk_atlas,terrain_atlas,base_out_atlas,InteriorComp2,InteriorItemsComp,BedComp,DoorComp1
+Guild Hall Interior:Base_out_atlas,build_atlas,terrain_atlas,house_inside,obj_misk_atlas,InteriorComp2,InteriorItemsComp,ShelfComp,ChestComp,Red
+Item Shoppe:build_atlas,obj_misk_atlas,woodlandinn,house_inside,InteriorComp2,InteriorItemsComp,ShelfComp,Red
+
+============================================================================================================================================================================================================

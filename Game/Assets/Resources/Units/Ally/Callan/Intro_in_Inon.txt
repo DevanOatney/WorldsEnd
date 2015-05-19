@@ -1,0 +1,16 @@
+A1|1|Callan|...uugh...*ahem*...What time is it!?! Oh no! I'm going to be late for the ceremony. That sneaky sister of mine is always trying to be one step ahead of me. But not today! I wonder if Dad left a note or something.|1|A2
+A2|1|Narrator|After hours of watching you oversleep, your lazy ass is ready to move, but wait! You have no idea how! That's why I'm here to guide you from a slug-licking plebian to an illustrious master of your destiny.|To move... Press W,A,S,D. When you're done playing around...|A3|
+A3|1|Narrator|Oh, well this is embarassing. I wasn't expecting you to be able master walking so quickly. It appears your youthful zealous and inability to understand just how weak you are might be your saving grace.|A4|
+A4|1|Callan| Wow, I'll take that as a compliment!|1|A5
+A5|1|Narrator|Ofcourse you would... Let's get on with the show. Your dad left you a note on the desk over there. If you don't know how to pick it up, use the E key. Apart from picking items up, it will also let you talk to other people.|A6
+A6|1|Narrator| Now that you've shown to me that you can perform menial tasks and follow simple directions. To read the note, which I pray to Illuyani you know how to read, press the Esc key and select inventory. Go to the key items tab. In there, you should find the note, the strength to overcome any adversity, and the wisdom to know when strength is not needed.|A7
+A7|3|ReadNote
+A8|1|Narrator|Oh, just the note. The other two seemed like pretty standard fare for a journey like yours.|A9
+A9|1|Narrator|Nonetheless, they totally ditched you.|A10|
+A10|2|1|2|No, they knew I was tired because I couldn't sleep the night before my big day.|A11| Maybe, but you are also extremely cynical and have a jaded personality. Plus my dad loves me and he wouldn't do that!|A11
+A11|1|Narrator|Sure, if rationalizing the pain of abandonement helps you sleep at night.|A12
+A12|2|1|2|I knew you would understand.|A13|You're a good friend for understanding.|A13
+A13|3|Main'sRoomUnlocked
+
+ 
+
