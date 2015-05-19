@@ -1,0 +1,17 @@
+12
+5
+0
+3
+1
+Human
+Agile Hunter
+1
+NULL
+NULL
+NULL
+NULL
+NULL
+NULL
+Aviods Being Hurt
+1
+NULL
