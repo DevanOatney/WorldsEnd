@@ -174,14 +174,14 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			case (int)States.eWALKRIGHT:
 			{
 				m_bShouldMove = true;
-				m_aAnim.SetBool("m_bMoveLeft", true);
+				m_aAnim.SetBool("m_bMoveRight", true);
 				m_nFacingDir = 2;
-				if(transform.localScale.x > 0)
-				{
-					//Set the scale in inverse so that you face right instead of left
-					Vector3 scale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-					transform.localScale = scale;
-				}
+				//if(transform.localScale.x > 0)
+				//{
+				//	//Set the scale in inverse so that you face right instead of left
+				//	Vector3 scale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+				//	transform.localScale = scale;
+				//}
 			}
 				break;
 			case (int)States.eWALKDOWN:
@@ -295,13 +295,13 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		else if(Input.GetKey(KeyCode.RightArrow))
 		{
 			//Make sure we're not already facing right, otherwise it'll just keep toggling
-			if(m_nFacingDir != 2)
-			{
+			//if(m_nFacingDir != 2)
+			//{
 				//Set the scale in inverse so that you face right instead of left
-				Vector3 scale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				transform.localScale = scale;
-			}
-			moveDir = 1;
+				//Vector3 scale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+				//transform.localScale = scale;
+			//}
+			moveDir = 2;
 			m_nFacingDir = 2;
 			m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
 		}
@@ -309,7 +309,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		{
 			//set the scale to the initial scale incase we were facing right
 			transform.localScale = m_vInitialScale;
-			moveDir = 2;
+			moveDir = 3;
 			m_nFacingDir = 3;
 			m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
 		}
@@ -348,22 +348,34 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			m_aAnim.SetBool("m_bMoveLeft", false);
 			m_aAnim.SetBool("m_bMoveUp", false);
 			m_aAnim.SetBool("m_bMoveDown", true);
+			m_aAnim.SetBool("m_bMoveRight", false);
 		}
 			break;
 		case 1:
 		{
-			//Left+Right
+			//Left
 			m_aAnim.SetBool("m_bMoveUp", false);
 			m_aAnim.SetBool("m_bMoveDown", false);
 			m_aAnim.SetBool("m_bMoveLeft", true);
+			m_aAnim.SetBool("m_bMoveRight", false);
 		}
 			break;
 		case 2:
+		{
+			//Right
+			m_aAnim.SetBool("m_bMoveUp", false);
+			m_aAnim.SetBool("m_bMoveDown", false);
+			m_aAnim.SetBool("m_bMoveLeft", false);
+			m_aAnim.SetBool("m_bMoveRight", true);
+		}
+			break;
+		case 3:
 		{
 			//Up
 			m_aAnim.SetBool("m_bMoveDown", false);
 			m_aAnim.SetBool("m_bMoveLeft", false);
 			m_aAnim.SetBool("m_bMoveUp", true);
+			m_aAnim.SetBool("m_bMoveRight", false);
 		}
 			break;
 		default:
@@ -371,6 +383,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			m_aAnim.SetBool("m_bMoveUp", false);
 			m_aAnim.SetBool("m_bMoveDown", false);
 			m_aAnim.SetBool("m_bMoveLeft", false);
+			m_aAnim.SetBool("m_bMoveRight", false);
 		}
 			break;
 		}

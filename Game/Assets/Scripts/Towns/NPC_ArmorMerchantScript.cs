@@ -79,9 +79,9 @@ public class NPC_ArmorMerchantScript : NPCScript
 
 
 			//Draw the background for the Merchants Wares
-			GUI.BeginScrollView(new Rect(0, screenHeight*0.285f, screenWidth * 0.61f, screenHeight * 0.547f),
+			//GUI.BeginScrollView(new Rect(0, screenHeight*0.285f, screenWidth * 0.61f, screenHeight * 0.547f),
 
-			GUI.Box (, "");
+			//GUI.Box (, "");
 			float yPos = 5;
 			foreach(MerchantItem item in m_lItems)
 			{
