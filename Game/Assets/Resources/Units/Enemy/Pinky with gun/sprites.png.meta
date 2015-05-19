@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 2b47fe7e2e6820e41991f6760d19e0c1
+guid: 4b74a8c1d77823f43960807aa06ef244
+timeCreated: 1431913276
+licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: idle_0
-    21300002: idle_1
-    21300004: sprites_0
-    21300006: idle_2
-    21300008: move_0
-    21300010: move_1
-    21300012: attack_0
-    21300014: attack_1
-    21300016: attack_2
-    21300018: attack_3
-    21300020: attack_4
-    21300022: death_0
-    21300024: death_1
-    21300026: death_2
-    21300028: death_3
-    21300030: hurt_0
-    21300032: hurt_1
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -37,18 +22,22 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: 16
+    aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -59,176 +48,8 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: idle_0
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 770
-        width: 31
-        height: 42
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: idle_1
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 769
-        width: 32
-        height: 41
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprites_0
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 770
-        width: 38
-        height: 42
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: idle_2
-      rect:
-        serializedVersion: 2
-        x: 79
-        y: 770
-        width: 32
-        height: 44
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: move_0
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 505
-        width: 34
-        height: 44
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: move_1
-      rect:
-        serializedVersion: 2
-        x: 45
-        y: 505
-        width: 31
-        height: 44
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: attack_0
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 348
-        width: 50
-        height: 38
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: attack_1
-      rect:
-        serializedVersion: 2
-        x: 61
-        y: 348
-        width: 40
-        height: 37
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: attack_2
-      rect:
-        serializedVersion: 2
-        x: 111
-        y: 348
-        width: 47
-        height: 39
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: attack_3
-      rect:
-        serializedVersion: 2
-        x: 163
-        y: 348
-        width: 39
-        height: 38
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: attack_4
-      rect:
-        serializedVersion: 2
-        x: 207
-        y: 348
-        width: 47
-        height: 39
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: death_0
-      rect:
-        serializedVersion: 2
-        x: 203
-        y: 508
-        width: 36
-        height: 33
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: death_1
-      rect:
-        serializedVersion: 2
-        x: 244
-        y: 508
-        width: 35
-        height: 46
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: death_2
-      rect:
-        serializedVersion: 2
-        x: 284
-        y: 508
-        width: 35
-        height: 46
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: death_3
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 145
-        width: 31
-        height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hurt_0
-      rect:
-        serializedVersion: 2
-        x: 155
-        y: 567
-        width: 27
-        height: 40
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hurt_1
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 567
-        width: 32
-        height: 40
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+    sprites: []
   spritePackingTag: 
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

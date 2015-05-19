@@ -1,15 +1,9 @@
 fileFormatVersion: 2
-guid: 0a7ae458f5a70004ea9a0f174747d755
+guid: 2e57ad1cc250fbc4fb9bae264ab39d9e
+timeCreated: 1431913264
+licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: FieldIcons_0
-    21300002: FieldIcons_1
-    21300004: FieldIcons_2
-    21300006: FieldIcons_3
-    21300008: FieldIcons_4
-    21300010: FieldIcons_5
-    21300012: FieldIcons_6
-    21300014: FieldIcons_7
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -28,18 +22,22 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 1024
+  maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
-    aniso: 16
+    filterMode: -1
+    aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -50,86 +48,8 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: FieldIcons_0
-      rect:
-        serializedVersion: 2
-        x: 47
-        y: 79
-        width: 16
-        height: 28
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: FieldIcons_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 111
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: FieldIcons_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 111
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: FieldIcons_3
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 111
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: FieldIcons_4
-      rect:
-        serializedVersion: 2
-        x: 98
-        y: 111
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: FieldIcons_5
-      rect:
-        serializedVersion: 2
-        x: 114
-        y: 111
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: FieldIcons_6
-      rect:
-        serializedVersion: 2
-        x: 211
-        y: 86
-        width: 19
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: FieldIcons_7
-      rect:
-        serializedVersion: 2
-        x: 145
-        y: 49
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+    sprites: []
   spritePackingTag: 
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
