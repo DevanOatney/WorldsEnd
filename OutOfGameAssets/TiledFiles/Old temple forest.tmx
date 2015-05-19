@@ -29,44 +29,48 @@
   <terraintypes>
    <terrain name="Path" tile="-1"/>
   </terraintypes>
-  <tile id="1" terrain="0,0,,"/>
-  <tile id="23" terrain=",,0,0"/>
+  <tile id="1" terrain="0,0,0,"/>
+  <tile id="2" terrain="0,0,,0"/>
+  <tile id="22" terrain="0,,0,0"/>
+  <tile id="23" terrain=",0,0,0"/>
   <tile id="64" terrain="0,0,0,0"/>
+  <tile id="127" terrain="0,0,0,"/>
+  <tile id="128" terrain="0,0,,0"/>
+  <tile id="148" terrain="0,,0,0"/>
+  <tile id="149" terrain=",0,0,0"/>
+  <tile id="168" terrain=",,,0"/>
+  <tile id="169" terrain=",,0,0"/>
+  <tile id="170" terrain=",,0,"/>
+  <tile id="189" terrain=",0,,0"/>
+  <tile id="191" terrain="0,,0,"/>
+  <tile id="210" terrain=",0,,"/>
+  <tile id="211" terrain="0,0,,"/>
+  <tile id="212" terrain="0,,,"/>
  </tileset>
  <tileset firstgid="870" name="bases" tilewidth="32" tileheight="32">
   <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
  </tileset>
- <layer name="Grass" width="100" height="100">
+ <tileset firstgid="1894" name="terrain_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="grass" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt1bEVgzAMQEEzV4qMw/4bpFATNWDAtiju3lNHpY/trbW2vWSob6BHVt1Aj6y6gRZZdQc9sln7/f6NHv30eJcVPT4d3xNWvhH7wRBWt3A+jo38x8/GfXXuzs5n3FuahFk7v3pvEWa8zXfOF+Hp3kedG8LTd1iPsVbsWo9+1R30yKo76NHPrgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADq/ACyvyOj
+   eJzt1zEOgzAMBVDU45b77x2yINS0kDhJK78nMUCAwT82Yn9s2344nqfzWQdFRC2/ZVhbP16niKi3/ojTU/PInChm98Wnd7KmF2RR11L3K9/nlncxds/39EjWfGbW++7My2hFnWv301fXWbMrkxH7PzrjTFbMK3Or7hdnVeZMZs+fq89nNWLe64l2kf/jd+85r7GuF/THe6szkAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+AF/DYiUg==
   </data>
  </layer>
- <layer name="Path" width="100" height="100">
-  <properties>
-   <property name="Auto path" value=""/>
-  </properties>
+ <layer name="path" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt1EEOgjAARFG8/6HUO6h3UOsdbGJdQGJCoYmzeC+ZsIFNPzBN+7wOn5FBjyx6ZNEjix5Zih5RfB9Z9MiiR5beHt/7l2OMnvNcNih6DPHrHV87+m0967KixbFeT21nfWb2nPNWl/rste2mx8w//i16ZLnXBo+2px4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADDMG9CaZp0=
+   eJzt2I1Ng0AYBuAWh9AdqjsYd1Cn6IxqXMG4g9qwQj1SSE4KhYMjNc3zJF/SwNGm93IfP9titdqGSnEfxr+vD/WQeCynbeXxr0zNYxeyKOWR3dg84jHWx3LO3a9Sf/vSzclDv8rv3OuDv6bmUdZ5XIfPdxMz0auODeXRtS9eH00mt3VNzYaDlHN0U8/5TSuPsiebdskqjziHeO5Ty7Umj3Z/ypmHa8g4m6jPtPtT3KOq5/Qi7H/qqSv3xln0rYmuuX8+Mc/N9+ysj1m68phyjntWyaOdRzFiLTRewvjXgXpbL/8fLknzDrfJYkwOjY9qrovj2kfbP+UxWtXT57yjivPYd2RTbZNHmjl9/ysc8z1QP/JI8jjy/gkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAZfwC9ix7eQ==
   </data>
  </layer>
- <layer name="water" width="100" height="100">
+ <layer name="foliage and bases" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJztzgEJAAAIA7CDOe1fwxgKbgmWAAAAAADc1rU9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4JMBbDoAYQ==
+   eJzt2DEOgjAUBuAadVDPY+IxHF08qmdRZ3dXhRgTomIKtEHk+xIWAqHpS/v3EcLDdRaiHRbxz9Zp8j3y2q76HsEwXfoeAPyhY5Evp+I6J8iZsUsxl7fy3WUIk2WyYY2WuRy2FGdf2mmyl1XPZvIkj9i97HXN2AO7ydF36Mfj6JWHR2b/hhR7zHr+fs+a7EeZQ5sP9SBOjhzf1dTDv8rvumREXX+xn9a/ox75VPuLmMx51sk5AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABo4w4RNCXR
   </data>
  </layer>
- <layer name="tree base" width="100" height="100">
+ <layer name="tree tops" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt18sNgCAMAFAuOrsjOJ6jeCMGjSF8DMH3bqRwKaSlITCarTJOW3uyTvOfxrOsjfZQln+Aj2T17Ip6fyzlZ/+oV8+I96x3D8HfAC7UJWbkXQOTuM2Lb/VN7evOHAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwJMTlZ0H1g==
-  </data>
- </layer>
- <layer name="foliage" width="100" height="100">
-  <data encoding="base64" compression="zlib">
-   eJzt2L1OwzAUBtDIwNuwIn4mxAyMMNM+fnemDNhCUZDJjZI0ZkDnSFdyq0aK/MW+Trtuu8c0jp9S/Dv+xpY8+ja3QiePFm7zPN7luk/xOBLlcbyIr+m7MZPPy3Pu/H96zvP4kus1xePI3PqYy4TYR57HQ65jiscR/Xx/LfYrtlu6X5X9p9TP/b/OQ68+39r9ai6PJa7TdLHNVB7lnLQkD/PexvBM1+tjmG9rYF99VS0cnIcXGXp2Kw9yaOot/a7o+1Kn6vr6M7HSp6P53koe86LneKj3nfvwqRszuLnSR9aI1kLpAWXt1O+HU1qeCfi29r9CmQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAe/oC6alFmA==
-  </data>
- </layer>
- <layer name="tree top" width="100" height="100">
-  <data encoding="base64" compression="zlib">
-   eJzt18kNAjEMBdBcpk3WPlj7YFgqARrDDRANihXm8J7kW3JxrG+llHzHoZRT1HloO0OOW/T4HvWo9HrKGXI8o8evqHel11PO8N06+raJ2urfLLTk/SLuLKNW3jJNS97v4s4+6uA90rTk/SXujFFX79GVHTMv/hQ5subanyJH1lz7U+Qw1/Py61zX8s1O76+Wb3Z6f7V8k3391fLNTgcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgP/5AFyjM8c=
+   eJzt180NgzAMBtBcGbNlEsokLZMAi+EJOORHDfCe5GOkyJb8ySlxd68hpXfUOPz7J9dXo5dTvP1EzeZRrEYvv/H2F7WYR7EavVzj7Ra1m0exs17m7jJ50kbuLpMnbeTuMnnSRm4uyBMA6J/7oi/ui764L/rivgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeK4DseskVQ==
   </data>
  </layer>
 </map>
