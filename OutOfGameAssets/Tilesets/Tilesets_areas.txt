@@ -1,0 +1,4 @@
+Inon:cottage,terrain_atlas,thatched-roof,terrain,base_out_atlas,build_atlas,obj_misk_atlas,woodlandinn,doorcomp1,red (collisions)
+Main Char. room:house_inside,terrain_atlas,base_out_atlas,woodlandinn,inerioritemscomp,ineriorcomp2,shelfcomp,doorcomp1,plantcomp,bedcomp,chestcomp,red (collisions)
+Main house_hallway:
+Main house_livingroom:
