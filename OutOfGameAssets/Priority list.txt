@@ -1,0 +1,4 @@
+List of prioritized additions:
+1:Evade and Hit % stat
+2:Usable Key items to trigger events (recruitment, Smithy abilities)
+3:
