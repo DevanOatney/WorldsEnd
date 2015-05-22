@@ -14,7 +14,9 @@ public class BaseItemScript : MonoBehaviour
 							//trinkets
 							eTRINKET,
 							//non-useable items
-							eJUNK};
+							eJUNK, 
+							//Key items
+							eKEYITEM};
 	protected int m_nItemType;
 	public int GetItemType() {return m_nItemType;}
 	public void SetItemType(int t) {m_nItemType = t;}

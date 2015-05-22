@@ -18,8 +18,6 @@ public class ItemLoaderScript : MonoBehaviour
 		LoadArmorItems();
 
 
-		//TEMP FOR TESTING
-		//TEMP FOR TESTING
 		foreach(KeyValuePair<string, DCScript.ItemData> kvp in dcs.GetItemDictionary())
 		{
 			DCScript.CharactersItems m_ciItemHeld = new DCScript.CharactersItems();
