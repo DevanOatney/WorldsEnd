@@ -94,6 +94,11 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				g.GetComponent<NPC_ArmorMerchantScript>().ActivateMerchantScreen();
 			}
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
 		}
 			break;
 		default:
