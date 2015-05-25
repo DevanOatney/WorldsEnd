@@ -676,7 +676,8 @@ public class PlayerBattleScript : UnitScript {
 			else if(m_bItemChosen == true)
 			{
 				float xPos = 0.0f; float yPos = 0.0f;
-				float xWidth = 100.0f;  float yHeight = m_fItemHeight;
+				float xWidth = 100.0f;  
+				float yHeight = m_fItemHeight;
 				float widthAdjustment = 0.0f;
 				float heightAdjustment = 25.0f;
 				List<DCScript.CharactersItems> theInv = GetItemsOfType(0);

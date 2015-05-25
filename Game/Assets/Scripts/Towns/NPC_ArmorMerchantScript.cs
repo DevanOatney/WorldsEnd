@@ -35,18 +35,21 @@ public class NPC_ArmorMerchantScript : NPCScript
 		foreach(string item in itemLines)
 		{
 			string[] piece = item.Split(',');
-			MerchantItem newItem = new MerchantItem();
-			newItem.m_szItemName = piece[0].Trim();
-			newItem.m_nCost = int.Parse(piece[2].Trim());
-			DCScript.CharactersItems cItem = dc.GetItemFromInventory(newItem.m_szItemName);
-			if(cItem == null)
-				Debug.Log("Merchant item loading data failed");
-			else
+			if(piece.Length > 1)
 			{
-				newItem.m_nAmountCarried = cItem.m_nItemCount;
-				newItem.m_szItemDescription = dc.GetItemFromDictionary(newItem.m_szItemName).m_szDescription;
+				MerchantItem newItem = new MerchantItem();
+				newItem.m_szItemName = piece[0].Trim();
+				newItem.m_nCost = int.Parse(piece[2].Trim());
+				DCScript.CharactersItems cItem = dc.GetItemFromInventory(newItem.m_szItemName);
+				if(cItem == null)
+					Debug.Log("Merchant item loading data failed");
+				else
+				{
+					newItem.m_nAmountCarried = cItem.m_nItemCount;
+					newItem.m_szItemDescription = dc.GetItemFromDictionary(newItem.m_szItemName).m_szDescription;
+				}
+				m_lItems.Add(newItem);
 			}
-			m_lItems.Add(newItem);
 		}
 	}
 
@@ -74,21 +77,43 @@ public class NPC_ArmorMerchantScript : NPCScript
 
 
 			//Draw the background for BUY/SELL/EXIT
-			//GUI.Box (new Rect(0, 0, screenWidth * 0.295f, screenHeight * 0.285f), "BUY\nSELL\nEXIT");
+			GUI.Box (new Rect(0, 0, screenWidth * 0.295f, screenHeight * 0.285f), "BUY\nSELL\nEXIT");
 
+			/*
+				m_vItemScrollPosition = GUI.BeginScrollView(theBox,m_vItemScrollPosition, new Rect(0, 0, theBox.width*0.8f, yHeight * itemCount + heightAdjustment),false, false);
+				foreach(DCScript.CharactersItems item in theInv)
+				{
+					if(item.m_nItemType >= (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL && item.m_nItemType <= (int)BaseItemScript.ITEM_TYPES.eGROUP_DAMAGE)
+					{
+						GUI.Button(new Rect(xPos, yPos, xWidth, yHeight), item.m_szItemName);
+						yPos += yHeight;
+					}
+				}
 
+				//draw selector
+				GUIStyle selectorStyle = new GUIStyle(GUI.skin.box);
+				selectorStyle.normal.background = m_t2dTexture;
+				GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
+				GUI.Box((new Rect(-2, m_vItemSecondScroll.y+2, xWidth +2, yHeight -2)), "",selectorStyle);
 
+			 */
+			//the height of the text
+			float fTextHeight = 18.5f;
+			//the current height to print text at
+			float fHeight = fTextHeight;
+			//the gap in between the bottom of one line and the top of the next line
+			float fHeightAdjustment = 12.5f;
+			Rect MerchantWareBox = new Rect(0, screenHeight*0.285f, screenWidth * 0.61f, screenHeight * 0.547f);
+			GUI.Box(MerchantWareBox, "");
 			//Draw the background for the Merchants Wares
-			//GUI.BeginScrollView(new Rect(0, screenHeight*0.285f, screenWidth * 0.61f, screenHeight * 0.547f),
-
-			//GUI.Box (, "");
-			float yPos = 5;
+			m_vScrollPosition = GUI.BeginScrollView(MerchantWareBox, m_vScrollPosition, 
+			                                        new Rect(0, 0, MerchantWareBox.width * 0.8f, screenHeight *0.5f),false, false);
 			foreach(MerchantItem item in m_lItems)
 			{
-				GUI.Label(new Rect(5, screenHeight * 0.285f + yPos, 100, 18), item.m_szItemName);
-				yPos += 20;
+				GUI.Label(new Rect(5, fHeight + fHeightAdjustment, 100, 18), item.m_szItemName);
+				fHeight += fTextHeight;
 			}
-
+			GUI.EndScrollView();
 
 			//Draw the background for comparisson of what the characters currently have equipped
 			GUI.Box(new Rect(screenWidth*0.61f, screenHeight*0.285f, screenWidth * 0.391f, screenHeight*0.547f), "");
