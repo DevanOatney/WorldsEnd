@@ -44,7 +44,8 @@ public class NPC_ArmorMerchantScript : NPCScript
 		public int m_nAmountCarried = 0;
 		//description of the item
 		public string m_szItemDescription = "";
-
+		//type ID of the item
+		public int m_nItemType = -1;
 		//amount that the player wants to buy/sell
 		public int m_nAmountToBarter = 0;
 
@@ -76,6 +77,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 				else
 				{
 					newItem.m_nAmountCarried = cItem.m_nItemCount;
+					newItem.m_nItemType = cItem.m_nItemType;
 					newItem.m_szItemDescription = dc.GetItemFromDictionary(newItem.m_szItemName).m_szDescription;
 				}
 				m_lItems.Add(newItem);
@@ -293,8 +295,10 @@ public class NPC_ArmorMerchantScript : NPCScript
 			                 100.0f, firstLabelHeight + 5)), "",selectorStyle);
 			GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-
-
+			//draw window for player's gold
+			GUI.Box(new Rect(screenWidth*0.61f, firstHeight - screenHeight*0.05f, screenWidth *0.4f, screenHeight *0.05f), "");
+			//draw icon for gold
+			GUI.DrawTexture(new Rect(screenWidth*0.8f, firstHeight - screenHeight*0.05f+2, 20, 20), m_t2dIconTextures[10]);
 			/*
 				Stuff used for all in the Wares window
 			 */
@@ -315,7 +319,6 @@ public class NPC_ArmorMerchantScript : NPCScript
 			//Draw the background for the Merchants Wares
 			m_vScrollPosition = GUI.BeginScrollView(MerchantWareBox, m_vScrollPosition, 
 			                                        new Rect(0, 0, MerchantWareBox.width * 0.8f, screenHeight *0.5f),false, false);
-			//(int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL
 
 			/* IF BUY IS CHOSEN */
 			if(m_bBuyIsChosen == true)
@@ -324,7 +327,62 @@ public class NPC_ArmorMerchantScript : NPCScript
 				foreach(MerchantItem item in m_lItems)
 				{
 					//Draw Icon of the item.
-
+					if(item.m_nItemType >= (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL && item.m_nItemType <= (int)BaseItemScript.ITEM_TYPES.eGROUP_DAMAGE)
+					{
+						GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[0]);
+					}
+					else
+					{
+						switch(item.m_nItemType)
+						{
+						case (int)BaseItemScript.ITEM_TYPES.eHELMARMOR:
+						{
+							GUI.DrawTexture(new Rect(5, m_vScrollPosition.y + fHeightAdjustment + m_nItemIter * fTextHeight, 20, 20), m_t2dIconTextures[1]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eSHOULDERARMOR:
+						{
+							GUI.DrawTexture(new Rect(5, m_vScrollPosition.y + fHeightAdjustment + m_nItemIter * fTextHeight, 20, 20), m_t2dIconTextures[2]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eCHESTARMOR:
+						{
+							GUI.DrawTexture(new Rect(5, m_vScrollPosition.y + fHeightAdjustment + m_nItemIter * fTextHeight, 20, 20), m_t2dIconTextures[3]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eGLOVEARMOR:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[4]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eBELTARMOR:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[5]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eLEGARMOR:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[6]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eTRINKET:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[7]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eJUNK:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[8]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eKEYITEM:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[9]);
+						}
+							break;
+							
+						}
+					}
 					float xOff = fIconWidth + fWidthAdjustment;
 					GUI.Label(new Rect(xOff, fHeight + fHeightAdjustment, 100, 18), item.m_szItemName);
 					xOff += MerchantWareBox.width * 0.7f;
