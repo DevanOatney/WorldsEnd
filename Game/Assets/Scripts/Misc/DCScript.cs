@@ -37,8 +37,8 @@ public class DCScript : MonoBehaviour
 	public int GetPreviousFacingDirection() {return m_nFacingDirection;}
 	public void SetPreviousFacingDirection(int fd) {m_nFacingDirection = fd;}
 	//--------/
-
-
+	//amount of cash that the player has
+	public int m_nGold;
 	public class ItemData
 	{
 		public string m_szItemName;

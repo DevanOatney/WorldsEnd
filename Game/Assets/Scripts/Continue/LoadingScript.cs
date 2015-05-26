@@ -69,6 +69,8 @@ public class LoadingScript : MonoBehaviour
 			szLine = sr.ReadLine();
 			szLine = sr.ReadLine();
 		}
+		//Amount of gold the player has
+		saveData.m_nGold = int.Parse(sr.ReadLine().Trim());
 		
 		//Amount of characters in the party
 		szLine = sr.ReadLine();
@@ -235,6 +237,9 @@ public class LoadingScript : MonoBehaviour
 			dStoryFlagField.Add(key, value);
 		}
 		NewData.m_dStoryFlagField = dStoryFlagField;
+
+		//Amount of gold the player has.
+		NewData.m_nGold = int.Parse(sr.ReadLine().Trim());
 		
 		//Amount of characters in the party
 		szLine = sr.ReadLine();

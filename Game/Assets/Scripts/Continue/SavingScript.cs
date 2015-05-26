@@ -46,6 +46,9 @@ public class SavingScript : MonoBehaviour
 			m_lOutputData.Add(kvp.Value.ToString());
 		}
 
+		//The amount of gold the player has
+		m_lOutputData.Add(dcs.m_nGold.ToString());
+
 		//The amount of characters written out
 		List<DCScript.CharacterData> party = dcs.GetParty();
 		m_lOutputData.Add(party.Count.ToString());

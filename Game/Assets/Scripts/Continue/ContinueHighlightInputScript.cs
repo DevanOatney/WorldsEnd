@@ -18,6 +18,7 @@ public class ContinueHighlightInputScript : MonoBehaviour {
 		public string m_szName;
 		public int m_nLevel;
 		public string m_szFieldName;
+		public int m_nGold;
 	}
 
 	// Use this for initialization
@@ -102,7 +103,7 @@ public class ContinueHighlightInputScript : MonoBehaviour {
 			{
 				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text = "";
 
-				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text += m_lSaveFilesData[i].m_szName + "   " + m_lSaveFilesData[i].m_nLevel + '\n';
+				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text += m_lSaveFilesData[i].m_szName + "   " + m_lSaveFilesData[i].m_nLevel + "   " + m_lSaveFilesData[i].m_nGold + '\n';
 
 				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text +=  "Field: " + m_lSaveFilesData[i].m_szFieldName;
 			}

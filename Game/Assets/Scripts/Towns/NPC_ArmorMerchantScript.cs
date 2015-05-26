@@ -26,6 +26,13 @@ public class NPC_ArmorMerchantScript : NPCScript
 	int m_nItemIter = 0;
 	//(not sure if I'll have a final confirmation when the user is buying/selling.. but just incase)
 	int m_nConfirmIter = 0;
+	/*
+		//useable items
+		//Key items
+		eKEYITEM
+	 */
+
+	public Texture2D[] m_t2dIconTextures;
 
 	class MerchantItem
 	{
@@ -161,7 +168,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 				{
 					m_nItemIter--;
 					if(m_nItemIter < 0)
-						m_nItemIter = m_lItems.Count;
+						m_nItemIter = m_lItems.Count-1;
 				}
 				else if( m_bSellIsChosen == true && m_bItemIsChosen == false)
 				{
@@ -188,8 +195,8 @@ public class NPC_ArmorMerchantScript : NPCScript
 				if(m_bBuyIsChosen == true  && m_bItemIsChosen == false)
 				{
 					m_nItemIter++;
-					if(m_nItemIter < 0)
-						m_nItemIter = m_lItems.Count;
+					if(m_nItemIter >= m_lItems.Count)
+						m_nItemIter = 0;
 				}
 				else if( m_bSellIsChosen == true && m_bItemIsChosen == false)
 				{
@@ -207,8 +214,8 @@ public class NPC_ArmorMerchantScript : NPCScript
 				{
 					//toggle buy or sell depending on what is selected
 					m_nInitialSelectionIter++;
-					if(m_nInitialSelectionIter < 0)
-						m_nInitialSelectionIter = 2;
+					if(m_nInitialSelectionIter > 2)
+						m_nInitialSelectionIter = 0;
 				}
 			}
 			else if(Input.GetKeyDown(KeyCode.LeftArrow))
@@ -227,14 +234,39 @@ public class NPC_ArmorMerchantScript : NPCScript
 			{
 				if(m_bBuyIsChosen == true && m_bItemIsChosen == false)
 				{
-					if(m_lItems[m_nItemIter].m_nAmountToBarter > 0)
-						m_lItems[m_nItemIter].m_nAmountToBarter--;
+					if(m_lItems[m_nItemIter].m_nAmountToBarter + m_lItems[m_nItemIter].m_nAmountCarried < 45)
+					{
+						if(GetTotalOwed(true) + m_lItems[m_nItemIter].m_nCost <= dc.m_nGold)
+							m_lItems[m_nItemIter].m_nAmountToBarter++;
+					}
 				}
 				else if(m_bSellIsChosen == true && m_bItemIsChosen == false)
 				{
 					//check to see if the amount of the item highlighted is greater than max count that can be purchased, if true increment by one, else do nothing
 				}
 			}
+		}
+	}
+
+	//flag - true BUY, false SELL
+	int GetTotalOwed(bool bsFlag)
+	{
+		if(bsFlag == true)
+		{
+			int sum = 0;
+			//buying stuff from the merchant
+			foreach(MerchantItem item in m_lItems)
+			{
+				if(item.m_nAmountToBarter > 0)
+					sum += item.m_nAmountToBarter * item.m_nCost;
+			}
+			return sum;
+		}
+		else
+		{
+			//selling stuff to the merchant
+			int sum = 0;
+			return sum;
 		}
 	}
 
@@ -248,19 +280,30 @@ public class NPC_ArmorMerchantScript : NPCScript
 			GUI.Box(new Rect(0, 0, screenWidth, screenHeight), "");
 
 
-
+			float firstWidth = screenWidth * 0.295f;
+			float firstHeight = screenHeight * 0.285f;
+			float firstLabelHeight = 20.0f;
 			//Draw the background for BUY/SELL/EXIT
-			GUI.Box (new Rect(0, 0, screenWidth * 0.295f, screenHeight * 0.285f), "BUY\nSELL\nEXIT");
+			GUI.Box (new Rect(0, 0, firstWidth, firstHeight), "BUY\nSELL\nEXIT");
+			//draw selector
+			GUIStyle selectorStyle = new GUIStyle(GUI.skin.box);
+			selectorStyle.normal.background = m_t2dTexture;
+			GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
+			GUI.Box((new Rect(firstWidth*0.5f,  firstHeight*0.5f + firstLabelHeight * m_nInitialSelectionIter ,
+			                 100.0f, firstLabelHeight + 5)), "",selectorStyle);
+			GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+
 
 			/*
 				Stuff used for all in the Wares window
 			 */
-			//(int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL
+
 
 			//the height of the text
 			float fTextHeight = 18.5f;
 			//the current height to print text at
-			float fHeight = fTextHeight;
+			float fHeight = 0;
 			//the gap in between the bottom of one line and the top of the next line
 			float fHeightAdjustment = 12.5f;
 			//distance from the left edge of the box
@@ -272,22 +315,33 @@ public class NPC_ArmorMerchantScript : NPCScript
 			//Draw the background for the Merchants Wares
 			m_vScrollPosition = GUI.BeginScrollView(MerchantWareBox, m_vScrollPosition, 
 			                                        new Rect(0, 0, MerchantWareBox.width * 0.8f, screenHeight *0.5f),false, false);
+			//(int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL
 
 			/* IF BUY IS CHOSEN */
 			if(m_bBuyIsChosen == true)
 			{
+				int itemCount = 0;
 				foreach(MerchantItem item in m_lItems)
 				{
-					GUI.Label(new Rect(fIconWidth + fWidthAdjustment, fHeight + fHeightAdjustment, 100, 18), item.m_szItemName);
+					//Draw Icon of the item.
+
+					float xOff = fIconWidth + fWidthAdjustment;
+					GUI.Label(new Rect(xOff, fHeight + fHeightAdjustment, 100, 18), item.m_szItemName);
+					xOff += MerchantWareBox.width * 0.7f;
+					GUI.Label(new Rect(xOff, fHeight + fHeightAdjustment, 25, 18), item.m_nCost.ToString());
+					xOff += 25;
+					GUI.Label(new Rect(xOff, fHeight + fHeightAdjustment, 25, 18), item.m_nAmountToBarter.ToString());
+					xOff += 25;
+					GUI.Label(new Rect(xOff, fHeight + fHeightAdjustment, 25, 18), item.m_nAmountCarried.ToString());
 					fHeight += fTextHeight;
+					itemCount++;
 				}
 
 				//draw selector
-				GUIStyle selectorStyle = new GUIStyle(GUI.skin.box);
-				selectorStyle.normal.background = m_t2dTexture;
 				GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
-				GUI.Box((new Rect(fIconWidth + fWidthAdjustment-5,  m_vScrollPosition.y+fHeight + fHeightAdjustment,
+				GUI.Box((new Rect(fIconWidth + fWidthAdjustment-5,  m_vScrollPosition.y + fHeightAdjustment + m_nItemIter * fTextHeight,
 				                  MerchantWareBox.width - (fIconWidth + fWidthAdjustment*2), fTextHeight-2)), "",selectorStyle);
+				GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 			}
 
 			/*IF SELL IS CHOSEN*/
@@ -302,11 +356,10 @@ public class NPC_ArmorMerchantScript : NPCScript
 				}
 
 				//draw selector
-				GUIStyle selectorStyle = new GUIStyle(GUI.skin.box);
-				selectorStyle.normal.background = m_t2dTexture;
 				GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
 				GUI.Box((new Rect(fIconWidth + fWidthAdjustment-5,  m_vScrollPosition.y+fHeight + fHeightAdjustment,
 				                  MerchantWareBox.width - (fIconWidth + fWidthAdjustment*2), fTextHeight-2)), "",selectorStyle);
+				GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 			}
 
 
@@ -390,6 +443,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 			{
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
 			}
+			Input.ResetInputAxes();
 		}
 	}
 }
