@@ -455,7 +455,15 @@ public class NPC_ArmorMerchantScript : NPCScript
 			GUI.Box(new Rect(screenWidth * 0.85f, screenHeight*0.91f, screenWidth * 0.15f, screenHeight * 0.035f), "DEF: ");
 			GUI.Box(new Rect(screenWidth * 0.85f, screenHeight*0.945f, screenWidth * 0.15f, screenHeight * 0.035f), "SPD: ");
 
+			if(m_bBuyIsChosen == true)
+			{
+				//draw the stat block of the item selected from the merchant to the stat block
 
+			}
+			else if(m_bSellIsChosen == true)
+			{
+				//draw the stat block of the item selected from the players inventory to the stat block
+			}
 			if(m_bItemIsChosen == true)
 			{
 				if(m_bBuyIsChosen == true)
