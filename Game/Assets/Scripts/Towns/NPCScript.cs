@@ -17,6 +17,8 @@ public class NPCScript : MonoBehaviour
 	protected int m_nStepsIter = 0;
 	protected Animator m_aAnim;
 
+	SpriteRenderer sr;
+
 	protected class cSteps
 	{
 		//direction to face
@@ -34,6 +36,7 @@ public class NPCScript : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		sr = GetComponent<SpriteRenderer>();
 		m_aAnim = GetComponent<Animator>();
 		LoadSteps();
 	}

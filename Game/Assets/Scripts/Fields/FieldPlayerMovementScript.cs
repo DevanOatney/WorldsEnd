@@ -24,8 +24,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	float  m_fRunningSpeed = 6.0f;
 	//flag for if the player is being moved without player input
 	bool m_bShouldMove = false;
-	//flag for if the player can move (is false when collision is happening.
-	bool m_bAllowedToMove = true;
 
 	
 
@@ -389,15 +387,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 				eventSys.GetComponent<EventHandler>().WaypointTriggered(c);
 			}
 		}
-	}
-	void OnCollisionEnter(Collision c)
-	{
-		m_bShouldMove = false;
-	}
-
-	void OnCollisionExit(Collision c)
-	{
-		m_bShouldMove = true;
 	}
 
 	public void ActivatePrompter()
