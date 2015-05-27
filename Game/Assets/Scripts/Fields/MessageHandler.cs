@@ -220,7 +220,7 @@ public class MessageHandler : MonoBehaviour
 				GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
 				GUI.Box((new Rect(width/20-2, height/2 + (15*selectedIndex), lengthOfText, 17)), "",myStyle);
 
-				string szName = "Matt";
+				string szName = "Callan";
 				int catchFont = GUI.skin.box.fontSize;
 				GUI.skin.box.fontSize = 20;
 				GUI.Box(new Rect(0, height/2-28, 75, 28), szName);

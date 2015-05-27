@@ -24,13 +24,11 @@ public class NPC_ArmorMerchantScript : NPCScript
 	//iterators for the different windows
 	int m_nInitialSelectionIter = 0;
 	int m_nItemIter = 0;
-	//(not sure if I'll have a final confirmation when the user is buying/selling.. but just incase)
 	int m_nConfirmIter = 0;
-	/*
-		//useable items
-		//Key items
-		eKEYITEM
-	 */
+
+	//timer and bucket for delayed input when the player is pressing and holding right/left
+	float m_fIncDecTimer = 0.0f;
+	float m_fIncDecBucket = 0.1f;
 
 	public Texture2D[] m_t2dIconTextures;
 
@@ -88,6 +86,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 	// Update is called once per frame
 	void Update () 
 	{
+		m_fIncDecTimer += Time.deltaTime;
 		HandleMovement();
 		HandleMerchanting();
 		HandleInput();
@@ -220,26 +219,38 @@ public class NPC_ArmorMerchantScript : NPCScript
 						m_nInitialSelectionIter = 0;
 				}
 			}
-			else if(Input.GetKeyDown(KeyCode.LeftArrow))
+			else if(Input.GetKey(KeyCode.LeftArrow))
 			{
 				if(m_bBuyIsChosen == true && m_bItemIsChosen == false)
 				{
 					if(m_lItems[m_nItemIter].m_nAmountToBarter > 0)
-						m_lItems[m_nItemIter].m_nAmountToBarter--;
+					{
+						if(m_fIncDecTimer >= m_fIncDecBucket)
+						{
+							m_lItems[m_nItemIter].m_nAmountToBarter--;
+							m_fIncDecTimer = 0.0f;
+						}
+					}
 				}
 				else if(m_bSellIsChosen == true && m_bItemIsChosen == false)
 				{
 					//check to see if the amount of the item highlighted is greater than zero, if true decrement by one, else do nothing
 				}
 			}
-			else if(Input.GetKeyDown(KeyCode.RightArrow))
+			else if(Input.GetKey(KeyCode.RightArrow))
 			{
 				if(m_bBuyIsChosen == true && m_bItemIsChosen == false)
 				{
 					if(m_lItems[m_nItemIter].m_nAmountToBarter + m_lItems[m_nItemIter].m_nAmountCarried < 45)
 					{
 						if(GetTotalOwed(true) + m_lItems[m_nItemIter].m_nCost <= dc.m_nGold)
-							m_lItems[m_nItemIter].m_nAmountToBarter++;
+						{
+							if(m_fIncDecTimer >= m_fIncDecBucket)
+							{
+								m_lItems[m_nItemIter].m_nAmountToBarter++;
+								m_fIncDecTimer = 0.0f;
+							}
+						}
 					}
 				}
 				else if(m_bSellIsChosen == true && m_bItemIsChosen == false)
@@ -298,7 +309,10 @@ public class NPC_ArmorMerchantScript : NPCScript
 			//draw window for player's gold
 			GUI.Box(new Rect(screenWidth*0.61f, firstHeight - screenHeight*0.05f, screenWidth *0.4f, screenHeight *0.05f), "");
 			//draw icon for gold
-			GUI.DrawTexture(new Rect(screenWidth*0.8f, firstHeight - screenHeight*0.05f+2, 20, 20), m_t2dIconTextures[10]);
+			GUI.DrawTexture(new Rect(screenWidth*0.8f, firstHeight - screenHeight*0.05f+2, 25, 20), m_t2dIconTextures[10]);
+			//draw out the amount of gold the player would have after the current transaction goes through
+			int sum = GetTotalOwed(false) - GetTotalOwed(true);
+			GUI.Label(new Rect(screenWidth*0.85f, firstHeight - screenHeight*0.05f+2, 100, 20), (dc.m_nGold + sum).ToString());
 			/*
 				Stuff used for all in the Wares window
 			 */
@@ -419,9 +433,8 @@ public class NPC_ArmorMerchantScript : NPCScript
 				                  MerchantWareBox.width - (fIconWidth + fWidthAdjustment*2), fTextHeight-2)), "",selectorStyle);
 				GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 			}
-
-
 			GUI.EndScrollView();
+
 
 			//Draw the background for comparisson of what the characters currently have equipped
 			GUI.Box(new Rect(screenWidth*0.61f, screenHeight*0.285f, screenWidth * 0.391f, screenHeight*0.547f), "");
@@ -430,8 +443,30 @@ public class NPC_ArmorMerchantScript : NPCScript
 
 			//Draw the background for the description of the item selected
 			GUI.Box(new Rect(0, screenHeight*0.832f, screenWidth, screenHeight * 0.166f), "");
+			if(m_bBuyIsChosen == true)
+				GUI.Label(new Rect(0, screenHeight*0.832f, screenWidth, screenHeight * 0.166f), m_lItems[m_nItemIter].m_szItemDescription);
+			if(m_bSellIsChosen == true)
+				GUI.Label(new Rect(screenWidth*0.02f, screenHeight*0.84f, screenWidth, screenHeight * 0.166f), dc.GetItemFromDictionary(dc.GetInventory()[m_nItemIter].m_szItemName).m_szDescription);
+
+			//Draw the background for the items stat block
+			GUI.Box(new Rect(screenWidth * 0.7f, screenHeight*0.832f, screenWidth, screenHeight), "");
+			GUI.Box(new Rect(screenWidth * 0.85f, screenHeight*0.84f, screenWidth * 0.15f, screenHeight * 0.035f), "HP: ");
+			GUI.Box(new Rect(screenWidth * 0.85f, screenHeight*0.875f, screenWidth * 0.15f, screenHeight * 0.035f), "POW: ");
+			GUI.Box(new Rect(screenWidth * 0.85f, screenHeight*0.91f, screenWidth * 0.15f, screenHeight * 0.035f), "DEF: ");
+			GUI.Box(new Rect(screenWidth * 0.85f, screenHeight*0.945f, screenWidth * 0.15f, screenHeight * 0.035f), "SPD: ");
 
 
+			if(m_bItemIsChosen == true)
+			{
+				if(m_bBuyIsChosen == true)
+				{
+					string szMessage = "\n\nThis will cost " + GetTotalOwed(true).ToString() + "\nAre you sure?            \nYES    NO";
+					GUI.Box(new Rect(screenWidth * 0.4f, screenHeight * 0.4f, screenWidth * 0.2f, screenHeight * 0.2f), szMessage);
+				}
+				else if(m_bSellIsChosen == true)
+				{
+				}
+			}
 
 
 

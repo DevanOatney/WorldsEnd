@@ -1,0 +1,11 @@
+Armor Name | Item Type ID | HP Mod | Pow Mod | Def Mod | Spd Mod | Base Cost | Special ID | Special Mod | Item Description
+
+
+
+Armor Name - 
+Item Type ID -   0-3 not used.  4: Helm, 5: Shoulder, 6: Chest, 7: Gloves, 8: Belt, 9: Leg, 10: Trinket,  11+ not used.
+HP/Pow/Def/Spd Mod - Stat influence for character (can be a negative number)
+Base Cost - The base value the vendors will buy the item for
+Special ID - For if the item has a special effect.   0: none, 1: Heals user when they are hit in combat.
+Special Mod - A modifier value for if the item has a special effect.   I.e. if the item heals the user when they get hit, this would be how much it heals the user for.
+Item Description - Description of what this item is (end user will see this)
