@@ -129,7 +129,19 @@ public class NPC_ArmorMerchantScript : NPCScript
 			}
 			else if(Input.GetKeyUp(KeyCode.Return))
 			{
-				if(m_bBuyIsChosen == true || m_bSellIsChosen == true && m_bItemIsChosen == false)
+				if(m_bBuyIsChosen == true && m_bItemIsChosen == false)
+				{
+					int sum = 0;
+					foreach(MerchantItem item in m_lItems)
+					{
+						sum += item.m_nCost * item.m_nAmountToBarter;
+					}
+					if(sum > 0)
+						m_bItemIsChosen = true;
+					else if(m_lItems[m_nItemIter].m_nCost <= dc.m_nGold)
+						m_bItemIsChosen = true;
+				}
+				else if(m_bSellIsChosen == true && m_bItemIsChosen == false)
 				{
 					m_bItemIsChosen = true;
 				}
