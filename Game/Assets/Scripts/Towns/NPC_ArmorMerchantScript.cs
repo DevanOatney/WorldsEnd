@@ -491,7 +491,12 @@ public class NPC_ArmorMerchantScript : NPCScript
 		else
 			szName = dc.GetInventory()[m_nItemIter].m_szItemName;
 
+		DCScript.ItemData item = dc.GetItemFromDictionary(szName);
 
+		GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.84f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nHPMod.ToString());
+		GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.875f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nPowMod.ToString());
+		GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.91f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nDefMod.ToString());
+		GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.945f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nSpdMod.ToString());
 
 	}
 
