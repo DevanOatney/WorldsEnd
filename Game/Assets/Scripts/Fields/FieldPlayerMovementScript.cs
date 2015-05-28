@@ -310,6 +310,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			else
 				moveDir = lDirs[0];
 			m_nFacingDir = moveDir;
+			GetAnimator().SetInteger("m_nFacingDir", m_nFacingDir);
 			ResetAnimFlagsExcept(moveDir);
 			m_bShouldMove = true;
 		}

@@ -35,13 +35,12 @@ public class ScreenSwitchScript : MonoBehaviour
 			{
 				Camera.main.SendMessage("fadeOut");
 				Invoke("ChangePlaces", 3.0f);
-				
-				
 				GameObject player = GameObject.Find("Player");
 				//Suspend input while fading
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-				//Reset anim flags so the player goes to an idle anim
+				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bIsRunning", false);
 				player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+
 			}
 		}
 	}
@@ -55,7 +54,6 @@ public class ScreenSwitchScript : MonoBehaviour
 				dcs.SetPreviousFacingDirection(m_nNewFacingDir);
 
 			GameObject player = GameObject.Find("Player");
-
 			dcs.m_lStatusEffects.Clear();
 			foreach(GameObject status in player.GetComponent<FieldPlayerMovementScript>().m_lStatusEffects)
 			{

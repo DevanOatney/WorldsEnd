@@ -213,7 +213,7 @@ public class DCScript : MonoBehaviour
 	void Start () 
 	{
 		AdjustValues(); 
-
+		m_nGold = 10000;
 	}
 	
 	// Update is called once per frame

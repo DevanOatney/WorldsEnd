@@ -189,12 +189,6 @@ public class NPC_ArmorMerchantScript : NPCScript
 					if(m_nItemIter < 0)
 						m_nItemIter = dc.GetInventory().Count;
 				}
-				else if(m_bBuyIsChosen == true || m_bSellIsChosen == true && m_bItemIsChosen == true)
-				{
-					m_nConfirmIter--;
-					if(m_nConfirmIter < 0)
-						m_nConfirmIter = 1;
-				}
 				else if(m_bBuyIsChosen == false && m_bSellIsChosen == false)
 				{
 					//toggle buy or sell depending on what is selected
@@ -216,12 +210,6 @@ public class NPC_ArmorMerchantScript : NPCScript
 					m_nItemIter++;
 					if(m_nItemIter < 0)
 						m_nItemIter = dc.GetInventory().Count;
-				}
-				else if(m_bBuyIsChosen == true || m_bSellIsChosen == true && m_bItemIsChosen == true)
-				{
-					m_nConfirmIter++;
-					if(m_nConfirmIter < 0)
-						m_nConfirmIter = 1;
 				}
 				else if(m_bBuyIsChosen == false && m_bSellIsChosen == false)
 				{
@@ -248,6 +236,12 @@ public class NPC_ArmorMerchantScript : NPCScript
 				{
 					//check to see if the amount of the item highlighted is greater than zero, if true decrement by one, else do nothing
 				}
+				else if(m_bBuyIsChosen == true || m_bSellIsChosen == true && m_bItemIsChosen == true)
+				{
+					m_nConfirmIter++;
+					if(m_nConfirmIter < 0)
+						m_nConfirmIter = 1;
+				}
 			}
 			else if(Input.GetKey(KeyCode.RightArrow))
 			{
@@ -268,6 +262,12 @@ public class NPC_ArmorMerchantScript : NPCScript
 				else if(m_bSellIsChosen == true && m_bItemIsChosen == false)
 				{
 					//check to see if the amount of the item highlighted is greater than max count that can be purchased, if true increment by one, else do nothing
+				}
+				else if(m_bBuyIsChosen == true || m_bSellIsChosen == true && m_bItemIsChosen == true)
+				{
+					m_nConfirmIter--;
+					if(m_nConfirmIter < 0)
+						m_nConfirmIter = 1;
 				}
 			}
 		}
@@ -481,8 +481,19 @@ public class NPC_ArmorMerchantScript : NPCScript
 			{
 				if(m_bBuyIsChosen == true)
 				{
-					string szMessage = "\n\nThis will cost " + GetTotalOwed(true).ToString() + "\nAre you sure?            \nYES    NO";
+					string szMessage = "\n\nThis will cost " + GetTotalOwed(true).ToString();
 					GUI.Box(new Rect(screenWidth * 0.4f, screenHeight * 0.4f, screenWidth * 0.2f, screenHeight * 0.2f), szMessage);
+
+
+					GUI.Label(new Rect(screenWidth * 0.45f, screenHeight* 0.5f, 50, fTextHeight), "Yes");
+					GUI.Label(new Rect(screenWidth * 0.525f, screenHeight* 0.5f, 50, fTextHeight), "No");
+					//draw selector
+					GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
+					float xOffset = 0;
+					GUI.Box((new Rect(fIconWidth + fWidthAdjustment-5,  m_vScrollPosition.y+fHeight + fHeightAdjustment,
+					                  MerchantWareBox.width - (fIconWidth + fWidthAdjustment*2), fTextHeight-2)), "",selectorStyle);
+					GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
 				}
 				else if(m_bSellIsChosen == true)
 				{

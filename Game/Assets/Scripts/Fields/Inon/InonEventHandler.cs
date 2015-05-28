@@ -15,18 +15,8 @@ public class InonEventHandler : BaseEventSystemScript
 		ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
 
 		int result;
-		if(ds.m_dStoryFlagField.TryGetValue("Inon_CrossedBridge", out result))
-		{
-			//The player has been here before and crossed the bridge
-			foreach(GameObject wypnt in Phase1_waypoints)
-				wypnt.GetComponent<BoxCollider>().enabled = false;
-		}
-		else
-		{
-			//The player has never crossed the bridge
-			foreach(GameObject wypnt in Phase1_waypoints)
-				wypnt.GetComponent<BoxCollider>().enabled = true;
-		}
+		//if(ds.m_dStoryFlagField.TryGetValue("Inon_CrossedBridge", out result))
+
 		
 	}
 	
