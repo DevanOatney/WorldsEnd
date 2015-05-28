@@ -457,7 +457,10 @@ public class PlayerBattleScript : UnitScript {
 						gItem.GetComponent<BaseItemScript>().SetItemName(ItemData.m_szItemName);
 						gItem.GetComponent<BaseItemScript>().SetDescription(ItemData.m_szDescription);
 						gItem.GetComponent<BaseItemScript>().SetItemType(ItemData.m_nItemType);
-						gItem.GetComponent<BaseItemScript>().SetItemModifier(ItemData.m_nModifier);
+						gItem.GetComponent<BaseItemScript>().SetHPMod(ItemData.m_nHPMod);
+						gItem.GetComponent<BaseItemScript>().SetPowMod(ItemData.m_nPowMod);
+						gItem.GetComponent<BaseItemScript>().SetDefMod(ItemData.m_nDefMod);
+						gItem.GetComponent<BaseItemScript>().SetSpdMod(ItemData.m_nSpdMod);
 
 						gItem.GetComponent<ItemSingleHeal>().Initialize();
 						gItem.GetComponent<ItemSingleHeal>().m_dFunc(gameObject);
@@ -469,7 +472,10 @@ public class PlayerBattleScript : UnitScript {
 						gItem.GetComponent<BaseItemScript>().SetItemName(ItemData.m_szItemName);
 						gItem.GetComponent<BaseItemScript>().SetDescription(ItemData.m_szDescription);
 						gItem.GetComponent<BaseItemScript>().SetItemType(ItemData.m_nItemType);
-						gItem.GetComponent<BaseItemScript>().SetItemModifier(ItemData.m_nModifier);
+						gItem.GetComponent<BaseItemScript>().SetHPMod(ItemData.m_nHPMod);
+						gItem.GetComponent<BaseItemScript>().SetPowMod(ItemData.m_nPowMod);
+						gItem.GetComponent<BaseItemScript>().SetDefMod(ItemData.m_nDefMod);
+						gItem.GetComponent<BaseItemScript>().SetSpdMod(ItemData.m_nSpdMod);
 
 						gItem.GetComponent<ItemGroupHeal>().Initialize();
 						gItem.GetComponent<ItemGroupHeal>().m_dFunc(gameObject);
@@ -481,7 +487,10 @@ public class PlayerBattleScript : UnitScript {
 						gItem.GetComponent<BaseItemScript>().SetItemName(ItemData.m_szItemName);
 						gItem.GetComponent<BaseItemScript>().SetDescription(ItemData.m_szDescription);
 						gItem.GetComponent<BaseItemScript>().SetItemType(ItemData.m_nItemType);
-						gItem.GetComponent<BaseItemScript>().SetItemModifier(ItemData.m_nModifier);
+						gItem.GetComponent<BaseItemScript>().SetHPMod(ItemData.m_nHPMod);
+						gItem.GetComponent<BaseItemScript>().SetPowMod(ItemData.m_nPowMod);
+						gItem.GetComponent<BaseItemScript>().SetDefMod(ItemData.m_nDefMod);
+						gItem.GetComponent<BaseItemScript>().SetSpdMod(ItemData.m_nSpdMod);
 
 						gItem.GetComponent<ItemSingleDamage>().Initialize();
 						gItem.GetComponent<ItemSingleDamage>().m_dFunc(gameObject);
@@ -493,7 +502,10 @@ public class PlayerBattleScript : UnitScript {
 						gItem.GetComponent<BaseItemScript>().SetItemName(ItemData.m_szItemName);
 						gItem.GetComponent<BaseItemScript>().SetDescription(ItemData.m_szDescription);
 						gItem.GetComponent<BaseItemScript>().SetItemType(ItemData.m_nItemType);
-						gItem.GetComponent<BaseItemScript>().SetItemModifier(ItemData.m_nModifier);
+						gItem.GetComponent<BaseItemScript>().SetHPMod(ItemData.m_nHPMod);
+						gItem.GetComponent<BaseItemScript>().SetPowMod(ItemData.m_nPowMod);
+						gItem.GetComponent<BaseItemScript>().SetDefMod(ItemData.m_nDefMod);
+						gItem.GetComponent<BaseItemScript>().SetSpdMod(ItemData.m_nSpdMod);
 
 						gItem.GetComponent<ItemGroupDamage>().Initialize();
 						gItem.GetComponent<ItemGroupDamage>().m_dFunc(gameObject);
@@ -843,12 +855,15 @@ public class PlayerBattleScript : UnitScript {
 	{
 		if(m_idChestSlot != null)
 		{
-			def += m_idChestSlot.m_nModifier;
+			def += m_idChestSlot.m_nDefMod;
 			GameObject gItem = Instantiate(Resources.Load<GameObject>("Items/Armor")) as GameObject;
 			gItem.GetComponent<BaseItemScript>().SetItemName(m_idChestSlot.m_szItemName);
 			gItem.GetComponent<BaseItemScript>().SetDescription(m_idChestSlot.m_szDescription);
 			gItem.GetComponent<BaseItemScript>().SetItemType(m_idChestSlot.m_nItemType);
-			gItem.GetComponent<BaseItemScript>().SetItemModifier(m_idChestSlot.m_nModifier);
+			gItem.GetComponent<BaseItemScript>().SetHPMod(m_idChestSlot.m_nHPMod);
+			gItem.GetComponent<BaseItemScript>().SetPowMod(m_idChestSlot.m_nPowMod);
+			gItem.GetComponent<BaseItemScript>().SetDefMod(m_idChestSlot.m_nDefMod);
+			gItem.GetComponent<BaseItemScript>().SetSpdMod(m_idChestSlot.m_nSpdMod);
 			gItem.GetComponent<ArmorItemScript>().SetSpecialItemType(m_idChestSlot.m_nSpecialType);
 			gItem.GetComponent<ArmorItemScript>().SetSpecialItemModifier(m_idChestSlot.m_nSpecialModifier);
 			gItem.GetComponent<ArmorItemScript>().Initialize();

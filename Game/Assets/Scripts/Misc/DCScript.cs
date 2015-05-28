@@ -43,7 +43,10 @@ public class DCScript : MonoBehaviour
 	{
 		public string m_szItemName;
 		public int m_nItemType;
-		public int m_nModifier;
+		public int m_nHPMod;
+		public int m_nPowMod;
+		public int m_nDefMod;
+		public int m_nSpdMod;
 		public int m_nBaseValue;
 		public string m_szDescription;
 	}
@@ -53,10 +56,6 @@ public class DCScript : MonoBehaviour
 		public int m_nSpecialModifier;
 		//type value - see armorscript for what iter means what
 		public int m_nSpecialType;
-		public int m_nHPMod;
-		public int m_nPowMod;
-		public int m_nDefMod;
-		public int m_nSpdMod;
 	}
 	//Dictionary of all of the items in the game, key is the items name
 	Dictionary<string, ItemData> m_dItemDictionary = new Dictionary<string, ItemData>();

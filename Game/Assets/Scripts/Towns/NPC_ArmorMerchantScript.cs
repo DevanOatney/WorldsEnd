@@ -458,11 +458,12 @@ public class NPC_ArmorMerchantScript : NPCScript
 			if(m_bBuyIsChosen == true)
 			{
 				//draw the stat block of the item selected from the merchant to the stat block
-
+				DrawStatBlock(true);
 			}
 			else if(m_bSellIsChosen == true)
 			{
 				//draw the stat block of the item selected from the players inventory to the stat block
+				DrawStatBlock(false);
 			}
 			if(m_bItemIsChosen == true)
 			{
@@ -480,6 +481,18 @@ public class NPC_ArmorMerchantScript : NPCScript
 
 
 		}
+	}
+
+	void DrawStatBlock(bool buyChosen)
+	{
+		string szName;
+		if(buyChosen == true)
+			szName = m_lItems[m_nItemIter].m_szItemName;
+		else
+			szName = dc.GetInventory()[m_nItemIter].m_szItemName;
+
+
+
 	}
 
 	//Get the direction the NPC is looking

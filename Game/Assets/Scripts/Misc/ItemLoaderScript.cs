@@ -45,9 +45,12 @@ public class ItemLoaderScript : MonoBehaviour
 			DCScript.ItemData item = new DCScript.ItemData();
 			item.m_szItemName = szPieces[0].Trim();
 			item.m_nItemType = int.Parse(szPieces[1].Trim());
-			item.m_nModifier = int.Parse(szPieces[2].Trim());
-			item.m_nBaseValue = int.Parse(szPieces[3].Trim());
-			item.m_szDescription = szPieces[4].Trim();
+			item.m_nHPMod = int.Parse(szPieces[2].Trim());
+			item.m_nPowMod = int.Parse(szPieces[3].Trim());
+			item.m_nDefMod = int.Parse(szPieces[4].Trim());
+			item.m_nSpdMod = int.Parse(szPieces[5].Trim());
+			item.m_nBaseValue = int.Parse(szPieces[6].Trim());
+			item.m_szDescription = szPieces[7].Trim();
 			useableItemDatabase.Add(item.m_szItemName,  item);
 
 		}

@@ -851,7 +851,7 @@ public class OverWatcherScript : MonoBehaviour {
 					{
 						//If we landed in here it means that it's just a heal item.
 
-						int healingAmnt = ni.m_nModifier;
+						int healingAmnt = ni.m_nHPMod;
 						//check to see if it's healing all targets or just one.
 						if(ni.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
 						{
@@ -1719,7 +1719,9 @@ public class OverWatcherScript : MonoBehaviour {
 			{
 				if(character.m_idHelmSlot != null)
 				{
-					if(bis.m_nModifier > character.m_idHelmSlot.m_nModifier)
+					int eSum = bis.m_nHPMod + bis.m_nPowMod + bis.m_nDefMod + bis.m_nSpdMod;
+					int nSum = character.m_idHelmSlot.m_nHPMod + character.m_idHelmSlot.m_nPowMod + character.m_idHelmSlot.m_nDefMod +  character.m_idHelmSlot.m_nSpdMod;
+					if(eSum > nSum)
 						character.m_idHelmSlot = (DCScript.ArmorData)bis;
 				}
 				else
@@ -1736,7 +1738,9 @@ public class OverWatcherScript : MonoBehaviour {
 			{
 				if(character.m_idShoulderSlot != null)
 				{
-					if(bis.m_nModifier > character.m_idShoulderSlot.m_nModifier)
+					int eSum = bis.m_nHPMod + bis.m_nPowMod + bis.m_nDefMod + bis.m_nSpdMod;
+					int nSum = character.m_idShoulderSlot.m_nHPMod + character.m_idShoulderSlot.m_nPowMod + character.m_idShoulderSlot.m_nDefMod +  character.m_idShoulderSlot.m_nSpdMod;
+					if(eSum > nSum)
 						character.m_idShoulderSlot = (DCScript.ArmorData)bis;
 				}
 				else
@@ -1750,7 +1754,9 @@ public class OverWatcherScript : MonoBehaviour {
 			{
 				if(character.m_idChestSlot != null)
 				{
-					if(bis.m_nModifier > character.m_idChestSlot.m_nModifier)
+					int eSum = bis.m_nHPMod + bis.m_nPowMod + bis.m_nDefMod + bis.m_nSpdMod;
+					int nSum = character.m_idChestSlot.m_nHPMod + character.m_idChestSlot.m_nPowMod + character.m_idChestSlot.m_nDefMod +  character.m_idChestSlot.m_nSpdMod;
+					if(eSum > nSum)
 						character.m_idChestSlot = (DCScript.ArmorData)bis;
 				}
 				else
@@ -1764,7 +1770,9 @@ public class OverWatcherScript : MonoBehaviour {
 			{
 				if(character.m_idGloveSlot != null)
 				{
-					if(bis.m_nModifier > character.m_idGloveSlot.m_nModifier)
+					int eSum = bis.m_nHPMod + bis.m_nPowMod + bis.m_nDefMod + bis.m_nSpdMod;
+					int nSum = character.m_idGloveSlot.m_nHPMod + character.m_idGloveSlot.m_nPowMod + character.m_idGloveSlot.m_nDefMod +  character.m_idGloveSlot.m_nSpdMod;
+					if(eSum > nSum)
 						character.m_idGloveSlot = (DCScript.ArmorData)bis;
 				}
 				else
@@ -1778,7 +1786,9 @@ public class OverWatcherScript : MonoBehaviour {
 			{
 				if(character.m_idBeltSlot != null)
 				{
-					if(bis.m_nModifier > character.m_idBeltSlot.m_nModifier)
+					int eSum = bis.m_nHPMod + bis.m_nPowMod + bis.m_nDefMod + bis.m_nSpdMod;
+					int nSum = character.m_idBeltSlot.m_nHPMod + character.m_idBeltSlot.m_nPowMod + character.m_idBeltSlot.m_nDefMod +  character.m_idBeltSlot.m_nSpdMod;
+					if(eSum > nSum)
 						character.m_idBeltSlot = (DCScript.ArmorData)bis;
 				}
 				else
@@ -1792,7 +1802,9 @@ public class OverWatcherScript : MonoBehaviour {
 			{
 				if(character.m_idLegSlot != null)
 				{
-					if(bis.m_nModifier > character.m_idLegSlot.m_nModifier)
+					int eSum = bis.m_nHPMod + bis.m_nPowMod + bis.m_nDefMod + bis.m_nSpdMod;
+					int nSum = character.m_idLegSlot.m_nHPMod + character.m_idLegSlot.m_nPowMod + character.m_idLegSlot.m_nDefMod +  character.m_idLegSlot.m_nSpdMod;
+					if(eSum > nSum)
 						character.m_idLegSlot = (DCScript.ArmorData)bis;
 				}
 				else
@@ -1989,38 +2001,41 @@ public class OverWatcherScript : MonoBehaviour {
 				{
 				case 0:
 					if(character.m_idHelmSlot != null)
-						prevMod = character.m_idHelmSlot.m_nModifier;
+						prevMod = character.m_idHelmSlot.m_nHPMod + character.m_idHelmSlot.m_nPowMod + character.m_idHelmSlot.m_nDefMod +  character.m_idHelmSlot.m_nSpdMod;
 					break;
 				case 1:
 					if(character.m_idShoulderSlot != null)
-						prevMod = character.m_idShoulderSlot.m_nModifier;
+						prevMod = character.m_idShoulderSlot.m_nHPMod + character.m_idShoulderSlot.m_nPowMod + character.m_idShoulderSlot.m_nDefMod +  character.m_idShoulderSlot.m_nSpdMod;
 					break;
 				case 2:
 					if(character.m_idChestSlot != null)
-						prevMod = character.m_idChestSlot.m_nModifier;
+						prevMod = character.m_idChestSlot.m_nHPMod + character.m_idChestSlot.m_nPowMod + character.m_idChestSlot.m_nDefMod +  character.m_idChestSlot.m_nSpdMod;
 					break;
 				case 3:
 					if(character.m_idGloveSlot != null)
-						prevMod = character.m_idGloveSlot.m_nModifier;
+						prevMod = character.m_idGloveSlot.m_nHPMod + character.m_idGloveSlot.m_nPowMod + character.m_idGloveSlot.m_nDefMod +  character.m_idGloveSlot.m_nSpdMod;
 					break;
 				case 4:
 					if(character.m_idBeltSlot != null)
-						prevMod = character.m_idBeltSlot.m_nModifier;
+						prevMod = character.m_idBeltSlot.m_nHPMod + character.m_idBeltSlot.m_nPowMod + character.m_idBeltSlot.m_nDefMod +  character.m_idBeltSlot.m_nSpdMod;
 					break;
 				case 5:
 					if(character.m_idLegSlot != null)
-						prevMod = character.m_idLegSlot.m_nModifier;
+						prevMod = character.m_idLegSlot.m_nHPMod + character.m_idLegSlot.m_nPowMod + character.m_idLegSlot.m_nDefMod +  character.m_idLegSlot.m_nSpdMod;
 					break;
 				case 6:
 					if(character.m_idTrinket1 != null)
-						prevMod = character.m_idTrinket1.m_nModifier;
+						prevMod = character.m_idTrinket1.m_nHPMod + character.m_idTrinket1.m_nPowMod + character.m_idTrinket1.m_nDefMod +  character.m_idTrinket1.m_nSpdMod;
 					break;
 				case 7:
 					if(character.m_idTrinket2 != null)
-						prevMod = character.m_idTrinket2.m_nModifier;
+						prevMod = character.m_idTrinket2.m_nHPMod + character.m_idTrinket2.m_nPowMod + character.m_idTrinket2.m_nDefMod +  character.m_idTrinket2.m_nSpdMod;
 					break;
 				}
-				int newMod = dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nModifier;
+				int newMod = dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nHPMod + 
+							 dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nPowMod + 
+							 dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nDefMod + 
+							 dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nSpdMod;
 				Color toolTip = Color.white;
 				if(prevMod > newMod)
 					toolTip = Color.red;
@@ -2163,9 +2178,10 @@ public class OverWatcherScript : MonoBehaviour {
 			if(item.m_nItemType == nItemType)
 			{
 				DCScript.ItemData temp = dc.GetItemFromDictionary(item.m_szItemName);
-				if(temp.m_nModifier > highestValue)
+				int tSum = temp.m_nHPMod + temp.m_nPowMod + temp.m_nDefMod + temp.m_nSpdMod;
+				if(tSum > highestValue)
 				{
-					highestValue = temp.m_nModifier;
+					highestValue = tSum;
 					bis = temp;
 				}
 			}

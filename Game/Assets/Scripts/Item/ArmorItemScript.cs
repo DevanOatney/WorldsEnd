@@ -3,18 +3,7 @@ using System.Collections;
 
 public class ArmorItemScript : BaseItemScript 
 {
-	int m_nPowMod;
-	public int GetPowMod() {return m_nPowMod;}
-	public void SetPowMod(int pow) {m_nPowMod = pow;}
-	int m_nHPMod;
-	public int GetHPMod() {return m_nHPMod;}
-	public void SetHPMod(int hp) {m_nHPMod = hp;}
-	int m_nDefMod;
-	public int GetDefMod() {return m_nDefMod;}
-	public void SetDefMod(int def) {m_nDefMod = def;}
-	int m_nSpdMod;
-	public int GetSpdMod() {return m_nSpdMod;}
-	public void SetSpdMod(int spd) {m_nSpdMod = spd;}
+
 	int m_nSpecialItemType;
 	public int GetSpecialItemType() {return m_nSpecialItemType;}
 	public void SetSpecialItemType(int type) {m_nSpecialItemType = type;}
