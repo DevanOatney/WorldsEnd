@@ -61,6 +61,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	int m_nBinders = 0;
 	public void BindInput() {m_nBinders++; m_bAllowInput = false;}
 	public void ReleaseBind() {m_nBinders--;  if(m_nBinders <= 0) {m_nBinders = 0; m_bAllowInput = true;}}
+	public void ReleaseAllBinds() {m_nBinders = 0; m_bAllowInput = false;}
 	//public void SetAllowInput(bool flag) {m_bAllowInput = flag;}
 	public bool GetAllowInput() {return m_bAllowInput;}
 
@@ -116,11 +117,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 
 	void Update()
 	{
-		//temp for testing adding poison
-		if(Input.GetKeyDown(KeyCode.Alpha2))
-		{
 
-		}
 		if(m_bAllowInput == true)
 		{
 			if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
@@ -271,37 +268,15 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	//Check if the player is pushing one of the movement keys
 	void GetMovementKey()
 	{
-		int moveDir = -1;
+		List<int> lDirs = new List<int>();
 		if(Input.GetKey(KeyCode.DownArrow))
-		{
-			//set the scale to the initial scale incase we were facing right
-			transform.localScale = m_vInitialScale;
-			moveDir = 0;
-			m_nFacingDir = 0;
-			m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
-		}
-		else if(Input.GetKey(KeyCode.LeftArrow))
-		{
-			//set the scale to the initial scale incase we were facing right
-			transform.localScale = m_vInitialScale;
-			moveDir = 1;
-			m_nFacingDir = 1;
-			m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
-		}
-		else if(Input.GetKey(KeyCode.RightArrow))
-		{
-			moveDir = 2;
-			m_nFacingDir = 2;
-			m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
-		}
-		else if(Input.GetKey(KeyCode.UpArrow))
-		{
-			//set the scale to the initial scale incase we were facing right
-			transform.localScale = m_vInitialScale;
-			moveDir = 3;
-			m_nFacingDir = 3;
-			m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
-		}
+			lDirs.Add(0);
+		if(Input.GetKey(KeyCode.LeftArrow))
+			lDirs.Add(1);
+		if(Input.GetKey(KeyCode.RightArrow))
+			lDirs.Add(2);
+		if(Input.GetKey(KeyCode.UpArrow))
+			lDirs.Add(3);
 
 		if(Input.GetKey(KeyCode.LeftShift))
 	    {
@@ -318,9 +293,32 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			m_aAnim.SetBool("m_bRunButtonIsPressed", false);
 			m_bIsRunning = false;
 		}
-		if(moveDir != -1)
+		if(lDirs.Count > 0)
+		{
+			int moveDir = m_nFacingDir;
+			if(lDirs.Count > 1)
+			{
+				bool hasCurDir = false;
+				foreach(int i in lDirs)
+					if(i == moveDir)
+						hasCurDir = true;
+				if(hasCurDir == false)
+				{
+					moveDir = lDirs[Random.Range(0, lDirs.Count-1)];
+				}
+			}
+			else
+				moveDir = lDirs[0];
+			m_nFacingDir = moveDir;
+			ResetAnimFlagsExcept(moveDir);
 			m_bShouldMove = true;
-		ResetAnimFlagsExcept(moveDir);
+		}
+		else
+		{
+			m_bShouldMove = false;
+			ResetAnimFlagsExcept(-1);
+		}
+
 	}
 
 	//set movement flags to false except the one we want
