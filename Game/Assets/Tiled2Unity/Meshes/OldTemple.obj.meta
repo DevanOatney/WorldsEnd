@@ -52,12 +52,21 @@ ModelImporter:
     4300012: mesh_[02]_[03]
     4300014: mesh_[02]_[25]
     4300016: mesh_[03]_[25]
+    11400000: mesh_[00]_[00]
+    11400002: mesh_[01]_[00]
+    11400004: mesh_[01]_[03]
+    11400006: mesh_[01]_[05]
+    11400008: mesh_[01]_[25]
+    11400010: mesh_[02]_[00]
+    11400012: mesh_[02]_[03]
+    11400014: mesh_[02]_[25]
+    11400016: mesh_[03]_[25]
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
-    legacyGenerateAnimations: 4
+    legacyGenerateAnimations: 0
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
@@ -90,7 +99,7 @@ ModelImporter:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 2
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
