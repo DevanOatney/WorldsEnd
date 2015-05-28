@@ -38,7 +38,6 @@ public class ScreenSwitchScript : MonoBehaviour
 				GameObject player = GameObject.Find("Player");
 				//Suspend input while fading
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bIsRunning", false);
 				player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 
 			}
