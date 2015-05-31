@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="500" height="250" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Regilance" tilewidth="15000" tileheight="7500">
+  <tile id="0">
+   <image width="15000" height="7500" source="Regilance3.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="2" name="Inq XP WM - Mountains (meu)" tilewidth="32" tileheight="32">
+  <image source="../../Tilesets/Inq XP WM - Mountains (meu).png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="14" name="Inq XP WM - Snow" tilewidth="32" tileheight="32">
+  <image source="../../Tilesets/Inq XP WM - Snow.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="26" name="Inq XP WM - Trees (meu)" tilewidth="32" tileheight="32">
+  <image source="../../Tilesets/Inq XP WM - Trees (meu).png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="38" name="Inq XP WM - Trees Opening (meu)" tilewidth="32" tileheight="32">
+  <image source="../../Tilesets/Inq XP WM - Trees Opening (meu).png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="50" name="Inq XP WM - Trees" tilewidth="32" tileheight="32">
+  <image source="../../Tilesets/Inq XP WM - Trees.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="62" name="Inq XP WM - World Map" tilewidth="32" tileheight="32">
+  <image source="../../Tilesets/Inq XP WM - World Map.png" width="256" height="16448"/>
+ </tileset>
+ <tileset firstgid="4174" name="Inq XP WM - Customization" tilewidth="32" tileheight="32">
+  <image source="../../Tilesets/Inq XP WM - Customization.png" width="192" height="1760"/>
+ </tileset>
+ <tileset firstgid="4504" name="Inq XP WM - Deep Water" tilewidth="32" tileheight="32">
+  <image source="../../Tilesets/Inq XP WM - Deep Water.png" width="384" height="128"/>
+ </tileset>
+ <tileset firstgid="4552" name="Inq XP WM - Desert" tilewidth="32" tileheight="32">
+  <image source="../../Tilesets/Inq XP WM - Desert.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4564" name="Inq XP WM - Medium Water" tilewidth="32" tileheight="32">
+  <image source="../../Tilesets/Inq XP WM - Medium Water.png" width="384" height="128"/>
+ </tileset>
+ <layer name="World Map" width="500" height="250">
+  <data encoding="base64" compression="zlib">
+   eJzt1UVOBAEARNEeunF3Z3B31/vfCLfiBpNAMmnyXvL3tauiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7CY1kUT+k5vaTX9Jbe00fZ7nUAQCs+89lfP79dFUUjdaQyVamzavc6AKAVXfns7tSTelNf6k8DadCfA0AtDOWzh9NIGk1jaTxNpEl/DgC1MJXPnk4zaTbNpfm0kBb9OQDUwlI+u5mW00paTWtpPW34cwCohc189lbaTjtpN+2l/XTgzwGgFg7z2UfpOJ2k03SWztOFPweAWrjMZ1+l63STbtNduk8P/hwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgH+s0e4BAAAAAAAAAAAAAAAAAAAA/Mo39KoSRA==
+  </data>
+ </layer>
+ <layer name="Places" width="500" height="250">
+  <data encoding="base64" compression="zlib">
+   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
+  </data>
+ </layer>
+</map>
