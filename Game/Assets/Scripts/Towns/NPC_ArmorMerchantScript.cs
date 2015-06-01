@@ -83,6 +83,22 @@ public class NPC_ArmorMerchantScript : NPCScript
 		}
 	}
 
+	void LoadSellItems()
+	{
+		m_lItems.Clear();
+		foreach(DCScript.CharactersItems item in dc.GetInventory())
+		{
+			MerchantItem newItem = new MerchantItem();
+			newItem.m_szItemName = item.m_szItemName;
+			newItem.m_nAmountCarried = item.m_nItemCount;
+			newItem.m_nAmountToBarter = 0;
+			newItem.m_nItemType = dc.GetItemFromDictionary(item.m_szItemName).m_nItemType;
+			newItem.m_nCost = dc.GetItemFromDictionary(item.m_szItemName).m_nBaseValue;
+			newItem.m_szItemDescription = dc.GetItemFromDictionary(item.m_szItemName).m_szDescription;
+			m_lItems.Add(newItem);
+		}
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -148,19 +164,61 @@ public class NPC_ArmorMerchantScript : NPCScript
 				else if(m_bBuyIsChosen == true && m_bItemIsChosen == true)
 				{
 					//purchase any items that have been selected, or just buy the item the player currently has selected
+					if(m_nConfirmIter == 0)
+					{
+						dc.m_nGold -= GetTotalOwed(3);
+						int counter = 0;
+						foreach(MerchantItem item in m_lItems)
+						{
+							if(item.m_nAmountToBarter > 0)
+							{
+								counter++;
+								DCScript.CharactersItems newItem = new DCScript.CharactersItems();
+								newItem.m_szItemName = item.m_szItemName;
+								newItem.m_nItemType = item.m_nItemType;
+								newItem.m_nItemCount = item.m_nAmountToBarter;
+								dc.AddItem(newItem);
+								item.m_nAmountToBarter = 0;
+							}
+						}
+						if(counter == 0)
+						{
+							DCScript.CharactersItems newItem = new DCScript.CharactersItems();
+							newItem.m_szItemName = m_lItems[m_nItemIter].m_szItemName;
+							newItem.m_nItemType = m_lItems[m_nItemIter].m_nItemType;
+							newItem.m_nItemCount = m_lItems[m_nItemIter].m_nAmountToBarter;
+							dc.AddItem(newItem);
+						}
+					}
+					m_nConfirmIter = 0;
+					m_bItemIsChosen = false;
+					LoadItems();
 
 				}
 				else if(m_bSellIsChosen == true && m_bItemIsChosen == true)
 				{
 					//sell any items the player has indicated, or just sell 1 of the item that the player currently has selected
+					if(m_nConfirmIter == 0)
+					{
+						dc.m_nGold += GetTotalOwed(2);
+
+					}
+					m_nConfirmIter = 0;
+					m_bItemIsChosen = false;
 				}
 				else if(m_bBuyIsChosen == false && m_bSellIsChosen == false)
 				{
 					//toggle buy or sell depending on what is selected
 					if(m_nInitialSelectionIter == 0)
+					{
 						m_bBuyIsChosen = true;
+						LoadItems();
+					}
 					else if(m_nInitialSelectionIter == 1)
+					{
 						m_bSellIsChosen = true;
+						LoadSellItems();
+					}
 					else
 					{
 						//player chose to exit.
@@ -187,7 +245,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 				{
 					m_nItemIter--;
 					if(m_nItemIter < 0)
-						m_nItemIter = dc.GetInventory().Count;
+						m_nItemIter = m_lItems.Count-1;
 				}
 				else if(m_bBuyIsChosen == false && m_bSellIsChosen == false)
 				{
@@ -208,8 +266,8 @@ public class NPC_ArmorMerchantScript : NPCScript
 				else if( m_bSellIsChosen == true && m_bItemIsChosen == false)
 				{
 					m_nItemIter++;
-					if(m_nItemIter < 0)
-						m_nItemIter = dc.GetInventory().Count;
+					if(m_nItemIter >= m_lItems.Count)
+						m_nItemIter = 0;
 				}
 				else if(m_bBuyIsChosen == false && m_bSellIsChosen == false)
 				{
@@ -238,9 +296,13 @@ public class NPC_ArmorMerchantScript : NPCScript
 				}
 				else if(m_bBuyIsChosen == true || m_bSellIsChosen == true && m_bItemIsChosen == true)
 				{
-					m_nConfirmIter++;
-					if(m_nConfirmIter < 0)
-						m_nConfirmIter = 1;
+					if(m_fIncDecTimer >= m_fIncDecBucket + 0.2f)
+					{
+						m_nConfirmIter--;
+						if(m_nConfirmIter < 0)
+							m_nConfirmIter = 1;
+						m_fIncDecTimer = 0.0f;
+					}
 				}
 			}
 			else if(Input.GetKey(KeyCode.RightArrow))
@@ -265,9 +327,13 @@ public class NPC_ArmorMerchantScript : NPCScript
 				}
 				else if(m_bBuyIsChosen == true || m_bSellIsChosen == true && m_bItemIsChosen == true)
 				{
-					m_nConfirmIter--;
-					if(m_nConfirmIter < 0)
-						m_nConfirmIter = 1;
+					if(m_fIncDecTimer >= m_fIncDecBucket + 0.2f)
+					{
+						m_nConfirmIter++;
+						if(m_nConfirmIter > 1)
+							m_nConfirmIter = 0;
+						m_fIncDecTimer = 0.0f;
+					}
 				}
 			}
 		}
@@ -365,9 +431,12 @@ public class NPC_ArmorMerchantScript : NPCScript
 			float fIconWidth = 32.0f;
 			Rect MerchantWareBox = new Rect(0, screenHeight*0.285f, screenWidth * 0.61f, screenHeight * 0.547f);
 			GUI.Box(MerchantWareBox, "");
+			float itemCountYAdjust = (m_lItems.Count - (screenHeight%(int)fTextHeight)) * 10;
+			if(itemCountYAdjust < 0)
+				itemCountYAdjust = 0;
 			//Draw the background for the Merchants Wares
 			m_vScrollPosition = GUI.BeginScrollView(MerchantWareBox, m_vScrollPosition, 
-			                                        new Rect(0, 0, MerchantWareBox.width * 0.8f, screenHeight *0.5f),false, false);
+			                                        new Rect(0, 0, MerchantWareBox.width * 0.8f, screenHeight *0.547f + itemCountYAdjust),false, true);
 
 			/* IF BUY IS CHOSEN */
 			if(m_bBuyIsChosen == true)
@@ -454,17 +523,74 @@ public class NPC_ArmorMerchantScript : NPCScript
 			/*IF SELL IS CHOSEN*/
 			if(m_bSellIsChosen == true)
 			{
-				List<DCScript.CharactersItems> inventory = dc.GetInventory();
-				//dc.GetItemFromDictionary(inventory[0].m_szItemName).m_nBaseValue;
-				foreach(DCScript.CharactersItems item in inventory)
+				//m_vScrollPosition.y + fHeightAdjustment + m_nItemIter * fTextHeight   (for position of where the selector is)
+				foreach(MerchantItem item in m_lItems)
 				{
+					//Draw Icon of the item.
+					if(item.m_nItemType >= (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL && item.m_nItemType <= (int)BaseItemScript.ITEM_TYPES.eGROUP_DAMAGE)
+					{
+						GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[0]);
+					}
+					else
+					{
+						switch(item.m_nItemType)
+						{
+						case (int)BaseItemScript.ITEM_TYPES.eHELMARMOR:
+						{
+							GUI.DrawTexture(new Rect(5,  fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[1]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eSHOULDERARMOR:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[2]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eCHESTARMOR:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[3]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eGLOVEARMOR:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[4]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eBELTARMOR:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[5]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eLEGARMOR:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[6]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eTRINKET:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[7]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eJUNK:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[8]);
+						}
+							break;
+						case (int)BaseItemScript.ITEM_TYPES.eKEYITEM:
+						{
+							GUI.DrawTexture(new Rect(5, fHeight + fHeightAdjustment, 20, 20), m_t2dIconTextures[9]);
+						}
+							break;
+							
+						}
+					}
+					//name
 					GUI.Label(new Rect(fIconWidth + fWidthAdjustment, fHeight + fHeightAdjustment, 100, 18), item.m_szItemName);
 					fHeight += fTextHeight;
 				}
 
 				//draw selector
 				GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
-				GUI.Box((new Rect(fIconWidth + fWidthAdjustment-5,  m_vScrollPosition.y+fHeight + fHeightAdjustment,
+				GUI.Box((new Rect(fIconWidth + fWidthAdjustment-5,  m_vScrollPosition.y + fHeightAdjustment + m_nItemIter * fTextHeight,
 				                  MerchantWareBox.width - (fIconWidth + fWidthAdjustment*2), fTextHeight-2)), "",selectorStyle);
 				GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 			}
@@ -490,16 +616,9 @@ public class NPC_ArmorMerchantScript : NPCScript
 			GUI.Box(new Rect(screenWidth * 0.85f, screenHeight*0.91f, screenWidth * 0.15f, screenHeight * 0.035f), "DEF: ");
 			GUI.Box(new Rect(screenWidth * 0.85f, screenHeight*0.945f, screenWidth * 0.15f, screenHeight * 0.035f), "SPD: ");
 
-			if(m_bBuyIsChosen == true)
-			{
-				//draw the stat block of the item selected from the merchant to the stat block
-				DrawStatBlock(true);
-			}
-			else if(m_bSellIsChosen == true)
-			{
-				//draw the stat block of the item selected from the players inventory to the stat block
-				DrawStatBlock(false);
-			}
+
+			DrawStatBlock();
+
 			if(m_bItemIsChosen == true)
 			{
 				if(m_bBuyIsChosen == true)
@@ -513,11 +632,11 @@ public class NPC_ArmorMerchantScript : NPCScript
 					//draw selector
 					GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
 					if(m_nConfirmIter == 0)
-						GUI.Box((new Rect(screenWidth * 0.45f,  m_vScrollPosition.y+fHeight + fHeightAdjustment,
-					                  MerchantWareBox.width - (fIconWidth + fWidthAdjustment*2), fTextHeight-2)), "",selectorStyle);
+						GUI.Box((new Rect(screenWidth * 0.445f,  screenHeight* 0.5f,
+						                  screenWidth * 0.0325f, fTextHeight)), "",selectorStyle);
 					else if(m_nConfirmIter == 1)
-						GUI.Box((new Rect(screenWidth * 0.525f,  m_vScrollPosition.y+fHeight + fHeightAdjustment,
-							                  MerchantWareBox.width - (fIconWidth + fWidthAdjustment*2), fTextHeight-2)), "",selectorStyle);
+						GUI.Box((new Rect(screenWidth * 0.520f,  screenHeight* 0.5f,
+						                  screenWidth * 0.03f, fTextHeight)), "",selectorStyle);
 					GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
 				}
@@ -532,13 +651,10 @@ public class NPC_ArmorMerchantScript : NPCScript
 		}
 	}
 
-	void DrawStatBlock(bool buyChosen)
+	void DrawStatBlock()
 	{
 		string szName;
-		if(buyChosen == true)
-			szName = m_lItems[m_nItemIter].m_szItemName;
-		else
-			szName = dc.GetInventory()[m_nItemIter].m_szItemName;
+		szName = m_lItems[m_nItemIter].m_szItemName;
 
 		DCScript.ItemData item = dc.GetItemFromDictionary(szName);
 

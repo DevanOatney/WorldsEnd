@@ -100,8 +100,8 @@ public class DCScript : MonoBehaviour
 			if(item.m_szItemName == i.m_szItemName)
 			{
 				m_lInventory[iter].m_nItemCount += item.m_nItemCount;
-				if(m_lInventory[iter].m_nItemCount >= 100)
-					m_lInventory[iter].m_nItemCount = 99;
+				if(m_lInventory[iter].m_nItemCount >= 45)
+					m_lInventory[iter].m_nItemCount = 45;
 				return;
 			}
 			iter++;
