@@ -17,7 +17,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	//2 : Right
 	//3 : Up
 	public int m_nFacingDir = 0;
-	Vector3 m_vInitialScale;
 
 	bool m_bIsRunning = false;
 	float  m_fWalkingSpeed = 2.0f;
@@ -71,7 +70,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	void Start () 
 	{
 		m_aAnim = GetComponent<Animator>();
-		m_vInitialScale = transform.localScale;
 		//Set which direction the player should be idling toward when the screen loads
 		m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
 		if(m_nFacingDir == 2)

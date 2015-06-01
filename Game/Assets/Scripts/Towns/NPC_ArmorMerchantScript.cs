@@ -249,7 +249,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 				{
 					if(m_lItems[m_nItemIter].m_nAmountToBarter + m_lItems[m_nItemIter].m_nAmountCarried < 45)
 					{
-						if(GetTotalOwed(true) + m_lItems[m_nItemIter].m_nCost <= dc.m_nGold)
+						if(GetTotalOwed(1) + m_lItems[m_nItemIter].m_nCost <= dc.m_nGold)
 						{
 							if(m_fIncDecTimer >= m_fIncDecBucket)
 							{
@@ -273,10 +273,33 @@ public class NPC_ArmorMerchantScript : NPCScript
 		}
 	}
 
-	//flag - true BUY, false SELL
-	int GetTotalOwed(bool bsFlag)
+	//flag - 3 Confirmation Buy, 2 Confirmation Sell, 1 BUY, 0 SELL
+	int GetTotalOwed(int bsFlag)
 	{
-		if(bsFlag == true)
+		if(bsFlag == 3)
+		{
+			//buying a single highlighted item from merchant
+			bool noItemsSelected = true;
+			int sum = 0;
+			foreach(MerchantItem item in m_lItems)
+			{
+				if(item.m_nAmountToBarter > 0)
+				{
+					sum += item.m_nAmountToBarter * item.m_nCost;
+					noItemsSelected = false;
+				}
+			}
+			if(noItemsSelected == true)
+				return m_lItems[m_nItemIter].m_nCost;
+			return sum;
+
+		}
+		else if(bsFlag == 2)
+		{
+			int sum = 0;
+			return sum;
+		}
+		else if(bsFlag == 1)
 		{
 			int sum = 0;
 			//buying stuff from the merchant
@@ -323,7 +346,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 			//draw icon for gold
 			GUI.DrawTexture(new Rect(screenWidth*0.8f, firstHeight - screenHeight*0.05f+2, 25, 20), m_t2dIconTextures[10]);
 			//draw out the amount of gold the player would have after the current transaction goes through
-			int sum = GetTotalOwed(false) - GetTotalOwed(true);
+			int sum = GetTotalOwed(0) - GetTotalOwed(1);
 			GUI.Label(new Rect(screenWidth*0.85f, firstHeight - screenHeight*0.05f+2, 100, 20), (dc.m_nGold + sum).ToString());
 			/*
 				Stuff used for all in the Wares window
@@ -481,7 +504,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 			{
 				if(m_bBuyIsChosen == true)
 				{
-					string szMessage = "\n\nThis will cost " + GetTotalOwed(true).ToString();
+					string szMessage = "\n\nThis will cost " + GetTotalOwed(3).ToString();
 					GUI.Box(new Rect(screenWidth * 0.4f, screenHeight * 0.4f, screenWidth * 0.2f, screenHeight * 0.2f), szMessage);
 
 
@@ -489,9 +512,12 @@ public class NPC_ArmorMerchantScript : NPCScript
 					GUI.Label(new Rect(screenWidth * 0.525f, screenHeight* 0.5f, 50, fTextHeight), "No");
 					//draw selector
 					GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
-					float xOffset = 0;
-					GUI.Box((new Rect(fIconWidth + fWidthAdjustment-5,  m_vScrollPosition.y+fHeight + fHeightAdjustment,
+					if(m_nConfirmIter == 0)
+						GUI.Box((new Rect(screenWidth * 0.45f,  m_vScrollPosition.y+fHeight + fHeightAdjustment,
 					                  MerchantWareBox.width - (fIconWidth + fWidthAdjustment*2), fTextHeight-2)), "",selectorStyle);
+					else if(m_nConfirmIter == 1)
+						GUI.Box((new Rect(screenWidth * 0.525f,  m_vScrollPosition.y+fHeight + fHeightAdjustment,
+							                  MerchantWareBox.width - (fIconWidth + fWidthAdjustment*2), fTextHeight-2)), "",selectorStyle);
 					GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
 				}

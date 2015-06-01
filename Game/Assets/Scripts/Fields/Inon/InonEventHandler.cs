@@ -14,7 +14,7 @@ public class InonEventHandler : BaseEventSystemScript
 	{
 		ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
 
-		int result;
+		//int result;
 		//if(ds.m_dStoryFlagField.TryGetValue("Inon_CrossedBridge", out result))
 
 		
