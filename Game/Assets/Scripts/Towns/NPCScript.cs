@@ -68,6 +68,7 @@ public class NPCScript : MonoBehaviour
 						if(m_lSteps.Count > 0)
 						{
 							//We're now doing a new step
+							GetComponent<Rigidbody>().isKinematic = false;
 							m_nFacingDir = m_lSteps[m_nStepsIter].nDirection;
 							if(m_lSteps[m_nStepsIter].bMove == true)
 							{
@@ -154,7 +155,7 @@ public class NPCScript : MonoBehaviour
 	}
 
 	//Load the steps of the NPC
-	void LoadSteps()
+	protected void LoadSteps()
 	{
 		string[] lines = m_taPathing.text.Split('\n');
 		foreach(string step in lines)
@@ -230,6 +231,16 @@ public class NPCScript : MonoBehaviour
 					GameObject.Find("Event System").GetComponent<BaseEventSystemScript>().HandleEvent(m_szDialoguePath);
 			}
 		}
+	}
+
+	void OnCollisionEnter(Collision c)
+	{
+		GetComponent<Rigidbody>().isKinematic = true;
+	}
+
+	void OnCollisionExit(Collision c)
+	{
+		GetComponent<Rigidbody>().isKinematic = false;
 	}
 
 	public void RestartPathing()

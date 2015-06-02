@@ -759,21 +759,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 		return new Vector2(0, 0);
 	}
 	
-	//Load the steps of the NPC
-	void LoadSteps()
-	{
-		string[] lines = m_taPathing.text.Split('\n');
-		foreach(string step in lines)
-		{
-			cSteps newStep = new cSteps();
-			string[] pieces = step.Split(',');
-			newStep.nDirection = int.Parse(pieces[0].Trim());
-			newStep.fTime = float.Parse(pieces[1].Trim());
-			newStep.bMove = bool.Parse(pieces[2].Trim());
-			newStep.bOneShot = bool.Parse(pieces[3].Trim());
-			m_lSteps.Add(newStep);
-		}
-	}
+
 
 	
 	new public void OnTriggerEnter(Collider c)
