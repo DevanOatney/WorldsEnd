@@ -114,7 +114,7 @@ public class DCScript : MonoBehaviour
 		{
 			if(item.m_szItemName == i.m_szItemName)
 			{
-				--i.m_nItemCount;
+				i.m_nItemCount -= item.m_nItemCount;
 				if(i.m_nItemCount <= 0)
 				{
 					m_lInventory.Remove(i);
