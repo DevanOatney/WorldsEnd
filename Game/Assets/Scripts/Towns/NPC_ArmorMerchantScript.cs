@@ -762,7 +762,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 
 
 	
-	new public void OnTriggerEnter(Collider c)
+	new public void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.name == "Action Box(Clone)")
 		{

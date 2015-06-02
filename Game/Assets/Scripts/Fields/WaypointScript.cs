@@ -13,11 +13,11 @@ public class WaypointScript : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter(Collider c)
+	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.name == "Player")
 		{
-			GameObject.Find("Event System").GetComponent<BaseEventSystemScript>().WaypointTriggered(GetComponent<BoxCollider>());
+			GameObject.Find("Event System").GetComponent<BaseEventSystemScript>().WaypointTriggered(GetComponent<BoxCollider2D>());
 		}
 	}
 }

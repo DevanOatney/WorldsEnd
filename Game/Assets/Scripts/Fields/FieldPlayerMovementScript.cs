@@ -229,11 +229,11 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			newPos.x += MoveVec.x * GetComponent<BoxCollider2D>().bounds.size.x;
 
 			if(MoveVec.y > 0)
-				newPos.y += MoveVec.y * GetComponent<BoxCollider>().bounds.size.y * 0.5f;
+				newPos.y += MoveVec.y * GetComponent<BoxCollider2D>().bounds.size.y * 0.5f;
 			else if(MoveVec.y < 0)
-				newPos.y += MoveVec.y * GetComponent<BoxCollider>().bounds.size.y * 1.5f;
+				newPos.y += MoveVec.y * GetComponent<BoxCollider2D>().bounds.size.y * 1.5f;
 			else
-				newPos.y = transform.position.y - GetComponent<BoxCollider>().bounds.size.y * 0.5f;
+				newPos.y = transform.position.y - GetComponent<BoxCollider2D>().bounds.size.y * 0.5f;
 			m_goPredictor.transform.position = newPos;
 
 
@@ -374,7 +374,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			break;
 		}
 	}
-	void OnTriggerEnter(Collider c)
+	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Waypoint")
 		{

@@ -63,7 +63,7 @@ public class BossScript : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter(Collider c)
+	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Waypoint")
 		{

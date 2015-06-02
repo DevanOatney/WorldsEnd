@@ -27,7 +27,7 @@ public class ScreenSwitchScript : MonoBehaviour
 	
 	}
 
-	void OnTriggerEnter(Collider c)
+	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(m_bHasJustAppeared == false)
 		{
@@ -77,16 +77,16 @@ public class ScreenSwitchScript : MonoBehaviour
 			switch(m_nNewFacingDir)
 			{
 			case 0:
-				newPos.y -= player.GetComponent<BoxCollider>().bounds.size.y;
+				newPos.y -= player.GetComponent<BoxCollider2D>().bounds.size.y;
 				break;
 			case 1:
-				newPos.x -= player.GetComponent<BoxCollider>().bounds.size.x;
+				newPos.x -= player.GetComponent<BoxCollider2D>().bounds.size.x;
 				break;
 			case 2:
-				newPos.x += player.GetComponent<BoxCollider>().bounds.size.x;
+				newPos.x += player.GetComponent<BoxCollider2D>().bounds.size.x;
 				break;
 			case 3:
-				newPos.y += player.GetComponent<BoxCollider>().bounds.size.y *2;
+				newPos.y += player.GetComponent<BoxCollider2D>().bounds.size.y *2;
 				break;
 			}
 			player.transform.position = newPos;

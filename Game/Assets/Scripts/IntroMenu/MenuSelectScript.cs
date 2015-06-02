@@ -41,7 +41,7 @@ public class MenuSelectScript : MonoBehaviour
 			GameObject Devan = Resources.Load<GameObject>("Units/Ally/Devan/Devan");
 			Devan.GetComponent<PlayerBattleScript>().SetUnitStats();
 
-			Application.LoadLevel("Field_Primus_Scene");
+			Application.LoadLevel("Inon_Scene");
 		}
 			break;
 		case 1:

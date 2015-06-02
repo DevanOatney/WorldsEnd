@@ -122,7 +122,7 @@ public class InonEventHandler : BaseEventSystemScript
 		}
 	}
 
-	override public void WaypointTriggered(Collider c)
+	override public void WaypointTriggered(Collider2D c)
 	{
 		switch(c.name)
 		{

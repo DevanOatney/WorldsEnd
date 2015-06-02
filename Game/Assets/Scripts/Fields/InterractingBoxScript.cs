@@ -25,7 +25,7 @@ public class InterractingBoxScript : MonoBehaviour
 			m_goOwner.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 	}
 
-	void OnTriggerEnter(Collider c)
+	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Treasure" || c.tag == "Interractable")
 		{
@@ -37,7 +37,7 @@ public class InterractingBoxScript : MonoBehaviour
 		}
 	}
 
-	void OnTriggerStay(Collider c)
+	void OnTriggerStay2D(Collider2D c)
 	{
 		if(c.tag == "Treasure" || c.tag == "Interractable")
 		{
@@ -49,7 +49,7 @@ public class InterractingBoxScript : MonoBehaviour
 			}
 		}
 	}
-	void OnTriggerExit(Collider c)
+	void OnTriggerExit2D(Collider2D c)
 	{
 		m_goOwner.GetComponent<FieldPlayerMovementScript>().DeactivatePrompter();
 	}

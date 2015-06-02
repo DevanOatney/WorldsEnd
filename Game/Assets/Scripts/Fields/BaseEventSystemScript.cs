@@ -15,7 +15,7 @@ public class BaseEventSystemScript : MonoBehaviour {
 	virtual public void HandleEvent(string eventID)
 	{
 	}
-	virtual public void WaypointTriggered(Collider c)
+	virtual public void WaypointTriggered(Collider2D c)
 	{
 	}
 }

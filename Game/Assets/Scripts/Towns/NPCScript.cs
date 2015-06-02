@@ -68,7 +68,7 @@ public class NPCScript : MonoBehaviour
 						if(m_lSteps.Count > 0)
 						{
 							//We're now doing a new step
-							GetComponent<Rigidbody>().isKinematic = false;
+							GetComponent<Rigidbody2D>().isKinematic = false;
 							m_nFacingDir = m_lSteps[m_nStepsIter].nDirection;
 							if(m_lSteps[m_nStepsIter].bMove == true)
 							{
@@ -113,7 +113,7 @@ public class NPCScript : MonoBehaviour
 						moveDir.y = 1;
 						break;
 					}
-					GetComponent<Rigidbody>().velocity = moveDir * m_fWalkingSpeed;
+					GetComponent<Rigidbody2D>().velocity = moveDir * m_fWalkingSpeed;
 				}
 			}
 			else
@@ -220,7 +220,7 @@ public class NPCScript : MonoBehaviour
 		}
 	}
 
-	public void OnTriggerEnter(Collider c)
+	public void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.name == "Action Box(Clone)")
 		{
@@ -233,14 +233,14 @@ public class NPCScript : MonoBehaviour
 		}
 	}
 
-	void OnCollisionEnter(Collision c)
+	void OnCollisionEnter2D(Collision2D c)
 	{
-		GetComponent<Rigidbody>().isKinematic = true;
+		GetComponent<Rigidbody2D>().isKinematic = true;
 	}
 
-	void OnCollisionExit(Collision c)
+	void OnCollisionExit2D(Collision2D c)
 	{
-		GetComponent<Rigidbody>().isKinematic = false;
+		GetComponent<Rigidbody2D>().isKinematic = false;
 	}
 
 	public void RestartPathing()

@@ -23,7 +23,7 @@ public class SavePointOrbScript : MonoBehaviour
 	
 	}
 
-	void OnTriggerEnter(Collider c)
+	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.name == "Action Box(Clone)")
 		{
