@@ -1,0 +1,37 @@
+Treasure for old temple forest 
+
+All Equipment items are given at random.
+
+
+Chest one 
+2 healing potions, 1 anti toxin or 1 10% damage resistance potion, 1 item
+
+Chest two 
+1 healing potion, 2 items, 25 gold
+
+item possibilites
+
+Ring of health: +10hp
+
+Ring of initive: +10 to attack initive
+
+Ring of Damage: +5% damage
+
+Ring of wealth: +5% more gold from battles or merchants
+
+
+Fur Vest of Health: +10hp
+
+Fur vest of Defense: +10 defense
+
+Fur Vest of Luck: +10% to recive potions or items after a battle
+
+
+Fur Boots of Initive: +10 to attack initive
+
+Fur Boots of Damage: +5% damage
+
+Fur Boots of Luck: +10% chance to recieve potions or items after battle
+
+
+
