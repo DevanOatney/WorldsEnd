@@ -1,0 +1,2 @@
+A1|1|Constantinople|I am glad you stopped by, take a look at my wares.|A2
+A2|3|ItemShoppe
