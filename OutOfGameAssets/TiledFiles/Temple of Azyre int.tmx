@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="13">
+ <tileset firstgid="1" name="cave" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/cave.png" width="256" height="336"/>
+ </tileset>
+ <tileset firstgid="81" name="DoorComp1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/DoorComp1.png" width="192" height="192"/>
+ </tileset>
+ <tileset firstgid="117" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+  <terraintypes>
+   <terrain name="floor" tile="-1"/>
+  </terraintypes>
+  <tile id="419" terrain="0,0,0,"/>
+  <tile id="420" terrain="0,0,,"/>
+  <tile id="421" terrain="0,0,,0"/>
+  <tile id="451" terrain="0,,0,0"/>
+  <tile id="452" terrain=",,0,0"/>
+  <tile id="453" terrain=",0,0,0"/>
+  <tile id="483" terrain="0,,0,"/>
+  <tile id="484" terrain="0,0,0,0"/>
+  <tile id="485" terrain=",0,,0"/>
+ </tileset>
+ <tileset firstgid="1141" name="DoorComp2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/DoorComp2.png" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="1237" name="DoorComp3" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/DoorComp3.png" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="1333" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <tileset firstgid="1557" name="InteriorComp3" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/InteriorComp3.png" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="1653" name="InteriorItemsComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/InteriorItemsComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="1909" name="obj_misk_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2933" name="ShelfComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/ShelfComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="3189" name="Inq XP MT- Medieval Town1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town1.png" width="256" height="4000"/>
+ </tileset>
+ <tileset firstgid="4189" name="Inq XP MT- Medieval Town4" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town4.png" width="256" height="4259"/>
+ </tileset>
+ <tileset firstgid="5253" name="Inq XP MT- Medieval Town2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town2.png" width="256" height="4172"/>
+ </tileset>
+ <tileset firstgid="6293" name="Inq XP MT- Medieval Town3" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town3.png" width="256" height="4415"/>
+ </tileset>
+ <tileset firstgid="7389" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="8413" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="9437" name="ChestComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/ChestComp.png" width="384" height="512"/>
+ </tileset>
+ <layer name="Ground" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztz7ENACAIAEHiAO6H+w9i6QIkhHjF9f+5IhIY6eynu6Xqpbuj6qW7AQAAAAAAAADgRxd2Vnko
+  </data>
+ </layer>
+ <layer name="Collision" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt2TsOwjAQRVFvwO68OEoqoIaOJZJtUEEIdgcV4wJFRHI+OMXz6F1pRGEKHzkfIaI11bd3xkQ6YApiODrgkf2dZu4R+TzOtrdsZHYu/110x9cy5njJ2hvUcbC9I812woF8HsPowEqLIxcdWNGBFfJ7cEmazoMOnOjAig6s+P7Aig6sNDl4n+Ok6Ty0OLRcV3TgRAdWQYlDy3mgONL/rdeCfSA5SqJj3ZKjlX049990QI6pWm/MQ6aTecoEmej79VocN9nz3efXERxzavzv52VgqsUxFsp9vqQmc20hOEqfuymE34NrOD4yYI/d
+  </data>
+ </layer>
+ <objectgroup name="Collision">
+  <object id="1" x="-2" y="2" width="1602" height="1604"/>
+  <object id="2" x="162.667" y="182.667">
+   <polyline points="0,0 -1.33333,17.3333 -150.667,18.6667 -154.667,1412"/>
+  </object>
+  <object id="3" x="164" y="130.667">
+   <polyline points="0,0 1080,0"/>
+  </object>
+  <object id="4" x="1244" y="224">
+   <polyline points="0,0 124,1.33333 133.333,226.667 198.667,226.667"/>
+  </object>
+  <object id="5" x="1528" y="450.667">
+   <polyline points="0,0 57.3333,1.33333 60,796 -452,797.333 -453.333,1049.33 -441.333,1048 -442.667,966.667 -414.667,962.667 -413.333,997.333 -377.333,996 -377.333,962.667 -346.667,964 -341.333,926.667 -188,916 -192,945.333 -25.3333,953.333 -25.3333,926.667 57.3333,936 53.3333,1144 -432,1144 -441.333,1082.67 -458.667,1080 -458.667,1145.33"/>
+  </object>
+  <object id="7" x="1352" y="1409.33" width="48" height="34.6667"/>
+  <object id="8" x="1349.33" y="1454.67" width="22.6667" height="18.6667"/>
+  <object id="9" x="1413.33" y="1460" width="21.3333" height="16"/>
+  <object id="10" x="1473.33" y="1453.33" width="29.3333" height="21.3333"/>
+  <object id="11" x="1412" y="1518.67" width="24" height="20"/>
+  <object id="12" x="1254.67" y="1392" width="84" height="16"/>
+ </objectgroup>
+ <layer name="Wall" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt2bsOQEAQheFtUNnOY6FCq9PjDe2D2UQ2onQJM+v/kpNp59SntMZUylP7ND6t8nQR9ZBssluCQfi/0KHPjwEAAAAAAAAAAMD7EmtMejGZoN3wzm4saa+Npcdo9535bGZBPf7CFce7FN/98gSn/P8glh7QYQXb+FZA
+  </data>
+ </layer>
+ <layer name="Above" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztmTtKQ0EYRkeFiIkoPjIXsRBxL24lgZSuwu1YprTRRhMFTSx8FT4XoZ7BCTFBEEzzDXwHDn9y7x34T26Z1koonjYNHXfIMOroFN4z3VFqS+rY/8XSSB2tAveexh1auEMLd2jhDi3coYU7tHCHFu7Qwh1auEMLd2jhDi3coYU7tHCHFu7QQqmjlvc4iiGsxvH17fz5rBnCOfawjxd4iWv5vkpH+m9ymZ26WGEDP9hzj/nJvMJrHOAQb7DOva2o9T5SxyY7HeMObmAt/9aLzFv2vsN7fMBHXOf6rljHAXucstNJ/J6JhSqEeZzDJ/Z+xhd8xTd8b47Pq3T0ckOa/dzRYP86LlWTzx7Gye9K72OQG9Icxr+f/4lKRzvv8J+G0XmljlnOK3TMiju0SB1fvfhb1w==
+  </data>
+ </layer>
+ <layer name="Highest" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt0TEOgCAQRUEqO7gmB7Ck5OJKYWJMkMJqzUzyq61etuWU9nMR1PJ+a0FaVh09x2hZdQxRWmbujVdLRM9f9aAdwD9sZT4AAAAAAAAA+OIASogLHQ==
+  </data>
+ </layer>
+ <layer name="Top" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt0T0OgkAQhuG9AFN6Ai4inkClUWjUQhMP6ikELf27g18CxkYTtZBZ8j7Jm80SiplsnoReKLVHzi7usMt/7dMQKlWrgzqmr/8rne9x0txndVFXdXuzh3efvod3vIcvfXiPtTXnUGemRu19Y93N9IutNY3VRE3t+S0mj5lnaq6KSPdINK+phVqqVXu3yPYAAAAAAAAAAPizG3Q9AQDgG3cOni2Y
+  </data>
+ </layer>
+ <layer name="Over" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1kENADAIADEUzCbzr2AKSOA50jq43+UJAACGsnio+9lbbemobOkAAAAAAAAAeh7lYALC
+  </data>
+ </layer>
+</map>

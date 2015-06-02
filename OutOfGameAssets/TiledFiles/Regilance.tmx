@@ -2,17 +2,17 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="500" height="250" tilewidth="32" tileheight="32" nextobjectid="70">
  <tileset firstgid="1" name="Regilance" tilewidth="15000" tileheight="7500">
   <tile id="0">
-   <image width="15000" height="7500" source="Regilance3.png"/>
+   <image width="15000" height="7500" source="../Fields/World Map/Regilance3.png"/>
   </tile>
  </tileset>
  <tileset firstgid="2" name="Inq XP WM - Mountains (meu)" tilewidth="32" tileheight="32">
-  <image source="../../Tilesets/Inq XP WM - Mountains (meu).png" width="96" height="128"/>
+  <image source="../Tilesets/Inq XP WM - Mountains (meu).png" width="96" height="128"/>
  </tileset>
  <tileset firstgid="14" name="Inq XP WM - Snow" tilewidth="32" tileheight="32">
-  <image source="../../Tilesets/Inq XP WM - Snow.png" width="96" height="128"/>
+  <image source="../Tilesets/Inq XP WM - Snow.png" width="96" height="128"/>
  </tileset>
  <tileset firstgid="26" name="Inq XP WM - Trees (meu)" tilewidth="32" tileheight="32">
-  <image source="../../Tilesets/Inq XP WM - Trees (meu).png" width="96" height="128"/>
+  <image source="../Tilesets/Inq XP WM - Trees (meu).png" width="96" height="128"/>
   <terraintypes>
    <terrain name="forest" tile="-1"/>
   </terraintypes>
@@ -27,7 +27,7 @@
   <tile id="11" terrain="0,,,"/>
  </tileset>
  <tileset firstgid="38" name="Inq XP WM - Trees Opening (meu)" tilewidth="32" tileheight="32">
-  <image source="../../Tilesets/Inq XP WM - Trees Opening (meu).png" width="96" height="128"/>
+  <image source="../Tilesets/Inq XP WM - Trees Opening (meu).png" width="96" height="128"/>
   <terraintypes>
    <terrain name="forest" tile="-1"/>
   </terraintypes>
@@ -42,28 +42,28 @@
   <tile id="11" terrain=",0,0,0"/>
  </tileset>
  <tileset firstgid="50" name="Inq XP WM - Trees" tilewidth="32" tileheight="32">
-  <image source="../../Tilesets/Inq XP WM - Trees.png" width="96" height="128"/>
+  <image source="../Tilesets/Inq XP WM - Trees.png" width="96" height="128"/>
  </tileset>
  <tileset firstgid="62" name="Inq XP WM - World Map" tilewidth="32" tileheight="32">
-  <image source="../../Tilesets/Inq XP WM - World Map.png" width="256" height="16448"/>
+  <image source="../Tilesets/Inq XP WM - World Map.png" width="256" height="16448"/>
  </tileset>
  <tileset firstgid="4174" name="Inq XP WM - Customization" tilewidth="32" tileheight="32">
-  <image source="../../Tilesets/Inq XP WM - Customization.png" width="192" height="1760"/>
+  <image source="../Tilesets/Inq XP WM - Customization.png" width="192" height="1760"/>
  </tileset>
  <tileset firstgid="4504" name="Inq XP WM - Deep Water" tilewidth="32" tileheight="32">
-  <image source="../../Tilesets/Inq XP WM - Deep Water.png" width="384" height="128"/>
+  <image source="../Tilesets/Inq XP WM - Deep Water.png" width="384" height="128"/>
  </tileset>
  <tileset firstgid="4552" name="Inq XP WM - Desert" tilewidth="32" tileheight="32">
-  <image source="../../Tilesets/Inq XP WM - Desert.png" width="96" height="128"/>
+  <image source="../Tilesets/Inq XP WM - Desert.png" width="96" height="128"/>
  </tileset>
  <tileset firstgid="4564" name="Inq XP WM - Medium Water" tilewidth="32" tileheight="32">
-  <image source="../../Tilesets/Inq XP WM - Medium Water.png" width="384" height="128"/>
+  <image source="../Tilesets/Inq XP WM - Medium Water.png" width="384" height="128"/>
  </tileset>
  <tileset firstgid="4612" name="Inq XP Waterfallchara3" tilewidth="32" tileheight="32">
-  <image source="../../Tilesets/Inq XP Waterfallchara3.png" width="128" height="128"/>
+  <image source="../Tilesets/Inq XP Waterfallchara3.png" width="128" height="128"/>
  </tileset>
  <tileset firstgid="4628" name="cave" tilewidth="32" tileheight="32">
-  <image source="../../Tilesets/cave.png" width="256" height="336"/>
+  <image source="../Tilesets/cave.png" width="256" height="336"/>
  </tileset>
  <layer name="World Map" width="500" height="250">
   <data encoding="base64" compression="zlib">
