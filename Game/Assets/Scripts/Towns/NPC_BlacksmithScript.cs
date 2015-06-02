@@ -20,6 +20,7 @@ public class NPC_BlacksmithScript : NPCScript
 	{
 		if(m_bShowScreen)
 		{
+			Debug.Log("working~");
 			GUI.Box(new Rect(Screen.width * 0.1f, Screen.height * 0.1f, Screen.width * 0.2f, Screen.height * 0.7f), "");
 		}
 	}
@@ -37,5 +38,11 @@ public class NPC_BlacksmithScript : NPCScript
 					GameObject.Find("Event System").GetComponent<BaseEventSystemScript>().HandleEvent(m_szDialoguePath);
 			}
 		}
+	}
+
+	public void ActivateScreen()
+	{
+		Debug.Log ("activate");
+		m_bShowScreen = true;
 	}
 }

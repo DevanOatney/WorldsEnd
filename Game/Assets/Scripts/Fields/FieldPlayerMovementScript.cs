@@ -137,7 +137,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		if(m_bPromptShouldRender == true)
 		{
 			Vector3 pos = transform.position;
-			pos.y += GetComponent<BoxCollider>().bounds.size.y * 1.3f;
+			pos.y += GetComponent<BoxCollider2D>().bounds.size.y * 1.3f;
 			m_goPrompter.transform.position = pos;
 			m_fTextBlinkTimer += Time.deltaTime;
 			if(m_fTextBlinkTimer >= m_fTextBlinkBucket)
@@ -215,18 +215,18 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			Vector3 newPos = transform.position;
 			if(m_bIsRunning == true)
 			{
-				GetComponent<Rigidbody>().velocity = MoveVec * m_fRunningSpeed;
+				GetComponent<Rigidbody2D>().velocity = MoveVec * m_fRunningSpeed;
 				newPos += MoveVec * m_fRunningSpeed * Time.deltaTime;
 			}
 			else
 			{
-				GetComponent<Rigidbody>().velocity = MoveVec * m_fWalkingSpeed;
+				GetComponent<Rigidbody2D>().velocity = MoveVec * m_fWalkingSpeed;
 				newPos += MoveVec * m_fWalkingSpeed * Time.deltaTime;
 			}
 			//transform.position = newPos;
 			//if we can move and do stuff, handle predictor code
 
-			newPos.x += MoveVec.x * GetComponent<BoxCollider>().bounds.size.x;
+			newPos.x += MoveVec.x * GetComponent<BoxCollider2D>().bounds.size.x;
 
 			if(MoveVec.y > 0)
 				newPos.y += MoveVec.y * GetComponent<BoxCollider>().bounds.size.y * 0.5f;
