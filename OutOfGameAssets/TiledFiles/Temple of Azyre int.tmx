@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="13">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="35">
  <tileset firstgid="1" name="cave" tilewidth="32" tileheight="32">
   <image source="../Tilesets/cave.png" width="256" height="336"/>
  </tileset>
@@ -63,6 +63,50 @@
  <tileset firstgid="9437" name="ChestComp" tilewidth="32" tileheight="32">
   <image source="../Tilesets/ChestComp.png" width="384" height="512"/>
  </tileset>
+ <tileset firstgid="9629" name="Images" tilewidth="128" tileheight="96">
+  <tile id="0">
+   <image width="128" height="96" source="../Icons 512x512/WaterFountain.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="9630" name="WaterFountain" tilewidth="32" tileheight="32">
+  <image source="../Icons 512x512/WaterFountain.png" width="128" height="96"/>
+  <tile id="0">
+   <animation>
+    <frame tileid="2" duration="300"/>
+    <frame tileid="0" duration="300"/>
+   </animation>
+  </tile>
+  <tile id="1">
+   <animation>
+    <frame tileid="3" duration="300"/>
+    <frame tileid="1" duration="300"/>
+   </animation>
+  </tile>
+  <tile id="4">
+   <animation>
+    <frame tileid="6" duration="300"/>
+    <frame tileid="4" duration="300"/>
+   </animation>
+  </tile>
+  <tile id="5">
+   <animation>
+    <frame tileid="7" duration="300"/>
+    <frame tileid="5" duration="300"/>
+   </animation>
+  </tile>
+  <tile id="8">
+   <animation>
+    <frame tileid="8" duration="300"/>
+    <frame tileid="10" duration="300"/>
+   </animation>
+  </tile>
+  <tile id="9">
+   <animation>
+    <frame tileid="9" duration="300"/>
+    <frame tileid="11" duration="300"/>
+   </animation>
+  </tile>
+ </tileset>
  <layer name="Ground" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJztz7ENACAIAEHiAO6H+w9i6QIkhHjF9f+5IhIY6eynu6Xqpbuj6qW7AQAAAAAAAADgRxd2Vnko
@@ -70,11 +114,10 @@
  </layer>
  <layer name="Collision" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt2TsOwjAQRVFvwO68OEoqoIaOJZJtUEEIdgcV4wJFRHI+OMXz6F1pRGEKHzkfIaI11bd3xkQ6YApiODrgkf2dZu4R+TzOtrdsZHYu/110x9cy5njJ2hvUcbC9I812woF8HsPowEqLIxcdWNGBFfJ7cEmazoMOnOjAig6s+P7Aig6sNDl4n+Ok6Ty0OLRcV3TgRAdWQYlDy3mgONL/rdeCfSA5SqJj3ZKjlX049990QI6pWm/MQ6aTecoEmej79VocN9nz3efXERxzavzv52VgqsUxFsp9vqQmc20hOEqfuymE34NrOD4yYI/d
+   eJztmLtOwzAUhr2jeIsEa6S8AzxE2VmQmAgzbLwHMHFpEeVOb29BuT0EE5SSbmXijyAyWHFSJ45ykuaXPlmxo8pfj506nVis9PE4Y5Pag0x8OGxzwmB+OzPOkXI9di3hsgY2ufpe6h6hS5zHFGNfRD22LOERsJHgQbkecubB4++e74Au6IE+GPz2U0lV6qFK7UErVfbwij6LcPV+XnQYW3Ki++TfQY/A80nlsYz5rjjRfVH1KDpx56ioqNZV0ak9RGoPc0nzjMvL49Bl7MgVrU6CerQXfohLeE+e9cjqoZOo9yhTHk3MveWKVieU9scZ5t52RasTSh5ZUnuIhB7rXA+TMbHPKcREPShknutB0aMBj1WJPbAPDqT+IFTXVUOqxzGuT0ATtMCpNF4Wj3NcX4BLcAWuS+Ihn2VV/w9mhVqCejzg3PsInsAzeAE34BbcgQ7ogh7og0HCWbqI+CnWFYVzi5w0+6MqHnkk+G5eM8yDkkeWUFlXVfIYYR6cp2NMyCMpI5uxDzAGn8AHE1uMl8XjDXN+t9XjFDxmydD+395LTmXxiAuVfa6ToWJtUfAw8Zm674NUPb4Bhqnzog==
   </data>
  </layer>
  <objectgroup name="Collision">
-  <object id="1" x="-2" y="2" width="1602" height="1604"/>
   <object id="2" x="162.667" y="182.667">
    <polyline points="0,0 -1.33333,17.3333 -150.667,18.6667 -154.667,1412"/>
   </object>
@@ -85,7 +128,7 @@
    <polyline points="0,0 124,1.33333 133.333,226.667 198.667,226.667"/>
   </object>
   <object id="5" x="1528" y="450.667">
-   <polyline points="0,0 57.3333,1.33333 60,796 -452,797.333 -453.333,1049.33 -441.333,1048 -442.667,966.667 -414.667,962.667 -413.333,997.333 -377.333,996 -377.333,962.667 -346.667,964 -341.333,926.667 -188,916 -192,945.333 -25.3333,953.333 -25.3333,926.667 57.3333,936 53.3333,1144 -432,1144 -441.333,1082.67 -458.667,1080 -458.667,1145.33"/>
+   <polyline points="61.3333,134.667 61.3333,173.333 60,796 -452,797.333 -453.333,1049.33 -441.333,1048 -442.667,966.667 -414.667,962.667 -413.333,997.333 -377.333,996 -377.333,962.667 -346.667,964 -341.333,926.667 -188,916 -192,945.333 -25.3333,953.333 -25.3333,926.667 57.3333,936 53.3333,1144 -442,1146 -441.333,1082.67 -458.667,1080 -458.667,1145.33"/>
   </object>
   <object id="7" x="1352" y="1409.33" width="48" height="34.6667"/>
   <object id="8" x="1349.33" y="1454.67" width="22.6667" height="18.6667"/>
@@ -93,30 +136,75 @@
   <object id="10" x="1473.33" y="1453.33" width="29.3333" height="21.3333"/>
   <object id="11" x="1412" y="1518.67" width="24" height="20"/>
   <object id="12" x="1254.67" y="1392" width="84" height="16"/>
+  <object id="13" x="577.333" y="709.333" width="256" height="108"/>
+  <object id="14" x="1387" y="448" width="44" height="59.5"/>
+  <object id="15" x="1545" y="449" width="44" height="59"/>
+  <object id="16" x="1446.67" y="448">
+   <polyline points="0,0 80,-1.33333"/>
+  </object>
+  <object id="17" x="1526.67" y="446.667">
+   <polyline points="0,0 14.6667,10.6667"/>
+  </object>
+  <object id="18" x="1585.33" y="509.333">
+   <polyline points="0,0 0,29.3333"/>
+  </object>
+  <object id="19" x="1194.67" y="669.333">
+   <polyline points="0,0 392,0"/>
+  </object>
+  <object id="20" x="1586.67" y="613.333">
+   <polyline points="0,0 -390.667,-1.33333"/>
+  </object>
+  <object id="21" x="1196" y="668">
+   <polyline points="0,0 1.33333,414.667 142.667,413.333"/>
+  </object>
+  <object id="22" x="1434.67" y="1086.67">
+   <polyline points="0,0 152,0 153.333,-74.6667"/>
+  </object>
+  <object id="24" x="13.3333" y="318.667">
+   <polyline points="0,0 120,-1.33333 120,-37.3333 -1.33333,-33.3333"/>
+  </object>
+  <object id="25" x="268" y="129.333">
+   <polyline points="0,0 9.33333,150.667 -54.6667,156 -52,193.333 21.3333,188 22.6667,1.33333"/>
+  </object>
+  <object id="28" x="10.6667" y="1077.33">
+   <polyline points="0,0 408,0 406.667,173.333 396,170.667 394,86 3.33333,90"/>
+  </object>
+  <object id="29" x="418.667" y="1596">
+   <polyline points="-0.666667,8.66667 -1.33333,-240 -13.3333,-239.333 -16,2.66667"/>
+  </object>
+  <object id="30" x="11.3333" y="1165.33">
+   <polyline points="0,0 2.66667,434.667 390.667,432.667"/>
+  </object>
+  <object id="31" x="1584" y="1114">
+   <polyline points="0,0 -158,-2 -156,-34 4,-34"/>
+  </object>
+  <object id="32" x="1344" y="1076">
+   <polyline points="0,0 4,50 -162,48 -168,-590 -1180,-602 -1182,-212"/>
+  </object>
  </objectgroup>
- <layer name="Wall" width="50" height="50">
+ <layer name="Wall" width="50" height="50" visible="0">
   <data encoding="base64" compression="zlib">
-   eJzt2bsOQEAQheFtUNnOY6FCq9PjDe2D2UQ2onQJM+v/kpNp59SntMZUylP7ND6t8nQR9ZBssluCQfi/0KHPjwEAAAAAAAAAAMD7EmtMejGZoN3wzm4saa+Npcdo9535bGZBPf7CFce7FN/98gSn/P8glh7QYQXb+FZA
+   eJztmbtuwkAQRWmAwoo7fxahIlRI6UgN+RZIw9tFQlKER8tL8BsJzw/hWsjy2jIQOxY7u8yRjkDIxVxghvWQM1OpR8XNwwJ8UtyiRjkoUzVPupSJ18t45IS+d57XYB2+CbNAFs8Pfi8h9nkbdmAX9qCtQA+5iDne4Qfsw0/4pVCOa7xokkNlxN6XccZICpm/8Un2oy45GEZH4sxLikSdM1Rngy45+H6JoUzccyI14pyvKKJLjhLRuhiGiXYuEXeIsvYA5wjOwrD9oIizm5oYf5+tDVzbNG6fI2w/GMyxDcnxg9d+4RpujNM1O7iHhxvkCPKNmgZwCEdwHPKdcD6PKZzBOVwY3vvegm3YgV3Yg7aEHAxz76TRu5mYZgmdB/+zi6W0Z9AlR8X0/meO6iuhHPfCyvI/Li15tSTBSvH6XXTJwajBEZt21ig=
   </data>
  </layer>
  <layer name="Above" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmTtKQ0EYRkeFiIkoPjIXsRBxL24lgZSuwu1YprTRRhMFTSx8FT4XoZ7BCTFBEEzzDXwHDn9y7x34T26Z1koonjYNHXfIMOroFN4z3VFqS+rY/8XSSB2tAveexh1auEMLd2jhDi3coYU7tHCHFu7Qwh1auEMLd2jhDi3coYU7tHCHFu7QQqmjlvc4iiGsxvH17fz5rBnCOfawjxd4iWv5vkpH+m9ymZ26WGEDP9hzj/nJvMJrHOAQb7DOva2o9T5SxyY7HeMObmAt/9aLzFv2vsN7fMBHXOf6rljHAXucstNJ/J6JhSqEeZzDJ/Z+xhd8xTd8b47Pq3T0ckOa/dzRYP86LlWTzx7Gye9K72OQG9Icxr+f/4lKRzvv8J+G0XmljlnOK3TMiju0SB1fvfhb1w==
+   eJztmctKw0AYhUeFio1E1HaCuBCRvIqP4Mp9C136EMUncKegoHuXLt3oRlsFbV14W1gvD6GeIRPalAarTfBM+Q98/G0yA+drGgJtxVfOpwqHmnjQJPaoOe7T7+Gqi/FYH4BrMR4VB3v3Rzy4Ih5cGeRRddBrHDw2ffc80p7T43x/uBjx4Ip45J+6FzHMGmaPHS9imDVZeuyGSu2F6TPPZOmxj64HYfrMM1l6HKLrUZg+8wzz/fGbiAdXxIMr4sEV8fj/bPhJxIMnLn+veiMeXBGP7FOwPY61UnO6e3zZvr4oK3UJGqAJrsA1mLfnWTzMb56z6HQCAuCBT/Rcw/zCvAG3oAXa4A4UcW5Jc10P41FCp1OwAhZBwX7W05j36P0AHsETeAYLOL5K5rGFHufodKajaTIVKDUJJsALenfAK3gD7+Cj3N3P4tGwDmY2rYeH/kUwEyTXbuvke6br0bIOZrb1z+t7w+IR/+fyF4d4P5PHKPsZPEaNeHDFeHwDqIl31A==
   </data>
  </layer>
  <layer name="Highest" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt0TEOgCAQRUEqO7gmB7Ck5OJKYWJMkMJqzUzyq61etuWU9nMR1PJ+a0FaVh09x2hZdQxRWmbujVdLRM9f9aAdwD9sZT4AAAAAAAAA+OIASogLHQ==
+   eJzt17EKgzAURuFMbvEt8jxdOne1u2PGvEcLFtrVoQ/ozVAooWlG+eP5IFzEJccMavTOzbYUTOP/e1GkpdWRvEZLqyNTaan5bvy0KCrPKol2AOjDMNaXunMHDaryu24tnv/bri+cCQBgZ7fg3D3Up4rF9voI9aniZN8GL9vvM/yeAIBju3byD0kHAAAAgKPbAFuXIYg=
   </data>
  </layer>
  <layer name="Top" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt0T0OgkAQhuG9AFN6Ai4inkClUWjUQhMP6ikELf27g18CxkYTtZBZ8j7Jm80SiplsnoReKLVHzi7usMt/7dMQKlWrgzqmr/8rne9x0txndVFXdXuzh3efvod3vIcvfXiPtTXnUGemRu19Y93N9IutNY3VRE3t+S0mj5lnaq6KSPdINK+phVqqVXu3yPYAAAAAAAAAAPizG3Q9AQDgG3cOni2Y
+   eJzt1kkKwjAYBeD/AmbpXmgOoh7AKVCHgqgLBe+koKBH8RROS6e97nwSoRsLDmCT8j54/DR08T+yiclJJkToYdjFOezyX+tAZINskR2yD17/Fzne44C9j8gJOSOXhB6ue/c+XMf7cEsW7mOo7CxilpDy83uk0tvpG2PsW0VqSB1pIEbZc5889m0iLaSNdJDIwx7XgsgN6WHvPjJQ8RkRERH9bqJFpjqevqrgjTDH/jNtp69C9Fhi/4W201ehZ2/OJN2M9CAiIiIiomSrfNobEBHRJ+4TUDqX
   </data>
  </layer>
  <layer name="Over" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt1kENADAIADEUzCbzr2AKSOA50jq43+UJAACGsnio+9lbbemobOkAAAAAAAAAeh7lYALC
+   eJzt1kEKwjAUhOHsC97BRc5WT9WKgt7CCnoOFbyES2dTAsUsKhryXv8PhkBWbyBt0q7CImyc9KRHXehRF3rUxUsPoM2c5dx+rWffe4/X+vNerT2Af8h9H9bQA7ChiyH0Ma1WTN8GO82+j2m1YtrjoNmPMa1WeHmreekBoIy578TxH9M1unOVrXJSBuWsPJWbclceze/nzfm2xzjrRbkWnDenxLvdyz3hpQcAAACW4Q1+miVD
   </data>
  </layer>
 </map>
