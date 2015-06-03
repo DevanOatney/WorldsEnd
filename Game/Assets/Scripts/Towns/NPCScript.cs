@@ -18,6 +18,8 @@ public class NPCScript : MonoBehaviour
 	protected Animator m_aAnim;
 
 
+	bool m_bCanMove = true;
+
 	protected class cSteps
 	{
 		//direction to face
@@ -68,7 +70,8 @@ public class NPCScript : MonoBehaviour
 						if(m_lSteps.Count > 0)
 						{
 							//We're now doing a new step
-							GetComponent<Rigidbody2D>().isKinematic = false;
+							//GetComponent<Rigidbody2D>().isKinematic = false;
+							m_bCanMove = true;
 							m_nFacingDir = m_lSteps[m_nStepsIter].nDirection;
 							if(m_lSteps[m_nStepsIter].bMove == true)
 							{
@@ -113,7 +116,8 @@ public class NPCScript : MonoBehaviour
 						moveDir.y = 1;
 						break;
 					}
-					GetComponent<Rigidbody2D>().velocity = moveDir * m_fWalkingSpeed;
+					if(m_bCanMove == true)
+						GetComponent<Rigidbody2D>().velocity = moveDir * m_fWalkingSpeed;
 				}
 			}
 			else
@@ -235,12 +239,15 @@ public class NPCScript : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D c)
 	{
-		GetComponent<Rigidbody2D>().isKinematic = true;
+		//GetComponent<Rigidbody2D>().isKinematic = true;
+		m_bCanMove = false;
+		GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 	}
 
 	void OnCollisionExit2D(Collision2D c)
 	{
-		GetComponent<Rigidbody2D>().isKinematic = false;
+		//GetComponent<Rigidbody2D>().isKinematic = false;
+		m_bCanMove = true;
 	}
 
 	public void RestartPathing()
