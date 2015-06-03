@@ -91,9 +91,8 @@ public class InonEventHandler : BaseEventSystemScript
 			}
 		}
 			break;
-		case "Blacksmith_EndDialogue":
+		case "Inon_Blacksmith1":
 		{
-			Debug.Log("event");
 			GameObject blackSmith = GameObject.Find("Blacksmith");
 			blackSmith.GetComponent<NPC_BlacksmithScript>().ActivateScreen();
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
