@@ -312,9 +312,12 @@ public class NPC_ArmorMerchantScript : NPCScript
 					//check to see if the amount of the item highlighted is greater than zero, if true decrement by one, else do nothing
 					if(m_fIncDecTimer >= m_fIncDecBucket)
 					{
-						if(m_lItems[m_nItemIter].m_nAmountToBarter > 0)
-							m_lItems[m_nItemIter].m_nAmountToBarter--;
-						m_fIncDecTimer = 0.0f;
+						if(m_lItems.Count > 0)
+						{
+							if(m_lItems[m_nItemIter].m_nAmountToBarter > 0)
+								m_lItems[m_nItemIter].m_nAmountToBarter--;
+							m_fIncDecTimer = 0.0f;
+						}
 					}
 
 				}
@@ -350,9 +353,12 @@ public class NPC_ArmorMerchantScript : NPCScript
 					//check to see if the amount of the item highlighted is greater than max count that can be purchased, if true increment by one, else do nothing
 					if(m_fIncDecTimer >= m_fIncDecBucket)
 					{
-						if(m_lItems[m_nItemIter].m_nAmountToBarter < m_lItems[m_nItemIter].m_nAmountCarried)
-							m_lItems[m_nItemIter].m_nAmountToBarter++;
-						m_fIncDecTimer = 0.0f;
+						if(m_lItems.Count > 0)
+						{
+							if(m_lItems[m_nItemIter].m_nAmountToBarter < m_lItems[m_nItemIter].m_nAmountCarried)
+								m_lItems[m_nItemIter].m_nAmountToBarter++;
+							m_fIncDecTimer = 0.0f;
+						}
 					}
 				}
 				else if(m_bBuyIsChosen == true || m_bSellIsChosen == true && m_bItemIsChosen == true)
@@ -664,9 +670,9 @@ public class NPC_ArmorMerchantScript : NPCScript
 
 			//Draw the background for the description of the item selected
 			GUI.Box(new Rect(0, screenHeight*0.832f, screenWidth, screenHeight * 0.166f), "");
-			if(m_bBuyIsChosen == true)
+			if(m_bBuyIsChosen == true && m_lItems.Count > 0)
 				GUI.Label(new Rect(0, screenHeight*0.832f, screenWidth, screenHeight * 0.166f), m_lItems[m_nItemIter].m_szItemDescription);
-			if(m_bSellIsChosen == true)
+			if(m_bSellIsChosen == true && m_lItems.Count > 0)
 				GUI.Label(new Rect(screenWidth*0.02f, screenHeight*0.84f, screenWidth, screenHeight * 0.166f), dc.GetItemFromDictionary(dc.GetInventory()[m_nItemIter].m_szItemName).m_szDescription);
 
 			//Draw the background for the items stat block
@@ -729,15 +735,18 @@ public class NPC_ArmorMerchantScript : NPCScript
 
 	void DrawStatBlock()
 	{
-		string szName;
-		szName = m_lItems[m_nItemIter].m_szItemName;
-
-		DCScript.ItemData item = dc.GetItemFromDictionary(szName);
-
-		GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.84f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nHPMod.ToString());
-		GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.875f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nPowMod.ToString());
-		GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.91f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nDefMod.ToString());
-		GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.945f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nSpdMod.ToString());
+		if(m_lItems.Count > 0)
+		{
+			string szName;
+			szName = m_lItems[m_nItemIter].m_szItemName;
+			
+			DCScript.ItemData item = dc.GetItemFromDictionary(szName);
+			
+			GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.84f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nHPMod.ToString());
+			GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.875f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nPowMod.ToString());
+			GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.91f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nDefMod.ToString());
+			GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.945f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nSpdMod.ToString());
+		}
 
 	}
 

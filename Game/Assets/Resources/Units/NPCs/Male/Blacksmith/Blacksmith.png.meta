@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d641d60769b35db4cb72bb7dab997e1f
-timeCreated: 1433273784
+timeCreated: 1433295646
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -254,29 +254,29 @@ TextureImporter:
     - name: Blacksmith_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 2049
+        x: 11
+        y: 211
         width: 30
-        height: 49
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_1
       rect:
         serializedVersion: 2
-        x: 81
-        y: 2049
-        width: 29
-        height: 49
+        x: 75
+        y: 211
+        width: 30
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_2
       rect:
         serializedVersion: 2
-        x: 145
-        y: 2049
-        width: 29
+        x: 139
+        y: 210
+        width: 30
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -284,9 +284,9 @@ TextureImporter:
     - name: Blacksmith_3
       rect:
         serializedVersion: 2
-        x: 205
-        y: 2049
-        width: 37
+        x: 203
+        y: 209
+        width: 30
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -294,9 +294,9 @@ TextureImporter:
     - name: Blacksmith_4
       rect:
         serializedVersion: 2
-        x: 262
-        y: 2049
-        width: 52
+        x: 267
+        y: 210
+        width: 30
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -304,19 +304,19 @@ TextureImporter:
     - name: Blacksmith_5
       rect:
         serializedVersion: 2
-        x: 327
-        y: 2049
-        width: 50
-        height: 49
+        x: 331
+        y: 211
+        width: 30
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_6
       rect:
         serializedVersion: 2
-        x: 397
-        y: 2049
-        width: 37
+        x: 395
+        y: 210
+        width: 30
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -324,9 +324,9 @@ TextureImporter:
     - name: Blacksmith_7
       rect:
         serializedVersion: 2
-        x: 21
-        y: 1985
-        width: 23
+        x: 459
+        y: 209
+        width: 30
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -334,9 +334,9 @@ TextureImporter:
     - name: Blacksmith_8
       rect:
         serializedVersion: 2
-        x: 85
-        y: 1985
-        width: 23
+        x: 523
+        y: 210
+        width: 30
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -344,48 +344,48 @@ TextureImporter:
     - name: Blacksmith_9
       rect:
         serializedVersion: 2
-        x: 149
-        y: 1985
-        width: 23
-        height: 49
+        x: 12
+        y: 145
+        width: 29
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_10
       rect:
         serializedVersion: 2
-        x: 211
-        y: 1985
-        width: 27
-        height: 49
+        x: 76
+        y: 146
+        width: 29
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_11
       rect:
         serializedVersion: 2
-        x: 273
-        y: 1985
-        width: 34
-        height: 49
+        x: 140
+        y: 147
+        width: 29
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_12
       rect:
         serializedVersion: 2
-        x: 337
-        y: 1985
-        width: 34
-        height: 49
+        x: 204
+        y: 147
+        width: 29
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_13
       rect:
         serializedVersion: 2
-        x: 403
-        y: 1985
+        x: 268
+        y: 146
         width: 29
         height: 49
       alignment: 0
@@ -394,1880 +394,220 @@ TextureImporter:
     - name: Blacksmith_14
       rect:
         serializedVersion: 2
-        x: 17
-        y: 1921
+        x: 332
+        y: 146
         width: 30
-        height: 50
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_15
       rect:
         serializedVersion: 2
-        x: 80
-        y: 1921
-        width: 31
-        height: 50
+        x: 396
+        y: 146
+        width: 29
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_16
       rect:
         serializedVersion: 2
-        x: 145
-        y: 1921
+        x: 460
+        y: 146
         width: 29
-        height: 50
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_17
       rect:
         serializedVersion: 2
-        x: 205
-        y: 1921
-        width: 37
-        height: 50
+        x: 524
+        y: 146
+        width: 29
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_18
       rect:
         serializedVersion: 2
-        x: 262
-        y: 1921
-        width: 52
-        height: 50
+        x: 11
+        y: 80
+        width: 30
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_19
       rect:
         serializedVersion: 2
-        x: 327
-        y: 1921
-        width: 50
-        height: 50
+        x: 75
+        y: 80
+        width: 30
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_20
       rect:
         serializedVersion: 2
-        x: 398
-        y: 1921
-        width: 35
-        height: 50
+        x: 139
+        y: 81
+        width: 30
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_21
       rect:
         serializedVersion: 2
-        x: 20
-        y: 1857
-        width: 23
-        height: 49
+        x: 203
+        y: 81
+        width: 30
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_22
       rect:
         serializedVersion: 2
-        x: 84
-        y: 1857
-        width: 23
-        height: 49
+        x: 266
+        y: 80
+        width: 31
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_23
       rect:
         serializedVersion: 2
-        x: 148
-        y: 1857
-        width: 23
-        height: 49
+        x: 331
+        y: 80
+        width: 30
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_24
       rect:
         serializedVersion: 2
-        x: 209
-        y: 1857
-        width: 27
-        height: 49
+        x: 395
+        y: 81
+        width: 30
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_25
       rect:
         serializedVersion: 2
-        x: 268
-        y: 1857
-        width: 34
-        height: 49
+        x: 459
+        y: 81
+        width: 30
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_26
       rect:
         serializedVersion: 2
-        x: 332
-        y: 1857
-        width: 34
-        height: 49
+        x: 523
+        y: 80
+        width: 30
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_27
       rect:
         serializedVersion: 2
-        x: 399
-        y: 1857
+        x: 11
+        y: 14
         width: 29
-        height: 49
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_28
       rect:
         serializedVersion: 2
-        x: 17
-        y: 1793
-        width: 30
-        height: 49
+        x: 75
+        y: 14
+        width: 29
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_29
       rect:
         serializedVersion: 2
-        x: 83
-        y: 1791
-        width: 27
-        height: 50
+        x: 139
+        y: 14
+        width: 29
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_30
       rect:
         serializedVersion: 2
-        x: 148
-        y: 1791
-        width: 25
-        height: 51
+        x: 204
+        y: 16
+        width: 29
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_31
       rect:
         serializedVersion: 2
-        x: 211
-        y: 1791
-        width: 26
-        height: 51
+        x: 267
+        y: 16
+        width: 29
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_32
       rect:
         serializedVersion: 2
-        x: 276
-        y: 1791
-        width: 26
-        height: 50
+        x: 329
+        y: 15
+        width: 30
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_33
       rect:
         serializedVersion: 2
-        x: 340
-        y: 1791
-        width: 26
-        height: 50
+        x: 395
+        y: 18
+        width: 29
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_34
       rect:
         serializedVersion: 2
-        x: 404
-        y: 1791
-        width: 26
-        height: 50
+        x: 459
+        y: 18
+        width: 29
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Blacksmith_35
       rect:
         serializedVersion: 2
-        x: 467
-        y: 1791
-        width: 26
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_36
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 1729
-        width: 23
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_37
-      rect:
-        serializedVersion: 2
-        x: 83
-        y: 1729
-        width: 25
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_38
-      rect:
-        serializedVersion: 2
-        x: 146
-        y: 1729
-        width: 28
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_39
-      rect:
-        serializedVersion: 2
-        x: 213
-        y: 1729
-        width: 26
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_40
-      rect:
-        serializedVersion: 2
-        x: 270
-        y: 1729
-        width: 28
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_41
-      rect:
-        serializedVersion: 2
-        x: 331
-        y: 1729
-        width: 31
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_42
-      rect:
-        serializedVersion: 2
-        x: 398
-        y: 1729
-        width: 28
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_43
-      rect:
-        serializedVersion: 2
-        x: 468
-        y: 1729
-        width: 27
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_44
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 1665
-        width: 30
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_45
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 1666
-        width: 28
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_46
-      rect:
-        serializedVersion: 2
-        x: 145
-        y: 1666
-        width: 28
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_47
-      rect:
-        serializedVersion: 2
-        x: 209
-        y: 1666
-        width: 28
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_48
-      rect:
-        serializedVersion: 2
-        x: 273
-        y: 1666
-        width: 28
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_49
-      rect:
-        serializedVersion: 2
-        x: 337
-        y: 1666
-        width: 28
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_50
-      rect:
-        serializedVersion: 2
-        x: 401
-        y: 1666
-        width: 28
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_51
-      rect:
-        serializedVersion: 2
-        x: 465
-        y: 1666
-        width: 28
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_52
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 1602
-        width: 23
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_53
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 1602
-        width: 25
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_54
-      rect:
-        serializedVersion: 2
-        x: 145
-        y: 1602
-        width: 28
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_55
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 1602
-        width: 27
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_56
-      rect:
-        serializedVersion: 2
-        x: 277
-        y: 1602
-        width: 28
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_57
-      rect:
-        serializedVersion: 2
-        x: 341
-        y: 1602
-        width: 31
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_58
-      rect:
-        serializedVersion: 2
-        x: 405
-        y: 1602
-        width: 28
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_59
-      rect:
-        serializedVersion: 2
-        x: 464
-        y: 1602
-        width: 27
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_60
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 1539
-        width: 30
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_61
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 1539
-        width: 31
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_62
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 1538
-        width: 31
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_63
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 1537
-        width: 30
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_64
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 1538
-        width: 31
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_65
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 1539
-        width: 31
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_66
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 1538
-        width: 31
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_67
-      rect:
-        serializedVersion: 2
-        x: 465
-        y: 1537
-        width: 30
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_68
-      rect:
-        serializedVersion: 2
-        x: 528
-        y: 1538
-        width: 31
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_69
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 1474
-        width: 23
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_70
-      rect:
-        serializedVersion: 2
-        x: 83
-        y: 1474
-        width: 25
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_71
-      rect:
-        serializedVersion: 2
-        x: 149
-        y: 1475
-        width: 23
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_72
-      rect:
-        serializedVersion: 2
-        x: 213
-        y: 1475
-        width: 24
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_73
-      rect:
-        serializedVersion: 2
-        x: 276
-        y: 1474
-        width: 26
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_74
-      rect:
-        serializedVersion: 2
-        x: 339
-        y: 1474
+        x: 523
+        y: 18
         width: 29
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_75
-      rect:
-        serializedVersion: 2
-        x: 404
-        y: 1474
-        width: 26
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_76
-      rect:
-        serializedVersion: 2
-        x: 468
-        y: 1474
-        width: 25
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_77
-      rect:
-        serializedVersion: 2
-        x: 532
-        y: 1474
-        width: 24
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_78
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 1410
-        width: 30
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_79
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 1410
-        width: 31
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_80
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 1409
-        width: 31
         height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_81
-      rect:
-        serializedVersion: 2
-        x: 209
-        y: 1409
-        width: 30
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_82
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 1409
-        width: 31
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_83
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 1410
-        width: 31
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_84
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 1409
-        width: 31
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_85
-      rect:
-        serializedVersion: 2
-        x: 464
-        y: 1409
-        width: 30
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_86
-      rect:
-        serializedVersion: 2
-        x: 528
-        y: 1409
-        width: 31
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_87
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 1346
-        width: 23
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_88
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 1346
-        width: 25
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_89
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 1347
-        width: 23
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_90
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 1347
-        width: 25
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_91
-      rect:
-        serializedVersion: 2
-        x: 273
-        y: 1346
-        width: 26
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_92
-      rect:
-        serializedVersion: 2
-        x: 335
-        y: 1346
-        width: 29
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_93
-      rect:
-        serializedVersion: 2
-        x: 401
-        y: 1346
-        width: 26
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_94
-      rect:
-        serializedVersion: 2
-        x: 466
-        y: 1346
-        width: 25
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_95
-      rect:
-        serializedVersion: 2
-        x: 531
-        y: 1346
-        width: 24
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_96
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 1282
-        width: 30
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_97
-      rect:
-        serializedVersion: 2
-        x: 83
-        y: 1281
-        width: 26
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_98
-      rect:
-        serializedVersion: 2
-        x: 145
-        y: 1281
-        width: 28
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_99
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 1281
-        width: 28
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_100
-      rect:
-        serializedVersion: 2
-        x: 273
-        y: 1281
-        width: 37
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_101
-      rect:
-        serializedVersion: 2
-        x: 337
-        y: 1281
-        width: 41
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_102
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 1218
-        width: 23
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_103
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 1218
-        width: 26
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_104
-      rect:
-        serializedVersion: 2
-        x: 146
-        y: 1218
-        width: 26
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_105
-      rect:
-        serializedVersion: 2
-        x: 202
-        y: 1218
-        width: 35
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_106
-      rect:
-        serializedVersion: 2
-        x: 263
-        y: 1218
-        width: 37
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_107
-      rect:
-        serializedVersion: 2
-        x: 330
-        y: 1218
-        width: 34
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_108
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 1154
-        width: 30
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_109
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 1154
-        width: 28
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_110
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 1154
-        width: 29
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_111
-      rect:
-        serializedVersion: 2
-        x: 211
-        y: 1154
-        width: 28
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_112
-      rect:
-        serializedVersion: 2
-        x: 275
-        y: 1154
-        width: 37
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_113
-      rect:
-        serializedVersion: 2
-        x: 338
-        y: 1154
-        width: 41
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_114
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 1089
-        width: 23
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_115
-      rect:
-        serializedVersion: 2
-        x: 86
-        y: 1089
-        width: 25
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_116
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 1089
-        width: 25
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_117
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 1089
-        width: 36
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_118
-      rect:
-        serializedVersion: 2
-        x: 275
-        y: 1089
-        width: 38
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_119
-      rect:
-        serializedVersion: 2
-        x: 339
-        y: 1089
-        width: 34
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_120
-      rect:
-        serializedVersion: 2
-        x: 15
-        y: 1025
-        width: 31
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_121
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 1023
-        width: 28
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_122
-      rect:
-        serializedVersion: 2
-        x: 146
-        y: 1023
-        width: 26
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_123
-      rect:
-        serializedVersion: 2
-        x: 209
-        y: 1023
-        width: 26
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_124
-      rect:
-        serializedVersion: 2
-        x: 273
-        y: 1023
-        width: 30
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_125
-      rect:
-        serializedVersion: 2
-        x: 337
-        y: 1023
-        width: 28
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_126
-      rect:
-        serializedVersion: 2
-        x: 401
-        y: 1023
-        width: 29
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_127
-      rect:
-        serializedVersion: 2
-        x: 465
-        y: 1023
-        width: 30
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_128
-      rect:
-        serializedVersion: 2
-        x: 529
-        y: 1023
-        width: 31
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_129
-      rect:
-        serializedVersion: 2
-        x: 593
-        y: 1023
-        width: 30
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_130
-      rect:
-        serializedVersion: 2
-        x: 657
-        y: 1023
-        width: 27
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_131
-      rect:
-        serializedVersion: 2
-        x: 721
-        y: 1023
-        width: 27
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_132
-      rect:
-        serializedVersion: 2
-        x: 785
-        y: 1023
-        width: 27
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_133
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 961
-        width: 23
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_134
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 961
-        width: 25
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_135
-      rect:
-        serializedVersion: 2
-        x: 142
-        y: 961
-        width: 33
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_136
-      rect:
-        serializedVersion: 2
-        x: 204
-        y: 961
-        width: 36
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_137
-      rect:
-        serializedVersion: 2
-        x: 268
-        y: 961
-        width: 36
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_138
-      rect:
-        serializedVersion: 2
-        x: 331
-        y: 961
-        width: 34
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_139
-      rect:
-        serializedVersion: 2
-        x: 395
-        y: 961
-        width: 35
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_140
-      rect:
-        serializedVersion: 2
-        x: 460
-        y: 961
-        width: 37
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_141
-      rect:
-        serializedVersion: 2
-        x: 524
-        y: 961
-        width: 39
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_142
-      rect:
-        serializedVersion: 2
-        x: 589
-        y: 961
-        width: 35
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_143
-      rect:
-        serializedVersion: 2
-        x: 653
-        y: 961
-        width: 34
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_144
-      rect:
-        serializedVersion: 2
-        x: 717
-        y: 961
-        width: 33
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_145
-      rect:
-        serializedVersion: 2
-        x: 781
-        y: 961
-        width: 35
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_146
-      rect:
-        serializedVersion: 2
-        x: 15
-        y: 897
-        width: 31
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_147
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 898
-        width: 28
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_148
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 898
-        width: 28
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_149
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 897
-        width: 28
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_150
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 897
-        width: 28
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_151
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 897
-        width: 28
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_152
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 897
-        width: 28
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_153
-      rect:
-        serializedVersion: 2
-        x: 464
-        y: 897
-        width: 28
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_154
-      rect:
-        serializedVersion: 2
-        x: 528
-        y: 897
-        width: 28
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_155
-      rect:
-        serializedVersion: 2
-        x: 592
-        y: 897
-        width: 29
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_156
-      rect:
-        serializedVersion: 2
-        x: 656
-        y: 897
-        width: 29
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_157
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 897
-        width: 29
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_158
-      rect:
-        serializedVersion: 2
-        x: 785
-        y: 897
-        width: 28
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_159
-      rect:
-        serializedVersion: 2
-        x: 19
-        y: 833
-        width: 23
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_160
-      rect:
-        serializedVersion: 2
-        x: 83
-        y: 833
-        width: 25
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_161
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 833
-        width: 33
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_162
-      rect:
-        serializedVersion: 2
-        x: 207
-        y: 833
-        width: 36
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_163
-      rect:
-        serializedVersion: 2
-        x: 271
-        y: 833
-        width: 36
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_164
-      rect:
-        serializedVersion: 2
-        x: 338
-        y: 833
-        width: 34
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_165
-      rect:
-        serializedVersion: 2
-        x: 401
-        y: 833
-        width: 35
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_166
-      rect:
-        serializedVersion: 2
-        x: 462
-        y: 833
-        width: 37
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_167
-      rect:
-        serializedVersion: 2
-        x: 524
-        y: 833
-        width: 39
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_168
-      rect:
-        serializedVersion: 2
-        x: 591
-        y: 833
-        width: 36
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_169
-      rect:
-        serializedVersion: 2
-        x: 656
-        y: 833
-        width: 35
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_170
-      rect:
-        serializedVersion: 2
-        x: 722
-        y: 833
-        width: 33
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_171
-      rect:
-        serializedVersion: 2
-        x: 785
-        y: 833
-        width: 34
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_172
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 769
-        width: 30
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_173
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 769
-        width: 32
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_174
-      rect:
-        serializedVersion: 2
-        x: 146
-        y: 769
-        width: 31
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_175
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 770
-        width: 31
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_176
-      rect:
-        serializedVersion: 2
-        x: 274
-        y: 770
-        width: 32
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_177
-      rect:
-        serializedVersion: 2
-        x: 337
-        y: 768
-        width: 35
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_178
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 641
-        width: 31
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_179
-      rect:
-        serializedVersion: 2
-        x: 274
-        y: 640
-        width: 27
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_180
-      rect:
-        serializedVersion: 2
-        x: 456
-        y: 640
-        width: 37
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_181
-      rect:
-        serializedVersion: 2
-        x: 658
-        y: 640
-        width: 28
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_182
-      rect:
-        serializedVersion: 2
-        x: 850
-        y: 640
-        width: 52
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_183
-      rect:
-        serializedVersion: 2
-        x: 1042
-        y: 640
-        width: 57
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_184
-      rect:
-        serializedVersion: 2
-        x: 69
-        y: 450
-        width: 39
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_185
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 450
-        width: 26
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_186
-      rect:
-        serializedVersion: 2
-        x: 466
-        y: 450
-        width: 26
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_187
-      rect:
-        serializedVersion: 2
-        x: 651
-        y: 450
-        width: 35
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_188
-      rect:
-        serializedVersion: 2
-        x: 818
-        y: 450
-        width: 59
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_189
-      rect:
-        serializedVersion: 2
-        x: 1022
-        y: 450
-        width: 47
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_190
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 258
-        width: 31
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_191
-      rect:
-        serializedVersion: 2
-        x: 271
-        y: 258
-        width: 30
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_192
-      rect:
-        serializedVersion: 2
-        x: 452
-        y: 258
-        width: 41
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_193
-      rect:
-        serializedVersion: 2
-        x: 655
-        y: 258
-        width: 32
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_194
-      rect:
-        serializedVersion: 2
-        x: 851
-        y: 258
-        width: 52
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_195
-      rect:
-        serializedVersion: 2
-        x: 1043
-        y: 258
-        width: 61
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_196
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 66
-        width: 39
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_197
-      rect:
-        serializedVersion: 2
-        x: 277
-        y: 66
-        width: 26
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_198
-      rect:
-        serializedVersion: 2
-        x: 467
-        y: 66
-        width: 26
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_199
-      rect:
-        serializedVersion: 2
-        x: 658
-        y: 66
-        width: 35
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_200
-      rect:
-        serializedVersion: 2
-        x: 851
-        y: 66
-        width: 59
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_201
-      rect:
-        serializedVersion: 2
-        x: 1044
-        y: 66
-        width: 45
-        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
