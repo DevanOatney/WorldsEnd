@@ -11,10 +11,12 @@ public class NPC_BlacksmithScript : NPCScript
 	bool m_bWeaponChosen = false;
 	bool m_bModifierChosen = false;
 	int  m_nConfirmIter = 0;
+	DCScript dc;
 
 	// Use this for initialization
 	void Start ()
 	{
+		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		LoadSteps();
 	}
 	
@@ -47,7 +49,23 @@ public class NPC_BlacksmithScript : NPCScript
 				{
 					if(m_nConfirmIter == 0)
 					{
-						//has decided to buy
+						//has decided to purchase a modification
+						m_nConfirmIter = 0;
+						m_bWeaponChosen = false;
+					}
+					else
+					{
+						m_nConfirmIter = 0;
+						m_bWeaponChosen = false;
+					}
+				}
+				else if(m_bEnhanceChosen == true && m_bWeaponChosen == true)
+				{
+					if(m_nConfirmIter == 0)
+					{
+						//has decided to confirm the enhance of the selected weapon
+						m_nConfirmIter = 0;
+						m_bWeaponChosen = false;
 					}
 					else
 					{
@@ -74,8 +92,50 @@ public class NPC_BlacksmithScript : NPCScript
 	{
 		if(m_bShowScreen)
 		{
-			Debug.Log("working~");
 			GUI.Box(new Rect(Screen.width * 0.1f, Screen.height * 0.1f, Screen.width * 0.2f, Screen.height * 0.7f), "");
+
+			if(m_bEnhanceChosen == true)
+			{
+				GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f, Screen.width * 0.3f, Screen.height * 0.66f), "");
+				float yOffset = 0;
+				float fTextHeight = 30.0f;
+				foreach(DCScript.CharacterData character in dc.GetParty())
+				{
+					int tempFontHolder = GUI.skin.label.fontSize;
+					GUI.skin.label.fontSize = 20;
+					GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f + yOffset, Screen.width * 0.3f, Screen.height * 0.22f), "");
+					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.13f + yOffset, 200, fTextHeight), character.m_szCharacterName);
+					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.17f + yOffset, 200, fTextHeight), "[Weapon Name]" + "   [Lvl]");
+					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + yOffset, 200, fTextHeight), "[Modifier]");
+
+
+					GUI.Box(new Rect(Screen.width * 0.57f, Screen.height * 0.12f + yOffset, Screen.width * 0.2f, Screen.height * 0.22f), "[Portrait]");
+					yOffset += Screen.height * 0.22f;
+					GUI.skin.label.fontSize = tempFontHolder;
+				}
+
+			}
+			else if(m_bModifyChosen == true)
+			{
+				GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f, Screen.width * 0.3f, Screen.height * 0.66f), "");
+				float yOffset = 0;
+				float fTextHeight = 30.0f;
+				foreach(DCScript.CharacterData character in dc.GetParty())
+				{
+					int tempFontHolder = GUI.skin.label.fontSize;
+					GUI.skin.label.fontSize = 20;
+					GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f + yOffset, Screen.width * 0.3f, Screen.height * 0.22f), "");
+					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.13f + yOffset, 200, fTextHeight), character.m_szCharacterName);
+					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.17f + yOffset, 200, fTextHeight), "[Weapon Name]" + "   [Lvl]");
+					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + yOffset, 200, fTextHeight), "[Modifier]");
+					
+					
+					GUI.Box(new Rect(Screen.width * 0.57f, Screen.height * 0.12f + yOffset, Screen.width * 0.2f, Screen.height * 0.22f), "[Portrait]");
+					yOffset += Screen.height * 0.22f;
+					GUI.skin.label.fontSize = tempFontHolder;
+				}
+			}
+
 		}
 	}
 
@@ -96,7 +156,7 @@ public class NPC_BlacksmithScript : NPCScript
 
 	public void ActivateScreen()
 	{
-		Debug.Log ("activate");
+		Input.ResetInputAxes();
 		m_bShowScreen = true;
 	}
 }
