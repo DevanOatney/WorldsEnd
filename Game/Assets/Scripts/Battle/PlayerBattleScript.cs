@@ -204,24 +204,62 @@ public class PlayerBattleScript : UnitScript {
 			c.m_szCharacterRace = lines[5].Trim ();
 			//ClassType
 			c.m_szCharacterClassType = lines[6].Trim();
-			//Armor
-			if(lines[7].Trim() != "NULL")
-				c.m_idChestSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[7].Trim());
+			//Weapon Name
+			c.m_szWeaponName = lines[7].Trim();
+			//Weapon Level
+			c.m_nWeaponLevel = int.Parse(lines[8].Trim());
+			//Weapon Damage
+			c.m_nWeaponDamageModifier = int.Parse(lines[9].Trim());
+			//Weapon Mod name
+			c.m_szWeaponModifierName = lines[10].Trim();
+			//Head
+			if(lines[11].Trim() != "NULL")
+				c.m_idHelmSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[11].Trim());
+			else
+				c.m_idHelmSlot = null;
+			//Shoulders
+			if(lines[12].Trim() != "NULL")
+				c.m_idShoulderSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[12].Trim());
+			else
+				c.m_idShoulderSlot = null;
+			//Chest
+			if(lines[13].Trim() != "NULL")
+				c.m_idChestSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[13].Trim());
 			else
 				c.m_idChestSlot = null;
-			//Trinket
-			if(lines[8].Trim() != "NULL")
-				c.m_idTrinket1 = GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[8].Trim());
+			//Arms
+			if(lines[14].Trim() != "NULL")
+				c.m_idGloveSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[14].Trim());
+			else
+				c.m_idGloveSlot = null;
+			//Waist
+			if(lines[15].Trim() != "NULL")
+				c.m_idBeltSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[15].Trim());
+			else
+				c.m_idBeltSlot = null;
+			//Legs
+			if(lines[16].Trim() != "NULL")
+				c.m_idLegSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[16].Trim());
+			else
+				c.m_idLegSlot = null;
+			//Trinket1
+			if(lines[17].Trim() != "NULL")
+				c.m_idTrinket1 = GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[17].Trim());
 			else
 				c.m_idTrinket1 = null;
+			//Trinket2
+			if(lines[18].Trim() != "NULL")
+				c.m_idTrinket2 = GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[18].Trim());
+			else
+				c.m_idTrinket2 = null;
 			//Character Bio
-			c.m_szCharacterBio = lines[9].Trim();
+			c.m_szCharacterBio = lines[19].Trim();
 			//SpellCount
-			int amntOfSpells = int.Parse(lines[10].Trim());
+			int amntOfSpells = int.Parse(lines[20].Trim());
 			c.m_lSpellsKnown = new List<string>();
 			for(int i = 0; i < amntOfSpells; ++i)
 			{
-				c.m_lSpellsKnown.Add(lines[11+i].Trim());
+				c.m_lSpellsKnown.Add(lines[21+i].Trim());
 			}
 			GameObject.Find("PersistantData").GetComponent<DCScript>().AddPartyMember(c);
 		}

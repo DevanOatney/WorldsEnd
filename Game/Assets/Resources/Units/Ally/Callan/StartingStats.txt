@@ -6,12 +6,16 @@
 Human
 Agile Hunter
 1
+Wooden Bow
+1
+1
 NULL
 NULL
 NULL
 NULL
 NULL
 NULL
-Aviods Being Hurt
+NULL
+Avoids Being Hurt
 1
 NULL

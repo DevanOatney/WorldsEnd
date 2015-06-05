@@ -1,12 +1,22 @@
-15
-4
+12
+5
 0
-4
+3
 1
 Human
-Ranger
-Leather Armor
+Guard
+Long Bow
+1
+5
+Poisoned Arrow
 NULL
-Out to save the world from evil things!
+NULL
+Healing Armor
+NULL
+NULL
+NULL
+NULL
+NULL
+Trying to make sure Matt doesn't get himself killed...
 1
 Thunder

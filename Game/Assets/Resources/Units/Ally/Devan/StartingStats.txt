@@ -5,7 +5,17 @@
 1
 Human
 Guard
+Long Bow
+1
+5
+Poisoned Arrow
+NULL
+NULL
 Healing Armor
+NULL
+NULL
+NULL
+NULL
 NULL
 Trying to make sure Matt doesn't get himself killed...
 1

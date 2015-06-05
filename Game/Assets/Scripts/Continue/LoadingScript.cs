@@ -113,6 +113,18 @@ public class LoadingScript : MonoBehaviour
 			//Current exp
 			szLine = sr.ReadLine();
 
+			//Weapon Name
+			szLine = sr.ReadLine();
+
+			//Weapon Level
+			szLine = sr.ReadLine();
+
+			//Weapon Damage Mod
+			szLine = sr.ReadLine();
+
+			//Weapon Mod name
+			szLine = sr.ReadLine();
+
 			//Helm
 			szLine = sr.ReadLine();
 
@@ -299,6 +311,19 @@ public class LoadingScript : MonoBehaviour
 			szLine = sr.ReadLine();
 			int exp = int.Parse(szLine);
 			character.m_nCurrentEXP = exp;
+
+			//Weapon Name
+			szLine = sr.ReadLine();
+			character.m_szWeaponName = szLine.Trim();
+
+			//Weapon Level
+			character.m_nWeaponLevel = int.Parse(sr.ReadLine().Trim());
+
+			//Weapon Damage Mod
+			character.m_nWeaponDamageModifier = int.Parse(sr.ReadLine().Trim());
+
+			//Weapon Mod Name
+			character.m_szWeaponModifierName = sr.ReadLine().Trim();
 
 			//Helm name
 			szLine = sr.ReadLine();

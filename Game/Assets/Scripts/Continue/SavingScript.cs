@@ -76,6 +76,14 @@ public class SavingScript : MonoBehaviour
 			m_lOutputData.Add(member.m_nLevel.ToString());
 			//Current Experience
 			m_lOutputData.Add(member.m_nCurrentEXP.ToString());
+			//Weapon Name
+			m_lOutputData.Add(member.m_szWeaponName);
+			//Weapon Level
+			m_lOutputData.Add(member.m_nWeaponLevel.ToString());
+			//Weapon Damage Mod
+			m_lOutputData.Add(member.m_nWeaponDamageModifier.ToString());
+			//Weapon Modifier Name
+			m_lOutputData.Add(member.m_szWeaponModifierName);
 
 			//Helm Armor
 			if(member.m_idHelmSlot != null)
