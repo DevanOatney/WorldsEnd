@@ -12,6 +12,11 @@ public class NPC_BlacksmithScript : NPCScript
 	bool m_bModifierChosen = false;
 	int  m_nConfirmIter = 0;
 	DCScript dc;
+	//white texture for selecting the items
+	public Texture2D m_t2dTexture;
+	//timer and bucket for delayed input when the player is pressing and holding right/left
+	float m_fIncDecTimer = 0.0f;
+	float m_fIncDecBucket = 0.1f;
 
 	// Use this for initialization
 	void Start ()
@@ -23,6 +28,7 @@ public class NPC_BlacksmithScript : NPCScript
 	// Update is called once per frame
 	void Update () 
 	{
+		m_fIncDecTimer += Time.deltaTime;
 		HandleInput();
 		HandleMovement();
 	}
@@ -74,6 +80,32 @@ public class NPC_BlacksmithScript : NPCScript
 					}
 				}
 			}
+			else if(Input.GetKey(KeyCode.UpArrow))
+			{
+				if(m_bEnhanceChosen == false && m_bModifyChosen == false)
+				{
+					if(m_fIncDecTimer >= m_fIncDecBucket)
+					{
+						m_nInitialIter--;
+						if(m_nInitialIter < 0)
+							m_nInitialIter = 2;
+						m_fIncDecTimer = 0.0f;
+					}
+				}
+			}
+			else if(Input.GetKey(KeyCode.DownArrow))
+			{
+				if(m_bEnhanceChosen == false && m_bModifyChosen == false)
+				{
+					if(m_fIncDecTimer >= m_fIncDecBucket)
+					{
+						m_nInitialIter++;
+						if(m_nInitialIter > 2)
+							m_nInitialIter = 0;
+						m_fIncDecTimer = 0.0f;
+					}
+				}
+			}
 		}
 	}
 
@@ -92,16 +124,30 @@ public class NPC_BlacksmithScript : NPCScript
 	{
 		if(m_bShowScreen)
 		{
+			float fTextHeight = 30.0f;
 			GUI.Box(new Rect(Screen.width * 0.1f, Screen.height * 0.1f, Screen.width * 0.2f, Screen.height * 0.7f), "");
+			GUI.Label(new Rect(Screen.width * 0.13f, Screen.height * 0.12f, Screen.width * 0.15f, fTextHeight), "Enhance");
+			GUI.Label(new Rect(Screen.width * 0.13f, Screen.height * 0.12f + fTextHeight, Screen.width * 0.15f, fTextHeight), "Modify");
+			GUI.Label(new Rect(Screen.width * 0.13f, Screen.height * 0.12f + fTextHeight*2, Screen.width * 0.15f, fTextHeight), "Exit");
+			GUIStyle selectorStyle = new GUIStyle(GUI.skin.box);
+			selectorStyle.normal.background = m_t2dTexture;
+			GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
+			int tempFontHolder = GUI.skin.label.fontSize;
+			GUI.skin.label.fontSize = 20;
+			GUI.Box((new Rect(Screen.width * 0.12f,  Screen.height * 0.12f + fTextHeight * m_nInitialIter ,
+			                  Screen.width * 0.15f, fTextHeight + 2)), "",selectorStyle);
+			GUI.skin.label.fontSize = tempFontHolder;
+			GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
 
 			if(m_bEnhanceChosen == true)
 			{
 				GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f, Screen.width * 0.3f, Screen.height * 0.66f), "");
 				float yOffset = 0;
-				float fTextHeight = 30.0f;
+
 				foreach(DCScript.CharacterData character in dc.GetParty())
 				{
-					int tempFontHolder = GUI.skin.label.fontSize;
+					tempFontHolder = GUI.skin.label.fontSize;
 					GUI.skin.label.fontSize = 20;
 					GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f + yOffset, Screen.width * 0.3f, Screen.height * 0.22f), "");
 					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.13f + yOffset, 200, fTextHeight), character.m_szCharacterName);
@@ -119,10 +165,9 @@ public class NPC_BlacksmithScript : NPCScript
 			{
 				GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f, Screen.width * 0.3f, Screen.height * 0.66f), "");
 				float yOffset = 0;
-				float fTextHeight = 30.0f;
 				foreach(DCScript.CharacterData character in dc.GetParty())
 				{
-					int tempFontHolder = GUI.skin.label.fontSize;
+					tempFontHolder = GUI.skin.label.fontSize;
 					GUI.skin.label.fontSize = 20;
 					GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f + yOffset, Screen.width * 0.3f, Screen.height * 0.22f), "");
 					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.13f + yOffset, 200, fTextHeight), character.m_szCharacterName);
