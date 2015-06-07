@@ -18,6 +18,10 @@ public class NPC_BlacksmithScript : NPCScript
 	float m_fIncDecTimer = 0.0f;
 	float m_fIncDecBucket = 0.2f;
 
+
+	//The maximum amount that this blacksmith can enhance to
+	public int m_nMaxEnhancementLevel = 3;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -58,9 +62,19 @@ public class NPC_BlacksmithScript : NPCScript
 				{
 					if(m_nConfirmIter == 0)
 					{
-						//has decided to purchase a modification
-						m_nConfirmIter = 0;
-						m_bWeaponChosen = false;
+						//purchase has been confirmed, do it!
+						int sum = CalculateCost(dc.GetParty()[m_nWeaponIter].m_nWeaponLevel);
+						if(sum != -1 && sum <= dc.m_nGold && dc.GetParty()[m_nWeaponIter].m_nWeaponLevel < m_nMaxEnhancementLevel)
+						{
+							dc.m_nGold -= sum;
+							dc.GetParty()[m_nWeaponIter].m_nWeaponLevel++;
+							dc.GetParty()[m_nWeaponIter].m_nWeaponDamageModifier += 5;
+							m_bWeaponChosen = false;
+						}
+						else
+						{
+							//Either cannot afford, or the level of the weapon is too high.
+						}
 					}
 					else
 					{
@@ -124,6 +138,16 @@ public class NPC_BlacksmithScript : NPCScript
 						m_fIncDecTimer = 0.0f;
 					}
 				}
+				else if(m_bWeaponChosen == true)
+				{
+					if(m_fIncDecTimer >= m_fIncDecBucket)
+					{
+						m_nConfirmIter--;
+						if(m_nConfirmIter < 0)
+							m_nConfirmIter = 1;
+						m_fIncDecTimer = 0.0f;
+					}
+				}
 			}
 			else if(Input.GetKey(KeyCode.DownArrow))
 			{
@@ -144,6 +168,16 @@ public class NPC_BlacksmithScript : NPCScript
 						m_nWeaponIter++;
 						if(m_nWeaponIter >= dc.GetParty().Count)
 							m_nWeaponIter = 0;
+						m_fIncDecTimer = 0.0f;
+					}
+				}
+				else if(m_bWeaponChosen == true)
+				{
+					if(m_fIncDecTimer >= m_fIncDecBucket)
+					{
+						m_nConfirmIter++;
+						if(m_nConfirmIter > 1)
+							m_nConfirmIter = 0;
 						m_fIncDecTimer = 0.0f;
 					}
 				}
@@ -207,20 +241,28 @@ public class NPC_BlacksmithScript : NPCScript
 			{
 				GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f, Screen.width * 0.3f, Screen.height * 0.66f), "");
 				float yOffset = 0;
-
+				int counter = 0;
 				foreach(DCScript.CharacterData character in dc.GetParty())
 				{
 					tempFontHolder = GUI.skin.label.fontSize;
 					GUI.skin.label.fontSize = 20;
+
 					GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f + yOffset, Screen.width * 0.3f, Screen.height * 0.22f), "");
 					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.13f + yOffset, 200, fTextHeight), character.m_szCharacterName);
-					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.17f + yOffset, 200, fTextHeight), character.m_szWeaponName + "   " + character.m_nWeaponLevel.ToString());
+					if(GUI.Button(new Rect(Screen.width * 0.3f, Screen.height * 0.17f + yOffset, 200, fTextHeight),
+					              character.m_szWeaponName + "   " + character.m_nWeaponLevel.ToString(), "Label"))
+					{
+						m_nWeaponIter = counter;
+						m_bWeaponChosen = true;
+						m_nConfirmIter = 0;
+					}
 					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + yOffset, 200, fTextHeight), character.m_szWeaponModifierName);
 
 
 					GUI.Box(new Rect(Screen.width * 0.57f, Screen.height * 0.12f + yOffset, Screen.width * 0.2f, Screen.height * 0.22f), "[Portrait]");
 					yOffset += Screen.height * 0.22f;
 					GUI.skin.label.fontSize = tempFontHolder;
+					counter++;
 				}
 				GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
 				GUI.Box(new Rect(Screen.width * 0.3f, Screen.height * 0.17f + (Screen.height * 0.22f * m_nWeaponIter), 200, fTextHeight), "",selectorStyle);
@@ -230,6 +272,7 @@ public class NPC_BlacksmithScript : NPCScript
 			{
 				GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f, Screen.width * 0.3f, Screen.height * 0.66f), "");
 				float yOffset = 0;
+				int counter = 0;
 				foreach(DCScript.CharacterData character in dc.GetParty())
 				{
 					tempFontHolder = GUI.skin.label.fontSize;
@@ -237,18 +280,86 @@ public class NPC_BlacksmithScript : NPCScript
 					GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f + yOffset, Screen.width * 0.3f, Screen.height * 0.22f), "");
 					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.13f + yOffset, 200, fTextHeight), character.m_szCharacterName);
 					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.17f + yOffset, 200, fTextHeight), character.m_szWeaponName + "   " + character.m_nWeaponLevel.ToString());
-					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + yOffset, 200, fTextHeight), character.m_szWeaponModifierName);
+					if(GUI.Button(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + yOffset, 200, fTextHeight), character.m_szWeaponModifierName, "Label"))
+					{
+						m_nWeaponIter = counter;
+						m_bWeaponChosen = true;
+						m_nConfirmIter = 0;
+					}
 					
 					
 					GUI.Box(new Rect(Screen.width * 0.57f, Screen.height * 0.12f + yOffset, Screen.width * 0.2f, Screen.height * 0.22f), "[Portrait]");
 					yOffset += Screen.height * 0.22f;
 					GUI.skin.label.fontSize = tempFontHolder;
+					counter++;
 				}
+				GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
+				GUI.Box(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + (Screen.height * 0.22f * m_nWeaponIter), 200, fTextHeight), "",selectorStyle);
+				GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 			}
+			if(m_bWeaponChosen == true)
+			{
+				if(m_bEnhanceChosen == true)
+				{
+					//confirm purchase
+					GUI.skin.label.fontSize = 20;
+					GUI.Box(new Rect(Screen.width * 0.28f, Screen.height * 0.35f, Screen.width * 0.3f, Screen.height * 0.25f), "");
+					GUI.Label(new Rect(Screen.width * 0.28f, Screen.height * 0.35f, Screen.width * 0.3f, Screen.height * 0.25f), 
+					          "This will cost " + CalculateCost(dc.GetParty()[m_nWeaponIter].m_nWeaponLevel).ToString() + " Spyr\n" + 
+					          "Do you wish to purchase this enhancement?");
 
+
+					if(GUI.Button(new Rect(Screen.width * 0.32f, Screen.height * 0.52f, Screen.width * 0.05f, fTextHeight), "Yes", "Label"))
+					{
+						//purchase has been confirmed, do it!
+						int sum = CalculateCost(dc.GetParty()[m_nWeaponIter].m_nWeaponLevel);
+						if(sum != -1 && sum <= dc.m_nGold && dc.GetParty()[m_nWeaponIter].m_nWeaponLevel < m_nMaxEnhancementLevel)
+						{
+							dc.m_nGold -= sum;
+							dc.GetParty()[m_nWeaponIter].m_nWeaponLevel++;
+							dc.GetParty()[m_nWeaponIter].m_nWeaponDamageModifier += 5;
+							m_bWeaponChosen = false;
+						}
+						else
+						{
+							//Either cannot afford, or the level of the weapon is too high.
+						}
+					}
+					if(GUI.Button(new Rect(Screen.width * 0.46f, Screen.height * 0.52f, Screen.width * 0.05f, fTextHeight), "No", "Label"))
+					{
+						//purchase has been cancelled, just back up one
+						m_nConfirmIter = 0;
+						m_bWeaponChosen = false;
+					}
+					GUI.skin.label.fontSize = tempFontHolder;
+				}
+				else
+				{
+					//draw the modifier options
+					GUI.Box(new Rect(Screen.width * 0.28f, Screen.height * 0.35f, Screen.width * 0.3f, Screen.height * 0.25f), "");
+				}
+
+			}
 		}
 	}
-
+	int CalculateCost (int wpnLvl)
+	{
+		int sum = -1;
+		if(wpnLvl < 4)
+		{
+			return (int)Mathf.Pow(10, wpnLvl+1);
+		}
+		else if(wpnLvl < 10)
+		{
+			int x = (int)Mathf.Pow(10, wpnLvl+1);
+			for(int i = 0; i < wpnLvl - 3; ++i)
+			{
+				x *= 2;
+			}
+			return x;
+		}
+		return sum;
+	}
 	new public void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.name == "Action Box(Clone)")
