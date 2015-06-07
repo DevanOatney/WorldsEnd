@@ -16,7 +16,7 @@ public class NPC_BlacksmithScript : NPCScript
 	public Texture2D m_t2dTexture;
 	//timer and bucket for delayed input when the player is pressing and holding right/left
 	float m_fIncDecTimer = 0.0f;
-	float m_fIncDecBucket = 0.1f;
+	float m_fIncDecBucket = 0.2f;
 
 	// Use this for initialization
 	void Start ()
@@ -52,7 +52,7 @@ public class NPC_BlacksmithScript : NPCScript
 					}
 			
 				}
-				else if(m_bEnhanceChosen == true || m_bModifyChosen == true && m_bWeaponChosen == false)
+				else if((m_bEnhanceChosen == true || m_bModifyChosen == true) && m_bWeaponChosen == false)
 					m_bWeaponChosen = true;
 				else if(m_bModifyChosen == true && m_bWeaponChosen == true)
 				{
@@ -85,7 +85,7 @@ public class NPC_BlacksmithScript : NPCScript
 			}
 			else if(Input.GetKeyUp(KeyCode.Escape))
 			{
-				if(m_bEnhanceChosen == true || m_bModifyChosen == true && m_bWeaponChosen == false)
+				if((m_bEnhanceChosen == true || m_bModifyChosen == true) && m_bWeaponChosen == false)
 				{
 					m_bEnhanceChosen = false;
 					m_bModifyChosen = false;
@@ -114,6 +114,16 @@ public class NPC_BlacksmithScript : NPCScript
 						m_fIncDecTimer = 0.0f;
 					}
 				}
+				else if((m_bEnhanceChosen == true || m_bModifyChosen == true) && m_bWeaponChosen == false)
+				{
+					if(m_fIncDecTimer >= m_fIncDecBucket)
+					{
+						m_nWeaponIter--;
+						if(m_nWeaponIter < 0)
+							m_nWeaponIter = dc.GetParty().Count - 1;
+						m_fIncDecTimer = 0.0f;
+					}
+				}
 			}
 			else if(Input.GetKey(KeyCode.DownArrow))
 			{
@@ -124,6 +134,16 @@ public class NPC_BlacksmithScript : NPCScript
 						m_nInitialIter++;
 						if(m_nInitialIter > 2)
 							m_nInitialIter = 0;
+						m_fIncDecTimer = 0.0f;
+					}
+				}
+				else if((m_bEnhanceChosen == true || m_bModifyChosen == true) && m_bWeaponChosen == false)
+				{
+					if(m_fIncDecTimer >= m_fIncDecBucket)
+					{
+						m_nWeaponIter++;
+						if(m_nWeaponIter >= dc.GetParty().Count)
+							m_nWeaponIter = 0;
 						m_fIncDecTimer = 0.0f;
 					}
 				}
@@ -147,15 +167,36 @@ public class NPC_BlacksmithScript : NPCScript
 		if(m_bShowScreen)
 		{
 			float fTextHeight = 30.0f;
+			int tempFontHolder = GUI.skin.label.fontSize;
+			GUI.skin.label.fontSize = 20;
 			GUI.Box(new Rect(Screen.width * 0.1f, Screen.height * 0.1f, Screen.width * 0.2f, Screen.height * 0.7f), "");
-			GUI.Label(new Rect(Screen.width * 0.13f, Screen.height * 0.12f, Screen.width * 0.15f, fTextHeight), "Enhance");
-			GUI.Label(new Rect(Screen.width * 0.13f, Screen.height * 0.12f + fTextHeight, Screen.width * 0.15f, fTextHeight), "Modify");
-			GUI.Label(new Rect(Screen.width * 0.13f, Screen.height * 0.12f + fTextHeight*2, Screen.width * 0.15f, fTextHeight), "Exit");
+			if(GUI.Button(new Rect(Screen.width * 0.13f, Screen.height * 0.12f, Screen.width * 0.15f, fTextHeight),"Enhance", "Label" ))
+			{
+				m_bEnhanceChosen = true;
+				m_bModifyChosen = false;
+				m_bWeaponChosen = false;
+				m_nInitialIter = 0;
+				m_nWeaponIter = 0;
+				m_nConfirmIter = 0;
+			}
+			if(GUI.Button(new Rect(Screen.width * 0.13f, Screen.height * 0.12f + fTextHeight, Screen.width * 0.15f, fTextHeight), "Modify", "Label"))
+			{
+				m_bModifyChosen = true;
+				m_bEnhanceChosen = false;
+				m_bWeaponChosen = false;
+				m_nInitialIter = 1;
+				m_nWeaponIter = 0;
+				m_nConfirmIter = 0;
+			}
+			if(GUI.Button(new Rect(Screen.width * 0.13f, Screen.height * 0.12f + fTextHeight*2, Screen.width * 0.15f, fTextHeight), "Exit", "Label"))
+			{
+				ResetValues();
+				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
 			GUIStyle selectorStyle = new GUIStyle(GUI.skin.box);
 			selectorStyle.normal.background = m_t2dTexture;
 			GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
-			int tempFontHolder = GUI.skin.label.fontSize;
-			GUI.skin.label.fontSize = 20;
+
 			GUI.Box((new Rect(Screen.width * 0.12f,  Screen.height * 0.12f + fTextHeight * m_nInitialIter ,
 			                  Screen.width * 0.15f, fTextHeight + 2)), "",selectorStyle);
 			GUI.skin.label.fontSize = tempFontHolder;
@@ -181,7 +222,9 @@ public class NPC_BlacksmithScript : NPCScript
 					yOffset += Screen.height * 0.22f;
 					GUI.skin.label.fontSize = tempFontHolder;
 				}
-
+				GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
+				GUI.Box(new Rect(Screen.width * 0.3f, Screen.height * 0.17f + (Screen.height * 0.22f * m_nWeaponIter), 200, fTextHeight), "",selectorStyle);
+				GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 			}
 			else if(m_bModifyChosen == true)
 			{
