@@ -33,11 +33,11 @@ public class NPC_BlacksmithScript : NPCScript
 		HandleMovement();
 	}
 
-	void HandleInput()
+	void HandleInput() 
 	{
 		if(m_bShowScreen == true)
 		{
-			if(Input.GetKey(KeyCode.Return))
+			if(Input.GetKeyUp(KeyCode.Return))
 			{
 				if(m_bEnhanceChosen == false && m_bModifyChosen == false)
 				{
@@ -46,7 +46,10 @@ public class NPC_BlacksmithScript : NPCScript
 					else if(m_nInitialIter == 1)
 						m_bModifyChosen = true;
 					else
+					{
 						ResetValues();
+						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+					}
 			
 				}
 				else if(m_bEnhanceChosen == true || m_bModifyChosen == true && m_bWeaponChosen == false)
@@ -78,6 +81,25 @@ public class NPC_BlacksmithScript : NPCScript
 						m_nConfirmIter = 0;
 						m_bWeaponChosen = false;
 					}
+				}
+			}
+			else if(Input.GetKeyUp(KeyCode.Escape))
+			{
+				if(m_bEnhanceChosen == true || m_bModifyChosen == true && m_bWeaponChosen == false)
+				{
+					m_bEnhanceChosen = false;
+					m_bModifyChosen = false;
+					m_nWeaponIter = 0;
+				}
+				else if(m_bWeaponChosen == true)
+				{
+					m_bWeaponChosen = false;
+					m_nConfirmIter = 0;
+				}
+				else if(m_bEnhanceChosen == false && m_bModifyChosen == false)
+				{
+					ResetValues();
+					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 				}
 			}
 			else if(Input.GetKey(KeyCode.UpArrow))
@@ -201,6 +223,7 @@ public class NPC_BlacksmithScript : NPCScript
 
 	public void ActivateScreen()
 	{
+		GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 		Input.ResetInputAxes();
 		m_bShowScreen = true;
 	}

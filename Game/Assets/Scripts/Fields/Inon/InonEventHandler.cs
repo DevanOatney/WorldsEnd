@@ -79,27 +79,24 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Merchant_EndDialogue":
 		{
-			GameObject[] gObjs = GameObject.FindGameObjectsWithTag("Merchant");
-			foreach(GameObject g in gObjs)
-			{
-				g.GetComponent<NPC_ArmorMerchantScript>().ActivateMerchantScreen();
-			}
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
 			if(player)
 			{
 				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 			}
+			GameObject[] gObjs = GameObject.FindGameObjectsWithTag("Merchant");
+			foreach(GameObject g in gObjs)
+			{
+				g.GetComponent<NPC_ArmorMerchantScript>().ActivateMerchantScreen();
+			}
+
 		}
 			break;
 		case "Inon_Blacksmith1":
 		{
 			GameObject blackSmith = GameObject.Find("Blacksmith");
 			blackSmith.GetComponent<NPC_BlacksmithScript>().ActivateScreen();
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-			}
+
 		}
 			break;
 		default:
