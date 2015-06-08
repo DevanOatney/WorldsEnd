@@ -1,6 +1,7 @@
 My ideas on how I imagine the music to work within the Inon map.
 Main Menu Theme:
-10Class.mp3 - It has a dramatic feel to it. It can be played quietly in the background and be 	looped really easily. It sets the tone for how the game is going to go from the start. 	It is a little dramatic, but I kept the dialogue simple so as to let the story build on 	itself. Not setting the expectations so high early on.
+10Class.mp3 - It has a dramatic feel to it. It can be played quietly in the background and be 	looped really easily. It sets the tone for how the game is going to go from the start. 
+	It is a little dramatic, but I kept the dialogue simple so as to let the story build on 	itself. Not setting the expectations so high early on.
 
 Walking Around Inon:
 ByTheField.mp3 - It's light and pleasant feeling. Not complicated and it fits with the feel of 	
@@ -10,7 +11,9 @@ End of Ceremony:
 Journeys.mp3 - It has a low sound, would make a great overlay while the father is talking to 	them about what is to come. It should be scripted to play when the after_boat_dialogue 	starts. 
 
 Grave Music:
-ALightIntro.mp3 - It has a sort of sad sound, yet at the same time it still makes you feel 	hopeful, loved. It plays while the Father talks about their mother and how she died. It 	captures how the father feels. But it doesn't quite capture how he feels when it comes 	to the part in his dialogue where he tells them how he rips apart the group of bandits. 	But the dialogue is short, so it would be jarring to have the music fade from 	AlightIntro to 	something else so quickly.
+ALightIntro.mp3 - It has a sort of sad sound, yet at the same time it still makes you feel 	hopeful, loved. It plays while the Father talks about their mother and how she died. It 	
+captures how the father feels. But it doesn't quite capture how he feels when it comes 	to the part in his dialogue where he tells them how he rips apart the group of bandits. 	
+But the dialogue is short, so it would be jarring to have the music fade from 	AlightIntro to 	something else so quickly.
 
 Forest Outside Inon:
 BeyongTheseForests.mp3 - This is the music that I wanted to play when they leave Inon 	and 	venture off into the forest scene between Inon and the Temple.
