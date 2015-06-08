@@ -196,6 +196,13 @@ public class DCScript : MonoBehaviour
 	public int GetBattleFieldBackgroundIter() {return m_nBattleFieldBackgroundIter;}
 	public void SetBattleFieldBackgroundIter(int iter) {m_nBattleFieldBackgroundIter = iter;}
 
+	public class cModifier
+	{
+		public string m_szModifierName;
+		public string m_szModifierDesc;
+		public int m_nModCost;
+	}
+	List<cModifier> m_lModifiers = new List<cModifier>();
 
 	void Awake () 
 	{

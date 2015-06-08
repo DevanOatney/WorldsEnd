@@ -332,11 +332,18 @@ public class NPC_BlacksmithScript : NPCScript
 						m_bWeaponChosen = false;
 					}
 					GUI.skin.label.fontSize = tempFontHolder;
+					GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
+					if(m_nConfirmIter == 0)
+						GUI.Box(new Rect(Screen.width * 0.32f, Screen.height * 0.52f, Screen.width * 0.05f, fTextHeight), "",selectorStyle);
+					else if(m_nConfirmIter == 1)
+						GUI.Box(new Rect(Screen.width * 0.46f, Screen.height * 0.52f, Screen.width * 0.05f, fTextHeight), "",selectorStyle);
+					GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 				}
 				else
 				{
 					//draw the modifier options
 					GUI.Box(new Rect(Screen.width * 0.28f, Screen.height * 0.35f, Screen.width * 0.3f, Screen.height * 0.25f), "");
+
 				}
 
 			}
