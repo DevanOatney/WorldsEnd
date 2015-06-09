@@ -203,6 +203,7 @@ public class DCScript : MonoBehaviour
 		public int m_nModCost;
 	}
 	List<cModifier> m_lModifiers = new List<cModifier>();
+	public List<cModifier> GetModifiers() {return m_lModifiers;}
 
 	void Awake () 
 	{

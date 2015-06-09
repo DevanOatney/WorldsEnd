@@ -9,6 +9,9 @@ public class ItemLoaderScript : MonoBehaviour
 {
 	public TextAsset m_szUseableItems;
 	public TextAsset m_szArmorItems;
+	public TextAsset m_taModifierListAsset;
+	public TextAsset m_taWeaponDataAsset;
+
 	DCScript dcs;
 	// Use this for initialization
 	void Start () 

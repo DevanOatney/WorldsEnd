@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NPC_BlacksmithScript : NPCScript 
 {
@@ -10,6 +11,7 @@ public class NPC_BlacksmithScript : NPCScript
 	int  m_nWeaponIter = 0;
 	bool m_bWeaponChosen = false;
 	bool m_bModifierChosen = false;
+	int m_nModifierIter = 0;
 	int  m_nConfirmIter = 0;
 	DCScript dc;
 	//white texture for selecting the items
@@ -58,28 +60,17 @@ public class NPC_BlacksmithScript : NPCScript
 				}
 				else if((m_bEnhanceChosen == true || m_bModifyChosen == true) && m_bWeaponChosen == false)
 					m_bWeaponChosen = true;
-				else if(m_bModifyChosen == true && m_bWeaponChosen == true)
+				else if(m_bModifyChosen == true && m_bModifierChosen == true)
 				{
 					if(m_nConfirmIter == 0)
 					{
 						//purchase has been confirmed, do it!
-						int sum = CalculateCost(dc.GetParty()[m_nWeaponIter].m_nWeaponLevel);
-						if(sum != -1 && sum <= dc.m_nGold && dc.GetParty()[m_nWeaponIter].m_nWeaponLevel < m_nMaxEnhancementLevel)
-						{
-							dc.m_nGold -= sum;
-							dc.GetParty()[m_nWeaponIter].m_nWeaponLevel++;
-							dc.GetParty()[m_nWeaponIter].m_nWeaponDamageModifier += 5;
-							m_bWeaponChosen = false;
-						}
-						else
-						{
-							//Either cannot afford, or the level of the weapon is too high.
-						}
+
 					}
 					else
 					{
 						m_nConfirmIter = 0;
-						m_bWeaponChosen = false;
+						m_bModifierChosen = false;
 					}
 				}
 				else if(m_bEnhanceChosen == true && m_bWeaponChosen == true)
@@ -87,8 +78,19 @@ public class NPC_BlacksmithScript : NPCScript
 					if(m_nConfirmIter == 0)
 					{
 						//has decided to confirm the enhance of the selected weapon
-						m_nConfirmIter = 0;
-						m_bWeaponChosen = false;
+						int sum = CalculateCost(dc.GetParty()[m_nWeaponIter].m_nWeaponLevel);
+						if(sum != -1 && sum <= dc.m_nGold && dc.GetParty()[m_nWeaponIter].m_nWeaponLevel < m_nMaxEnhancementLevel)
+						{
+							dc.m_nGold -= sum;
+							dc.GetParty()[m_nWeaponIter].m_nWeaponLevel++;
+							dc.GetParty()[m_nWeaponIter].m_nWeaponDamageModifier += 5;
+							m_nConfirmIter = 0;
+							m_bWeaponChosen = false;
+						}
+						else
+						{
+							//Either cannot afford, or the level of the weapon is too high.
+						}
 					}
 					else
 					{
@@ -105,9 +107,14 @@ public class NPC_BlacksmithScript : NPCScript
 					m_bModifyChosen = false;
 					m_nWeaponIter = 0;
 				}
-				else if(m_bWeaponChosen == true)
+				else if(m_bWeaponChosen == true && m_bModifierChosen == false)
 				{
-					m_bWeaponChosen = false;
+					m_bModifierChosen = false;
+					m_nConfirmIter = 0;
+				}
+				else if(m_bModifierChosen == true)
+				{
+					m_bModifierChosen = false;
 					m_nConfirmIter = 0;
 				}
 				else if(m_bEnhanceChosen == false && m_bModifyChosen == false)
@@ -342,8 +349,16 @@ public class NPC_BlacksmithScript : NPCScript
 				else
 				{
 					//draw the modifier options
-					GUI.Box(new Rect(Screen.width * 0.28f, Screen.height * 0.35f, Screen.width * 0.3f, Screen.height * 0.25f), "");
+					GUI.Box(new Rect(Screen.width * 0.77f, Screen.height * 0.12f, Screen.width * 0.2f, Screen.height * 0.66f), "");
+					List<DCScript.cModifier> lModifiers = dc.GetModifiers();
+					float yOffset = 0;
+					foreach(DCScript.cModifier mod in lModifiers)
+					{
 
+						GUI.Button(new Rect(Screen.width * 0.7725f, Screen.height * 0.125f + yOffset, Screen.width * 0.05f, fTextHeight), mod.m_szModifierName, "Label");
+						yOffset += Screen.height * 0.11f;
+					}
+					//GUI.Box(new Rect(Screen.width * 0.57f, Screen.height * 0.12f + yOffset, Screen.width * 0.2f, Screen.height * 0.22f), "[Portrait]");
 				}
 
 			}
