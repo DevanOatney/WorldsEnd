@@ -12,5 +12,5 @@ A11|1|Sister|*sobbing quietly*...I had no idea..|A12|
 A12|2|3|3|Dad...|A13|*sob quietly* You should have told us this a long time ago!|A13|....|A13
 A13|1|Father|I know I should have told the both of you many years ago. But I felt that you were too young. You know now, and that's what is important. When you go down whatever path you may choose, remember that not every soul is a good one.|A14
 A14|1|Sister|We will father!|A15
-A15|1|Good, that's what I like to hear. But before you go, I want to refresh your memory on how combat works. Ah, here comes your first lessson.|A16
+A15|1|Father|Good, that's what I like to hear. But before you go, I want to refresh your memory on how combat works. Ah, here comes your first lessson.|A16
 A16|3|BoarTutorial

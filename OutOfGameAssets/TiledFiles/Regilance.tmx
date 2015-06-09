@@ -46,12 +46,6 @@
  </tileset>
  <tileset firstgid="62" name="Inq XP WM - World Map" tilewidth="32" tileheight="32">
   <image source="../Tilesets/Inq XP WM - World Map.png" width="256" height="16448"/>
-  <tile id="1073">
-   <animation>
-    <frame tileid="3806" duration="100"/>
-    <frame tileid="3830" duration="100"/>
-   </animation>
-  </tile>
  </tileset>
  <tileset firstgid="4174" name="Inq XP WM - Customization" tilewidth="32" tileheight="32">
   <image source="../Tilesets/Inq XP WM - Customization.png" width="192" height="1760"/>
