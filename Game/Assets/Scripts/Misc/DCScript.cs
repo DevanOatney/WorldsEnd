@@ -216,6 +216,7 @@ public class DCScript : MonoBehaviour
 	}
 	public class WeaponData
 	{
+		public string m_szOwnerName;
 		public List<LevelingWeapon> m_lLevels = new List<LevelingWeapon>();
 	}
 	List<WeaponData> m_lWeapons = new List<WeaponData>();

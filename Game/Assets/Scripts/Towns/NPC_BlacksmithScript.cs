@@ -384,8 +384,21 @@ public class NPC_BlacksmithScript : NPCScript
 						if(sum != -1 && sum <= dc.m_nGold && dc.GetParty()[m_nWeaponIter].m_nWeaponLevel < m_nMaxEnhancementLevel)
 						{
 							dc.m_nGold -= sum;
-							dc.GetParty()[m_nWeaponIter].m_nWeaponLevel++;
-							dc.GetParty()[m_nWeaponIter].m_nWeaponDamageModifier += 5;
+							foreach(DCScript.WeaponData weapon in dc.GetWeaponList())
+							{
+								if(weapon.m_szOwnerName == dc.GetParty()[m_nWeaponIter].m_szCharacterName)
+								{
+									dc.GetParty()[m_nWeaponIter].m_nWeaponLevel++;
+									foreach(DCScript.LevelingWeapon wpn in weapon.m_lLevels)
+									{
+										if(dc.GetParty()[m_nWeaponIter].m_nLevel == wpn.m_nLevel)
+										{
+											dc.GetParty()[m_nWeaponIter].m_szWeaponName = wpn.m_szWeaponName;
+											dc.GetParty()[m_nWeaponIter].m_nWeaponDamageModifier  = wpn.m_nDamage;
+										}
+									}
+								}
+							}
 							m_bWeaponChosen = false;
 						}
 						else

@@ -54,7 +54,26 @@ public class ItemLoaderScript : MonoBehaviour
 
 	void LoadWeaponData()
 	{
-
+		string[] lines = m_taWeaponDataAsset.text.Split('\n');
+		int counter = 0;
+		foreach(string sz in lines)
+		{
+			counter++;
+			if(counter == lines.Length)
+				break;
+			string[] szPieces = sz.Split(',');
+			DCScript.WeaponData newWeapon = new DCScript.WeaponData();
+			newWeapon.m_szOwnerName = szPieces[0].Trim();
+			for(int i = 1; i <= 20; i += 2)
+			{
+				DCScript.LevelingWeapon wpn = new DCScript.LevelingWeapon();
+				wpn.m_szWeaponName = szPieces[i].Trim();
+				wpn.m_nDamage = int.Parse(szPieces[i+1].Trim());
+				wpn.m_nLevel = (int)((i+1)/2);
+				newWeapon.m_lLevels.Add(wpn);
+			}
+			dcs.GetWeaponList().Add(newWeapon);
+		}
 	}
 
 	void LoadUseableItems()

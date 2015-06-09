@@ -10,6 +10,8 @@ public class ScreenSwitchScript : MonoBehaviour
 	public GameObject m_goNextLocation;
 	//New direction to face, default to -1 if no new facing
 	public int m_nNewFacingDir = -1;
+	//If we're scene switching, which starting point should we go to?
+	public string m_szStartingLocToGoTo = "";
 	bool m_bHasJustAppeared = false;
 	public void SetAppearFlag(bool flag) {m_bHasJustAppeared = flag;}
 	void TurnOffFlag() {m_bHasJustAppeared = false;}
