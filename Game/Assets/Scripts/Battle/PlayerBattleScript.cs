@@ -212,6 +212,8 @@ public class PlayerBattleScript : UnitScript {
 			c.m_nWeaponDamageModifier = int.Parse(lines[9].Trim());
 			//Weapon Mod name
 			c.m_szWeaponModifierName = lines[10].Trim();
+			if(c.m_szWeaponModifierName == "NONE")
+				c.m_szWeaponModifierName = "";
 			//Head
 			if(lines[11].Trim() != "NULL")
 				c.m_idHelmSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[11].Trim());

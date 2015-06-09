@@ -65,6 +65,18 @@ public class NPC_BlacksmithScript : NPCScript
 					if(m_nConfirmIter == 0)
 					{
 						//purchase has been confirmed, do it!
+						int sum = dc.GetModifierList()[m_nModifierIter].m_nModCost;
+						if(sum != -1 && sum <= dc.m_nGold)
+						{
+							dc.m_nGold -= sum;
+							dc.GetParty()[m_nWeaponIter].m_szWeaponModifierName = dc.GetModifierList()[m_nModifierIter].m_szModifierName;
+							m_nConfirmIter = 0;
+							m_bModifierChosen = false;
+						}
+						else
+						{
+							//Either cannot afford, or the level of the weapon is too high.
+						}
 
 					}
 					else
@@ -109,7 +121,7 @@ public class NPC_BlacksmithScript : NPCScript
 				}
 				else if(m_bWeaponChosen == true && m_bModifierChosen == false)
 				{
-					m_bModifierChosen = false;
+					m_bWeaponChosen = false;
 					m_nConfirmIter = 0;
 				}
 				else if(m_bModifierChosen == true)
@@ -145,7 +157,27 @@ public class NPC_BlacksmithScript : NPCScript
 						m_fIncDecTimer = 0.0f;
 					}
 				}
-				else if(m_bWeaponChosen == true)
+				else if(m_bWeaponChosen == true && m_bModifyChosen == false)
+				{
+					if(m_fIncDecTimer >= m_fIncDecBucket)
+					{
+						m_nConfirmIter--;
+						if(m_nConfirmIter < 0)
+							m_nConfirmIter = 1;
+						m_fIncDecTimer = 0.0f;
+					}
+				}
+				else if(m_bWeaponChosen == true && m_bModifyChosen == true && m_bModifierChosen == false)
+				{
+					if(m_fIncDecTimer >= m_fIncDecBucket)
+					{
+						m_nModifierIter--;
+						if(m_nModifierIter < 0)
+							m_nModifierIter = dc.GetModifierList().Count - 1;
+						m_fIncDecTimer = 0.0f;
+					}
+				}
+				else if(m_bWeaponChosen == true && m_bModifyChosen == true && m_bModifierChosen == true)
 				{
 					if(m_fIncDecTimer >= m_fIncDecBucket)
 					{
@@ -178,7 +210,27 @@ public class NPC_BlacksmithScript : NPCScript
 						m_fIncDecTimer = 0.0f;
 					}
 				}
-				else if(m_bWeaponChosen == true)
+				else if(m_bWeaponChosen == true && m_bModifyChosen == false)
+				{
+					if(m_fIncDecTimer >= m_fIncDecBucket)
+					{
+						m_nConfirmIter++;
+						if(m_nConfirmIter > 1)
+							m_nConfirmIter = 0;
+						m_fIncDecTimer = 0.0f;
+					}
+				}
+				else if(m_bWeaponChosen == true && m_bModifyChosen == true && m_bModifierChosen == false)
+				{
+					if(m_fIncDecTimer >= m_fIncDecBucket)
+					{
+						m_nModifierIter++;
+						if(m_nModifierIter >= dc.GetModifierList().Count)
+							m_nModifierIter = 0;
+						m_fIncDecTimer = 0.0f;
+					}
+				}
+				else if(m_bWeaponChosen == true && m_bModifyChosen == true && m_bModifierChosen == true)
 				{
 					if(m_fIncDecTimer >= m_fIncDecBucket)
 					{
@@ -263,7 +315,10 @@ public class NPC_BlacksmithScript : NPCScript
 						m_bWeaponChosen = true;
 						m_nConfirmIter = 0;
 					}
-					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + yOffset, 200, fTextHeight), character.m_szWeaponModifierName);
+					if(character.m_szWeaponModifierName != "")
+						GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + yOffset, 200, fTextHeight), character.m_szWeaponModifierName);
+					else
+						GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + yOffset, 200, fTextHeight), "[EMPTY]");
 
 
 					GUI.Box(new Rect(Screen.width * 0.57f, Screen.height * 0.12f + yOffset, Screen.width * 0.2f, Screen.height * 0.22f), "[Portrait]");
@@ -287,7 +342,11 @@ public class NPC_BlacksmithScript : NPCScript
 					GUI.Box(new Rect(Screen.width * 0.27f, Screen.height * 0.12f + yOffset, Screen.width * 0.3f, Screen.height * 0.22f), "");
 					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.13f + yOffset, 200, fTextHeight), character.m_szCharacterName);
 					GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.17f + yOffset, 200, fTextHeight), character.m_szWeaponName + "   " + character.m_nWeaponLevel.ToString());
-					if(GUI.Button(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + yOffset, 200, fTextHeight), character.m_szWeaponModifierName, "Label"))
+					if(character.m_szWeaponModifierName != "")
+						GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + yOffset, 200, fTextHeight), character.m_szWeaponModifierName);
+					else
+						GUI.Label(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + yOffset, 200, fTextHeight), "[EMPTY]");
+					if(GUI.Button(new Rect(Screen.width * 0.3f, Screen.height * 0.21f + yOffset, 200, fTextHeight), character.m_szWeaponModifierName, ""))
 					{
 						m_nWeaponIter = counter;
 						m_bWeaponChosen = true;
@@ -350,14 +409,17 @@ public class NPC_BlacksmithScript : NPCScript
 				{
 					//draw the modifier options
 					GUI.Box(new Rect(Screen.width * 0.77f, Screen.height * 0.12f, Screen.width * 0.2f, Screen.height * 0.66f), "");
-					List<DCScript.cModifier> lModifiers = dc.GetModifiers();
+					List<DCScript.cModifier> lModifiers = dc.GetModifierList();
 					float yOffset = 0;
 					foreach(DCScript.cModifier mod in lModifiers)
 					{
 
-						GUI.Button(new Rect(Screen.width * 0.7725f, Screen.height * 0.125f + yOffset, Screen.width * 0.05f, fTextHeight), mod.m_szModifierName, "Label");
-						yOffset += Screen.height * 0.11f;
+						GUI.Button(new Rect(Screen.width * 0.7725f, Screen.height * 0.125f + yOffset, Screen.width * 0.1f, fTextHeight), mod.m_szModifierName, "Label");
+						yOffset += Screen.height * 0.03f;
 					}
+					GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
+					GUI.Box(new Rect(Screen.width * 0.772f, Screen.height * 0.125f + (Screen.height * 0.03f * m_nModifierIter), Screen.width * 0.11f, 18.5f), "",selectorStyle);
+					GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 					//GUI.Box(new Rect(Screen.width * 0.57f, Screen.height * 0.12f + yOffset, Screen.width * 0.2f, Screen.height * 0.22f), "[Portrait]");
 				}
 

@@ -203,7 +203,25 @@ public class DCScript : MonoBehaviour
 		public int m_nModCost;
 	}
 	List<cModifier> m_lModifiers = new List<cModifier>();
-	public List<cModifier> GetModifiers() {return m_lModifiers;}
+	public List<cModifier> GetModifierList() {return m_lModifiers;}
+	public void SetModifierList(List<cModifier> lst) {m_lModifiers = lst;}
+
+
+
+	public class LevelingWeapon
+	{
+		public string m_szWeaponName;
+		public int m_nLevel;
+		public int m_nDamage;
+	}
+	public class WeaponData
+	{
+		public List<LevelingWeapon> m_lLevels = new List<LevelingWeapon>();
+	}
+	List<WeaponData> m_lWeapons = new List<WeaponData>();
+	public List<WeaponData> GetWeaponList() {return m_lWeapons;}
+	public void SetWeaponList(List<WeaponData> wpns) {m_lWeapons = wpns;}
+
 
 	void Awake () 
 	{

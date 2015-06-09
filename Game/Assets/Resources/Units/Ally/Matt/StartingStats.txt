@@ -8,7 +8,7 @@ Guard
 Long Bow
 1
 5
-Poisoned Arrow
+NONE
 NULL
 NULL
 Healing Armor

@@ -19,6 +19,8 @@ public class ItemLoaderScript : MonoBehaviour
 		dcs = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		LoadUseableItems();
 		LoadArmorItems();
+		LoadModifiers();
+		LoadWeaponData();
 
 
 		foreach(KeyValuePair<string, DCScript.ItemData> kvp in dcs.GetItemDictionary())
@@ -31,6 +33,29 @@ public class ItemLoaderScript : MonoBehaviour
 		}
 	}
 
+	void LoadModifiers()
+	{
+		string[] lines = m_taModifierListAsset.text.Split('\n');
+		int counter = 0;
+		foreach(string sz in lines)
+		{
+			counter++;
+			if(counter == lines.Length)
+				break;
+			string[] szPieces = sz.Split(',');
+			DCScript.cModifier newMod = new DCScript.cModifier();
+			newMod.m_szModifierName = szPieces[0].Trim();
+			newMod.m_szModifierDesc = szPieces[1].Trim();
+			newMod.m_nModCost = int.Parse(szPieces[2].Trim());
+			dcs.GetModifierList().Add(newMod);
+
+		}
+	}
+
+	void LoadWeaponData()
+	{
+
+	}
 
 	void LoadUseableItems()
 	{
