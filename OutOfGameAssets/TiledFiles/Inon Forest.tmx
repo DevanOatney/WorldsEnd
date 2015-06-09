@@ -8,36 +8,15 @@
   </terraintypes>
   <tile id="76" terrain=",,,1"/>
   <tile id="77" terrain=",,1,"/>
-  <tile id="92" terrain=",1,,1">
-   <animation>
-    <frame tileid="92" duration="200"/>
-    <frame tileid="109" duration="300"/>
-    <frame tileid="93" duration="150"/>
-    <frame tileid="110" duration="250"/>
-   </animation>
-  </tile>
-  <tile id="93" terrain="1,,1,1">
-   <animation>
-    <frame tileid="93" duration="200"/>
-    <frame tileid="110" duration="300"/>
-    <frame tileid="109" duration="150"/>
-    <frame tileid="92" duration="100"/>
-   </animation>
-  </tile>
+  <tile id="92" terrain=",1,,1"/>
+  <tile id="93" terrain="1,,1,1"/>
   <tile id="94" terrain=",,1,1"/>
   <tile id="96" terrain=",,,0"/>
   <tile id="97" terrain=",,0,"/>
   <tile id="98" terrain="0,0,0,"/>
   <tile id="99" terrain="0,0,,0"/>
   <tile id="108" terrain="1,1,,1"/>
-  <tile id="109" terrain="1,1,1,1">
-   <animation>
-    <frame tileid="93" duration="200"/>
-    <frame tileid="109" duration="150"/>
-    <frame tileid="92" duration="100"/>
-    <frame tileid="110" duration="300"/>
-   </animation>
-  </tile>
+  <tile id="109" terrain="1,1,1,1"/>
   <tile id="110" terrain="1,,1,"/>
   <tile id="112" terrain=",0,,"/>
   <tile id="113" terrain="0,,,"/>
