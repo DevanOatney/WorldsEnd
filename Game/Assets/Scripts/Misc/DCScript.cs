@@ -36,9 +36,16 @@ public class DCScript : MonoBehaviour
 	int m_nFacingDirection = 0;
 	public int GetPreviousFacingDirection() {return m_nFacingDirection;}
 	public void SetPreviousFacingDirection(int fd) {m_nFacingDirection = fd;}
-	//--------/
+	//The starting point that the character should go to (used from screen switching)
+	string m_szNextStartingPosition;
+	public void SetStartingPos(string strtPos) {m_szNextStartingPosition = strtPos;}
+	public string GetStartingPos() {return m_szNextStartingPosition;}
+
+
 	//amount of cash that the player has
 	public int m_nGold;
+
+
 	public class ItemData
 	{
 		public string m_szItemName;
@@ -195,6 +202,8 @@ public class DCScript : MonoBehaviour
 	int m_nBattleFieldBackgroundIter = 0;
 	public int GetBattleFieldBackgroundIter() {return m_nBattleFieldBackgroundIter;}
 	public void SetBattleFieldBackgroundIter(int iter) {m_nBattleFieldBackgroundIter = iter;}
+
+
 
 	public class cModifier
 	{

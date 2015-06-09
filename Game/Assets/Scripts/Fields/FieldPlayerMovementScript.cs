@@ -72,11 +72,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		m_aAnim = GetComponent<Animator>();
 		//Set which direction the player should be idling toward when the screen loads
 		m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
-		if(m_nFacingDir == 2)
-		{
-			Vector3 scale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-			transform.localScale = scale;
-		}
 		ResetAnimFlagsExcept(m_nFacingDir);
 
 

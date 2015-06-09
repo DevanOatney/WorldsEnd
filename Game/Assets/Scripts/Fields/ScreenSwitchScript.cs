@@ -53,6 +53,7 @@ public class ScreenSwitchScript : MonoBehaviour
 			DCScript dcs = GameObject.Find("PersistantData").GetComponent<DCScript>();
 			if(m_nNewFacingDir != -1)
 				dcs.SetPreviousFacingDirection(m_nNewFacingDir);
+			dcs.SetStartingPos(m_szStartingLocToGoTo);
 
 			GameObject player = GameObject.Find("Player");
 			dcs.m_lStatusEffects.Clear();

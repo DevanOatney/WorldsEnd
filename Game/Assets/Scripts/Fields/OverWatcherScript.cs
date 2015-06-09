@@ -113,7 +113,14 @@ public class OverWatcherScript : MonoBehaviour {
 			m_goPlayer.transform.position = dc.GetPreviousPosition();
 		//else, the player just entered the scene, put the player where the scene wants the player to start
 		else
-			m_goPlayer.transform.position = GameObject.Find("MattStartPosition").transform.position;
+		{
+			if(dc.GetStartingPos() == "")
+				m_goPlayer.transform.position = GameObject.Find("StartPosition").transform.position;
+			else
+			{
+				m_goPlayer.transform.position = GameObject.Find(dc.GetStartingPos()).transform.position;
+			}
+		}
 		m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir = dc.GetPreviousFacingDirection();
 		m_vLastPos = m_goPlayer.transform.position;
 		//set the previous scene to this one now
