@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_5_0_2;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_2;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -74,7 +74,6 @@
      <Compile Include="Assets\Scripts\Fields\FieldEffects\PoisonEffectScript.cs" />
      <Compile Include="Assets\Scripts\Fields\FieldPlayerMovementScript.cs" />
      <Compile Include="Assets\Scripts\Fields\GreyScaleScript.cs" />
-     <Compile Include="Assets\Scripts\Fields\Inon Forest\InonForestEventHandler.cs" />
      <Compile Include="Assets\Scripts\Fields\Inon\InonEventHandler.cs" />
      <Compile Include="Assets\Scripts\Fields\InterractingBoxScript.cs" />
      <Compile Include="Assets\Scripts\Fields\MessageHandler.cs" />
@@ -132,7 +131,6 @@
      <None Include="Assets\Resources\Units\Enemy\Mewtwo\Stats.txt" />
      <None Include="Assets\Resources\Units\NPCs\Male\Timothy\Intro_Dialogue.txt" />
      <None Include="Assets\Resources\Units\NPCs\Male\Old Tuck\Intro_dialogue.txt" />
-     <None Include="Assets\Tiled2Unity\Imported\Old temple forest.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Shaders\shaTiledMap.shader" />
      <None Include="Assets\Resources\Units\NPCs\Male\Constantinople\Intro_Dialogue.txt" />
      <None Include="Assets\Resources\Dialogue Scripts\Inon\Inon_DancingFemale.txt" />
@@ -142,7 +140,6 @@
      <None Include="Assets\Tiled2Unity\Imported\Guild Hall Interior.tiled2unity.xml" />
      <None Include="Assets\Resources\Units\NPCs\Female\Delaria\Delaria_Introduction.txt" />
      <None Include="Assets\Resources\Units\NPCs\Female\Dancer\Inon_BasePathing.txt" />
-     <None Include="Assets\Tiled2Unity\Imported\Inon Forest.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\Armory.tiled2unity.xml" />
      <None Include="Assets\Resources\Units\NPCs\Female\Cytheria\Intro_Dialogue.txt" />
      <None Include="Assets\Resources\Units\NPCs\Male\Bartholomew\After_Intro.txt" />
@@ -162,7 +159,6 @@
      <None Include="Assets\Resources\Units\Ally\Callan\Intro_in_Inon.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Main House_Hallway.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
-     <None Include="Assets\Resources\Sounds\Music\InonBGM\MusicPlacementInon.txt" />
      <None Include="Assets\Tiled2Unity\Prefabs\_ReadMe.txt" />
      <None Include="Assets\Resources\Units\NPCs\Female\Delaria\Delaria_After_Intro.txt" />
      <None Include="Assets\Resources\Units\NPCs\Male\Matthew\Intro_dialogue.txt" />
@@ -174,6 +170,7 @@
      <None Include="Assets\Tiled2Unity\Imported\Main House_LivingRoom.tiled2unity.xml" />
      <None Include="Assets\Resources\Field\Towns\Inon\Item Merchant.txt" />
      <None Include="Assets\Resources\Units\Enemy\Wolf\Stats.txt" />
+     <None Include="Assets\Resources\Units\NPCs\Male\Callan&apos;s Father\End_of_Ceremony.txt" />
      <None Include="Assets\Resources\Units\Enemy\Pikeman\Stats.txt" />
      <None Include="Assets\Tiled2Unity\Textures\_ReadMe.txt" />
      <None Include="Assets\Resources\Units\NPCs\Male\Old Tuck\After_Intro.txt" />
@@ -182,9 +179,7 @@
      <None Include="Assets\Resources\Units\Ally\Devan\StartingStats.txt" />
      <None Include="Assets\Resources\Save Files\1.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Temple of Azyre int.tiled2unity.xml" />
-     <None Include="Assets\Resources\Units\NPCs\Male\Callan&apos;s Father\End_of_Ceremony.txt" />
      <None Include="Assets\Resources\Dialogue Scripts\Inon\Inon_Blacksmith1.txt" />
-     <None Include="Assets\Resources\Field\Battle Formations\Inon Forest\BATTLEZ.txt" />
      <None Include="Assets\Resources\Units\Enemy\Pinky with gun\Stats.txt" />
      <None Include="Assets\Resources\Field\Battle Formations\Field_Primus\EncounterGroups.txt" />
      <None Include="Assets\Resources\Units\NPCs\Male\Bartholomew\Last_Dialogue.txt" />
@@ -193,6 +188,7 @@
      <None Include="Assets\Resources\Field\Battle Formations\old temple forest formations\old temple forest formations.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Regilance.tiled2unity.xml" />
      <None Include="Assets\Resources\Units\NPCs\Female\Cytheria\After_intro.txt" />
+     <None Include="Assets\Resources\Sounds\Music\InonBGM\MusicPlacementInon.txt" />
      <None Include="Assets\Resources\Units\NPCs\Male\Blacksmith\Before_storyline.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Farm House.tiled2unity.xml" />
      <None Include="Assets\Resources\Units\NPCs\Male\Blacksmith\Storyline_Dialogue_Inon.txt" />
