@@ -1,9 +1,187 @@
 fileFormatVersion: 2
 guid: 6b45f01f0d59f184181361e525a867f8
-timeCreated: 1433958820
+timeCreated: 1434047222
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Constantinople_0
+    21300002: Constantinople_1
+    21300004: Constantinople_2
+    21300006: Constantinople_3
+    21300008: Constantinople_4
+    21300010: Constantinople_5
+    21300012: Constantinople_6
+    21300014: Constantinople_7
+    21300016: Constantinople_8
+    21300018: Constantinople_9
+    21300020: Constantinople_10
+    21300022: Constantinople_11
+    21300024: Constantinople_12
+    21300026: Constantinople_13
+    21300028: Constantinople_14
+    21300030: Constantinople_15
+    21300032: Constantinople_16
+    21300034: Constantinople_17
+    21300036: Constantinople_18
+    21300038: Constantinople_19
+    21300040: Constantinople_20
+    21300042: Constantinople_21
+    21300044: Constantinople_22
+    21300046: Constantinople_23
+    21300048: Constantinople_24
+    21300050: Constantinople_25
+    21300052: Constantinople_26
+    21300054: Constantinople_27
+    21300056: Constantinople_28
+    21300058: Constantinople_29
+    21300060: Constantinople_30
+    21300062: Constantinople_31
+    21300064: Constantinople_32
+    21300066: Constantinople_33
+    21300068: Constantinople_34
+    21300070: Constantinople_35
+    21300072: Constantinople_36
+    21300074: Constantinople_37
+    21300076: Constantinople_38
+    21300078: Constantinople_39
+    21300080: Constantinople_40
+    21300082: Constantinople_41
+    21300084: Constantinople_42
+    21300086: Constantinople_43
+    21300088: Constantinople_44
+    21300090: Constantinople_45
+    21300092: Constantinople_46
+    21300094: Constantinople_47
+    21300096: Constantinople_48
+    21300098: Constantinople_49
+    21300100: Constantinople_50
+    21300102: Constantinople_51
+    21300104: Constantinople_52
+    21300106: Constantinople_53
+    21300108: Constantinople_54
+    21300110: Constantinople_55
+    21300112: Constantinople_56
+    21300114: Constantinople_57
+    21300116: Constantinople_58
+    21300118: Constantinople_59
+    21300120: Constantinople_60
+    21300122: Constantinople_61
+    21300124: Constantinople_62
+    21300126: Constantinople_63
+    21300128: Constantinople_64
+    21300130: Constantinople_65
+    21300132: Constantinople_66
+    21300134: Constantinople_67
+    21300136: Constantinople_68
+    21300138: Constantinople_69
+    21300140: Constantinople_70
+    21300142: Constantinople_71
+    21300144: Constantinople_72
+    21300146: Constantinople_73
+    21300148: Constantinople_74
+    21300150: Constantinople_75
+    21300152: Constantinople_76
+    21300154: Constantinople_77
+    21300156: Constantinople_78
+    21300158: Constantinople_79
+    21300160: Constantinople_80
+    21300162: Constantinople_81
+    21300164: Constantinople_82
+    21300166: Constantinople_83
+    21300168: Constantinople_84
+    21300170: Constantinople_85
+    21300172: Constantinople_86
+    21300174: Constantinople_87
+    21300176: Constantinople_88
+    21300178: Constantinople_89
+    21300180: Constantinople_90
+    21300182: Constantinople_91
+    21300184: Constantinople_92
+    21300186: Constantinople_93
+    21300188: Constantinople_94
+    21300190: Constantinople_95
+    21300192: Constantinople_96
+    21300194: Constantinople_97
+    21300196: Constantinople_98
+    21300198: Constantinople_99
+    21300200: Constantinople_100
+    21300202: Constantinople_101
+    21300204: Constantinople_102
+    21300206: Constantinople_103
+    21300208: Constantinople_104
+    21300210: Constantinople_105
+    21300212: Constantinople_106
+    21300214: Constantinople_107
+    21300216: Constantinople_108
+    21300218: Constantinople_109
+    21300220: Constantinople_110
+    21300222: Constantinople_111
+    21300224: Constantinople_112
+    21300226: Constantinople_113
+    21300228: Constantinople_114
+    21300230: Constantinople_115
+    21300232: Constantinople_116
+    21300234: Constantinople_117
+    21300236: Constantinople_118
+    21300238: Constantinople_119
+    21300240: Constantinople_120
+    21300242: Constantinople_121
+    21300244: Constantinople_122
+    21300246: Constantinople_123
+    21300248: Constantinople_124
+    21300250: Constantinople_125
+    21300252: Constantinople_126
+    21300254: Constantinople_127
+    21300256: Constantinople_128
+    21300258: Constantinople_129
+    21300260: Constantinople_130
+    21300262: Constantinople_131
+    21300264: Constantinople_132
+    21300266: Constantinople_133
+    21300268: Constantinople_134
+    21300270: Constantinople_135
+    21300272: Constantinople_136
+    21300274: Constantinople_137
+    21300276: Constantinople_138
+    21300278: Constantinople_139
+    21300280: Constantinople_140
+    21300282: Constantinople_141
+    21300284: Constantinople_142
+    21300286: Constantinople_143
+    21300288: Constantinople_144
+    21300290: Constantinople_145
+    21300292: Constantinople_146
+    21300294: Constantinople_147
+    21300296: Constantinople_148
+    21300298: Constantinople_149
+    21300300: Constantinople_150
+    21300302: Constantinople_151
+    21300304: Constantinople_152
+    21300306: Constantinople_153
+    21300308: Constantinople_154
+    21300310: Constantinople_155
+    21300312: Constantinople_156
+    21300314: Constantinople_157
+    21300316: Constantinople_158
+    21300318: Constantinople_159
+    21300320: Constantinople_160
+    21300322: Constantinople_161
+    21300324: Constantinople_162
+    21300326: Constantinople_163
+    21300328: Constantinople_164
+    21300330: Constantinople_165
+    21300332: Constantinople_166
+    21300334: Constantinople_167
+    21300336: Constantinople_168
+    21300338: Constantinople_169
+    21300340: Constantinople_170
+    21300342: Constantinople_171
+    21300344: Constantinople_172
+    21300346: Constantinople_173
+    21300348: Constantinople_174
+    21300350: Constantinople_175
+    21300352: Constantinople_176
+    21300354: Constantinople_177
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -29,15 +207,15 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,7 +226,1787 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Constantinople_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1281
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_1
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1281
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_2
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1281
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1281
+        width: 37
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_4
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 1281
+        width: 51
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_5
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 1281
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_6
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1281
+        width: 37
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_7
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1217
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_8
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 1217
+        width: 24
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_9
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1217
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_10
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 1217
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_11
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1217
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_12
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1217
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_13
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 1217
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_14
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1153
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1153
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_16
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1153
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_17
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1153
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_18
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 1153
+        width: 51
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_19
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 1153
+        width: 49
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_20
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1153
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_21
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 1089
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_22
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1089
+        width: 24
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_23
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1089
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_24
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1089
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_25
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 1089
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_26
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 1089
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_27
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1089
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_28
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1025
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_29
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1023
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_30
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1023
+        width: 23
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_31
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 1023
+        width: 23
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_32
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 1023
+        width: 23
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_33
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 1023
+        width: 23
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_34
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 1023
+        width: 23
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_35
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 1023
+        width: 23
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_36
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 961
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_37
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 961
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_38
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 961
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_39
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 961
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_40
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 961
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_41
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 961
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_42
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 961
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_43
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 961
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_44
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 897
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_45
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 898
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_46
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 898
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_47
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 898
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_48
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 898
+        width: 23
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_49
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 898
+        width: 23
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_50
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 898
+        width: 23
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_51
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 898
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_52
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 833
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_53
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 833
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_54
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 833
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_55
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 833
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_56
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 833
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_57
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 833
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_58
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 833
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_59
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 833
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_60
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 770
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_61
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 770
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_62
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 769
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_63
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 768
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_64
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 769
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_65
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 770
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_66
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 769
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_67
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 768
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_68
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 769
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_69
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 705
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_70
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 705
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_71
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 706
+        width: 23
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_72
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 706
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_73
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 705
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_74
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 705
+        width: 29
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_75
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 705
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_76
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 705
+        width: 24
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_77
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 705
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_78
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_79
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_80
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_81
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 641
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_82
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_83
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_84
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_85
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 641
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_86
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_87
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 578
+        width: 22
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_88
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 578
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_89
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 578
+        width: 23
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_90
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 578
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_91
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 578
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_92
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 578
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_93
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 578
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_94
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 578
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_95
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 578
+        width: 23
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_96
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 513
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_97
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 512
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_98
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 512
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_99
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 512
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_100
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 512
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_101
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 512
+        width: 40
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_102
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 449
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_103
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 449
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_104
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 449
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_105
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 449
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_106
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 449
+        width: 37
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_107
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 449
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_108
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 385
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_109
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 385
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_110
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 385
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_111
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 385
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_112
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 385
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_113
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 385
+        width: 40
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_114
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 321
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_115
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 321
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_116
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 321
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_117
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 321
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_118
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 321
+        width: 37
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_119
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 321
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_120
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 257
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_121
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 255
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_122
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 255
+        width: 23
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_123
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 255
+        width: 23
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_124
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 255
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_125
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 255
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_126
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 255
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_127
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 255
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_128
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 255
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_129
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 255
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_130
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 255
+        width: 23
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_131
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 255
+        width: 23
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_132
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 255
+        width: 23
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_133
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 193
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_134
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 193
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_135
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 193
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_136
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 193
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_137
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 193
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_138
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 193
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_139
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 193
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_140
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 193
+        width: 37
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_141
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 193
+        width: 39
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_142
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 193
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_143
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 193
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_144
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 193
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_145
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 193
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_146
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 129
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_147
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 130
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_148
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 130
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_149
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 129
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_150
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 129
+        width: 24
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_151
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 129
+        width: 24
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_152
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 129
+        width: 24
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_153
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 129
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_154
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 129
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_155
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 129
+        width: 24
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_156
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 129
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_157
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 129
+        width: 23
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_158
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 129
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_159
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 65
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_160
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 65
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_161
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 65
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_162
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 65
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_163
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 65
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_164
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 65
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_165
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 65
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_166
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 65
+        width: 37
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_167
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 65
+        width: 39
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_168
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 65
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_169
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 65
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_170
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 65
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_171
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 65
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_172
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_173
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_174
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1
+        width: 31
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_175
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 2
+        width: 31
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_176
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 2
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Constantinople_177
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 0
+        width: 35
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

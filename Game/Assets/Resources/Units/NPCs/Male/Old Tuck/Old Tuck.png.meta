@@ -1,9 +1,187 @@
 fileFormatVersion: 2
 guid: 28fe72881a5900e49a13107f207d66ed
-timeCreated: 1433959347
+timeCreated: 1434052290
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Old Tuck_0
+    21300002: Old Tuck_1
+    21300004: Old Tuck_2
+    21300006: Old Tuck_3
+    21300008: Old Tuck_4
+    21300010: Old Tuck_5
+    21300012: Old Tuck_6
+    21300014: Old Tuck_7
+    21300016: Old Tuck_8
+    21300018: Old Tuck_9
+    21300020: Old Tuck_10
+    21300022: Old Tuck_11
+    21300024: Old Tuck_12
+    21300026: Old Tuck_13
+    21300028: Old Tuck_14
+    21300030: Old Tuck_15
+    21300032: Old Tuck_16
+    21300034: Old Tuck_17
+    21300036: Old Tuck_18
+    21300038: Old Tuck_19
+    21300040: Old Tuck_20
+    21300042: Old Tuck_21
+    21300044: Old Tuck_22
+    21300046: Old Tuck_23
+    21300048: Old Tuck_24
+    21300050: Old Tuck_25
+    21300052: Old Tuck_26
+    21300054: Old Tuck_27
+    21300056: Old Tuck_28
+    21300058: Old Tuck_29
+    21300060: Old Tuck_30
+    21300062: Old Tuck_31
+    21300064: Old Tuck_32
+    21300066: Old Tuck_33
+    21300068: Old Tuck_34
+    21300070: Old Tuck_35
+    21300072: Old Tuck_36
+    21300074: Old Tuck_37
+    21300076: Old Tuck_38
+    21300078: Old Tuck_39
+    21300080: Old Tuck_40
+    21300082: Old Tuck_41
+    21300084: Old Tuck_42
+    21300086: Old Tuck_43
+    21300088: Old Tuck_44
+    21300090: Old Tuck_45
+    21300092: Old Tuck_46
+    21300094: Old Tuck_47
+    21300096: Old Tuck_48
+    21300098: Old Tuck_49
+    21300100: Old Tuck_50
+    21300102: Old Tuck_51
+    21300104: Old Tuck_52
+    21300106: Old Tuck_53
+    21300108: Old Tuck_54
+    21300110: Old Tuck_55
+    21300112: Old Tuck_56
+    21300114: Old Tuck_57
+    21300116: Old Tuck_58
+    21300118: Old Tuck_59
+    21300120: Old Tuck_60
+    21300122: Old Tuck_61
+    21300124: Old Tuck_62
+    21300126: Old Tuck_63
+    21300128: Old Tuck_64
+    21300130: Old Tuck_65
+    21300132: Old Tuck_66
+    21300134: Old Tuck_67
+    21300136: Old Tuck_68
+    21300138: Old Tuck_69
+    21300140: Old Tuck_70
+    21300142: Old Tuck_71
+    21300144: Old Tuck_72
+    21300146: Old Tuck_73
+    21300148: Old Tuck_74
+    21300150: Old Tuck_75
+    21300152: Old Tuck_76
+    21300154: Old Tuck_77
+    21300156: Old Tuck_78
+    21300158: Old Tuck_79
+    21300160: Old Tuck_80
+    21300162: Old Tuck_81
+    21300164: Old Tuck_82
+    21300166: Old Tuck_83
+    21300168: Old Tuck_84
+    21300170: Old Tuck_85
+    21300172: Old Tuck_86
+    21300174: Old Tuck_87
+    21300176: Old Tuck_88
+    21300178: Old Tuck_89
+    21300180: Old Tuck_90
+    21300182: Old Tuck_91
+    21300184: Old Tuck_92
+    21300186: Old Tuck_93
+    21300188: Old Tuck_94
+    21300190: Old Tuck_95
+    21300192: Old Tuck_96
+    21300194: Old Tuck_97
+    21300196: Old Tuck_98
+    21300198: Old Tuck_99
+    21300200: Old Tuck_100
+    21300202: Old Tuck_101
+    21300204: Old Tuck_102
+    21300206: Old Tuck_103
+    21300208: Old Tuck_104
+    21300210: Old Tuck_105
+    21300212: Old Tuck_106
+    21300214: Old Tuck_107
+    21300216: Old Tuck_108
+    21300218: Old Tuck_109
+    21300220: Old Tuck_110
+    21300222: Old Tuck_111
+    21300224: Old Tuck_112
+    21300226: Old Tuck_113
+    21300228: Old Tuck_114
+    21300230: Old Tuck_115
+    21300232: Old Tuck_116
+    21300234: Old Tuck_117
+    21300236: Old Tuck_118
+    21300238: Old Tuck_119
+    21300240: Old Tuck_120
+    21300242: Old Tuck_121
+    21300244: Old Tuck_122
+    21300246: Old Tuck_123
+    21300248: Old Tuck_124
+    21300250: Old Tuck_125
+    21300252: Old Tuck_126
+    21300254: Old Tuck_127
+    21300256: Old Tuck_128
+    21300258: Old Tuck_129
+    21300260: Old Tuck_130
+    21300262: Old Tuck_131
+    21300264: Old Tuck_132
+    21300266: Old Tuck_133
+    21300268: Old Tuck_134
+    21300270: Old Tuck_135
+    21300272: Old Tuck_136
+    21300274: Old Tuck_137
+    21300276: Old Tuck_138
+    21300278: Old Tuck_139
+    21300280: Old Tuck_140
+    21300282: Old Tuck_141
+    21300284: Old Tuck_142
+    21300286: Old Tuck_143
+    21300288: Old Tuck_144
+    21300290: Old Tuck_145
+    21300292: Old Tuck_146
+    21300294: Old Tuck_147
+    21300296: Old Tuck_148
+    21300298: Old Tuck_149
+    21300300: Old Tuck_150
+    21300302: Old Tuck_151
+    21300304: Old Tuck_152
+    21300306: Old Tuck_153
+    21300308: Old Tuck_154
+    21300310: Old Tuck_155
+    21300312: Old Tuck_156
+    21300314: Old Tuck_157
+    21300316: Old Tuck_158
+    21300318: Old Tuck_159
+    21300320: Old Tuck_160
+    21300322: Old Tuck_161
+    21300324: Old Tuck_162
+    21300326: Old Tuck_163
+    21300328: Old Tuck_164
+    21300330: Old Tuck_165
+    21300332: Old Tuck_166
+    21300334: Old Tuck_167
+    21300336: Old Tuck_168
+    21300338: Old Tuck_169
+    21300340: Old Tuck_170
+    21300342: Old Tuck_171
+    21300344: Old Tuck_172
+    21300346: Old Tuck_173
+    21300348: Old Tuck_174
+    21300350: Old Tuck_175
+    21300352: Old Tuck_176
+    21300354: Old Tuck_177
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -29,15 +207,15 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,7 +226,1787 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Old Tuck_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1281
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_1
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1281
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_2
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1281
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1281
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_4
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 1281
+        width: 51
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_5
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 1281
+        width: 49
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_6
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1281
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_7
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1217
+        width: 22
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_8
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 1217
+        width: 24
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_9
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1217
+        width: 22
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_10
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 1217
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_11
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1217
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_12
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1217
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_13
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 1217
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_14
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1153
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1153
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_16
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1153
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_17
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1153
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_18
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 1153
+        width: 51
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_19
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 1153
+        width: 49
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_20
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1153
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_21
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 1089
+        width: 22
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_22
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1089
+        width: 24
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_23
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1089
+        width: 22
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_24
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1089
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_25
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 1089
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_26
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 1089
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_27
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1089
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_28
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1025
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_29
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1023
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_30
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1023
+        width: 24
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_31
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 1023
+        width: 24
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_32
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 1023
+        width: 24
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_33
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 1023
+        width: 24
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_34
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 1023
+        width: 24
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_35
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 1023
+        width: 24
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_36
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 961
+        width: 22
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_37
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 961
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_38
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 961
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_39
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 961
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_40
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 961
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_41
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 961
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_42
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 961
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_43
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 961
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_44
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 897
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_45
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 898
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_46
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 898
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_47
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 898
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_48
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 898
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_49
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 898
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_50
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 898
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_51
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 898
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_52
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 833
+        width: 22
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_53
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 833
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_54
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 833
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_55
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 833
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_56
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 833
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_57
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 833
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_58
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 833
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_59
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 833
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_60
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 770
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_61
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 770
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_62
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 769
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_63
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 768
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_64
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 769
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_65
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 770
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_66
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 769
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_67
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 768
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_68
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 769
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_69
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 705
+        width: 22
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_70
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 705
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_71
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 706
+        width: 23
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_72
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 706
+        width: 24
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_73
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 705
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_74
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 705
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_75
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 705
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_76
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 705
+        width: 24
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_77
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 705
+        width: 23
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_78
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_79
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_80
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_81
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 641
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_82
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_83
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_84
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_85
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 641
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_86
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 641
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_87
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 578
+        width: 22
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_88
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 578
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_89
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 578
+        width: 23
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_90
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 578
+        width: 24
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_91
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 578
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_92
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 578
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_93
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 578
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_94
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 578
+        width: 24
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_95
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 578
+        width: 23
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_96
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 513
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_97
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 512
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_98
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 512
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_99
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 512
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_100
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 512
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_101
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 512
+        width: 40
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_102
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 449
+        width: 22
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_103
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 449
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_104
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 449
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_105
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 449
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_106
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 449
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_107
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 449
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_108
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 385
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_109
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 385
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_110
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 385
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_111
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 385
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_112
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 385
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_113
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 385
+        width: 40
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_114
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 321
+        width: 22
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_115
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 321
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_116
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 321
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_117
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 321
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_118
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 321
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_119
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 321
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_120
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 257
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_121
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 255
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_122
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 255
+        width: 24
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_123
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 255
+        width: 24
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_124
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 255
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_125
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 255
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_126
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 255
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_127
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 255
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_128
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 255
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_129
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 255
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_130
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 255
+        width: 24
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_131
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 255
+        width: 24
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_132
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 255
+        width: 24
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_133
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 193
+        width: 22
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_134
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 193
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_135
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 193
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_136
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 193
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_137
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 193
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_138
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 193
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_139
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 193
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_140
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 193
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_141
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 193
+        width: 39
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_142
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 193
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_143
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 193
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_144
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 193
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_145
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 193
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_146
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 129
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_147
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 130
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_148
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 130
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_149
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 129
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_150
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 129
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_151
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 129
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_152
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 129
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_153
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 129
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_154
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 129
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_155
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 129
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_156
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 129
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_157
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 129
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_158
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 129
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_159
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 65
+        width: 22
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_160
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 65
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_161
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 65
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_162
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 65
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_163
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 65
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_164
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 65
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_165
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 65
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_166
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 65
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_167
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 65
+        width: 39
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_168
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 65
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_169
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 65
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_170
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 65
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_171
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 65
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_172
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_173
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_174
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1
+        width: 31
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_175
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 2
+        width: 31
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_176
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 2
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Old Tuck_177
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 0
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

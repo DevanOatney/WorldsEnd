@@ -1,9 +1,45 @@
 fileFormatVersion: 2
 guid: 581f9448d2fbfcd4a9fab8c2209882fe
-timeCreated: 1433295490
+timeCreated: 1434056967
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Delaria_0
+    21300002: Delaria_1
+    21300004: Delaria_2
+    21300006: Delaria_3
+    21300008: Delaria_4
+    21300010: Delaria_5
+    21300012: Delaria_6
+    21300014: Delaria_7
+    21300016: Delaria_8
+    21300018: Delaria_9
+    21300020: Delaria_10
+    21300022: Delaria_11
+    21300024: Delaria_12
+    21300026: Delaria_13
+    21300028: Delaria_14
+    21300030: Delaria_15
+    21300032: Delaria_16
+    21300034: Delaria_17
+    21300036: Delaria_18
+    21300038: Delaria_19
+    21300040: Delaria_20
+    21300042: Delaria_21
+    21300044: Delaria_22
+    21300046: Delaria_23
+    21300048: Delaria_24
+    21300050: Delaria_25
+    21300052: Delaria_26
+    21300054: Delaria_27
+    21300056: Delaria_28
+    21300058: Delaria_29
+    21300060: Delaria_30
+    21300062: Delaria_31
+    21300064: Delaria_32
+    21300066: Delaria_33
+    21300068: Delaria_34
+    21300070: Delaria_35
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,14 +66,14 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,7 +84,367 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Delaria_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 205
+        width: 29
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_1
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 205
+        width: 29
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 204
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_3
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 203
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_4
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 204
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_5
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 205
+        width: 29
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_6
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 204
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_7
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 203
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_8
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 204
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 140
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_10
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 141
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_11
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 142
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_12
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 142
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_13
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 141
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_14
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 141
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_15
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 141
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_16
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 141
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_17
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 141
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_18
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 75
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_19
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 75
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_20
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 75
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_21
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 76
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_22
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 75
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_23
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 75
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_24
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 75
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_25
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 76
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_26
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 75
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_27
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 12
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_28
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 13
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_29
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 14
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_30
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 14
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_31
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 13
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_32
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 13
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_33
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 13
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_34
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 13
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Delaria_35
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 13
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

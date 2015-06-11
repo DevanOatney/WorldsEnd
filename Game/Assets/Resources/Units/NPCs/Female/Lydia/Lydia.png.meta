@@ -1,9 +1,51 @@
 fileFormatVersion: 2
 guid: aff8bebee320c2b49ba4026903277b05
-timeCreated: 1433295490
+timeCreated: 1434057329
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Lydia_0
+    21300002: Lydia_1
+    21300004: Lydia_2
+    21300006: Lydia_3
+    21300008: Lydia_4
+    21300010: Lydia_5
+    21300012: Lydia_6
+    21300014: Lydia_7
+    21300016: Lydia_8
+    21300018: Lydia_9
+    21300020: Lydia_10
+    21300022: Lydia_11
+    21300024: Lydia_12
+    21300026: Lydia_13
+    21300028: Lydia_14
+    21300030: Lydia_15
+    21300032: Lydia_16
+    21300034: Lydia_17
+    21300036: Lydia_18
+    21300038: Lydia_19
+    21300040: Lydia_20
+    21300042: Lydia_21
+    21300044: Lydia_22
+    21300046: Lydia_23
+    21300048: Lydia_24
+    21300050: Lydia_25
+    21300052: Lydia_26
+    21300054: Lydia_27
+    21300056: Lydia_28
+    21300058: Lydia_29
+    21300060: Lydia_30
+    21300062: Lydia_31
+    21300064: Lydia_32
+    21300066: Lydia_33
+    21300068: Lydia_34
+    21300070: Lydia_35
+    21300072: Lydia_36
+    21300074: Lydia_37
+    21300076: Lydia_38
+    21300078: Lydia_39
+    21300080: Lydia_40
+    21300082: Lydia_41
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -29,15 +71,15 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,7 +90,427 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Lydia_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 214
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 214
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_2
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 213
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_3
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 212
+        width: 24
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_4
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 213
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_5
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 214
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_6
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 213
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_7
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 212
+        width: 24
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_8
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 213
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_9
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 149
+        width: 36
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_10
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 150
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_11
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 151
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_12
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 151
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_13
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 150
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_14
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 150
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_15
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 150
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_16
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 150
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_17
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 150
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_18
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 84
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_19
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 84
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_20
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 84
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_21
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 85
+        width: 27
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_22
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 84
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_23
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 84
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_24
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 84
+        width: 27
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_25
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 85
+        width: 27
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_26
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 84
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_27
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 21
+        width: 36
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_28
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 22
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_29
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 23
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_30
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 23
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_31
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 22
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_32
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 22
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_33
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 22
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_34
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 22
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_35
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 22
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_36
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 0
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_37
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 0
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_38
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 0
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_39
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 0
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_40
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 0
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lydia_41
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 0
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 
