@@ -64,6 +64,9 @@
  <tileset firstgid="2634" name="BridgeComp" tilewidth="32" tileheight="32">
   <image source="../Tilesets/BridgeComp.png" width="512" height="512"/>
  </tileset>
+ <tileset firstgid="2890" name="Red" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Pictures/Red.png" width="32" height="32"/>
+ </tileset>
  <layer name="Path" width="35" height="35">
   <data encoding="base64" compression="zlib">
    eJztlk1uwyAQhS0FzF3c1guHdJH0cL1Hz9EjZNm/K7QXKciM8vQyOJBKzqKM9ATGjufjMeD0tuv6JAd9kU3ise/NSdoY35P3L4WjZx3l5vt2IW+JlgLz8Bx6YkQW5uE5MLv0L7FYJReyWeg7JQ8yYF7N60tr1GcYuMU8Wj7m1eZSUi88N/ZqjUDPPczJJwnTGmGBwQIHeuJX9AU5cG3cDXzhekGGQxLGYLruLug+6GczC8f+woJ17yF/1ADvl3yPQdsgDyxTGtsBUy2f5Ec/kGWC90eGh6BD0hOw7GF8TL9B5lIWPjuYZQsMmD+nPTDVsIiPOWnrUaqpkgW91TQmT9CPDzP7dwztu5mvj+Z0jf6MFSy8JqxJ8STke45rG7+JuP/i9as596amXvoKlugB5sa+sKE317Bo/sRglq/Qf0sy9rwf288rWeR89QqTsOzoXCvVkGq/xhfhkBZZpP5qeYRD6r4k8FzJnfvIs7T/+SwQjpdCFvEGv4naNyi392XPa/dK/cBAX7h21w7+3+RuyNKiRYsWLf5n/AJRHZei
@@ -79,11 +82,6 @@
    eJztwQEBAAAAgiD/r25IQAEAAADAtwETJAAB
   </data>
  </layer>
- <layer name="Collisions" width="35" height="35">
-  <data encoding="base64" compression="zlib">
-   eJztzkENAAAIBKB72D+FQY2hm5CABAAA/uraHgAAFwxgiwCp
-  </data>
- </layer>
  <layer name="Walls" width="35" height="35">
   <data encoding="base64" compression="zlib">
    eJztljEKgDAMRYumCuLk6OY5vKk4iaOHtFIDQauItlrwP/hDoMNLISRKAQC+oNJKZeROTu+61MYlJRuGa9q4FKYuPftp0bd0adZIF/635W0Il+SgbxfsSpG5APB3OjMHfSSzMBiPES47YnOZInG5Qks2oTm7U+7kyW0jbwMfwa4EAABwxAyJNQrh
@@ -92,6 +90,11 @@
  <layer name="Roof / Doorwar" width="35" height="35">
   <data encoding="base64" compression="zlib">
    eJztlkEKgzAQRbNwlV7GI3ihnsCb1K5s7aJ6SFOSAQkjzXQmIPY/+AhDHF9WX+fAWbg1zg3C3Js6LmPY+xCmlhu5vELmL5l23J7GLrSvvcTn1cdsZ5z3ZOjyTjuXtK9L3+19zHaWnyU/K5cPdO9fzlq7dAKX/Ky1iwa48MCFBy48cOE5igv9+2hdtO+Th/afgfrWKovyXnnfcl1dMpN0/B5533JdXTKTdDwAAID/YwW7/lTL
+  </data>
+ </layer>
+ <layer name="Collisions" width="35" height="35" opacity="0.5">
+  <data encoding="base64" compression="zlib">
+   eJztlFsKwCAMBP3vzXr/A/W7kODGro/CDCwEkXUQsTUA2Ml9vbPbJZq/9KmJ9mc9Lr/MWe3veTtc1M7s3k4Bl5gVLpU3NPv8bHa7ZN3V9Zkuo11/clH//hUuiqfDw+XiCAAAANR5AIo4IOA=
   </data>
  </layer>
 </map>

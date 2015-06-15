@@ -52,17 +52,15 @@
  <tileset firstgid="3745" name="obj_misk_atlas" tilewidth="32" tileheight="32">
   <image source="../Tilesets/obj_misk_atlas.png" width="1024" height="1024"/>
  </tileset>
+ <tileset firstgid="4769" name="Red" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Pictures/Red.png" width="32" height="32"/>
+ </tileset>
  <layer name="Path" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJyNlrlSxDAQRE1mEYHxL7AZAgLOhCOyVMWf7wdtyKh2p3hqxoagy4ukuVo9I5Y0DNVQDIugCK7HI3impp817rXfalthU7HnsSrseJ6+q8QssKEfzbmmPn89z7UFZ2nL81+G8w1oPM0p4s3XG24Nd4Z75PZgeAxqj+rVOySf/veTfZ8NL4ZXqb+mnmsHeVPOSuprbeff7Ptu+DB8BrVF2vM8lSfNhTpTnWhtvMsbQ0ZcxqFGtTbVntbGc35X5ITcX6QjrqT2SM+eu9so2Educ7DzO8B9eu3kyu1bLrtxHXMQ+/Jkk+HLa9e6NKe88nsL1KHqZquGyH9e2aOutG8O/8x3bX8yHyP8UutrPNFn4zuLL0fbm1LfK1U4+ivGdLIbkaf25BL4pl4LtB3xMaTfHEfzXd8E3sOWVqcgH7dl70e+PS/3n8eYb7fTOb1A/5xX+hYeVvQ3I2/nQmcZ56vOCf/6mvdn1Mu001lGP9F84hxhHK1pEA2R6+j94xvAGeo8RvXMqb87fSt45/o+RrNEectj31f6znHmtbX9We9T/5egjtm/RXIiX2rL+r4BFMeeMw==
   </data>
  </layer>
  <layer name="Character" width="25" height="25">
-  <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
-  </data>
- </layer>
- <layer name="Collisions" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
   </data>
@@ -105,6 +103,11 @@
  <layer name="Foliage 2" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJztjckNgDAQxPabAiCARA4krv4bxEVkeI0lf+0IY4wxo1hSxIpb0j0a7Y6H8PHQfnHCGbPwtdMuWIWPk/aFt/BhzN98iLoCpw==
+  </data>
+ </layer>
+ <layer name="Collisions" width="25" height="25" opacity="0.45">
+  <data encoding="base64" compression="zlib">
+   eJzVlTEOACAIA32D/1/8qasDgqWFRBIX0vRADI7BxZrxYQP1sNhRDmGcesvDyyEMleamU8wm8lIyUPZPDGtOambEsHiZGth3+ROD9fYY7DyUO7iSUV0jwujoo6JX9R1W/OevflkGUl/HXuhibMq0Q9Q=
   </data>
  </layer>
 </map>

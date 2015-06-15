@@ -21,17 +21,15 @@
  <tileset firstgid="4713" name="DoorComp1" tilewidth="32" tileheight="32">
   <image source="../Tilesets/DoorComp1.png" width="192" height="192"/>
  </tileset>
+ <tileset firstgid="4749" name="Red" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Pictures/Red.png" width="32" height="32"/>
+ </tileset>
  <layer name="Path" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJyFlTmSwzAMBLEO9Q6K/3+MQocOLXmfsMsqoQy1Z+gAJYoHjhkc7Sei/8t6Sq7bueY/z+rbVs6a2a97at2/nK9Ff8ebereXe/SX75XuFXo6zp3PxIC+q/MOu4xHYa18pR36NcNe8agwJr7kI/ee8ZYGncSRvCjO637eu8VbfuNqs9pOe8ofckxfh+4Fcgtt+2X8mXEy/lOn0r+YtfJB6c+9R2jZoXt8D7M/vve4YkdbrL0834uvx4nJZmK7h+ZF1T1zL+NKu9VGte/ynl/GpuqxI76MQd1zNal6BPsEYyEXrte4+lOxbvHJNzFW/66HsUco3jMO6lD9TJ273rYLPtzM4dxSc0L14Q1YfcujGX7M8bTzis/acPPV5ZSaX/mm8nHE9Y6rA+Lh4qKN5exVrqZndUJ/VF6xj7jZOZvtrI+6rlzUGlR4MHeYA+SFc415pfAY8gdODn2m
   </data>
  </layer>
  <layer name="Character" width="25" height="25">
-  <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
-  </data>
- </layer>
- <layer name="Collision" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
   </data>
@@ -54,6 +52,11 @@
  <layer name="Wall Decals" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGgT8f7e2Ip4Mdo2DkAAABOgDL
+  </data>
+ </layer>
+ <layer name="Collision" width="25" height="25" opacity="0.38">
+  <data encoding="base64" compression="zlib">
+   eJzrFWJg6MWDqQHwmU8vOyjF6PYQayc+dehypPqTWDlqhzWp7qKFPaN2DA47YPbQ2nx62kGL8omQHdSyj1D+p5afCJkxFOwgJixG7Rg+dhCb/ge7HehmAAA1nFKc
   </data>
  </layer>
 </map>

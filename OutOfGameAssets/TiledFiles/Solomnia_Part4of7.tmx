@@ -21,6 +21,9 @@
  <tileset firstgid="3725" name="obj_misk_atlas" tilewidth="32" tileheight="32">
   <image source="../Tilesets/obj_misk_atlas.png" width="1024" height="1024"/>
  </tileset>
+ <tileset firstgid="4749" name="Red" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Pictures/Red.png" width="32" height="32"/>
+ </tileset>
  <layer name="Path" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJydVUFSwzAM7JFLPKXlC3DMO2z/pbQcaOBAeCs/wZlIM8t25XQ47MRW1itZluWSdrvcUBp+hvVbzZY74wzrKv1DG/7zcSEuz1GDeZU4bFd+mZeTjot9oe7WehUjxsn7R67SivLLcUbfkm7z7eO9gbl7AMelamHhHRtehhVPsH4Em/s4gh35rjGSBmojxuDbG6v1WzzFObSYHtN9Ggv34R/wHKMNfR4658z1U5OuO3UHC/h7HlY4z+cIvqvqzlXi5I7ePWCf0T1Sfnr9AOubbao/RfkuxFF3mDXUHVbx9O60ilH1HtXnuFaitVHu+XwxNxPMJwPvifehaoZjzaCdQR/3oHypns7ntXVmvTctOtNe3tUb51qzAXmnVsuvDWfoNW5T9cD5nUB3Nr3z8HfdZ5tfGybw8W427ieYf4wffSxrPyzGRfvSMBu+wceX2bZ6VuTjCtqoq8DaBXIbQeWlBz7jJW7fY4Q32wPG7z3f3wJ8W34BucfHgg==
@@ -32,11 +35,6 @@
   </data>
  </layer>
  <layer name="Character" width="25" height="25">
-  <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
-  </data>
- </layer>
- <layer name="Collisions" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
   </data>
@@ -54,6 +52,11 @@
  <layer name="Roof" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJx7xcvA8BqKHyKxicHEqH8DxJ+A+DMN8RcgHgWjYBSMgoEGd4Fl0T0iMCXgKVD/MyIwNex4CcTv8GBq2PEcas5zDgitwgHByGLkgrdQd76H2vEdap4RBwQji1ECKHUnMYAa7hwFww8AACpEWec=
+  </data>
+ </layer>
+ <layer name="Collisions" width="25" height="25" opacity="0.4">
+  <data encoding="base64" compression="zlib">
+   eJxjYBj6oFcIlQ3DuNTik8elBlkMJo4uRoo8LjWjYBSMglGADxAqV6hRltDbDloBYu0g1r+0DA9q+GOw2zEKqA8A2tUzjg==
   </data>
  </layer>
 </map>

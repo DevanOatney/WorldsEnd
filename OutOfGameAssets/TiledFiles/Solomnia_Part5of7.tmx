@@ -37,6 +37,9 @@
  <tileset firstgid="3725" name="build_atlas" tilewidth="32" tileheight="32">
   <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
  </tileset>
+ <tileset firstgid="4749" name="Red" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Pictures/Red.png" width="32" height="32"/>
+ </tileset>
  <layer name="Path" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJydlk1SwzAMhe0dSyi9At0RYMHvhp+V7bsAJyhcu0uUIZp5+SKnDIs38ciKpKc+KS05pTKhTc+LlFKdno463VXxc5+GuyZ2Pxc51zyP5/eeq0lNl4ZBfKpAa/P3rgzXhpscxyTHEbeGO6mpiI/W6PzuDQ+GR8NTXvpE3LwX7J/mU/uz4cXwangLenia5/BYajs37NIvtoFvzct+eo367iAx1K4YcFZeGt9tUZwhiNuLv0vzvlVo5fCPuJFd6y+ilfF8WIm7sfuTP0L7Q62Rh8ZVfesMNamXd5xh56F92Oa5X0Mc7TmfFfeagz1KwWzpmZrkHtJ5014NyNGb5d4O0lq4t3o82P9ob7JfUQ/LCg/X9+j3bqaPFXyCB/dQj4fuwr2Zvlbwnea/EXke65XqhDud+5F5VJ9neZmDc0s9KUpg19wRl5TnNUeab8hP3tRKES6bDgd+V6lh7WcL3nNf3TsVeaLZ4ixw7zAnda9cqUtqgP9B9HvcghzMz1nmf4Da8Y/icm8wzjFerJ97TDXC34w5yd/PPwU1mB0=
@@ -52,9 +55,19 @@
    eJxjYBgFowACbjAxMNwE4ltMA+2SUTBYwVwgnoeHTw64AkxvV4H4GhBfB+KlQLFlSPLo/FEwCkbByAKDoW5CL6cGCwAAF8cQ6w==
   </data>
  </layer>
+ <layer name="Character" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
+  </data>
+ </layer>
  <layer name="Tree Top" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJztlUsOgkAQBSecGRQ5h6BwDvnIbQRX4iGokLBhM+kOzWLCS2rbRejJa+fCTho5d4MssnM8mV1CZejomP2G3tBxZr/E7CmBC1yNdnZnbg4FPIwcL+bW0EDrcQwwwtfmU5b8YIJ/AI7PAY5Q/lWIDovbtHX4bpOmp7Zv13ebND0l3Yekp7QOTVbHKETSoTPF00oZ
+  </data>
+ </layer>
+ <layer name="Collision" width="25" height="25" opacity="0.53">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQwX0Cg0PO4YLGClhBfInKZgSe5DtQ7cfmxw2/ZQCSv0xagdCjtZ2UAsMJjsozUOE9OPLq+Tmc2qHHTl2kBqH5MY5OXbQsgwFAIXdMHM=
   </data>
  </layer>
 </map>
