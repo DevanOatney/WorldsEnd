@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="terrain_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2049" name="BridgeComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BridgeComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="2305" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="3329" name="DoorComp1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/DoorComp1.png" width="192" height="192"/>
+ </tileset>
+ <tileset firstgid="3365" name="magecity_0" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
+ </tileset>
+ <tileset firstgid="3725" name="obj_misk_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="Path" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJydVUFSwzAM7JFLPKXlC3DMO2z/pbQcaOBAeCs/wZlIM8t25XQ47MRW1itZluWSdrvcUBp+hvVbzZY74wzrKv1DG/7zcSEuz1GDeZU4bFd+mZeTjot9oe7WehUjxsn7R67SivLLcUbfkm7z7eO9gbl7AMelamHhHRtehhVPsH4Em/s4gh35rjGSBmojxuDbG6v1WzzFObSYHtN9Ggv34R/wHKMNfR4658z1U5OuO3UHC/h7HlY4z+cIvqvqzlXi5I7ePWCf0T1Sfnr9AOubbao/RfkuxFF3mDXUHVbx9O60ilH1HtXnuFaitVHu+XwxNxPMJwPvifehaoZjzaCdQR/3oHypns7ntXVmvTctOtNe3tUb51qzAXmnVsuvDWfoNW5T9cD5nUB3Nr3z8HfdZ5tfGybw8W427ieYf4wffSxrPyzGRfvSMBu+wceX2bZ6VuTjCtqoq8DaBXIbQeWlBz7jJW7fY4Q32wPG7z3f3wJ8W34BucfHgg==
+  </data>
+ </layer>
+ <layer name="Path Decals" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMAoGJ4jnY2BIgOJ4JJoQBqkjFqQD1WZAcToSTQhnkGDHKBhYMJ+XgWEBL23tWA40fwWN7VgPNH8Dkh0AOA8Rgg==
+  </data>
+ </layer>
+ <layer name="Character" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
+  </data>
+ </layer>
+ <layer name="Collisions" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
+  </data>
+ </layer>
+ <layer name="Wall" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgewIOXgcGThtgLiF2B2I2G2J13oENxFIyCUTAK6A9C+XCXvdQCsXyIshYG0PnkAFjdA6ojkO1IgWJq2OFKhzqCHnaMAuoDAP1NGi0=
+  </data>
+ </layer>
+ <layer name="Door" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBheIJ0DlaaFGeVAcV5eCI0NaEDlNfC4YQdUTQYF7hwFo2AUjIJRMApGwcgFAFuGBJk=
+  </data>
+ </layer>
+ <layer name="Roof" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJx7xcvA8BqKHyKxicHEqH8DxJ+A+DMN8RcgHgWjYBSMgoEGd4Fl0T0iMCXgKVD/MyIwNex4CcTv8GBq2PEcas5zDgitwgHByGLkgrdQd76H2vEdap4RBwQji1ECKHUnMYAa7hwFww8AACpEWec=
+  </data>
+ </layer>
+</map>

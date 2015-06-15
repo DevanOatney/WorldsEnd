@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="DoorComp1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/DoorComp1.png" width="192" height="192"/>
+ </tileset>
+ <tileset firstgid="37" name="magecity_0" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
+  <terraintypes>
+   <terrain name="Path" tile="-1"/>
+  </terraintypes>
+  <tile id="72" terrain=",,,0"/>
+  <tile id="73" terrain=",,0,0"/>
+  <tile id="74" terrain=",,0,"/>
+  <tile id="75" terrain="0,0,0,"/>
+  <tile id="76" terrain="0,0,,0"/>
+  <tile id="80" terrain=",0,,0"/>
+  <tile id="81" terrain="0,0,0,0"/>
+  <tile id="82" terrain="0,,0,"/>
+  <tile id="83" terrain="0,,0,0"/>
+  <tile id="84" terrain=",0,0,0"/>
+  <tile id="88" terrain=",0,,"/>
+  <tile id="89" terrain="0,0,,"/>
+  <tile id="90" terrain="0,,,"/>
+ </tileset>
+ <tileset firstgid="397" name="obj_misk_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1421" name="terrain_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2445" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="3469" name="BridgeComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BridgeComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="3725" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="Path" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJydlk1SwzAMhe0dSyi9At0RYMHvhp+V7bsAJyhcu0uUIZp5+SKnDIs38ciKpKc+KS05pTKhTc+LlFKdno463VXxc5+GuyZ2Pxc51zyP5/eeq0lNl4ZBfKpAa/P3rgzXhpscxyTHEbeGO6mpiI/W6PzuDQ+GR8NTXvpE3LwX7J/mU/uz4cXwangLenia5/BYajs37NIvtoFvzct+eo367iAx1K4YcFZeGt9tUZwhiNuLv0vzvlVo5fCPuJFd6y+ilfF8WIm7sfuTP0L7Q62Rh8ZVfesMNamXd5xh56F92Oa5X0Mc7TmfFfeagz1KwWzpmZrkHtJ5014NyNGb5d4O0lq4t3o82P9ob7JfUQ/LCg/X9+j3bqaPFXyCB/dQj4fuwr2Zvlbwnea/EXke65XqhDud+5F5VJ9neZmDc0s9KUpg19wRl5TnNUeab8hP3tRKES6bDgd+V6lh7WcL3nNf3TsVeaLZ4ixw7zAnda9cqUtqgP9B9HvcghzMz1nmf4Da8Y/icm8wzjFerJ97TDXC34w5yd/PPwU1mB0=
+  </data>
+ </layer>
+ <layer name="Fence" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2D4ASs62OFEBzuIAfGMEJyAB1MK0hkhOAMPxgdGUnwMJvAQh/hofJAH2mlsfh8Q90NpdADL57gwsfl8GhBPh9LoAJbPcWFC+XwU0B8AAKJMFGs=
+  </data>
+ </layer>
+ <layer name="Tree Bottom" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFowACbjAxMNwE4ltMA+2SUTBYwVwgnoeHTw64AkxvV4H4GhBfB+KlQLFlSPLo/FEwCkbByAKDoW5CL6cGCwAAF8cQ6w==
+  </data>
+ </layer>
+ <layer name="Tree Top" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztlUsOgkAQBSecGRQ5h6BwDvnIbQRX4iGokLBhM+kOzWLCS2rbRejJa+fCTho5d4MssnM8mV1CZejomP2G3tBxZr/E7CmBC1yNdnZnbg4FPIwcL+bW0EDrcQwwwtfmU5b8YIJ/AI7PAY5Q/lWIDovbtHX4bpOmp7Zv13ebND0l3Yekp7QOTVbHKETSoTPF00oZ
+  </data>
+ </layer>
+</map>

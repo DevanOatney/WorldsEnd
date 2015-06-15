@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="22" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="wall1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/wall1.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="5" name="wall2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/wall2.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="9" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1033" name="BridgeComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BridgeComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="1289" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2313" name="DoorComp1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/DoorComp1.png" width="192" height="192"/>
+ </tileset>
+ <tileset firstgid="2349" name="Inq - Medieval" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq - Medieval.png" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="2469" name="magecity_0" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
+  <terraintypes>
+   <terrain name="Path" tile="-1"/>
+  </terraintypes>
+  <tile id="72" terrain=",,,0"/>
+  <tile id="73" terrain=",,0,0"/>
+  <tile id="74" terrain=",,0,"/>
+  <tile id="75" terrain="0,0,0,"/>
+  <tile id="76" terrain="0,0,,0"/>
+  <tile id="80" terrain=",0,,0"/>
+  <tile id="81" terrain="0,0,0,0"/>
+  <tile id="82" terrain="0,,0,"/>
+  <tile id="83" terrain="0,,0,0"/>
+  <tile id="84" terrain=",0,0,0"/>
+  <tile id="88" terrain=",0,,"/>
+  <tile id="89" terrain="0,0,,"/>
+  <tile id="90" terrain="0,,,"/>
+ </tileset>
+ <tileset firstgid="2829" name="Stones" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Stones.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="2833" name="Stones_shaded" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Stones_shaded.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="2837" name="terrain_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="3861" name="wall_top1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/wall_top1.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="3865" name="obj_misk_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="Path" width="25" height="22">
+  <data encoding="base64" compression="zlib">
+   eJy9VDEOwyAQ69p7ccaOGROSLzRj3wG8qqBi1TgXqQuNZBGOYPsuB9Fut1QQG0Y8kTTSQI04OI9sH6Q2jnjAnQdqxMb9r38+SiM1jee91/JiucWAZH1PenvqPMte3sNxaGTrubUOzBdpXBrixTrrIoZ1eOHvs3BtZTzK+CrYSW8Rv9l6v8DyAyo3NA4Ca3J94LG+b+bv05jH70FzRP5XXKw1WT/3vvF4FFgLhW8W/eqnxlf7rgOr49XjY6CO2BsaL3qY+xz/lHXYc5De4f8FrtnOfc99yrqaT3D6UzX4nPA82bnHKybR2IVf9/MZ43Pl1SuJBtfJ62U9w8nxwTViDs4jiF+9S/RuYKgPrifnsTt1j06Ma+fpIQ5PWquHeOZ7k/OA7hsegyxb
+  </data>
+ </layer>
+ <layer name="Path Decals" width="25" height="22">
+  <data encoding="base64" compression="zlib">
+   eJx7wcXA8AIJv+VkYHgHxO+BeBmZGNkMbOAvUPwjEP8g0x6Q+T+B+BsQf8dhBwh8har5AXUPKRhm/gcg/o/HDphfvpGJCZmPbM8/EjHMXfjCiFIAcxcxfqAnUAWmZTUu6omNglFAL7CLQF4iJE8MOETADELygw2ghwk1wggdoIcJoTAyGaRlyGAMK3QAABlfZkY=
+  </data>
+ </layer>
+ <layer name="Character" width="25" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYHAAACJgAAQ==
+  </data>
+ </layer>
+ <layer name="Collisions" width="25" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYHAAACJgAAQ==
+  </data>
+ </layer>
+ <layer name="Wall" width="25" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFqVwMDOlcDDQFo3YQD3KB5udRGaODE5wMDCepiE9xYtpxFCh2jIr4OBY7QOAADvFRMApGwSigBzAClrHGNK4XrIDmW9PYjoEEAItOMVg=
+  </data>
+ </layer>
+ <layer name="Windows / Roof" width="25" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAtSOWisQV0sCMWaH4cDe2AmZ9Gh7DCBd6z4OcTK4ZNDQz8h8rJAv0pxwXh7+AkTQzZHGLBAU7yxUbBKBjpQBKYB6WAWBqIZWhURikCzVUCYmUgVqGRHZpAc7WAWBuIdehU1q6hgT3oZtLKDnRMTwAAMQkaDA==
+  </data>
+ </layer>
+ <layer name="Foliage" width="25" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2DoAFkuBgY5roF2xSgYBYMHTAXmh2lAPJ2G+WIu0Ox5QDyfBnYgu59WfkF2P638shRo3jIgXs4FYY8C8gEAiBsOlw==
+  </data>
+ </layer>
+ <layer name="Foliage 2" width="25" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4A+YAfnQLtgFIyC4QOmcjEwTAPi6Vy0s2Mu0Ox5QDyfi3b2LQWatwyIl3Oh2kcrgGzfKBicAADv2QyS
+  </data>
+ </layer>
+ <layer name="Tree Bottom" width="25" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2BoghQBBoZUIE4TGGiXjAJSwWjcjQJSQQIwrSQCcRIQJ4+mm2ENAAxDBIU=
+  </data>
+ </layer>
+ <layer name="Tree Top" width="25" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztkrkJwEAQA9dvfCX4r+P89l+SpwVjBBdoYFIJtBthSqJNER32SdexkL3iJuy4yL7xEXaUhm9nPsPGFdbYiPYeyB1xwlnUkcnd8cDTf2N+8gK6ggYN
+  </data>
+ </layer>
+</map>
