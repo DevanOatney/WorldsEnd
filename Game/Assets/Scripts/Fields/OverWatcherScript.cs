@@ -114,10 +114,11 @@ public class OverWatcherScript : MonoBehaviour {
 		//else, the player just entered the scene, put the player where the scene wants the player to start
 		else
 		{
-			if(dc.GetStartingPos() == "")
-				m_goPlayer.transform.position = GameObject.Find("StartPosition").transform.position;
+			if(dc.GetStartingPos() == null)
+				m_goPlayer.transform.position = GameObject.Find("CallanStartPosition").transform.position;
 			else
 			{
+				Debug.Log (dc.GetStartingPos());
 				m_goPlayer.transform.position = GameObject.Find(dc.GetStartingPos()).transform.position;
 			}
 		}
