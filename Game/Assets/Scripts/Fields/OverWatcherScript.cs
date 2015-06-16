@@ -118,7 +118,6 @@ public class OverWatcherScript : MonoBehaviour {
 				m_goPlayer.transform.position = GameObject.Find("CallanStartPosition").transform.position;
 			else
 			{
-				Debug.Log (dc.GetStartingPos());
 				m_goPlayer.transform.position = GameObject.Find(dc.GetStartingPos()).transform.position;
 			}
 		}
