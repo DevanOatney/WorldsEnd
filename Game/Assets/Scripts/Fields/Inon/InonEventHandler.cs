@@ -141,6 +141,7 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "ItemShoppe":
 		{
+			Debug.Log("end");
 			GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject>();
 			foreach(GameObject g in gObjs)
 			{

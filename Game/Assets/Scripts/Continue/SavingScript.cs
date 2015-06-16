@@ -72,6 +72,10 @@ public class SavingScript : MonoBehaviour
 			m_lOutputData.Add(member.m_nDEF.ToString());
 			//spd
 			m_lOutputData.Add(member.m_nSPD.ToString());
+			//eva
+			m_lOutputData.Add(member.m_nEVA.ToString());
+			//hit
+			m_lOutputData.Add(member.m_nHIT.ToString());
 			//Level
 			m_lOutputData.Add(member.m_nLevel.ToString());
 			//Current Experience

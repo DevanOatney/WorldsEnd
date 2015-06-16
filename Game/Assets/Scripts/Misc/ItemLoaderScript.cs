@@ -96,8 +96,10 @@ public class ItemLoaderScript : MonoBehaviour
 			item.m_nPowMod = int.Parse(szPieces[3].Trim());
 			item.m_nDefMod = int.Parse(szPieces[4].Trim());
 			item.m_nSpdMod = int.Parse(szPieces[5].Trim());
-			item.m_nBaseValue = int.Parse(szPieces[6].Trim());
-			item.m_szDescription = szPieces[7].Trim();
+			item.m_nEvaMod = int.Parse(szPieces[6].Trim());
+			item.m_nHitMod = int.Parse(szPieces[7].Trim());
+			item.m_nBaseValue = int.Parse(szPieces[8].Trim());
+			item.m_szDescription = szPieces[9].Trim();
 			useableItemDatabase.Add(item.m_szItemName,  item);
 
 		}
@@ -123,10 +125,12 @@ public class ItemLoaderScript : MonoBehaviour
 			armor.m_nPowMod = int.Parse(szPieces[3].Trim());
 			armor.m_nDefMod = int.Parse(szPieces[4].Trim());
 			armor.m_nSpdMod = int.Parse(szPieces[5].Trim());
-			armor.m_nBaseValue = int.Parse(szPieces[6].Trim());
-			armor.m_nSpecialType = int.Parse(szPieces[7].Trim());
-			armor.m_nSpecialModifier = int.Parse(szPieces[8].Trim());
-			armor.m_szDescription = szPieces[9].Trim();
+			armor.m_nEvaMod = int.Parse(szPieces[6].Trim());
+			armor.m_nHitMod = int.Parse(szPieces[7].Trim());
+			armor.m_nBaseValue = int.Parse(szPieces[8].Trim());
+			armor.m_nSpecialType = int.Parse(szPieces[9].Trim());
+			armor.m_nSpecialModifier = int.Parse(szPieces[10].Trim());
+			armor.m_szDescription = szPieces[11].Trim();
 			dcs.GetItemDictionary().Add(armor.m_szItemName, armor);
 			
 		}

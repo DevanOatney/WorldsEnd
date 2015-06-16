@@ -104,7 +104,13 @@ public class LoadingScript : MonoBehaviour
 			
 			//SPD
 			szLine = sr.ReadLine();
-			
+
+			//EVA
+			szLine = sr.ReadLine();
+
+			//HIT
+			szLine = sr.ReadLine();
+
 			//Level
 			szLine = sr.ReadLine();
 			int LVL = int.Parse(szLine.Trim());
@@ -301,6 +307,16 @@ public class LoadingScript : MonoBehaviour
 			szLine = sr.ReadLine();
 			int SPD = int.Parse(szLine);
 			character.m_nSPD = SPD;
+
+			//EVA
+			szLine = sr.ReadLine();
+			int EVA = int.Parse(szLine);
+			character.m_nEVA = EVA;
+
+			//HIT
+			szLine = sr.ReadLine();
+			int HIT = int.Parse(szLine);
+			character.m_nHIT = HIT;
 		
 			//Level
 			szLine = sr.ReadLine();

@@ -54,6 +54,9 @@ public class DCScript : MonoBehaviour
 		public int m_nPowMod;
 		public int m_nDefMod;
 		public int m_nSpdMod;
+		public int m_nEvaMod;
+		public int m_nHitMod;
+
 		public int m_nBaseValue;
 		public string m_szDescription;
 	}
@@ -165,7 +168,7 @@ public class DCScript : MonoBehaviour
 	public class CharacterData
 	{
 		public string m_szCharacterName;
-		public int m_nMaxHP, m_nCurHP, m_nSTR, m_nDEF, m_nSPD, m_nLevel, m_nCurrentEXP;
+		public int m_nMaxHP, m_nCurHP, m_nSTR, m_nDEF, m_nSPD, m_nEVA, m_nHIT, m_nLevel, m_nCurrentEXP;
 
 		public string m_szWeaponName;
 		public int m_nWeaponDamageModifier;
@@ -197,7 +200,15 @@ public class DCScript : MonoBehaviour
 	public void SetParty(List<CharacterData> p) {m_lPartyMembers = p;}
 	public void AddPartyMember(CharacterData character) {m_lPartyMembers.Add(character);}
 	public void RemovePartyMember(CharacterData character) {m_lPartyMembers.Remove(character);}
-
+	public CharacterData GetCharacter(string szName)
+	{
+		foreach(CharacterData c in m_lPartyMembers)
+		{
+			if(szName == c.m_szCharacterName)
+				return c;
+		}
+		return null;
+	}
 	//iter to which background to load during battle (DOES NOT NEED TO BE SAVED/LOADED)
 	int m_nBattleFieldBackgroundIter = 0;
 	public int GetBattleFieldBackgroundIter() {return m_nBattleFieldBackgroundIter;}
