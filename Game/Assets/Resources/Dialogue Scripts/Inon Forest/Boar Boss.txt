@@ -1,0 +1,5 @@
+A1|1|Callan||Hey that Boar would be a perfect to take back to the guild.|0|A2
+A2|1|Briol||Alright I agree lets take that thing down.|0|A3
+A3|1|Callan||Alright lets go.|0|A4
+A4|3|BoarBossDialogue
+
