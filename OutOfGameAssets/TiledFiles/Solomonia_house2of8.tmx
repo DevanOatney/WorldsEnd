@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2049" name="magecity_0" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
+ </tileset>
+ <tileset firstgid="2409" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="3433" name="InteriorComp2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/InteriorComp2.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="3689" name="InteriorItemsComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/InteriorItemsComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="3945" name="magecity_0" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
+ </tileset>
+ <tileset firstgid="4305" name="obj_misk_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="5329" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="6353" name="BedComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BedComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="6609" name="BridgeComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BridgeComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="6865" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="7889" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <tileset firstgid="8113" name="ShelfComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/ShelfComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="8369" name="Red" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Pictures/Red.png" width="32" height="32"/>
+ </tileset>
+ <layer name="Floor" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxLYmBgSBpB2IlxYPS2UKB3qOGBCmN6YQYcYuQCALjVT6o=
+  </data>
+ </layer>
+ <layer name="House Decals" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIxlM5KOOXmzmZBIwG6QHl/2VFLirkwK9AwEAN6cEsQ==
+  </data>
+ </layer>
+ <layer name="Character" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDCQAAAOEAAE=
+  </data>
+ </layer>
+ <layer name="Wall" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxbwsrA0EoGXgbEz4H4Hgfp+DlULzkAl97ljOTrfU4HvS1Ada1o+BgJ9mILR3LdTAwYiXqPEJHuPTgYHNDFjpFpJwwAAJ0yPC8=
+  </data>
+ </layer>
+ <layer name="House Decals (non)" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAchEsyMERIYoqLKjAwiClA2DvlsestBuorwaJXFahPDar3JFDvJCEIRgbNQH0tWPSiAyFhBoZaYcLqiAWbge7ZgsM/tAI5vAwM+UCcBcSZvKTprQGqrwfiKiCuxKLXkJ+BwYifPHc5AvU5kal3FEAAAGNlDrI=
+  </data>
+ </layer>
+ <layer name="Collisions" width="15" height="15" opacity="0.44">
+  <data encoding="base64" compression="zlib">
+   eJzbqMDAsHGAMAggs/EBbHrR5WmhF90MbGxi9eIKA1rrJUcdPfTiM48c/dTSS2yapSQekQEAGS5PMg==
+  </data>
+ </layer>
+</map>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="magecity_0" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
+ </tileset>
+ <tileset firstgid="361" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1385" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2409" name="BedComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BedComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="2665" name="obj_misk_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="3689" name="ShelfComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/ShelfComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="3945" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="4969" name="BedComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BedComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="5225" name="BridgeComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BridgeComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="5481" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="6505" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <tileset firstgid="6729" name="InteriorComp2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/InteriorComp2.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="6985" name="InteriorItemsComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/InteriorItemsComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="7241" name="magecity_0" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
+ </tileset>
+ <tileset firstgid="7601" name="Red" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Pictures/Red.png" width="32" height="32"/>
+ </tileset>
+ <layer name="Floor" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYGBgOMXI0EAOZiBRLwMUkKOXEnuppJdhIPQih9kQCqthoZcUsxgoAAD6EPdB
+  </data>
+ </layer>
+ <layer name="House decals" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDCQAAAOEAAE=
+  </data>
+ </layer>
+ <layer name="Character" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDCQAAAOEAAE=
+  </data>
+ </layer>
+ <layer name="Wall" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJzjYWdgeMtGOuYD6vMH4nsMpGN/qF5yAC69/MwY/AZi9fozY/CprvcNEzDc0LAeml4gvwEojoL98YQzMgDyG9AxLcJ5OOvVISIveDAwOKCL6ZFpJwwAAFMdRTQ=
+  </data>
+ </layer>
+ <layer name="House Decals (non)" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAMeEkxMPgAsS076XqjgPpigDiWSL0+0qTbAQMxSHr7pBkaYOy1SGxkUAN0Uy3UXTlIeuchqd+LQ+8coL65ZIQHNcBPYVQaGYRJQzAuYCiCSiODz0B9X/DodRRBpZEBswwDA4sMbr34QJo0BA9nAADh4xKe
+  </data>
+ </layer>
+ <layer name="House Decals (non)" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAcvJKkgiGjYBSMUAAATVgBBA==
+  </data>
+ </layer>
+ <layer name="Collisions" width="15" height="15" opacity="0.46">
+  <data encoding="base64" compression="zlib">
+   eJzbKMvAsHGAMKkAn150MWx8bPqxmYeuDpe9xOjFZjch88gJP2qEMz7/kmIWNfWSAqihl5gwJyeM8akFABxSWVM=
+  </data>
+ </layer>
+</map>

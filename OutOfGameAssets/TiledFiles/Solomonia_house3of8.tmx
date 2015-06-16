@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2049" name="magecity_0" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
+ </tileset>
+ <tileset firstgid="2409" name="ShelfComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/ShelfComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="2665" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="3689" name="BedComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BedComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="3945" name="BridgeComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BridgeComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="4201" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <tileset firstgid="4425" name="InteriorItemsComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/InteriorItemsComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="4681" name="ShelfComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/ShelfComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="4937" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="5961" name="BedComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BedComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="6217" name="BridgeComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BridgeComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="6473" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <tileset firstgid="6697" name="InteriorComp2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/InteriorComp2.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="6953" name="Red" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Pictures/Red.png" width="32" height="32"/>
+ </tileset>
+ <layer name="Floor" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxLYmBgSKIAK3Fgx5SYSUvsxDgwehkGgd+HexjTC2OLS0oAAGOvTdU=
+  </data>
+ </layer>
+ <layer name="Character" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDCQAAAOEAAE=
+  </data>
+ </layer>
+ <layer name="Wall" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJw7xMHAcIgCrEUGhuklB9BKLyEzaamXGIwN0DOcBUgwZzDGL7F6CWEPDgYHYuOHWAAAKzk2eQ==
+  </data>
+ </layer>
+ <layer name="Counter" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQx3oSDEwaAKxvhSETQqwAaq3BGJ7KQh7FNAfAADniQJx
+  </data>
+ </layer>
+ <layer name="House Decals" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4B2QIADO5sU/eToG0oAAGNkAGE=
+  </data>
+ </layer>
+ <layer name="House Decals (non)" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAOiJNiYMgH4gIphFgXJ3Y2DPByMDCIcmA3bxZQfRA/BIPYwfwQjAxkcegFgSR+CAaBZH4IRraXXEBIL9CeBUB3LkBn0wKcBYbLOSzhKsrFwCDGhV/vXaC+e1j0qgL1qWHRywb0NzuZ4cYH1MdPQZgPdwAAxEgQTw==
+  </data>
+ </layer>
+ <layer name="Collisions" width="15" height="15" opacity="0.42">
+  <data encoding="base64" compression="zlib">
+   eJzTlGZg0BxgTAqgll5scrTWS8hcUsOIFuFLjJtJ1UuKWQPtZmLCkpwwxqcWAAHrGT0=
+  </data>
+ </layer>
+</map>
