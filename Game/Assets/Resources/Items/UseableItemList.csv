@@ -1,12 +1,12 @@
 Flask,0,30,0,0,0,3,Heals single unit for 30 hp.
 Grenade,2,75,0,0,0,100,Deals 75 damage to single target.
-Shrubbery,1,200,0,0,0,2000,Heals allies for 50% hp.
+Shrubbery,1,200,0,0,0,2000,Heals allies for 200 hp.
 Holy-nade,3,500,0,0,0,75,Deals 500 damage to enemies.
 Tonic,0,100,0,0,0,10,Heals single unit for 100 hp.
 Granade,3,100,0,0,0,20,Deals 100 damage to enemies.
 Anti-Venom,0,0,0,0,0,5,Cures Poison.
 Needle,0,0,0,0,0,9,Cures Stone.
-All Heal,0,999,0,0,0,100,Cures Ailments and 100% hp
+All Heal,0,999,0,0,0,100,Cures Ailments and 999 hp
 Pebble,2,1,0,0,0,1,Deals 1 damage to single target.
 Gravel,3,2,0,0,0,1,Deals 2 damage to enemies.
 Mist,1,50,0,0,0,50,Heal allies for 50 hp
