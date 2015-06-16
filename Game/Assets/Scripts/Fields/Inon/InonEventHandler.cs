@@ -42,6 +42,20 @@ public class InonEventHandler : BaseEventSystemScript
 				BeginDialogue(0);
 			}
 			break;
+		case "Marcus":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("Marcus");
+			if(messageSystem)
+			{
+				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+			}
+		}
+			break;
 		case "Constantinople":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -59,7 +73,7 @@ public class InonEventHandler : BaseEventSystemScript
 		case "Inon_Merchant1":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
+						if(player)
 			{
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
 			}
@@ -70,6 +84,25 @@ public class InonEventHandler : BaseEventSystemScript
 			}
 		}
 
+			break;
+		case "End_Marcus":
+		{
+			GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject>();
+			foreach(GameObject g in gObjs)
+			{
+				if(g.GetComponent<MessageHandler>() != null)
+				{
+					if(g.GetComponent<NPCScript>() != null)
+						g.GetComponent<NPCScript>().RestartPathing();
+					g.GetComponent<MessageHandler>().m_bShouldDisplayDialogue = false;
+				}
+			}
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+		}
 			break;
 		case "EndDialogue":
 		{
