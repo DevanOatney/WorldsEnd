@@ -183,7 +183,7 @@ public class PlayerBattleScript : UnitScript {
 
 	void UpdateStats(DCScript.ItemData armor, DCScript.CharacterData c)
 	{
-		if(c != null)
+		if(c != null && armor != null)
 		{
 			c.m_nMaxHP += armor.m_nHPMod;
 			c.m_nCurHP = c.m_nMaxHP;
@@ -213,95 +213,99 @@ public class PlayerBattleScript : UnitScript {
 			c.m_nDEF = int.Parse(lines[2].Trim());
 			//SPD
 			c.m_nSPD = int.Parse(lines[3].Trim());
+			//EVA
+			c.m_nEVA = int.Parse(lines[4].Trim());
+			//HIT
+			c.m_nHIT = int.Parse(lines[5].Trim());
 			//LEVEL
-			c.m_nLevel = int.Parse(lines[4].Trim());
+			c.m_nLevel = int.Parse(lines[6].Trim());
 			//Race
-			c.m_szCharacterRace = lines[5].Trim ();
+			c.m_szCharacterRace = lines[7].Trim ();
 			//ClassType
-			c.m_szCharacterClassType = lines[6].Trim();
+			c.m_szCharacterClassType = lines[8].Trim();
 			//Weapon Name
-			c.m_szWeaponName = lines[7].Trim();
+			c.m_szWeaponName = lines[9].Trim();
 			//Weapon Level
-			c.m_nWeaponLevel = int.Parse(lines[8].Trim());
+			c.m_nWeaponLevel = int.Parse(lines[10].Trim());
 			//Weapon Damage
-			c.m_nWeaponDamageModifier = int.Parse(lines[9].Trim());
+			c.m_nWeaponDamageModifier = int.Parse(lines[11].Trim());
 			c.m_nSTR += c.m_nWeaponDamageModifier;
 			//Weapon Mod name
-			c.m_szWeaponModifierName = lines[10].Trim();
+			c.m_szWeaponModifierName = lines[12].Trim();
 			if(c.m_szWeaponModifierName == "NONE")
 				c.m_szWeaponModifierName = "";
 			//Head
-			if(lines[11].Trim() != "NULL")
+			if(lines[13].Trim() != "NULL")
 			{
-				c.m_idHelmSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[11].Trim());
+				c.m_idHelmSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[13].Trim());
 				UpdateStats(c.m_idHelmSlot, c);
 			}
 			else
 				c.m_idHelmSlot = null;
 			//Shoulders
-			if(lines[12].Trim() != "NULL")
+			if(lines[14].Trim() != "NULL")
 			{
-				c.m_idShoulderSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[12].Trim());
+				c.m_idShoulderSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[14].Trim());
 				UpdateStats(c.m_idShoulderSlot, c);
 			}
 			else
 				c.m_idShoulderSlot = null;
 			//Chest
-			if(lines[13].Trim() != "NULL")
+			if(lines[15].Trim() != "NULL")
 			{
-				c.m_idChestSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[13].Trim());
+				c.m_idChestSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[15].Trim());
 				UpdateStats (c.m_idChestSlot, c);
 			}
 			else
 				c.m_idChestSlot = null;
 			//Arms
-			if(lines[14].Trim() != "NULL")
+			if(lines[16].Trim() != "NULL")
 			{
-				c.m_idGloveSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[14].Trim());
+				c.m_idGloveSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[16].Trim());
 				UpdateStats(c.m_idGloveSlot, c);
 			}
 			else
 				c.m_idGloveSlot = null;
 			//Waist
-			if(lines[15].Trim() != "NULL")
+			if(lines[17].Trim() != "NULL")
 			{
-				c.m_idBeltSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[15].Trim());
+				c.m_idBeltSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[17].Trim());
 				UpdateStats(c.m_idBeltSlot, c);
 			}
 			else
 				c.m_idBeltSlot = null;
 			//Legs
-			if(lines[16].Trim() != "NULL")
+			if(lines[18].Trim() != "NULL")
 			{
-				c.m_idLegSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[16].Trim());
+				c.m_idLegSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[18].Trim());
 				UpdateStats(c.m_idLegSlot, c);
 			}
 			else
 				c.m_idLegSlot = null;
 			//Trinket1
-			if(lines[17].Trim() != "NULL")
+			if(lines[19].Trim() != "NULL")
 			{
-				c.m_idTrinket1 = GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[17].Trim());
+				c.m_idTrinket1 = GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[19].Trim());
 				UpdateStats(c.m_idTrinket1, c);
 			}
 			else
 				c.m_idTrinket1 = null;
 			//Trinket2
-			if(lines[18].Trim() != "NULL")
+			if(lines[20].Trim() != "NULL")
 			{
-				c.m_idTrinket2 = GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[18].Trim());
+				c.m_idTrinket2 = GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[20].Trim());
 				UpdateStats(c.m_idTrinket2, c);
 			}
 			else
 				c.m_idTrinket2 = null;
 			//Character Bio
-			c.m_szCharacterBio = lines[19].Trim();
+			c.m_szCharacterBio = lines[21].Trim();
 			//SpellCount
-			int amntOfSpells = int.Parse(lines[20].Trim());
+			int amntOfSpells = int.Parse(lines[22].Trim());
 			c.m_lSpellsKnown = new List<string>();
 			for(int i = 0; i < amntOfSpells; ++i)
 			{
-				c.m_lSpellsKnown.Add(lines[21+i].Trim());
+				c.m_lSpellsKnown.Add(lines[23+i].Trim());
 			}
 			GameObject.Find("PersistantData").GetComponent<DCScript>().AddPartyMember(c);
 		}
@@ -689,7 +693,18 @@ public class PlayerBattleScript : UnitScript {
 				{
 					if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
 					{
-						tar.GetComponent<UnitScript>().AdjustHP(m_nStr);
+						int nChanceToHit = UnityEngine.Random.Range(0,100);
+						int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
+						if(nRange < 5)
+							nRange = 5;
+						if(nChanceToHit <	nRange)
+						{
+							int dmgAdjustment = UnityEngine.Random.Range(0, 10) - 5;
+							if(dmgAdjustment + m_nStr < 1)
+								tar.GetComponent<UnitScript>().AdjustHP(1);
+							else
+								tar.GetComponent<UnitScript>().AdjustHP(m_nStr + dmgAdjustment);
+						}
 					}
 				}
 				m_fAttackBucket = 0.0f;

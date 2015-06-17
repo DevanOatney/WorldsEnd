@@ -326,7 +326,19 @@ public class BeserkEnemyScript : UnitScript {
 					}
 					else
 						GetComponent<AudioSource>().PlayOneShot(m_acAttackAudio, 0.5f);
-					tar.GetComponent<UnitScript>().AdjustHP(m_nStr);
+
+					int nChanceToHit = UnityEngine.Random.Range(0,100);
+					int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
+					if(nRange < 5)
+						nRange = 5;
+					if(nChanceToHit <	nRange)
+					{
+						int dmgAdjustment = UnityEngine.Random.Range(0, 10) - 5;
+						if(dmgAdjustment + m_nStr < 1)
+							tar.GetComponent<UnitScript>().AdjustHP(1);
+						else
+							tar.GetComponent<UnitScript>().AdjustHP(m_nStr + dmgAdjustment);
+					}
 				}
 			}
 
@@ -365,8 +377,8 @@ public class BeserkEnemyScript : UnitScript {
 		if(dmg >= 0)
 		{
 			dmg = dmg - m_nDef;
-			if(dmg < 0)
-				dmg = 0;
+			if(dmg < 1)
+				dmg = 1;
 		}
 		if(dmg < 0)
 			dmg = 0;

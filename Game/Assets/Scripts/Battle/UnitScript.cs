@@ -25,6 +25,8 @@ public class UnitScript : MonoBehaviour
 	protected int m_nStr;
 	protected int m_nDef;
 	protected int m_nSpd;
+	protected int m_nEva;
+	protected int m_nHit;
 
 	//accessors
 	public int GetMaxHP() {return m_nMaxHP;}
@@ -32,12 +34,16 @@ public class UnitScript : MonoBehaviour
 	public int GetSTR() {return m_nStr;}
 	public int GetDEF() {return m_nDef;}
 	public int GetSPD() {return m_nSpd;}
+	public int GetEVA() {return m_nEva;}
+	public int GetHIT() {return m_nHit;}
 	//mutators
 	public void SetMaxHP(int hp) {m_nMaxHP = hp;}
 	public void SetCurHP(int hp) {m_nCurHP = hp;}
 	public void SetSTR(int str) {m_nStr = str;}
 	public void SetDEF(int def) {m_nDef = def;}
 	public void SetSPD(int spd) {m_nSpd = spd;}
+	public void SetEVA(int eva) {m_nEva = eva;}
+	public void SetHIT(int hit) {m_nHit = hit;}
 
 
 	//The current level of the character
