@@ -181,9 +181,8 @@ public class PlayerBattleScript : UnitScript {
 			SetUnitStats();
 	}
 
-	void UpdateStats(DCScript.ItemData armor)
+	void UpdateStats(DCScript.ItemData armor, DCScript.CharacterData c)
 	{
-		DCScript.CharacterData c =  GameObject.Find("PersistantData").GetComponent<DCScript>().GetCharacter(gameObject.name);
 		if(c != null)
 		{
 			c.m_nMaxHP += armor.m_nHPMod;
@@ -191,6 +190,8 @@ public class PlayerBattleScript : UnitScript {
 			c.m_nSTR += armor.m_nPowMod;
 			c.m_nDEF += armor.m_nDefMod;
 			c.m_nSPD += armor.m_nSpdMod;
+			c.m_nEVA += armor.m_nEvaMod;
+			c.m_nHIT += armor.m_nHitMod;
 		}
 	}
 
@@ -233,7 +234,7 @@ public class PlayerBattleScript : UnitScript {
 			if(lines[11].Trim() != "NULL")
 			{
 				c.m_idHelmSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[11].Trim());
-				UpdateStats(c.m_idHelmSlot);
+				UpdateStats(c.m_idHelmSlot, c);
 			}
 			else
 				c.m_idHelmSlot = null;
@@ -241,7 +242,7 @@ public class PlayerBattleScript : UnitScript {
 			if(lines[12].Trim() != "NULL")
 			{
 				c.m_idShoulderSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[12].Trim());
-				UpdateStats(c.m_idShoulderSlot);
+				UpdateStats(c.m_idShoulderSlot, c);
 			}
 			else
 				c.m_idShoulderSlot = null;
@@ -249,7 +250,7 @@ public class PlayerBattleScript : UnitScript {
 			if(lines[13].Trim() != "NULL")
 			{
 				c.m_idChestSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[13].Trim());
-				UpdateStats (c.m_idChestSlot);
+				UpdateStats (c.m_idChestSlot, c);
 			}
 			else
 				c.m_idChestSlot = null;
@@ -257,7 +258,7 @@ public class PlayerBattleScript : UnitScript {
 			if(lines[14].Trim() != "NULL")
 			{
 				c.m_idGloveSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[14].Trim());
-				UpdateStats(c.m_idGloveSlot);
+				UpdateStats(c.m_idGloveSlot, c);
 			}
 			else
 				c.m_idGloveSlot = null;
@@ -265,7 +266,7 @@ public class PlayerBattleScript : UnitScript {
 			if(lines[15].Trim() != "NULL")
 			{
 				c.m_idBeltSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[15].Trim());
-				UpdateStats(c.m_idBeltSlot);
+				UpdateStats(c.m_idBeltSlot, c);
 			}
 			else
 				c.m_idBeltSlot = null;
@@ -273,7 +274,7 @@ public class PlayerBattleScript : UnitScript {
 			if(lines[16].Trim() != "NULL")
 			{
 				c.m_idLegSlot = (DCScript.ArmorData)GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[16].Trim());
-				UpdateStats(c.m_idLegSlot);
+				UpdateStats(c.m_idLegSlot, c);
 			}
 			else
 				c.m_idLegSlot = null;
@@ -281,7 +282,7 @@ public class PlayerBattleScript : UnitScript {
 			if(lines[17].Trim() != "NULL")
 			{
 				c.m_idTrinket1 = GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[17].Trim());
-				UpdateStats(c.m_idTrinket1);
+				UpdateStats(c.m_idTrinket1, c);
 			}
 			else
 				c.m_idTrinket1 = null;
@@ -289,7 +290,7 @@ public class PlayerBattleScript : UnitScript {
 			if(lines[18].Trim() != "NULL")
 			{
 				c.m_idTrinket2 = GameObject.Find("PersistantData").GetComponent<DCScript>().GetItemFromDictionary(lines[18].Trim());
-				UpdateStats(c.m_idTrinket2);
+				UpdateStats(c.m_idTrinket2, c);
 			}
 			else
 				c.m_idTrinket2 = null;

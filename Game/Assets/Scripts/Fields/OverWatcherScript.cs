@@ -1442,6 +1442,44 @@ public class OverWatcherScript : MonoBehaviour {
 		GUI.Box(new Rect(Screen.width * 0.25f, Screen.height *0.2f, 134, 256),"", portrait);
 	}
 
+	void AdjustStats(DCScript.ItemData item, bool bRemove)
+	{
+		if(item != null)
+		{
+			DCScript.CharacterData c = null;
+			if(m_bCharacterBeingSelected == true)
+			{
+				List<DCScript.CharacterData> lParty = dc.GetParty();
+				c = lParty[m_nCharacterSelectionIndex];
+			}
+			if(c != null)
+			{
+				if(bRemove == true)
+				{
+					int diff = c.m_nMaxHP - c.m_nCurHP;
+					c.m_nMaxHP -= item.m_nHPMod;
+					c.m_nCurHP = c.m_nMaxHP - diff;
+					c.m_nSTR -= item.m_nPowMod;
+					c.m_nDEF -= item.m_nDefMod;
+					c.m_nSPD -= item.m_nSpdMod;
+					c.m_nEVA -= item.m_nEvaMod;
+					c.m_nHIT -= item.m_nHitMod;
+				}
+				else
+				{
+					int diff = c.m_nMaxHP - c.m_nCurHP;
+					c.m_nMaxHP += item.m_nHPMod;
+					c.m_nCurHP = c.m_nMaxHP - diff;
+					c.m_nSTR += item.m_nPowMod;
+					c.m_nDEF += item.m_nDefMod;
+					c.m_nSPD += item.m_nSpdMod;
+					c.m_nEVA += item.m_nEvaMod;
+					c.m_nHIT += item.m_nHitMod;
+				}
+			}
+		}
+	}
+
 	void EquipmentScreen(DCScript.CharacterData character)
 	{
 		if(Input.GetKeyDown(KeyCode.Escape))
@@ -1509,13 +1547,16 @@ public class OverWatcherScript : MonoBehaviour {
 							item.m_szItemName = character.m_idHelmSlot.m_szItemName;
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							dc.AddItem(item);
+							AdjustStats(character.m_idHelmSlot, true);
 							character.m_idHelmSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idHelmSlot, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							character.m_idHelmSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idHelmSlot, false);
 						}
 						break;
 					case 1:
@@ -1529,13 +1570,16 @@ public class OverWatcherScript : MonoBehaviour {
 							item.m_szItemName = character.m_idShoulderSlot.m_szItemName;
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							dc.AddItem(item);
+							AdjustStats(character.m_idShoulderSlot, true);
 							character.m_idShoulderSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idShoulderSlot, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							character.m_idShoulderSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idShoulderSlot, false);
 						}
 
 						break;
@@ -1550,13 +1594,16 @@ public class OverWatcherScript : MonoBehaviour {
 							item.m_szItemName = character.m_idChestSlot.m_szItemName;
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							dc.AddItem(item);
+							AdjustStats(character.m_idChestSlot, true);
 							character.m_idChestSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idChestSlot, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							character.m_idChestSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idChestSlot, false);
 						}
 						break;
 					case 3:
@@ -1570,13 +1617,16 @@ public class OverWatcherScript : MonoBehaviour {
 							item.m_szItemName = character.m_idGloveSlot.m_szItemName;
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							dc.AddItem(item);
+							AdjustStats(character.m_idGloveSlot, true);
 							character.m_idGloveSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idGloveSlot, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							character.m_idGloveSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idGloveSlot, false);
 						}
 						break;
 					case 4:
@@ -1590,13 +1640,16 @@ public class OverWatcherScript : MonoBehaviour {
 							item.m_szItemName = character.m_idBeltSlot.m_szItemName;
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							dc.AddItem(item);
+							AdjustStats(character.m_idBeltSlot, true);
 							character.m_idBeltSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idBeltSlot, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							character.m_idBeltSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idBeltSlot, false);
 						}
 						break;
 					case 5:
@@ -1610,13 +1663,16 @@ public class OverWatcherScript : MonoBehaviour {
 							item.m_szItemName = character.m_idLegSlot.m_szItemName;
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							dc.AddItem(item);
+							AdjustStats(character.m_idLegSlot, true);
 							character.m_idLegSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idLegSlot, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							character.m_idLegSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idLegSlot, false);
 						}
 						break;
 					case 6:
@@ -1630,13 +1686,16 @@ public class OverWatcherScript : MonoBehaviour {
 							item.m_szItemName = character.m_idTrinket1.m_szItemName;
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							dc.AddItem(item);
+							AdjustStats(character.m_idTrinket1, true);
 							character.m_idTrinket1 = dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idTrinket1, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							character.m_idTrinket1 = dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idTrinket1, false);
 						}
 						break;
 					case 7:
@@ -1650,13 +1709,16 @@ public class OverWatcherScript : MonoBehaviour {
 							item.m_szItemName = character.m_idTrinket2.m_szItemName;
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							dc.AddItem(item);
-							character.m_idTrinket2 =dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idTrinket2, true);
+							character.m_idTrinket2 = dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idTrinket2, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
 							dc.RemoveItem(inv[m_nItemSlotIndex]);
 							character.m_idTrinket2 = dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							AdjustStats(character.m_idTrinket2, false);
 						}
 						break;
 					}
@@ -1833,6 +1895,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_nItemType = character.m_idHelmSlot.m_nItemType;
 				item.m_nItemCount = 1;
 				dc.AddItem(item);
+				AdjustStats(character.m_idHelmSlot, true);
 				character.m_idHelmSlot = null;
 			}
 			//shoulder
@@ -1842,6 +1905,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_nItemType = character.m_idShoulderSlot.m_nItemType;
 				item.m_nItemCount = 1;
 				dc.AddItem(item);
+				AdjustStats(character.m_idShoulderSlot, true);
 				character.m_idShoulderSlot = null;
 			}
 			//chest
@@ -1851,6 +1915,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_nItemType = character.m_idChestSlot.m_nItemType;
 				item.m_nItemCount = 1;
 				dc.AddItem(item);
+				AdjustStats(character.m_idChestSlot, true);
 				character.m_idChestSlot = null;
 			}
 			//gloves
@@ -1860,6 +1925,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_nItemType = character.m_idGloveSlot.m_nItemType;
 				item.m_nItemCount = 1;
 				dc.AddItem(item);
+				AdjustStats(character.m_idGloveSlot, true);
 				character.m_idGloveSlot = null;
 			}
 			//belt
@@ -1869,6 +1935,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_nItemType = character.m_idBeltSlot.m_nItemType;
 				item.m_nItemCount = 1;
 				dc.AddItem(item);
+				AdjustStats(character.m_idBeltSlot, true);
 				character.m_idBeltSlot = null;
 			}
 			//legs
@@ -1878,6 +1945,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_nItemType = character.m_idLegSlot.m_nItemType;
 				item.m_nItemCount = 1;
 				dc.AddItem(item);
+				AdjustStats(character.m_idLegSlot, true);
 				character.m_idLegSlot = null;
 			}
 			//trinket 1
@@ -1887,6 +1955,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_nItemType = character.m_idTrinket1.m_nItemType;
 				item.m_nItemCount = 1;
 				dc.AddItem(item);
+				AdjustStats(character.m_idTrinket1, true);
 				character.m_idTrinket1 = null;
 			}
 			//trinket 2
@@ -1896,6 +1965,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_nItemType = character.m_idTrinket2.m_nItemType;
 				item.m_nItemCount = 1;
 				dc.AddItem(item);
+				AdjustStats(character.m_idTrinket2, true);
 				character.m_idTrinket2 = null;
 			}
 
