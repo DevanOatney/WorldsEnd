@@ -476,8 +476,9 @@ public class OverWatcherScript : MonoBehaviour {
 						break;
 					case 3:
 					{
-						//Quest Log
-						m_dFunc = QuestLog;
+						//Save Game
+						if(Application.loadedLevelName == "Regilance")
+							m_dFunc = SaveGame;
 					}
 						break;
 					case 4:
@@ -487,11 +488,11 @@ public class OverWatcherScript : MonoBehaviour {
 						if(data)
 						{
 							Destroy(data);
-							data = new GameObject("PersistantData");
-							data.AddComponent<DCScript>();
-							DontDestroyOnLoad(dc);
+							//data = new GameObject("PersistantData");
+							//data.AddComponent<DCScript>();
+							//DontDestroyOnLoad(dc);
 						}
-						Application.LoadLevel("IntroMenu_Scene");
+						Application.LoadLevel("Intro_Scene");
 					}
 						break;
 					case 5:
@@ -554,7 +555,11 @@ public class OverWatcherScript : MonoBehaviour {
 			yOffset += boxHeight + boxSpacing;
 			GUI.Box(new Rect(xOffset, yOffset, boxWidth, boxHeight), "Equipment");
 			yOffset += boxHeight + boxSpacing;
-			GUI.Box(new Rect(xOffset, yOffset, boxWidth, boxHeight), "Quest Log");
+			if(Application.loadedLevelName != "Regilance")
+				GUI.contentColor = new Color(0.6f, 0.6f, 0.6f, 0.85f);
+			GUI.Box(new Rect(xOffset, yOffset, boxWidth, boxHeight), "Save Game");
+			GUI.contentColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+			GUI.color= new Color(1.0f, 1.0f, 1.0f, 1.0f);
 			yOffset += boxHeight + boxSpacing;
 			GUI.Box(new Rect(xOffset, yOffset, boxWidth, boxHeight), "Quit to Main Menu");
 			yOffset += boxHeight + boxSpacing;
@@ -2266,7 +2271,7 @@ public class OverWatcherScript : MonoBehaviour {
 		return bis;
 	}
 	//doesn't use the passed in argument, but needed it to work with delegate
-	void QuestLog(DCScript.CharacterData character)
+	void SaveGame(DCScript.CharacterData character)
 	{
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
@@ -2274,6 +2279,7 @@ public class OverWatcherScript : MonoBehaviour {
 			m_nCharacterSelectionIndex = 0;
 			m_bCharacterBeingSelected = false;
 		}
+		GUI.Box(new Rect(0, 0, 200, 200), "");
 	}
 		
 
