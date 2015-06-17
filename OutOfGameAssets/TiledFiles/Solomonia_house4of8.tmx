@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="3">
  <tileset firstgid="1" name="magecity_0" tilewidth="32" tileheight="32">
   <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
  </tileset>
@@ -33,9 +33,6 @@
  <tileset firstgid="5841" name="BedComp" tilewidth="32" tileheight="32">
   <image source="../Tilesets/BedComp.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="6097" name="Red" tilewidth="32" tileheight="32">
-  <image source="../../../../../../../Pictures/Red.png" width="32" height="32"/>
- </tileset>
  <layer name="Floor" width="15" height="15">
   <data encoding="base64" compression="zlib">
    eJw7xcjAcIoCrMSAHVNiJi3xKqaB0cswiMNkuIQxvTC2uKQEAAAOKKB/
@@ -61,9 +58,12 @@
    eJxjYKAcGLIxMBgBsTEQJwMxJxtEvBxKg8RCxRkYwsQx9ToC5ZyA2JkNu9klQPHpQH0zxCFsUsFyoL4VWOwdDiCflYEhB4qzgDgTiPmAYfSHlbDeeqCaGiiuAuJKIvSQC8iJt5EEADQDDcs=
   </data>
  </layer>
- <layer name="Collisions" width="15" height="15" opacity="0.42">
-  <data encoding="base64" compression="zlib">
-   eJy7KM7AcHGAMAig89EBPr2kAkL2DJReYsOKmnoJAWrqJcWcgXYzqWmWWDvxqQcAI3BXAQ==
-  </data>
- </layer>
+ <objectgroup name="Collisions">
+  <object id="1" x="32" y="64">
+   <polyline points="0,0 -1,354 256,356 255,391 288,390 289,354 416,352 415,190 161,195 160,64 190,65 191,129 415,129 417,27 289,29 289,-3 113,0 111,23 47,23 47,-8 1,-7 0,1"/>
+  </object>
+  <object id="2" x="101" y="323">
+   <polyline points="0,0 30,0 26,19 25,27 -4,26 -4,1 7,1"/>
+  </object>
+ </objectgroup>
 </map>

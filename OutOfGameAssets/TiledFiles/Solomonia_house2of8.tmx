@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="3">
  <tileset firstgid="1" name="build_atlas" tilewidth="32" tileheight="32">
   <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
  </tileset>
@@ -42,9 +42,6 @@
  <tileset firstgid="8113" name="ShelfComp" tilewidth="32" tileheight="32">
   <image source="../Tilesets/ShelfComp.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="8369" name="Red" tilewidth="32" tileheight="32">
-  <image source="../../../../../../../Pictures/Red.png" width="32" height="32"/>
- </tileset>
  <layer name="Floor" width="15" height="15">
   <data encoding="base64" compression="zlib">
    eJxLYmBgSBpB2IlxYPS2UKB3qOGBCmN6YQYcYuQCALjVT6o=
@@ -70,9 +67,12 @@
    eJxjYKAchEsyMERIYoqLKjAwiClA2DvlsestBuorwaJXFahPDar3JFDvJCEIRgbNQH0tWPSiAyFhBoZaYcLqiAWbge7ZgsM/tAI5vAwM+UCcBcSZvKTprQGqrwfiKiCuxKLXkJ+BwYifPHc5AvU5kal3FEAAAGNlDrI=
   </data>
  </layer>
- <layer name="Collisions" width="15" height="15" opacity="0.44">
-  <data encoding="base64" compression="zlib">
-   eJzbqMDAsHGAMAggs/EBbHrR5WmhF90MbGxi9eIKA1rrJUcdPfTiM48c/dTSS2yapSQekQEAGS5PMg==
-  </data>
- </layer>
+ <objectgroup name="Collisions">
+  <object id="1" x="29.3333" y="63.3333">
+   <polyline points="0,0 0.666667,130 35.3333,128.667 35.3333,114 96.6667,114 97.3333,130 132.667,130 132.667,33.3333 162,33.3333 162,188 2.66667,188 2,272.667 2,285.333 25.3333,286 25.3333,351.333 257.333,352.667 258,385.333 292,385.333 292.667,354.667 420.667,353.333 420,57.3333 356,60 355.333,2.66667 322.667,4 323.333,-6.66667 290.667,-6.66667 290,5.33333 228,4 228.667,-7.33333 97.3333,-9.33333 98.6667,31.3333 33.3333,34 34,-6 0,-7.33333 0,5.33333"/>
+  </object>
+  <object id="2" x="288.667" y="258">
+   <polyline points="0,0 60.6667,0 61.3333,48.6667 0.666667,48.6667 -0.666667,0"/>
+  </object>
+ </objectgroup>
 </map>

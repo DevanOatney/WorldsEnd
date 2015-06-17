@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="3">
  <tileset firstgid="1" name="build_atlas" tilewidth="32" tileheight="32">
   <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
  </tileset>
@@ -45,9 +45,6 @@
  <tileset firstgid="6697" name="InteriorComp2" tilewidth="32" tileheight="32">
   <image source="../Tilesets/InteriorComp2.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="6953" name="Red" tilewidth="32" tileheight="32">
-  <image source="../../../../../../../Pictures/Red.png" width="32" height="32"/>
- </tileset>
  <layer name="Floor" width="15" height="15">
   <data encoding="base64" compression="zlib">
    eJxLYmBgSKIAK3Fgx5SYSUvsxDgwehkGgd+HexjTC2OLS0oAAGOvTdU=
@@ -78,9 +75,12 @@
    eJxjYKAOiJNiYMgH4gIphFgXJ3Y2DPByMDCIcmA3bxZQfRA/BIPYwfwQjAxkcegFgSR+CAaBZH4IRraXXEBIL9CeBUB3LkBn0wKcBYbLOSzhKsrFwCDGhV/vXaC+e1j0qgL1qWHRywb0NzuZ4cYH1MdPQZgPdwAAxEgQTw==
   </data>
  </layer>
- <layer name="Collisions" width="15" height="15" opacity="0.42">
-  <data encoding="base64" compression="zlib">
-   eJzTlGZg0BxgTAqgll5scrTWS8hcUsOIFuFLjJtJ1UuKWQPtZmLCkpwwxqcWAAHrGT0=
-  </data>
- </layer>
+ <objectgroup name="Collisions">
+  <object id="1" x="32" y="195">
+   <polyline points="0,0 1,221 252,221 254,256 292,254 290,222 414,223 417,62 162,62 162,-68 191,-68 192,-4 416,-4 417,-143 353,-143 351,-127 321,-126 322,-139 256,-138 255,-125 225,-125 224,-142 61,-140 61,-95 35,-95 27,-91 30,-22 6,-21 2,-21 2,0"/>
+  </object>
+  <object id="2" x="100" y="308">
+   <polyline points="0,0 53,1 51,29 -1,28 -1,2"/>
+  </object>
+ </objectgroup>
 </map>

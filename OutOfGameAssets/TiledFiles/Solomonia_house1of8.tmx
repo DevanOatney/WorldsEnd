@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="8">
  <tileset firstgid="1" name="wall_top1" tilewidth="32" tileheight="32">
   <image source="../Tilesets/wall_top1.png" width="64" height="64"/>
  </tileset>
@@ -45,9 +45,6 @@
  <tileset firstgid="3901" name="InteriorComp2" tilewidth="32" tileheight="32">
   <image source="../Tilesets/InteriorComp2.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="4157" name="Red" tilewidth="32" tileheight="32">
-  <image source="../../../../../../../Pictures/Red.png" width="32" height="32"/>
- </tileset>
  <layer name="Floor" width="15" height="15">
   <data encoding="base64" compression="zlib">
    eJzLY2NgyKMA7+VjYNjHR5kZ9MR+7AOjdwIFeocaHqgwphcGAWxi5AIAtyVfCw==
@@ -78,9 +75,16 @@
    eJxjYKAM7OVjYNjHh12ulIuBwZQbQl8D4pfcqPL3+CAYG2gEqnflhtDPgPgjN6r+d3wQTAx4yA3RTw3gx8uwwA6IqWMa6eAhE4S+x0S6XkZmCP0PTe8tYNjcJjN8HgH1Pcah15aXPDNBwJcCvbEU6B0IAAA79xgJ
   </data>
  </layer>
- <layer name="Collision" width="15" height="15" opacity="0.43">
-  <data encoding="base64" compression="zlib">
-   eJyzFWBgsB1gTAwgpAefOZToJWQGOXpJ8Ts19JIDKLGDGvaSo59aegmFOaXxiA4A01ocRw==
-  </data>
- </layer>
+ <objectgroup name="Collision">
+  <object id="1" x="32" y="29" height="1"/>
+  <object id="5" x="298" y="277.333">
+   <polyline points="0,0 -1.33333,-1.33333"/>
+  </object>
+  <object id="6" x="30.6667" y="33.3333">
+   <polyline points="0,0 0,136 48,136.667 48,158 129.333,158.667 130,66 159.333,64 160.667,221.333 -0.666667,225.333 -0.666667,314 23.3333,314 23.3333,382.667 254.667,384.667 254.667,415.333 292.667,414 292,384.667 419.333,383.333 420,76 356,75.3333 355.333,32 230,34 227.333,26.6667 71.3333,26.6667 64.6667,28 65.3333,64 0.666667,64.6667"/>
+  </object>
+  <object id="7" x="292" y="276">
+   <polyline points="0,0 56,0 56,29.3333 0.666667,30 0.666667,2 0.666667,1.33333"/>
+  </object>
+ </objectgroup>
 </map>
