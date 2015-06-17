@@ -100,6 +100,7 @@ public class TurnWatcherScript : MonoBehaviour
 				Ally.GetComponent<UnitScript>().SetDEF(g.m_nDEF);
 				Ally.GetComponent<UnitScript>().SetSPD(g.m_nSPD);
 				Ally.GetComponent<UnitScript>().SetUnitLevel(g.m_nLevel);
+				Ally.GetComponent<PlayerBattleScript>().m_szClassName = g.m_szCharacterClassType;
 				Ally.GetComponent<PlayerBattleScript>().SetCurrentExperience(g.m_nCurrentEXP);
 				Ally.GetComponent<PlayerBattleScript>().SetSpellList(g.m_lSpellsKnown);
 				Ally.GetComponent<PlayerBattleScript>().SetHelmSlotData(g.m_idHelmSlot);

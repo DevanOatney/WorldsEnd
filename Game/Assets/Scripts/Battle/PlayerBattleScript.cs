@@ -82,11 +82,13 @@ public class PlayerBattleScript : UnitScript {
 	//The large bust of the character
 	public Texture2D m_tLargeBust;
 
-	//hardcoded experience marker, to make experience harder to gain as you level... decriment the incoming exp depending on '
+	//hardcoded experience marker, to make experience harder to gain as you level... decriment the incoming exp depending on
 	//what level you are?  That would require enemies to have a "level"
 	int m_nExperienceToLevel = 1000;
 	public int GetExperienceToLevel() {return m_nExperienceToLevel;}
 
+	//The class that this character is, this will adjust how the character gains stats when they level
+	public string m_szClassName;
 
 	//Each time the unit levels, reset this to 0
 	int m_nCurrentExperience = 0;
@@ -129,13 +131,28 @@ public class PlayerBattleScript : UnitScript {
 
 	public void LevelUp()
 	{
-		//I don't know, increase things, with more time I wanted to make each character have it's own growth data.. but.. meh, hardcoded should be fine
-
 		SetUnitLevel(GetUnitLevel() +1);
-		SetMaxHP(GetMaxHP() + 5);
-		SetCurHP(GetMaxHP());
-		SetSTR(GetSTR() + 2);
-		SetDEF(GetDEF() + 1);
+		DCScript.ClassStats c = dataCan.GetClassType(m_szClassName);
+		if(c != null)
+		{
+			SetMaxHP(GetMaxHP() + c.m_nHPProg);
+			SetCurHP(GetMaxHP());
+			SetSTR(GetSTR() + c.m_nStrProg);
+			SetDEF(GetDEF() + c.m_nDefProg);
+			SetSPD(GetSPD() + c.m_nSpdProg);
+			SetEVA(GetEVA() + c.m_nEvaProg);
+			SetHIT(GetHIT() + c.m_nHitProg);
+		}
+		else
+		{
+			SetMaxHP(GetMaxHP() + 1);
+			SetCurHP(GetMaxHP());
+			SetSTR(GetSTR() + 1);
+			SetDEF(GetDEF() + 1);
+			SetSPD(GetSPD() + 1);
+			SetEVA(GetEVA() + 1);
+			SetHIT(GetHIT() + 1);
+		}
 	}
 
 	// Use this for initialization

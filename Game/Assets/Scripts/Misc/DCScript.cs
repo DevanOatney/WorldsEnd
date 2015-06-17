@@ -244,33 +244,59 @@ public class DCScript : MonoBehaviour
 	public void SetWeaponList(List<WeaponData> wpns) {m_lWeapons = wpns;}
 
 
+	public TextAsset m_taStatProgression;
+	public List<ClassStats> m_lClassStatProgressions = new List<ClassStats>();
+	public ClassStats GetClassType(string szName)
+	{
+		foreach(ClassStats c in m_lClassStatProgressions)
+		{
+			if(c.m_szClassName == szName)
+				return c;
+		}
+		return null;
+	}
+	public class ClassStats
+	{
+		public string m_szClassName;
+		public int m_nHPProg, m_nStrProg, m_nDefProg, m_nSpdProg, m_nEvaProg, m_nHitProg;
+	}
+
 	void Awake () 
 	{
         DontDestroyOnLoad (gameObject);
-
-		//Temp, instead load from file, or.. if it's a new game, just add the player.
-		/*
-		GameObject Matt = Resources.Load<GameObject>("Units/Ally/Matt/Matt");
-		Matt.GetComponent<PlayerBattleScript>().SetUnitStats();
-		Matt.GetComponent<UnitScript>().m_nPositionOnField = 0;
-		GameObject Devan = Resources.Load<GameObject>("Units/Ally/Devan/Devan");
-		Devan.GetComponent<PlayerBattleScript>().SetUnitStats();
-		Devan.GetComponent<UnitScript>().m_nPositionOnField = 1;
-		m_lPartyMembers.Add(Matt);
-		m_lPartyMembers.Add(Devan);
-		*/
     }
 	// Use this for initialization
 	void Start () 
 	{
 		AdjustValues(); 
-		m_nGold = 10000;
+		m_nGold = 100;
+		LoadStatProgressions();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+
 	}
+
+	void LoadStatProgressions()
+	{
+		string[] classes = m_taStatProgression.ToString().Split('\n');
+		foreach(string szClass in classes)
+		{
+			ClassStats cClass = new ClassStats();
+			string[] szpieces = szClass.Split(',');
+			cClass.m_szClassName = szpieces[0].Trim();
+			cClass.m_nHPProg = int.Parse(szpieces[1].Trim());
+			cClass.m_nStrProg = int.Parse(szpieces[2].Trim());
+			cClass.m_nDefProg = int.Parse(szpieces[3].Trim());
+			cClass.m_nSpdProg = int.Parse(szpieces[4].Trim());
+			cClass.m_nEvaProg = int.Parse(szpieces[5].Trim());
+			cClass.m_nHitProg = int.Parse(szpieces[6].Trim());
+			m_lClassStatProgressions.Add(cClass);
+		}
+	}
+
 	public void AdjustValues()
 	{
 		if(m_fMasterVolume < 0.0f)
