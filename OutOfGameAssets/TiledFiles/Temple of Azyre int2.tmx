@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="23">
+ <tileset firstgid="1" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2049" name="Inq XP MT- Medieval Town1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town1.png" width="256" height="4000"/>
+ </tileset>
+ <tileset firstgid="3049" name="Inq XP MT- Medieval Town2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town2.png" width="256" height="4172"/>
+ </tileset>
+ <tileset firstgid="4089" name="Inq XP MT- Medieval Town3" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town3.png" width="256" height="4415"/>
+ </tileset>
+ <tileset firstgid="5185" name="Inq XP MT- Medieval Town4 see through" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town4 see through.png" width="256" height="4259"/>
+ </tileset>
+ <tileset firstgid="6249" name="Inq XP MT- Medieval Town4" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town4.png" width="256" height="4259"/>
+ </tileset>
+ <tileset firstgid="7313" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <tileset firstgid="7537" name="obj_misk_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="8561" name="ShelfComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/ShelfComp.png" width="512" height="512"/>
+ </tileset>
+ <layer name="Ground" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJx7ysjA8HQUDwv8jBOBh7IdyHYNdJiO4lE8ikfxKB7FgxUDAL7LMeQ=
+  </data>
+ </layer>
+ <layer name="Collision" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJz7xsnA8J2G+AcQfxtBdvynADNwEe8PdMAOFOPAIo4OvgDV/APiS0Tgy2jmCXBCMCF7QHZ8JsIt2ADMDkL2UGIHsWDUDtLs+DYI7fiHnseQAL48SEsAy4OEygJK7Rgu6WrUjlE7Ru3AbQcALPyu9g==
+  </data>
+ </layer>
+ <objectgroup name="Collision">
+  <object id="1" x="417" y="506" width="62" height="72"/>
+  <object id="2" x="512" y="515" width="62" height="62"/>
+  <object id="3" x="606" y="515" width="66" height="63"/>
+  <object id="4" x="704" y="517" width="64" height="61"/>
+  <object id="5" x="419" y="615" width="56" height="57"/>
+  <object id="6" x="514" y="616" width="60" height="55"/>
+  <object id="7" x="607" y="610" width="65" height="61"/>
+  <object id="8" x="702" y="616" width="69" height="52"/>
+  <object id="9" x="706" y="714" width="61" height="51"/>
+  <object id="10" x="607" y="713" width="65" height="54"/>
+  <object id="11" x="513" y="709" width="62" height="58"/>
+  <object id="12" x="418" y="710" width="63" height="53"/>
+  <object id="13" x="203" y="698" width="45" height="71"/>
+  <object id="14" x="168" y="722" width="16" height="21"/>
+  <object id="15" x="42" y="705" width="45" height="59"/>
+  <object id="17" x="672" y="195">
+   <polyline points="0,0 9,16 21,20 40,20 54,10 53,-3 38,-17 17,-19 2,0"/>
+  </object>
+  <object id="18" x="577" y="129">
+   <polyline points="0,0 2,95 -141,94 -138,83 -12,87 -4,83 -96,1 -227,1 -360,-131"/>
+  </object>
+  <object id="19" x="155" y="0">
+   <polyline points="0,0 4,3 9,4 6,4"/>
+  </object>
+  <object id="21" x="289" y="797">
+   <polyline points="0,0 1,-155 -12,-156 -11,0 -280,2 -279,-326 -258,-325 -260,-308 -33,-308 -33,-316 -14,-319 -15,-253 0,-256 1,-377 -274,-374 -276,-509 37,-508 38,-538 -277,-542 -275,-604 58,-607"/>
+  </object>
+  <object id="22" x="286" y="798">
+   <polyline points="0,0 97,-1 97,-416 235,-413 232,-378 196,-385 197,-372 165,-371 161,-385 109,-382 110,0 505,-1 499,-385 484,-381 484,-374 452,-373 449,-356 418,-355 417,-370 319,-372 320,-385 312,-382 312,-413 501,-416 501,-672 324,-669 324,-500 124,-505 121,-543 311,-539 311,-668 295,-668"/>
+  </object>
+ </objectgroup>
+ <layer name="Wall" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztkbsOgkAQRadzdxstqdHSV6Fo4ev/P4HSRDtpVGKHl+jGzcLwChglnOQUu7PMZTJESfqSaAAjgYNMeVATDnr3oGgwI6at83CcMOdZ8HVfvszDycko0qMMd/QMDS8wyJjjV4ga3reN3p/WVURDOFLJWtFd24T45vh2jL4TOIUzOFefmvbB5Gb9h5mxQM8l9OAKrpmMGPs+7Y3mapw36LmFO7iHB8XPXzWjLm5dRmX+NaMt++gyvpvxBILpWGU=
+  </data>
+ </layer>
+ <layer name="Above" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAELzgYGB5wYJHAA75wkqYemz16AvjZMDtwqSPWHnyAHH+Qag8ldhBrDz47PgPlbhGBlbgYGJSBWIULuzw+O74B5b4TwDpAc3W5IOr1gbQBF6aaHxTaYQI00xRqhzmQtiDRjn9Auf9EYFuoHfZc2OUZuHDbQSr4TGL6oTS9EQsIuYte7sAF/nPi54MBFeNpFIyCUTAKaA0Ajh1SRw==
+  </data>
+ </layer>
+ <layer name="High" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFpAI9AezsUYAJcIUVrnAbDVvqge8KlJtBKJ7EFSmPp/+ymGKJcgwMSUCcLAexg0EOv7sIuUFeDlOsESjWBMTNQGwOtEMBSU2CHKobUuQgbsDmVhiwx2LHQqDYIiBeDMThQDsckNQ0yKG6oUUO4gZsbiUXLJBDdcMSOYgbsLkVBB7KMDA8kiGeTQ74CNT7SYZ4NjmAERhPTLLEs8kBIzmsZIFpWU4R1Rx5UB5CE4MBcsLKFmiWHZp59qA8hMMOcsIqFmhWHJp58UB+Ag476JGuSAUA3HNRfg==
+  </data>
+ </layer>
+ <layer name="Objects" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFAwn2CzIwHBCkrR3HgeafoLEd54HmX6CxHdeB5t+gsR2jYBSMglEwCgYfCFYcaBcMTgAASP4HWQ==
+  </data>
+ </layer>
+ <layer name="Sign" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFuECqwkC7YBSMglEwCkbBKBgFowA7AACJKACG
+  </data>
+ </layer>
+</map>
