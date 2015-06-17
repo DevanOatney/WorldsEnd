@@ -1,2 +1,0 @@
-A1|1|Bartholomew|Hey boy, You just missed your father and sister. They went off to the town smith, Briar, to arm themselves for the dangers out there beyond Inon.|A2
-A2|2|1|2|Okay, thanks.|I'll head over there right now|

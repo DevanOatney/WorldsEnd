@@ -1,0 +1,8 @@
+A1|1|Marcus||Hey, how's it goin'?|0|A2
+A2|2|1|1|I was over at the farmer's place. His daughter sure is pretty, what do you think?|A3
+A3|1|Marcus||His daughter? He has a daughter? I haven't seen her before.|0|A4
+A4|2|1|2|Your father was right, you are a little dense...|A5|Oh, well maybe you should head on over and introduce yourself|A6
+A5|1|Marcus||...Sorry, I didn't catch that...|0|A7
+A6|1|Marcus||uh...yeah, I'll take a better look next time I'm over there.|0|
+A7|2|1|2|Oh, nothing|A8|Forget about it.|A8
+A8|3|Marcus_EndDialogue

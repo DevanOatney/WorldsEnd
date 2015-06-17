@@ -1,4 +1,0 @@
-A1|1|Old Tuck|Keep up the hard work and don't be afraid to stop by every once in a while.|A2
-A2|2|1|2|Will do, Old Tuck|A3|Hmmm...I don't know...Maybe just to say hi to your daughter...|A4
-A3|1|Old Tuck|Well, you best get on your journey son. Before it's too late.|
-A4|1|Old Tuck|Why if I had half a mind! But you don't stand a chance boy, she already has her heart set on another young lad.|
