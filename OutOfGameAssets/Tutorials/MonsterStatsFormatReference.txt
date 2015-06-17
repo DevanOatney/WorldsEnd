@@ -2,6 +2,8 @@ HP
 POW
 DEF
 SPD
+EVA
+HIT
 EFFECTIVE LEVEL
 
 
@@ -11,3 +13,5 @@ EX:
 5
 2
 8
+32
+5
