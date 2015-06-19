@@ -216,7 +216,7 @@ namespace Tiled2Unity
 #if UNITY_5_0
                 collider.offset = new Vector2(width * 0.5f, -height * 0.5f);
 #else
-                collider.center = new Vector2(width * 0.5f, -height * 0.5f);
+                collider.offset = new Vector2(width * 0.5f, -height * 0.5f);
 #endif
             }
 
@@ -230,7 +230,7 @@ namespace Tiled2Unity
 #if UNITY_5_0
                 collider.offset = new Vector2(radius, -radius);
 #else
-                collider.center = new Vector2(radius, -radius);
+                collider.offset = new Vector2(radius, -radius);
 #endif
             }
 

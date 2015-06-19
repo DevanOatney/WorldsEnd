@@ -55,6 +55,7 @@ public class InonEventHandler : BaseEventSystemScript
 				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
 			}
 		}
+
 			break;
 		case "Constantinople":
 		{
