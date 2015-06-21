@@ -1,15 +1,12 @@
-12
-5
+15
+6
+1
+1
+1
 0
-3
-1
-1
 1
 Human
-Agile Hunter
-Wooden Bow
-1
-1
+Attacker
 NULL
 NULL
 NULL
@@ -19,6 +16,6 @@ NULL
 NULL
 NULL
 NULL
-Avoids Being Hurt
+Focuses on dealing the most damage
 1
 NULL
