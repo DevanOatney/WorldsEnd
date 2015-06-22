@@ -1,0 +1,21 @@
+Temple Intro:
+   Callan and Briol enter running side by side from forest.
+   Start Callan_TEmple_of Azyre dialogue from beginning
+   At line A4, Callan runs a few steps toward the temple and is stopped by Briol and dialogue continues
+   Characters move into one unit and scene ends
+Temple Interior intro:
+   Callan and Briol walk in side by side to the middle of the flower pot collumns
+   Start Briol_Temple_of_Azyre dialogue from beginning
+   At line A3, dialogue is interupted by a boar charging in and starting a battle (two boars)
+   After battle, dialogue contines
+   Characters form one unit and scene ends
+Temple Boss:
+   Characters slowly approach Boar boss in a single file line with Briol in front
+   Start Briol_Temple_of_Azyre dialogue at line B0
+   Diaogue is interupted at line B4 and the boss battle starts
+   After the battle concludes the dialogue continues
+   Characters form one unit and screen fades to black
+   Screen fades back in, the characters are standing just inside the enterance to the Temple, the rubble layer has gone and the battles are turned off
+   Characters turn to face each other   
+   Start Callan_Temple_of_Azyre dialogue at B0
+   Characters form one unit and scene ends
