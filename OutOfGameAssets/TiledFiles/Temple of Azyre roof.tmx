@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="75" height="25" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="75" height="25" tilewidth="32" tileheight="32" nextobjectid="12">
  <tileset firstgid="1" name="build_atlas" tilewidth="32" tileheight="32">
   <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
  </tileset>
@@ -8,6 +8,22 @@
  </tileset>
  <tileset firstgid="2025" name="Inq XP MT- Medieval Town2" tilewidth="32" tileheight="32">
   <image source="../Tilesets/Inq XP MT- Medieval Town2.png" width="256" height="4172"/>
+  <terraintypes>
+   <terrain name="Vines" tile="-1"/>
+  </terraintypes>
+  <tile id="59" terrain="0,,0,0"/>
+  <tile id="60" terrain=",0,0,0"/>
+  <tile id="61" terrain=",,,0"/>
+  <tile id="62" terrain=",,0,0"/>
+  <tile id="63" terrain=",,0,"/>
+  <tile id="67" terrain="0,,,"/>
+  <tile id="68" terrain=",0,,"/>
+  <tile id="69" terrain=",0,,0"/>
+  <tile id="70" terrain="0,0,,"/>
+  <tile id="71" terrain="0,0,0,0"/>
+  <tile id="77" terrain="0,0,,0"/>
+  <tile id="78" terrain="0,,0,"/>
+  <tile id="79" terrain="0,0,0,"/>
  </tileset>
  <tileset firstgid="3065" name="Inq XP MT- Medieval Town3" tilewidth="32" tileheight="32">
   <image source="../Tilesets/Inq XP MT- Medieval Town3.png" width="256" height="4415"/>
@@ -18,17 +34,151 @@
  <tileset firstgid="5225" name="magecity_0" tilewidth="32" tileheight="32">
   <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
  </tileset>
- <tileset firstgid="5585" name="base_out_atlas" tilewidth="32" tileheight="32">
-  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+ <tileset firstgid="5585" name="PlantComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/PlantComp.png" width="512" height="512"/>
+  <terraintypes>
+   <terrain name="Trees" tile="-1"/>
+  </terraintypes>
+  <tile id="52" terrain=",0,,0"/>
+  <tile id="53" terrain="0,,0,"/>
+  <tile id="54" terrain="0,0,0,0"/>
+  <tile id="55" terrain="0,0,0,0"/>
+  <tile id="64" terrain=",,,0"/>
+  <tile id="65" terrain=",,0,"/>
+  <tile id="66" terrain=",0,0,"/>
+  <tile id="67" terrain="0,,,0"/>
+  <tile id="68" terrain=",0,0,0"/>
+  <tile id="69" terrain="0,,0,0"/>
+  <tile id="70" terrain=",,0,0"/>
+  <tile id="80" terrain=",0,,"/>
+  <tile id="81" terrain="0,,,"/>
+  <tile id="82" terrain="0,,,0"/>
+  <tile id="83" terrain=",0,0,"/>
+  <tile id="84" terrain="0,0,,0"/>
+  <tile id="85" terrain="0,0,0,"/>
+  <tile id="86" terrain="0,0,,"/>
  </tileset>
- <layer name="Ground" width="75" height="25">
+ <tileset firstgid="5841" name="terrain" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrain.png" width="672" height="736"/>
+  <terraintypes>
+   <terrain name="water/grass" tile="-1"/>
+   <terrain name="grass/water" tile="-1"/>
+   <terrain name="Light Dirt" tile="-1"/>
+  </terraintypes>
+  <tile id="1" terrain="2,2,2,"/>
+  <tile id="2" terrain="2,2,,2"/>
+  <tile id="22" terrain="2,,2,2"/>
+  <tile id="23" terrain=",2,2,2"/>
+  <tile id="42" terrain=",,,2"/>
+  <tile id="43" terrain=",,2,2"/>
+  <tile id="44" terrain=",,2,"/>
+  <tile id="63" terrain=",2,,2"/>
+  <tile id="64" terrain="2,2,2,2"/>
+  <tile id="65" terrain="2,,2,"/>
+  <tile id="84" terrain=",2,,"/>
+  <tile id="85" terrain="2,2,,"/>
+  <tile id="86" terrain="2,,,"/>
+  <tile id="105" terrain="2,2,2,2"/>
+  <tile id="106" terrain="2,2,2,2"/>
+  <tile id="107" terrain="2,2,2,2"/>
+  <tile id="123" terrain="0,0,0,0">
+   <animation>
+    <frame tileid="124" duration="200"/>
+    <frame tileid="123" duration="200"/>
+    <frame tileid="125" duration="200"/>
+   </animation>
+  </tile>
+  <tile id="124" terrain="0,0,0,0">
+   <animation>
+    <frame tileid="123" duration="200"/>
+    <frame tileid="124" duration="200"/>
+    <frame tileid="125" duration="200"/>
+   </animation>
+  </tile>
+  <tile id="125" terrain="0,0,0,0">
+   <animation>
+    <frame tileid="125" duration="200"/>
+    <frame tileid="123" duration="200"/>
+    <frame tileid="124" duration="200"/>
+   </animation>
+  </tile>
+  <tile id="190" terrain="1,1,1,1"/>
+  <tile id="193" terrain="1,1,1,1"/>
+  <tile id="231" terrain="1,1,1,1"/>
+  <tile id="232" terrain="1,1,1,1"/>
+  <tile id="233" terrain="1,1,1,1"/>
+  <tile id="259" terrain="0,0,0,1"/>
+  <tile id="260" terrain="0,0,1,0"/>
+  <tile id="280" terrain="0,1,0,0"/>
+  <tile id="281" terrain="1,0,0,0"/>
+  <tile id="300" terrain="1,1,1,0"/>
+  <tile id="301" terrain="1,1,0,0"/>
+  <tile id="302" terrain="1,1,0,1"/>
+  <tile id="321" terrain="1,0,1,0"/>
+  <tile id="322" terrain="0,0,0,0"/>
+  <tile id="323" terrain="0,1,0,1"/>
+  <tile id="342" terrain="1,0,1,1"/>
+  <tile id="343" terrain="0,0,1,1"/>
+  <tile id="344" terrain="0,1,1,1"/>
+ </tileset>
+ <tileset firstgid="6324" name="terrain_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="Background" width="75" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt0EENACAQA8H7oAFdgFb8oYEHaUt2kwroVN01WtU032qXpx61e8YcUhtghRVWGXNIbYAVVlhlzCG1AVZYYZUxh9QGWGGFVcYcUhtghRVWGXNIbYAVVr9ZHdM3MbQ=
+   eJzVmWFuozAQhfnRNvt70+L8zUptL5NwNSROA9xjL7F3WGmxwlMeTx6PqdpqPdIoBLCxP783EHJom+Yg+YM+OfmYbqf6SB3Ptdc2cbtd8iXTV+l+fOf+dJ4/T01zDU1zWfJ4un1iuwv+tTwe2kbb5fbl8qNrkGufGq+yikzAC4l9uTW1xqtjy7UvWXeP70e+l+hWj70vrH6vbLqw5aas9mjG+m6NL7fupfry9ntj92pKH27aOp7uHryKBz2f7NGx58mcbkr8Y+lxTw2w5jcQqytpqls/S73vrY3Faq9uct4p9dQe3fI1mdVFarzqaq/Xc+e8LflO+epw1fM1X9s0z7fEOTkfeB5AzTommHm1StNioMd/Lclxdljo+RpW++clw5r8LFDigRQv1KyOvIdti72l4ZbGpuOL5z45c/7seDRYeLq36sVBtHUlH1r1MKUpa61Ya54+voJVCY9c6pz0foicwy1z/vDyu/lwwJtaD726mlv/VI2P+prC7VjtcW7La3tKfylWqFPQVWTVO6ymSlh69w++H+XqGzx4CVsPjoaueP9YCatxrSdenIlX6pkj9fzeGX0PK6fYpvT6/0MMxrr36/6ZjkODU7h7C+3/LvknbH/ndAn/zcb1aog5bOeOnNc1n8LdL2AzrtsTbePdTCe8oB0Ec3p8uGctwWNmNqPwGSihjylsn0XxbAVuMeCxSfxWOytlBN1BV33Yem8I27p+MVhBu9Z1a4g4ftUVWEAHqL89cRuEn75rwHYM9MVeHEN9rHoZM9hAU7MwU32BK9cr/o0TA/0gwK42VjGUFWo75qT3ePUh3wP5PR88iLYI9F87K9SrkbjAgyMxTNUqfseAupV6JgH/2ljpmFlHEzEDI70fcq3Sus6/nXvpr0YPqhcwj0HmNdGcNfG8wP914fmdfcv3ixpZ6ZhZA5gX6jzYDZL6Lobf+f0Dscw19A==
   </data>
  </layer>
+ <layer name="Dirt" width="75" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztlkEOgjAURN24Ly7aE6B3AO5/ALmDcAc0kaadMKkllLgAyp+kaWI0aZ8z03+5iEQikejsel23PsGxJLzWSXit09l4vbVbH731Sfavxrh1M1ufZP8Cq05PHhOvxVWPnAq/Ks/N7nXAT7g5LiGr2u/8uWTUcXmOnrmb+Gq1+04urIY/umap10vP7HFwVmDUa5cTzlOXyCwnz8xp8Iwa6habJWQGnbPEoTrBG6jIQ+gbm5PSd0xh0jwDptibxN8dSWAS844yUyaX7tySNznHXUa+slJ0L84MWFm/LXUycw3nhJzEeWP/4P4hw5iUzxxYcR5zEb+BIas5hjHxG4p5HTNXLlLkgybwEN7IlL4qyEecw1y6nVkU5nem6vWUqzXdzjP80WdPSNH/j9zwDn+kdPsXcWlsnA==
+  </data>
+ </layer>
+ <layer name="Ground" width="75" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzlmN1ugzAMhZlUfm7ZSnbdVtD3f5yt28VWba+xghavpweHZCpS+Il0RIpIhL/ajk2SLGeUJkmeFT2asHW+55YyOnurVoVVbtXNjYdbap/NVsIqBUZ8zYGhUZjJ2rWw4rgrTN/HmJnwWptf4UBmOalpdbTaW15js/p6+NXPJkm+06vk/lSEIyVfaiwfZNn51w7Yjckqb/kUM2AluR59iTmxypHOQmSFvGKzcbFKLaMacpPGBufVSHHIrIRXbDYaK7Hb2GvHbOvgJZI43Ab4llbH4ZrYDELV2fFk/Uly1MHeO3h4CTNX3hJGEtsorOFiMwgV+lMBc7wKr1JhN5SzsIbjGgTvxWYQqtr0ayu2JbNMxIdCcxbXu1oN18yIVaXYw3PJL5zjZa2PldZHye9sRqw4j7j6Hcwvkv9rD6udufVb3A/rktgMQsU2aNxcPY8wG8rtlWOfU1ujv1nFZhAqed/3Td+v0Hdc/IbqK4xB3vu8uT4Xm0Go/t6XWEntwH7Btoew0nx17qyQg8SY7wwb6gm5v8T/YSmstPNQyzm+/sZ1DmYLYMUsXN//QnzKFYNLZKWd89yj+PpALQYLhdVL2ye/Tlyn9JbVUAy6bB4aUl/xWmb10b7H58R1Vli56qn/5nXkdSTtF8CKGTWKnWjvPWPurJjPvTwu81hGcQ==
+  </data>
+ </layer>
+ <layer name="Shadow" width="75" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt0DsNACAQRMErkIB/Y4AHSkpkHJ+ZZPvNiwB4SysR/fCNkl0JgFmzH9xjaQUAAAB8agOlnSbR
+  </data>
+ </layer>
+ <objectgroup name="Collision">
+  <object id="1" x="326.667" y="160" width="1328" height="500"/>
+  <object id="2" x="386.667" y="161.333">
+   <polyline points="0,0 126.667,121.333 -10.6667,116 -9.33333,124 133.333,129.333 128,-2.66667"/>
+  </object>
+  <object id="3" x="928" y="358.667">
+   <polyline points="0,0 25.3333,16 45.3333,16 61.3333,6.66667 65.3333,-10.6667 42.6667,-33.3333 9.33333,-26.6667 -4,-1.33333"/>
+  </object>
+  <object id="4" x="862.667" y="346.667">
+   <polyline points="0,0 -25.3333,8 -37.3333,-5.33333 -32,-18.6667 -10.6667,-16 5.33333,-4"/>
+  </object>
+  <object id="5" x="841.333" y="410.667">
+   <polyline points="0,0 -6.66667,25.3333 -73.3333,36 -76,2.66667 -41.3333,-4 -2.66667,-1.33333"/>
+  </object>
+  <object id="6" x="1089.33" y="438.667">
+   <polyline points="0,0 -2.66667,-30.6667 30.6667,-34.6667 58.6667,-29.3333 61.3333,-2.66667 -1.33333,9.33333 2.66667,-2.66667"/>
+  </object>
+  <object id="7" x="993.333" y="540">
+   <polyline points="0,0 -65.3333,2.66667 -69.3333,-18.6667 -4,-18.6667 4,-1.33333"/>
+  </object>
+  <object id="10" x="1055" y="344.333">
+   <polyline points="0,0 6.66667,6 29,10 33,1 27.3333,-6.66667 14,-8.66667 1,-1.33333"/>
+  </object>
+  <object id="11" x="973" y="444">
+   <polyline points="0,0 6.66667,-4 14.3333,-11.6667 17.3333,-17 17,-24.3333 13.6667,-31 7.66667,-37 0.666667,-41.6667 -2.33333,-43 -8.66667,-42 -16.3333,-43 -23.3333,-41.6667 -28.3333,-40.3333 -34.6667,-33.3333 -41,-26 -43,-18 -41,-11.3333 -37.6667,-5.33333 -32.3333,-1.33333 -25.3333,2.33333 -18,4.33333 -12,3.33333 -0.666667,3.66667 1,0"/>
+  </object>
+ </objectgroup>
  <layer name="Collision" width="75" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt1jsKgDAQBuFtvKGNaCOx8XH/2r1BpnMN80H6nyGBRIxpnr5eELEU2NCz5satwE5bcXuBDT224qq08g1y3ivOVpytOFtxtuJsxdmK83/Fea84W3G+Qe4P96rlxqPAzjM3XMXPnecp0EqSpJG8KlcmgA==
+   eJzt1z0KhDAQhuEUHiF31iva2MjaqNuphcuuExAcRNgRfzIO3wMBRYvhJRDiHAAAxFAksSdwrtyY4aVgLi7MUymYCa3k0EoutOpo9bSaebUK5uI0tdLOSqvcL889PQ9++9sRVlpxX2rzO6kPZ7HVVZ7eaqT981ntoZTeM///v72e3upOaCVnsVU49846+ziLra6CVnJoJaelVc3ugVpXuJ++FbQCAIhtApVnZv0=
+  </data>
+ </layer>
+ <layer name="Above" width="75" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztlUsKwjAQhrPsAXKE+ljY6kq9nV7PpQfwAT7B10IP4ASziDFtJgVtqP8HP6VkGOb/SRghAAAAAADiYyGFWJJWpLWse5o4melcdvTdkw6ko3w/Ay/mOo8Lfa+km/w8+3c2lMOWkQW3rsmcyP+ZkQG3rsncyf/DymBC/1PprwMgBLX3sPt4qL2H3QcAAPXTToToaHWTsHqfOP04fUP6fJOc5hhopQXzmT5aRr1PaYl/W2V9R5FkldEcQ49Pl48xqV8gVz+uXH17kWSlyCp4tO+MeQ/zgD5mNsOSux0bVTJzvRM7KzsPV14K++xXb+8JS9pDzA==
   </data>
  </layer>
 </map>
