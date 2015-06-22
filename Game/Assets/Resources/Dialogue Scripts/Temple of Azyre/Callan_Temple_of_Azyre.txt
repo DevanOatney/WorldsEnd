@@ -25,4 +25,4 @@ B16|1|Callan||I'll lead the way!||B17
 B17|1|Briol||But you don't know the way...||B18
 B18|1|Callan||I'll make it up as a go. That what good leaders do!||B19
 B19|1|Briol||I don't think that's right, but whatever. Lead the way.||B20
-B20|3|End Boar_Boss_Dialogue
+B20|3|End Temple_Clean_Dialogue

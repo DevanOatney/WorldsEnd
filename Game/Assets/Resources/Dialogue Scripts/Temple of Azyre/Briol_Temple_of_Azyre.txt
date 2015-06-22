@@ -1,0 +1,15 @@
+A0|1|Briol||Wow! This place is amazing!||A1
+A1|1|Callan||See! It definately has the space.||A2
+A2|1|Briol||We still need to be careful. It's very dangerous in here.|A3
+A3|1|Callan||Whatever. I'll be over here||A4
+A4|1|Briol||What did I just tell you?!? We need to stay together||A5
+A5|1|Callan||Alright. Let's go.||A6
+A6|3|End Temple_interior_intro
+B0|1|Briol||There it is.||B1
+B1|1|Callan||It's bigger that I remember.||B2
+B2|1|Briol||You just saw it outside. Anyway, I think we can take it if we work together.||B3
+B3|1|Callan||Yeah. I've got a plan. Now, get ready and GET IT!||B4
+B4|1|Briol||That's your plan? 'Get it?' Wow...||B5
+B5|1|Callan||Well, it worked didn't it?||B6
+B6|1|Briol||Whatever. Better start cleaning up this dump.||B7
+B7|3|End Boar_Boss_Battle
