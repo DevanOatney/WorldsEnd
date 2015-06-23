@@ -57,6 +57,20 @@ public class InonEventHandler : BaseEventSystemScript
 		}
 
 			break;
+		case "OldTuck":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("Old Tuck");
+			if(messageSystem)
+			{
+				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+			}
+		}
+			break;
 		case "Constantinople":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
