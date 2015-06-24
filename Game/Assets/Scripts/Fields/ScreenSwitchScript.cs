@@ -10,6 +10,7 @@ public class ScreenSwitchScript : MonoBehaviour
 	public GameObject m_goNextLocation;
 	//New direction to face, default to -1 if no new facing
 	public int m_nNewFacingDir = -1;
+	public AudioClip m_acMusic = null;
 	//If we're scene switching, which starting point should we go to?
 	public string m_szStartingLocToGoTo = "";
 	bool m_bHasJustAppeared = false;
@@ -70,6 +71,12 @@ public class ScreenSwitchScript : MonoBehaviour
 		}
 		else
 		{
+			if(m_acMusic != null)
+			{
+				Camera.main.GetComponent<AudioSource>().Stop();
+				Camera.main.GetComponent<AudioSource>().clip = m_acMusic;
+				Camera.main.GetComponent<AudioSource>().Play();
+			}
 			m_goNextLocation.GetComponent<ScreenSwitchScript>().SetAppearFlag(true);
 			m_goNextLocation.GetComponent<ScreenSwitchScript>().Invoke("TurnOffFlag", 0.1f);
 			GameObject player = GameObject.Find("Player");
