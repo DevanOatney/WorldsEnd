@@ -31,8 +31,7 @@ public class PlayerBattleScript : UnitScript {
 	//flag for if the character has selected what Item to use
 	bool m_bChoosingItem = false;
 	public void SetChoosingItemFlag(bool flag) {m_bChoosingItem = flag;}
-	bool m_bAllowInput = true;
-	public void SetAllowInput(bool flag) {m_bAllowInput = flag;}
+
 
 	enum States{eIDLE, eCHARGE, eRETURN, eATTACK, eDAMAGED, eDEAD, eDEFEND, eMAGIC, eITEM};
 	float m_fMovementSpeed = 8.0f;
@@ -196,6 +195,39 @@ public class PlayerBattleScript : UnitScript {
 		//if the MaxHP is zero, the character wasn't loaded in from a previous save file, and stats need to be initialized to the base stats of that character
 		if(GetMaxHP() <= 0)
 			SetUnitStats();
+
+		//Grab any status effects that are currently effect this character.
+		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffects;
+		foreach(DCScript.StatusEffect se in effects)
+		{
+			foreach(string charName in se.m_lEffectedMembers)
+			{
+				if(charName == name)
+				{
+					switch(se.m_szName)
+					{
+					case "Poison":
+					{
+						m_poison.GetComponent<BattlePoisonEffectScript>().Initialize(gameObject, 1, se.m_nCount);
+						m_lStatusEffects.Add(m_poison);
+					}
+						break;
+					case "Paralyze":
+					{
+					}
+						break;
+					case "Stone":
+					{
+					}
+						break;
+					case "Confuse":
+					{
+					}
+						break;
+					}
+				}
+			}
+		}
 	}
 
 	void UpdateStats(DCScript.ItemData armor, DCScript.CharacterData c)
@@ -339,6 +371,12 @@ public class PlayerBattleScript : UnitScript {
 
 		if(m_bIsMyTurn)
 		{
+			if(m_bFirstPass == true)
+			{
+				m_bFirstPass = false;
+				m_bAllowInput = false;
+				StartMyTurn();
+			}
 			if(m_nState == (int)States.eDEFEND)
 				m_nState = (int)States.eIDLE;
 			if(m_bAllowInput == true)
@@ -517,14 +555,8 @@ public class PlayerBattleScript : UnitScript {
 					m_nState = (int)States.eDEFEND;
 					m_bIsMyTurn = false;
 					m_bWasDefending = true;
-					GameObject tw = GameObject.Find("TurnWatcher");
-					if(tw)
-					{
-						TurnOffFlags();
-						tw.GetComponent<TurnWatcherScript>().MyTurnIsOver(gameObject);
-					}
-					
-					
+					TurnOffFlags();
+					EndMyTurn();
 					//Having an issue where the enter key gets spammed after a player defends.. let's see if this jank fix resolves it!
 					Input.ResetInputAxes();
 				}
@@ -941,28 +973,11 @@ public class PlayerBattleScript : UnitScript {
 			{
 				wypnt.GetComponent<BoxCollider>().enabled = true;
 			}
-			//Inform turn watcher that your turn is over
-			GameObject tw = GameObject.Find("TurnWatcher");
-			if(tw)
-			{
-				TurnOffFlags();
-				tw.GetComponent<TurnWatcherScript>().MyTurnIsOver(gameObject);
-			}
+			TurnOffFlags();
+			EndMyTurn();
 		}
 	}
 
-	public void TurnOffFlags()
-	{
-		m_bAttackChosen = false;
-		if(m_bChoosingMagic == true)
-			m_bChoosingMagic = false;
-		else if(m_bMagicChosen == true)
-			m_bMagicChosen = false;
-		if(m_bChoosingItem == true)
-			m_bChoosingItem = false;
-		else if(m_bItemChosen == true)
-			m_bItemChosen = false;
-	}
 	int AdjustDefense(int def)
 	{
 		if(m_idChestSlot != null)
@@ -986,6 +1001,20 @@ public class PlayerBattleScript : UnitScript {
 
 		return def;
 	}
+
+	public void TurnOffFlags()
+	{
+		m_bAttackChosen = false;
+		if(m_bChoosingMagic == true)
+			m_bChoosingMagic = false;
+		else if(m_bMagicChosen == true)
+			m_bMagicChosen = false;
+		if(m_bChoosingItem == true)
+			m_bChoosingItem = false;
+		else if(m_bItemChosen == true)
+			m_bItemChosen = false;
+	}
+
 	new public void AdjustHP(int dmg)
 	{
 		if(dmg >= 0)

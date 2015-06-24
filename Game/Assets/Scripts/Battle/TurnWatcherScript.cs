@@ -165,7 +165,7 @@ public class TurnWatcherScript : MonoBehaviour
 
 		//Check to  make sure this isn't the second part of the boss battle, if it is...
 		int result;
-		if(ds.m_dStoryFlagField.TryGetValue("Primus_ReturnFromFixFight", out result))
+		if(ds.m_dStoryFlagField.TryGetValue("Battle_ReadMessage", out result))
 		{
 			//stop combat for a second
 			m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = false;
@@ -180,25 +180,9 @@ public class TurnWatcherScript : MonoBehaviour
 	void DoneReadingMessage()
 	{
 		//the event window is done displaying it's message
-		Invoke("KillCharacterReferences", 3.0f);
 		GameObject.Find("MessageWindow").GetComponent<SpriteRenderer>().enabled = false;
 		GameObject.Find("TextOnWindow").GetComponent<MeshRenderer>().enabled = false;
 
-	}
-
-	void KillCharacterReferences()
-	{
-		GameObject[] fakeReferences = GameObject.FindGameObjectsWithTag("Enemy");
-		foreach(GameObject enemy in fakeReferences)
-		{
-			if(enemy.name == "CharacterReference")
-			{
-				
-				enemy.GetComponent<UnitScript>().SetDEF(0);
-				enemy.GetComponent<UnitScript>().AdjustHP(9999);
-			}
-		}
-		m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
 	}
 
 	// Update is called once per frame
@@ -297,7 +281,7 @@ public class TurnWatcherScript : MonoBehaviour
 
 				//Display their current exp just to the right
 				//int digitCount = (int)(Mathf.Log10( m_lPreviousExperience[Ally.name]) +1);
-				GUI.Label(new Rect(fXAdjust/* + (10*digitCount)*/, fYAdjust, 30.0f, 25.0f), m_lPreviousExperience[Ally.name].ToString());
+				GUI.Label(new Rect(fXAdjust, fYAdjust, 30.0f, 25.0f), m_lPreviousExperience[Ally.name].ToString());
 
 
 
@@ -556,6 +540,41 @@ public class TurnWatcherScript : MonoBehaviour
 
 	void Finish()
 	{
+		//grab each status effect and add it back to the list in the data canister, if the status effect already exists, add the character to the list of effected characters.
+		GameObject[] Allies = GameObject.FindGameObjectsWithTag("Ally");
+		foreach(GameObject Ally in Allies)
+		{
+			foreach(GameObject effect in Ally.GetComponent<UnitScript>().m_lStatusEffects)
+			{
+				int catchIter = ds.IsStatusEffectInList(effect.GetComponent<BattleBaseEffectScript>().name);
+				if( catchIter != -1)
+				{
+					//effect already exists in list
+					bool bAlreadyInList = false;
+					foreach(string name in ds.m_lStatusEffects[catchIter].m_lEffectedMembers)
+					{
+						if(name == Ally.name)
+							bAlreadyInList = true;
+					}
+					if(bAlreadyInList == false)
+					{
+						//character is not on the list of effected characters
+						ds.m_lStatusEffects[catchIter].m_lEffectedMembers.Add(Ally.name);
+					}
+
+					if(effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks > ds.m_lStatusEffects[catchIter].m_nCount)
+						ds.m_lStatusEffects[catchIter].m_nCount = effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks;
+				}
+				else
+				{
+					//effect needs to be added
+					DCScript.StatusEffect se = new DCScript.StatusEffect();
+					se.m_szName =  effect.GetComponent<BattleBaseEffectScript>().name;
+					se.m_nCount =  effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks;
+					se.m_lEffectedMembers.Add(Ally.name);
+				}
+			}
+		}
 		//TODO: chance to win items based on enemies defeated/set items that are won during that specific battle
 		string previousField = ds.GetPreviousFieldName();
 		ds.SetPreviousFieldName(Application.loadedLevelName);

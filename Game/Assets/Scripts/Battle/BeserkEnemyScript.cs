@@ -360,16 +360,6 @@ public class BeserkEnemyScript : UnitScript {
 		}
 	}
 
-	void EndMyTurn()
-	{
-		//Inform turn watcher that your turn is over
-		GameObject tw = GameObject.Find("TurnWatcher");
-		if(tw)
-		{
-			tw.GetComponent<TurnWatcherScript>().MyTurnIsOver(gameObject);
-		}
-	}
-
 
 	new public void AdjustHP(int dmg)
 	{

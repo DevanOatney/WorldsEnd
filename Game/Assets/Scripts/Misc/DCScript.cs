@@ -160,10 +160,21 @@ public class DCScript : MonoBehaviour
 	{
 		public string m_szName;
 		public int m_nCount;
-		public List<string> m_lEffectedMembers;
+		public List<string> m_lEffectedMembers = new List<string>();
 	}
 	//list of status effects that are inflicting the party
 	public List<StatusEffect> m_lStatusEffects = new List<StatusEffect>();
+	public int IsStatusEffectInList(string szName)
+	{
+		int counter = 0;
+		foreach(StatusEffect se in m_lStatusEffects)
+		{
+			if(se.m_szName == szName)
+				return counter;
+			counter++;
+		}
+		return -1;
+	}
 
 	public class CharacterData
 	{

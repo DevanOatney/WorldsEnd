@@ -83,9 +83,7 @@ public class ItemGroupHeal : BaseItemScript
 		
 		
 		//end units turn
-		GameObject tw = GameObject.Find("TurnWatcher");
-		if(tw)
-			tw.GetComponent<TurnWatcherScript>().MyTurnIsOver(m_pOwner);
+		m_pOwner.GetComponent<PlayerBattleScript>().EndMyTurn();
 		m_pOwner.GetComponent<PlayerBattleScript>().SetAllowInput(true);
 		Destroy(gameObject);
 	}

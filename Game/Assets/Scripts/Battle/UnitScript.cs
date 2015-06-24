@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class UnitScript : MonoBehaviour 
 {
@@ -17,7 +18,11 @@ public class UnitScript : MonoBehaviour
 	public int m_nTargetPositionOnField = 0;
 	//vector to hold the initial position of the unit on the field for each time the unit moves
 	protected Vector3 m_vInitialPos;
-
+	//bool for it being the start of this units turn
+	protected bool m_bFirstPass = true;
+	//Should input be allowed?
+	protected bool m_bAllowInput = true;
+	public void SetAllowInput(bool flag) {m_bAllowInput = flag;}
 
 	//units stats
 	protected int m_nMaxHP;
@@ -51,6 +56,22 @@ public class UnitScript : MonoBehaviour
 	public int GetUnitLevel() {return m_nUnitLevel;}
 	public void SetUnitLevel(int lvl) {m_nUnitLevel = lvl;}
 
+
+
+	//List of status effects that could be effecting the player/units   Poison, Confusion, Paralyze, Stone (examples)
+	public List<GameObject> m_lStatusEffects = new List<GameObject>();
+	public void RemoveStatusEffect(string effectName)
+	{
+		for (int i = m_lStatusEffects.Count - 1; i >= 0; i--)
+		{
+			if(m_lStatusEffects[i].name == effectName)
+			{
+				m_lStatusEffects.RemoveAt(i);
+			}
+		}
+	}
+	//temp for status effect testing
+	public GameObject m_poison;
 
 	void Awake()
 	{
@@ -100,4 +121,33 @@ public class UnitScript : MonoBehaviour
 			}
 		}
 	}
+
+	public void StartMyTurn()
+	{
+		//Update any of the status effects. (use a new list, as some of the master list may get removed
+		for(int i = 0; i < m_lStatusEffects.Count; ++i)
+		{
+			if(m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_bToBeRemoved == true)
+			{
+				
+				GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffects.RemoveAt(i);
+				m_lStatusEffects.RemoveAt(i);
+				i--;
+			}
+			else
+				m_lStatusEffects[i].GetComponent<FieldBaseStatusEffectScript>().m_dFunc();
+		}
+	}
+	
+	public void EndMyTurn()
+	{
+		GameObject tw = GameObject.Find("TurnWatcher");
+		if(tw)
+		{
+			tw.GetComponent<TurnWatcherScript>().MyTurnIsOver(gameObject);
+			m_bFirstPass = true;
+		}
+	}
+
+
 }

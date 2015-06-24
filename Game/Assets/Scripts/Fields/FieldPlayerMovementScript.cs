@@ -73,14 +73,12 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		//Set which direction the player should be idling toward when the screen loads
 		m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
 		ResetAnimFlagsExcept(m_nFacingDir);
-
-
 		//temp for testing status
-		//DCScript.StatusEffect se = new DCScript.StatusEffect();
-		//se.m_szName = "Poison";
-		//se.m_nCount = 20;
-		//se.m_lEffectedMembers = test;
-		//GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffects.Add(se);
+		DCScript.StatusEffect tse = new DCScript.StatusEffect();
+		tse.m_szName = "Poison";
+		tse.m_nCount = 20;
+		tse.m_lEffectedMembers.Add("Matt");
+		GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffects.Add(tse);
 		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffects;
 		foreach(DCScript.StatusEffect se in effects)
 		{
@@ -243,7 +241,10 @@ public class FieldPlayerMovementScript : MonoBehaviour
 					i--;
 				}
 				else
-				m_lStatusEffects[i].GetComponent<FieldBaseStatusEffectScript>().m_dFunc();
+				{
+					Debug.Log ("hit");
+					m_lStatusEffects[i].GetComponent<FieldBaseStatusEffectScript>().m_dFunc();
+				}
 			}
 		}
 
