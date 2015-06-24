@@ -12,7 +12,7 @@ public class NPCScript : MonoBehaviour
 
 	protected float m_fWalkingSpeed = 2.0f;
 	protected bool m_bIsMoving = false;
-	protected bool m_bIsBeingInterractedWith = false;
+	public bool m_bIsBeingInterractedWith = false;
 	protected float m_fTimer = 0.0f;
 	protected int m_nStepsIter = 0;
 	protected Animator m_aAnim;

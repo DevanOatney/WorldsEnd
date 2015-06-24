@@ -128,7 +128,7 @@ public class InonEventHandler : BaseEventSystemScript
 				if(g.GetComponent<MessageHandler>() != null)
 				{
 					if(g.GetComponent<NPCScript>() != null)
-						g.GetComponent<NPCScript>().RestartPathing();
+						g.GetComponent<NPCScript>().m_bIsBeingInterractedWith = false;
 					g.GetComponent<MessageHandler>().m_bShouldDisplayDialogue = false;
 				}
 			}

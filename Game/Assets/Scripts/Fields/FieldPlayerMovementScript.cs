@@ -242,7 +242,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 				}
 				else
 				{
-					Debug.Log ("hit");
 					m_lStatusEffects[i].GetComponent<FieldBaseStatusEffectScript>().m_dFunc();
 				}
 			}
