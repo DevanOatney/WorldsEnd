@@ -161,16 +161,19 @@ public class NPCScript : MonoBehaviour
 	//Load the steps of the NPC
 	protected void LoadSteps()
 	{
-		string[] lines = m_taPathing.text.Split('\n');
-		foreach(string step in lines)
+		if(m_taPathing != null)
 		{
-			cSteps newStep = new cSteps();
-			string[] pieces = step.Split(',');
-			newStep.nDirection = int.Parse(pieces[0].Trim());
-			newStep.fTime = float.Parse(pieces[1].Trim());
-			newStep.bMove = bool.Parse(pieces[2].Trim());
-			newStep.bOneShot = bool.Parse(pieces[3].Trim());
-			m_lSteps.Add(newStep);
+			string[] lines = m_taPathing.text.Split('\n');
+			foreach(string step in lines)
+			{
+				cSteps newStep = new cSteps();
+				string[] pieces = step.Split(',');
+				newStep.nDirection = int.Parse(pieces[0].Trim());
+				newStep.fTime = float.Parse(pieces[1].Trim());
+				newStep.bMove = bool.Parse(pieces[2].Trim());
+				newStep.bOneShot = bool.Parse(pieces[3].Trim());
+				m_lSteps.Add(newStep);
+			}
 		}
 	}
 
