@@ -89,6 +89,7 @@ public class TurnWatcherScript : MonoBehaviour
 			List<DCScript.CharacterData> allies = ds.GetParty();
 			foreach(DCScript.CharacterData g in allies)
 			{
+				Debug.Log(g.m_szCharacterName);
 				GameObject Ally = Instantiate(Resources.Load<GameObject>("Units/Ally/" + g.m_szCharacterName + "/" + g.m_szCharacterName)) as GameObject;
 				//Set the name so (Clone) isn't in the name.
 				Ally.name = g.m_szCharacterName;

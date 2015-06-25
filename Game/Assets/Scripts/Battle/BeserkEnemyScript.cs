@@ -45,15 +45,9 @@ public class BeserkEnemyScript : UnitScript {
 	// Use this for initialization
 	void Start () 
 	{
-		switch(m_nUnitType)
-		{
-		case (int)UnitTypes.MEWTWO:
+		anim = GetComponent<Animator>();
+		if(anim == null)
 			anim = GetComponentInChildren<Animator>();
-			break;
-		default:
-			anim = GetComponent<Animator>();
-			break;
-		}
 		SetUnitStats();
 		m_vInitialPos = new Vector3();
 		m_vInitialPos.x = -4.0f;
