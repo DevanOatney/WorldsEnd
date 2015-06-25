@@ -573,6 +573,13 @@ public class PlayerBattleScript : UnitScript {
 						GetComponent<AudioSource>().PlayOneShot(m_acChargeClip, 0.5f + dataCan.m_fSFXVolume);
 					anim.SetBool("m_bIsMoving", true);
 				}
+				else if(m_nUnitType == (int)UnitTypes.ALLY_RANGED)
+				{
+					anim.SetBool("m_bIsAttacking", true);
+					m_nState = (int)States.eATTACK;
+					m_fAttackBucket = m_acAttackAnim.length;
+
+				}
 				m_bIsMyTurn = false;
 			}
 			else if(m_bItemChosen == true && m_bChoosingItem == false)
@@ -738,8 +745,28 @@ public class PlayerBattleScript : UnitScript {
 			m_fAttackBucket -= Time.deltaTime;
 
 
-			if(m_fAttackBucket <= 0.001f)
+			if(m_fAttackBucket <= 0.0001f)
 			{
+				if(m_nUnitType == (int)UnitTypes.ALLY_MELEE)
+				{
+					m_nState = (int)States.eRETURN;
+					anim.SetBool("m_bIsMoving", true);
+				}
+				else if(m_nUnitType == (int)UnitTypes.ALLY_RANGED)
+				{
+
+					m_nState = (int)States.eIDLE;
+					TurnOffFlags();
+					EndMyTurn();
+				}
+				anim.SetBool("m_bIsAttacking", false);
+				m_fAttackBucket = 0.0f;
+				GameObject GO = GameObject.Find("PersistantData");
+				if(GO != null)
+					GetComponent<AudioSource>().PlayOneShot(m_acAttackAudio, 0.5f + GO.GetComponent<DCScript>().m_fSFXVolume);
+
+
+				//Try to hit the target
 				GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
 				foreach(GameObject tar in posTargs)
 				{
@@ -751,23 +778,18 @@ public class PlayerBattleScript : UnitScript {
 							nRange = 5;
 						if(nChanceToHit <	nRange)
 						{
+							//Target was hit
 							int dmgAdjustment = UnityEngine.Random.Range(0, 10) - 5;
 							if(dmgAdjustment + m_nStr < 1)
 								tar.GetComponent<UnitScript>().AdjustHP(1);
 							else
 								tar.GetComponent<UnitScript>().AdjustHP(m_nStr + dmgAdjustment);
 						}
+						else
+						{
+							//target was missed
+						}
 					}
-				}
-				m_fAttackBucket = 0.0f;
-				m_nState = (int)States.eRETURN;
-				anim.SetBool("m_bIsAttacking", false);
-				anim.SetBool("m_bIsMoving", true);
-				GameObject GO = GameObject.Find("PersistantData");
-				if(GO != null)
-				{
-					if(GetComponent<AudioSource>().enabled == true && name != "Matt(Clone)")
-						GetComponent<AudioSource>().PlayOneShot(m_acAttackAudio, 0.5f + GO.GetComponent<DCScript>().m_fSFXVolume);
 				}
 			}
 		}
