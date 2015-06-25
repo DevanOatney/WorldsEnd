@@ -34,8 +34,8 @@ public class MenuSelectScript : MonoBehaviour
 		{
 			//New Game
 			GameObject.Find("PersistantData").GetComponent<DCScript>().GetParty().Clear();
-			GameObject Matt = Resources.Load<GameObject>("Units/Ally/Matt/Matt");
-			Matt.GetComponent<PlayerBattleScript>().SetUnitStats();
+			GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
+			Callan.GetComponent<PlayerBattleScript>().SetUnitStats();
 
 
 			GameObject Devan = Resources.Load<GameObject>("Units/Ally/Devan/Devan");

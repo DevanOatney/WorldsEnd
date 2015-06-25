@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class UnitScript : MonoBehaviour 
 {
-	public enum UnitTypes{Ally, NPC, BASICENEMY, CHARACTERREF, MEWTWO};
+	public enum UnitTypes{ALLY_MELEE, ALLY_RANGED, NPC, BASICENEMY, CHARACTERREF, MEWTWO};
 	public bool m_bIsMyTurn = false;
 	public int m_nState;
 	//for knowing which script to call for TakeDamage
@@ -98,7 +98,12 @@ public class UnitScript : MonoBehaviour
 		{
 			switch(m_nUnitType)
 			{
-			case (int)UnitTypes.Ally:
+			case (int)UnitTypes.ALLY_MELEE:
+			{
+				gameObject.GetComponent<PlayerBattleScript>().AdjustHP(dmg);
+			}
+				break;
+			case (int)UnitTypes.ALLY_RANGED:
 			{
 				gameObject.GetComponent<PlayerBattleScript>().AdjustHP(dmg);
 			}

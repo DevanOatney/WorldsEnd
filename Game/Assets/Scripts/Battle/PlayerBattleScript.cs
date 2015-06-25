@@ -159,7 +159,6 @@ public class PlayerBattleScript : UnitScript {
 	{
 		dataCan = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		anim = GetComponent<Animator>();
-		m_nUnitType = (int)UnitTypes.Ally;
 		if(m_acDyingAnim)
 			m_fDeadBucket = m_acDyingAnim.length;
 		m_vInitialPos = new Vector3();
@@ -567,9 +566,13 @@ public class PlayerBattleScript : UnitScript {
 			else if(m_bAttackChosen == true)
 			{
 				DisableAllCursors();
-				m_nState = (int)States.eCHARGE;
-				GetComponent<AudioSource>().PlayOneShot(m_acChargeClip, 0.5f + dataCan.m_fSFXVolume);
-				anim.SetBool("m_bIsMoving", true);
+				if(m_nUnitType == (int)UnitTypes.ALLY_MELEE)
+				{
+					m_nState = (int)States.eCHARGE;
+					if(m_acChargeClip != null)
+						GetComponent<AudioSource>().PlayOneShot(m_acChargeClip, 0.5f + dataCan.m_fSFXVolume);
+					anim.SetBool("m_bIsMoving", true);
+				}
 				m_bIsMyTurn = false;
 			}
 			else if(m_bItemChosen == true && m_bChoosingItem == false)
