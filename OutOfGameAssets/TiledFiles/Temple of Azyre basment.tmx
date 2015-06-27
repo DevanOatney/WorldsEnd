@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="75" height="100" tilewidth="32" tileheight="32" nextobjectid="39">
+ <tileset firstgid="1" name="terrainlighter" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrainlighter.png" width="672" height="736"/>
+ </tileset>
+ <tileset firstgid="484" name="base_out_atlas - Copy" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas - Copy.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1508" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
+  <terraintypes>
+   <terrain name="Dirt" tile="-1"/>
+   <terrain name="Hole" tile="-1"/>
+  </terraintypes>
+  <tile id="19" terrain="0,0,0,"/>
+  <tile id="20" terrain="0,0,,0"/>
+  <tile id="51" terrain="0,,0,0"/>
+  <tile id="52" terrain=",0,0,0"/>
+  <tile id="82" terrain=",,,0"/>
+  <tile id="83" terrain=",,0,0"/>
+  <tile id="84" terrain=",,0,"/>
+  <tile id="114" terrain=",0,,0"/>
+  <tile id="115" terrain="0,0,0,0"/>
+  <tile id="116" terrain="0,,0,"/>
+  <tile id="146" terrain=",0,,"/>
+  <tile id="147" terrain="0,0,,"/>
+  <tile id="148" terrain="0,,,"/>
+  <tile id="178" terrain="0,0,0,0"/>
+  <tile id="179" terrain="0,0,0,0"/>
+  <tile id="180" terrain="0,0,0,0"/>
+  <tile id="205" terrain="1,1,1,"/>
+  <tile id="206" terrain="1,1,,1"/>
+  <tile id="237" terrain="1,,1,1"/>
+  <tile id="238" terrain=",1,1,1"/>
+  <tile id="268" terrain=",,,1"/>
+  <tile id="269" terrain=",,1,1"/>
+  <tile id="270" terrain=",,1,"/>
+  <tile id="300" terrain=",1,,1"/>
+  <tile id="301" terrain="1,1,1,1"/>
+  <tile id="302" terrain="1,,1,"/>
+  <tile id="332" terrain=",1,,"/>
+  <tile id="333" terrain="1,1,,"/>
+  <tile id="334" terrain="1,,,"/>
+  <tile id="428">
+   <animation>
+    <frame tileid="428" duration="100"/>
+    <frame tileid="460" duration="100"/>
+    <frame tileid="396" duration="100"/>
+    <frame tileid="428" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="429">
+   <animation>
+    <frame tileid="429" duration="100"/>
+    <frame tileid="461" duration="100"/>
+    <frame tileid="397" duration="100"/>
+    <frame tileid="429" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="430">
+   <animation>
+    <frame tileid="430" duration="100"/>
+    <frame tileid="462" duration="100"/>
+    <frame tileid="398" duration="100"/>
+    <frame tileid="430" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="460">
+   <animation>
+    <frame tileid="460" duration="100"/>
+    <frame tileid="396" duration="100"/>
+    <frame tileid="428" duration="100"/>
+    <frame tileid="460" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="461">
+   <animation>
+    <frame tileid="461" duration="100"/>
+    <frame tileid="397" duration="100"/>
+    <frame tileid="429" duration="100"/>
+    <frame tileid="461" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="462">
+   <animation>
+    <frame tileid="462" duration="100"/>
+    <frame tileid="398" duration="100"/>
+    <frame tileid="430" duration="100"/>
+    <frame tileid="462" duration="100"/>
+   </animation>
+  </tile>
+ </tileset>
+ <tileset firstgid="2532" name="BedComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BedComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="2788" name="BridgeComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/BridgeComp.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="3044" name="cave" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/cave.png" width="256" height="336"/>
+  <terraintypes>
+   <terrain name="cave/cliff" tile="-1"/>
+  </terraintypes>
+  <tile id="0" terrain=",,,0"/>
+  <tile id="27" terrain=",0,,"/>
+  <tile id="40" terrain=",,,0"/>
+  <tile id="41" terrain=",,0,"/>
+  <tile id="48" terrain=",0,,"/>
+  <tile id="49" terrain="0,,0,"/>
+ </tileset>
+ <tileset firstgid="3124" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <tileset firstgid="3348" name="Inq XP MT - Mud" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Mud.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="3360" name="Inq XP MT - Water1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Water1.png" width="384" height="128"/>
+ </tileset>
+ <tileset firstgid="3408" name="Inq XP MT - Water2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Water2.png" width="384" height="128"/>
+ </tileset>
+ <tileset firstgid="3456" name="Inq XP MT - Water3" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Water3.png" width="384" height="128"/>
+ </tileset>
+ <tileset firstgid="3504" name="Inq XP MT - Water4" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Water4.png" width="384" height="128"/>
+ </tileset>
+ <tileset firstgid="3552" name="Inq XP MT- Medieval Town1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town1.png" width="256" height="4000"/>
+ </tileset>
+ <tileset firstgid="4552" name="Inq XP MT- Medieval Town2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town2.png" width="256" height="4172"/>
+ </tileset>
+ <tileset firstgid="5592" name="Inq XP MT- Medieval Town3" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town3.png" width="256" height="4415"/>
+ </tileset>
+ <tileset firstgid="6688" name="Inq XP MT- Medieval Town4 see through" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town4 see through.png" width="256" height="4259"/>
+ </tileset>
+ <tileset firstgid="7752" name="Inq XP MT- Medieval Town4" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT- Medieval Town4.png" width="256" height="4259"/>
+ </tileset>
+ <tileset firstgid="8816" name="Inq XP Waterfallchara2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP Waterfallchara2.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="8832" name="Inq XP Waterfallchara3" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP Waterfallchara3.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="8848" name="terrain" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrain.png" width="672" height="736"/>
+  <terraintypes>
+   <terrain name="Water" tile="-1"/>
+  </terraintypes>
+  <tile id="19" terrain="0,0,0,"/>
+  <tile id="20" terrain="0,0,,0"/>
+  <tile id="40" terrain="0,,0,0"/>
+  <tile id="41" terrain=",0,0,0"/>
+  <tile id="60" terrain=",,,0"/>
+  <tile id="61" terrain=",,0,0"/>
+  <tile id="62" terrain=",,0,"/>
+  <tile id="81" terrain=",0,,0"/>
+  <tile id="82" terrain="0,0,0,0"/>
+  <tile id="83" terrain="0,,0,"/>
+  <tile id="102" terrain=",0,,"/>
+  <tile id="103" terrain="0,0,,"/>
+  <tile id="104" terrain="0,,,"/>
+  <tile id="123" terrain="0,0,0,0">
+   <animation>
+    <frame tileid="123" duration="350"/>
+    <frame tileid="124" duration="200"/>
+    <frame tileid="125" duration="300"/>
+   </animation>
+  </tile>
+  <tile id="124" terrain="0,0,0,0">
+   <animation>
+    <frame tileid="124" duration="200"/>
+    <frame tileid="123" duration="250"/>
+    <frame tileid="125" duration="200"/>
+   </animation>
+  </tile>
+  <tile id="125" terrain="0,0,0,0">
+   <animation>
+    <frame tileid="125" duration="350"/>
+    <frame tileid="123" duration="350"/>
+    <frame tileid="124" duration="300"/>
+   </animation>
+  </tile>
+  <tile id="322" terrain="0,0,0,0"/>
+  <tile id="365" terrain="0,0,0,0"/>
+ </tileset>
+ <tileset firstgid="9331" name="terrain_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="10355" name="terrainlight" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/terrainlight.png" width="672" height="736"/>
+ </tileset>
+ <tileset firstgid="10838" name="obj_misk_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="11862" name="InteriorComp2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/InteriorComp2.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="12118" name="build_atlas" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="13142" name="magecity_0" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
+ </tileset>
+ <layer name="Ground" width="75" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztm09u00AUh61WzaZhTdeJ4AjABeAICReAI5SeJHgPF2AHN2BBWeQG4RCUTSU8sp/8Mpk/vzqTTDL+fdLIteS06pf3xm+ex1V1HF5cHOkPFcBbuoL5QFek4+dlulE6dIVDVzh0hUNXOHSFQ1c4dIVDVzh0hUNXOHSFQ1c4dIVDVzh0hUNXOHSFQ1c4dIVDVzh0hUNXOHSFQ1c4dIVDVzh0hUNXOHSFQ1c4dIVDV2ko1cevWVXdd+P3LM3vLNGV8fSjGdfzqvrTHL8n8laSK4kl7UmGOX+ct96GUooriaV14+NZM6bK1bfL7TGUUlxtZm3c6FiiKze2KzsHxdmXkeeg5J8vruzYGkoJrkxMTbt5yudJ+xpKKa7MnL4OxBVdtchc5cpBmbeYgy3IPZBx1fK38fA1kHfMwW02gXmKrrbRsaXneH1vFFcp+y6HGMcgFFt6bs/tIrcrqUe1H5nvxZGJMbpqY8pVi9prQbpq56sHz/1Q4omuelx5yPlq19G98hSrS3O7yOlK1oOuPgzjateV7oXqnihd7bq6nrsd0dU2ofWg7cvEX24XOV2F7n92XK1H7kpy0Paj74e635DbxSm6csUW48rfa2d91WPPVbofY/ffzfmYXW0cThhXuyD3P7pqQfrGdBV3JftibFemts/tIocrqddDz+ZtV48jdWWQZ4Ox+kryb+yuXPWBq36XZ9O5XeRyJXmI1A1jntsFpG5nT6Z35Yor1zOcsbtC9jPQVYurftdu6KrH7sm49sbQVe/KrhFc9Sn7V7uufPUD++3udaFv3cO4wnrI59TrezWpqtee8Waynyukbj+XPUXG000zPndj2Y1VN57v4S+0t9ZVR5w6i+b/rpvxcFVV/656T9pb3Z2Lv/egq6c8S03pypcn++SI4bb5/Kdm3E36n13DeBSHqCtDrEeaYn+7zUJ9t/roypGnDp9v/f1Ini4HukLe9UrFQvmpreNSndfqXI4r69qVum4Z8H2j8q4ekIPiKrT3Q9eiqQjlh+SI9lJPtudo8ax9yfW2W9f3sVKfO0QOThO6ihFzGXIs8WXmd+Qzd4ldSdydOrcDHaAgrqQvP2bQPUVSj5bKy4v4NbE1jqxtSo+rdwlc6bn9HOaroXyMuJL8i9UL57TGORS+mPLtJxq7K6nVD/2+87njiqvYOmes6HeWYn0ZUy+Ya/4D8Y1X9Q==
+  </data>
+ </layer>
+ <layer name="Ground 2" width="75" height="100">
+  <data encoding="base64" compression="zlib">
+   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
+  </data>
+ </layer>
+ <layer name="Hole" width="75" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt0LENgEAMBEFHXxVQCVAJUDsfOkFyhoMZ6fLTRgAAAAAAAAAAAAAAAAD0sYyINW0bfz/qa59tjrRTq09a1WlVp1WdVnVa1V2zzZ32aAUAAAAAAAAAAAAAAAAAbbw7ow95
+  </data>
+ </layer>
+ <objectgroup name="Collision">
+  <object id="1" x="456.667" y="1447.33" width="139.333" height="236.667"/>
+  <object id="2" x="702" y="2716.67">
+   <polyline points="0,0 2,-98.6667 14.6667,-98.6667 15.3333,1.33333 344.667,1.33333 343.333,-289.333 194,-282 3.33333,-475.333 3.33333,-414 193.333,-231.333 194,-221.333 14,-224 13.3333,-158.667 -2,-158 0,-480.667"/>
+  </object>
+  <object id="3" x="699" y="2718">
+   <polyline points="0,0 -687,0 -688,-955 -214,-960 -214,-995 -239,-994 -242,-1044"/>
+  </object>
+  <object id="4" x="592" y="1679">
+   <polyline points="0,0 0,45 -30,45 -25,74 670,77 673,467 832,474 834,459 831,284 1060,283 1051,210 698,207 704,58 890,55 901,148 1048,154 1056,135 1049,-50 900,-49 889,-32 712,-38 690,-56"/>
+  </object>
+  <object id="5" x="1288" y="1628">
+   <polyline points="0,0 -8,2 -662,-8 -665,-151 -211,-145 -222,-581 -371,-575 -371,-504 -250,-499 -246,-276 -692,-262 -696,-181"/>
+  </object>
+  <object id="6" x="464" y="1443">
+   <polyline points="0,0 -6,-260 -225,-263 -227,-1312 355,-1316 357,-260 138,-262 130,-129 518,-128 505,-274 389,-279 389,-443 704,-439 705,-259"/>
+  </object>
+  <object id="7" x="699" y="2237">
+   <polyline points="0,0 9,-187 -220,-184 -219,-261 359,-261 358,479 567,484 563,-38 779,-50 784,-197 1042,-202 1049,321 693,333 697,144 880,139 889,-39 911,-35 923,141 1012,138 1011,-87 818,-88 823,80 600,73 596,365 1033,382 1050,814 -45,814 -48,902 -619,905 -621,613 -588,614 -590,774 -465,775 -450,609 -433,612 -430,789 -261,795 -267,610 -238,604 -232,791 -111,797 -73,747 -65,593 231,597 255,630 1015,625 1010,461 590,451 599,502 944,511 949,582 315,585 308,556 -146,552 -142,739 -163,744 -174,550 -334,557 -332,740 -364,749 -365,557"/>
+  </object>
+  <object id="8" x="332" y="2784">
+   <polyline points="0,0 4,8 -127,5 -128,188 -150,200 -157,5 -321,10 -308,393 1672,399 1670,276 1698,262 1711,173 1738,172 1736,-50 1706,-68 1702,-99 1829,-99 1835,-76 1914,-73 1932,-40 1970,-42 1975,229 1962,229 1954,174 1887,170 1854,233 1831,235 1829,292 1798,300 1794,372 1859,373 1866,312 1910,309 1914,383 1914,399 2046,403 2055,288 2030,270 2002,268 2006,-49 2021,-48 2020,-104 1984,-147 1828,-151 1824,-132 1700,-132"/>
+  </object>
+  <object id="9" x="2234" y="3017">
+   <polyline points="0,0 18,-2 25,-23 11,-35 -5,-35 -8,-6 -2,-2"/>
+  </object>
+  <object id="10" x="1750" y="3141">
+   <polyline points="0,0 12,8 22,-7 26,-16 7,-29 1,-4"/>
+  </object>
+  <object id="11" x="1575.5" y="3146.5">
+   <polyline points="0,0 11,-22.5 -7,-37 -18.5,-25.5 -19.5,-3 -0.5,0"/>
+  </object>
+  <object id="12" x="1382.5" y="3147">
+   <polyline points="0,0 10.5,-27.5 -2,-42.5 -15.5,-29 -22.5,-5 -0.5,-2.5"/>
+  </object>
+  <object id="13" x="1190.5" y="3144">
+   <polyline points="0,0 13.5,-25 2,-39.5 -18.5,-23.5 -21,0.5 0.5,2"/>
+  </object>
+  <object id="14" x="999" y="3144.5">
+   <polyline points="0,0 8.5,-22 -3,-41 -15.5,-23.5 -19.5,-3.5"/>
+  </object>
+  <object id="15" x="807.5" y="3147">
+   <polyline points="0,0 10,-25.5 -7.5,-40.5 -18.5,-24 -20,-3 0,-1.5"/>
+  </object>
+  <object id="16" x="1964" y="2192">
+   <polyline points="0,0 2.66667,54.6667 37.3333,56 40,124 68,136 70.6667,244 106.667,258.667 108,286.667 70.6667,292 72,458.667"/>
+  </object>
+  <object id="17" x="1960" y="2185.33">
+   <polyline points="0,0 -28,2.66667 -20,218.667 -48,228 -49.3333,601.333 -54.6667,677.333"/>
+  </object>
+  <object id="18" x="1904" y="2862.67">
+   <polyline points="0,0 -40,-5.33333 -36,-422.667 -58.6667,-421.333 -68,-532 0,-586.667 1.33333,-758.667 29.3333,-780 36,-892 52,-892 69.3333,-692 100,-772 118.667,-773.333 126.667,-888 162.667,-914.667 297.333,-913.333 300,-893.333 334.667,-893.333 349.333,-781.333 402.667,-728 397.333,-544 352,-541.333 352,-428 382.667,-378.667 481.333,-377.333 484,-549.333 438.667,-557.333 434.667,-1173.33 449.333,-1186.67 448,-1280 424,-1294.67 414.667,-1378.67 290.667,-1381.33 280,-1230.67 356,-1165.33 354.667,-1121.33 401.333,-1116 400,-844 374.667,-841.333 356,-966.667 289.333,-961.333 284,-946.667 136,-946.667 136,-1052 186.667,-1049.33 218.667,-1089.33 226.667,-1120 176,-1122.67 166.667,-1173.33 190.667,-1188 198.667,-1278.67 134.667,-1325.33 133.333,-1454.67 165.333,-1478.67 168,-1560 193.333,-1569.33 209.333,-1596 257.333,-1585.33 308,-1657.33 372,-1657.33 390.667,-1624 481.333,-1624"/>
+  </object>
+  <object id="19" x="2326.67" y="2411.33">
+   <polyline points="0,0 22,-0.666667 26,-20.6667 11.3333,-43.3333 -6,-29.3333 0,-6"/>
+  </object>
+  <object id="20" x="1167.33" y="1183.33">
+   <polyline points="0,0 11.3333,11.3333 449.333,8 446.667,-201.333 100,-186.667 100,-120.667 415.333,-114.667 414.667,-72 28,-71.3333 26.6667,-248.667 194.667,-246 192.667,-302 191.333,-322 -40.6667,-319.333 -37.3333,-646.667 -69.3333,-667.333 -68.6667,-861.333 -92,-864 -94,-270 -324.333,-271.333 -322.333,-1115.33 606.667,-1109.33 614.667,-910.333 505.667,-911.333 506.667,-1056.33 -252.333,-1057.33 -252.333,-410.333 -226.333,-413.333 -226.333,-989.333 482.667,-977.333"/>
+  </object>
+  <object id="21" x="1642" y="204">
+   <polyline points="0,0 8,149 171,156 170,-135 260,-133 267,266 167,266 157,206 -55,206 -54,508 42,510 45,273 135,282 133,554 -53,556 -52,651 -191,651 -186,126 -55,124 -59,34 -630,23 -630,95 -510,94 -504,123 -446,127 -442,249 -214,258 -215,733 -23,738 -25,636 167,640 160,350 296,352 294,-128 738,-129 742,684 290,680 290,405 263,405 263,674 41,676 44,1023 -474,1036 -476,1312 -948,1318 -949,1395 -443,1399 -446,1111 143,1118 131,768 738,772 740,1028"/>
+  </object>
+  <object id="22" x="484" y="381">
+   <polyline points="0,0 62,3 61,-61 -4,-63 58,-1"/>
+  </object>
+  <object id="23" x="419" y="449" width="29" height="22"/>
+  <object id="24" x="413" y="547" width="34" height="26"/>
+  <object id="25" x="413" y="642" width="36" height="27"/>
+  <object id="26" x="420" y="738" width="28" height="23"/>
+  <object id="27" x="417" y="837" width="29" height="19"/>
+  <object id="28" x="414" y="930" width="34" height="24"/>
+  <object id="29" x="416" y="1024" width="34" height="30"/>
+  <object id="30" x="418" y="1126" width="27" height="16"/>
+  <object id="31" x="610" y="449" width="29" height="26"/>
+  <object id="32" x="605" y="547" width="36" height="23"/>
+  <object id="33" x="610" y="643" width="29" height="21"/>
+  <object id="34" x="609" y="738" width="33" height="23"/>
+  <object id="35" x="609" y="835" width="34" height="28"/>
+  <object id="36" x="611" y="932" width="28" height="19"/>
+  <object id="37" x="609" y="1025" width="32" height="26"/>
+  <object id="38" x="611" y="1122" width="31" height="29"/>
+ </objectgroup>
+ <layer name="Behind wall" width="75" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt0LEJgDAURdG/wd9/FEuXiJ1ZRRBUAgZMZ+AceMVrbwQAAAAAAAAAAAAAAAAAAAAAAAAAADNb8vuIWPNZyfZf27S6vfXRqk+rMVqN27Nd1epUdAAAAAAAAIBfOQAqMSot
+  </data>
+ </layer>
+ <layer name="Behind" width="75" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt3LkJgEAQQFEr0P6bMDQ3sAIx1Fq8QTxwA8HrPZh8+QxMtlEEAAB8WZGMQxitAAAAAAAAAAAAAAAAAAAAAOA50vjuF7xHFof1Kv2xMgjt9XfVtC96netb5XoFmVvpdW7ZatmLrXWr3L07VHdtmp0BAAAAAACAq7UgFR6A
+  </data>
+ </layer>
+ <layer name="Collision" width="75" height="100">
+  <data encoding="base64" compression="zlib">
+   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
+  </data>
+ </layer>
+ <layer name="Above" width="75" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztnUtOwzAQhtOqDQugjzNQwUWqsgUEN+B8LLvnCrDgAqHNMbBVIrWpnY4TP2aS/5NGKm4b0l//jB1PH1kGKFyNU5+BHB6gFZnHBFoV0yz7DRi7afzXpPma+znOt6fjcAZa0Qmtla98TJV3x8BXdGJrtcq7/6/yyG8xiaVV8Z9Haw9apSK2r96h1UWtJoI1qpCiVdN8GmuOtGm1vHMbD60VB19K8VXT88vEvnJlyL4KkYNlh9rCWStXhuwrV7hoVQScFzEP0pHiKw5AKzpScpADUnxlu8aJiRStOIAcpBPbVyVxv6D+OA5IzMGCWb3ynYN9AH0cOqm1cukfpu4RIgfphPCVySupPeGD1DkoCeQgHfiKjk+tOK61wXDo+p6svYppfggAADBRjFS9oEatvgyRqqa6BgA2hrA29wW0akeX9aSu9TlqGACtaOrv+f6sjWk9txuZ76vGUzJZqPWRinxx+Ptz7jd+ejRf3CiNblXMeqzV67V5/HnpdtuG63Fcjx+TN4tW4BxoRQda0YFWdKRpRd0XC7GOkqZVSnxp1dQ/pPYWue9PxPCVrz6sbwrHXPWtlWktyVUrV/rgq0u9EF91nlttf2J2XQMOXgTdCfnZwiZeBOaU/n6We+H7/LbavT/KJ9d1gAn9/SwbAVqhtgMqH7PUZ3BKUctb8vMC13xd27czPnq11UkTq+Zz0ksCNr3a9CBs1zXaM6VljpTGJX9hHjz1DvLRjS20OkPiNY4UUK8Alb7sIQMAAADgFNOetW0fu2k81ftZ+kpJ1LRtSN6TkUaqXqFE+tArjEWMXuGQ6kS95tb3sauwPdZEm7k05DhnVmOV+4bfDUs1zpm1Ot+N4ZxTjYM45NCeTOg1dF9Cz11/vOLkEA==
+  </data>
+ </layer>
+</map>
