@@ -6,7 +6,7 @@ public class OILScript : MonoBehaviour
 {
 	float m_fBufferedTimer = 0.0f;
 	float m_fBucket = 0.5f;
-	string[] m_szTagsToOrganize = new string[] {"Player", "Treasure", "Merchant", "Ally", "Enemy", "Interractable"};
+	string[] m_szTagsToOrganize = new string[] {"Player", "Treasure", "Merchant", "Ally", "Enemy", "Interractable", "InnKeeper"};
 
 	// Use this for initialization
 	void Start () 

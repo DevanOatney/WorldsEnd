@@ -85,6 +85,20 @@ public class InonEventHandler : BaseEventSystemScript
 			}
 		}
 			break;
+		case "NPC_Dancer":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("NPC_Dancer");
+			if(messageSystem)
+			{
+				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+			}
+		}
+			break;
 		case "Inon_Merchant1":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -150,6 +164,21 @@ public class InonEventHandler : BaseEventSystemScript
 			foreach(GameObject g in gObjs)
 			{
 				g.GetComponent<NPC_ArmorMerchantScript>().ActivateMerchantScreen();
+			}
+
+		}
+			break;
+		case "InnKeeper_EndDialogue":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+			GameObject[] gObjs = GameObject.FindGameObjectsWithTag("InnKeeper");
+			foreach(GameObject g in gObjs)
+			{
+				g.GetComponent<NPC_InnKeeperScript>().ActivateScreen();
 			}
 
 		}
