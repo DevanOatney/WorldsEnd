@@ -30,14 +30,27 @@
  <tileset firstgid="8561" name="ShelfComp" tilewidth="32" tileheight="32">
   <image source="../Tilesets/ShelfComp.png" width="512" height="512"/>
  </tileset>
+ <tileset firstgid="8817" name="magecity_0" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
+ </tileset>
  <layer name="Ground" width="25" height="25">
   <data encoding="base64" compression="zlib">
-   eJx7ysjA8HQUDwv8jBOBh7IdyHYNdJiO4lE8ikfxKB7FgxUDAL7LMeQ=
+   eJx7ysjA8HQUDwv8jBOBQXxWDux4sNuBbBet7YDhUTtG7SDXDjYO0jE97BAgAo/aMWrHqB1D2w4AtIw4Aw==
+  </data>
+ </layer>
+ <layer name="Ground 2" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
+  </data>
+ </layer>
+ <layer name="Arrows" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMAqoA1Q4aGe2K5rZ3jS0i17AmAZ+8IGaiR5eQxXY0MEfsTS0AxbHqVDal4p2AQAmRwNP
   </data>
  </layer>
  <layer name="Collision" width="25" height="25">
   <data encoding="base64" compression="zlib">
-   eJz7xsnA8J2G+AcQfxtBdvynADNwEe8PdMAOFOPAIo4OvgDV/APiS0Tgy2jmCXBCMCF7QHZ8JsIt2ADMDkL2UGIHsWDUDtLs+DYI7fiHnseQAL48SEsAy4OEygJK7Rgu6WrUjlE7Ru3AbQcALPyu9g==
+   eJz7xsnA8J2G+AcQfxtBdvynADNwEe8PdMAOFOPAIo4OvgDV/APiS0Tgy2jmCXBCMCF7QHZ8JsIt2ADMDkL2UGIHsWDUDtLs+DYI7fiHnseQAL48SEsAy4OEygJK7Rgu6YpedjxWor0dtASjdoxMOwDykK/7
   </data>
  </layer>
  <objectgroup name="Collision">
@@ -79,7 +92,7 @@
  </layer>
  <layer name="Above" width="25" height="25">
   <data encoding="base64" compression="zlib">
-   eJxjYMAELzgYGB5wYJHAA75wkqYemz16AvjZMDtwqSPWHnyAHH+Qag8ldhBrDz47PgPlbhGBlbgYGJSBWIULuzw+O74B5b4TwDpAc3W5IOr1gbQBF6aaHxTaYQI00xRqhzmQtiDRjn9Auf9EYFuoHfZc2OUZuHDbQSr4TGL6oTS9EQsIuYte7sAF/nPi54MBFeNpFIyCUTAKaA0Ajh1SRw==
+   eJxjYMAELzgYGB5wYJHAA75wkqYemz16AvjZMDtwqSPWHnyAHH+Qag8ldhBrDz47PgPlbhGBlbgYGJSBWIULuzw+O74B5b4TwDpAc3W5IOr1gbQBF6aaHxTaYQI00xRqhzmQtiDRjn9Auf9EYFuoHfZc2OUZuHDbQSr4TGL6oTS9EQsIuYte7sAF/nPi54MBFeNppIDLSrS34zYd7BgFo2AoAgD6X1Q5
   </data>
  </layer>
  <layer name="High" width="25" height="25">

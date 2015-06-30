@@ -118,9 +118,12 @@
  <tileset firstgid="9642" name="Inq XP MT- Medieval Town4 see through" tilewidth="32" tileheight="32">
   <image source="../Tilesets/Inq XP MT- Medieval Town4 see through.png" width="256" height="4259"/>
  </tileset>
+ <tileset firstgid="10706" name="magecity_0" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
+ </tileset>
  <layer name="Ground" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztzzEKgDAQBMDgA+55gfgN/w8WIqls5MwVTjHNFstuj9Y6JBvb5Yjpzt546s/wVe8Ke0zVW7K+VO/I+lK9AQAAAAAAAADgj06WIX8f
+   eJzt1zEOgjAUgOHG+aUXcBN1QM9DItdww0EHD66EEFywtCn0tfmHf+nwXr+lSRtrTEMUudtu6G6nxrOQ5ubHaK25W9TaqU7mS31PH0vujtFSgqMPh65w6AqHrkpx+Haojdkn6ljHdVSJwoHjt/O3i6NTBo5+/0v+t2RuSY6H+IejTEel0BFiKMnheneXdI3oSB0OXeHQFY51essQjrwdIT3FPxw4cODAkb/D9Zd0hQMHDhy5OD6ei994
   </data>
  </layer>
  <layer name="Collision" width="50" height="50">
@@ -257,7 +260,7 @@
    eJztmclOwzAQhnMBDlHDKY8FnIArNzgDzwJcWroitgPblU30NdhBvAa/1UR1glNix/WSzid9auW6qie2p84kCAhittiJRqZsRsV9Z4WfRdsjKMcS5mo5kb3fg/vwIGlbsTiXG42sRbBrvYpxriW2YQd2YQ/24bona5KP4xiewFN4Bs89iuM/tmoSh8/we9+0OvMKv2dMq7ofvwX/Dz7GQbiPaK0R8qjkS9fIn5V8zg11iUPlfkm0p2mfEykq959F31E9J+pC17pWOV+5iI9xUG6aHrLXVldtqtkIgtaEukzV/qYYYExHEuOa1N9m3U/3fMicS/gaYtU6gM75YORzoag+yMNqU7dh+dzaRN9WWH68quR/V1Qf5HM9i+NdEMcz2l7gK3wLR30+4Cf8MhBHnguM6RJewWt4I1gTbD7u4D18gI/h+LofwjbswC7swb6FOAjCFq6cr+awd+cVXXDgnJpSpRbrUp2hLnFsR+PnzLLuOhSHaWydR4dx9vUpzn7uSr4qyzD+2+bLM34eURwEMS1+AXN3uTs=
   </data>
  </layer>
- <layer name="rubble" width="50" height="50">
+ <layer name="rubble" width="50" height="50" visible="0">
   <data encoding="base64" compression="zlib">
    eJztmc0OwiAMx3ec993UB/Ch5s1k3vR99yiaGBJJujpaGAXauN9tko1+/AsFu25nZ6c1jws9fmfGtzIOy+eJmOc2/P7G2Y2BfqS+Wxvs75r/tQjN/VQYw2tmnHLfrwXUcow2cA3j3OFvTInfl6Clxq2RWntWdB2C2htaonENlITbJ/EeroFcm7T3Bo7Uelirf425K4Xztba/rdasmms9nKvEvC3yVgLX20j0N1Q8Sp3TcpBYS2vWEZejkMZr9gGpOvK6oOrIwp5nGR/fkH7WcmPpPKRJP1KxpNYdbk3ixqX2Shh3X+dbfHXf0ZRDzViNk/U7gBha5obrUyXj39JPzg9L+xYkpYfDvfZY+Bzkyc275FlKY8+i4T5Ogw0x5NipvV+gdGjlPsHi3eu/ofV/CQ+0D+uJq/8YfZ0O6TZpYe6Xz9Sa8e7DY1qAd4Ovr70W7IbgnDiwDs/GNIdzcAzY/wGDRTxs
   </data>
