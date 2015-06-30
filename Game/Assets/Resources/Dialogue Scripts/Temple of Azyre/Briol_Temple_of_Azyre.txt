@@ -4,12 +4,16 @@ A2|1|Briol||We still need to be careful. It's very dangerous in here.|A3
 A3|1|Callan||Whatever. I'll be over here||A4
 A4|1|Briol||What did I just tell you?!? We need to stay together||A5
 A5|1|Callan||Alright. Let's go.||A6
-A6|3|End Temple_interior_intro
-B0|1|Briol||There it is.||B1
-B1|1|Callan||It's bigger that I remember.||B2
-B2|1|Briol||You just saw it outside. Anyway, I think we can take it if we work together.||B3
-B3|1|Callan||Yeah. I've got a plan. Now, get ready and GET IT!||B4
-B4|1|Briol||That's your plan? 'Get it?' Wow...||B5
-B5|1|Callan||Well, it worked didn't it?||B6
-B6|1|Briol||Whatever. Better start cleaning up this dump.||B7
-B7|3|End Boar_Boss_Battle
+A6|3|End_Temple_Azyre
+B0|1|Briol||Look! Over there!||B1
+B1|3|Pan_to_Boar_Azyre
+B2|1|Briol||They must be downstairs! Let's go!||A6
+C0|1|Briol||There it is.||C1
+C1|1|Callan||It's bigger that I remember.||C2
+C2|1|Briol||You just saw it outside. Anyway, I think we can take it if we work together.||C3
+C3|1|Callan||Yeah. I've got a plan. Now, get ready and......................... GET IT!||C4
+C4|3|Boar_Boss
+C5|1|Briol||That's your plan? 'Get it?' Wow...||C6
+C6|1|Callan||Well, it worked didn't it?||C7
+C7|1|Briol||Whatever. Better start cleaning up this dump.||C8
+C8|3|End Boar_Boss_Battle
