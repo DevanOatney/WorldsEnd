@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="75" height="100" tilewidth="32" tileheight="32" nextobjectid="53">
- <properties>
-  <property name="unity:resource" value=""/>
- </properties>
  <tileset firstgid="1" name="terrainlighter" tilewidth="32" tileheight="32">
   <image source="../Tilesets/terrainlighter.png" width="672" height="736"/>
  </tileset>
