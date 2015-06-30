@@ -121,9 +121,17 @@
  <tileset firstgid="10706" name="magecity_0" tilewidth="32" tileheight="32">
   <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
  </tileset>
+ <tileset firstgid="11066" name="woodFloors" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/woodFloors.png" width="256" height="256"/>
+ </tileset>
  <layer name="Ground" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJzt1zEOgjAUgOHG+aUXcBN1QM9DItdww0EHD66EEFywtCn0tfmHf+nwXr+lSRtrTEMUudtu6G6nxrOQ5ubHaK25W9TaqU7mS31PH0vujtFSgqMPh65w6AqHrkpx+Haojdkn6ljHdVSJwoHjt/O3i6NTBo5+/0v+t2RuSY6H+IejTEel0BFiKMnheneXdI3oSB0OXeHQFY51essQjrwdIT3FPxw4cODAkb/D9Zd0hQMHDhy5OD6ei994
+  </data>
+ </layer>
+ <layer name="Shadows" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt18ENwCAMBEEqQEr/zUapIRjMaaYAm334wRjAH888/YI1Ejq+Bh296ABWS7lHHb2kdAAAANBTyr9TRy8pHVAh5T507J15YqeOu3ZW0FE38wWUGQNl
   </data>
  </layer>
  <layer name="Collision" width="50" height="50">

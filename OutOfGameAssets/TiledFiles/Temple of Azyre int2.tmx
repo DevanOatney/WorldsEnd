@@ -33,6 +33,9 @@
  <tileset firstgid="8817" name="magecity_0" tilewidth="32" tileheight="32">
   <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
  </tileset>
+ <tileset firstgid="9177" name="woodFloors" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/woodFloors.png" width="256" height="256"/>
+ </tileset>
  <layer name="Ground" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJx7ysjA8HQUDwv8jBOBQXxWDux4sNuBbBet7YDhUTtG7SDXDjYO0jE97BAgAo/aMWrHqB1D2w4AtIw4Aw==
@@ -40,7 +43,7 @@
  </layer>
  <layer name="Ground 2" width="25" height="25">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
+   eJxjYBgFo2AUjIJRMApGAQi8U0bgUTtGwWAHAO7MCZo=
   </data>
  </layer>
  <layer name="Arrows" width="25" height="25">
@@ -50,7 +53,7 @@
  </layer>
  <layer name="Collision" width="25" height="25">
   <data encoding="base64" compression="zlib">
-   eJz7xsnA8J2G+AcQfxtBdvynADNwEe8PdMAOFOPAIo4OvgDV/APiS0Tgy2jmCXBCMCF7QHZ8JsIt2ADMDkL2UGIHsWDUDtLs+DYI7fiHnseQAL48SEsAy4OEygJK7Rgu6YpedjxWor0dtASjdoxMOwDykK/7
+   eJz7xsnA8J2G+AcQfxtBdvynADNwEe8PdMAOFOPAIo4OvgDV/APiS0Tgy2jmCXBCMCF7QHZ8JsIt2ADMDmz2XBdkYLghSLkdxIJRO0iz49sgtOMfeh5DAvjyIC0BLA8SKgsotWO4pCt62fFYifZ20BKM2jEy7QAA0iWxzA==
   </data>
  </layer>
  <objectgroup name="Collision">
@@ -102,7 +105,7 @@
  </layer>
  <layer name="Objects" width="25" height="25">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFAwn2CzIwHBCkrR3HgeafoLEd54HmX6CxHdeB5t+gsR2jYBSMglEwCgYfCFYcaBcMTgAASP4HWQ==
+   eJxjYBgFAwn2CzIwHBCkrR3HgeafoLEd54HmX6CxHaNgFIyCUTAKRiYIVhxoFwxOAABpaQWI
   </data>
  </layer>
  <layer name="Sign" width="25" height="25">
