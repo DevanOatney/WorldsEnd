@@ -51,14 +51,16 @@ public class TreasureChestScript : MonoBehaviour {
 			if(m_fAnimLength <= 0)
 			{
 				m_bIsOpened = true;
-				//TODO : Perhaps change this if there is a limited bag space.
 				if(m_ciItemHeld.m_szItemName != "Spyr")
 				{
 					GameObject.Find("PersistantData").GetComponent<DCScript>().AddItem(m_ciItemHeld);
 					GameObject.Find("PersistantData").GetComponent<DCScript>().m_dStoryFlagField.Add(name, 1);
 				}
 				else
+				{
 					GameObject.Find("PersistantData").GetComponent<DCScript>().m_nGold += m_ciItemHeld.m_nItemCount;
+					GameObject.Find("PersistantData").GetComponent<DCScript>().m_dStoryFlagField.Add(name, 1);
+				}
 			}
 		}
 	}
