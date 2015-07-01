@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InonForestEventHandler : MonoBehaviour 
+public class InonForestEventHandler : BaseEventSystemScript 
 {
 	DCScript ds;
 	public GameObject[] Phase1_waypoints;
@@ -19,7 +19,30 @@ public class InonForestEventHandler : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 	
+	}
+
+	override public void HandleEvent(string eventID)
+	{
+		switch(eventID)
+		{
+
+		}
+	}
+
+	override public void WaypointTriggered(Collider2D c)
+	{
+		switch(c.name)
+		{
+		case "EncounterBoarWaypoint":
+			c.enabled = false;
+			ds.m_dStoryFlagField.Add("InonForest_EncounteredBoar", 1);
+			HandleEvent("ENCOUNTERED_BOAR");
+			break;
+		default:
+			break;
+		}
 	}
 }
