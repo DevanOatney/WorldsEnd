@@ -1,0 +1,4 @@
+A0|1|||Would you like to sleep?||A1
+A1|2||2|Yes|A2|No|A3
+A2|3|Sleep
+A3|3|End_Temple_Azyre
