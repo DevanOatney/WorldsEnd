@@ -77,7 +77,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		DCScript.StatusEffect tse = new DCScript.StatusEffect();
 		tse.m_szName = "Poison";
 		tse.m_nCount = 20;
-		tse.m_lEffectedMembers.Add("Matt");
+		tse.m_lEffectedMembers.Add("Callan");
 		GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffects.Add(tse);
 		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffects;
 		foreach(DCScript.StatusEffect se in effects)

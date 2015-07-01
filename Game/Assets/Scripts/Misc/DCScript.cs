@@ -308,6 +308,19 @@ public class DCScript : MonoBehaviour
 		}
 	}
 
+	public void RestoreParty()
+	{
+		foreach(CharacterData character in m_lPartyMembers)
+		{
+			character.m_nCurHP = character.m_nMaxHP;
+		}
+		foreach(StatusEffect se in m_lStatusEffects)
+		{
+			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect(se.m_szName);
+		}
+		m_lStatusEffects.Clear();
+	}
+
 	public void AdjustValues()
 	{
 		if(m_fMasterVolume < 0.0f)

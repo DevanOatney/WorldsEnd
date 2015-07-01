@@ -19,6 +19,8 @@ public class NPCScript : MonoBehaviour
 
 
 	bool m_bCanMove = true;
+	//cost for if it's an innkeeper
+	public int m_nCost = 0;
 
 	protected class cSteps
 	{

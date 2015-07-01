@@ -168,21 +168,29 @@ public class InonEventHandler : BaseEventSystemScript
 
 		}
 			break;
-		case "InnKeeper_EndDialogue":
+		case "InnKeeper_Sleep":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
+			GameObject[] keepers = GameObject.FindGameObjectsWithTag("InnKeeper");
+			foreach(GameObject keeper in keepers)
 			{
-				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-			}
-			GameObject[] gObjs = GameObject.FindGameObjectsWithTag("InnKeeper");
-			foreach(GameObject g in gObjs)
-			{
-				g.GetComponent<NPC_InnKeeperScript>().ActivateScreen();
+				if(keeper.GetComponent<NPCScript>().m_bIsBeingInterractedWith == true)
+				{
+					//found the game object that is the innkeeper, check if the player can afford it, if not.. ?   if you can, go to sleep after deducting the cost
+					if(ds.m_nGold - keeper.GetComponent<NPCScript>().m_nCost >= 0)
+					{
+						ds.m_nGold = ds.m_nGold - keeper.GetComponent<NPCScript>().m_nCost;
+						GameObject.Find("Inn Keeper").GetComponent<InnKeeperScript>().BeginFade();
+					}
+					else
+					{
+						HandleEvent("EndDialogue");
+					}
+				}
 			}
 
 		}
 			break;
+
 		case "ItemShoppe":
 		{
 			Debug.Log("end");

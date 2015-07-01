@@ -1,4 +1,3 @@
-PrologueCave_CheckedAllSpots 
--Created during the PrologueCave after the player has interracted with all of the locations while looking for his daughter
--Cannot progress further into the cave until this key is created.
--No special flags, either the key exists or it doesn't.
+InonForest_EncounteredBoar
+-Created during the inon forest after the player encounters the boss boar
+-If event exists, this will remove the boar sprite and the waypoint for it from the inon forest
