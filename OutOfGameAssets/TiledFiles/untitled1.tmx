@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="75" height="100" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Inq - Medieval" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq - Medieval.png" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="121" name="Inq - Snowy Mountains" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq - Snowy Mountains.png" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="241" name="Inq XP Doors" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP Doors.png" width="128" height="256"/>
+ </tileset>
+ <tileset firstgid="273" name="Inq XP MT - Dirt" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Dirt.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="285" name="Inq XP MT - Long Grass2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Long Grass2.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="297" name="Inq XP MT - Mud" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Mud.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="309" name="Inq XP MT - Road 2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Road 2.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="321" name="Inq XP MT - Road" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/Inq XP MT - Road.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="333" name="cottage" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/cottage.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="589" name="desertTilesets" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/desertTilesets.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="845" name="DoorComp1" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/DoorComp1.png" width="192" height="192"/>
+ </tileset>
+ <tileset firstgid="881" name="DoorComp2" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/DoorComp2.png" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="977" name="DoorComp3" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/DoorComp3.png" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="1073" name="HighContrastGrass" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/HighContrastGrass.png" width="192" height="256"/>
+ </tileset>
+ <tileset firstgid="1121" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="75" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1EtOwzAYhVEXWAK0KWXKYxrEYwFA978eQMAf1VatAFKZUIjPkb5JkkF05SQlAAD+m+NZSifRPNeCPrre8dnxPqVlo1v11bWvtunyNnVnjWz1nWGnequyyypvU9ea+jwNFrNNXXV2Srt+s1NXNjudbVqNzs5P/m9TN88toi5aVvf6fO85eolef/3t/pbz3EV0GV2lz9u9Re/Dww3+qwZlj5vcbXQX3aftRmW7g9joMDpqdKtylh5yj9FTtE7bjcp2pfVe3nT/xmepVF8r25VaNT5LpfE1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACm6QO7Lhh8
+  </data>
+ </layer>
+</map>

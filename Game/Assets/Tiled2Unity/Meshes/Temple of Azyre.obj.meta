@@ -42,6 +42,7 @@ ModelImporter:
     100068: mesh_[07]_[39]
     100070: mesh_[07]_[42]
     100072: mesh_[08]_[40]
+    100074: mesh_[02]_[21]
     400000: mesh_[00]_[40]
     400002: mesh_[01]_[18]
     400004: mesh_[01]_[37]
@@ -79,6 +80,7 @@ ModelImporter:
     400068: mesh_[07]_[39]
     400070: mesh_[07]_[42]
     400072: mesh_[08]_[40]
+    400074: mesh_[02]_[21]
     2300000: mesh_[00]_[40]
     2300002: mesh_[01]_[18]
     2300004: mesh_[01]_[37]
@@ -115,6 +117,7 @@ ModelImporter:
     2300066: mesh_[07]_[39]
     2300068: mesh_[07]_[42]
     2300070: mesh_[08]_[40]
+    2300072: mesh_[02]_[21]
     3300000: mesh_[00]_[40]
     3300002: mesh_[01]_[18]
     3300004: mesh_[01]_[37]
@@ -151,6 +154,7 @@ ModelImporter:
     3300066: mesh_[07]_[39]
     3300068: mesh_[07]_[42]
     3300070: mesh_[08]_[40]
+    3300072: mesh_[02]_[21]
     4300000: mesh_[00]_[40]
     4300002: mesh_[01]_[18]
     4300004: mesh_[01]_[37]
@@ -187,6 +191,7 @@ ModelImporter:
     4300066: mesh_[07]_[39]
     4300068: mesh_[07]_[42]
     4300070: mesh_[08]_[40]
+    4300072: mesh_[02]_[21]
     11400000: mesh_[00]_[40]
     11400002: mesh_[01]_[18]
     11400004: mesh_[01]_[37]
@@ -223,6 +228,7 @@ ModelImporter:
     11400066: mesh_[07]_[39]
     11400068: mesh_[07]_[42]
     11400070: mesh_[08]_[40]
+    11400072: mesh_[02]_[21]
   materials:
     importMaterials: 0
     materialName: 0
@@ -232,6 +238,10 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
