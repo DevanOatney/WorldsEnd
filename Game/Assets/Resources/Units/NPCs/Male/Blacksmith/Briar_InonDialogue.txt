@@ -1,11 +1,8 @@
-A1|1|Briar||Hello, I saw your father and sister heading to the guild hall earlier this morning. Your sister seemed like she was in quite a rush to get going.|0|A2
-A2|3|Briar_EndDialogue1
-
-
-A1|1|Briar||Hey Callan! Your father and sister were just here. They were headed out to the lake. I presume to see your mother and ask for her blessing before you two kids head off on your journey. But you aren't a kid anymore are you? Come back soon and I should have new wares to help a stout young lad such as yourself on your journey.|0|A2
-A2|3|Briar_EndDialogue2
-
-
-
-A1|1|Briar||Hey Callan, welcome back. Would you like to browse my wares?|0|A2
-A2|3|Smith'sShop
+A1|1|Briar||Hello, I saw your father and sister heading to the guild hall earlier this morning. Your sister seemed like she was in quite a rush to get going.||A2
+A2|3|EndDialogue
+B0|1|Briar||Hey Callan! Your father and sister were just here. They were headed out to the lake. I presume to see your mother and ask for her blessing before you two kids head off on your journey, but you aren't a kid anymore are you? Come back soon and I should have new wares to help a stout young lad such as yourself on your journey.||A2
+C0|1|Briar||Hey Callan, welcome back. Would you like me to improve your weapon today?||C1
+C1|2||2|Yes|C2|No|C3
+C2|3|Inon_Blacksmith1
+C3|1|Briar||Thanks anyway! See you soon!||A2
+C4|1|Briar||Thank you! Come again!||A2
