@@ -78,6 +78,7 @@ public class UnitScript : MonoBehaviour
 		GameObject tw = GameObject.Find("TurnWatcher");
 		if(tw)
 		{
+			Debug.Log (name);
 			tw.GetComponent<TurnWatcherScript>().AddMeToList(gameObject);
 		}
 	}
@@ -140,8 +141,9 @@ public class UnitScript : MonoBehaviour
 				i--;
 			}
 			else
-				m_lStatusEffects[i].GetComponent<FieldBaseStatusEffectScript>().m_dFunc();
+				m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_dFunc();
 		}
+		m_bAllowInput = true;
 	}
 	
 	public void EndMyTurn()

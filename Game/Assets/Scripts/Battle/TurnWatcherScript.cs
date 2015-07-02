@@ -89,7 +89,6 @@ public class TurnWatcherScript : MonoBehaviour
 			List<DCScript.CharacterData> allies = ds.GetParty();
 			foreach(DCScript.CharacterData g in allies)
 			{
-				Debug.Log(g.m_szCharacterName);
 				GameObject Ally = Instantiate(Resources.Load<GameObject>("Units/Ally/" + g.m_szCharacterName + "/" + g.m_szCharacterName)) as GameObject;
 				//Set the name so (Clone) isn't in the name.
 				Ally.name = g.m_szCharacterName;
@@ -314,8 +313,10 @@ public class TurnWatcherScript : MonoBehaviour
 			int backup = GUI.skin.label.fontSize;
 			GUI.skin.label.fontSize = 16;
 			GUI.skin.box.fontSize = 16;
+			//Debug.Log(Allies.Length);
 			foreach(GameObject Ally in Allies)
 			{
+				//Debug.Log(Ally.name + " pos on field " + Ally.GetComponent<UnitScript>().m_nPositionOnField);
 				//base the y position as to the units position on the field so it correlates correctly
 				switch(Ally.GetComponent<UnitScript>().m_nPositionOnField)
 				{
@@ -341,7 +342,7 @@ public class TurnWatcherScript : MonoBehaviour
 				//Display their name on the left of the box
 				GUI.Box(new Rect(fXAdjust, fYAdjust, 100, 25.0f), Ally.name);
 				fXAdjust += 100.0f;
-
+				//Debug.Log(Ally.name + " is my turn? " + Ally.GetComponent<UnitScript>().m_bIsMyTurn);
 				Color colorBackUp = GUI.color;
 				if(Ally.GetComponent<UnitScript>().m_bIsMyTurn == true)
 				{
@@ -417,7 +418,7 @@ public class TurnWatcherScript : MonoBehaviour
 		}
 		//Adjust the amount of enemies/allies on the map to check for win/loss cases
 		//TODO: perhaps set up a scenario where if a specific enemy/ally is defeated the fight ends
-		if(go.GetComponent<UnitScript>().m_nUnitType > 0)
+		if(go.GetComponent<UnitScript>().m_nUnitType > (int)UnitScript.UnitTypes.NPC)
 		{
 			//removing an enemy
 			m_nEnemyCount--;
@@ -465,7 +466,7 @@ public class TurnWatcherScript : MonoBehaviour
 	{
 		//TODO  perhaps adjust incase the list needs alteration when someone joins the fight?
 		m_goUnits.Add(go);
-		if(go.GetComponent<UnitScript>().m_nUnitType > 1)
+		if(go.GetComponent<UnitScript>().m_nUnitType > (int)UnitScript.UnitTypes.ALLY_RANGED)
 		{
 			//adding an enemy
 			m_nEnemyCount++;
