@@ -78,30 +78,42 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		tse.m_szName = "Poison";
 		tse.m_nCount = 20;
 		tse.m_lEffectedMembers.Add("Callan");
-		GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffects.Add(tse);
-		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffects;
+		GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects().Add(tse);
+		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects();
 		foreach(DCScript.StatusEffect se in effects)
 		{
-			switch(se.m_szName)
+			bool alreadyIn = false;
+			Debug.Log (m_lStatusEffects.Count);
+			foreach(GameObject go in m_lStatusEffects)
 			{
-			case "Poison":
-			{
-				m_poison.GetComponent<PoisonEffectScript>().Initialize(gameObject, se.m_lEffectedMembers, 1, se.m_nCount, 1.0f);
-				m_lStatusEffects.Add(m_poison);
+
+				if(se.m_szName.Trim() == go.name.Trim())
+					alreadyIn = true;
 			}
-				break;
-			case "Paralyze":
+			if(alreadyIn == false)
 			{
-			}
-				break;
-			case "Stone":
-			{
-			}
-				break;
-			case "Confuse":
-			{
-			}
-				break;
+				Debug.Log ("add");
+				switch(se.m_szName)
+				{
+				case "Poison":
+				{
+					m_poison.GetComponent<PoisonEffectScript>().Initialize(gameObject, se.m_lEffectedMembers, 1, se.m_nCount, 1.0f);
+					m_lStatusEffects.Add(m_poison);
+				}
+					break;
+				case "Paralyze":
+				{
+				}
+					break;
+				case "Stone":
+				{
+				}
+					break;
+				case "Confuse":
+				{
+				}
+					break;
+				}
 			}
 		}
 	}
@@ -236,7 +248,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 				if(m_lStatusEffects[i].GetComponent<FieldBaseStatusEffectScript>().m_bToBeRemoved == true)
 				{
 
-					GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffects.RemoveAt(i);
+					GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects().RemoveAt(i);
 					m_lStatusEffects.RemoveAt(i);
 					i--;
 				}

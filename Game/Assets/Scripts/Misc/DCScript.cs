@@ -163,7 +163,42 @@ public class DCScript : MonoBehaviour
 		public List<string> m_lEffectedMembers = new List<string>();
 	}
 	//list of status effects that are inflicting the party
-	public List<StatusEffect> m_lStatusEffects = new List<StatusEffect>();
+	List<StatusEffect> m_lStatusEffects = new List<StatusEffect>();
+	public List<StatusEffect> GetStatusEffects() {return m_lStatusEffects;}
+	public void SetStatusEffects(List<StatusEffect> l) {m_lStatusEffects.Clear(); m_lStatusEffects = l;}
+	public void AddStatusEffect(StatusEffect se)
+	{
+		int catchIter = IsStatusEffectInList(se.m_szName);
+		if(catchIter != -1)
+		{
+			foreach(string c in se.m_lEffectedMembers)
+			{
+				bool inList = false;
+				//for each effected unit, check all effected units, if you're not in it.. add this unit to the effected units
+				foreach(string s in m_lStatusEffects[catchIter].m_lEffectedMembers)
+				{
+					if(s == c)
+						inList = true;
+				}
+				if(inList == false)
+					m_lStatusEffects[catchIter].m_lEffectedMembers.Add(c);
+
+
+				if(m_lStatusEffects[catchIter].m_nCount < se.m_nCount)
+					m_lStatusEffects[catchIter].m_nCount = se.m_nCount;
+			}
+		}
+		else
+		{
+			m_lStatusEffects.Add (se);
+		}
+	}
+	public void RemoveMeFromStatus(string szName, int iter)
+	{
+		m_lStatusEffects[iter].m_lEffectedMembers.Remove(szName);
+		if(m_lStatusEffects[iter].m_lEffectedMembers.Count <= 0)
+			m_lStatusEffects.RemoveAt(iter);
+	}
 	public int IsStatusEffectInList(string szName)
 	{
 		int counter = 0;

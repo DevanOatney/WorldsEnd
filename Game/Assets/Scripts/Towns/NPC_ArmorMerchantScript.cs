@@ -59,26 +59,29 @@ public class NPC_ArmorMerchantScript : NPCScript
 
 	void LoadItems()
 	{
-		m_lItems.Clear();
-		string[] itemLines = m_taWares.text.Split('\n');
-		foreach(string item in itemLines)
+		if(m_taWares != null)
 		{
-			string[] piece = item.Split(',');
-			if(piece.Length > 1)
+			m_lItems.Clear();
+			string[] itemLines = m_taWares.text.Split('\n');
+			foreach(string item in itemLines)
 			{
-				MerchantItem newItem = new MerchantItem();
-				newItem.m_szItemName = piece[0].Trim();
-				newItem.m_nCost = int.Parse(piece[2].Trim());
-				DCScript.CharactersItems cItem = dc.GetItemFromInventory(newItem.m_szItemName);
-				if(cItem == null)
-					Debug.Log("Merchant item loading data failed");
-				else
+				string[] piece = item.Split(',');
+				if(piece.Length > 1)
 				{
-					newItem.m_nAmountCarried = cItem.m_nItemCount;
-					newItem.m_nItemType = cItem.m_nItemType;
-					newItem.m_szItemDescription = dc.GetItemFromDictionary(newItem.m_szItemName).m_szDescription;
+					MerchantItem newItem = new MerchantItem();
+					newItem.m_szItemName = piece[0].Trim();
+					newItem.m_nCost = int.Parse(piece[2].Trim());
+					DCScript.CharactersItems cItem = dc.GetItemFromInventory(newItem.m_szItemName);
+					if(cItem == null)
+						Debug.Log("Merchant item loading data failed");
+					else
+					{
+						newItem.m_nAmountCarried = cItem.m_nItemCount;
+						newItem.m_nItemType = cItem.m_nItemType;
+						newItem.m_szItemDescription = dc.GetItemFromDictionary(newItem.m_szItemName).m_szDescription;
+					}
+					m_lItems.Add(newItem);
 				}
-				m_lItems.Add(newItem);
 			}
 		}
 	}

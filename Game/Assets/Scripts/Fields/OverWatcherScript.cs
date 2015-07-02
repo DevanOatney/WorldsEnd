@@ -615,7 +615,7 @@ public class OverWatcherScript : MonoBehaviour {
 				}
 
 				//status effects
-				List<DCScript.StatusEffect> ses = dc.m_lStatusEffects;
+				List<DCScript.StatusEffect> ses = dc.GetStatusEffects();
 				float seXOffset  = charBoxWidth * 0.7f;
 				foreach(DCScript.StatusEffect se in ses)
 				{
@@ -756,7 +756,7 @@ public class OverWatcherScript : MonoBehaviour {
 							//check to see if anyone is effected by poison
 							int removeIter = -1;
 							int counter = 0;
-							foreach(DCScript.StatusEffect se in dc.m_lStatusEffects)
+							foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
 							{
 								if(se.m_szName == "Poison")
 								{
@@ -785,7 +785,7 @@ public class OverWatcherScript : MonoBehaviour {
 								else
 									dc.RemoveItem(theInv[m_nItemIter]);
 								//remove the status effect from the party
-								dc.m_lStatusEffects.RemoveAt(removeIter);
+								dc.GetStatusEffects().RemoveAt(removeIter);
 								GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect("Poison");
 							}
 							else
@@ -801,7 +801,7 @@ public class OverWatcherScript : MonoBehaviour {
 							int removeIter = -1;
 							int counter = 0;
 							bool effectFound = false;
-							foreach(DCScript.StatusEffect se in dc.m_lStatusEffects)
+							foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
 							{
 								if(se.m_szName == "Poison")
 								{
@@ -832,9 +832,9 @@ public class OverWatcherScript : MonoBehaviour {
 								else
 									dc.RemoveItem(theInv[m_nItemIter]);
 								//if there are no more effect members, remove the status effect from the party.
-								if(dc.m_lStatusEffects[removeIter].m_lEffectedMembers.Count == 0)
+								if(dc.GetStatusEffects()[removeIter].m_lEffectedMembers.Count == 0)
 								{
-									dc.m_lStatusEffects.RemoveAt(removeIter);
+									dc.GetStatusEffects().RemoveAt(removeIter);
 									GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect("Poison");
 								}
 							}
@@ -1179,7 +1179,7 @@ public class OverWatcherScript : MonoBehaviour {
 						}
 						
 						//status effects
-						List<DCScript.StatusEffect> ses = dc.m_lStatusEffects;
+						List<DCScript.StatusEffect> ses = dc.GetStatusEffects();
 						float seXOffset  = charBoxWidth * 0.7f;
 						foreach(DCScript.StatusEffect se in ses)
 						{

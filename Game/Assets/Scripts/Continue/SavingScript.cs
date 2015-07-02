@@ -138,9 +138,9 @@ public class SavingScript : MonoBehaviour
 			}
 		}
 		//amount of status effects the party has
-		m_lOutputData.Add(dcs.m_lStatusEffects.Count.ToString());
-		Debug.Log(dcs.m_lStatusEffects.Count.ToString());
-		foreach(DCScript.StatusEffect se in dcs.m_lStatusEffects)
+		m_lOutputData.Add(dcs.GetStatusEffects().Count.ToString());
+		Debug.Log(dcs.GetStatusEffects().Count.ToString());
+		foreach(DCScript.StatusEffect se in dcs.GetStatusEffects())
 		{
 			//name of the status effect
 			m_lOutputData.Add(se.m_szName);

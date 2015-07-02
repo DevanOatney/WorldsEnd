@@ -196,7 +196,7 @@ public class PlayerBattleScript : UnitScript {
 			SetUnitStats();
 
 		//Grab any status effects that are currently effect this character.
-		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffects;
+		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects();
 		foreach(DCScript.StatusEffect se in effects)
 		{
 			foreach(string charName in se.m_lEffectedMembers)

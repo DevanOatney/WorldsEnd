@@ -436,7 +436,7 @@ public class LoadingScript : MonoBehaviour
 			
 			lStatusEffects.Add(se);
 		}
-		NewData.m_lStatusEffects = lStatusEffects;
+		NewData.SetStatusEffects(lStatusEffects);
 		
 		//Amount of items in inventory
 		szLine = sr.ReadLine();

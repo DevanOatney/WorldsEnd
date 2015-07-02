@@ -548,12 +548,13 @@ public class TurnWatcherScript : MonoBehaviour
 		{
 			foreach(GameObject effect in Ally.GetComponent<UnitScript>().m_lStatusEffects)
 			{
+				Debug.Log (effect.name);
 				int catchIter = ds.IsStatusEffectInList(effect.GetComponent<BattleBaseEffectScript>().name);
 				if( catchIter != -1)
 				{
 					//effect already exists in list
 					bool bAlreadyInList = false;
-					foreach(string name in ds.m_lStatusEffects[catchIter].m_lEffectedMembers)
+					foreach(string name in ds.GetStatusEffects()[catchIter].m_lEffectedMembers)
 					{
 						if(name == Ally.name)
 							bAlreadyInList = true;
@@ -561,11 +562,12 @@ public class TurnWatcherScript : MonoBehaviour
 					if(bAlreadyInList == false)
 					{
 						//character is not on the list of effected characters
-						ds.m_lStatusEffects[catchIter].m_lEffectedMembers.Add(Ally.name);
+						ds.GetStatusEffects()[catchIter].m_lEffectedMembers.Add(Ally.name);
 					}
 
-					if(effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks > ds.m_lStatusEffects[catchIter].m_nCount)
-						ds.m_lStatusEffects[catchIter].m_nCount = effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks;
+					if(effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks > ds.GetStatusEffects()[catchIter].m_nCount)
+						ds.GetStatusEffects()[catchIter].m_nCount = effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks;
+					Debug.Log (ds.GetStatusEffects()[catchIter].m_nCount = effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks);
 				}
 				else
 				{

@@ -136,7 +136,7 @@ public class UnitScript : MonoBehaviour
 			if(m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_bToBeRemoved == true)
 			{
 				
-				GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffects.RemoveAt(i);
+				GameObject.Find("PersistantData").GetComponent<DCScript>().RemoveMeFromStatus(name, i);
 				m_lStatusEffects.RemoveAt(i);
 				i--;
 			}
