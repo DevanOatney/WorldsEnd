@@ -83,7 +83,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		foreach(DCScript.StatusEffect se in effects)
 		{
 			bool alreadyIn = false;
-			Debug.Log (m_lStatusEffects.Count);
 			foreach(GameObject go in m_lStatusEffects)
 			{
 
@@ -92,7 +91,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			}
 			if(alreadyIn == false)
 			{
-				Debug.Log ("add");
 				switch(se.m_szName)
 				{
 				case "Poison":

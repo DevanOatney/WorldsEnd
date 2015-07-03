@@ -14,8 +14,15 @@ public class InonEventHandler : BaseEventSystemScript
 	{
 		ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
 
-		//int result;
-		//if(ds.m_dStoryFlagField.TryGetValue("Inon_CrossedBridge", out result))
+		int result;
+		if(ds.m_dStoryFlagField.TryGetValue("Intro_in_Inon", out result) == false)
+		{
+			//This is the introduction, play it yo!
+			GameObject player = GameObject.Find("Player");
+			player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			player.GetComponent<MessageHandler>().BeginDialogue(0);
+			ds.m_dStoryFlagField.Add("Intro_in_Inon", 1);
+		}
 
 		
 	}
@@ -29,6 +36,12 @@ public class InonEventHandler : BaseEventSystemScript
 	{
 		switch(eventID)
 		{
+		case "Callan_Movement":
+		{
+			//player has finished the first two lines of the intro dialogue, player now needs to walk in the four cardinal directions to progress to the next dialogue
+			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+		}
+			break;
 		case "FemaleDancerDialogue":
 			int result;
 			if(ds.m_dStoryFlagField.TryGetValue("Inon_CrossedBridge", out result))

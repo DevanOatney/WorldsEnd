@@ -154,10 +154,8 @@ public class MessageHandler : MonoBehaviour
 					if(textIter == 0)
 					{
 						string filePath = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).DialogueFilePath; 
-						if(filePath != "null")
+						if(filePath != "null" && filePath.Length > 1)
 						{
-							//string start = "./Assets/Sounds/Voice/" + filePath;
-
 							AudioClip clip = (AudioClip)Resources.Load(filePath);
 							if(clip)
 							{
@@ -200,7 +198,7 @@ public class MessageHandler : MonoBehaviour
 					GUI.Box(new Rect(0, height/2-28, 100, 28), szName);
 					GUI.skin.box.fontSize = catchFont;
 				}
-				GUI.Label(new Rect(width/20,height/2, width, (height - height/50) -(height/2)), line);
+				GUI.Label(new Rect(width/20,height/2, width - (width/20), (height - height/50) -(height/2)), line);
 				
 			}
 				break;
@@ -243,7 +241,19 @@ public class MessageHandler : MonoBehaviour
 		m_bShouldDisplayDialogue = true;
 		m_nCurrentDialogueIter = iter;
 	}
-	
+	public void BeginDialogue(string id)
+	{
+		int c = 0;
+		foreach(DialogueScriptLoaderScript.dlg dlg in dialogueEvents)
+		{
+			if(id == dlg.TextID)
+			{
+				m_bShouldDisplayDialogue = true;
+				m_nCurrentDialogueIter = c;
+			}
+			c++;
+		}
+	}
 	public void ChangeDialogueEvent(string EventToGoTo)
 	{
 		for(int i = 0; i < dialogueEvents.Count; ++i)
