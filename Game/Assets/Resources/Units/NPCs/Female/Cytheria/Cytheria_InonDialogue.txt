@@ -4,5 +4,4 @@ A3|1|Cytheria||You're right! I'm going to tell him how I feel.|0|A4
 A4|3|Cytheria_EndDialogue
 
 
-A5|1|Cytheria||Thanks again for the pep talk, I feel good about telling him how I feel...but I hope he feels the same way.|0|A6
-A6|3|Cytheria_EndDialogue2
+A5|1|Cytheria||Thanks again for the pep talk, I feel good about telling him how I feel...but I hope he feels the same way.|0|A4

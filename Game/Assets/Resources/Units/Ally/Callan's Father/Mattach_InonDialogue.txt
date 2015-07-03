@@ -15,17 +15,13 @@ A14|1|Sister||We will father!|0|A15
 A15|1|Father||Good, that's what I like to hear. But before you go, I want to refresh your memory on how combat works. Ah, here comes your first lessson.|0|A16
 A16|3|BoarTutorial
 
+B1|1|Father||I'm proud of the both of you. It fills me with joy to see you growing up. Faster than I would have liked, but such is life. The two of you are following a long line of tradition that has been passed down for generations. It is your turn to go out now; to start a guild, or die trying.|0|B2
+B2|2|3|3|I'm not sure how I feel about the dying part...|B3|It's pretty dangerous out there, I think I'll pass on this tradition.|B3|If you feel we're ready, then let's do it!|B4
+B3|1|Father||Too bad. Either way you might die. You stay here, you die most certainly... not that I'm suggesting I would do it....but..at least if you venture out, there is the possibility you might live. Plus you have each other!|0|B5
+B4|1|Father||That's some courage you got there! It looks like you might have inherited something from me after all.|0|B5
+B5|1|Father||Collect your trophy from the beast. A tusk will be sufficient. It will mark the start of the family tradition. Carry it with you as you go along your journey. It will remind you of your sense of honor and tradition. I still have the bear paw from when I was about your age and went headlong to start a hunter's guild. But that is another story for another time. Go get your spoils of victory.|0|B6
+B6|3|BriolRetreivesTusks
 
-
-A17|1|Father||I'm proud of the both of you. It fills me with joy to see you growing up. Faster than I would have liked, but such is life. The two of you are following a long line of tradition that has been passed down for generations. It is your turn to go out now; to start a guild, or die trying.|0|A18
-A18|2|3|3|I'm not sure how I feel about the dying part...|A3|It's pretty dangerous out there, I think I'll pass on this tradition.|A19|If you feel we're ready, then let's do it!|A20
-A19|1|Father||Too bad. Either way you might die. You stay here, you die most certainly... not that I'm suggesting I would do it....but..at least if you venture out, there is the possibility you might live. Plus you have each other!|0|A21
-A20|1|Father||That's some courage you got there! It looks like you might have inherited something from me after all.|0|A21
-A21|1|Father||Collect your trophy from the beast. A tusk will be sufficient. It will mark the start of the family tradition. Carry it with you as you go along your journey. It will remind you of your sense of honor and tradition. I still have the bear paw from when I was about your age and went headlong to start a hunter's guild. But that is another story for another time. Go get your spoils of victory.|0|A22
-A22|3|BriolRetreivesTusks
-
-
-
-A23|1|Father||Ah, it's good to see how much you two have grown! Some sisters more than others. But I'm still very proud to see all our hard work preparing for today to have paid off. You are ready to go off and fulfill our family tradition. You will bring into this world a guild unlike any other in times like these. Some of the mystics in nearby towns have foretold that the prophecy of rebirth is late to come and that soon it will come. Breathing new life into these lands, as vague as that is. Some say that it will completely destroy life, others say that it will bring untold wealth and happiness. I suppose that it is up to you to decide which it shall be, because until that day comes, only Iluyani will know. Oh, and you too Callan, you will do alright. Get out there and change the world dear...and you too Callan.|0|A24
-A24|3|Father_EndDialogue1
+C1|1|Father||Ah, it's good to see how much you two have grown! Some sisters more than others. But I'm still very proud to see all our hard work preparing for today to have paid off. You are ready to go off and fulfill our family tradition. You will bring into this world a guild unlike any other in times like these. Some of the mystics in nearby towns have foretold that the prophecy of rebirth is late to come and that soon it will come. Breathing new life into these lands, as vague as that is. Some say that it will completely destroy life, others say that it will bring untold wealth and happiness. I suppose that it is up to you to decide which it shall be, because until that day comes, only Iluyani will know. Oh, and you too Callan, you will do alright. Get out there and change the world dear...and you too Callan.|0|C2
+C2|3|Father_EndDialogue1
 

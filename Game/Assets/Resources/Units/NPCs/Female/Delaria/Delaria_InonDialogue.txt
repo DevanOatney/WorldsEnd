@@ -6,5 +6,4 @@ A5|1|Delaria||Thanks, I'd love that.|0|A6
 A6|3|Delaria_EndDialogue
 
 
-A7|1|Delaria||Hey Callan, it's nice that you came back to see me. I must have been on your mind.|0|A8
-A8|3|Delaria_EndDialogue2
+A7|1|Delaria||Hey Callan, it's nice that you came back to see me. I must have been on your mind.|0|A6
