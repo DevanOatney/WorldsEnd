@@ -1,4 +1,4 @@
-A1|1|Callan||...uugh...*ahem*...What time is it!?! Oh no! I'm going to be late for the ceremony. That sneaky sister of mine is always trying to be one step ahead of me. But not today! I wonder if Dad left a note or something.|1|A2
+A1|1|Callan|Sounds/Voice/Callan/Callan_Intro_line_1|...uugh...*ahem*...What time is it!?! Oh no! I'm going to be late for the ceremony. That sneaky sister of mine is always trying to be one step ahead of me. But not today! I wonder if Dad left a note or something.|1|A2
 A2|1|Narrator||After hours of watching you oversleep, your lazy ass is ready to move, but wait! You have no idea how! That's why I'm here to guide you from a slug-licking plebian to an illustrious master of your destiny.|1|A3
 A3|1|Narrator||To move... Use the Up,Down,Left and Right Arrows. When you're done playing around...|1|B1
 B1|3|Callan_Movement
