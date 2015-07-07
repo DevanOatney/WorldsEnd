@@ -64,7 +64,11 @@ public class InonEventHandler : BaseEventSystemScript
 		{
 		case "Callan_Movement":
 		{
-			//player has finished the first two lines of the intro dialogue, player now needs to walk in the four cardinal directions to progress to the next dialogue
+			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+		}
+			break;
+		case "Pick_Up_Note":
+		{
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 		}
 			break;
@@ -280,9 +284,34 @@ public class InonEventHandler : BaseEventSystemScript
 	{
 		switch(c.name)
 		{
-		case "Waypoint1":
-			c.enabled = false;
-			ds.m_dStoryFlagField.Add("Inon_CrossedBridge", 1);
+		case "IntoHallwayCheck":
+		{
+			//The player needs to stay in this room, disable input and have him begin walking downwards, will get caught by child waypoint to release input and stop movement.
+			GameObject player = GameObject.Find("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKDOWN);
+				//player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveDown", true);
+				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
+				GameObject.Find("StepBackWaypoint").GetComponent<BoxCollider2D>().enabled = true;
+			}
+		}
+			break;
+		case "StepBackWaypoint":
+		{
+			//player has stepped back from going deeper into the cave, release the bind on input, disable collision box, umm.. change state to idle.
+			GameObject player = GameObject.Find("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
+				//player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+				GameObject.Find("StepBackWaypoint").GetComponent<BoxCollider2D>().enabled = false;
+				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
+			}
+		}
 			break;
 		default:
 			break;
