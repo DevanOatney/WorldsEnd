@@ -105,6 +105,82 @@ public class InonEventHandler : BaseEventSystemScript
 				BeginDialogue(0);
 			}
 			break;
+		case "Cytheria":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("Cytheria");
+			if(messageSystem)
+			{
+				int cythRes = -1;
+				if(ds.m_dStoryFlagField.TryGetValue("Inon_Cytheria", out cythRes) == false)
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				else
+				{
+					if(cythRes == 1)
+						messageSystem.GetComponent<MessageHandler>().BeginDialogue("B0");
+					else if(cythRes == 2)
+						messageSystem.GetComponent<MessageHandler>().BeginDialogue("C0");
+				}
+			}
+		}
+			break;
+		case "Cytheria_EndDialogue1":
+		{
+			//Player told Cytheria to tell the boy she likes how she feels
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+			ds.m_dStoryFlagField.Add("Inon_Cytheria", 1);
+		}
+			break;
+		case "Cytheria_EndDialogue2":
+		{
+			//Player told Cytheria to keep her feelings hidden from the boy she likes.
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+			ds.m_dStoryFlagField.Add("Inon_Cytheria", 2);
+		}
+			break;
+		case "Delaria":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("Delaria");
+			if(messageSystem)
+			{
+				int delRes = -1;
+				if(ds.m_dStoryFlagField.TryGetValue("Inon_Delaria", out delRes) == false)
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				else
+				{
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue("B0");
+				}
+			}
+		}
+			break;
+		case "Delaria_EndDialogue":
+		{
+			//Player has finished his first conversation with Delaria, mark it so she never says the same thing again
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+			ds.m_dStoryFlagField.Add("Inon_Delaria", 1);
+		}
+			break;
 		case "Marcus":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -312,7 +388,6 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
 				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKDOWN);
-				//player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveDown", true);
 				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
 				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 0);
@@ -329,8 +404,23 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
-				//player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 				GameObject.Find("StepBackWaypoint").GetComponent<BoxCollider2D>().enabled = false;
+			}
+		}
+			break;
+		case "TowardRitualCheck":
+		{
+			//Stops the player from going up to the ritual site before doing the previous events.
+			GameObject player = GameObject.Find("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKDOWN);
+				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveDown", true);
+				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
+				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 0);
+				player.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
+				GameObject.Find("StepBackWaypoint").GetComponent<BoxCollider2D>().enabled = true;
 			}
 		}
 			break;

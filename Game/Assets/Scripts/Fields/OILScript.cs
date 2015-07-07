@@ -31,7 +31,7 @@ public class OILScript : MonoBehaviour
 			lMovingObjs.Sort(delegate(GameObject x, GameObject y) {
 				return x.transform.position.y.CompareTo(y.transform.position.y);});
 
-			int c = 50;
+			int c = 49;
 			foreach(GameObject g in lMovingObjs)
 			{
 				if(g.GetComponent<SpriteRenderer>() != null)

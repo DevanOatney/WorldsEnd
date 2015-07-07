@@ -50,7 +50,7 @@ public class PoisonEffectScript : FieldBaseStatusEffectScript
 			m_goPoisonClone.transform.localScale = cloneTransform;
 			Vector3 pos = m_goOwner.transform.position;
 			//adjust so the clone is behind the unit
-			m_goPoisonClone.GetComponent<SpriteRenderer>().sortingOrder = 51;
+			m_goPoisonClone.GetComponent<SpriteRenderer>().sortingOrder = m_goOwner.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
 			//create the green effect to show the player they're taking dmg
 			GameObject poisonClone = Instantiate(m_goPoisonClone, pos, Quaternion.identity) as GameObject;
