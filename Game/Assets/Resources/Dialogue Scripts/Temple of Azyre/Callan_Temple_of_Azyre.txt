@@ -3,8 +3,9 @@ A1|1|Briol||Huh...yeah. Where did that boar get to? We were right behind it.||A2
 A2|1|Callan||It's perfect! Don't you see Briol?!? This is what we've Been looking for!||A3
 A3|1|Briol||What do you mean 'What we've been looking for?' We've barely left town.||A4
 A4|1|Callan||But look at the size of this place! We could definately start a guild here! I'm going in!||A5
+A5|3|Callan_runoff
 A5|1|Briol||Callan wait! It's dangerous! This whole place is over run with boars. There is probably a nest inside...with an alpha boar...yeah...I'm not letting you have all the fun!||A6
-A6|3|End_Temple_Azyre
+A6|3|End_Dialogue
 B0|1|Callan||See? I told you we could do this.||B1
 B1|1|Briol||Alright, you win. This place is perfect, especially now that the boar problem is gone.||B2
 B2|1|Callan||So...Where do we go from here?||B3
@@ -32,5 +33,3 @@ C2|1|Callan||But...we're underground already. How are these Gales below us?||C3
 C3|1|Briol||It's metaphorical, half-wit. The Gales of Azyre are the spirits of wind that are part of Regilance.||C4
 C4|1|Callan||Oh. Ok.||C5
 C5|3|Temple_Alter_1
-C6|1|||Beneath these hollowed grounds blow the Gales of Azyre||C7
-C7|1|Callan||Hmmm...||A6
