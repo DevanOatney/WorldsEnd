@@ -2,6 +2,10 @@ Intro_in_Inon
 -Created when the game first starts
 -If this event isn't in the dictionary, it begins the intro dialogue
 
+Inon_HasMoved
+-Created once the player has moved in all of the four cardinal directions
+-If this event isn't in the dictionary, dialogue will happen once you move in all four directions.
+
 InonForest_EncounteredBoar
 -Created during the inon forest after the player encounters the boss boar
 -If event exists, this will remove the boar sprite and the waypoint for it from the inon forest

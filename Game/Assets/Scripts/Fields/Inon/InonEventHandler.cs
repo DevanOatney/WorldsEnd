@@ -8,7 +8,9 @@ public class InonEventHandler : BaseEventSystemScript
 	public GameObject[] Phase1_waypoints;
 	public GameObject[] Phase2_waypoints;
 	public GameObject[] Phase3_waypoints;
-	
+
+	bool m_bUpDir = false, m_bDownDir = false, m_bLeftDir = false, m_bRightDir = false;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -28,8 +30,32 @@ public class InonEventHandler : BaseEventSystemScript
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update () 
+	{
+		int result;
+		if(ds.m_dStoryFlagField.TryGetValue("Inon_HasMoved", out result) == false)
+		{
+			//player hasn't yet moved in all of the cardinal directions
+			GameObject player = GameObject.Find("Player");
+			if(player.GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
+			{
+				if(Input.GetKey(KeyCode.UpArrow) && m_bUpDir == false)
+					m_bUpDir = true;
+				if(Input.GetKey(KeyCode.DownArrow) && m_bDownDir == false)
+					m_bDownDir = true;
+				if(Input.GetKey(KeyCode.LeftArrow) && m_bLeftDir == false)
+					m_bLeftDir = true;
+				if(Input.GetKey(KeyCode.RightArrow) && m_bRightDir == false)
+					m_bRightDir = true;
+				if(m_bUpDir == true && m_bRightDir == true && m_bLeftDir == true && m_bDownDir == true)
+				{
+					//player has moved in all of the directions
+					ds.m_dStoryFlagField.Add("Inon_HasMoved", 1);
+					player.GetComponent<FieldPlayerMovementScript>().BindInput();
+					player.GetComponent<MessageHandler>().BeginDialogue("A4");
+				}
+			}
+		}
 	}
 	
 	override public void HandleEvent(string eventID)
