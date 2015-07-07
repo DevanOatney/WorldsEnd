@@ -1,7 +1,9 @@
-A1|1|Cytheria||There's this boy...I don't know if he knows me...or even knows I exist...but I see him around all the time. I hope that he notices me too. I think I'm in love. He's so strong, and hard working. Even my dad thinks that he is a good guy too!I don't know what I should do...|0|A2
-A2|2|1|2|Well, you could stay here and do nothing...|A3|Tell him you love him, he might feel the same way.|A3
-A3|1|Cytheria||You're right! I'm going to tell him how I feel.|0|A4
-A4|3|Cytheria_EndDialogue
-
-
-A5|1|Cytheria||Thanks again for the pep talk, I feel good about telling him how I feel...but I hope he feels the same way.|0|A4
+A1|1|Cytheria||There's this boy...I don't know if he knows me...or even knows I exist...but I see him around all the time. I hope that he notices me too. I think I'm in love. He's so strong, and hard working. Even my dad thinks that he is a good guy too!I don't know what I should do...||A2
+A2|2||2|Well, you could stay here and do nothing...|A3|Tell him you love him, he might feel the same way.|A4
+A3|1|Cytheria||Yeah...||A6
+A4|1|Cytheria||You're right! I'm going to tell him how I feel.||A5
+A5|3|Cytheria_EndDialogue1
+A6|3|Cytheria_EndDialogue2
+A7|3|Cytheria_End Dialogue
+B0|1|Cytheria||Thanks again for the pep talk, I feel good about telling him how I feel...but I hope he feels the same way.||A7
+C0|1|Cytheria||I wonder if He'll ever notice me...||A7
