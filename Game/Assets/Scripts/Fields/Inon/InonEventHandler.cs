@@ -64,12 +64,29 @@ public class InonEventHandler : BaseEventSystemScript
 		{
 		case "Callan_Movement":
 		{
+			//For when callan can begin moving
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 		}
 			break;
 		case "Pick_Up_Note":
 		{
+			//After callan has moved in all of the directions, and should now interract with the note
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+		}
+			break;
+		case "NoteInterractedWith":
+		{
+			//Callan is now looking at the note
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("Marcus");
+			if(messageSystem)
+			{
+				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+			}
 		}
 			break;
 		case "FemaleDancerDialogue":
