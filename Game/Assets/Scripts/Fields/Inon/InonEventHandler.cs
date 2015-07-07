@@ -295,6 +295,8 @@ public class InonEventHandler : BaseEventSystemScript
 				//player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveDown", true);
 				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
+				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 0);
+				player.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
 				GameObject.Find("StepBackWaypoint").GetComponent<BoxCollider2D>().enabled = true;
 			}
 		}
@@ -309,7 +311,6 @@ public class InonEventHandler : BaseEventSystemScript
 				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
 				//player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 				GameObject.Find("StepBackWaypoint").GetComponent<BoxCollider2D>().enabled = false;
-				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
 			}
 		}
 			break;

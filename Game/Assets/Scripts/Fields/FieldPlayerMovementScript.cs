@@ -19,6 +19,8 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	public int m_nFacingDir = 0;
 
 	bool m_bIsRunning = false;
+	public void SetIsRunning(bool flag) {m_bIsRunning = flag;}
+	public bool GetIsRunning() {return m_bIsRunning;}
 	float  m_fWalkingSpeed = 2.0f;
 	float  m_fRunningSpeed = 6.0f;
 	//flag for if the player is being moved without player input
