@@ -22,6 +22,7 @@ public class InonEventHandler : BaseEventSystemScript
 			//This is the introduction, play it yo!
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 			player.GetComponent<MessageHandler>().BeginDialogue(0);
 			ds.m_dStoryFlagField.Add("Intro_in_Inon", 1);
 		}
@@ -51,6 +52,7 @@ public class InonEventHandler : BaseEventSystemScript
 				{
 					//player has moved in all of the directions
 					ds.m_dStoryFlagField.Add("Inon_HasMoved", 1);
+					player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 					player.GetComponent<FieldPlayerMovementScript>().BindInput();
 					player.GetComponent<MessageHandler>().BeginDialogue("A4");
 				}
@@ -81,12 +83,17 @@ public class InonEventHandler : BaseEventSystemScript
 			if(player)
 			{
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+				player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+				player.GetComponent<MessageHandler>().BeginDialogue("A7");
 			}
-			GameObject messageSystem = GameObject.Find("Marcus");
-			if(messageSystem)
-			{
-				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
-			}
+		}
+			break;
+		case "ReadNote":
+		{
+			//Callan has read the note from his family and can now leave the room.
+			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			foreach(GameObject go in Phase1_waypoints)
+				go.SetActive(false);
 		}
 			break;
 		case "FemaleDancerDialogue":

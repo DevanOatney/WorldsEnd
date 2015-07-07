@@ -34,8 +34,11 @@ public class OILScript : MonoBehaviour
 			int c = 50;
 			foreach(GameObject g in lMovingObjs)
 			{
-				g.GetComponent<SpriteRenderer>().sortingOrder = c;
-				c--;
+				if(g.GetComponent<SpriteRenderer>() != null)
+				{
+					g.GetComponent<SpriteRenderer>().sortingOrder = c;
+					c--;
+				}
 			}
 			m_fBufferedTimer = 0.0f;
 		}

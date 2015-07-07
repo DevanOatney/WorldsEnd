@@ -4,10 +4,9 @@ A3|1|Narrator||To move... Use the Up,Down,Left and Right Arrows. When you're don
 B1|3|Callan_Movement
 A4|1|Narrator||Oh, well this is embarassing. I wasn't expecting you to be able master walking so quickly. It appears your youthful zealous and inability to understand just how weak you are might be your saving grace.|1|A5
 A5|1|Callan||Wow, I'll take that as a compliment!|1|A6
-A6|1|Narrator||Ofcourse you would... Let's get on with the show. Your dad left you a note on the desk over there. If you don't know how to pick it up, use the E key. Apart from picking items up, it will also let you talk to other people.|1|B2
+A6|1|Narrator||Of course you would... Let's get on with the show. Your dad left you a note on the desk over there. Now that you've shown to me that you can perform menial tasks and follow simple directions. To read the note, which I pray to Illuyani you know how to read, press the E key. Apart from picking items up, it will also let you talk to other people.|1|B2
 B2|3|Pick_Up_Note
-A7|1|Narrator||Now that you've shown to me that you can perform menial tasks and follow simple directions. To read the note, which I pray to Illuyani you know how to read, press the Esc key and select inventory. Go to the key items tab.|1|A8
-A8|1|Narrator||In there, you should find the note, the strength to overcome any adversity, and the wisdom to know when strength is not needed.|1|A9
+A7|1|Callan's Father||Callan, your sister and I have gone out to run errands before the ceremony. I didn't want to wake you. When you're done sleeping the day away, come find us so we can get a move on.|1|A9
 A9|3|ReadNote
 A10|1|Narrator||Oh, just the note. The other two seemed like pretty standard fare for a journey like yours.|1|A11
 A11|1|Narrator||Nonetheless, they totally ditched you.|1|A12

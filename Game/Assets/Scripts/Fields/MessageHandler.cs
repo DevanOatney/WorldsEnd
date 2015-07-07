@@ -195,7 +195,7 @@ public class MessageHandler : MonoBehaviour
 					//no bust, just have their name?
 					int catchFont = GUI.skin.box.fontSize;
 					GUI.skin.box.fontSize = 20;
-					GUI.Box(new Rect(0, height/2-28, 100, 28), szName);
+					GUI.Box(new Rect(2, height/2-28, 10 * szName.Length + 10, 28), szName);
 					GUI.skin.box.fontSize = catchFont;
 				}
 				GUI.Label(new Rect(width/20,height/2, width - (width/20), (height - height/50) -(height/2)), line);
