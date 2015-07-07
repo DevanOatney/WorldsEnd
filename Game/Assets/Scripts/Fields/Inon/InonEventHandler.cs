@@ -70,12 +70,6 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 		}
 			break;
-		case "Pick_Up_Note":
-		{
-			//After callan has moved in all of the directions, and should now interract with the note
-			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-		}
-			break;
 		case "NoteInterractedWith":
 		{
 			//Callan is now looking at the note

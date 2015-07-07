@@ -3,10 +3,9 @@ using System.Collections;
 
 public class BackgroundScript : MonoBehaviour 
 {
-	public Sprite[] m_sBackgrounds;
+	public GameObject[] m_sBackgrounds;
 	void Awake()
 	{
-		gameObject.GetComponent<SpriteRenderer>().sprite = m_sBackgrounds[0];
 	}
 	// Use this for initialization
 	void Start () 
@@ -21,6 +20,6 @@ public class BackgroundScript : MonoBehaviour
 
 	public void SetBackground(int i)
 	{
-		gameObject.GetComponent<SpriteRenderer>().sprite = m_sBackgrounds[i];
+		m_sBackgrounds[i].SetActive(true);
 	}
 }
