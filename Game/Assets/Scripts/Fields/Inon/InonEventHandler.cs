@@ -94,6 +94,8 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 			foreach(GameObject go in Phase1_waypoints)
 				go.SetActive(false);
+			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
+			GameObject.Find("Player").GetComponent<MessageHandler>().BeginDialogue("A10");
 		}
 			break;
 		case "FemaleDancerDialogue":

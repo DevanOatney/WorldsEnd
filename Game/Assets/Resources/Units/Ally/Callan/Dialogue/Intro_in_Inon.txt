@@ -13,4 +13,4 @@ A11|1|Narrator||Nonetheless, they totally ditched you.|1|A12
 A12|2|1|2|No, they knew I was tired because I couldn't sleep the night before my big day.|A12| Maybe, but you are also extremely cynical and have a jaded personality. Plus my dad loves me and he wouldn't do that!|A13
 A13|1|Narrator||Sure, if rationalizing the pain of abandonement helps you sleep at night.|1|A14
 A14|2|1|2|I knew you would understand.|A13|You're a good friend for understanding.|A15
-A15|3|Main'sRoomUnlocked
+A15|3|EndDialogue
