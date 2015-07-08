@@ -22,7 +22,7 @@ Giant hole:
 Altar to the Gales of Azyre I:
    Near entrance t ohallway to Altar room, Briol emerges from party, stands next to Callan, and both approach Alter
    Start Callan_Temple_Dialogue at line C0
-   Characters form one unit and scene ends
+   Characters form one unit and scene ends 
 Temple Boss:
    Characters slowly approach Boar boss in a single file line with Briol in front
    Start Briol_Temple_of_Azyre dialogue at line C0
