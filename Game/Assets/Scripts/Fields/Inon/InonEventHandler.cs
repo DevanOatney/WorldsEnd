@@ -211,6 +211,27 @@ public class InonEventHandler : BaseEventSystemScript
 			ds.m_dStoryFlagField.Add("Inon_Timmy", 1);
 		}
 			break;
+		case "Matthew":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("Matthew");
+			if(messageSystem)
+			{
+				
+				int mattRes = -1;
+				if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out mattRes) == false)
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				else
+				{
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue("A3");
+				}
+			}
+		}
+			break;
 		case "Marcus":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -226,6 +247,26 @@ public class InonEventHandler : BaseEventSystemScript
 		}
 
 			break;
+		case "Briar":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("Briar");
+			if(messageSystem)
+			{
+				int briRes = -1;
+				if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out briRes))
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue("C0");
+				else if(ds.m_dStoryFlagField.TryGetValue("Inon_Briar", out briRes) == false)
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				else
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue("B0");
+			}
+		}
+			break;
 		case "OldTuck":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -236,7 +277,14 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject messageSystem = GameObject.Find("Old Tuck");
 			if(messageSystem)
 			{
-				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+
+				int oldRes = -1;
+				if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out oldRes) == false)
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				else
+				{
+						messageSystem.GetComponent<MessageHandler>().BeginDialogue("A3");
+				}
 			}
 		}
 			break;
@@ -380,7 +428,7 @@ public class InonEventHandler : BaseEventSystemScript
 			}
 		}
 			break;
-		case "Briar":
+		case "Inon_Blacksmith1":
 		{
 			GameObject blackSmith = GameObject.Find("Briar");
 			blackSmith.GetComponent<NPC_BlacksmithScript>().ActivateScreen();
