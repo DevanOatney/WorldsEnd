@@ -1,8 +1,8 @@
-A1|1|Briar||Hello, I saw your father and sister heading to the guild hall earlier this morning. Your sister seemed like she was in quite a rush to get going.|1|A2
+A1|1|Briar|Sounds/Voice/Briar/Briar_Line_1|Hello, I saw your father and sister heading to the guild hall earlier this morning. Your sister seemed like she was in quite a rush to get going.|1|A2
 A2|3|EndDialogue
-B0|1|Briar||Hey Callan! Your father and sister were just here. They were headed out to the lake. I presume to see your mother and ask for her blessing before you two kids head off on your journey, but you aren't a kid anymore are you? Come back soon and I should have new wares to help a stout young lad such as yourself on your journey.|1|A2
-C0|1|Briar||Hey Callan, welcome back. Would you like me to improve your weapon today?|1|C1
-C1|2|1|2|Yes|C2|No|C3
+B0|1|Briar|Sounds/Voice/Briar/Briar_Line_2|Hey Callan! Your father and sister were just here. They were headed out to the lake. I presume to see your mother and ask for her blessing before you two kids head off on your journey, but you aren't a kid anymore are you? Come back soon and I should have new wares to help a stout young lad such as yourself on your journey.||A2
+C0|1|Briar|Sounds/Voice/Briar/Briar_Line_3|Hey Callan, welcome back. Would you like me to improve your weapon today?|1|C1
+C1|2||2|Yes|C2|No|C3
 C2|3|Inon_Blacksmith1
-C3|1|Briar||Thanks anyway! See you soon!|1|A2
-C4|1|Briar||Thank you! Come again!|1|A2
+C3|1|Briar|Sounds/Voice/Briar/Briar_Line_4|Thanks anyway! See you soon!|1|A2
+C4|1|Briar|Sounds/Voice/Briar/Briar_Line_5|Thank you! Come again!|1|A2
