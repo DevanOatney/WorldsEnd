@@ -1,5 +1,5 @@
-A1|1|Cassandra||Look at you Callan! you're growing up so fast. I remember when you used be as tall as my knees! Be safe out there on your journey, who knows what you might run into!|0|A2
+A1|1|Cassandra|Sounds/Voice/Cassandra/Cassandra_Line_1|Look at you Callan! You're growing up so fast. I remember when you used be as tall as my knees! Be safe out there on your journey, who knows what you might run into!|0|A2
 A2|2||2|Thanks, I'll do my best!|A5|Stop, you're embarassing me!|A3
-A3|1|Cassandra||Hahaha, oh boy, you've still got much growing left to go.|0|A4
+A3|1|Cassandra|Sounds/Voice/Cassandra/Cassandra_Line_2|Hahaha! Oh boy, you've still got so much growing left to do.|0|A4
 A4|3|Cassandra_EndDialogue
-A5|1|Cassandra||I know you will. You always do.||A4
+A5|1|Cassandra|Sounds/Voice/Cassandra/Cassandra_Line_3|I know you will. You always do.||A4

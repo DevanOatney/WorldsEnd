@@ -1,4 +1,4 @@
-A1|1|Lydia||Oh dear. You've grown into quite the young lad haven't you? Let's hope that you don't become as dense as my husband, Bartholomew or my son... my gosh... Marcus certainly takes after his father in that regard. What will I ever do? Well don't let me bore you with my troubles; get on with your journey!||A2
+A1|1|Lydia|Sounds/Voice/Lydia/Lydia|Oh dear. You've grown into quite the young lad haven't you? Let's hope that you don't become as dense as my husband, Bartholomew or my son... my gosh... Marcus certainly takes after his father in that regard. What ever will I do? Well don't let me bore you with my troubles; get on with your journey!||A2
 A2|3|Lydia_EndDialogue
 
 
