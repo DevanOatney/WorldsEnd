@@ -37,6 +37,7 @@ public class OILScript : MonoBehaviour
 				if(g.GetComponent<SpriteRenderer>() != null)
 				{
 					g.GetComponent<SpriteRenderer>().sortingOrder = c;
+
 					c--;
 				}
 			}

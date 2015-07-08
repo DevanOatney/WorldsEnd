@@ -181,6 +181,36 @@ public class InonEventHandler : BaseEventSystemScript
 			ds.m_dStoryFlagField.Add("Inon_Delaria", 1);
 		}
 			break;
+		case "Timmy":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("Timmy");
+			if(messageSystem)
+			{
+				int timRes = -1;
+				if(ds.m_dStoryFlagField.TryGetValue("Inon_Timmy", out timRes) == false)
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				else
+				{
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue("A3");
+				}
+			}
+		}
+			break;
+		case "Timothy_EndDialogue":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+			ds.m_dStoryFlagField.Add("Inon_Timmy", 1);
+		}
+			break;
 		case "Marcus":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -350,9 +380,9 @@ public class InonEventHandler : BaseEventSystemScript
 			}
 		}
 			break;
-		case "Inon_Blacksmith1":
+		case "Briar":
 		{
-			GameObject blackSmith = GameObject.Find("Blacksmith");
+			GameObject blackSmith = GameObject.Find("Briar");
 			blackSmith.GetComponent<NPC_BlacksmithScript>().ActivateScreen();
 
 		}
