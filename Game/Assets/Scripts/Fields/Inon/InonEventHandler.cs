@@ -288,6 +288,27 @@ public class InonEventHandler : BaseEventSystemScript
 			}
 		}
 			break;
+		case "Bartholomew":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("Bartholomew");
+			if(messageSystem)
+			{
+				
+				int bartRes = -1;
+				if(ds.m_dStoryFlagField.TryGetValue("Inon_Bartholomew", out bartRes) == false)
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				else
+				{
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue("A4");
+				}
+			}
+		}
+			break;
 		case "Constantinople":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
