@@ -556,6 +556,7 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "StepBackWaypoint":
 		{
+			Debug.Log ("hit");
 			//player has stepped back from going deeper into the cave, release the bind on input, disable collision box, umm.. change state to idle.
 			GameObject player = GameObject.Find("Player");
 			if(player)
