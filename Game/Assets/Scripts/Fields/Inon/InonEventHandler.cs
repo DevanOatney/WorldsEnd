@@ -288,6 +288,48 @@ public class InonEventHandler : BaseEventSystemScript
 			}
 		}
 			break;
+		case "Cassandra":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("Cassandra");
+			if(messageSystem)
+			{
+				int cassRes = -1;
+				if(ds.m_dStoryFlagField.TryGetValue("Inon_Cassandra", out cassRes) == false)
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				else
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue("A5");
+			}
+		}
+			break;
+		case "Cassandra_EndDialogue":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+			ds.m_dStoryFlagField.Add("Inon_Cassandra", 1);
+		}
+			break;
+		case "Lydia":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("Lydia");
+			if(messageSystem)
+			{
+				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+			}
+		}
+			break;
 		case "Bartholomew":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -309,6 +351,16 @@ public class InonEventHandler : BaseEventSystemScript
 			}
 		}
 			break;
+		case "Bartholomew_EndDialogue":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+			ds.m_dStoryFlagField.Add("Inon_Bartholomew", 1);
+		}
+			break;
 		case "Constantinople":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -319,7 +371,14 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject messageSystem = GameObject.Find("Constantinople");
 			if(messageSystem)
 			{
-				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+
+				int constRes = -1;
+				if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out constRes) == false)
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				else
+				{
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue("A3");
+				}
 			}
 		}
 			break;
