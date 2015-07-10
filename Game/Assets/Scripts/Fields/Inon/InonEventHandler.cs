@@ -260,11 +260,22 @@ public class InonEventHandler : BaseEventSystemScript
 				int briRes = -1;
 				if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out briRes))
 					messageSystem.GetComponent<MessageHandler>().BeginDialogue("C0");
-				else if(ds.m_dStoryFlagField.TryGetValue("Inon_Briar", out briRes) == false)
+				else if(ds.m_dStoryFlagField.TryGetValue("Inon_Bartholomew", out briRes) == false)
 					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
 				else
 					messageSystem.GetComponent<MessageHandler>().BeginDialogue("B0");
 			}
+		}
+			break;
+		case "Briar_EndDialogue":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+			foreach(GameObject go in Phase2_waypoints)
+				go.GetComponent<BoxCollider2D>().enabled = false;
 		}
 			break;
 		case "OldTuck":
@@ -556,7 +567,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "StepBackWaypoint":
 		{
-			Debug.Log ("hit");
 			//player has stepped back from going deeper into the cave, release the bind on input, disable collision box, umm.. change state to idle.
 			GameObject player = GameObject.Find("Player");
 			if(player)
@@ -579,7 +589,19 @@ public class InonEventHandler : BaseEventSystemScript
 				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
 				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 0);
 				player.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
-				GameObject.Find("StepBackWaypoint").GetComponent<BoxCollider2D>().enabled = true;
+				GameObject.Find("StepBackRitual").GetComponent<BoxCollider2D>().enabled = true;
+			}
+		}
+			break;
+		case "StepBackRitual":
+		{
+			//player has stepped back from going deeper into the cave, release the bind on input, disable collision box, umm.. change state to idle.
+			GameObject player = GameObject.Find("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
+				GameObject.Find("StepBackRitual").GetComponent<BoxCollider2D>().enabled = false;
 			}
 		}
 			break;

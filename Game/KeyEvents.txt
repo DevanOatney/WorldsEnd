@@ -6,6 +6,27 @@ Inon_HasMoved
 -Created once the player has moved in all of the four cardinal directions
 -If this event isn't in the dictionary, dialogue will happen once you move in all four directions.
 
+Inon_Cytheria
+-Created once you talk with the NPC Cytheria in Inon
+-1 : Told her to tell him how she feels //If this is the case, any time you talk to her it's dialogue line B0
+-2 : Told her not to tell him           //If this is the case, any time you talk to her it's dialogue line C0
+
+Inon_Delaria
+-Created once you talk with the NPC Delaria in Inon
+
+Inon_Briar
+-Created once you talk with the NPC Briar in Inon
+-1 : Has reached the first threshold to talk with him (this is set once the player enters the guild hall for the first time)
+
+Inon_Cassandra
+-Created once you talk with the NPC Cassandra in Inon
+-1 : Has reached the first threshold to talk with her(this is set once the player enters the guild hall for the first time)
+
+Inon_CeremonyComplete
+-Created once you complete the hunter's ritual
+-Change Old Tuck's dialogue
+
+
 InonForest_EncounteredBoar
 -Created during the inon forest after the player encounters the boss boar
 -If event exists, this will remove the boar sprite and the waypoint for it from the inon forest
