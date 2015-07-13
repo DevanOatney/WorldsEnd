@@ -75,7 +75,10 @@ public class DialogueScriptLoaderScript : MonoBehaviour
 				newDlg.CharacterName = piece[2].Trim();
 				newDlg.DialogueFilePath = piece[3].Trim();
 				newDlg.Line = piece[4].Trim();
-				newDlg.BustID = int.Parse(piece[5]);
+				if(piece[5].Length > 0)
+					newDlg.BustID = int.Parse(piece[5]);
+				else
+					newDlg.BustID = 0;
 				newDlg.TextIDToGoTo = piece[6].Trim();
 				dlgList.Add(newDlg);
 
@@ -89,10 +92,12 @@ public class DialogueScriptLoaderScript : MonoBehaviour
 
 				newDlg.TextID = piece[0].Trim();
 				newDlg.SpecialCaseFlag = spcCase;
-				newDlg.BustID = int.Parse(piece[2].Trim());
+				if(piece[2].Length > 0)
+					newDlg.BustID = int.Parse(piece[2].Trim());
+				else
+					newDlg.BustID = 0;
 				newDlg.NumberOfChoices = int.Parse(piece[3].Trim());
-				if(newDlg.NumberOfChoices > 0)
-					newDlg.choices = new List<Choice>();
+				newDlg.choices = new List<Choice>();
 				for(int i = 4; i -1 < newDlg.NumberOfChoices + 4; i += 2)
 				{
 					Choice c = new Choice();

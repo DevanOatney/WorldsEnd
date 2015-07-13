@@ -613,6 +613,8 @@ public class InonEventHandler : BaseEventSystemScript
 		{
 
 			//player has gotten close enough to the ritual for us to take over, first we need to make sure that the player is in the right x alignment, move toward that waypoint depending on the direction
+
+			GameObject.Find("StartArriveAtRitual").GetComponent<BoxCollider2D>().enabled = false;
 			GameObject dest = GameObject.Find("XAlignedAtRitual");
 			GameObject src = GameObject.Find("Player");
 			src.GetComponent<FieldPlayerMovementScript>().BindInput();
@@ -644,6 +646,27 @@ public class InonEventHandler : BaseEventSystemScript
 				src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
 				GameObject.Find("ArrivedAtRitualWaypoint").GetComponent<BoxCollider2D>().enabled = true;
 			}
+		}
+			break;
+		case "XAlignedAtRitual":
+		{
+			GameObject src = GameObject.Find("Player");
+			src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
+			src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
+			GameObject.Find("XAlignedAtRitual").GetComponent<BoxCollider2D>().enabled = false;
+			GameObject.Find("ArrivedAtRitualWaypoint").GetComponent<BoxCollider2D>().enabled = true;
+		}
+			break;
+		case "ArrivedAtRitualWaypoint":
+		{
+			GameObject player = GameObject.Find("Player");
+			player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
+			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue(0);
+			GameObject.Find("ArrivedAtRitualWaypoint").GetComponent<BoxCollider2D>().enabled = false;
 		}
 			break;
 		default:
