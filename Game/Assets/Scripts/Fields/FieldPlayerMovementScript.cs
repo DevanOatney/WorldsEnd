@@ -176,14 +176,28 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			case (int)States.eWALKRIGHT:
 			{
 				m_bShouldMove = true;
-				m_aAnim.SetBool("m_bMoveRight", true);
 				m_nFacingDir = 2;
+				ResetAnimFlagsExcept(m_nFacingDir);
+			}
+				break;
+			case (int)States.eWALKLEFT:
+			{
+				m_bShouldMove = true;
+				m_nFacingDir = 1;
+				ResetAnimFlagsExcept(m_nFacingDir);
 			}
 				break;
 			case (int)States.eWALKDOWN:
 			{
 				m_bShouldMove = true;
 				m_nFacingDir = 0;
+				ResetAnimFlagsExcept(m_nFacingDir);
+			}
+				break;
+			case (int)States.eWALKUP:
+			{
+				m_bShouldMove = true;
+				m_nFacingDir = 3;
 				ResetAnimFlagsExcept(m_nFacingDir);
 			}
 				break;

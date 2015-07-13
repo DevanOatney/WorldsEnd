@@ -26,7 +26,11 @@ public class InonEventHandler : BaseEventSystemScript
 			player.GetComponent<MessageHandler>().BeginDialogue(0);
 			ds.m_dStoryFlagField.Add("Intro_in_Inon", 1);
 		}
-
+		if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == false)
+		{
+			foreach(GameObject wpnt in Phase3_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = true;
+		}
 		
 	}
 	
@@ -602,6 +606,43 @@ public class InonEventHandler : BaseEventSystemScript
 				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
 				GameObject.Find("StepBackRitual").GetComponent<BoxCollider2D>().enabled = false;
+			}
+		}
+			break;
+		case "StartArriveAtRitual":
+		{
+
+			//player has gotten close enough to the ritual for us to take over, first we need to make sure that the player is in the right x alignment, move toward that waypoint depending on the direction
+			GameObject dest = GameObject.Find("XAlignedAtRitual");
+			GameObject src = GameObject.Find("Player");
+			src.GetComponent<FieldPlayerMovementScript>().BindInput();
+			Vector2 dir = dest.transform.position - src.transform.position;
+			if(dir.x > 0)
+			{
+				src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKRIGHT);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveRight", true);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 2);
+				src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
+				GameObject.Find("XAlignedAtRitual").GetComponent<BoxCollider2D>().enabled = true;
+			}
+			else if(dir.x < 0)
+			{
+				src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKLEFT);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveLeft", true);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 1);
+				src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
+				GameObject.Find("XAlignedAtRitual").GetComponent<BoxCollider2D>().enabled = true;
+			}
+			else
+			{
+				src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
+				src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
+				GameObject.Find("ArrivedAtRitualWaypoint").GetComponent<BoxCollider2D>().enabled = true;
 			}
 		}
 			break;

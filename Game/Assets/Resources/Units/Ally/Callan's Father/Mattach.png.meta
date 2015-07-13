@@ -228,10 +228,10 @@ TextureImporter:
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -3
+  textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -245,7 +245,7 @@ TextureImporter:
   alignment: 1
   spritePivot: {x: 0, y: 1}
   spriteBorder: {x: 0, y: 2043, z: 1468, w: 0}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
