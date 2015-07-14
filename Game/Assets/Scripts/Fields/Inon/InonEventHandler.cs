@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class InonEventHandler : BaseEventSystemScript 
 {
@@ -530,6 +531,11 @@ public class InonEventHandler : BaseEventSystemScript
 
 		}
 			break;
+		case "BoarTutorial":
+		{
+			StartBossBattle();
+		}
+			break;
 		default:
 			break;
 		}
@@ -671,6 +677,25 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		default:
 			break;
+		}
+	}
+
+	void StartBossBattle()
+	{
+		GameObject dc = GameObject.Find("PersistantData");
+		if(dc)
+		{
+			List<string> bossEncounter = new List<string>();
+			bossEncounter.Add("KillerBee");
+			//Set the names of the list of enemies the player is about to fight
+			dc.GetComponent<DCScript>().SetEnemyNames(bossEncounter);
+			//Set the position of the player before the battle starts
+			GameObject go = GameObject.Find("PersistantData");
+			GameObject m_goPlayer = GameObject.Find("Player");
+			go.GetComponent<DCScript>().SetPreviousPosition(m_goPlayer.transform.position);
+			go.GetComponent<DCScript>().SetPreviousFacingDirection(m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir);
+			go.GetComponent<DCScript>().SetPreviousFieldName(Application.loadedLevelName);
+			Application.LoadLevel("Battle_Scene");
 		}
 	}
 

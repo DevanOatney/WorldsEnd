@@ -38,8 +38,8 @@ public class MenuSelectScript : MonoBehaviour
 			Callan.GetComponent<PlayerBattleScript>().SetUnitStats();
 
 
-			GameObject Devan = Resources.Load<GameObject>("Units/Ally/Devan/Devan");
-			Devan.GetComponent<PlayerBattleScript>().SetUnitStats();
+			//GameObject Devan = Resources.Load<GameObject>("Units/Ally/Devan/Devan");
+			//Devan.GetComponent<PlayerBattleScript>().SetUnitStats();
 
 			Application.LoadLevel("Inon_Scene");
 		}
