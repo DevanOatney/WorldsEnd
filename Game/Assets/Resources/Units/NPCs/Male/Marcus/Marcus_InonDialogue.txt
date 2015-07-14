@@ -5,4 +5,4 @@ A4|2|1|2|Your father was right, you are a little dense...|A5|Oh, well maybe you 
 A5|1|Marcus||...Sorry, I didn't catch that...|1|A7
 A6|1|Marcus||uh...yeah, I'll take a better look next time I'm over there.|1|A8
 A7|2|1|2|Oh, nothing|A8|Forget about it.|A8
-A8|3|Marcus_EndDialogue
+A8|3|EndDialogue

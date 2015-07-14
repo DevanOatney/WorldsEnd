@@ -123,6 +123,7 @@ public class MessageHandler : MonoBehaviour
 					    timer = 0.0f;
 						textIter = 0;
 						selectedIndex = 0;
+						GetComponent<AudioSource>().Stop();
 					}
 				}
 					break;
@@ -140,9 +141,11 @@ public class MessageHandler : MonoBehaviour
 	{
 		if(m_bShouldDisplayDialogue == true)
 		{
+			float xOffset = width * 0.05f;
+			float yOffset = height * 0.65f;
+
 			//display the background box
-			
-			GUI.Box(new Rect(width/20,height/2, width, (height - height/50) -(height/2)), "");
+			GUI.Box(new Rect(xOffset,yOffset, width - xOffset, yOffset*0.4f) , "");
 			switch(dialogueEvents[m_nCurrentDialogueIter].SpecialCaseFlag)
 			{
 			case (int)DialogueScriptLoaderScript.DLGType.NORMAL:
@@ -166,7 +169,6 @@ public class MessageHandler : MonoBehaviour
 									GetComponent<AudioSource>().PlayOneShot(clip, 0.5f + GO.GetComponent<DCScript>().m_fVoiceVolume);
 								}
 							}
-							
 						}
 					}
 					if(textIter < ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).Line.Length)
@@ -184,21 +186,23 @@ public class MessageHandler : MonoBehaviour
 				{
 					//This dialogue has a portrait!! Draw things
 					GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-					GUI.Box(new Rect(0, height/2-96, 96, 96), tBust);
+					GUI.Box(new Rect(0, yOffset-96, 96, 96), tBust);
 					int catchFont = GUI.skin.box.fontSize;
-					GUI.skin.box.fontSize = 20;
-					GUI.Box(new Rect(105, height/2-28, 100, 28), szName);
-					GUI.skin.box.fontSize = catchFont;
+					GUI.skin.label.fontSize = 20;
+					GUI.Box(new Rect(96, yOffset-28, szName.Length*11, 28), "");
+					GUI.Label(new Rect(96, yOffset-28, szName.Length*11, 28), szName);
+					GUI.skin.label.fontSize = catchFont;
 				}
 				else
 				{
 					//no bust, just have their name?
 					int catchFont = GUI.skin.box.fontSize;
-					GUI.skin.box.fontSize = 20;
-					GUI.Box(new Rect(2, height/2-28, 10 * szName.Length + 10, 28), szName);
-					GUI.skin.box.fontSize = catchFont;
+					GUI.skin.label.fontSize = 20;
+					GUI.Box(new Rect(xOffset, yOffset-28, szName.Length*11, 28), "");
+					GUI.Label(new Rect(xOffset, yOffset-28, szName.Length*11, 28), szName);
+					GUI.skin.label.fontSize = catchFont;
 				}
-				GUI.Label(new Rect(width/20,height/2, width - (width/20), (height - height/50) -(height/2)), line);
+				GUI.Label(new Rect(xOffset +5,yOffset +5, width - xOffset - 10, yOffset * 0.35f), line);
 				
 			}
 				break;
@@ -208,7 +212,7 @@ public class MessageHandler : MonoBehaviour
 				for(int i = 0; i < ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).NumberOfChoices; ++ i)
 				{
 					line = ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).choices[i].Line;
-					GUI.Label(new Rect(width/20,height/2+ (15*i), width, (height - height/50) -(height/2)), line);
+					GUI.Label(new Rect(xOffset+5,yOffset+5+ (15*i), width, (height - height * 0.02f) -(height/2)), line);
 					line = ""; 
 				}
 				int lengthOfText = ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).choices[selectedIndex].Line.Length * 10;
@@ -216,12 +220,12 @@ public class MessageHandler : MonoBehaviour
 				myStyle.normal.background = selectedTexture;
 				//draw the selector box for the dialogue choice
 				GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
-				GUI.Box((new Rect(width/20-2, height/2 + (15*selectedIndex), lengthOfText, 17)), "",myStyle);
+				GUI.Box((new Rect(xOffset, yOffset + 5 + (15*selectedIndex), lengthOfText, 17)), "",myStyle);
 
 				string szName = "Callan";
 				int catchFont = GUI.skin.box.fontSize;
 				GUI.skin.box.fontSize = 20;
-				GUI.Box(new Rect(0, height/2-28, 75, 28), szName);
+				GUI.Box(new Rect(xOffset, yOffset-28, 75, 28), szName);
 				GUI.skin.box.fontSize = catchFont;
 
 			}
