@@ -202,8 +202,10 @@ public class MessageHandler : MonoBehaviour
 					GUI.Label(new Rect(xOffset, yOffset-28, szName.Length*11, 28), szName);
 					GUI.skin.label.fontSize = catchFont;
 				}
+				int nFont = GUI.skin.box.fontSize;
+				GUI.skin.label.fontSize = 16;
 				GUI.Label(new Rect(xOffset +5,yOffset +5, width - xOffset - 10, yOffset * 0.35f), line);
-				
+				GUI.skin.label.fontSize = nFont;
 			}
 				break;
 			case (int)DialogueScriptLoaderScript.DLGType.HERO:
@@ -212,7 +214,10 @@ public class MessageHandler : MonoBehaviour
 				for(int i = 0; i < ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).NumberOfChoices; ++ i)
 				{
 					line = ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).choices[i].Line;
+					int nFont = GUI.skin.box.fontSize;
+					GUI.skin.label.fontSize = 16;
 					GUI.Label(new Rect(xOffset+5,yOffset+5+ (15*i), width, (height - height * 0.02f) -(height/2)), line);
+					GUI.skin.label.fontSize = nFont;
 					line = ""; 
 				}
 				int lengthOfText = ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).choices[selectedIndex].Line.Length * 10;
