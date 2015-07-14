@@ -1,0 +1,319 @@
+fileFormatVersion: 2
+guid: 14dc658231ef9aa4d9655b0299453a5f
+timeCreated: 1436669099
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Mattach2_0
+    21300002: Mattach2_1
+    21300004: Mattach2_2
+    21300006: Mattach2_3
+    21300008: Mattach2_4
+    21300010: Mattach2_5
+    21300012: Mattach2_6
+    21300014: Mattach2_7
+    21300016: Mattach2_8
+    21300018: Mattach2_9
+    21300020: Mattach2_10
+    21300022: Mattach2_11
+    21300024: Mattach2_12
+    21300026: Mattach2_13
+    21300028: Mattach2_14
+    21300030: Mattach2_15
+    21300032: Mattach2_16
+    21300034: Mattach2_17
+    21300036: Mattach2_18
+    21300038: Mattach2_19
+    21300040: Mattach2_20
+    21300042: Mattach2_21
+    21300044: Mattach2_22
+    21300046: Mattach2_23
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Mattach2_0
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 642
+        width: 39
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_1
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 641
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_2
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 641
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_3
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 641
+        width: 58
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_4
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 641
+        width: 81
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_5
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 641
+        width: 77
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_6
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 448
+        width: 57
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_7
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 448
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_8
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 448
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_9
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 448
+        width: 57
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_10
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 448
+        width: 93
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_11
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 448
+        width: 91
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_12
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 255
+        width: 41
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_13
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 256
+        width: 47
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_14
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 256
+        width: 46
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_15
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 257
+        width: 55
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_16
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 239
+        width: 81
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_17
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 242
+        width: 76
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_18
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 64
+        width: 57
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_19
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 64
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_20
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 64
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_21
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 64
+        width: 57
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_22
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 64
+        width: 93
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mattach2_23
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 64
+        width: 91
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
