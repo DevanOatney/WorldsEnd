@@ -986,7 +986,7 @@ public class PlayerBattleScript : UnitScript {
 
 
 		}
-		if(c.name ==  "Ally_StartPos" + m_nPositionOnField.ToString())
+		if(c.name ==  "Ally_StartPos" + m_nPositionOnField.ToString() && m_bIsMyTurn == true)
 		{
 			if(anim)
 				anim.SetBool("m_bIsMoving", false);

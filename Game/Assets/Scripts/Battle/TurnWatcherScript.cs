@@ -192,11 +192,7 @@ public class TurnWatcherScript : MonoBehaviour
 		{
 			m_bHasStarted = true;
 			SortTurnOrder();
-			int result;
-			if(!ds.m_dStoryFlagField.TryGetValue("Primus_ReturnFromFixFight", out result))
-			{
-				m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
-			}
+			m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
 		}
 	}
 
