@@ -76,11 +76,11 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
 		ResetAnimFlagsExcept(m_nFacingDir);
 		//temp for testing status
-		DCScript.StatusEffect tse = new DCScript.StatusEffect();
-		tse.m_szName = "Poison";
-		tse.m_nCount = 20;
-		tse.m_lEffectedMembers.Add("Callan");
-		GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects().Add(tse);
+		//DCScript.StatusEffect tse = new DCScript.StatusEffect();
+		//tse.m_szName = "Poison";
+		//tse.m_nCount = 20;
+		//tse.m_lEffectedMembers.Add("Callan");
+		//GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects().Add(tse);
 		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects();
 		foreach(DCScript.StatusEffect se in effects)
 		{

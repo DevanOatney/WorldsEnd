@@ -144,6 +144,7 @@ public class PlayerBattleScript : UnitScript {
 		}
 		else
 		{
+			Debug.Log("Class not found during level up!");
 			SetMaxHP(GetMaxHP() + 1);
 			SetCurHP(GetMaxHP());
 			SetSTR(GetSTR() + 1);
@@ -162,27 +163,27 @@ public class PlayerBattleScript : UnitScript {
 		if(m_acDyingAnim)
 			m_fDeadBucket = m_acDyingAnim.length;
 		m_vInitialPos = new Vector3();
-		m_vInitialPos.x = 5.0f;
+		string szgoName = "Ally_StartPos" + m_nPositionOnField.ToString();
+		GameObject go = GameObject.Find(szgoName);
+		m_vInitialPos.x = go.transform.position.x;
+		m_vInitialPos.y = go.transform.position.y;
 		switch(m_nPositionOnField)
 		{
 		case 0:
 		{
 			//Middle
-			m_vInitialPos.y = -1.5f;
 			m_vInitialPos.z = -0.2f;
 		}
 			break;
 		case 1:
 		{
 			//Top
-			m_vInitialPos.y = 0.0f;
 			m_vInitialPos.z = -0.1f;
 		}
 			break;
 		case 2:
 		{
 			//Bottom
-			m_vInitialPos.y = -3.0f;
 			m_vInitialPos.z = -0.3f;
 		}
 			break;
@@ -757,7 +758,7 @@ public class PlayerBattleScript : UnitScript {
 
 					m_nState = (int)States.eIDLE;
 					TurnOffFlags();
-					EndMyTurn();
+					Invoke("EndMyTurn", 1.5f);
 				}
 				anim.SetBool("m_bIsAttacking", false);
 				m_fAttackBucket = 0.0f;
@@ -1407,7 +1408,7 @@ public class PlayerBattleScript : UnitScript {
 			int baseExp = 5;
 			int differenceInLevels = eLvl - GetUnitLevel();
 			if(differenceInLevels > 0)
-				baseExp = (int)(baseExp + (Mathf.Pow((eLvl - GetUnitLevel()), 2.0f) * 25));
+				baseExp = (int)(baseExp + (Mathf.Pow(differenceInLevels, 2.0f) * 25));
 			else
 				baseExp = 5;
 			nTotalExp += baseExp;

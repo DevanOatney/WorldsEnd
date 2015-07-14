@@ -18,11 +18,8 @@ public class GameOverScript : MonoBehaviour {
 			if(dc)
 			{
 				Destroy(dc);
-				dc = new GameObject("PersistantData");
-				dc.AddComponent<DCScript>();
-				DontDestroyOnLoad(dc);
 			}
-			Application.LoadLevel("IntroMenu_Scene");
+			Application.LoadLevel("Intro_Scene");
 		}
 	}
 }

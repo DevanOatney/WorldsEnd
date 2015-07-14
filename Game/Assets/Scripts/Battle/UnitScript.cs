@@ -78,7 +78,6 @@ public class UnitScript : MonoBehaviour
 		GameObject tw = GameObject.Find("TurnWatcher");
 		if(tw)
 		{
-			Debug.Log (name);
 			tw.GetComponent<TurnWatcherScript>().AddMeToList(gameObject);
 		}
 	}

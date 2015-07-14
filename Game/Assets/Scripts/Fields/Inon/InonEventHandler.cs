@@ -695,6 +695,7 @@ public class InonEventHandler : BaseEventSystemScript
 			go.GetComponent<DCScript>().SetPreviousPosition(m_goPlayer.transform.position);
 			go.GetComponent<DCScript>().SetPreviousFacingDirection(m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir);
 			go.GetComponent<DCScript>().SetPreviousFieldName(Application.loadedLevelName);
+			go.GetComponent<DCScript>().SetBattleFieldBackgroundIter(1);
 			Application.LoadLevel("Battle_Scene");
 		}
 	}

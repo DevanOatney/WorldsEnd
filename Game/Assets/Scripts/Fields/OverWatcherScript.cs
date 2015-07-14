@@ -70,7 +70,7 @@ public class OverWatcherScript : MonoBehaviour {
 	//iter for which background for battle during daytime
 	public int nDayBattleBackgroundIter = 0;
 	//iter for which background for battle during nighttime
-	public int nNightBattleBackgroundIter = 0;
+	public int nNightBattleBackgroundIter = 1;
 
 	//iter for which menu option is highlighted
 	int m_nMenuSelectionIndex = 0;

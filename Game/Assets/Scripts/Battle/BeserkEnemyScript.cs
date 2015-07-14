@@ -50,27 +50,27 @@ public class BeserkEnemyScript : UnitScript {
 			anim = GetComponentInChildren<Animator>();
 		SetUnitStats();
 		m_vInitialPos = new Vector3();
-		m_vInitialPos.x = -4.0f;
+		string szgoName = "Enemy_StartPos" + m_nPositionOnField.ToString();
+		GameObject go = GameObject.Find(szgoName);
+		m_vInitialPos.x = go.transform.position.x;
+		m_vInitialPos.y = go.transform.position.y;
 		switch(m_nPositionOnField)
 		{
 		case 0:
 		{
 			//Middle
-			m_vInitialPos.y = -1.5f;
 			m_vInitialPos.z = -0.2f;
 		}
 			break;
 		case 1:
 		{
 			//Top
-			m_vInitialPos.y = 0.0f;
 			m_vInitialPos.z = -0.1f;
 		}
 			break;
 		case 2:
 		{
 			//Bottom
-			m_vInitialPos.y = -3.0f;
 			m_vInitialPos.z = -0.3f;
 		}
 			break;
@@ -89,14 +89,18 @@ public class BeserkEnemyScript : UnitScript {
 		SetDEF(int.Parse(stats[2].Trim()));
 		//SPD
 		SetSPD(int.Parse(stats[3].Trim()));
+		//HIT
+		SetHIT(int.Parse(stats[4].Trim()));
+		//EVA
+		SetEVA(int.Parse(stats[5].Trim()));
 		//Lvl
-		SetUnitLevel(int.Parse(stats[4].Trim()));
+		SetUnitLevel(int.Parse(stats[6].Trim()));
 	}
 	// Update is called once per frame
 	void Update () 
 	{
 
-		if(m_bIsMyTurn && GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>().GetAllyCount() > 0)
+		if(m_bIsMyTurn && GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>().GetAllyCount() > 0 && m_nState != (int)States.eDEAD)
 		{
 			//Make sure somethings even alive on the map to fight against
 
@@ -281,7 +285,6 @@ public class BeserkEnemyScript : UnitScript {
 			{
 				//end
 				Destroy(gameObject);
-
 			}
 		}
 			break;
@@ -370,7 +373,7 @@ public class BeserkEnemyScript : UnitScript {
 		if(m_nCurHP <= 0)
 		{
 			m_nState = (int)States.eDEAD;
-			m_fDeadBucket = 2.5f;
+			m_fDeadBucket = m_acDyingAnim.length;
 			anim.SetBool("m_bIsDying", true);
 			if(m_acDyingAudio)
 				GetComponent<AudioSource>().PlayOneShot(m_acDyingAudio, 0.5f + GO.GetComponent<DCScript>().m_fSFXVolume);
