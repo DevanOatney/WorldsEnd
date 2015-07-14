@@ -1,4 +1,4 @@
-Armor Name | Item Type ID | HP Mod | Pow Mod | Def Mod | Spd Mod | Base Cost | Special ID | Special Mod | Item Description
+Armor Name | Item Type ID | HP Mod | Pow Mod | Def Mod | Spd Mod | Eva Mod | Hit Mod | Base Cost | Special ID | Special Mod | Item Description
 
 
 
