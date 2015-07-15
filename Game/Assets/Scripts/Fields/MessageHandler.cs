@@ -21,6 +21,7 @@ public class MessageHandler : MonoBehaviour
 	//for hero dialogue
 	private int selectedIndex = 0;
 	public Texture2D selectedTexture;
+	public Texture2D WindowTexture;
 	float bufferedInputTimer = 0.0f;
 	float bufferedInputBucket = 0.2f;
 	
@@ -144,8 +145,15 @@ public class MessageHandler : MonoBehaviour
 			float xOffset = width * 0.05f;
 			float yOffset = height * 0.65f;
 
+			GUIStyle windowStyle = new GUIStyle(GUI.skin.box);
+			windowStyle.normal.background = WindowTexture;
+			//draw the selector box for the dialogue choice
+			Color tColor=GUI.color;
+			GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.6f);
+			GUI.Box(new Rect(xOffset,yOffset, width - xOffset, yOffset*0.4f), "",windowStyle);
+			GUI.color=tColor;
 			//display the background box
-			GUI.Box(new Rect(xOffset,yOffset, width - xOffset, yOffset*0.4f) , "");
+			//GUI.Box(new Rect(xOffset,yOffset, width - xOffset, yOffset*0.4f) , "");
 			switch(dialogueEvents[m_nCurrentDialogueIter].SpecialCaseFlag)
 			{
 			case (int)DialogueScriptLoaderScript.DLGType.NORMAL:
