@@ -95,7 +95,7 @@ public class ItemSingleHeal : BaseItemScript
 			if(ally.GetComponent<UnitScript>().m_nPositionOnField == m_pOwner.GetComponent<UnitScript>().m_nTargetPositionOnField)
 			{
 				//heal the unit (adjust hp is for taking damage.. so sending a negative number should heal
-				ally.GetComponent<UnitScript>().AdjustHP(GetItemModifier() * -1);
+				ally.GetComponent<UnitScript>().AdjustHP(GetHPMod() * -1);
 			}
 		}
 

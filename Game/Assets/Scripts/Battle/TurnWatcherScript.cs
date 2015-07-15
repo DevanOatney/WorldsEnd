@@ -298,7 +298,7 @@ public class TurnWatcherScript : MonoBehaviour
 			float fXAdjust = 0.0f;
 			//get a list of all of the allies on the map
 			GameObject[] Allies = GameObject.FindGameObjectsWithTag("Ally");
-			Vector2 WidthOfBackgroundBox = new Vector2(200,25.0f * Allies.Length + fYAdjust*2);
+			Vector2 WidthOfBackgroundBox = new Vector2(200,	60);
 			Rect BackgroundBoxForHPs = new Rect(Screen.width - WidthOfBackgroundBox.x, 0, WidthOfBackgroundBox.x, WidthOfBackgroundBox.y);
 
 			GUI.BeginGroup(BackgroundBoxForHPs);
@@ -309,7 +309,6 @@ public class TurnWatcherScript : MonoBehaviour
 			int backup = GUI.skin.label.fontSize;
 			GUI.skin.label.fontSize = 16;
 			GUI.skin.box.fontSize = 16;
-			//Debug.Log(Allies.Length);
 			foreach(GameObject Ally in Allies)
 			{
 				//Debug.Log(Ally.name + " pos on field " + Ally.GetComponent<UnitScript>().m_nPositionOnField);
@@ -318,17 +317,17 @@ public class TurnWatcherScript : MonoBehaviour
 				{
 				case 0:
 				{
-					fYAdjust = 15.0f + 25.0f;
+					fYAdjust = 7.5f + 20.0f;
 				}
 					break;
 				case 1:
 				{
-					fYAdjust = 15.0f;
+					fYAdjust = 7.5f;
 				}
 					break;
 				case 2:
 				{
-					fYAdjust = 15.0f + 50.0f;
+					fYAdjust = 7.5f + 40.0f;
 				}
 					break;
 				}

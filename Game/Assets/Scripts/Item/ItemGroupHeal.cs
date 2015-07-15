@@ -77,7 +77,7 @@ public class ItemGroupHeal : BaseItemScript
 		foreach(GameObject ally in allies)
 		{
 			//heal the unit (adjust hp is for taking damage.. so sending a negative number should heal
-			ally.GetComponent<UnitScript>().AdjustHP(GetItemModifier() * -1);
+			ally.GetComponent<UnitScript>().AdjustHP(GetHPMod() * -1);
 
 		}
 		

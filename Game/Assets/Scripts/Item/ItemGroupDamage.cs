@@ -82,7 +82,7 @@ public class ItemGroupDamage : BaseItemScript
 		foreach(GameObject enemy in Enemies)
 		{
 			//damage the unit
-			enemy.GetComponent<UnitScript>().AdjustHP(GetItemModifier());
+			enemy.GetComponent<UnitScript>().AdjustHP(GetHPMod());
 		}
 		
 		

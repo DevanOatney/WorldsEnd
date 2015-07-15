@@ -95,7 +95,7 @@ public class ItemSingleDamage : BaseItemScript
 			if(enemy.GetComponent<UnitScript>().m_nPositionOnField == m_pOwner.GetComponent<UnitScript>().m_nTargetPositionOnField)
 			{
 				//damage the unit
-				enemy.GetComponent<UnitScript>().AdjustHP(GetItemModifier());
+				enemy.GetComponent<UnitScript>().AdjustHP(GetHPMod());
 			}
 		}
 		
