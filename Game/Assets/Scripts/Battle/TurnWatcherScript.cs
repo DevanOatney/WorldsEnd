@@ -23,7 +23,7 @@ public class TurnWatcherScript : MonoBehaviour
 	//bool so that after everything is instantiated we can set up a turn order
 	bool m_bHasStarted = false;
 	//to keep the screen from fading before death animations happen
-
+	public List<AudioClip>   m_lACMuicFiles = new List<AudioClip> ();
 
 	public Texture2D m_t2dSelector;
 
