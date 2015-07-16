@@ -245,14 +245,14 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			//transform.position = newPos;
 			//if we can move and do stuff, handle predictor code
 
-			newPos.x += MoveVec.x * GetComponent<BoxCollider2D>().bounds.size.x;
+			newPos.x += MoveVec.x * GetComponent<BoxCollider2D>().bounds.size.x * 0.5f;
 
 			if(MoveVec.y > 0)
 				newPos.y += MoveVec.y * GetComponent<BoxCollider2D>().bounds.size.y * 0.5f;
 			else if(MoveVec.y < 0)
 				newPos.y += MoveVec.y * GetComponent<BoxCollider2D>().bounds.size.y * 1.5f;
 			else
-				newPos.y = transform.position.y - GetComponent<BoxCollider2D>().bounds.size.y * 0.5f;
+				newPos.y = transform.position.y - GetComponent<BoxCollider2D>().bounds.size.y ;
 			m_goPredictor.transform.position = newPos;
 
 
