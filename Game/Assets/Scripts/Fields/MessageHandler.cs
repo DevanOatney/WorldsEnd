@@ -24,9 +24,7 @@ public class MessageHandler : MonoBehaviour
 	public Texture2D WindowTexture;
 	float bufferedInputTimer = 0.0f;
 	float bufferedInputBucket = 0.2f;
-	
-	//pointer to the event handler of the current scene, since events could have the same ID but are different per what scene is currently being played.
-	public GameObject eventHandler;
+
 	/****************************************************************/                                           
 	// Use this for initialization
 	void Start () 
@@ -246,7 +244,7 @@ public class MessageHandler : MonoBehaviour
 			case (int)DialogueScriptLoaderScript.DLGType.EVENT:
 			{
 				m_bShouldDisplayDialogue = false;
-				eventHandler.GetComponent<BaseEventSystemScript>().HandleEvent(((DialogueScriptLoaderScript.cncldDlg)dialogueEvents[m_nCurrentDialogueIter]).EventIDToGoTo);
+				GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent(((DialogueScriptLoaderScript.cncldDlg)dialogueEvents[m_nCurrentDialogueIter]).EventIDToGoTo);
 			}
 				break;
 			}

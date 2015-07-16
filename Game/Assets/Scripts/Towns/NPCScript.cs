@@ -237,7 +237,7 @@ public class NPCScript : MonoBehaviour
 			if(GetComponent<MessageHandler>())
 			{
 				if(m_szDialoguePath != "")
-					GameObject.Find("Event System").GetComponent<BaseEventSystemScript>().HandleEvent(m_szDialoguePath);
+					GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent(m_szDialoguePath);
 			}
 		}
 	}
