@@ -19,7 +19,7 @@ public class NoteFromFamilyScript : MonoBehaviour {
 		{
 			int value;
 			if(GameObject.Find("PersistantData").GetComponent<DCScript>().m_dStoryFlagField.TryGetValue("Inon_HasMoved",out value) == true)
-				GameObject.Find("Event System").GetComponent<BaseEventSystemScript>().HandleEvent("NoteInterractedWith");
+				GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent("NoteInterractedWith");
 		}
 	}
 }

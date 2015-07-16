@@ -150,7 +150,7 @@ public class MessageHandler : MonoBehaviour
 			//draw the selector box for the dialogue choice
 			Color tColor=GUI.color;
 			GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.6f);
-			GUI.Box(new Rect(xOffset,yOffset, width - xOffset, yOffset*0.4f), "",windowStyle);
+			GUI.Box(new Rect(xOffset,yOffset, width - xOffset*2, yOffset*0.4f), "",windowStyle);
 			GUI.color=tColor;
 			//display the background box
 			//GUI.Box(new Rect(xOffset,yOffset, width - xOffset, yOffset*0.4f) , "");
