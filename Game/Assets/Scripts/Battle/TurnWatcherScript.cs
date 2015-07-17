@@ -119,6 +119,7 @@ public class TurnWatcherScript : MonoBehaviour
 
 		m_bHasStarted = false;
 		dataCanister.GetComponent<DCScript>().SetMasterVolume();
+		GetComponent<AudioSource>().PlayOneShot(m_lACMuicFiles[dataCanister.GetComponent<DCScript>().m_nMusicIter], 0.5f + ds.m_fMusicVolume); 
 	}
 
 
@@ -488,6 +489,7 @@ public class TurnWatcherScript : MonoBehaviour
 	void Win()
 	{
 		//Play victory fanfare
+		GetComponent<AudioSource>().Stop();
 		GetComponent<AudioSource>().PlayOneShot(m_acVictoryFanfare, 0.5f + ds.m_fSFXVolume);
 		//TODO: award experience to the allies on field.
 		List<DCScript.CharacterData> party = ds.GetParty();

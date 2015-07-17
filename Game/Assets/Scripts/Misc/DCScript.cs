@@ -45,6 +45,8 @@ public class DCScript : MonoBehaviour
 	//amount of cash that the player has
 	public int m_nGold;
 
+	public int m_nMusicIter;
+
 
 	public class ItemData
 	{
