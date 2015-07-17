@@ -27,10 +27,17 @@ public class InonEventHandler : BaseEventSystemScript
 			player.GetComponent<MessageHandler>().BeginDialogue(0);
 			ds.m_dStoryFlagField.Add("Intro_in_Inon", 1);
 		}
-		if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == false)
+		if(ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == false)
 		{
+			//Haven't started the ritual yet.
 			foreach(GameObject wpnt in Phase3_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
+		}
+		else if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == false && 
+		        ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == true)
+		{
+			//have completed the ritual battle, but haven't completed the full ritual yet, begin the final bits of dialogue for the ritual
+			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("B1");
 		}
 		
 	}
@@ -533,6 +540,7 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "BoarTutorial":
 		{
+			ds.m_dStoryFlagField.Add("Inon_RitualBattleComplete", 1);
 			StartBossBattle();
 		}
 			break;
@@ -671,7 +679,7 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue(0);
+			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("A1");
 			GameObject.Find("ArrivedAtRitualWaypoint").GetComponent<BoxCollider2D>().enabled = false;
 		}
 			break;

@@ -22,6 +22,9 @@ Inon_Cassandra
 -Created once you talk with the NPC Cassandra in Inon
 -1 : Has reached the first threshold to talk with her(this is set once the player enters the guild hall for the first time)
 
+Inon_RitualBattleComplete
+-Created once you've defeated the boar, but haven't yet completed the ritual.
+
 Inon_CeremonyComplete
 -Created once you complete the hunter's ritual
 -Change Old Tuck's dialogue

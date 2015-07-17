@@ -27,7 +27,7 @@ public class MessageHandler : MonoBehaviour
 
 	/****************************************************************/                                           
 	// Use this for initialization
-	void Start () 
+	void Awake()
 	{
 		DialogueScriptLoaderScript GO = gameObject.GetComponent<DialogueScriptLoaderScript>();
 		if(GO)
@@ -42,6 +42,11 @@ public class MessageHandler : MonoBehaviour
 		}
 		else
 			speed = 0.1f;
+	}
+
+	void Start () 
+	{
+
 	}
 	
 	// Update is called once per frame
@@ -265,6 +270,7 @@ public class MessageHandler : MonoBehaviour
 			{
 				m_bShouldDisplayDialogue = true;
 				m_nCurrentDialogueIter = c;
+				break;
 			}
 			c++;
 		}
