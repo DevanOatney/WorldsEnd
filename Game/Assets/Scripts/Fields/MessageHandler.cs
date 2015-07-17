@@ -232,7 +232,7 @@ public class MessageHandler : MonoBehaviour
 				//draw the selector box for the dialogue choice
 				GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
 				GUI.Box((new Rect(xOffset, yOffset + 5 + (15*selectedIndex), lengthOfText, 17)), "",myStyle);
-
+				GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 				string szName = "Callan";
 				int catchFont = GUI.skin.box.fontSize;
 				GUI.skin.box.fontSize = 20;
