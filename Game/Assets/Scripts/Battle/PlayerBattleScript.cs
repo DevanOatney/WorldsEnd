@@ -687,6 +687,32 @@ public class PlayerBattleScript : UnitScript {
 	}
 
 
+	bool CheckIfHit()
+	{
+		GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+		foreach(GameObject tar in posTargs)
+		{
+			if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+			{
+				int nChanceToHit = UnityEngine.Random.Range(0,100);
+				int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
+				if(nRange < 5)
+					nRange = 5;
+				if(nChanceToHit <	nRange)
+				{
+					//Target was hit
+					return true;
+				}
+				else
+				{
+					//target was missed
+					return false;
+				}
+			}
+		}
+		return false;
+	}
+
 	void HandleState()
 	{
 		switch(m_nState)
@@ -752,13 +778,49 @@ public class PlayerBattleScript : UnitScript {
 				{
 					m_nState = (int)States.eRETURN;
 					anim.SetBool("m_bIsMoving", true);
+					if(CheckIfHit())
+					{
+						//HIT
+						int dmgAdjustment = UnityEngine.Random.Range(1, 5) + m_nStr;
+						GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+						foreach(GameObject tar in posTargs)
+						{
+							if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+							{
+								tar.GetComponent<UnitScript>().AdjustHP(dmgAdjustment);
+							}
+						}
+					}
+					else
+					{
+						//MISS
+					}
 				}
 				else if(m_nUnitType == (int)UnitTypes.ALLY_RANGED)
 				{
 
 					m_nState = (int)States.eIDLE;
+					GameObject goArrow = Instantiate(Resources.Load<GameObject>("Spell Effects/Arrow")) as GameObject;
+					goArrow.transform.position = transform.position;
+					int dmg = 0;
+					if(CheckIfHit())
+						dmg  = UnityEngine.Random.Range(1, 5) + m_nStr;
+					else
+						dmg = -1;
+					goArrow.GetComponent<ProjectileScript>().m_fSpeed = 20;
+					goArrow.GetComponent<ProjectileScript>().m_fRotationSpeed = 50;
+					GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+					foreach(GameObject tar in posTargs)
+					{
+						if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+						{
+							goArrow.GetComponent<ProjectileScript>().m_goTarget = tar;
+						}
+					}
+					goArrow.GetComponent<ProjectileScript>().m_nDamageDealt = dmg;
+
 					TurnOffFlags();
-					Invoke("EndMyTurn", 1.5f);
+					Invoke("EndMyTurn", 2.0f);
 				}
 				anim.SetBool("m_bIsAttacking", false);
 				m_fAttackBucket = 0.0f;
@@ -766,32 +828,7 @@ public class PlayerBattleScript : UnitScript {
 				if(GO != null)
 					GetComponent<AudioSource>().PlayOneShot(m_acAttackAudio, 0.5f + GO.GetComponent<DCScript>().m_fSFXVolume);
 
-
-				//Try to hit the target
-				GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
-				foreach(GameObject tar in posTargs)
-				{
-					if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
-					{
-						int nChanceToHit = UnityEngine.Random.Range(0,100);
-						int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
-						if(nRange < 5)
-							nRange = 5;
-						if(nChanceToHit <	nRange)
-						{
-							//Target was hit
-							int dmgAdjustment = UnityEngine.Random.Range(0, 10) - 5;
-							if(dmgAdjustment + m_nStr < 1)
-								tar.GetComponent<UnitScript>().AdjustHP(1);
-							else
-								tar.GetComponent<UnitScript>().AdjustHP(m_nStr + dmgAdjustment);
-						}
-						else
-						{
-							//target was missed
-						}
-					}
-				}
+			
 			}
 		}
 			break;
