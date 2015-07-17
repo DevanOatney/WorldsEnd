@@ -299,7 +299,7 @@ public class TurnWatcherScript : MonoBehaviour
 			float fXAdjust = 0.0f;
 			//get a list of all of the allies on the map
 			GameObject[] Allies = GameObject.FindGameObjectsWithTag("Ally");
-			Vector2 WidthOfBackgroundBox = new Vector2(200,	60);
+			Vector2 WidthOfBackgroundBox = new Vector2(200,	90);
 			Rect BackgroundBoxForHPs = new Rect(Screen.width - WidthOfBackgroundBox.x, 0, WidthOfBackgroundBox.x, WidthOfBackgroundBox.y);
 
 			GUI.BeginGroup(BackgroundBoxForHPs);
@@ -318,25 +318,25 @@ public class TurnWatcherScript : MonoBehaviour
 				{
 				case 0:
 				{
-					fYAdjust = 7.5f + 20.0f;
+					fYAdjust = 30.0f;
 				}
 					break;
 				case 1:
 				{
-					fYAdjust = 7.5f;
+					fYAdjust = 0.0f;
 				}
 					break;
 				case 2:
 				{
-					fYAdjust = 7.5f + 40.0f;
+					fYAdjust = 60.0f;
 				}
 					break;
 				}
 
 				//Draw a background box for fun
-				GUI.Box(new Rect(0, fYAdjust, 200, 25.0f), "");
+				GUI.Box(new Rect(0, fYAdjust, 200, 30.0f), "");
 				//Display their name on the left of the box
-				GUI.Box(new Rect(fXAdjust, fYAdjust, 100, 25.0f), Ally.name);
+				GUI.Box(new Rect(fXAdjust, fYAdjust, 100, 30.0f), Ally.name);
 				fXAdjust += 100.0f;
 				//Debug.Log(Ally.name + " is my turn? " + Ally.GetComponent<UnitScript>().m_bIsMyTurn);
 				Color colorBackUp = GUI.color;
@@ -347,7 +347,7 @@ public class TurnWatcherScript : MonoBehaviour
 					GUIStyle selectorStyle = new GUIStyle(GUI.skin.box);
 					selectorStyle.normal.background = m_t2dSelector;
 					GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
-					GUI.Box((new Rect(0,fYAdjust+5, 200, 10)), "",selectorStyle);
+					GUI.Box((new Rect(0,fYAdjust+5, 200, 15)), "",selectorStyle);
 				}
 
 				//coding at 3am.. too sleepy to bother with casts... lol
@@ -362,17 +362,17 @@ public class TurnWatcherScript : MonoBehaviour
 					GUI.color = Color.black;
 
 				//Display their current health just to the right
-				GUI.Label(new Rect(fXAdjust, fYAdjust, 30, 25.0f), Ally.GetComponent<UnitScript>().GetCurHP().ToString());
+				GUI.Label(new Rect(fXAdjust, fYAdjust, 30, 30.0f), Ally.GetComponent<UnitScript>().GetCurHP().ToString());
 				fXAdjust += 30.0f;
 
 
 				//Set the color back to what it started at
 				GUI.color = colorBackUp;
 				//Draw a '/' mark just to the right of the current health
-				GUI.Label(new Rect(fXAdjust, fYAdjust, 15, 25.0f), " / ");
+				GUI.Label(new Rect(fXAdjust, fYAdjust, 15, 30.0f), " / ");
 				fXAdjust += 15.0f;
 				//Display their max hp to the right of the '/' Mark
-				GUI.Label(new Rect(fXAdjust, fYAdjust, 30, 25.0f), Ally.GetComponent<UnitScript>().GetMaxHP().ToString());
+				GUI.Label(new Rect(fXAdjust, fYAdjust, 30, 30.0f), Ally.GetComponent<UnitScript>().GetMaxHP().ToString());
 
 
 				//reset the x adjustment for the next character
