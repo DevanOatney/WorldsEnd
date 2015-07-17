@@ -31,22 +31,26 @@ public class ProjectileScript : MonoBehaviour
 
 	void OnCollisionEnter(Collision c)
 	{
-		m_bHasHitTarget = true;
-		if(m_nDamageDealt >0)
+		if(c.gameObject.name == m_goTarget.name)
 		{
-			//HIT!
-			m_goTarget.GetComponent<UnitScript>().AdjustHP(m_nDamageDealt);
-			Destroy(gameObject, 0.2f);
-			Vector3 pos = m_goTarget.transform.position;
-			pos.x += m_goTarget.GetComponent<BoxCollider>().size.x;
-			pos.y += m_goTarget.GetComponent<BoxCollider>().size.y * 0.5f;
-			transform.position = pos;
-		}
-		else
-		{
-			//MISS!
-			Destroy(gameObject);
+			m_bHasHitTarget = true;
+			if(m_nDamageDealt >0)
+			{
+				//HIT!
+				m_goTarget.GetComponent<UnitScript>().AdjustHP(m_nDamageDealt);
+				Destroy(gameObject, 0.2f);
+				Vector3 pos = m_goTarget.transform.position;
+				pos.x += m_goTarget.GetComponent<BoxCollider>().size.x;
+				pos.y += m_goTarget.GetComponent<BoxCollider>().size.y * 0.5f;
+				transform.position = pos;
+			}
+			else
+			{
+				//MISS!
+				Destroy(gameObject);
+			}
 		}
 	}
+
 
 }

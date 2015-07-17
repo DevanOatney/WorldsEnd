@@ -167,24 +167,30 @@ public class PlayerBattleScript : UnitScript {
 		GameObject go = GameObject.Find(szgoName);
 		m_vInitialPos.x = go.transform.position.x;
 		m_vInitialPos.y = go.transform.position.y;
+		m_vInitialPos.z = 0.0f;
 		switch(m_nPositionOnField)
 		{
 		case 0:
 		{
 			//Middle
-			m_vInitialPos.z = -0.2f;
 		}
 			break;
 		case 1:
 		{
 			//Top
-			m_vInitialPos.z = -0.1f;
+			if(GetComponent<SpriteRenderer>() != null)
+				GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1;
+			else 
+				GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder - 1;
 		}
 			break;
 		case 2:
 		{
 			//Bottom
-			m_vInitialPos.z = -0.3f;
+			if(GetComponent<SpriteRenderer>() != null)
+				GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder + 1;
+			else 
+				GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
 		}
 			break;
 		}
