@@ -29,6 +29,10 @@ Inon_CeremonyComplete
 -Created once you complete the hunter's ritual
 -Change Old Tuck's dialogue
 
+Battle_ReadMessage
+-Create this any time that there will be dialogue during a battle
+-Gets removed the moment the message is read in battle
+
 
 InonForest_EncounteredBoar
 -Created during the inon forest after the player encounters the boss boar

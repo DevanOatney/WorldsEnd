@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class TurnWatcherScript : MonoBehaviour 
 {
@@ -168,22 +169,42 @@ public class TurnWatcherScript : MonoBehaviour
 		int result;
 		if(ds.m_dStoryFlagField.TryGetValue("Battle_ReadMessage", out result))
 		{
-			//stop combat for a second
-			m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = false;
-			GameObject messageWindow = GameObject.Find("MessageWindow");
-			messageWindow.GetComponent<SpriteRenderer>().enabled = true;
-			messageWindow.GetComponent<MessageWindowScript>().BeginMessage("The CharacterReferences are OtherApplicant's Parents!!!");
+			switch(result)
+			{
+			case 1:
+			{
+				//Tutorial dialogue for the intro
+				//stop combat for a second
+				m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = false;
+				GameObject messageWindow = GameObject.Find("MessageWindow");
+				messageWindow.GetComponent<SpriteRenderer>().enabled = true;
+				GameObject.Find("TextOnWindow").SetActive(true);
+				messageWindow.GetComponent<MessageWindowScript>().BeginMessage("Defeat this boar with attacks, use healing items if your health gets low!");
+			}
+				break;
+			case 2:
+			{
+				//Dialogue for the boss fight against the boar in the temple of azyre
+			}
+				break;
+			}
 
+
+		}
+		else
+		{
+			m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
 		}
 
 	}
 
 	void DoneReadingMessage()
 	{
+		ds.m_dStoryFlagField.Remove("Battle_ReadMessage");
 		//the event window is done displaying it's message
 		GameObject.Find("MessageWindow").GetComponent<SpriteRenderer>().enabled = false;
-		GameObject.Find("TextOnWindow").GetComponent<MeshRenderer>().enabled = false;
-
+		GameObject.Find("TextOnWindow").SetActive(false);
+		m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
 	}
 
 	// Update is called once per frame
@@ -193,7 +214,7 @@ public class TurnWatcherScript : MonoBehaviour
 		{
 			m_bHasStarted = true;
 			SortTurnOrder();
-			m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
+
 		}
 	}
 

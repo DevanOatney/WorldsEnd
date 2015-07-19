@@ -541,6 +541,7 @@ public class InonEventHandler : BaseEventSystemScript
 		case "BoarTutorial":
 		{
 			ds.m_dStoryFlagField.Add("Inon_RitualBattleComplete", 1);
+			ds.m_dStoryFlagField.Add("Battle_ReadMessage", 1);
 			StartBossBattle();
 		}
 			break;

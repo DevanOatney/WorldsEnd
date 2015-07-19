@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MessageWindowScript : MonoBehaviour 
 {
@@ -25,6 +26,7 @@ public class MessageWindowScript : MonoBehaviour
 				{
 					GameObject.Find("TurnWatcher").SendMessage("DoneReadingMessage");
 					m_bReadMessage = false;
+					Input.ResetInputAxes();
 				}
 
 			}
@@ -41,7 +43,7 @@ public class MessageWindowScript : MonoBehaviour
 					string newLine = "";
 					for(int i = 0; i < m_nLetterIter; ++i)
 						newLine += m_szCompleteMessage[i];
-					GameObject.Find("TextOnWindow").GetComponent<TextMesh>().text = newLine;
+					GameObject.Find("TextOnWindow").GetComponent<Text>().text = newLine;
 					m_fTextTimer = 0.0f;
 				}
 
