@@ -1,6 +1,8 @@
 A1|1|Callan|Sounds/Voice/Callan/Callan_Intro_line_1|...uugh...*ahem*...What time is it!?! Oh no! I'm going to be late for the ceremony. That sneaky sister of mine is always trying to be one step ahead of me. But not today! I wonder if Dad left a note or something.|1|A2
 A2|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_1|*Sigh*......After hours of watching you oversleep, your lazy ass is finally ready to move. You do know how to move, right? Whatever. That's why I'm here to guide you from a slug-licking plebian to an illustrious master of your destiny.|1|A3
-A3|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_2|To move... Use the Up, Down, Left, and Right Arrows. Heh. Good luck figuring that out.|1|B1
+A3|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_2|To move... Use the Up, Down, Left, and Right Arrows. Heh. Good luck figuring that out.|1|A4
+A4|1|Callan||Use what-now? Can't I just use my legs?||A5
+A5|1|Forget about it. I'm not talking to you.|1|B1
 B1|3|Callan_Movement
 A4|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_3|Oh, huh, I wasn't expecting you to be able learn to walk so quickly. It appears your youthful zealous and inability to understand just how weak you are might be your saving grace.|1|A5
 A5|1|Callan|Sounds/Voice/Callan/Callan_Intro_line_2|Wow, I'll take that as a compliment!|1|A6
