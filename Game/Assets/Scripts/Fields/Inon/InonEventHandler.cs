@@ -695,7 +695,7 @@ public class InonEventHandler : BaseEventSystemScript
 		if(dc)
 		{
 			List<string> bossEncounter = new List<string>();
-			bossEncounter.Add("KillerBee");
+			bossEncounter.Add("Boar");
 			//Set the names of the list of enemies the player is about to fight
 			dc.GetComponent<DCScript>().SetEnemyNames(bossEncounter);
 			//Set the position of the player before the battle starts

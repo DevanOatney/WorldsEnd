@@ -4,6 +4,6 @@ B0|1|The Narrator||Would you please stop talking to the NPCs? They never say any
 B1|1|Lydia||Oh, by the way Callan, I need some help with dinner tonight. Will you pick me some mushrooms from Inon Forest? I would really appreciate it.||B2
 B2|1|The Narrator||Well, shit...she's not supposed to do that. I think you broke something, or found some hidden anomaly the creators made. Shame on you or congratulations?||B3
 B3|2|1|2|I would love to|B4|I'm a little busy now, maybe another day.|B5
-B4|1|Lydia|Thank you so much||A2
+B4|1|Lydia||Thank you so much||A2
 B5|1|Lydia||Uuh, I kinda need it for tonight...thanks anyway.||B6
 B6|3|EndDialogue
