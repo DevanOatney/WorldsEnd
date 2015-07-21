@@ -259,6 +259,21 @@ public class InonEventHandler : BaseEventSystemScript
 		}
 
 			break;
+		case "Bedrest":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			GameObject messageSystem = GameObject.Find("Bedrest");
+			if(messageSystem)
+			{
+				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+			}
+		}
+			
+			break;
 		case "Briar":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
