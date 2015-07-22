@@ -66,7 +66,7 @@ public class InonEventHandler : BaseEventSystemScript
 					ds.m_dStoryFlagField.Add("Inon_HasMoved", 1);
 					player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 					player.GetComponent<FieldPlayerMovementScript>().BindInput();
-					player.GetComponent<MessageHandler>().BeginDialogue("A4");
+					player.GetComponent<MessageHandler>().BeginDialogue("B1");
 				}
 			}
 		}
@@ -90,7 +90,7 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
 				player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-				player.GetComponent<MessageHandler>().BeginDialogue("A7");
+				player.GetComponent<MessageHandler>().BeginDialogue("D1");
 			}
 		}
 			break;
@@ -101,7 +101,7 @@ public class InonEventHandler : BaseEventSystemScript
 			foreach(GameObject go in Phase1_waypoints)
 				go.SetActive(false);
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
-			GameObject.Find("Player").GetComponent<MessageHandler>().BeginDialogue("A10");
+			GameObject.Find("Player").GetComponent<MessageHandler>().BeginDialogue("C1");
 		}
 			break;
 		case "FemaleDancerDialogue":
