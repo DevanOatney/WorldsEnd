@@ -618,10 +618,10 @@ public class InonEventHandler : BaseEventSystemScript
 			if(player)
 			{
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKDOWN);
-				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveDown", true);
+				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKLEFT);
+				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveLeft", true);
 				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
-				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 0);
+				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 1);
 				player.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
 				GameObject.Find("StepBackRitual").GetComponent<BoxCollider2D>().enabled = true;
 			}

@@ -246,7 +246,8 @@ public class NPCScript : MonoBehaviour
 	{
 		//GetComponent<Rigidbody2D>().isKinematic = true;
 		m_bCanMove = false;
-		GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+		if(GetComponent<Rigidbody2D>())
+			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 	}
 
 	void OnCollisionExit2D(Collision2D c)

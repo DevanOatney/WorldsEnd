@@ -8,7 +8,7 @@ B1|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_4|Oh, huh, I
 B2|1|Callan|Sounds/Voice/Callan/Callan_Intro_line_3|Wow, I'll take that as a compliment!|1|B3
 B3|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_5|Of course you would... Let's get on with the show. Your dad left you a note on the desk over there. Now that you've shown to me that you can perform menial tasks and follow simple directions, go ahead and take a look at it. To read the note, which I pray to Illuyani you know how to read, press the E key. This will allow you to interact with the world around you, for the most part.|1|B4
 B4|1|Callan|Sounds/Voice/Callan/Callan_Intro_line_4|The what key?||B6
-B6|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_6|Damn it..||B5
+B6|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_6|Damn it..||C7
 D1|1|Mattach|Sounds/Voice/Mattach/Mattach_Intro|Callan, your sister and I have gone out to run errands before the ceremony. I didn't want to wake you. When you're done sleeping the day away, come find us so we can get a move on.|1|B5
 B5|3|ReadNote
 C1|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_7|HA! Even you own father thinks of you a lazy bocaj!|1|C2
