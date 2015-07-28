@@ -1,25 +1,25 @@
-A1|1|Mattach||Ah, son, you finally made it. I was almost beginning to wonder if you had chosen to cower beneath the covers all day. Hahahah! But I'm glad that you found the gall to get up and follow after your sister and I. She has been raring to go! I could barely keep her from running off without you. I didn't want to have to explain myself twice though. So, let's continue on.|1|A2
-A2|1|Narrator||Well, doesn't he have high hopes for you.|1|A3
-A3|1|Callan||Of course he does! He's my father. I just overslept, that's all.|1|A4
-A4|1|Mattach||What are you going on about?|1|A5
-A5|1|Briol||I always knew there was something weird about you.|1|A6
+A1|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_1|Ah, son, you finally made it. I was almost beginning to wonder if you had chosen to cower beneath the covers all day. Hahahah! But I'm glad that you found the gall to get up and follow after your sister and I. She has been raring to go! I could barely keep her from running off without you. I didn't want to have to explain myself twice though. So, let's continue on.|1|A2
+A2|1|Narrator|Sounds/Voice/The Narrator/The_Narrator_Ritual_1|Well, doesn't he have high hopes for you.|1|A3
+A3|1|Callan|Sounds/Voice/Callan/Callan_Ritual_1|Of course he does! He's my father. I just overslept, that's all.|1|A4
+A4|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_2|What are you going on about?|1|A5
+A5|1|Briol|Sounds/Voice/Briol/Briol_Ritual_1|I always knew there was something weird about you.|1|A6
 A6|2|1|2|Did you not hear that voice just now?|A7|It's nothing, forget I said anything.|A8
-A7|1|Briol||Only the sound of your embarassment.|1|A8
-A8|1|Mattach||Continuing on, I brought the two of you out here to seek your mother's blessing on your endevor to create your own hunters guild. It will most certainly be filled with many dangers and you will have to fill the guild with many people, some of whom aren't trustworthy.|1|A9
-A9|1|Callan||Haven't our whole lives been leading up to this point?|1|A10
-A10|1|The Narrator||You know that, I know that, Briol knows that, but the player isn't privy to this information yet.||A11
-A11|1|Callan||Who?||A12
-A12|1|Briol||Who what?||A13
-A13|1|The Narrator||Don't worry about it. It's just someone controling your every move. Think nothing of it.||A14
-A14|1|Mattach||Are you alright Callan? You're looking a little pale...|0|A16
-A16|1|Briol||He's a Sealgair! He'll recover soon enough.||A17
-A17|1|Mattach||Good, that's what I like to hear. But beforewe continue, I want to refresh your memory on how combat works. Ah, here comes your first lessson.||A18
+A7|1|Briol|Sounds/Voice/Briol/Briol_Ritual_2|Only the sound of your embarassment.|1|A8
+A8|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_3|Continuing on, I brought the two of you out here to seek your mother's blessing on your endevor to create your own hunters guild. It will most certainly be filled with many dangers and you will have to fill the guild with many people, some of whom aren't trustworthy.|1|A9
+A9|1|Callan|Sounds/Voice/Callan/Callan_Ritual_2|Haven't our whole lives been leading up to this point?|1|A10
+A10|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Ritual_2|You know that, I know that, Briol knows that, but the player isn't privy to this information yet.||A11
+A11|1|Callan|Sounds/Voice/Callan/Callan_Ritual_3|Who?||A12
+A12|1|Briol|Sounds/Voice/Briol/Briol_Ritual_3|Who what?||A13
+A13|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Ritual_3|Don't worry about it. It's just someone controling your every move. Think nothing of it.||A14
+A14|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_4|Are you alright Callan? You're looking a little pale...|0|A16
+A16|1|Briol|Sounds/Voice/Briol/Briol_Ritual_4|He's a Sealgair! He'll recover soon enough.||A17
+A17|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_5|Good, that's what I like to hear. But before we continue, I want to refresh your memory on how combat works. Ah, here comes your first lessson.||A18
 A18|3|BoarTutorial
-B1|1|Mattach||I'm proud of the both of you. It fills me with joy to see you growing up. Faster than I would have liked, but such is life. The two of you are following a long line of tradition that has been passed down for generations. It is your turn to go out now; to start a guild, or die trying.||B2
+B1|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_6|I'm proud of the both of you. It fills me with joy to see you growing up. Faster than I would have liked, but such is life. The two of you are following a long line of tradition that has been passed down for generations. It is your turn to go out now; to start a guild, or die trying.||B2
 B2|2|1|2|I'm not sure how I feel about the dying part...|B3|If you feel we're ready, then let's do it!|B4
-B3|1|Mattach||Too bad. Either way you will die eventually. Staying here it just happens at a slower, and in my opinion more boring, pace. Just remeber you will always have each other!||B5
-B4|1|Mattach||That's some courage you got there! It looks like you might have inherited something from me after all.||B5
-B5|1|Mattach||Collect your trophy from the beast. A tusk will be sufficient. It will mark the start of the family tradition. Carry it with you as you go along your journey. It will remind you of your sense of honor and tradition. I still have the bear paw from when I was about your age and went headlong to start a hunter's guild. But that is another story for another time. Go get your spoils of victory.||B6
+B3|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_7|Too bad. Either way you will die eventually. Staying here it just happens at a slower, and in my opinion, more boring pace. Just remember you will always have each other!||B5
+B4|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_8|That's some courage you got there! It looks like you might have inherited something from me after all.||B5
+B5|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_9|Collect your trophy from the beast. A tusk will be sufficient. It will mark the start of the family tradition. Carry it with you as you go along your journey. It will remind you of your sense of honor and tradition. I still have the bear paw from when I was about your age and went headlong to start a hunter's guild. But that is another story for another time. Go get your spoils of victory.||B6
 B6|3|BriolRetreivesTusks
-C1|1|Mattach||Ah, it's good to see how much you two have grown! Some sisters more than others. But I'm still very proud to see all our hard work preparing for today to have paid off. You are ready to go off and fulfill our family tradition. You will bring into this world a guild unlike any other in times like these. Some of the mystics in nearby towns have foretold that the prophecy of rebirth is late to come and that soon it will come. Breathing new life into these lands, as vague as that is. Some say that it will completely destroy life, others say that it will bring untold wealth and happiness. I suppose that it is up to you to decide which it shall be, because until that day comes, only Iluyani will know. Oh, and you too Callan, you will do alright. Get out there and change the world dear...and you too Callan.||C2
+C1|1|Mattach|Sounds/Voice/Mattach/Mattach_Base|Ah, it's good to see how much you have grown, some sisters more than others.||C2
 C2|3|Mattach_EndDialogue1
