@@ -9,7 +9,7 @@ public class InonEventHandler : BaseEventSystemScript
 	public GameObject[] Phase1_waypoints;
 	public GameObject[] Phase2_waypoints;
 	public GameObject[] Phase3_waypoints;
-
+	public GameObject[] Phase4_waypoints;
 	bool m_bUpDir = false, m_bDownDir = false, m_bLeftDir = false, m_bRightDir = false;
 
 	// Use this for initialization
@@ -26,18 +26,53 @@ public class InonEventHandler : BaseEventSystemScript
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 			player.GetComponent<MessageHandler>().BeginDialogue(0);
 			ds.m_dStoryFlagField.Add("Intro_in_Inon", 1);
+			foreach(GameObject wpnt in Phase1_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = true;
+			foreach(GameObject wpnt in Phase2_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			foreach(GameObject wpnt in Phase3_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			foreach(GameObject wpnt in Phase4_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 		}
 		if(ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == false)
 		{
 			//Haven't started the ritual yet.
-			foreach(GameObject wpnt in Phase3_waypoints)
+			foreach(GameObject wpnt in Phase1_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			foreach(GameObject wpnt in Phase2_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
+			foreach(GameObject wpnt in Phase3_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			foreach(GameObject wpnt in Phase4_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 		}
 		else if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == false && 
 		        ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == true)
 		{
 			//have completed the ritual battle, but haven't completed the full ritual yet, begin the final bits of dialogue for the ritual
 			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("B1");
+			ds.m_dStoryFlagField.Remove("Inon_RitualBattleComplete");
+			foreach(GameObject wpnt in Phase1_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			foreach(GameObject wpnt in Phase2_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			foreach(GameObject wpnt in Phase3_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			foreach(GameObject wpnt in Phase4_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = true;
+		}
+		else if(ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == true)
+		{
+			foreach(GameObject wpnt in Phase1_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			foreach(GameObject wpnt in Phase2_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			foreach(GameObject wpnt in Phase3_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			foreach(GameObject wpnt in Phase4_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+
 		}
 		
 	}
@@ -528,7 +563,6 @@ public class InonEventHandler : BaseEventSystemScript
 
 		case "ItemShoppe":
 		{
-			Debug.Log("end");
 			GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject>();
 			foreach(GameObject g in gObjs)
 			{
@@ -555,9 +589,13 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "BoarTutorial":
 		{
-			ds.m_dStoryFlagField.Add("Inon_RitualBattleComplete", 1);
-			ds.m_dStoryFlagField.Add("Battle_ReadMessage", 1);
-			StartBossBattle();
+			GameObject Boar = GameObject.Find("Boar");
+			Boar.GetComponent<Rigidbody2D>().velocity = new Vector2(-5,0);
+
+			//battles stuff
+			//ds.m_dStoryFlagField.Add("Inon_RitualBattleComplete", 1);
+			//ds.m_dStoryFlagField.Add("Battle_ReadMessage", 1);
+			//StartBossBattle();
 		}
 			break;
 		default:
@@ -697,6 +735,24 @@ public class InonEventHandler : BaseEventSystemScript
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("A1");
 			GameObject.Find("ArrivedAtRitualWaypoint").GetComponent<BoxCollider2D>().enabled = false;
+		}
+			break;
+		case "BoarArriveAtRitual":
+		{
+			GameObject Boar = GameObject.Find("Boar");
+			Boar.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+			Boar.GetComponent<Animator>().SetBool("m_bAttack", true);
+
+		}
+			break;
+		case "BriolArriveAtRitual":
+		{
+			GameObject Briol = GameObject.Find("Briol");
+			Briol.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+			ds.m_dStoryFlagField.Add("Inon_CeremonyComplete", 1);
+			foreach(GameObject wpnt in Phase4_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+
 		}
 			break;
 		default:
