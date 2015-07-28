@@ -10,6 +10,7 @@ public class InonEventHandler : BaseEventSystemScript
 	public GameObject[] Phase2_waypoints;
 	public GameObject[] Phase3_waypoints;
 	public GameObject[] Phase4_waypoints;
+	public GameObject m_goBoar;
 	bool m_bUpDir = false, m_bDownDir = false, m_bLeftDir = false, m_bRightDir = false;
 
 	// Use this for initialization
@@ -589,9 +590,8 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "BoarTutorial":
 		{
-			GameObject Boar = GameObject.Find("Boar");
-			Boar.GetComponent<Rigidbody2D>().velocity = new Vector2(-5,0);
-
+			m_goBoar.SetActive(true);
+			m_goBoar.GetComponent<Rigidbody2D>().velocity = new Vector2(-5,0);
 			//battles stuff
 			//ds.m_dStoryFlagField.Add("Inon_RitualBattleComplete", 1);
 			//ds.m_dStoryFlagField.Add("Battle_ReadMessage", 1);
@@ -739,9 +739,8 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "BoarArriveAtRitual":
 		{
-			GameObject Boar = GameObject.Find("Boar");
-			Boar.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
-			Boar.GetComponent<Animator>().SetBool("m_bAttack", true);
+			m_goBoar.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+			m_goBoar.GetComponent<Animator>().SetBool("m_bAttack", true);
 
 		}
 			break;
