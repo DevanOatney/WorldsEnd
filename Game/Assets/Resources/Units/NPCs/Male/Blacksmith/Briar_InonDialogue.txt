@@ -1,7 +1,8 @@
 A1|1|Briar|Sounds/Voice/Briar/Briar_Line_1|Hello, I saw your father and sister heading to the guild hall earlier this morning. Your sister seemed like she was in quite a rush to get going.|1|A2
 A2|3|EndDialogue
 A3|3|Briar_EndDialogue
-B0|1|Briar|Sounds/Voice/Briar/Briar_Line_2|Hey Callan! Your father and sister were just here. They were headed out to the lake. I presume to see your mother and ask for her blessing before you two kids head off on your journey, but you aren't a kid anymore are you? Come back soon and I should have new wares to help a stout young lad such as yourself on your journey.|1|A3
+B0|1|Briar|Sounds/Voice/Briar/Briar_Line_2|Hey Callan! Your father and sister were just here. They were headed out to the lake in the southwest corner of town|1|B1
+B1|1|Briar|Sounds/Voice?Briar?Briar_Line_6|Oh, and I've fixed your bow. Don't go messing up the string again. I'm getting tired of fixing it for you...|1|A3
 C0|1|Briar|Sounds/Voice/Briar/Briar_Line_3|Hey Callan, welcome back. Would you like me to improve your weapon today?|1|C1
 C1|2|1|2|Yes|C2|No|C3
 C2|3|Inon_Blacksmith1
