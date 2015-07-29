@@ -11,6 +11,8 @@ public class InonEventHandler : BaseEventSystemScript
 	public GameObject[] Phase3_waypoints;
 	public GameObject[] Phase4_waypoints;
 	public GameObject m_goBoar;
+	public GameObject m_goForestLine;
+
 	bool m_bUpDir = false, m_bDownDir = false, m_bLeftDir = false, m_bRightDir = false;
 
 	// Use this for initialization
@@ -30,11 +32,11 @@ public class InonEventHandler : BaseEventSystemScript
 			foreach(GameObject wpnt in Phase1_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 		}
 		if(ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == false)
 		{
@@ -44,9 +46,9 @@ public class InonEventHandler : BaseEventSystemScript
 			foreach(GameObject wpnt in Phase2_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 		}
 		else if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == false && 
 		        ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == true)
@@ -590,12 +592,18 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "BoarTutorial":
 		{
+			m_goForestLine.GetComponent<EdgeCollider2D>().enabled = false;
 			m_goBoar.SetActive(true);
 			m_goBoar.GetComponent<BoarRitualScript>().m_bIsActive = true;
+
+		}
+			break;
+		case "StartBoarBattle":
+		{
 			//battles stuff
-			//ds.m_dStoryFlagField.Add("Inon_RitualBattleComplete", 1);
-			//ds.m_dStoryFlagField.Add("Battle_ReadMessage", 1);
-			//StartBossBattle();
+			ds.m_dStoryFlagField.Add("Inon_RitualBattleComplete", 1);
+			ds.m_dStoryFlagField.Add("Battle_ReadMessage", 1);
+			StartBossBattle();
 		}
 			break;
 		default:

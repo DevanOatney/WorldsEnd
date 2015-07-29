@@ -81,6 +81,7 @@ public class MessageHandler : MonoBehaviour
 							line = "";
 							timer = 0.0f;
 							textIter = 0; 
+							GetComponent<AudioSource>().Stop();
 						}
 						else
 						{
