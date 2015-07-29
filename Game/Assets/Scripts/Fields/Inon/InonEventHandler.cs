@@ -11,6 +11,8 @@ public class InonEventHandler : BaseEventSystemScript
 	public GameObject[] Phase3_waypoints;
 	public GameObject[] Phase4_waypoints;
 	public GameObject m_goBoar;
+	public GameObject m_goDeadBoar;
+	public Sprite m_t2dDeadBoarWithoutTusk;
 	public GameObject m_goForestLine;
 
 	bool m_bUpDir = false, m_bDownDir = false, m_bLeftDir = false, m_bRightDir = false;
@@ -64,6 +66,7 @@ public class InonEventHandler : BaseEventSystemScript
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 			foreach(GameObject wpnt in Phase4_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
+			m_goDeadBoar.SetActive(true);
 		}
 		else if(ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == true)
 		{
@@ -606,6 +609,11 @@ public class InonEventHandler : BaseEventSystemScript
 			StartBossBattle();
 		}
 			break;
+		case "RetrieveTusks":
+		{
+			GameObject.Find("Briol").GetComponent<BriolInonRitualScript>().MoveDownward();
+		}
+			break;
 		default:
 			break;
 		}
@@ -754,11 +762,12 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "BriolArriveAtRitual":
 		{
-			GameObject Briol = GameObject.Find("Briol");
-			Briol.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+			Debug.Log("hit");
 			ds.m_dStoryFlagField.Add("Inon_CeremonyComplete", 1);
 			foreach(GameObject wpnt in Phase4_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			m_goDeadBoar.GetComponent<SpriteRenderer>().sprite = m_t2dDeadBoarWithoutTusk;
+			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("C1");
 
 		}
 			break;
