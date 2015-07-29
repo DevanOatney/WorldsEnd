@@ -591,7 +591,7 @@ public class InonEventHandler : BaseEventSystemScript
 		case "BoarTutorial":
 		{
 			m_goBoar.SetActive(true);
-			m_goBoar.GetComponent<Rigidbody2D>().velocity = new Vector2(-5,0);
+			m_goBoar.GetComponent<BoarRitualScript>().m_bIsActive = true;
 			//battles stuff
 			//ds.m_dStoryFlagField.Add("Inon_RitualBattleComplete", 1);
 			//ds.m_dStoryFlagField.Add("Battle_ReadMessage", 1);
