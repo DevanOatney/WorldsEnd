@@ -31,6 +31,7 @@ public class BriolInonRitualScript : MonoBehaviour
 		{
 			m_bIsMoving = false;
 			GetComponent<Animator>().SetBool("m_bMoveDown", false);
+			GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent("BriolArriveAtRitual");
 		}
 	}
 }

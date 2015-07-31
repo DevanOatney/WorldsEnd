@@ -55,6 +55,7 @@ public class InonEventHandler : BaseEventSystemScript
 		else if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == false && 
 		        ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == true)
 		{
+			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 			//have completed the ritual battle, but haven't completed the full ritual yet, begin the final bits of dialogue for the ritual
 			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("B1");
 			ds.m_dStoryFlagField.Remove("Inon_RitualBattleComplete");
@@ -68,7 +69,7 @@ public class InonEventHandler : BaseEventSystemScript
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			m_goDeadBoar.SetActive(true);
 		}
-		else if(ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == true)
+		else if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == true)
 		{
 			foreach(GameObject wpnt in Phase1_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
@@ -614,6 +615,16 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject.Find("Briol").GetComponent<BriolInonRitualScript>().MoveDownward();
 		}
 			break;
+		case "BriolArriveAtRitual":
+		{
+			Debug.Log("bub");
+			ds.m_dStoryFlagField.Add("Inon_CeremonyComplete", 1);
+			foreach(GameObject wpnt in Phase4_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			m_goDeadBoar.GetComponent<SpriteRenderer>().sprite = m_t2dDeadBoarWithoutTusk;
+			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("C1");
+		}
+			break;
 		default:
 			break;
 		}
@@ -760,17 +771,7 @@ public class InonEventHandler : BaseEventSystemScript
 
 		}
 			break;
-		case "BriolArriveAtRitual":
-		{
-			Debug.Log("hit");
-			ds.m_dStoryFlagField.Add("Inon_CeremonyComplete", 1);
-			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			m_goDeadBoar.GetComponent<SpriteRenderer>().sprite = m_t2dDeadBoarWithoutTusk;
-			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("C1");
-
-		}
-			break;
+		
 		default:
 			break;
 		}
