@@ -67,11 +67,15 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	public bool GetAllowInput() {return m_bAllowInput;}
 
 
-	
+	void Awake()
+	{
+		m_aAnim = GetComponent<Animator>();
+	}
+
 	// Use this for initialization
 	void Start () 
 	{
-		m_aAnim = GetComponent<Animator>();
+
 		//Set which direction the player should be idling toward when the screen loads
 		m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
 		ResetAnimFlagsExcept(m_nFacingDir);
