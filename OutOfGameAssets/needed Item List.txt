@@ -19,3 +19,5 @@ Save point (locations/Graphic)
 Shania stuff (game objective, highlights of the game, where to find game, our back story, pictures, videos, anything else we want spread to the public)
 Fix Marcus Dialogue
 Fix Broken Speech impediment (audio ending with dialogue ending)
+Fix Boar Ritual
+Fix Briar recordings
