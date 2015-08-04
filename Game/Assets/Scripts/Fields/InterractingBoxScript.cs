@@ -27,7 +27,7 @@ public class InterractingBoxScript : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if(c.tag == "Treasure" || c.tag == "Interractable")
+		if(c.tag == "Treasure" || c.tag == "Interractable" || c.tag == "Merchant")
 		{
 			if(m_goOwner.GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
 			{
@@ -39,7 +39,7 @@ public class InterractingBoxScript : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D c)
 	{
-		if(c.tag == "Treasure" || c.tag == "Interractable")
+		if(c.tag == "Treasure" || c.tag == "Interractable" || c.tag == "Merchant")
 		{
 		
 			if(m_goOwner.GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)

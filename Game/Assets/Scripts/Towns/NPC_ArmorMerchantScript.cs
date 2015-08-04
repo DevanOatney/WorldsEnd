@@ -785,7 +785,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 				m_bIsMoving = false;
 				m_bIsBeingInterractedWith = true;
 				if(m_szDialoguePath != "")
-					GameObject.Find("Event System").GetComponent<BaseEventSystemScript>().HandleEvent(m_szDialoguePath);
+					GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent(m_szDialoguePath);
 			}
 		}
 	}

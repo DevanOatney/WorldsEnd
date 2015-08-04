@@ -39,8 +39,9 @@ public class InonEventHandler : BaseEventSystemScript
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			foreach(GameObject wpnt in Phase4_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
+			GameObject.Find("NoteFromFamily").GetComponent<BoxCollider2D>().enabled = false;
 		}
-		if(ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == false)
+		else if(ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == false)
 		{
 			//Haven't started the ritual yet.
 			foreach(GameObject wpnt in Phase1_waypoints)
@@ -109,6 +110,7 @@ public class InonEventHandler : BaseEventSystemScript
 					player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 					player.GetComponent<FieldPlayerMovementScript>().BindInput();
 					player.GetComponent<MessageHandler>().BeginDialogue("B1");
+					GameObject.Find("NoteFromFamily").GetComponent<BoxCollider2D>().enabled = true;
 				}
 			}
 		}
@@ -133,6 +135,7 @@ public class InonEventHandler : BaseEventSystemScript
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
 				player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 				player.GetComponent<MessageHandler>().BeginDialogue("D1");
+				GameObject.Find("NoteFromFamily").SetActive(false);
 			}
 		}
 			break;
@@ -144,6 +147,7 @@ public class InonEventHandler : BaseEventSystemScript
 				go.SetActive(false);
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 			GameObject.Find("Player").GetComponent<MessageHandler>().BeginDialogue("C1");
+
 		}
 			break;
 		case "FemaleDancerDialogue":
