@@ -1,3 +1,3 @@
 Flask,Single Heal,30
-Anti-Venom,Single Heal,50
 Smoke,All Enemy,50
+Pebble,Enemy,50
