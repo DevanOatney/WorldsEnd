@@ -11,13 +11,10 @@ Boar Souund Effects
 Bee sound effects
 Game Over Screen/music
 Battle Layers normalized
-Boss Boar Starting Stats
 Ritual Event (boar Boss Retrieval)
 Briol in Battle (animations)
 Damage Randomiaztion dampened
 Save point (locations/Graphic)
 Shania stuff (game objective, highlights of the game, where to find game, our back story, pictures, videos, anything else we want spread to the public)
-Fix Marcus Dialogue
 Fix Broken Speech impediment (audio ending with dialogue ending)
 Fix Boar Ritual
-Fix Briar recordings
