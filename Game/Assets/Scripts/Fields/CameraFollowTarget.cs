@@ -24,7 +24,7 @@ public class CameraFollowTarget : MonoBehaviour {
 		if(m_bShouldSwirl == true)
 		{
 			Vector2 rad = GetComponent<VortexEffect>().radius;
-			GetComponent<VortexEffect>().radius = Vector2(rad.x + 5*Time.deltaTime, rad.y + 5 * Time.deltaTime);
+			GetComponent<VortexEffect>().radius = new Vector2(rad.x + 5*Time.deltaTime, rad.y + 5 * Time.deltaTime);
 		}
 		if(m_goTarget != null)
 		{
