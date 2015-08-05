@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.ImageEffects;
 
 public class CameraFollowTarget : MonoBehaviour {
 
@@ -23,8 +24,8 @@ public class CameraFollowTarget : MonoBehaviour {
 	{
 		if(m_bShouldSwirl == true)
 		{
-			Vector2 rad = GetComponent<VortexEffect>().radius;
-			GetComponent<VortexEffect>().radius = new Vector2(rad.x + 5*Time.deltaTime, rad.y + 5 * Time.deltaTime);
+			Vector2 rad = GetComponent<Vortex>().radius;
+			GetComponent<Vortex>().radius = new Vector2(rad.x + 1*Time.deltaTime, rad.y + 1 * Time.deltaTime);
 		}
 		if(m_goTarget != null)
 		{

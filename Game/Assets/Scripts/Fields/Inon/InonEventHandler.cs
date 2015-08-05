@@ -776,6 +776,51 @@ public class InonEventHandler : BaseEventSystemScript
 
 		}
 			break;
+		case "StepBackNorth":
+		{
+			GameObject player = GameObject.Find("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
+				GameObject.Find("StepBackNorth").GetComponent<BoxCollider2D>().enabled = false;
+			}
+		}
+			break;
+		case "StepBackSouth":
+		{
+			GameObject player = GameObject.Find("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
+				GameObject.Find("StepBackSouth").GetComponent<BoxCollider2D>().enabled = false;
+			}
+		}
+			break;
+		case "LeaveFromSouthWaypoint":
+		{
+			GameObject src = GameObject.Find("Player");
+			src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
+			src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
+			GameObject.Find("StepBackSouth").GetComponent<BoxCollider2D>().enabled = true;
+
+		}
+			break;
+		case "LeaveFromNorthWaypoint":
+		{
+			GameObject src = GameObject.Find("Player");
+			src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKDOWN);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveDown", true);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 0);
+			src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
+			GameObject.Find("StepBackNorth").GetComponent<BoxCollider2D>().enabled = true;
+		}
+			break;
 		
 		default:
 			break;

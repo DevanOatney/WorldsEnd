@@ -220,6 +220,7 @@ public class OverWatcherScript : MonoBehaviour {
 					if(randomChance <= m_nEncounterChance)
 					{
 						m_bEncounterToHappen = true;
+						Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
 						Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
 						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 						Input.ResetInputAxes();
