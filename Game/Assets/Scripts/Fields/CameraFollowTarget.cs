@@ -7,6 +7,8 @@ public class CameraFollowTarget : MonoBehaviour {
 	public GameObject m_goNextTarget = null;
 	float dampTime = 0.25f;
 	private Vector3 velocity = Vector3.zero;
+
+	public bool m_bShouldSwirl = false;
 	// Use this for initialization
 	void Start () 
 	{
@@ -19,6 +21,11 @@ public class CameraFollowTarget : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		if(m_bShouldSwirl == true)
+		{
+			Vector2 rad = GetComponent<VortexEffect>().radius;
+			GetComponent<VortexEffect>().radius = Vector2(rad.x + 5*Time.deltaTime, rad.y + 5 * Time.deltaTime);
+		}
 		if(m_goTarget != null)
 		{
 

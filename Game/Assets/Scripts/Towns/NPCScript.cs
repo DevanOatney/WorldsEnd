@@ -22,6 +22,8 @@ public class NPCScript : MonoBehaviour
 	//cost for if it's an innkeeper
 	public int m_nCost = 0;
 
+	public bool m_bReturnToPlayer = false;
+
 	protected class cSteps
 	{
 		//direction to face
@@ -45,7 +47,34 @@ public class NPCScript : MonoBehaviour
 
 	protected void HandleMovement()
 	{
-		if(m_bActive == true)
+		if(m_bReturnToPlayer == true)
+		{
+			Vector2 playerPos = GameObject.Find("Player").transform.position;
+			Vector2 npcPos = transform.position;
+			Vector2 toPlayer = playerPos - npcPos;
+			if(toPlayer.x > 0.1f || toPlayer.x < -0.1f)
+			{
+				toPlayer.y = 0.0f;
+				toPlayer.Normalize();
+				toPlayer.x *= 5.0f * Time.deltaTime;
+				gameObject.GetComponent<Rigidbody2D>().velocity = toPlayer;
+			}
+			else if(toPlayer.y > 0.1f || toPlayer.y  < -0.1f)
+			{
+				toPlayer.x = 0.0f;
+				toPlayer.Normalize();
+				toPlayer.y *= 5.0f * Time.deltaTime;
+				gameObject.GetComponent<Rigidbody2D>().velocity = toPlayer;
+			}
+			else
+			{
+				m_bReturnToPlayer = false;
+				GetComponent<BoxCollider2D>().enabled = true;
+				gameObject.SetActive(false);
+				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+		}
+		else if(m_bActive == true)
 		{
 			if(m_bIsBeingInterractedWith == false)
 			{

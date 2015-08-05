@@ -1,7 +1,9 @@
 fileFormatVersion: 2
 guid: 8a6508f4e0ba58b4882b94b99ae59b66
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: backgr_mount2_0
+    21300002: backgr_mount2_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

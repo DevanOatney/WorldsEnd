@@ -70,15 +70,13 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	void Awake()
 	{
 		m_aAnim = GetComponent<Animator>();
+		m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
+		ResetAnimFlagsExcept(m_nFacingDir);
 	}
 
 	// Use this for initialization
 	void Start () 
 	{
-
-		//Set which direction the player should be idling toward when the screen loads
-		m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
-		ResetAnimFlagsExcept(m_nFacingDir);
 		//temp for testing status
 		//DCScript.StatusEffect tse = new DCScript.StatusEffect();
 		//tse.m_szName = "Poison";

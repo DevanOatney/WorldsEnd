@@ -621,12 +621,13 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "BriolArriveAtRitual":
 		{
-			Debug.Log("bub");
 			ds.m_dStoryFlagField.Add("Inon_CeremonyComplete", 1);
 			foreach(GameObject wpnt in Phase4_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 			m_goDeadBoar.GetComponent<SpriteRenderer>().sprite = m_t2dDeadBoarWithoutTusk;
 			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("C1");
+			GameObject.Find("Briol").GetComponent<NPCScript>().m_bReturnToPlayer = true;
+			GameObject.Find("Briol").GetComponent<BoxCollider2D>().enabled = false;
 		}
 			break;
 		default:
@@ -798,6 +799,10 @@ public class InonEventHandler : BaseEventSystemScript
 			go.GetComponent<DCScript>().SetPreviousFacingDirection(m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir);
 			go.GetComponent<DCScript>().SetPreviousFieldName(Application.loadedLevelName);
 			go.GetComponent<DCScript>().SetBattleFieldBackgroundIter(1);
+
+			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
+			Briol.GetComponent<PlayerBattleScript>().SetUnitStats();
+
 			Application.LoadLevel("Battle_Scene");
 		}
 	}

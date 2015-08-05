@@ -86,7 +86,7 @@ public class TurnWatcherScript : MonoBehaviour
 
 				FormationCounter++;
 			}
-
+			FormationCounter = 0;
 			List<DCScript.CharacterData> allies = ds.GetParty();
 			foreach(DCScript.CharacterData g in allies)
 			{
@@ -94,6 +94,7 @@ public class TurnWatcherScript : MonoBehaviour
 				//Set the name so (Clone) isn't in the name.
 				Ally.name = g.m_szCharacterName;
 
+				Ally.GetComponent<UnitScript>().m_nPositionOnField = FormationCounter;
 				//Set the stats of the unit to the object it instantiated from
 				Ally.GetComponent<UnitScript>().SetMaxHP(g.m_nMaxHP);
 				Ally.GetComponent<UnitScript>().SetCurHP(g.m_nCurHP);
@@ -112,7 +113,7 @@ public class TurnWatcherScript : MonoBehaviour
 				Ally.GetComponent<PlayerBattleScript>().SetLegSlotData(g.m_idLegSlot);
 				Ally.GetComponent<PlayerBattleScript>().SetTrinket1Data(g.m_idTrinket1);
 				Ally.GetComponent<PlayerBattleScript>().SetTrinket2Data(g.m_idTrinket2);
-				
+				FormationCounter++;
 			}
 
 		}
