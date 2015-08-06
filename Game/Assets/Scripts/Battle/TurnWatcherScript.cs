@@ -510,6 +510,8 @@ public class TurnWatcherScript : MonoBehaviour
 
 	void Win()
 	{
+		foreach(string s in m_lPreviousLevels.Keys)
+			Debug.Log(s);
 		//Play victory fanfare
 		GetComponent<AudioSource>().Stop();
 		GetComponent<AudioSource>().PlayOneShot(m_acVictoryFanfare, 0.5f + ds.m_fSFXVolume);

@@ -11,7 +11,7 @@ public class NPCScript : MonoBehaviour
 	public string m_szDialoguePath = "";
 
 	protected float m_fWalkingSpeed = 2.0f;
-	protected bool m_bIsMoving = false;
+	public bool m_bIsMoving = false;
 	public bool m_bIsBeingInterractedWith = false;
 	protected float m_fTimer = 0.0f;
 	protected int m_nStepsIter = 0;
@@ -74,7 +74,7 @@ public class NPCScript : MonoBehaviour
 				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 			}
 		}
-		else if(m_bActive == true)
+		if(m_bActive == true)
 		{
 			if(m_bIsBeingInterractedWith == false)
 			{

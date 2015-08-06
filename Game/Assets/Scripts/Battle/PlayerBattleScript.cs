@@ -767,7 +767,6 @@ public class PlayerBattleScript : UnitScript {
 				Vector3 targetPos = target.transform.position;
 				Vector3 dir = targetPos - transform.position;
 				dir.Normalize();
-				Debug.Log(dir);
 				Vector3 curPos = transform.position;
 				curPos += dir * m_fMovementSpeed * Time.deltaTime;
 				transform.position = curPos;
@@ -1030,7 +1029,7 @@ public class PlayerBattleScript : UnitScript {
 
 
 		}
-		if(c.name ==  "Ally_StartPos" + m_nPositionOnField.ToString() && m_bIsMyTurn == true)
+		if(c.name ==  "Ally_StartPos" + m_nPositionOnField.ToString())
 		{
 			if(anim)
 				anim.SetBool("m_bIsMoving", false);
