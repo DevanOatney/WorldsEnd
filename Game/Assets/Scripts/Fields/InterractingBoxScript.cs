@@ -29,6 +29,15 @@ public class InterractingBoxScript : MonoBehaviour
 	{
 		if(c.tag == "Treasure" || c.tag == "Interractable" || c.tag == "Merchant")
 		{
+			if(c.tag == "Treasure")
+			{
+				if(c.gameObject.GetComponent<TreasureChestScript>().m_bIsOpened == true)
+				{
+					m_goOwner.GetComponent<FieldPlayerMovementScript>().DeactivatePrompter();
+					return;
+				}
+			}
+
 			if(m_goOwner.GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
 			{
 				//Has found an interractable object nearby, and the player is allowed to interract with it currently.
@@ -41,7 +50,19 @@ public class InterractingBoxScript : MonoBehaviour
 	{
 		if(c.tag == "Treasure" || c.tag == "Interractable" || c.tag == "Merchant")
 		{
-		
+			if(c.tag == "Treasure")
+			{
+				if(c.gameObject.GetComponent<TreasureChestScript>().m_bIsOpened == true)
+				{
+					m_goOwner.GetComponent<FieldPlayerMovementScript>().DeactivatePrompter();
+					return;
+				}
+			}
+			if(c.enabled == false)
+			{
+				m_goOwner.GetComponent<FieldPlayerMovementScript>().DeactivatePrompter();
+				return;
+			}
 			if(m_goOwner.GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
 				{
 				//Has found an interractable object nearby, and the player is allowed to interract with it currently.

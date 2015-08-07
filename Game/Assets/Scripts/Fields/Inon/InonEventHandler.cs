@@ -135,7 +135,7 @@ public class InonEventHandler : BaseEventSystemScript
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
 				player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 				player.GetComponent<MessageHandler>().BeginDialogue("D1");
-				GameObject.Find("NoteFromFamily").SetActive(false);
+				GameObject.Find("NoteFromFamily").GetComponent<BoxCollider2D>().enabled = false;
 			}
 		}
 			break;
@@ -447,7 +447,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Constantinople":
 		{
-			Debug.Log("blug");
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
 			if(player)
 			{

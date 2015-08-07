@@ -6,7 +6,7 @@ public class TreasureChestScript : MonoBehaviour {
 	float m_fAnimLength;
 	bool m_bIsOpening = false;
 	public void SetIsOpening( bool b) { m_bIsOpening = b;}
-	bool m_bIsOpened = false;
+	public bool m_bIsOpened = false;
 
 	DCScript.CharactersItems m_ciItemHeld;
 	public DCScript.CharactersItems GetItemHeld() {return m_ciItemHeld;}
