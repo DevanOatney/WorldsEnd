@@ -447,6 +447,7 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Constantinople":
 		{
+			Debug.Log("blug");
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
 			if(player)
 			{
