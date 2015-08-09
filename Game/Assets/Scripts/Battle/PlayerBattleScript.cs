@@ -800,6 +800,14 @@ public class PlayerBattleScript : UnitScript {
 					else
 					{
 						//MISS
+						GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+						foreach(GameObject tar in posTargs)
+						{
+							if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+							{
+								tar.GetComponent<UnitScript>().Missed();
+							}
+						}
 					}
 				}
 				else if(m_nUnitType == (int)UnitTypes.ALLY_RANGED)
@@ -1137,6 +1145,18 @@ public class PlayerBattleScript : UnitScript {
 		m_goFadingText.transform.position = textPos;
 		Instantiate(m_goFadingText);
 
+	}
+
+	new public void Missed()
+	{
+		m_goFadingText.GetComponent<GUI_FadeText>().SetColor(true);
+		m_goFadingText.GetComponent<GUI_FadeText>().SetText("Miss");
+		m_goFadingText.GetComponent<GUI_FadeText>().SetShouldFloat(true);
+		Vector3 textPos = transform.GetComponent<Collider>().transform.position;
+		textPos.y += (gameObject.GetComponent<BoxCollider>().size.y * 0.75f);
+		textPos = Camera.main.WorldToViewportPoint(textPos);
+		m_goFadingText.transform.position = textPos;
+		Instantiate(m_goFadingText);
 	}
 
 	void InitializeTargetReticle()

@@ -47,6 +47,7 @@ public class ProjectileScript : MonoBehaviour
 			else
 			{
 				//MISS!
+				m_goTarget.GetComponent<UnitScript>().Missed();
 				Destroy(gameObject);
 			}
 		}

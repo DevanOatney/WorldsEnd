@@ -13,6 +13,8 @@ public class BeserkEnemyScript : UnitScript {
 	float m_fDamagedBucket = 0.0f;
 	public float GetDamagedBucket() {return m_fAttackBucket;}
 	float m_fDeadBucket = 0.0f;
+	//flag for if the hit proc has happened during this turn (after each turn)
+	bool m_bHasSwung = false;
 
 
 	//for fading text
@@ -33,6 +35,8 @@ public class BeserkEnemyScript : UnitScript {
 
 	//animation for the unit dying
 	public AnimationClip m_acDyingAnim;
+	//animation for the unit attacking
+	public AnimationClip m_acAttackAnim;
 
 	//Stuff for the shadow clones that spawn during movement... maybe special attacks if I have time?
 	public GameObject m_goShadowClone;
@@ -267,13 +271,40 @@ public class BeserkEnemyScript : UnitScript {
 		case (int)States.eATTACK:
 		{
 			m_fAttackBucket -= Time.deltaTime;
+			if(m_fAttackBucket >= m_acAttackAnim.length * 0.5f && m_bHasSwung == false)
+			{
+				m_bHasSwung = true;
+				GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
+				foreach(GameObject tar in posTargs)
+				{
+					if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+					 {
+						int nChanceToHit = UnityEngine.Random.Range(0,100);
+						int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
+						if(nRange < 5)
+							nRange = 5;
+						if(nChanceToHit <	nRange)
+						{
+							int dmgAdjustment = UnityEngine.Random.Range(0, 10) - 5;
+							if(dmgAdjustment + m_nStr < 1)
+								tar.GetComponent<UnitScript>().AdjustHP(1);
+							else
+								tar.GetComponent<UnitScript>().AdjustHP(m_nStr + dmgAdjustment);
+						}
+						else
+							tar.GetComponent<UnitScript>().Missed();
+						
+						break;
+					}
+				}
+			}
 			if(m_fAttackBucket <= 0.001f)
 			{
 				m_fAttackBucket = 0.0f;
 				m_nState = (int)States.eRETURN;
 				anim.SetBool("m_bIsAttacking", false);
 				anim.SetBool("m_bIsMoving", true);
-
+				m_bHasSwung = false;
 			}
 		}
 			break;
@@ -313,7 +344,7 @@ public class BeserkEnemyScript : UnitScript {
 			anim.SetBool("m_bIsMoving", false);
 			anim.SetBool("m_bIsAttacking", true);
 			m_nState = (int)States.eATTACK;
-			m_fAttackBucket = 1.2f;
+			m_fAttackBucket = m_acAttackAnim.length + 0.01f;
 			c.enabled = false;
 			GameObject wypnt = GameObject.Find("Enemy_StartPos" + m_nPositionOnField.ToString());
 			if(wypnt)
@@ -333,18 +364,6 @@ public class BeserkEnemyScript : UnitScript {
 					else
 						GetComponent<AudioSource>().PlayOneShot(m_acAttackAudio, 0.5f);
 
-					int nChanceToHit = UnityEngine.Random.Range(0,100);
-					int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
-					if(nRange < 5)
-						nRange = 5;
-					if(nChanceToHit <	nRange)
-					{
-						int dmgAdjustment = UnityEngine.Random.Range(0, 10) - 5;
-						if(dmgAdjustment + m_nStr < 1)
-							tar.GetComponent<UnitScript>().AdjustHP(1);
-						else
-							tar.GetComponent<UnitScript>().AdjustHP(m_nStr + dmgAdjustment);
-					}
 				}
 			}
 
@@ -366,6 +385,17 @@ public class BeserkEnemyScript : UnitScript {
 		}
 	}
 
+	new public void Missed()
+	{
+		m_goFadingText.GetComponent<GUI_FadeText>().SetColor(true);
+		m_goFadingText.GetComponent<GUI_FadeText>().SetText("Miss");
+		m_goFadingText.GetComponent<GUI_FadeText>().SetShouldFloat(true);
+		Vector3 textPos = transform.GetComponent<Collider>().transform.position;
+		textPos.y += (gameObject.GetComponent<BoxCollider>().size.y * 0.75f);
+		textPos = Camera.main.WorldToViewportPoint(textPos);
+		m_goFadingText.transform.position = textPos;
+		Instantiate(m_goFadingText);
+	}
 
 	new public void AdjustHP(int dmg)
 	{

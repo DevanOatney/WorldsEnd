@@ -127,6 +127,41 @@ public class UnitScript : MonoBehaviour
 		}
 	}
 
+	public void Missed()
+	{
+		if(GetCurHP() > 0)
+		{
+			switch(m_nUnitType)
+			{
+			case (int)UnitTypes.ALLY_MELEE:
+			{
+				gameObject.GetComponent<PlayerBattleScript>().Missed();
+			}
+				break;
+			case (int)UnitTypes.ALLY_RANGED:
+			{
+				gameObject.GetComponent<PlayerBattleScript>().Missed();
+			}
+				break;
+			case (int)UnitTypes.BASICENEMY:
+			{
+				gameObject.GetComponent<BeserkEnemyScript>().Missed();
+			}
+				break;
+			case (int)UnitTypes.CHARACTERREF:
+			{
+				gameObject.GetComponent<BeserkEnemyScript>().Missed();
+			}
+				break;
+			case (int)UnitTypes.MEWTWO:
+			{
+				gameObject.GetComponent<BeserkEnemyScript>().Missed();
+			}
+				break;
+			}
+		}
+	}
+
 	public void StartMyTurn()
 	{
 		//Update any of the status effects. (use a new list, as some of the master list may get removed
