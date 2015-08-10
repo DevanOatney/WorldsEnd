@@ -1,5 +1,4 @@
 NPC Collision
-Ritual Dialogue
 Release mode
 Stabalize sound Values
 Intro Menu Background (Illuiyani/Teiriel)
@@ -11,9 +10,9 @@ Boar Sound Effects
 Bee sound effects
 Game Over Screen/music
 Battle Layers normalized
-Ritual Event (boar Boss Retrieval)
+Ritual Event (boar accessory Retrieval)
 Briol in Battle (animations)
-Damage Randomiaztion dampened
+Damage Randomization dampened
 Save point (locations/Graphic)
 Shania stuff (game objective, highlights of the game, where to find game, our back story, pictures, videos, anything else we want spread to the public)
 Fix Boar Ritual
