@@ -15,4 +15,4 @@ Briol in Battle (animations)
 Damage Randomization dampened
 Save point (locations/Graphic)
 Shania stuff (game objective, highlights of the game, where to find game, our back story, pictures, videos, anything else we want spread to the public)
-Fix Boar Ritual
+Fix Boar Ritual 
