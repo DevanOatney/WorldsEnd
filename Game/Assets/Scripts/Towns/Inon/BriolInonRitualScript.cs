@@ -30,4 +30,13 @@ public class BriolInonRitualScript : MonoBehaviour
 			GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent("BriolArriveAtRitual");
 		}
 	}
+
+	void OnCollisionEnter2D(Collision2D c)
+	{
+		if(c.collider.name == "Player")
+		{
+			Debug.Log ("hit1");
+			GameObject.Find("PersistantData").GetComponent<DCScript>().AddItem("Boar Tusk");
+		}
+	}
 }

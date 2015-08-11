@@ -56,14 +56,14 @@ public class NPCScript : MonoBehaviour
 			{
 				toPlayer.y = 0.0f;
 				toPlayer.Normalize();
-				toPlayer.x *= m_fWalkingSpeed * Time.deltaTime;
+				toPlayer.x *= m_fWalkingSpeed;
 				gameObject.GetComponent<Rigidbody2D>().velocity = toPlayer;
 			}
 			else if(toPlayer.y > 0.1f || toPlayer.y  < -0.1f)
 			{
 				toPlayer.x = 0.0f;
 				toPlayer.Normalize();
-				toPlayer.y *= m_fWalkingSpeed * Time.deltaTime;
+				toPlayer.y *= m_fWalkingSpeed;
 				gameObject.GetComponent<Rigidbody2D>().velocity = toPlayer;
 			}
 			else

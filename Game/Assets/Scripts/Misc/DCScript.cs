@@ -120,6 +120,26 @@ public class DCScript : MonoBehaviour
 		}
 		m_lInventory.Add(item);
 	}
+	public void AddItem(string szItemName)
+	{
+		int iter = 0;
+		foreach(CharactersItems i in m_lInventory)
+		{
+			if(szItemName == i.m_szItemName)
+			{
+				m_lInventory[iter].m_nItemCount += 1;
+				if(m_lInventory[iter].m_nItemCount >= 45)
+					m_lInventory[iter].m_nItemCount = 45;
+				return;
+			}
+			iter++;
+		}
+		CharactersItems item = new CharactersItems();
+		item.m_szItemName = szItemName;
+		item.m_nItemType = GetItemFromDictionary(szItemName).m_nItemType;
+		item.m_nItemCount = 1;
+		m_lInventory.Add(item);
+	}
 	public void RemoveItem(CharactersItems item)
 	{
 		foreach(CharactersItems i in m_lInventory.ToArray())

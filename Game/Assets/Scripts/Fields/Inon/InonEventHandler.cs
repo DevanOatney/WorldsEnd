@@ -616,7 +616,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "RetrieveTusks":
 		{
-			Debug.Log ("hit");
 			GameObject.Find("Briol").GetComponent<BriolInonRitualScript>().MoveDownward();
 		}
 			break;
@@ -626,9 +625,14 @@ public class InonEventHandler : BaseEventSystemScript
 			foreach(GameObject wpnt in Phase4_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 			m_goDeadBoar.GetComponent<SpriteRenderer>().sprite = m_t2dDeadBoarWithoutTusk;
-			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("C1");
+			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("D0");
 			GameObject.Find("Briol").GetComponent<NPCScript>().m_bReturnToPlayer = true;
 			GameObject.Find("Briol").GetComponent<BoxCollider2D>().enabled = false;
+		}
+			break;
+		case "BriolAtCallan":
+		{
+
 		}
 			break;
 		default:
