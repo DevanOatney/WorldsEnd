@@ -621,23 +621,29 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "BriolArriveAtRitual":
 		{
-			ds.m_dStoryFlagField.Add("Inon_CeremonyComplete", 1);
 			foreach(GameObject wpnt in Phase4_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 			m_goDeadBoar.GetComponent<SpriteRenderer>().sprite = m_t2dDeadBoarWithoutTusk;
 			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("D0");
-			GameObject.Find("Briol").GetComponent<NPCScript>().m_bReturnToPlayer = true;
-			GameObject.Find("Briol").GetComponent<BoxCollider2D>().enabled = false;
 		}
 			break;
-		case "BriolAtCallan":
+		case "RitualEnd":
 		{
-
+			ds.m_dStoryFlagField.Add("Inon_CeremonyComplete", 1);
+			m_goDeadBoar.SetActive(false);
+			GameObject.Find("Briol").GetComponent<NPCScript>().m_bReturnToPlayer = true;
+			GameObject.Find("Briol").GetComponent<BoxCollider2D>().enabled = false;
+			Invoke("ReleasePlayer", 2.0f);
 		}
 			break;
 		default:
 			break;
 		}
+	}
+
+	void ReleasePlayer()
+	{
+		GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 	}
 
 	void BeginDialogue(int iter)
