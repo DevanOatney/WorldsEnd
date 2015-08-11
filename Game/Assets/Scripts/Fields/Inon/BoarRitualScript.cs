@@ -39,6 +39,8 @@ public class BoarRitualScript : MonoBehaviour
 			m_bIsActive = false;
 			m_bIsAttacking = true;
 			GetComponent<Animator>().SetBool("m_bAttack", true);
+			Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
+			Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
 		}
 	}
 

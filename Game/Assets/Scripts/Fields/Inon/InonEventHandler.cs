@@ -616,6 +616,7 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "RetrieveTusks":
 		{
+			Debug.Log ("hit");
 			GameObject.Find("Briol").GetComponent<BriolInonRitualScript>().MoveDownward();
 		}
 			break;
@@ -773,8 +774,6 @@ public class InonEventHandler : BaseEventSystemScript
 		{
 			m_goBoar.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
 			m_goBoar.GetComponent<Animator>().SetBool("m_bAttack", true);
-			Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
-			Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
 		}
 			break;
 		case "StepBackNorth":
