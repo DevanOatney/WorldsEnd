@@ -36,11 +36,11 @@ public class InonForestEventHandler : BaseEventSystemScript
 	{
 		switch(eventID)
 		{
-			case "StartArriveAtRitual":
+			case "Forest scene start":
 			{
 
-				GameObject.Find("StartArriveAtRitual").GetComponent<BoxCollider2D>().enabled = false;
-				GameObject dest = GameObject.Find("XAlignedAtRitual");
+				GameObject.Find("Forest scene start").GetComponent<BoxCollider2D>().enabled = false;
+				GameObject dest = GameObject.Find("XWaypoint");
 				GameObject src = GameObject.Find("Player");
 				src.GetComponent<FieldPlayerMovementScript>().BindInput();
 				Vector2 dir = dest.transform.position - src.transform.position;
@@ -144,7 +144,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 	{
 		switch(c.name)
 		{
-		case "StartArriveAtRitual":
+		case "Forest start scene":
 			c.enabled = false;
 			ds.m_dStoryFlagField.Add("BoarBossPart1Finished", 1);
 			HandleEvent("ENCOUNTERED_BOAR");
