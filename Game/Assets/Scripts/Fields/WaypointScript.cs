@@ -17,6 +17,7 @@ public class WaypointScript : MonoBehaviour {
 	{
 		if(c.name == "Player")
 		{
+			Debug.Log("something");
 			GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().WaypointTriggered(GetComponent<BoxCollider2D>());
 		}
 	}
