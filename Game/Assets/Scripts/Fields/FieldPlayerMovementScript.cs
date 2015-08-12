@@ -401,10 +401,10 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	{
 		if(c.tag == "Waypoint")
 		{
-			GameObject eventSys = GameObject.Find("EventWatcher");
+			GameObject eventSys = GameObject.Find("Event system");
 			if(eventSys)
 			{
-				eventSys.GetComponent<EventHandler>().WaypointTriggered(c);
+				//eventSys.GetComponent<BaseEventSystemScript>().WaypointTriggered(c);
 			}
 		}
 	}

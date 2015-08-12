@@ -285,7 +285,7 @@ public class BeserkEnemyScript : UnitScript {
 							nRange = 5;
 						if(nChanceToHit <	nRange)
 						{
-							int dmgAdjustment = UnityEngine.Random.Range(0, 10) - 5;
+							int dmgAdjustment = UnityEngine.Random.Range(0, m_nStr/2);
 							if(dmgAdjustment + m_nStr < 1)
 								tar.GetComponent<UnitScript>().AdjustHP(1);
 							else
