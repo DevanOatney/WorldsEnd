@@ -36,56 +36,6 @@ public class InonForestEventHandler : BaseEventSystemScript
 	{
 		switch(eventID)
 		{
-			case "Forest scene start":
-			{
-
-				GameObject.Find("Forest scene start").GetComponent<BoxCollider2D>().enabled = false;
-				GameObject dest = GameObject.Find("XWaypoint");
-				GameObject src = GameObject.Find("Player");
-				src.GetComponent<FieldPlayerMovementScript>().BindInput();
-				Vector2 dir = dest.transform.position - src.transform.position;
-			if(dir.x > 0)
-			{
-				src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKRIGHT);
-				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveRight", true);
-				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
-				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 2);
-				src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
-				GameObject.Find("XWaypoint").GetComponent<BoxCollider2D>().enabled = true;
-			}
-			else
-			{
-				src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
-				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
-				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
-				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
-				src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
-				GameObject.Find("YWaypoint").GetComponent<BoxCollider2D>().enabled = true;
-			}
-			}
-			break;
-			case "XWaypoint":
-			{
-				GameObject src = GameObject.Find("Player");
-				src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
-				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
-				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
-				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
-				src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
-				GameObject.Find("XWaypoint").GetComponent<BoxCollider2D>().enabled = false;
-				GameObject.Find("YWaypoint").GetComponent<BoxCollider2D>().enabled = true;
-			}
-			break;
-		case "YWaypoint":
-			{
-				GameObject player = GameObject.Find("Player");
-				player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 2);
-				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
-				player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-				GameObject.Find("Player").GetComponent<MessageHandler>().BeginDialogue("A1");
-				GameObject.Find("YWaypoint").GetComponent<BoxCollider2D>().enabled = false;
-			}
-			break;
 		case "BoarBossEndDialogue":
 			{
 				ds.m_dStoryFlagField.Add("BoarBossPart1Finished", 1);
@@ -148,6 +98,56 @@ public class InonForestEventHandler : BaseEventSystemScript
 			c.enabled = false;
 			ds.m_dStoryFlagField.Add("BoarBossPart1Finished", 1);
 			HandleEvent("ENCOUNTERED_BOAR");
+			break;
+		case "YWaypoint":
+		{
+			GameObject player = GameObject.Find("Player");
+			player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 2);
+			player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
+			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+			GameObject.Find("Player").GetComponent<MessageHandler>().BeginDialogue("A1");
+			GameObject.Find("YWaypoint").GetComponent<BoxCollider2D>().enabled = false;
+		}
+			break;
+		case "XWaypoint":
+		{
+			GameObject src = GameObject.Find("Player");
+			src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
+			src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
+			GameObject.Find("XWaypoint").GetComponent<BoxCollider2D>().enabled = false;
+			GameObject.Find("YWaypoint").GetComponent<BoxCollider2D>().enabled = true;
+		}
+			break;
+		case "Forest scene start":
+		{
+			
+			GameObject.Find("Forest scene start").GetComponent<BoxCollider2D>().enabled = false;
+			GameObject dest = GameObject.Find("XWaypoint");
+			GameObject src = GameObject.Find("Player");
+			src.GetComponent<FieldPlayerMovementScript>().BindInput();
+			Vector2 dir = dest.transform.position - src.transform.position;
+			if(dir.x > 0)
+			{
+				src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKRIGHT);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveRight", true);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 2);
+				src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
+				GameObject.Find("XWaypoint").GetComponent<BoxCollider2D>().enabled = true;
+			}
+			else
+			{
+				src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
+				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
+				src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
+				GameObject.Find("YWaypoint").GetComponent<BoxCollider2D>().enabled = true;
+			}
+		}
 			break;
 		default:
 			break;
