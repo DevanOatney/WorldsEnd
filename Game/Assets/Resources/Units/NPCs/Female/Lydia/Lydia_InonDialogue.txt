@@ -7,3 +7,5 @@ B3|2|1|2|I would love to|B4|I'm a little busy now, maybe another day.|B5
 B4|1|Lydia||Thank you so much||A2
 B5|1|Lydia||Uuh, I kinda need it for tonight...thanks anyway.||B6
 B6|3|EndDialogue
+C0|1|Lydia||How is the meat collecting coming along?||B6
+D0|1|Lydia||Thank you for collecting my family's dinner, Callan.||B6
