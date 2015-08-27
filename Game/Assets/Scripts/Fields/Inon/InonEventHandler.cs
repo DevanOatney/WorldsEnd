@@ -414,6 +414,26 @@ public class InonEventHandler : BaseEventSystemScript
 			}
 		}
 			break;
+		case "Lydia_EndDialogue":
+		{
+			//turn off all dialogues happening, release bind on input.. umn.. i think that's it?
+			GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject>();
+			foreach(GameObject g in gObjs)
+			{
+				if(g.GetComponent<MessageHandler>() != null)
+				{
+					if(g.GetComponent<NPCScript>() != null)
+						g.GetComponent<NPCScript>().m_bIsBeingInterractedWith = false;
+					g.GetComponent<MessageHandler>().m_bShouldDisplayDialogue = false;
+				}
+			}
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+		}
+			break;
 		case "Bartholomew":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
