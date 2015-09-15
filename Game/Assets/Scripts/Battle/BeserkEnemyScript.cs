@@ -409,19 +409,16 @@ public class BeserkEnemyScript : UnitScript {
 		if(dmg < 0)
 			dmg = 0;
 		m_nCurHP -= dmg;
-		if(m_nCurHP <= 0)
+		if(m_nCurHP / m_nMaxHP <= 0.25f)
 		{
-			m_nState = (int)States.eDEAD;
-			m_fDeadBucket = m_acDyingAnim.length;
-			anim.SetBool("m_bIsDying", true);
-			if(m_acDyingAudio)
-				GetComponent<AudioSource>().PlayOneShot(m_acDyingAudio, 0.5f + GO.GetComponent<DCScript>().m_fSFXVolume);
+			m_nState = (int)States.eIDLE;
 			GameObject tw = GameObject.Find("TurnWatcher");
 			if(tw)
 			{
 				tw.GetComponent<TurnWatcherScript>().RemoveMeFromList(gameObject, m_acDyingAnim.length);
 			}
 		}
+
 		else
 		{
 			if(m_acDamagedAudio)
