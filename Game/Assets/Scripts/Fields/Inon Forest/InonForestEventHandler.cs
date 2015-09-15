@@ -46,9 +46,10 @@ public class InonForestEventHandler : BaseEventSystemScript
 		break;
 		case "BoarChase":
 		{
-			GameObject.Find("BoarBoss").GetComponent<NPCScript>().m_bActive = true;
-			GetComponent<NPCScript>().m_bIsMoving = true;
-			GetComponent<NPCScript>().m_nFacingDir = 2;
+			GameObject goBoar = GameObject.Find("BoarBoss");
+			goBoar.GetComponent<NPCScript>().m_bActive = true;
+			goBoar.GetComponent<NPCScript>().m_bIsMoving = true;
+			goBoar.GetComponent<NPCScript>().m_nFacingDir = 2;
 			GameObject src = GameObject.Find("Player");
 			src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKRIGHT);
 			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveRight", true);
