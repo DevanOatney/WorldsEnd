@@ -102,5 +102,5 @@ Vampyric Amulet
 1
 10
 Inon_Scene
-(7.3, -5.8, 0.0)
+(7.5, -5.8, 0.0)
 3
