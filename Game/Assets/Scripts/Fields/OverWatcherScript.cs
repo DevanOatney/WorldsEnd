@@ -100,7 +100,7 @@ public class OverWatcherScript : MonoBehaviour {
 	//Textures for item type icons
 	public Texture2D[] m_tItemTypeTextures;
 
-
+	public GameObject m_goAudioPlayer;
 	//game data
 	DCScript dc;
 
@@ -113,6 +113,11 @@ public class OverWatcherScript : MonoBehaviour {
 			pdata.name = pdata.name.Replace("(Clone)", "");
 		}
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
+		if(CAudioHelper.Instance == null)
+		{
+			GameObject audioPlayer = (GameObject)Instantiate(m_goAudioPlayer);
+			DontDestroyOnLoad(audioPlayer);
+		}
 	}
 	// Use this for initialization
 	void Start () 
