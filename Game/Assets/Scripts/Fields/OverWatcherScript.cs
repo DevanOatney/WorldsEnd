@@ -103,20 +103,31 @@ public class OverWatcherScript : MonoBehaviour {
 
 	//game data
 	DCScript dc;
+
+	void Awake()
+	{
+		GameObject pdata = GameObject.Find("PersistantData");
+		if(pdata == null)
+		{
+			pdata = Instantiate(Resources.Load("Misc/PersistantData", typeof(GameObject))) as GameObject;
+			pdata.name = pdata.name.Replace("(Clone)", "");
+		}
+		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
+	}
 	// Use this for initialization
 	void Start () 
 	{
 		m_goPlayer = GameObject.Find("Player");
-		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
+
 		//check to see if the last scene was a battle, if it was the position data of where the player should go is in the datacanister. Also check if this was the last scene (loading game)
 		if(dc.GetPreviousFieldName() == "Battle_Scene" || dc.GetPreviousFieldName() == Application.loadedLevelName)
 			m_goPlayer.transform.position = dc.GetPreviousPosition();
 		//else, the player just entered the scene, put the player where the scene wants the player to start
 		else
 		{
-			if(dc.GetStartingPos() == null)
+			if(dc.GetStartingPos() == null && GameObject.Find("CallanStartPosition") != null)
 				m_goPlayer.transform.position = GameObject.Find("CallanStartPosition").transform.position;
-			else
+			else if( GameObject.Find(dc.GetStartingPos()) != null)
 			{
 				m_goPlayer.transform.position = GameObject.Find(dc.GetStartingPos()).transform.position;
 			}

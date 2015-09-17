@@ -95,6 +95,24 @@ public class InonForestEventHandler : BaseEventSystemScript
 	{
 		switch(c.name)
 		{
+		case "BoarMove":
+		{
+			GameObject goBoar = GameObject.Find("BoarBoss");
+			goBoar.SetActive(false);
+			GameObject player = GameObject.Find("Player");
+			player.GetComponent<MessageHandler>().BeginDialogue("A5");
+		}
+			break;
+		case "BoarChaseEndDialogue":
+		{
+			GameObject src = GameObject.Find("Player");
+			src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eRUNRIGHT);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveRight", true);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 2);
+			src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
+		}
+			break;
 		case "Forest start scene":
 			c.enabled = false;
 			ds.m_dStoryFlagField.Add("BoarBossPart1Finished", 1);
@@ -106,7 +124,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 			player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 2);
 			player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-			GameObject.Find("Player").GetComponent<MessageHandler>().BeginDialogue("A1");
+			player.GetComponent<MessageHandler>().BeginDialogue("A1");
 			GameObject.Find("YWaypoint").GetComponent<BoxCollider2D>().enabled = false;
 		}
 			break;
