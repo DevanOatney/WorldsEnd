@@ -6,7 +6,7 @@ public class BeserkEnemyScript : UnitScript {
 	Animator anim;
 	public Animator GetAnim() {return anim;}
 	float m_fMovementSpeed = 8.0f;
-
+	
 	//timer for if the enemy is attacking, degrades if set and when at 0, deals damage to the player
 	float m_fAttackBucket = 0.0f;
 	public float GetAttackBucket() {return m_fAttackBucket;}
@@ -15,8 +15,8 @@ public class BeserkEnemyScript : UnitScript {
 	float m_fDeadBucket = 0.0f;
 	//flag for if the hit proc has happened during this turn (after each turn)
 	bool m_bHasSwung = false;
-
-
+	
+	
 	//for fading text
 	public GameObject m_goFadingText;
 	//for basic attack audio
@@ -27,25 +27,25 @@ public class BeserkEnemyScript : UnitScript {
 	public AudioClip m_acChargingAudio;
 	//for dying
 	public AudioClip m_acDyingAudio;
-
+	
 	//delay to make it look like some sort of calculation is happening when it's the enemies turn (lol)
 	float m_fDelayBucket = 2.0f;
 	float m_fDelayTimer = 0.0f;
-
-
+	
+	
 	//animation for the unit dying
 	public AnimationClip m_acDyingAnim;
 	//animation for the unit attacking
 	public AnimationClip m_acAttackAnim;
-
+	
 	//Stuff for the shadow clones that spawn during movement... maybe special attacks if I have time?
 	public GameObject m_goShadowClone;
 	float m_fShadowTimer = 0.0f;
 	float m_fShadowTimerBucket = 0.1f;
-
+	
 	//Enemy Stats
 	public TextAsset m_taStats;
-
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -109,11 +109,11 @@ public class BeserkEnemyScript : UnitScript {
 	// Update is called once per frame
 	void Update () 
 	{
-
+		
 		if(m_bIsMyTurn && GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>().GetAllyCount() > 0 && m_nState != (int)States.eDEAD)
 		{
 			//Make sure somethings even alive on the map to fight against
-
+			
 			m_fDelayTimer += Time.deltaTime;
 			if(m_fDelayTimer >= m_fDelayBucket)
 			{
@@ -210,7 +210,7 @@ public class BeserkEnemyScript : UnitScript {
 		}
 		HandleStates();
 	}
-
+	
 	void HandleStates()
 	{
 		switch(m_nState)
@@ -230,7 +230,7 @@ public class BeserkEnemyScript : UnitScript {
 				Vector3 curPos = transform.position;
 				curPos += dir * m_fMovementSpeed * Time.deltaTime;
 				transform.position = curPos;
-
+				
 				if(m_fShadowTimer >= m_fShadowTimerBucket)
 				{
 					
@@ -278,7 +278,7 @@ public class BeserkEnemyScript : UnitScript {
 				foreach(GameObject tar in posTargs)
 				{
 					if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
-					 {
+					{
 						int nChanceToHit = UnityEngine.Random.Range(0,100);
 						int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
 						if(nRange < 5)
@@ -330,15 +330,15 @@ public class BeserkEnemyScript : UnitScript {
 			break;
 		}
 	}
-
+	
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.name == "Near_Ally" + m_nTargetPositionOnField.ToString() || other.name == "Enemy_StartPos" + m_nPositionOnField.ToString())
-		  WaypointTriggered(other);
+			WaypointTriggered(other);
 	}
 	public void WaypointTriggered(Collider c)
 	{
-
+		
 		if(c.name == "Near_Ally" + m_nTargetPositionOnField.ToString())
 		{
 			anim.SetBool("m_bIsMoving", false);
@@ -363,16 +363,16 @@ public class BeserkEnemyScript : UnitScript {
 					}
 					else
 						GetComponent<AudioSource>().PlayOneShot(m_acAttackAudio, 0.5f);
-
+					
 				}
 			}
-
+			
 			Invoke("EndMyTurn", 2.5f);
 		}
 		else if(c.name == "Enemy_StartPos" + m_nPositionOnField.ToString())
 		{
 			transform.position = m_vInitialPos;
-
+			
 			if(anim)
 				anim.SetBool("m_bIsMoving", false);
 			c.enabled = false;
@@ -384,7 +384,7 @@ public class BeserkEnemyScript : UnitScript {
 			}
 		}
 	}
-
+	
 	new public void Missed()
 	{
 		m_goFadingText.GetComponent<GUI_FadeText>().SetColor(true);
@@ -396,7 +396,7 @@ public class BeserkEnemyScript : UnitScript {
 		m_goFadingText.transform.position = textPos;
 		Instantiate(m_goFadingText);
 	}
-
+	
 	new public void AdjustHP(int dmg)
 	{
 		GameObject GO = GameObject.Find("PersistantData");
@@ -409,16 +409,19 @@ public class BeserkEnemyScript : UnitScript {
 		if(dmg < 0)
 			dmg = 0;
 		m_nCurHP -= dmg;
-		if(m_nCurHP / m_nMaxHP <= 0.25f)
+		if(m_nCurHP <= 0)
 		{
-			m_nState = (int)States.eIDLE;
+			m_nState = (int)States.eDEAD;
+			m_fDeadBucket = m_acDyingAnim.length;
+			anim.SetBool("m_bIsDying", true);
+			if(m_acDyingAudio)
+				GetComponent<AudioSource>().PlayOneShot(m_acDyingAudio, 0.5f + GO.GetComponent<DCScript>().m_fSFXVolume);
 			GameObject tw = GameObject.Find("TurnWatcher");
 			if(tw)
 			{
 				tw.GetComponent<TurnWatcherScript>().RemoveMeFromList(gameObject, m_acDyingAnim.length);
 			}
 		}
-
 		else
 		{
 			if(m_acDamagedAudio)

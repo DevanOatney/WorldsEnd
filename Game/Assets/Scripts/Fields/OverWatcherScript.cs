@@ -109,8 +109,12 @@ public class OverWatcherScript : MonoBehaviour {
 		GameObject pdata = GameObject.Find("PersistantData");
 		if(pdata == null)
 		{
+			//This is a debug play then.   Create a data canister, and put the main character in the party
 			pdata = Instantiate(Resources.Load("Misc/PersistantData", typeof(GameObject))) as GameObject;
 			pdata.name = pdata.name.Replace("(Clone)", "");
+			GameObject.Find("PersistantData").GetComponent<DCScript>().GetParty().Clear();
+			GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
+			Callan.GetComponent<PlayerBattleScript>().SetUnitStats();
 		}
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		if(CAudioHelper.Instance == null)

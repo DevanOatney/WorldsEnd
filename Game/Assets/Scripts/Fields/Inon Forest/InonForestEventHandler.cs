@@ -124,6 +124,11 @@ public class InonForestEventHandler : BaseEventSystemScript
 			player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 2);
 			player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+
+			GameObject briol = GameObject.Find("Briol");
+			briol.GetComponent<SpriteRenderer>().enabled = true;
+			briol.GetComponent<BoxCollider2D>().enabled = true;
+
 			player.GetComponent<MessageHandler>().BeginDialogue("A1");
 			GameObject.Find("YWaypoint").GetComponent<BoxCollider2D>().enabled = false;
 		}
