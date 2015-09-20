@@ -119,38 +119,29 @@ public class BeserkEnemyScript : UnitScript {
 			{
 				switch(m_nUnitType)
 				{
-				case (int)UnitScript.UnitTypes.CHARACTERREF:
+				case (int)UnitScript.UnitTypes.PERCENTENEMY:
 				{
-					if(GetComponent<CharacterRefScript>().ItsMyTurn() == true)
+					//Pick from the available enemy (the allies) targets, attack the one with the lowest HP
+					GameObject WeakestTarget = null;
+					int lowestHP = int.MaxValue;
+					GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
+					foreach(GameObject tar in posTargs)
 					{
-						//Welcome to the thunderdome!
-						anim.SetBool("m_bIsCasting", true);
-						m_bIsMyTurn = false;
+						if(tar.GetComponent<UnitScript>().GetCurHP() < lowestHP && tar.GetComponent<UnitScript>().GetCurHP() > 0)
+						{
+							WeakestTarget = tar;
+							lowestHP = WeakestTarget.GetComponent<UnitScript>().GetCurHP();
+						}
 					}
-					else
+					if(WeakestTarget != null)
 					{
-						//Pick from the available enemy (the allies) targets, attack the one with the lowest HP
-						GameObject WeakestTarget = null;
-						int lowestHP = int.MaxValue;
-						GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
-						foreach(GameObject tar in posTargs)
-						{
-							if(tar.GetComponent<UnitScript>().GetCurHP() < lowestHP && tar.GetComponent<UnitScript>().GetCurHP() > 0)
-							{
-								WeakestTarget = tar;
-								lowestHP = WeakestTarget.GetComponent<UnitScript>().GetCurHP();
-							}
-						}
-						if(WeakestTarget != null)
-						{
-							m_nState = (int)States.eCHARGE;
-							if(m_acChargingAudio)
-								GetComponent<AudioSource>().PlayOneShot(m_acChargingAudio, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
-							anim.SetBool("m_bIsMoving", true);
-							m_bIsMyTurn = false;
-							m_fDelayTimer = 0.0f;
-							m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().m_nPositionOnField;
-						}
+						m_nState = (int)States.eCHARGE;
+						if(m_acChargingAudio)
+							GetComponent<AudioSource>().PlayOneShot(m_acChargingAudio, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
+						anim.SetBool("m_bIsMoving", true);
+						m_bIsMyTurn = false;
+						m_fDelayTimer = 0.0f;
+						m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().m_nPositionOnField;
 					}
 				}
 					break;

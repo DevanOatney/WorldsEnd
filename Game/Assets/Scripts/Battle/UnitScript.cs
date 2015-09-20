@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class UnitScript : MonoBehaviour 
 {
-	public enum UnitTypes{ALLY_MELEE, ALLY_RANGED, NPC, BASICENEMY, CHARACTERREF, MEWTWO};
+	public enum UnitTypes{ALLY_MELEE, ALLY_RANGED, NPC, BASICENEMY, PERCENTENEMY, MEWTWO};
 	public bool m_bIsMyTurn = false;
 	public int m_nState;
 	//for knowing which script to call for TakeDamage
@@ -113,9 +113,9 @@ public class UnitScript : MonoBehaviour
 				gameObject.GetComponent<BeserkEnemyScript>().AdjustHP(dmg);
 			}
 				break;
-			case (int)UnitTypes.CHARACTERREF:
+			case (int)UnitTypes.PERCENTENEMY:
 			{
-				gameObject.GetComponent<BeserkEnemyScript>().AdjustHP(dmg);
+				gameObject.GetComponent<PercentBeserkEnemyScript>().AdjustHP(dmg);
 			}
 				break;
 			case (int)UnitTypes.MEWTWO:
@@ -148,9 +148,9 @@ public class UnitScript : MonoBehaviour
 				gameObject.GetComponent<BeserkEnemyScript>().Missed();
 			}
 				break;
-			case (int)UnitTypes.CHARACTERREF:
+			case (int)UnitTypes.PERCENTENEMY:
 			{
-				gameObject.GetComponent<BeserkEnemyScript>().Missed();
+				gameObject.GetComponent<PercentBeserkEnemyScript>().Missed();
 			}
 				break;
 			case (int)UnitTypes.MEWTWO:

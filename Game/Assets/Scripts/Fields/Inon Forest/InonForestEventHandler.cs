@@ -20,14 +20,13 @@ public class InonForestEventHandler : BaseEventSystemScript
 				ds.m_dStoryFlagField.Add("BoarBossPart1Finished", 2);
 				HandleEvent("BoarChase");
 			}
+			else
+			{
+				m_goBossBoar.SetActive(false);
+			}
 			foreach (GameObject go in Phase1_waypoints)
 				go.SetActive (false);
 
-		}
-		else
-		{
-			//boar needs to be turned invisible/put off screen
-			m_goBossBoar.GetComponent<SpriteRenderer>().enabled = false;
 		}
 
 	}
@@ -95,6 +94,20 @@ public class InonForestEventHandler : BaseEventSystemScript
 	{
 		switch(c.name)
 		{
+		case "BriolWaypoint":
+		{
+			GameObject briol = GameObject.Find("Briol");
+			NPCScript bNpc = briol.GetComponent<NPCScript>();
+			bNpc.m_bIsMoving = false;
+			bNpc.m_bActive = false;
+			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eRIGHT;
+			bNpc.ResetAnimFlagsExcept(bNpc.m_nFacingDir);
+			GameObject.Find("BriolWaypoint").GetComponent<BoxCollider2D>().enabled = false;
+
+			GameObject player = GameObject.Find("Player");
+			player.GetComponent<MessageHandler>().BeginDialogue("A1");
+		}
+			break;
 		case "BoarMove":
 		{
 			GameObject goBoar = GameObject.Find("BoarBoss");
@@ -110,7 +123,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveRight", true);
 			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
 			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 2);
-			src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
+			src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
 		}
 			break;
 		case "Forest start scene":
@@ -126,10 +139,17 @@ public class InonForestEventHandler : BaseEventSystemScript
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 
 			GameObject briol = GameObject.Find("Briol");
+			briol.transform.position = player.transform.position;
 			briol.GetComponent<SpriteRenderer>().enabled = true;
 			briol.GetComponent<BoxCollider2D>().enabled = true;
+			NPCScript bNpc = briol.GetComponent<NPCScript>();
+			bNpc.m_bIsComingOutOfPlayer = true;
+			bNpc.m_bIsMoving = true;
+			bNpc.m_bActive = true;
+			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
+			bNpc.ResetAnimFlagsExcept(bNpc.m_nFacingDir);
 
-			player.GetComponent<MessageHandler>().BeginDialogue("A1");
+
 			GameObject.Find("YWaypoint").GetComponent<BoxCollider2D>().enabled = false;
 		}
 			break;

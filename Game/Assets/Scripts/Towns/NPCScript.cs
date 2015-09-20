@@ -4,20 +4,27 @@ using System.Collections.Generic;
 
 public class NPCScript : MonoBehaviour 
 {
-	protected enum FACINGDIR {eDOWN, eLEFT, eRIGHT, eUP}
+	public enum FACINGDIR {eDOWN, eLEFT, eRIGHT, eUP}
 	public int m_nFacingDir = 0;
+	//Tool for if the character has scripted pathing
 	public TextAsset m_taPathing;
+	//If this NPC is active and should move/be interracted with
 	public bool m_bActive = false;
+	//Path directory to dialogue for this character in this scene
 	public string m_szDialoguePath = "";
 
 	protected float m_fWalkingSpeed = 2.0f;
+	//Should the characters moving logic be active? (Must have m_bActive set to true for this to effect the NPC)
 	public bool m_bIsMoving = false;
+	//Is the NPC being interracted with?  Will stop moving if it is.
 	public bool m_bIsBeingInterractedWith = false;
+	//Turn this on to ignore collision with the player
+	public bool m_bIsComingOutOfPlayer = false;
 	protected float m_fTimer = 0.0f;
 	protected int m_nStepsIter = 0;
 	protected Animator m_aAnim;
 
-
+	//This is toggled when there's a collision/trigger hit.  
 	bool m_bCanMove = true;
 	//cost for if it's an innkeeper
 	public int m_nCost = 0;
@@ -148,7 +155,10 @@ public class NPCScript : MonoBehaviour
 						break;
 					}
 					if(m_bCanMove == true)
+					{
 						GetComponent<Rigidbody2D>().velocity = moveDir * m_fWalkingSpeed;
+						Debug.Log(GetComponent<Rigidbody2D>().velocity);
+					}
 				}
 			}
 			else
@@ -210,6 +220,7 @@ public class NPCScript : MonoBehaviour
 
 	public void ResetAnimFlagsExcept(int exception)
 	{
+		m_aAnim.SetInteger("m_nFacingDir", exception);
 		switch(exception)
 		{
 		case 0:
@@ -219,6 +230,7 @@ public class NPCScript : MonoBehaviour
 			m_aAnim.SetBool("m_bMoveRight", false);
 			m_aAnim.SetBool("m_bMoveUp", false);
 			m_aAnim.SetBool("m_bMoveDown", true);
+
 		}
 			break;
 		case 1:
@@ -273,10 +285,12 @@ public class NPCScript : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D c)
 	{
-		//GetComponent<Rigidbody2D>().isKinematic = true;
-		m_bCanMove = false;
-		if(GetComponent<Rigidbody2D>())
-			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+		if(m_bIsComingOutOfPlayer == false)
+		{
+			m_bCanMove = false;
+			if(GetComponent<Rigidbody2D>())
+				GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+		}
 	}
 
 	void OnCollisionExit2D(Collision2D c)
