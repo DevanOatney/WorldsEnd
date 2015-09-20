@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 7eee1bbd6fc9caf4b9c747a2f822cf71
-timeCreated: 1438733116
+timeCreated: 1442724550
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -55,33 +55,33 @@ TextureImporter:
     - name: save point 1_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 31
-        width: 678
-        height: 916
+        x: 0
+        y: 0
+        width: 722
+        height: 1338
       alignment: 8
       pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: save point 1_1
       rect:
         serializedVersion: 2
-        x: 770
-        y: 41
-        width: 680
-        height: 1013
+        x: 722
+        y: 0
+        width: 722
+        height: 1338
       alignment: 8
       pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: save point 1_2
       rect:
         serializedVersion: 2
-        x: 1525
-        y: 40
-        width: 651
-        height: 1058
+        x: 1444
+        y: 0
+        width: 722
+        height: 1338
       alignment: 8
       pivot: {x: 1, y: 0}
-      border: {x: 0, y: 7, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 
