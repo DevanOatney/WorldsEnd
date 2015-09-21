@@ -40,7 +40,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 				ds.m_dStoryFlagField.Add("BoarBossPart1Finished", 1);
 				Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
 				Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
-			StartBossBattle();
+				StartBossBattle();
 			}
 		break;
 		case "BoarChase":
@@ -49,12 +49,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 			goBoar.GetComponent<NPCScript>().m_bActive = true;
 			goBoar.GetComponent<NPCScript>().m_bIsMoving = true;
 			goBoar.GetComponent<NPCScript>().m_nFacingDir = 2;
-			GameObject src = GameObject.Find("Player");
-			src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKRIGHT);
-			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveRight", true);
-			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
-			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 2);
-			src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
+
 			GameObject.Find("to Temple").GetComponent<BoxCollider2D>().enabled = true;
 		}	
 		break;
@@ -101,7 +96,8 @@ public class InonForestEventHandler : BaseEventSystemScript
 			bNpc.m_bIsMoving = false;
 			bNpc.m_bActive = false;
 			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eRIGHT;
-			bNpc.ResetAnimFlagsExcept(bNpc.m_nFacingDir);
+			bNpc.ResetAnimFlagsExcept(-1);
+			bNpc.m_aAnim.SetInteger("m_nFacingDir", (int)NPCScript.FACINGDIR.eRIGHT);
 			GameObject.Find("BriolWaypoint").GetComponent<BoxCollider2D>().enabled = false;
 
 			GameObject player = GameObject.Find("Player");
@@ -112,8 +108,14 @@ public class InonForestEventHandler : BaseEventSystemScript
 		{
 			GameObject goBoar = GameObject.Find("BoarBoss");
 			goBoar.SetActive(false);
-			GameObject player = GameObject.Find("Player");
-			player.GetComponent<MessageHandler>().BeginDialogue("A5");
+			GameObject src = GameObject.Find("Player");
+			FieldPlayerMovementScript fpmScript = src.GetComponent<FieldPlayerMovementScript>();
+			fpmScript.BindInput();
+			fpmScript.SetState((int)FieldPlayerMovementScript.States.eWALKRIGHT);
+			fpmScript.GetAnimator().SetBool("m_bMoveRight", true);
+			fpmScript.GetAnimator().SetBool("m_bRunButtonIsPressed", true);
+			fpmScript.GetAnimator().SetInteger("m_nFacingDir", 2);
+			fpmScript.SetIsRunning(true);
 		}
 			break;
 		case "BoarChaseEndDialogue":

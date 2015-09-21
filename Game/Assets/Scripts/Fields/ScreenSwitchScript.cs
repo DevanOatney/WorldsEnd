@@ -39,9 +39,13 @@ public class ScreenSwitchScript : MonoBehaviour
 				Camera.main.SendMessage("fadeOut");
 				Invoke("ChangePlaces", 3.0f);
 				GameObject player = GameObject.Find("Player");
+				FieldPlayerMovementScript fpmScript = player.GetComponent<FieldPlayerMovementScript>();
 				//Suspend input while fading
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-				player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+				fpmScript.SetState((int)FieldPlayerMovementScript.States.eIDLE);
+				fpmScript.GetAnimator().SetBool("m_bRunButtonIsPressed", false);
+				fpmScript.SetIsRunning(false);
+				fpmScript.ResetAnimFlagsExcept(-1);
 
 			}
 		}

@@ -13,7 +13,7 @@ public class NPCScript : MonoBehaviour
 	//Path directory to dialogue for this character in this scene
 	public string m_szDialoguePath = "";
 
-	protected float m_fWalkingSpeed = 2.0f;
+	protected float m_fWalkingSpeed = 1.0f;
 	//Should the characters moving logic be active? (Must have m_bActive set to true for this to effect the NPC)
 	public bool m_bIsMoving = false;
 	//Is the NPC being interracted with?  Will stop moving if it is.
@@ -22,7 +22,7 @@ public class NPCScript : MonoBehaviour
 	public bool m_bIsComingOutOfPlayer = false;
 	protected float m_fTimer = 0.0f;
 	protected int m_nStepsIter = 0;
-	protected Animator m_aAnim;
+	public Animator m_aAnim;
 
 	//This is toggled when there's a collision/trigger hit.  
 	bool m_bCanMove = true;
