@@ -117,6 +117,8 @@ public class BeserkEnemyScript : UnitScript {
 			break;
 		}
 		transform.position = m_vInitialPos;
+
+		m_goShadowClone = Instantiate(m_goShadowClone);
 	}
 	void SetUnitStats()
 	{
