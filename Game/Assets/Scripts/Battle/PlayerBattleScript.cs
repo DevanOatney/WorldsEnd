@@ -234,6 +234,7 @@ public class PlayerBattleScript : UnitScript {
 				}
 			}
 		}
+		m_goShadowClone = Instantiate(m_goShadowClone);
 	}
 
 	void UpdateStats(DCScript.ItemData armor, DCScript.CharacterData c)

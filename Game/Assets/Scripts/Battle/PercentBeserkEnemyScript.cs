@@ -87,6 +87,7 @@ public class PercentBeserkEnemyScript : UnitScript {
 			break;
 		}
 		transform.position = m_vInitialPos;
+		m_goShadowClone = Instantiate(m_goShadowClone);
 	}
 	void SetUnitStats()
 	{
