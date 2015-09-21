@@ -87,7 +87,6 @@ public class PercentBeserkEnemyScript : UnitScript {
 			break;
 		}
 		transform.position = m_vInitialPos;
-		m_goShadowClone = Instantiate(m_goShadowClone);
 	}
 	void SetUnitStats()
 	{
@@ -226,21 +225,24 @@ public class PercentBeserkEnemyScript : UnitScript {
 				
 				if(m_fShadowTimer >= m_fShadowTimerBucket)
 				{
-					
-					m_goShadowClone.GetComponent<SpriteRenderer>().sprite = anim.gameObject.GetComponent<SpriteRenderer>().sprite;
-					Vector3 cloneTransform = anim.gameObject.transform.localScale;
-					m_goShadowClone.transform.localScale = cloneTransform;
-					Vector3 pos = transform.position;
-					//adjust so the clone is behind the unit
-					if(GetComponent<SpriteRenderer>() != null)
-						m_goShadowClone.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1;
-					else
-						m_goShadowClone.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder - 1;
-					
-					GameObject shadowClone = Instantiate(m_goShadowClone, pos, Quaternion.identity) as GameObject;
-					if(shadowClone)
-						Destroy(shadowClone, m_fShadowTimerBucket*3);
-					m_fShadowTimer = 0.0f;
+
+					GameObject newShadow = Instantiate(m_goShadowClone, transform.position, Quaternion.identity) as GameObject;
+					if(newShadow)
+					{
+						newShadow.GetComponent<SpriteRenderer>().sprite = anim.gameObject.GetComponent<SpriteRenderer>().sprite;
+						Vector3 cloneTransform = anim.gameObject.transform.localScale;
+						newShadow.transform.localScale = cloneTransform;
+						Vector3 pos = transform.position;
+						//adjust so the clone is behind the unit
+						if(GetComponent<SpriteRenderer>() != null)
+							newShadow.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1;
+						else
+							newShadow.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder - 1;
+
+						Destroy(newShadow, m_fShadowTimerBucket*3);
+						m_fShadowTimer = 0.0f;
+					}
+
 				}
 				else
 					m_fShadowTimer += Time.deltaTime;

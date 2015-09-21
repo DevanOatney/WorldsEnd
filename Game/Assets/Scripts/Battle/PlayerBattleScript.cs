@@ -35,7 +35,6 @@ public class PlayerBattleScript : UnitScript {
 
 	enum States{eIDLE, eCHARGE, eRETURN, eATTACK, eDAMAGED, eDEAD, eDEFEND, eMAGIC, eITEM};
 	float m_fMovementSpeed = 8.0f;
-	float m_fAttackBucket = 0.0f;
 	float m_fDeadBucket = 0.0f;
 	float m_fDamagedBucket = 0.0f;
 	Animator anim;
@@ -43,8 +42,6 @@ public class PlayerBattleScript : UnitScript {
 	public AnimationClip m_acDyingAnim;
 	//animation for the unit taking damage
 	public AnimationClip m_acDamagedAnim;
-	//animatino for the units basic attack
-	public AnimationClip m_acAttackAnim;
 
 	//bool for if the player needs to switch back to the defend state after taking damage
 	bool m_bWasDefending = false;
@@ -234,7 +231,6 @@ public class PlayerBattleScript : UnitScript {
 				}
 			}
 		}
-		m_goShadowClone = Instantiate(m_goShadowClone);
 	}
 
 	void UpdateStats(DCScript.ItemData armor, DCScript.CharacterData c)
@@ -585,7 +581,6 @@ public class PlayerBattleScript : UnitScript {
 				{
 					anim.SetBool("m_bIsAttacking", true);
 					m_nState = (int)States.eATTACK;
-					m_fAttackBucket = m_acAttackAnim.length;
 
 				}
 				m_bIsMyTurn = false;
@@ -742,17 +737,14 @@ public class PlayerBattleScript : UnitScript {
 
 				if(m_fShadowTimer >= m_fShadowTimerBucket)
 				{
-					
-					m_goShadowClone.GetComponent<SpriteRenderer>().sprite = anim.gameObject.GetComponent<SpriteRenderer>().sprite;
+					GameObject newShadow = Instantiate(m_goShadowClone, transform.position, Quaternion.identity) as GameObject;
+					newShadow.GetComponent<SpriteRenderer>().sprite = anim.gameObject.GetComponent<SpriteRenderer>().sprite;
 					Vector3 cloneTransform = anim.gameObject.transform.localScale;
-					m_goShadowClone.transform.localScale = cloneTransform;
+					newShadow.transform.localScale = cloneTransform;
 					Vector3 pos = transform.position;
 					//adjust so the clone is behind the unit
 					pos.z += 0.1f;
-					
-					GameObject shadowClone = Instantiate(m_goShadowClone, pos, Quaternion.identity) as GameObject;
-					if(shadowClone)
-						Destroy(shadowClone, m_fShadowTimerBucket*3);
+					Destroy(newShadow, m_fShadowTimerBucket*3);
 					m_fShadowTimer = 0.0f;
 				}
 				else
@@ -776,75 +768,8 @@ public class PlayerBattleScript : UnitScript {
 			break;
 		case (int)States.eATTACK:
 		{
-			m_fAttackBucket -= Time.deltaTime;
 
 
-			if(m_fAttackBucket <= 0.0001f)
-			{
-				if(m_nUnitType == (int)UnitTypes.ALLY_MELEE)
-				{
-					m_nState = (int)States.eRETURN;
-					anim.SetBool("m_bIsMoving", true);
-					if(CheckIfHit())
-					{
-						//HIT
-						int dmgAdjustment = UnityEngine.Random.Range(1, 5) + m_nStr;
-						GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
-						foreach(GameObject tar in posTargs)
-						{
-							if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
-							{
-								tar.GetComponent<UnitScript>().AdjustHP(dmgAdjustment);
-							}
-						}
-					}
-					else
-					{
-						//MISS
-						GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
-						foreach(GameObject tar in posTargs)
-						{
-							if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
-							{
-								tar.GetComponent<UnitScript>().Missed();
-							}
-						}
-					}
-				}
-				else if(m_nUnitType == (int)UnitTypes.ALLY_RANGED)
-				{
-
-					m_nState = (int)States.eIDLE;
-					GameObject goArrow = Instantiate(Resources.Load<GameObject>("Spell Effects/Arrow")) as GameObject;
-					goArrow.transform.position = transform.position;
-					int dmg = 0;
-					if(CheckIfHit())
-						dmg  = UnityEngine.Random.Range(1, 5) + m_nStr;
-					else
-						dmg = -1;
-					goArrow.GetComponent<ProjectileScript>().m_fSpeed = 20;
-					goArrow.GetComponent<ProjectileScript>().m_fRotationSpeed = 50;
-					GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
-					foreach(GameObject tar in posTargs)
-					{
-						if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
-						{
-							goArrow.GetComponent<ProjectileScript>().m_goTarget = tar;
-						}
-					}
-					goArrow.GetComponent<ProjectileScript>().m_nDamageDealt = dmg;
-
-					TurnOffFlags();
-					Invoke("EndMyTurn", 2.0f);
-				}
-				anim.SetBool("m_bIsAttacking", false);
-				m_fAttackBucket = 0.0f;
-				GameObject GO = GameObject.Find("PersistantData");
-				if(GO != null)
-					GetComponent<AudioSource>().PlayOneShot(m_acAttackAudio, 0.5f + GO.GetComponent<DCScript>().m_fSFXVolume);
-
-			
-			}
 		}
 			break;
 		case (int) States.eITEM:
@@ -1028,7 +953,6 @@ public class PlayerBattleScript : UnitScript {
 			anim.SetBool("m_bIsMoving", false);
 			anim.SetBool("m_bIsAttacking", true);
 			m_nState = (int)States.eATTACK;
-			m_fAttackBucket = m_acAttackAnim.length;
 			c.enabled = false;
 			GameObject wypnt = GameObject.Find("Ally_StartPos" + m_nPositionOnField.ToString());
 			if(wypnt)
@@ -1489,5 +1413,68 @@ public class PlayerBattleScript : UnitScript {
 			return 0;
 		}
 		return nTotalExp;
+	}
+
+	void AttackAnimationEnd(int unitType) 
+	{
+		if(m_nUnitType == (int)UnitTypes.ALLY_MELEE)
+		{
+			m_nState = (int)States.eRETURN;
+			anim.SetBool("m_bIsMoving", true);
+			if(CheckIfHit())
+			{
+				//HIT
+				int dmgAdjustment = UnityEngine.Random.Range(1, 5) + m_nStr;
+				GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+				foreach(GameObject tar in posTargs)
+				{
+					if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+					{
+						tar.GetComponent<UnitScript>().AdjustHP(dmgAdjustment);
+					}
+				}
+			}
+			else
+			{
+				//MISS
+				GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+				foreach(GameObject tar in posTargs)
+				{
+					if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+					{
+						tar.GetComponent<UnitScript>().Missed();
+					}
+				}
+			}
+		}
+		else if(m_nUnitType == (int)UnitTypes.ALLY_RANGED)
+		{
+			m_nState = (int)States.eIDLE;
+			GameObject goArrow = Instantiate(Resources.Load<GameObject>("Spell Effects/Arrow")) as GameObject;
+			goArrow.transform.position = transform.position;
+			int dmg = 0;
+			if(CheckIfHit())
+				dmg  = UnityEngine.Random.Range(1, 5) + m_nStr;
+			else
+				dmg = -1;
+			goArrow.GetComponent<ProjectileScript>().m_fSpeed = 20;
+			goArrow.GetComponent<ProjectileScript>().m_fRotationSpeed = 50;
+			GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+			foreach(GameObject tar in posTargs)
+			{
+				if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+				{
+					goArrow.GetComponent<ProjectileScript>().m_goTarget = tar;
+				}
+			}
+			goArrow.GetComponent<ProjectileScript>().m_nDamageDealt = dmg;
+			
+			TurnOffFlags();
+			Invoke("EndMyTurn", 2.0f);
+		}
+		anim.SetBool("m_bIsAttacking", false);
+		GameObject GO = GameObject.Find("PersistantData");
+		if(GO != null)
+			GetComponent<AudioSource>().PlayOneShot(m_acAttackAudio, 0.5f + GO.GetComponent<DCScript>().m_fSFXVolume);
 	}
 }
