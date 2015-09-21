@@ -190,4 +190,31 @@ public class UnitScript : MonoBehaviour
 		}
 	}
 
+	public void AttackAnimationEnded()
+	{
+		switch(m_nUnitType)
+		{
+		case (int)UnitTypes.ALLY_MELEE:
+		{
+
+		}
+			break;
+		case (int)UnitTypes.ALLY_RANGED:
+		{
+
+		}
+			break;
+		case (int)UnitTypes.BASICENEMY:
+		{
+			gameObject.GetComponent<BeserkEnemyScript>().EVENT_AttackAnimEnd();
+		}
+			break;
+		case (int)UnitTypes.PERCENTENEMY:
+		{
+			gameObject.GetComponent<PercentBeserkEnemyScript>().EVENT_AttackAnimEnd();
+		}
+			break;
+		}
+	}
+
 }

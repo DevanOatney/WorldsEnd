@@ -435,4 +435,38 @@ public class PercentBeserkEnemyScript : UnitScript {
 		m_goFadingText.transform.position = textPos;
 		Instantiate(m_goFadingText);
 	}
+	//Accessor to the function, original function can't be public as it breaks animation event accessibility
+	public void EVENT_AttackAnimEnd()
+	{
+		AttackAnimationEnd();
+	}
+	void AttackAnimationEnd()
+	{
+		GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
+		foreach(GameObject tar in posTargs)
+		{
+			if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+			{
+				int nChanceToHit = UnityEngine.Random.Range(0,100);
+				int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
+				if(nRange < 5)
+					nRange = 5;
+				if(nChanceToHit <	nRange)
+				{
+					int dmgAdjustment = UnityEngine.Random.Range(0, m_nStr/2);
+					if(dmgAdjustment + m_nStr < 1)
+						tar.GetComponent<UnitScript>().AdjustHP(1);
+					else
+						tar.GetComponent<UnitScript>().AdjustHP(m_nStr + dmgAdjustment);
+				}
+				else
+					tar.GetComponent<UnitScript>().Missed();
+				
+				break;
+			}
+		}
+		m_nState = (int)States.eRETURN;
+		anim.SetBool("m_bIsAttacking", false);
+		anim.SetBool("m_bIsMoving", true);
+	}
 }

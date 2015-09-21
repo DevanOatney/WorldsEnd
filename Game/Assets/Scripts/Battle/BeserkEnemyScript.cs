@@ -42,6 +42,11 @@ public class BeserkEnemyScript : UnitScript {
 	//Enemy Stats
 	public TextAsset m_taStats;
 
+	//Accessor to the function, original function can't be public as it breaks animation event accessibility
+	public void EVENT_AttackAnimEnd()
+	{
+		AttackAnimationEnd();
+	}
 	void AttackAnimationEnd()
 	{
 		GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
