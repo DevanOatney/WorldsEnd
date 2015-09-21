@@ -375,20 +375,21 @@ public class BeserkEnemyScript : UnitScript {
 	
 	new public void Missed()
 	{
-		m_goFadingText.GetComponent<GUI_FadeText>().SetColor(true);
-		m_goFadingText.GetComponent<GUI_FadeText>().SetText("Miss");
-		m_goFadingText.GetComponent<GUI_FadeText>().SetShouldFloat(true);
+		GameObject newText = Instantiate(m_goFadingText);
+		newText.GetComponent<GUI_FadeText>().SetColor(true);
+		newText.GetComponent<GUI_FadeText>().SetText("Miss");
+		newText.GetComponent<GUI_FadeText>().SetShouldFloat(true);
 		Vector3 textPos = transform.GetComponent<Collider>().transform.position;
 		textPos.y += (gameObject.GetComponent<BoxCollider>().size.y * 0.75f);
 		textPos = Camera.main.WorldToViewportPoint(textPos);
-		m_goFadingText.transform.position = textPos;
-		Instantiate(m_goFadingText);
+		newText.transform.position = textPos;
 	}
 
 
 
 	new public void AdjustHP(int dmg)
 	{
+		GameObject newText = Instantiate(m_goFadingText);
 		GameObject GO = GameObject.Find("PersistantData");
 		if(dmg >= 0)
 		{
@@ -421,16 +422,15 @@ public class BeserkEnemyScript : UnitScript {
 			m_fDamagedBucket = 1.0f;
 		}
 		if(dmg >= 0)
-			m_goFadingText.GetComponent<GUI_FadeText>().SetColor(true);
+			newText.GetComponent<GUI_FadeText>().SetColor(true);
 		else
-			m_goFadingText.GetComponent<GUI_FadeText>().SetColor(false);
+			newText.GetComponent<GUI_FadeText>().SetColor(false);
 		
-		m_goFadingText.GetComponent<GUI_FadeText>().SetText((Mathf.Abs(dmg)).ToString());
-		m_goFadingText.GetComponent<GUI_FadeText>().SetShouldFloat(true);
+		newText.GetComponent<GUI_FadeText>().SetText((Mathf.Abs(dmg)).ToString());
+		newText.GetComponent<GUI_FadeText>().SetShouldFloat(true);
 		Vector3 textPos = transform.GetComponent<Collider>().transform.position;
 		textPos.y += (gameObject.GetComponent<BoxCollider>().size.y * 0.75f);
 		textPos = Camera.main.WorldToViewportPoint(textPos);
-		m_goFadingText.transform.position = textPos;
-		Instantiate(m_goFadingText);
+		newText.transform.position = textPos;
 	}
 }

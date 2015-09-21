@@ -189,6 +189,7 @@ public class OverWatcherScript : MonoBehaviour {
 				dc.SetPreviousPosition(m_goPlayer.transform.position);
 				dc.SetPreviousFacingDirection(m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir);
 				dc.SetPreviousFieldName(Application.loadedLevelName);
+				Debug.Log("battle");
 				Application.LoadLevel("Battle_Scene");
 			}
 		}

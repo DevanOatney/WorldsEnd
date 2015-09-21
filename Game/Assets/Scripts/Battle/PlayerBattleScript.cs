@@ -1095,6 +1095,7 @@ public class PlayerBattleScript : UnitScript {
 
 	new public void AdjustHP(int dmg)
 	{
+		GameObject newText = Instantiate(m_goFadingText);
 		if(dmg >= 0)
 		{
 			int totalDefense = AdjustDefense(m_nDef);
@@ -1113,7 +1114,7 @@ public class PlayerBattleScript : UnitScript {
 			m_nCurHP = 0;
 			anim.SetBool("m_bIsDying", true);
 			m_nState = (int)States.eDEAD;
-			m_goFadingText.GetComponent<GUI_FadeText>().SetColor(true);
+			newText.GetComponent<GUI_FadeText>().SetColor(true);
 			GameObject tw = GameObject.Find("TurnWatcher");
 			if(tw)
 			{
@@ -1128,36 +1129,35 @@ public class PlayerBattleScript : UnitScript {
 				m_bWasDefending = true;
 			m_nState = (int)States.eDAMAGED;
 			m_fDamagedBucket = m_acDamagedAnim.length;
-			m_goFadingText.GetComponent<GUI_FadeText>().SetColor(true);
+			newText.GetComponent<GUI_FadeText>().SetColor(true);
 		}
 		else
 		{
 			//Make sure that the cur HP never goes above the max hp
 			if(GetCurHP() > GetMaxHP())
 				SetCurHP(GetMaxHP());
-			m_goFadingText.GetComponent<GUI_FadeText>().SetColor(false);
+			newText.GetComponent<GUI_FadeText>().SetColor(false);
 		}
 		
-		m_goFadingText.GetComponent<GUI_FadeText>().SetText((Mathf.Abs(dmg)).ToString());
-		m_goFadingText.GetComponent<GUI_FadeText>().SetShouldFloat(true);
+		newText.GetComponent<GUI_FadeText>().SetText((Mathf.Abs(dmg)).ToString());
+		newText.GetComponent<GUI_FadeText>().SetShouldFloat(true);
 		Vector3 textPos = transform.GetComponent<Collider>().transform.position;
 		textPos.y += (gameObject.GetComponent<BoxCollider>().size.y * 0.75f);
 		textPos = Camera.main.WorldToViewportPoint(textPos);
-		m_goFadingText.transform.position = textPos;
-		Instantiate(m_goFadingText);
+		newText.transform.position = textPos;
 
 	}
 
 	new public void Missed()
 	{
-		m_goFadingText.GetComponent<GUI_FadeText>().SetColor(true);
-		m_goFadingText.GetComponent<GUI_FadeText>().SetText("Miss");
-		m_goFadingText.GetComponent<GUI_FadeText>().SetShouldFloat(true);
+		GameObject newText = Instantiate(m_goFadingText);
+		newText.GetComponent<GUI_FadeText>().SetColor(true);
+		newText.GetComponent<GUI_FadeText>().SetText("Miss");
+		newText.GetComponent<GUI_FadeText>().SetShouldFloat(true);
 		Vector3 textPos = transform.GetComponent<Collider>().transform.position;
 		textPos.y += (gameObject.GetComponent<BoxCollider>().size.y * 0.75f);
 		textPos = Camera.main.WorldToViewportPoint(textPos);
-		m_goFadingText.transform.position = textPos;
-		Instantiate(m_goFadingText);
+		newText.transform.position = textPos;
 	}
 
 	void InitializeTargetReticle()
