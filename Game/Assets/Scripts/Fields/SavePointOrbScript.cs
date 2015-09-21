@@ -43,6 +43,7 @@ public class SavePointOrbScript : MonoBehaviour
 					m_lSaveFiles.Add(gContainer);
 				}
 			}
+			Input.ResetInputAxes();
 		}
 	}
 
@@ -73,7 +74,7 @@ public class SavePointOrbScript : MonoBehaviour
 				if(m_nSelectedIndex >= 3)
 					m_nSelectedIndex = 0;
 			}
-			else if(Input.GetKeyUp(KeyCode.Return))
+			else if(Input.GetKey(KeyCode.Return))
 			{
 				FieldPlayerMovementScript go = GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>();
 				DCScript dcs = GameObject.Find("PersistantData").GetComponent<DCScript>();
