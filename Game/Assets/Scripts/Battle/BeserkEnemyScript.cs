@@ -8,13 +8,9 @@ public class BeserkEnemyScript : UnitScript {
 	float m_fMovementSpeed = 8.0f;
 	
 	//timer for if the enemy is attacking, degrades if set and when at 0, deals damage to the player
-	float m_fAttackBucket = 0.0f;
-	public float GetAttackBucket() {return m_fAttackBucket;}
 	float m_fDamagedBucket = 0.0f;
-	public float GetDamagedBucket() {return m_fAttackBucket;}
+	public float GetDamagedBucket() {return m_fDamagedBucket;}
 	float m_fDeadBucket = 0.0f;
-	//flag for if the hit proc has happened during this turn (after each turn)
-	bool m_bHasSwung = false;
 	
 	
 	//for fading text
@@ -45,7 +41,37 @@ public class BeserkEnemyScript : UnitScript {
 	
 	//Enemy Stats
 	public TextAsset m_taStats;
-	
+
+	void AttackAnimationEnd()
+	{
+		GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
+		foreach(GameObject tar in posTargs)
+		{
+			if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+			{
+				int nChanceToHit = UnityEngine.Random.Range(0,100);
+				int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
+				if(nRange < 5)
+					nRange = 5;
+				if(nChanceToHit <	nRange)
+				{
+					int dmgAdjustment = UnityEngine.Random.Range(0, m_nStr/2);
+					if(dmgAdjustment + m_nStr < 1)
+						tar.GetComponent<UnitScript>().AdjustHP(1);
+					else
+						tar.GetComponent<UnitScript>().AdjustHP(m_nStr + dmgAdjustment);
+				}
+				else
+					tar.GetComponent<UnitScript>().Missed();
+				
+				break;
+			}
+		}
+		m_nState = (int)States.eRETURN;
+		anim.SetBool("m_bIsAttacking", false);
+		anim.SetBool("m_bIsMoving", true);
+	}
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -261,42 +287,7 @@ public class BeserkEnemyScript : UnitScript {
 			break;
 		case (int)States.eATTACK:
 		{
-			m_fAttackBucket -= Time.deltaTime;
-			if(m_fAttackBucket >= m_acAttackAnim.length * 0.5f && m_bHasSwung == false)
-			{
-				m_bHasSwung = true;
-				GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
-				foreach(GameObject tar in posTargs)
-				{
-					if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
-					{
-						int nChanceToHit = UnityEngine.Random.Range(0,100);
-						int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
-						if(nRange < 5)
-							nRange = 5;
-						if(nChanceToHit <	nRange)
-						{
-							int dmgAdjustment = UnityEngine.Random.Range(0, m_nStr/2);
-							if(dmgAdjustment + m_nStr < 1)
-								tar.GetComponent<UnitScript>().AdjustHP(1);
-							else
-								tar.GetComponent<UnitScript>().AdjustHP(m_nStr + dmgAdjustment);
-						}
-						else
-							tar.GetComponent<UnitScript>().Missed();
-						
-						break;
-					}
-				}
-			}
-			if(m_fAttackBucket <= 0.001f)
-			{
-				m_fAttackBucket = 0.0f;
-				m_nState = (int)States.eRETURN;
-				anim.SetBool("m_bIsAttacking", false);
-				anim.SetBool("m_bIsMoving", true);
-				m_bHasSwung = false;
-			}
+
 		}
 			break;
 		case (int) States.eDAMAGED:
@@ -335,7 +326,6 @@ public class BeserkEnemyScript : UnitScript {
 			anim.SetBool("m_bIsMoving", false);
 			anim.SetBool("m_bIsAttacking", true);
 			m_nState = (int)States.eATTACK;
-			m_fAttackBucket = m_acAttackAnim.length + 0.01f;
 			c.enabled = false;
 			GameObject wypnt = GameObject.Find("Enemy_StartPos" + m_nPositionOnField.ToString());
 			if(wypnt)
@@ -387,7 +377,9 @@ public class BeserkEnemyScript : UnitScript {
 		m_goFadingText.transform.position = textPos;
 		Instantiate(m_goFadingText);
 	}
-	
+
+
+
 	new public void AdjustHP(int dmg)
 	{
 		GameObject GO = GameObject.Find("PersistantData");
