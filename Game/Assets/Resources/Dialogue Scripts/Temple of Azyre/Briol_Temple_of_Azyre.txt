@@ -22,7 +22,7 @@ C7|1|Briol||Whatever. Better start cleaning up this dump.||C8
 C8|3|End Boar_Boss_Battle
 D0|1|Briol||Shit! Now how do we get through?||D1
 D1|1|Callan||How deep do you think this is? Do you thinkn it's bottomless?!?||D2
-D2|1|Narrator||No, dumbass.  It's just dark.||D3
+D2|1|Narrator||No, dumbass. It's just dark.||D3
 D3|1|Callan||Quiet you!||D4
 D4|1|Briol||What?||D5
-D5|1|Callan||Nothing. Let's find another way around.||A8
+D5|1|Callan||Nothing. Let's find another way around.||A9
