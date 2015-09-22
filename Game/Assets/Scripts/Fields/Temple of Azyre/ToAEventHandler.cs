@@ -18,7 +18,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<FieldPlayerMovementScript>().BindInput();
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-			player.GetComponent<MessageHandler>().BeginDialogue(0);
+			player.GetComponent<MessageHandler>().BeginDialogue("A0");
 			ds.m_dStoryFlagField.Add("AfterOpening", 1);
 			foreach(GameObject wpnt in Phase1_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
@@ -41,14 +41,15 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "Callan_runoff":
 			{
 				GameObject src = GameObject.Find("Player");
-			src.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("XWaypoint"), false);
+			src.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("XWaypoint"), true);
 				//src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
 				//src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
 				//src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
 				//src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
 				//src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
 				GameObject.Find("XWaypoint").GetComponent<BoxCollider2D>().enabled = true;
-				
+			GameObject player = GameObject.Find("Player");
+			player.GetComponent<MessageHandler>().BeginDialogue("A6");
 			}
 			break;
 		case "AfterOpen":
