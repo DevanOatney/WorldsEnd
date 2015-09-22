@@ -5,7 +5,7 @@ A3|1|Briol||What do you mean 'What we've been looking for?' We've barely left to
 A4|1|Callan||But look at the size of this place! We could definately start a guild here! I'm going in!||A5
 A5|3|Callan_runoff
 A5|1|Briol||Callan wait! It's dangerous! This whole place is over run with boars. There is probably a nest inside...with an alpha boar...yeah...I'm not letting you have all the fun!||A6
-A6|3|End_Dialogue
+A6|3|AfterOpen
 B0|1|Callan||See? I told you we could do this.||B1
 B1|1|Briol||Alright, you win. This place is perfect, especially now that the boar problem is gone.||B2
 B2|1|Callan||So...Where do we go from here?||B3
