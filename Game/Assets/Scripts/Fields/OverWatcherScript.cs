@@ -17,9 +17,9 @@ public class OverWatcherScript : MonoBehaviour {
 	//The distance the player has gone since the last threshold tick
 	float m_fDistanceStep = 0.0f;
 	//The initial percent chance that an encounter will occur (0-100)
-	int m_nEncounterChance = 10;
+	public float m_nEncounterChance = 10;
 	//The modifier for incrementing the encounter chance
-	public float m_nEncounterTick = 1.5f;
+	public float m_nEncounterTick = 1.2f;
 
 	//Stuff for Menu screen
 	//flag for stopping day/night tick
@@ -250,8 +250,7 @@ public class OverWatcherScript : MonoBehaviour {
 					}
 					else
 					{
-						float newChance = (float)m_nEncounterChance * m_nEncounterTick;
-						m_nEncounterChance = (int)newChance;
+						m_nEncounterChance += m_nEncounterChance * m_nEncounterTick;;
 					}
 				}
 			}

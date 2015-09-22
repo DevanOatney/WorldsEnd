@@ -56,10 +56,11 @@ public class ToAEventHandler : BaseEventSystemScript
 				XWaypoint.GetComponent<WaypointScript>().m_szTarget = "SzTarget";
 				GameObject briol = GameObject.Find("Briol");
 				NPCScript bNpc = briol.GetComponent<NPCScript>();
-				bNpc.m_bIsMoving = true;
-				bNpc.m_bActive = true;
-				bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
-				bNpc.ResetAnimFlagsExcept(bNpc.m_nFacingDir);
+				bNpc.m_bReturnToPlayer = true;
+				//bNpc.m_bIsMoving = true;
+				//bNpc.m_bActive = true;
+				//bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
+				//bNpc.ResetAnimFlagsExcept(bNpc.m_nFacingDir);
 			}
 			break;
 		}

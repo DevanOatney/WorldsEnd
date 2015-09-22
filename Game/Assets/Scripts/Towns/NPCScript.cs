@@ -56,11 +56,17 @@ public class NPCScript : MonoBehaviour
 	{
 		if(m_bReturnToPlayer == true)
 		{
+			GetComponent<BoxCollider2D>().enabled = false;
 			Vector2 playerPos = GameObject.Find("Player").transform.position;
 			Vector2 npcPos = transform.position;
 			Vector2 toPlayer = playerPos - npcPos;
 			if(toPlayer.x > 0.1f || toPlayer.x < -0.1f)
 			{
+				ResetAnimFlagsExcept(-1);
+				if(toPlayer.x > 0.1f)
+					m_aAnim.SetBool("m_bMoveRight", true);
+				else
+					m_aAnim.SetBool("m_bMoveLeft", true);
 				toPlayer.y = 0.0f;
 				toPlayer.Normalize();
 				toPlayer.x *= m_fWalkingSpeed;
@@ -68,6 +74,11 @@ public class NPCScript : MonoBehaviour
 			}
 			else if(toPlayer.y > 0.1f || toPlayer.y  < -0.1f)
 			{
+				ResetAnimFlagsExcept(-1);
+				if(toPlayer.y > 0.1f)
+					m_aAnim.SetBool("m_bMoveUp", true);
+				else
+					m_aAnim.SetBool("m_bMoveDown", true);
 				toPlayer.x = 0.0f;
 				toPlayer.Normalize();
 				toPlayer.y *= m_fWalkingSpeed;
@@ -79,6 +90,7 @@ public class NPCScript : MonoBehaviour
 				GetComponent<BoxCollider2D>().enabled = true;
 				gameObject.SetActive(false);
 				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+				Camera.main.GetComponent<CameraFollowTarget>().m_goNextTarget = GameObject.Find("Player");
 			}
 		}
 		if(m_bActive == true)
