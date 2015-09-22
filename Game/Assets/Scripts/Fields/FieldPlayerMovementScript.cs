@@ -27,6 +27,19 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	bool m_bShouldMove = false;
 
 	
+#region DESIGNER_HELPER_FUNCTIONS
+	//Function for the player to move to a target game object, set the flag to true if you want the player to run.
+	public void DHF_PlayerMoveToGameObject(GameObject _TargetLocation, bool _ShouldIRun)
+	{
+		BindInput();
+		m_bIsMovingToLocation = true;
+		m_vTargetLocation = (Vector2)_TargetLocation.transform.position;
+		m_vTargetLocation.y += _TargetLocation.GetComponent<BoxCollider2D>().size.y * 0.5f;
+		m_bIsRunning = _ShouldIRun;
+		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
+
+	}
+#endregion
 
 	//List of status effects that could be effecting the player/units   Poison, Confusion, Paralyze, Stone (examples)
 	public List<GameObject> m_lStatusEffects = new List<GameObject>();
@@ -65,6 +78,9 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	public void ReleaseAllBinds() {m_nBinders = 0; m_bAllowInput = false;}
 	//public void SetAllowInput(bool flag) {m_bAllowInput = flag;}
 	public bool GetAllowInput() {return m_bAllowInput;}
+
+	Vector3 m_vTargetLocation = Vector3.zero;
+	bool m_bIsMovingToLocation = false;
 
 
 	void Awake()
@@ -165,6 +181,46 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		}
 		else
 		{
+			//Let's check if the player is supposed to be moving toward a location, if so figure out which direction we should be moving right now
+			if(m_bIsMovingToLocation == true)
+			{
+				Vector2 toTarget = m_vTargetLocation - transform.position;
+				if(toTarget.x > 0.1f || toTarget.x < -0.1f)
+				{
+
+					if(toTarget.x > 0.1f)
+					{
+						m_nState = (int)States.eWALKRIGHT;
+					}
+					else
+					{
+						m_nState = (int)States.eWALKLEFT;
+					}
+				}
+				else if(toTarget.y > 0.1f || toTarget.y  < -0.1f)
+				{
+					if(toTarget.y > 0.1f)
+					{
+						m_nState = (int)States.eWALKUP;
+					}
+					else
+					{
+						m_nState = (int)States.eWALKDOWN;
+					}
+				}
+				else
+				{
+					m_bIsRunning = false;
+					m_bIsMovingToLocation = false;
+					m_bShouldMove = false;
+					m_vTargetLocation = Vector3.zero;
+					ResetAnimFlagsExcept(-1);
+					m_nState = (int)States.eIDLE;
+					m_aAnim.SetBool("m_bRunButtonIsPressed", false);
+					ReleaseBind();
+				}
+			}
+
 			//Going to just assume that if input is being stopped there's an event playing (even though sometimes it's during opening 
 			//treasure chests, and switching maps/scenes)  So just make sure to keep players state at eIDLE any other time
 			switch(m_nState)
@@ -205,6 +261,8 @@ public class FieldPlayerMovementScript : MonoBehaviour
 				break;
 			}
 		}
+		#region Handle_MovementLogic
+		//Now that the movement logic is done, check to see if the result is to move.
 		if(m_bShouldMove == true)
 		{
 
@@ -256,7 +314,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			else
 				newPos.y = transform.position.y - GetComponent<BoxCollider2D>().bounds.size.y ;
 			m_goPredictor.transform.position = newPos;
-
+			#endregion
 
 			//Update any of the status effects. (use a new list, as some of the master list may get removed
 			for(int i = 0; i < m_lStatusEffects.Count; ++i)
@@ -278,10 +336,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 
 		//end of the function
 		m_bShouldMove = false;
-	}
-
-	void OnGUI()
-	{
 	}
 
 
@@ -354,6 +408,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		case 0:
 		{
 			//Down
+			m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
 			m_aAnim.SetBool("m_bMoveLeft", false);
 			m_aAnim.SetBool("m_bMoveUp", false);
 			m_aAnim.SetBool("m_bMoveDown", true);
@@ -363,6 +418,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		case 1:
 		{
 			//Left
+			m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
 			m_aAnim.SetBool("m_bMoveUp", false);
 			m_aAnim.SetBool("m_bMoveDown", false);
 			m_aAnim.SetBool("m_bMoveLeft", true);
@@ -372,6 +428,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		case 2:
 		{
 			//Right
+			m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
 			m_aAnim.SetBool("m_bMoveUp", false);
 			m_aAnim.SetBool("m_bMoveDown", false);
 			m_aAnim.SetBool("m_bMoveLeft", false);
@@ -381,6 +438,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		case 3:
 		{
 			//Up
+			m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
 			m_aAnim.SetBool("m_bMoveDown", false);
 			m_aAnim.SetBool("m_bMoveLeft", false);
 			m_aAnim.SetBool("m_bMoveUp", true);

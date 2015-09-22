@@ -41,11 +41,12 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "Callan_runoff":
 			{
 				GameObject src = GameObject.Find("Player");
-				src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
-				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
-				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
-				src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
-				src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
+			src.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("XWaypoint"), false);
+				//src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
+				//src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
+				//src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
+				//src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
+				//src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
 				GameObject.Find("XWaypoint").GetComponent<BoxCollider2D>().enabled = true;
 				
 			}
