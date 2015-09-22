@@ -41,15 +41,9 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "Callan_runoff":
 			{
 				GameObject src = GameObject.Find("Player");
-			src.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("XWaypoint"), true);
-				//src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
-				//src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
-				//src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", true);
-				//src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
-				//src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(true);
+				src.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("XWaypoint"), true);
 				GameObject.Find("XWaypoint").GetComponent<BoxCollider2D>().enabled = true;
-			GameObject player = GameObject.Find("Player");
-			player.GetComponent<MessageHandler>().BeginDialogue("A6");
+				src.GetComponent<MessageHandler>().BeginDialogue("A6");
 			}
 			break;
 		case "AfterOpen":
@@ -58,11 +52,7 @@ public class ToAEventHandler : BaseEventSystemScript
 				XWaypoint.GetComponent<WaypointScript>().m_szTarget = "SzTarget";
 				GameObject briol = GameObject.Find("Briol");
 				NPCScript bNpc = briol.GetComponent<NPCScript>();
-				bNpc.m_bReturnToPlayer = true;
-				//bNpc.m_bIsMoving = true;
-				//bNpc.m_bActive = true;
-				//bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
-				//bNpc.ResetAnimFlagsExcept(bNpc.m_nFacingDir);
+				bNpc.DHF_NPCMoveIntoPlayer();
 			}
 			break;
 		}
@@ -76,11 +66,6 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "XWaypoint":
 		{
 			GameObject src = GameObject.Find("Player");
-			FieldPlayerMovementScript fpmScript = src.GetComponent<FieldPlayerMovementScript>();
-			fpmScript.SetState((int)FieldPlayerMovementScript.States.eIDLE);
-			fpmScript.ResetAnimFlagsExcept(-1);
-			fpmScript.GetAnimator().SetInteger("m_nFacingDir", 3);
-			fpmScript.SetIsRunning(false);
 			src.GetComponent<MessageHandler>().BeginDialogue("A6");
 		}
 			break;

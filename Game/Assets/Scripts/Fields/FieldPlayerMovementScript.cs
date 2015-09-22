@@ -4,6 +4,23 @@ using System.Collections.Generic;
 
 public class FieldPlayerMovementScript : MonoBehaviour 
 {
+	#region DESIGNER_HELPER_FUNCTIONS
+	//Function for the player to move to a target game object, set the flag to true if you want the player to run.
+	public void DHF_PlayerMoveToGameObject(GameObject _TargetLocation, bool _ShouldIRun)
+	{
+		BindInput();
+		m_bIsMovingToLocation = true;
+		m_vTargetLocation = (Vector2)_TargetLocation.transform.position;
+		m_vTargetLocation.y += _TargetLocation.GetComponent<BoxCollider2D>().size.y * 0.5f;
+		m_bIsRunning = _ShouldIRun;
+		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
+		
+	}
+	#endregion
+
+
+
+
 	public enum States {eIDLE, eWALKLEFT, eWALKRIGHT, eWALKUP, eWALKDOWN, eRUNLEFT, eRUNRIGHT, eRUNUP, eRUNDOWN};
 	int m_nState;
 	public int GetState() {return m_nState;}
@@ -27,19 +44,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	bool m_bShouldMove = false;
 
 	
-#region DESIGNER_HELPER_FUNCTIONS
-	//Function for the player to move to a target game object, set the flag to true if you want the player to run.
-	public void DHF_PlayerMoveToGameObject(GameObject _TargetLocation, bool _ShouldIRun)
-	{
-		BindInput();
-		m_bIsMovingToLocation = true;
-		m_vTargetLocation = (Vector2)_TargetLocation.transform.position;
-		m_vTargetLocation.y += _TargetLocation.GetComponent<BoxCollider2D>().size.y * 0.5f;
-		m_bIsRunning = _ShouldIRun;
-		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
 
-	}
-#endregion
 
 	//List of status effects that could be effecting the player/units   Poison, Confusion, Paralyze, Stone (examples)
 	public List<GameObject> m_lStatusEffects = new List<GameObject>();

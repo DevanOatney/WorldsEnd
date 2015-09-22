@@ -4,6 +4,21 @@ using System.Collections.Generic;
 
 public class NPCScript : MonoBehaviour 
 {
+	#region DESIGNER_HELPER_FUNCTIONS
+	public void DHF_NPCMoveIntoPlayer()
+	{
+		m_bReturnToPlayer = true;
+	}
+	public void DHF_NPCMoveToGameobject(GameObject _target, bool _shouldIRun)
+	{
+		m_bMoveTowardLocation = true;
+		m_vTargetLocation = _target.transform.position;
+		m_vTargetLocation.y += _target.GetComponent<BoxCollider2D>().size.y * 0.5f;
+	}
+	#endregion
+
+
+
 	public enum FACINGDIR {eDOWN, eLEFT, eRIGHT, eUP}
 	public int m_nFacingDir = 0;
 	//Tool for if the character has scripted pathing
@@ -29,7 +44,11 @@ public class NPCScript : MonoBehaviour
 	//cost for if it's an innkeeper
 	public int m_nCost = 0;
 
-	public bool m_bReturnToPlayer = false;
+	bool m_bReturnToPlayer = false;
+	bool m_bMoveTowardLocation = false;
+	Vector3 m_vTargetLocation = Vector3.zero;
+
+
 
 	protected class cSteps
 	{
@@ -54,6 +73,7 @@ public class NPCScript : MonoBehaviour
 
 	protected void HandleMovement()
 	{
+		#region Return To Player
 		if(m_bReturnToPlayer == true)
 		{
 			GetComponent<BoxCollider2D>().enabled = false;
@@ -93,7 +113,44 @@ public class NPCScript : MonoBehaviour
 				Camera.main.GetComponent<CameraFollowTarget>().m_goNextTarget = GameObject.Find("Player");
 			}
 		}
-		if(m_bActive == true)
+		#endregion
+		else if(m_bMoveTowardLocation == true)
+		{
+			Vector3 npcPos = transform.position;
+			Vector3 toTarget = m_vTargetLocation - npcPos;
+			if(toTarget.x > 0.1f || toTarget.x < -0.1f)
+			{
+				ResetAnimFlagsExcept(-1);
+				if(toTarget.x > 0.1f)
+					m_aAnim.SetBool("m_bMoveRight", true);
+				else
+					m_aAnim.SetBool("m_bMoveLeft", true);
+				toTarget.y = 0.0f;
+				toTarget.Normalize();
+				toTarget.x *= m_fWalkingSpeed;
+				gameObject.GetComponent<Rigidbody2D>().velocity = toTarget;
+			}
+			else if(toTarget.y > 0.1f || toTarget.y  < -0.1f)
+			{
+				ResetAnimFlagsExcept(-1);
+				if(toTarget.y > 0.1f)
+					m_aAnim.SetBool("m_bMoveUp", true);
+				else
+					m_aAnim.SetBool("m_bMoveDown", true);
+				toTarget.x = 0.0f;
+				toTarget.Normalize();
+				toTarget.y *= m_fWalkingSpeed;
+				gameObject.GetComponent<Rigidbody2D>().velocity = toTarget;
+			}
+			else
+			{
+				m_bMoveTowardLocation = false;
+				m_vTargetLocation = Vector3.zero;
+			}
+		}
+
+		#region Scripted Pathing
+		else if(m_bActive == true)
 		{
 			if(m_bIsBeingInterractedWith == false)
 			{
@@ -146,7 +203,10 @@ public class NPCScript : MonoBehaviour
 						
 					}
 				}
-				
+			#endregion
+
+
+
 				//Handle movement logic
 				if(m_bIsMoving == true)
 				{

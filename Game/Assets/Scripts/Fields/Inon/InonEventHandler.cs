@@ -677,7 +677,7 @@ public class InonEventHandler : BaseEventSystemScript
 		{
 			ds.m_dStoryFlagField.Add("Inon_CeremonyComplete", 1);
 			m_goDeadBoar.SetActive(false);
-			GameObject.Find("Briol").GetComponent<NPCScript>().m_bReturnToPlayer = true;
+			GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveIntoPlayer();
 			GameObject.Find("Briol").GetComponent<BoxCollider2D>().enabled = false;
 			Invoke("ReleasePlayer", 2.0f);
 		}
