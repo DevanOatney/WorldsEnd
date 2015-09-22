@@ -260,7 +260,6 @@ public class BeserkEnemyScript : UnitScript {
 					newShadow.GetComponent<SpriteRenderer>().sprite = anim.gameObject.GetComponent<SpriteRenderer>().sprite;
 					Vector3 cloneTransform = anim.gameObject.transform.localScale;
 					newShadow.transform.localScale = cloneTransform;
-					Vector3 pos = transform.position;
 					//adjust so the clone is behind the unit
 					if(GetComponent<SpriteRenderer>() != null)
 						newShadow.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1;

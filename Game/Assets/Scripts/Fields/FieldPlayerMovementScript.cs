@@ -393,19 +393,9 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			m_aAnim.SetBool("m_bMoveDown", false);
 			m_aAnim.SetBool("m_bMoveLeft", false);
 			m_aAnim.SetBool("m_bMoveRight", false);
+			m_aAnim.SetBool("m_bRunButtonIsPressed", false);
 		}
 			break;
-		}
-	}
-	void OnTriggerEnter2D(Collider2D c)
-	{
-		if(c.tag == "Waypoint")
-		{
-			GameObject eventSys = GameObject.Find("Event system");
-			if(eventSys)
-			{
-				//eventSys.GetComponent<BaseEventSystemScript>().WaypointTriggered(c);
-			}
 		}
 	}
 

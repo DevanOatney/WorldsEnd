@@ -410,7 +410,33 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject messageSystem = GameObject.Find("Lydia");
 			if(messageSystem)
 			{
-				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				int lydRes = -1;
+				if(ds.m_dStoryFlagField.TryGetValue("Inon_Lydia", out lydRes))
+				{
+					if(lydRes == 11)
+					{
+						//TODO: check player inventory for mushrooms
+						messageSystem.GetComponent<MessageHandler>().BeginDialogue("C0");
+					}
+					else if(lydRes == 10)
+					{
+						lydRes++;
+						ds.m_dStoryFlagField["Inon_Lydia"] = lydRes;
+						messageSystem.GetComponent<MessageHandler>().BeginDialogue("B0");
+					}
+					else if(lydRes < 10)
+					{
+						lydRes++;
+						ds.m_dStoryFlagField["Inon_Lydia"] = lydRes;
+						messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+					}
+				}
+				else
+				{
+					ds.m_dStoryFlagField.Add("Inon_Lydia", 1);
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				}
+
 			}
 		}
 			break;

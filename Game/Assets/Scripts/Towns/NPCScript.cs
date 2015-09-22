@@ -13,7 +13,7 @@ public class NPCScript : MonoBehaviour
 	//Path directory to dialogue for this character in this scene
 	public string m_szDialoguePath = "";
 
-	protected float m_fWalkingSpeed = 1.0f;
+	public float m_fWalkingSpeed = 2.0f;
 	//Should the characters moving logic be active? (Must have m_bActive set to true for this to effect the NPC)
 	public bool m_bIsMoving = false;
 	//Is the NPC being interracted with?  Will stop moving if it is.
@@ -157,7 +157,6 @@ public class NPCScript : MonoBehaviour
 					if(m_bCanMove == true)
 					{
 						GetComponent<Rigidbody2D>().velocity = moveDir * m_fWalkingSpeed;
-						Debug.Log(GetComponent<Rigidbody2D>().velocity);
 					}
 				}
 			}
