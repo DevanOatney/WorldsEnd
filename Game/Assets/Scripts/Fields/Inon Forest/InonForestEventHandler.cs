@@ -7,6 +7,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 	DCScript ds;
 	public GameObject m_goBossBoar;
 	public GameObject[] Phase1_waypoints;
+	public GameObject[] Mushrooms;
 	// Use this for initialization
 	void Start () 
 	{
@@ -28,6 +29,14 @@ public class InonForestEventHandler : BaseEventSystemScript
 				go.SetActive (false);
 
 		}
+		if(ds.m_dStoryFlagField.TryGetValue("Inon_Lydia", out result))
+		{
+			if(result == 11)
+			{
+				foreach(GameObject mushroom in Mushrooms)
+					mushroom.SetActive(true);
+			}
+		}
 
 	}
 
@@ -35,6 +44,11 @@ public class InonForestEventHandler : BaseEventSystemScript
 	{
 		switch(eventID)
 		{
+		case "mushroom":
+		{
+
+		}
+			break;
 		case "BoarBossEndDialogue":
 			{
 				ds.m_dStoryFlagField.Add("BoarBossPart1Finished", 1);

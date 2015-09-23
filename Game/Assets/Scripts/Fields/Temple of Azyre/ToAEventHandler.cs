@@ -31,67 +31,7 @@ public class ToAEventHandler : BaseEventSystemScript
 	// Update is called once per frame
 	void Update () 
 	{
-		case "Lion Statue":
-		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
-			if(messageSystem)
-			{
-				int lionRes = -1;
-				if(ds.m_dStoryFlagField.TryGetValue("Lion_Statue", out lionRes) == false)
-					GameObject briol = GameObject.Find("Briol");
-					briol.transform.position = player.transform.position;
-					briol.GetComponent<SpriteRenderer>().enabled = true;
-					briol.GetComponent<BoxCollider2D>().enabled = true;
-					NPCScript bNpc = briol.GetComponent<NPCScript>();
-					bNpc.m_bIsComingOutOfPlayer = true;
-					bNpc.m_bIsMoving = true;
-					bNpc.m_bActive = true;
-					bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
-					bNpc.ResetAnimFlagsExcept(bNpc.m_nFacingDir);
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue("D0");
-				else
-					GameObject messagesystem = GameObject.Find("Lion Statue")
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue("A0");
-			}
-		}
-		break;
-		case "Temple_Alter_1":
-		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-			}
-			ds.m_dStoryFlagField.Add("Lion_Statue", 1);
-			GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveIntoPlayer();
-			GameObject.Find("Briol").GetComponent<BoxCollider2D>().enabled = false;
-			Invoke("ReleasePlayer", 2.0f);
-		}
-		break;
-		case "EndDialogue":
-		{
-			//turn off all dialogues happening, release bind on input.. umn.. i think that's it?
-			GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject>();
-			foreach(GameObject g in gObjs)
-			{
-				if(g.GetComponent<MessageHandler>() != null)
-				{
-					if(g.GetComponent<NPCScript>() != null)
-						g.GetComponent<NPCScript>().m_bIsBeingInterractedWith = false;
-					g.GetComponent<MessageHandler>().m_bShouldDisplayDialogue = false;
-				}
-			}
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-			}
-		}
-		break;
+
 	}
 
 	override public void HandleEvent(string eventID)
@@ -115,6 +55,73 @@ public class ToAEventHandler : BaseEventSystemScript
 				bNpc.DHF_NPCMoveIntoPlayer();
 			}
 			break;
+			/*
+		case "Lion Statue":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			}
+			if(messageSystem)
+			{
+				int lionRes = -1;
+				if(ds.m_dStoryFlagField.TryGetValue("Lion_Statue", out lionRes) == false)
+				{
+					GameObject briol = GameObject.Find("Briol");
+					briol.transform.position = player.transform.position;
+					briol.GetComponent<SpriteRenderer>().enabled = true;
+					briol.GetComponent<BoxCollider2D>().enabled = true;
+					NPCScript bNpc = briol.GetComponent<NPCScript>();
+					bNpc.m_bIsComingOutOfPlayer = true;
+					bNpc.m_bIsMoving = true;
+					bNpc.m_bActive = true;
+					bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
+					bNpc.ResetAnimFlagsExcept(bNpc.m_nFacingDir);
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue("D0");
+				}
+				else
+				{
+					GameObject messagesystem = GameObject.Find("Lion Statue");
+					messageSystem.GetComponent<MessageHandler>().BeginDialogue("A0");
+				}
+			}
+		}
+			break;
+		case "Temple_Alter_1":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+			ds.m_dStoryFlagField.Add("Lion_Statue", 1);
+			GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveIntoPlayer();
+			GameObject.Find("Briol").GetComponent<BoxCollider2D>().enabled = false;
+			Invoke("ReleasePlayer", 2.0f);
+		}
+			break;
+		case "EndDialogue":
+		{
+			//turn off all dialogues happening, release bind on input.. umn.. i think that's it?
+			GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject>();
+			foreach(GameObject g in gObjs)
+			{
+				if(g.GetComponent<MessageHandler>() != null)
+				{
+					if(g.GetComponent<NPCScript>() != null)
+						g.GetComponent<NPCScript>().m_bIsBeingInterractedWith = false;
+					g.GetComponent<MessageHandler>().m_bShouldDisplayDialogue = false;
+				}
+			}
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			}
+		}
+			break;
+			*/
 		}
 	}
 

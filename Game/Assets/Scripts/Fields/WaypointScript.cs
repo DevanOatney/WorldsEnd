@@ -19,6 +19,7 @@ public class WaypointScript : MonoBehaviour
 		if(c.name == m_szTarget)
 		{
 			GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().WaypointTriggered(GetComponent<BoxCollider2D>());
+			gameObject.SetActive(false);
 		}
 	}
 

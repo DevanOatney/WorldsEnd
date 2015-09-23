@@ -413,10 +413,28 @@ public class InonEventHandler : BaseEventSystemScript
 				int lydRes = -1;
 				if(ds.m_dStoryFlagField.TryGetValue("Inon_Lydia", out lydRes))
 				{
-					if(lydRes == 11)
+					if(lydRes == 12)
+					{
+						messageSystem.GetComponent<MessageHandler>().BeginDialogue("D0");
+					}
+					else if(lydRes == 11)
 					{
 						//TODO: check player inventory for mushrooms
-						messageSystem.GetComponent<MessageHandler>().BeginDialogue("C0");
+						DCScript.CharactersItems mushroom = ds.GetItemFromInventory("Rare Mushroom");
+						if(mushroom != null)
+						{
+							if( mushroom.m_nItemCount == 5)
+							{
+								//has gotten all of the items.
+								ds.RemoveItemAll(mushroom);
+								ds.m_dStoryFlagField["Inon_Lydia"] = 12;
+								messageSystem.GetComponent<MessageHandler>().BeginDialogue("D0");
+							}
+							else
+								messageSystem.GetComponent<MessageHandler>().BeginDialogue("C0");
+						}
+						else
+							messageSystem.GetComponent<MessageHandler>().BeginDialogue("C0");
 					}
 					else if(lydRes == 10)
 					{
