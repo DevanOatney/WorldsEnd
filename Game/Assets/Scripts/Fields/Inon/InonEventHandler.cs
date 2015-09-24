@@ -423,7 +423,7 @@ public class InonEventHandler : BaseEventSystemScript
 						DCScript.CharactersItems mushroom = ds.GetItemFromInventory("Rare Mushroom");
 						if(mushroom != null)
 						{
-							if( mushroom.m_nItemCount == 5)
+							if( mushroom.m_nItemCount <= 5)
 							{
 								//has gotten all of the items.
 								ds.RemoveItemAll(mushroom);

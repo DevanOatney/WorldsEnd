@@ -148,7 +148,12 @@ public class ItemLoaderScript : MonoBehaviour
 			//apparently there is a blank line added at the end of the csv.. and I like having items in excel soooo putting in a break condition!
 			if(counter == lines.Length)
 				break;
-
+			string[] szPieces = line.Split(',');
+			DCScript.ItemData keyItem = new DCScript.ItemData();
+			keyItem.m_szItemName = szPieces[0].Trim();
+			keyItem.m_nItemType = (int)BaseItemScript.ITEM_TYPES.eKEYITEM;
+			keyItem.m_szDescription = szPieces[1].Trim();
+			dcs.GetItemDictionary().Add(keyItem.m_szItemName, keyItem);
 
 		}
 	}
