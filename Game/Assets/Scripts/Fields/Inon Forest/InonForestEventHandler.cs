@@ -46,7 +46,8 @@ public class InonForestEventHandler : BaseEventSystemScript
 		{
 		case "mushroom":
 		{
-
+			ds.AddItem("Rare Mushroom");
+			Debug.Log(ds.GetItemFromInventory("Rare Mushroom").m_nItemCount);
 		}
 			break;
 		case "BoarBossEndDialogue":

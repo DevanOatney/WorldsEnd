@@ -11,6 +11,7 @@ public class ItemLoaderScript : MonoBehaviour
 	public TextAsset m_szArmorItems;
 	public TextAsset m_taModifierListAsset;
 	public TextAsset m_taWeaponDataAsset;
+	public TextAsset m_taQuestItems;
 
 	DCScript dcs;
 	// Use this for initialization
@@ -21,6 +22,7 @@ public class ItemLoaderScript : MonoBehaviour
 		LoadArmorItems();
 		LoadModifiers();
 		LoadWeaponData();
+		LoadQuestItems();
 
 
 		foreach(KeyValuePair<string, DCScript.ItemData> kvp in dcs.GetItemDictionary())
@@ -133,6 +135,20 @@ public class ItemLoaderScript : MonoBehaviour
 			armor.m_szDescription = szPieces[11].Trim();
 			dcs.GetItemDictionary().Add(armor.m_szItemName, armor);
 			
+		}
+	}
+
+	void LoadQuestItems()
+	{
+		string[] lines = m_taQuestItems.text.Split('\n');
+		int counter = 0;
+		foreach(string line in lines)
+		{
+			counter++;
+			//apparently there is a blank line added at the end of the csv.. and I like having items in excel soooo putting in a break condition!
+			if(counter == lines.Length)
+				break;
+
 		}
 	}
 }

@@ -108,7 +108,8 @@ public class NPCScript : MonoBehaviour
 			{
 				m_bReturnToPlayer = false;
 				GetComponent<BoxCollider2D>().enabled = true;
-				gameObject.SetActive(false);
+				gameObject.GetComponent<SpriteRenderer>().enabled = false;
+				gameObject.GetComponent<BoxCollider2D>().enabled = false;
 				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 				Camera.main.GetComponent<CameraFollowTarget>().m_goNextTarget = GameObject.Find("Player");
 			}
@@ -240,8 +241,22 @@ public class NPCScript : MonoBehaviour
 				
 				//Face the NPC toward the direction of the player.
 				Vector2 DirOfPlayer = GameObject.Find("Player").transform.position - transform.position;
-				m_aAnim.SetFloat("m_fXDir", DirOfPlayer.x);
-				m_aAnim.SetFloat("m_fYDir", DirOfPlayer.y);
+				if(DirOfPlayer.x > 0.1f || DirOfPlayer.x < -0.1f)
+				{
+					ResetAnimFlagsExcept(-1);
+					if(DirOfPlayer.x > 0.1f)
+						m_aAnim.SetInteger("m_nFacingDir", 2);
+					else
+						m_aAnim.SetInteger("m_nFacingDir", 1);
+				}
+				else if(DirOfPlayer.y > 0.1f || DirOfPlayer.y  < -0.1f)
+				{
+					ResetAnimFlagsExcept(-1);
+					if(DirOfPlayer.y > 0.1f)
+						m_aAnim.SetInteger("m_nFacingDir", 3);
+					else
+						m_aAnim.SetInteger("m_nFacingDir", 0);
+				}
 			}
 		}
 	}

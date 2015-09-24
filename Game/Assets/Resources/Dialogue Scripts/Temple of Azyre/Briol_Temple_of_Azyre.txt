@@ -1,6 +1,6 @@
 A0|1|Briol||Wow! This place is amazing!||A1
 A1|1|Callan||See! It definately has the space.||A2
-A2|1|Briol||We still need to be careful. It's very dangerous in here.|A3
+A2|1|Briol||We still need to be careful. It's very dangerous in here.||A3
 A3|1|Callan||Whatever. I'll be over here||A4
 A4|1|Narrator||You're going to get yourself killed.||A5
 A5|1|Callan||Says you!||A6

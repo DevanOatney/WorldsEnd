@@ -25,6 +25,14 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject Briol = GameObject.Find("Briol");
 			Camera.main.GetComponent<CameraFollowTarget>().m_goTarget = Briol;
 		}
+		else
+		{
+			foreach(GameObject wpnt in Phase1_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
+			GameObject briol = GameObject.Find("Briol");
+			briol.GetComponent<SpriteRenderer> ().enabled = true;
+			briol.GetComponent<BoxCollider2D> ().enabled = true;
+		}
 	
 	}
 	
@@ -63,7 +71,8 @@ public class ToAEventHandler : BaseEventSystemScript
 					player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
 				}
 				int lionRes = -1;
-				if (ds.m_dStoryFlagField.TryGetValue ("Lion_Statue", out lionRes) == false) {
+				if (ds.m_dStoryFlagField.TryGetValue ("Lion_Statue", out lionRes) == false)
+				{
 					GameObject briol = GameObject.Find ("Briol");
 					briol.transform.position = player.transform.position;
 					briol.GetComponent<SpriteRenderer> ().enabled = true;
@@ -76,7 +85,9 @@ public class ToAEventHandler : BaseEventSystemScript
 					bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
 					GameObject messageSystem = GameObject.Find ("Briol");
 					messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("D0");
-				} else {
+				} 
+				else 
+				{
 					GameObject messageSystem = GameObject.Find ("Lion Statue");
 					messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("A0");
 				}
@@ -84,14 +95,8 @@ public class ToAEventHandler : BaseEventSystemScript
 			break;
 		case "Temple_Alter_1":
 			{
-				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) {
-					player.GetComponent<FieldPlayerMovementScript> ().ReleaseBind ();
-				}
 				ds.m_dStoryFlagField.Add ("Lion_Statue", 1);
 				GameObject.Find ("Briol").GetComponent<NPCScript> ().DHF_NPCMoveIntoPlayer ();
-				GameObject.Find ("Briol").GetComponent<BoxCollider2D> ().enabled = false;
-				Invoke ("ReleasePlayer", 2.0f);
 			}
 			break;
 		case "EndDialogue":
