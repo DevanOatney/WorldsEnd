@@ -149,6 +149,7 @@ public class ItemLoaderScript : MonoBehaviour
 			if(counter == lines.Length)
 				break;
 
+
 		}
 	}
 }

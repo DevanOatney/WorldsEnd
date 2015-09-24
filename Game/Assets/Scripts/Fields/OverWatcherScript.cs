@@ -1027,6 +1027,9 @@ public class OverWatcherScript : MonoBehaviour {
 		case 3:
 			szTypeName = "Junk";
 			break;
+		case 4:
+			szTypeName = "Key Items";
+			break;
 		}
 		GUI.Label(new Rect(2, iconYOffset+iconWidth+8, 100, 21), szTypeName);
 		//draw selector
@@ -1053,14 +1056,14 @@ public class OverWatcherScript : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow))
 			{
 				m_nItemTypeIter++;
-				if(m_nItemTypeIter >= 4)
+				if(m_nItemTypeIter >= 5)
 					m_nItemTypeIter = 0;
 			}
 			else if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
 			{
 				m_nItemTypeIter--;
 				if(m_nItemTypeIter < 0)
-					m_nItemTypeIter = 3;
+					m_nItemTypeIter = 4;
 			}
 			else if(Input.GetKeyDown(KeyCode.Return))
 			{
@@ -1247,8 +1250,8 @@ public class OverWatcherScript : MonoBehaviour {
 		List<DCScript.CharactersItems> fullInv =  dc.GetInventory();
 		foreach(DCScript.CharactersItems item in fullInv)
 		{
-			// 0 - useable item, 1- Armor, 2- Trinkets, 3- Junk
-			//1-4 : useable item, 5 : weapon, 6: armor, 7: junk
+			// 0 - useable item, 1- Armor, 2- Trinkets, 3- Junk, 4: key
+			//1-4 : useable item, 5 : weapon, 6: armor, 7: junk, 8: key
 			switch(type)
 			{
 			case 0:
@@ -1272,6 +1275,12 @@ public class OverWatcherScript : MonoBehaviour {
 			case 3: 
 			{
 				if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eJUNK)
+					inv.Add(item);
+			}
+				break;
+			case 4:
+			{
+				if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eKEYITEM)
 					inv.Add(item);
 			}
 				break;

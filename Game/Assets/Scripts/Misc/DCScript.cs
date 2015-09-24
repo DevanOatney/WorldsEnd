@@ -51,6 +51,8 @@ public class DCScript : MonoBehaviour
 	public class ItemData
 	{
 		public string m_szItemName;
+		// 0 - useable item, 1- Armor, 2- Trinkets, 3- Junk
+		//1-4 : useable item, 5 : weapon, 6: armor, 7: junk
 		public int m_nItemType;
 		public int m_nHPMod;
 		public int m_nPowMod;
