@@ -115,6 +115,8 @@ public class OverWatcherScript : MonoBehaviour {
 			GameObject.Find("PersistantData").GetComponent<DCScript>().GetParty().Clear();
 			GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
 			Callan.GetComponent<PlayerBattleScript>().SetUnitStats();
+			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
+			Briol.GetComponent<PlayerBattleScript>().SetUnitStats();
 		}
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		if(CAudioHelper.Instance == null)
@@ -285,6 +287,7 @@ public class OverWatcherScript : MonoBehaviour {
 			}
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 		}
+		/*
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
 			//reset all of the iters and flags
@@ -318,7 +321,7 @@ public class OverWatcherScript : MonoBehaviour {
 				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 			}
 		}
-
+		*/
 		if(m_bShouldPause == false)
 		{
 			m_fTimer += Time.deltaTime;
@@ -340,6 +343,8 @@ public class OverWatcherScript : MonoBehaviour {
 			}
 		}
 		#endregion
+		/*
+		#region Input For Menu
 		if(m_bShouldPause == true)
 		{
 			if(Input.GetKeyDown(KeyCode.DownArrow))
@@ -551,9 +556,10 @@ public class OverWatcherScript : MonoBehaviour {
 				}
 			}
 		}
-		#region Input For Menu
+
 
 		#endregion
+		*/
 	}
 
 
