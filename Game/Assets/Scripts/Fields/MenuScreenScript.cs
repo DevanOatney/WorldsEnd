@@ -35,7 +35,7 @@ public class MenuScreenScript : MonoBehaviour
 
 	GameObject[] m_gPartyMembers = new GameObject[3];
 	public GameObject partyMemberPrefab;
-	public GameObject scaled_partyMemberPrefab;
+	public GameObject m_goCharacterSelector;
 
 
 	public GameObject m_goMenu;
@@ -484,13 +484,16 @@ public class MenuScreenScript : MonoBehaviour
 			m_gPartyMembers[i].transform.FindChild("Character Portrait").GetComponent<Image>().sprite = Resources.Load<Sprite>("Units/Ally/" + character.m_szCharacterName + "/Portraits/" + character.m_szCharacterName + "1");
 
 			//Create the icons for the item use screen
-			pMem = Instantiate(scaled_partyMemberPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-			pMem.transform.SetParent(m_goInventory.transform.FindChild("Character Selector"));
-			pMem.GetComponent<RectTransform>().anchoredPosition = new Vector2(-42, 72 - 80*i);
+			pMem = m_goCharacterSelector.transform.FindChild("Scaled_PartyMember" +(i+1).ToString()).gameObject;
+			pMem.SetActive(true);
 			pMem.transform.FindChild("Character Name").GetComponent<Text>().text = character.m_szCharacterName;
-			pMem.transform.FindChild("Character HP").GetComponent<Text>().text = "HP: \t" + character.m_nCurHP.ToString() + " \t / \t" + character.m_nMaxHP.ToString();
+			pMem.transform.FindChild("Character HP").GetComponent<Text>().text = "HP: " + character.m_nCurHP.ToString() + " / " + character.m_nMaxHP.ToString();
 
 			i++;
+		}
+		for(;i<3; ++i)
+		{
+			m_goCharacterSelector.transform.FindChild("Scaled_PartyMember" +(i+1).ToString()).gameObject.SetActive(false);
 		}
 	}
 }
