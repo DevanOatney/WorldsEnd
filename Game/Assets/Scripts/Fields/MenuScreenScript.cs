@@ -35,15 +35,18 @@ public class MenuScreenScript : MonoBehaviour
 
 	GameObject[] m_gPartyMembers = new GameObject[3];
 	public GameObject partyMemberPrefab;
+	public GameObject scaled_partyMemberPrefab;
 
 
 	public GameObject m_goMenu;
 	public GameObject m_goInventory;
-
 	public GameObject m_goStatus;
 	public GameObject m_goEquipment;
 
 	public GameObject m_goItemPrefab;
+	GameObject m_goItemSelected = null;
+
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -99,6 +102,9 @@ public class MenuScreenScript : MonoBehaviour
 							child.gameObject.SetActive(true);
 						}
 						m_goMenu.GetComponent<Animator>().Play("OpeningMenu");
+						transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
+						transform.FindChild("Inventory").FindChild("Character Selector").gameObject.SetActive(false);
+						
 					}
 					else
 					{
@@ -278,9 +284,6 @@ public class MenuScreenScript : MonoBehaviour
 						if(data)
 						{
 							Destroy(data);
-							//data = new GameObject("PersistantData");
-							//data.AddComponent<DCScript>();
-							//DontDestroyOnLoad(dc);
 						}
 						Application.LoadLevel("Intro_Scene");
 					}
@@ -344,7 +347,6 @@ public class MenuScreenScript : MonoBehaviour
 		case 0:
 		{
 			//opening up the inventory
-
 			m_goMenu.GetComponent<Animator>().Play("ClosingMenu");
 			m_goInventory.GetComponent<Animator>().Play("OpeningInventory");
 		}
@@ -384,6 +386,38 @@ public class MenuScreenScript : MonoBehaviour
 				xOffset += xAdj;
 				i++;
 			}
+		}
+	}
+
+	public void InventoryItemSelected(GameObject pItem)
+	{
+		m_goItemSelected = pItem;
+		DCScript.CharactersItems item = dc.GetItemFromInventory(pItem.transform.FindChild("Item Name").GetComponent<Text>().text);
+		Transform tChoice = transform.FindChild("Inventory").FindChild("Item Choice");
+		tChoice.gameObject.SetActive(true);
+		if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL)
+		{
+			//Single heal item, draw one selector and allow the player to move up/down.
+			
+		}
+		else if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
+		{
+			//Group heal, draw selector over all units, heal if player presses confirm.
+		}
+		else
+		{
+			//Just show discard option, grey out use option.
+			tChoice.FindChild("Use").GetComponent<Image>().color = Color.grey;
+		}
+	}
+
+	public void ItemChoice_USE()
+	{
+		DCScript.CharactersItems item = dc.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
+		if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL ||
+		   item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
+		{
+			transform.FindChild("Inventory").FindChild("Character Selector").gameObject.SetActive(true);
 		}
 	}
 
@@ -438,6 +472,7 @@ public class MenuScreenScript : MonoBehaviour
 		int i = 0;
 		foreach(DCScript.CharacterData character in m_lParty)
 		{
+			//Create the icons for the menu screen
 			GameObject pMem = Instantiate(partyMemberPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 			pMem.GetComponent<RectTransform>().SetParent(gameObject.transform.FindChild("Menu").transform);
 			m_gPartyMembers[i] = pMem;
@@ -447,6 +482,14 @@ public class MenuScreenScript : MonoBehaviour
 			m_gPartyMembers[i].transform.FindChild("Character HP").GetComponent<Text>().text = "HP: \t" + character.m_nCurHP.ToString() + " \t / \t" + character.m_nMaxHP.ToString();
 			m_gPartyMembers[i].transform.FindChild("Character Experience").GetComponent<Text>().text = "EXP: \t" + character.m_nCurrentEXP.ToString() + " \t / \t" + "1000";
 			m_gPartyMembers[i].transform.FindChild("Character Portrait").GetComponent<Image>().sprite = Resources.Load<Sprite>("Units/Ally/" + character.m_szCharacterName + "/Portraits/" + character.m_szCharacterName + "1");
+
+			//Create the icons for the item use screen
+			pMem = Instantiate(scaled_partyMemberPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+			pMem.transform.SetParent(m_goInventory.transform.FindChild("Character Selector"));
+			pMem.GetComponent<RectTransform>().anchoredPosition = new Vector2(-42, 72 - 80*i);
+			pMem.transform.FindChild("Character Name").GetComponent<Text>().text = character.m_szCharacterName;
+			pMem.transform.FindChild("Character HP").GetComponent<Text>().text = "HP: \t" + character.m_nCurHP.ToString() + " \t / \t" + character.m_nMaxHP.ToString();
+
 			i++;
 		}
 	}
