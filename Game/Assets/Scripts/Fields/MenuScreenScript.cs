@@ -411,6 +411,7 @@ public class MenuScreenScript : MonoBehaviour
 		}
 	}
 
+	//"Use" has been chosen
 	public void ItemChoice_USE()
 	{
 		DCScript.CharactersItems item = dc.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
@@ -421,6 +422,164 @@ public class MenuScreenScript : MonoBehaviour
 		}
 	}
 
+	//A character has been chosen to use an item on
+	public void UseItemOnSelectedCharacter(int characterIndex)
+	{
+		//m_gPartyMembers[characterIndex];
+		DCScript.CharactersItems item = dc.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
+		DCScript.ItemData dcItemData = dc.GetItemFromDictionary(item.m_szItemName);
+		/*
+			
+			//using an item on a character.
+			List<DCScript.CharactersItems> theInv = new List<DCScript.CharactersItems>();
+			theInv = GetItemsOfType(m_nItemTypeIter);
+			DCScript.ItemData ni = dc.GetItemFromDictionary(theInv[m_nItemIter].m_szItemName);
+			switch(ni.m_szDescription)
+		 */
+		switch(dcItemData.m_szDescription)
+		{
+			case "Cures Poison.":
+			{
+				//check to see if it's healing all targets or just one.
+				if(dcItemData.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
+				{
+					//check to see if anyone is effected by poison
+					int removeIter = -1;
+					int counter = 0;
+					foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
+					{
+						if(se.m_szName == "Poison")
+						{
+							removeIter = counter;
+							se.m_lEffectedMembers.Clear();
+						}
+						counter++;
+					}
+					if(removeIter != -1)
+					{
+						//some people were effected by poison, decrement the item count by one, remove the status effect.
+						
+						//is this the last of this item?
+						if(item.m_nItemCount == 1)
+						{
+							m_goCharacterSelector.SetActive(false);
+							dc.RemoveItem(item);
+						}
+						//this isn't the last item? just remove one of it then.
+						else
+							dc.RemoveItem(item);
+						              //remove the status effect from the party
+						dc.GetStatusEffects().RemoveAt(removeIter);
+						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect("Poison");
+					}
+					else
+					{
+						//no unit was effected by this status, do nothing
+					}
+					
+				}
+				else
+				{
+					//only trying to remove poison from a single target
+					//check to see if anyone is effected by poison
+					int removeIter = -1;
+					int counter = 0;
+					bool effectFound = false;
+					foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
+					{
+						if(se.m_szName == "Poison")
+						{
+							removeIter = counter;
+							if(se.m_lEffectedMembers.Remove(dc.GetParty()[characterIndex].m_szCharacterName) == true)
+							{
+								//this unit WAS effected by the status
+								effectFound = true;
+							}
+						}
+						counter++;
+					}
+					if(removeIter != -1 && effectFound == true)
+					{
+						//is this the last of this item?
+						if(item.m_nItemCount == 1)
+						{
+							m_goCharacterSelector.SetActive(false);
+							dc.RemoveItem(item);
+						}
+						//this isn't the last item? just remove one of it then.
+						else
+							dc.RemoveItem(item);
+						//if there are no more effect members, remove the status effect from the party.
+						if(dc.GetStatusEffects()[removeIter].m_lEffectedMembers.Count == 0)
+						{
+							dc.GetStatusEffects().RemoveAt(removeIter);
+							GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect("Poison");
+						}
+					}
+					else
+					{
+						//no unit had the status effect we're trying to remove.
+					}
+					
+				}
+				
+			}
+				break;
+			case "Cures Stone.":
+			{
+			}
+				break;
+			case "Cures Paralyze":
+			{
+			}
+				break;
+			case "Cures Ailments.":
+			{
+			}
+				break;
+			default:
+			{
+				//If we landed in here it means that it's just a heal item.
+				
+				int healingAmnt = dcItemData.m_nHPMod;
+				//check to see if it's healing all targets or just one.
+				if(dcItemData.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
+				{
+					//yep, heal everyone in the party, then go back to the inventory screen.
+					foreach(DCScript.CharacterData unit in dc.GetParty())
+					{
+						unit.m_nCurHP += healingAmnt;
+						if(unit.m_nCurHP > unit.m_nMaxHP)
+							unit.m_nCurHP = unit.m_nMaxHP;
+					}
+				}
+				else
+				{
+					//heal whichever unit is selected
+					DCScript.CharacterData unit = dc.GetParty()[characterIndex];
+					unit.m_nCurHP += healingAmnt;
+					if(unit.m_nCurHP > unit.m_nMaxHP)
+						unit.m_nCurHP = unit.m_nMaxHP;
+				}
+				
+				//is this the last of this item?
+				if(item.m_nItemCount == 1)
+				{
+					m_goCharacterSelector.SetActive(false);
+					dc.RemoveItem(item);
+				}
+				//this isn't the last item? just remove one of it then.
+				else
+					dc.RemoveItem(item);
+				
+				
+				
+			}
+				break;
+		}
+		PopulateInventory(0);
+	}
+	
 	List<DCScript.CharactersItems> GetItemsOfType(int type)
 	{
 		List<DCScript.CharactersItems> inv = new List<DCScript.CharactersItems>();
