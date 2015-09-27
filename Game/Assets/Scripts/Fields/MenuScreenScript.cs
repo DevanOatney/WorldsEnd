@@ -423,8 +423,18 @@ public class MenuScreenScript : MonoBehaviour
 		if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL ||
 		   item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
 		{
+			transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
 			transform.FindChild("Inventory").FindChild("Character Selector").gameObject.SetActive(true);
 		}
+	}
+
+	//"Discard" has been selected
+	public void ItemChoice_DISCARD()
+	{
+		DCScript.CharactersItems item = dc.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
+		transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
+		m_goCharacterSelector.SetActive(false);
+		dc.RemoveItem(item);
 	}
 
 	//"Cancel" has been selected
@@ -440,14 +450,6 @@ public class MenuScreenScript : MonoBehaviour
 		//m_gPartyMembers[characterIndex];
 		DCScript.CharactersItems item = dc.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
 		DCScript.ItemData dcItemData = dc.GetItemFromDictionary(item.m_szItemName);
-		/*
-			
-			//using an item on a character.
-			List<DCScript.CharactersItems> theInv = new List<DCScript.CharactersItems>();
-			theInv = GetItemsOfType(m_nItemTypeIter);
-			DCScript.ItemData ni = dc.GetItemFromDictionary(theInv[m_nItemIter].m_szItemName);
-			switch(ni.m_szDescription)
-		 */
 		switch(dcItemData.m_szDescription)
 		{
 			case "Cures Poison.":
