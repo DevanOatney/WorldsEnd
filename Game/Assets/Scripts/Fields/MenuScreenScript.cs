@@ -669,4 +669,14 @@ public class MenuScreenScript : MonoBehaviour
 			m_goCharacterSelector.transform.FindChild("Scaled_PartyMember" +(i+1).ToString()).gameObject.SetActive(false);
 		}
 	}
+
+	public void Image_Brighten(GameObject image)
+	{
+		image.GetComponent<Image>().color = new Color(255, 255, 255);
+	}
+	public void Image_Darken(GameObject image)
+	{
+		Debug.Log(image);
+		image.GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f);
+	}
 }
