@@ -362,7 +362,6 @@ public class MenuScreenScript : MonoBehaviour
 			Destroy(child.gameObject);
 		}
 		List<DCScript.CharactersItems> m_lInv = GetItemsOfType(type);
-		Debug.Log(m_lInv.Count);
 		int i = 0;
 		float xOffset = -240.0f; float xAdj = 240.0f;
 		float yOffset = 380.0f; float yAdj = -40.0f;
@@ -391,23 +390,29 @@ public class MenuScreenScript : MonoBehaviour
 
 	public void InventoryItemSelected(GameObject pItem)
 	{
-		m_goItemSelected = pItem;
-		DCScript.CharactersItems item = dc.GetItemFromInventory(pItem.transform.FindChild("Item Name").GetComponent<Text>().text);
 		Transform tChoice = transform.FindChild("Inventory").FindChild("Item Choice");
-		tChoice.gameObject.SetActive(true);
-		if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL)
+		if(tChoice.gameObject.activeSelf == false)
 		{
-			//Single heal item, draw one selector and allow the player to move up/down.
+			m_goItemSelected = pItem;
+			DCScript.CharactersItems item = dc.GetItemFromInventory(pItem.transform.FindChild("Item Name").GetComponent<Text>().text);
 			
-		}
-		else if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
-		{
-			//Group heal, draw selector over all units, heal if player presses confirm.
-		}
-		else
-		{
-			//Just show discard option, grey out use option.
-			tChoice.FindChild("Use").GetComponent<Image>().color = Color.grey;
+			tChoice.gameObject.SetActive(true);
+			if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL)
+			{
+				//Single heal item, draw one selector and allow the player to move up/down.
+				tChoice.FindChild("Use").GetComponent<Image>().color = Color.white;
+				
+			}
+			else if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
+			{
+				//Group heal, draw selector over all units, heal if player presses confirm.
+				tChoice.FindChild("Use").GetComponent<Image>().color = Color.white;
+			}
+			else
+			{
+				//Just show discard option, grey out use option.
+				tChoice.FindChild("Use").GetComponent<Image>().color = Color.grey;
+			}
 		}
 	}
 
@@ -420,6 +425,13 @@ public class MenuScreenScript : MonoBehaviour
 		{
 			transform.FindChild("Inventory").FindChild("Character Selector").gameObject.SetActive(true);
 		}
+	}
+
+	//"Cancel" has been selected
+	public void ItemChoice_CANCEL()
+	{
+		m_goItemSelected = null;
+		transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
 	}
 
 	//A character has been chosen to use an item on
