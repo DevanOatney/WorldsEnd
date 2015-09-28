@@ -27,6 +27,21 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject Briol = GameObject.Find("Briol");
 			Camera.main.GetComponent<CameraFollowTarget>().m_goTarget = Briol;
 		}
+		if (ds.m_dStoryFlagField.TryGetValue("BoarBattle", out result))
+		{
+			if (result == 1)
+			{
+				ds.m_dStoryFlagField.Remove("BoarBattle");
+				ds.m_dStoryFlagField.Add("BoarBattle", 2);
+				HandleEvent("AfterBoar");
+			}
+			else
+			{
+			m_goBoar.SetActive(false);
+			}	
+			foreach (GameObject go in Phase1_waypoints)
+				go.SetActive (false);
+		}
 		else
 		{
 			foreach(GameObject wpnt in Phase1_waypoints)
@@ -79,6 +94,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject boar = GameObject.Find ("Boar");
 			boar.GetComponent<NPCScript> ().DHF_NPCMoveToGameobject (GameObject.Find ("Boar_Battle"), true);
 			GameObject.Find ("Boar_Battle").GetComponent<BoxCollider2D> ().enabled = true;
+			ds.m_dStoryFlagField.Add("BoarBattle", 1);
 			Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
 			Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
 			StartBoarBattle();
@@ -139,6 +155,63 @@ public class ToAEventHandler : BaseEventSystemScript
 				NPCScript bNpc = briol.GetComponent<NPCScript> ();
 				bNpc.DHF_NPCMoveIntoPlayer ();
 			}
+			break;
+		case "EndSeeBoar":
+		{
+			GameObject briol = GameObject.Find ("Briol");
+			NPCScript bNpc = briol.GetComponent<NPCScript> ();
+			bNpc.DHF_NPCMoveIntoPlayer ();
+		}
+			break;
+		case "Boar_Boss":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag ("Player");
+			player.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("BoarBoss"), true);
+			GameObject.Find ("BoarBoss").GetComponent<BoxCollider2D> ().enabled = true;
+			GameObject briol = GameObject.Find ("Briol");
+			briol.GetComponent<NPCScript> ().DHF_NPCMoveToGameobject (GameObject.Find ("BoarBoss"), true);
+			ds.m_dStoryFlagField.Add("BoarBossFinish", 1);
+			Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
+			Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
+			StartBoarBossBattle();
+		}
+			break;
+			
+		case "Pan_to_Boar_Azyre":
+		{
+			GameObject Boar2 = GameObject.Find("Boar2");
+			Camera.main.GetComponent<CameraFollowTarget>().m_goTarget = Boar2;
+			Boar2.GetComponent<NPCScript> ().DHF_NPCMoveToGameobject (GameObject.Find ("to basement"), true);
+			GameObject.Find("to basement").GetComponent<BoxCollider2D>().enabled = true;
+			GameObject player = GameObject.Find("Player");
+			Camera.main.GetComponent<CameraFollowTarget>().m_goTarget = player;
+			GameObject messageSystem = GameObject.Find ("Briol");
+			messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("B2");
+		}
+			break;
+
+		case "AfterBoar":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag ("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
+			}
+			GameObject boar = GameObject.Find("Boar");
+			boar.GetComponent<NPCScript>().m_bActive = false;
+			GameObject briol = GameObject.Find ("Briol");
+			briol.transform.position = player.transform.position;
+			briol.GetComponent<SpriteRenderer> ().enabled = true;
+			briol.GetComponent<BoxCollider2D> ().enabled = true;
+			NPCScript bNpc = briol.GetComponent<NPCScript> ();
+			bNpc.m_bIsComingOutOfPlayer = true;
+			bNpc.m_bIsMoving = true;
+			bNpc.m_bActive = true;
+			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
+			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
+			GameObject messageSystem = GameObject.Find ("Briol");
+			messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("A7");
+		}
 			break;
 		
 		case "Lion Statue":
@@ -208,6 +281,49 @@ public class ToAEventHandler : BaseEventSystemScript
 			src.GetComponent<MessageHandler>().BeginDialogue("A6");
 		}
 			break;
+		case "Basement2":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag ("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
+			}
+			player.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("BoarBossPoint"), true);
+			GameObject.Find ("BoarBossPoint").GetComponent<BoxCollider2D> ().enabled = true;
+			GameObject briol = GameObject.Find ("Briol");
+			briol.transform.position = player.transform.position;
+			briol.GetComponent<SpriteRenderer> ().enabled = true;
+			briol.GetComponent<BoxCollider2D> ().enabled = true;
+			NPCScript bNpc = briol.GetComponent<NPCScript> ();
+			bNpc.m_bIsComingOutOfPlayer = true;
+			bNpc.m_bIsMoving = false;
+			bNpc.m_bActive = true;
+			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eRIGHT;
+			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
+			briol.GetComponent<MessageHandler> ().BeginDialogue ("B0");
+		}
+			break;
+		case "BoarRunoff":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag ("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
+			}
+			GameObject briol = GameObject.Find ("Briol");
+			briol.transform.position = player.transform.position;
+			briol.GetComponent<SpriteRenderer> ().enabled = true;
+			briol.GetComponent<BoxCollider2D> ().enabled = true;
+			NPCScript bNpc = briol.GetComponent<NPCScript> ();
+			bNpc.m_bIsComingOutOfPlayer = true;
+			bNpc.m_bIsMoving = false;
+			bNpc.m_bActive = true;
+			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eRIGHT;
+			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
+			GameObject messageSystem = GameObject.Find ("Briol");
+			messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("B0");
+		}
+			break;
 		case "Interior":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag ("Player");
@@ -250,6 +366,27 @@ public class ToAEventHandler : BaseEventSystemScript
 			go.GetComponent<DCScript>().SetPreviousFieldName(Application.loadedLevelName);
 			go.GetComponent<DCScript>().SetBattleFieldBackgroundIter(2);
 
+			
+			Application.LoadLevel("Battle_Scene");
+		}
+	}
+	void StartBoarBossBattle()
+	{
+		GameObject dc = GameObject.Find("PersistantData");
+		if(dc)
+		{
+			List<string> bossEncounter = new List<string>();
+			bossEncounter.Add("BoarBoss");
+			//Set the names of the list of enemies the player is about to fight
+			dc.GetComponent<DCScript>().SetEnemyNames(bossEncounter);
+			//Set the position of the player before the battle starts
+			GameObject go = GameObject.Find("PersistantData");
+			GameObject m_goPlayer = GameObject.Find("Player");
+			go.GetComponent<DCScript>().SetPreviousPosition(m_goPlayer.transform.position);
+			go.GetComponent<DCScript>().SetPreviousFacingDirection(m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir);
+			go.GetComponent<DCScript>().SetPreviousFieldName(Application.loadedLevelName);
+			go.GetComponent<DCScript>().SetBattleFieldBackgroundIter(2);
+			
 			
 			Application.LoadLevel("Battle_Scene");
 		}

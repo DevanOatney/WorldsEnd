@@ -10,7 +10,8 @@ A8|1|Callan||Alright. Let's go.||A9
 A9|3|End_Dialogue
 B0|1|Briol||Look! Over there!||B1
 B1|3|Pan_to_Boar_Azyre
-B2|1|Briol||They must be downstairs! Let's go!||A8
+B2|1|Briol||They must be downstairs! Let's go!||B3
+B3|3|EndSeeBoar
 C0|1|Briol||There it is.||C1
 C1|1|Callan||It's bigger that I remember.||C2
 C2|1|Briol||You just saw it outside. Anyway, I think we can take it if we work together.||C3
