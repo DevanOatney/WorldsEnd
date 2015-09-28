@@ -70,27 +70,7 @@ public class ToAEventHandler : BaseEventSystemScript
 		}
 			
 			break;
-		case "Interior":
-		{
-			GameObject player = GameObject.FindGameObjectWithTag ("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
-			}
-				GameObject briol = GameObject.Find ("Briol");
-				briol.transform.position = player.transform.position;
-				briol.GetComponent<SpriteRenderer> ().enabled = true;
-				briol.GetComponent<BoxCollider2D> ().enabled = true;
-				NPCScript bNpc = briol.GetComponent<NPCScript> ();
-				bNpc.m_bIsComingOutOfPlayer = true;
-				bNpc.m_bIsMoving = true;
-				bNpc.m_bActive = true;
-				bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
-				bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
-				GameObject messageSystem = GameObject.Find ("Briol");
-				messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("A0");
-		}
-		break;
+		
 		case "Boar_Battle":
 		{
 			GameObject src = GameObject.Find ("Player");
@@ -224,6 +204,27 @@ public class ToAEventHandler : BaseEventSystemScript
 		{
 			GameObject src = GameObject.Find("Player");
 			src.GetComponent<MessageHandler>().BeginDialogue("A6");
+		}
+			break;
+		case "Interior":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag ("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
+			}
+			GameObject briol = GameObject.Find ("Briol");
+			briol.transform.position = player.transform.position;
+			briol.GetComponent<SpriteRenderer> ().enabled = true;
+			briol.GetComponent<BoxCollider2D> ().enabled = true;
+			NPCScript bNpc = briol.GetComponent<NPCScript> ();
+			bNpc.m_bIsComingOutOfPlayer = true;
+			bNpc.m_bIsMoving = true;
+			bNpc.m_bActive = true;
+			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
+			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
+			GameObject messageSystem = GameObject.Find ("Briol");
+			messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("A0");
 		}
 			break;
 		}
