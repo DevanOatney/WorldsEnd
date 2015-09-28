@@ -44,7 +44,9 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goEquipment;
 
 	public GameObject m_goItemPrefab;
-	GameObject m_goItemSelected = null;
+	public GameObject m_goItemSelected = null;
+	int m_nCharacterSelectedIndexForItemUse = 0;
+	bool m_bDisableInput = false;
 
 
 	// Use this for initialization
@@ -63,97 +65,159 @@ public class MenuScreenScript : MonoBehaviour
 	void Update () 
 	{
 		#region Input For Menu
-		if(Input.GetKeyDown(KeyCode.Escape))
+		if(m_bDisableInput == false)
 		{
-			//reset all of the iters and flags
-			if(m_bCharacterBeingSelected == true)
+			if(Input.GetKeyDown(KeyCode.Escape))
 			{
-				m_bCharacterBeingSelected = false;
-				m_nCharacterSelectionIndex = 0;
-			}
-			else
-			{
-				m_nMenuSelectionIndex = 0;
-				m_bShowDifferentMenuScreen = false;
-				
-				m_bShouldPause = !m_bShouldPause;
-				if(m_bShouldPause == false)
+				//reset all of the iters and flags
+				if(m_bCharacterBeingSelected == true)
 				{
-					foreach(Transform child in transform)
-					{
-						child.gameObject.SetActive(false);
-					}
-					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-					Camera.main.GetComponent<GreyScaleScript>().SendMessage("EndGreyScale");
-					m_dFunc = null;
+					m_bCharacterBeingSelected = false;
+					m_nCharacterSelectionIndex = 0;
 				}
 				else
 				{
-					if(GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
+					m_nMenuSelectionIndex = 0;
+					m_bShowDifferentMenuScreen = false;
+					
+					m_bShouldPause = !m_bShouldPause;
+					if(m_bShouldPause == false)
 					{
-						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
-						Camera.main.GetComponent<GreyScaleScript>().SendMessage("StartGreyScale");
 						foreach(Transform child in transform)
 						{
-							child.gameObject.SetActive(true);
+							child.gameObject.SetActive(false);
 						}
-						foreach(Transform child in transform.FindChild("Menu").transform)
-						{
-							child.gameObject.SetActive(true);
-						}
-						m_goMenu.GetComponent<Animator>().Play("OpeningMenu");
-						transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
-						transform.FindChild("Inventory").FindChild("Character Selector").gameObject.SetActive(false);
-						
+						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+						Camera.main.GetComponent<GreyScaleScript>().SendMessage("EndGreyScale");
+						m_dFunc = null;
 					}
 					else
 					{
-						m_bShouldPause = false;
-
-					}
-				}
-				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-			}
-		}
-		if(m_bShouldPause == true)
-		{
-			if(Input.GetKeyDown(KeyCode.DownArrow))
-			{
-				if(m_bCharacterBeingSelected == true && m_bShowDifferentMenuScreen == false)
-				{
-					//If we're selecting a character
-					m_nCharacterSelectionIndex++;
-					if(m_nCharacterSelectionIndex >= dc.GetParty().Count)
-					{
-						m_nCharacterSelectionIndex = 0;
-					}
-				}
-				else if(m_bCharacterBeingSelected == false && m_bShowDifferentMenuScreen == false)
-				{
-					//If we're selecting a menu option
-					m_nMenuSelectionIndex++;
-					if(m_nMenuSelectionIndex >= 6)
-					{
-						m_nMenuSelectionIndex = 0;
-					}
-				}
-				else if(m_bShowDifferentMenuScreen == true && m_dFunc == EquipmentScreen)
-				{
-					//we're in the equipment screen.. 
-					if(m_bChangeSelected == false && m_bOptimizeSelected == false && m_bClearSelected == false)
-					{
-						//nothing in the equipment options has been selected yet, cycle through the options
-						m_nEquipmentChangeIndex++;
-						if(m_nEquipmentChangeIndex >= 3)
-							m_nEquipmentChangeIndex = 0;
-					}
-					else if(m_bChangeSelected == true)
-					{
-						if(m_bSlotChangeChosen == false && m_bSlotChangeChosen == false)
+						if(GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
 						{
-							m_nEquipmentSlotChangeIndex++;
-							if(m_nEquipmentSlotChangeIndex > 7)
-								m_nEquipmentSlotChangeIndex = 0;
+							GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
+							Camera.main.GetComponent<GreyScaleScript>().SendMessage("StartGreyScale");
+							foreach(Transform child in transform)
+							{
+								child.gameObject.SetActive(true);
+							}
+							foreach(Transform child in transform.FindChild("Menu").transform)
+							{
+								child.gameObject.SetActive(true);
+							}
+							m_goMenu.GetComponent<Animator>().Play("OpeningMenu");
+							transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
+							transform.FindChild("Inventory").FindChild("Character Selector").gameObject.SetActive(false);
+							
+						}
+						else
+						{
+							m_bShouldPause = false;
+			
+						}
+					}
+					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+				}
+			}
+			if(m_bShouldPause == true)
+			{
+				if(Input.GetKeyDown(KeyCode.DownArrow))
+				{
+					if(m_bCharacterBeingSelected == true && m_bShowDifferentMenuScreen == false)
+					{
+						//If we're selecting a character
+						m_nCharacterSelectionIndex++;
+						if(m_nCharacterSelectionIndex >= dc.GetParty().Count)
+						{
+							m_nCharacterSelectionIndex = 0;
+						}
+					}
+					else if(m_bCharacterBeingSelected == false && m_bShowDifferentMenuScreen == false)
+					{
+						//If we're selecting a menu option
+						m_nMenuSelectionIndex++;
+						if(m_nMenuSelectionIndex >= 6)
+						{
+							m_nMenuSelectionIndex = 0;
+						}
+					}
+					else if(m_bShowDifferentMenuScreen == true && m_dFunc == EquipmentScreen)
+					{
+						//we're in the equipment screen.. 
+						if(m_bChangeSelected == false && m_bOptimizeSelected == false && m_bClearSelected == false)
+						{
+							//nothing in the equipment options has been selected yet, cycle through the options
+							m_nEquipmentChangeIndex++;
+							if(m_nEquipmentChangeIndex >= 3)
+								m_nEquipmentChangeIndex = 0;
+						}
+						else if(m_bChangeSelected == true)
+						{
+							if(m_bSlotChangeChosen == false && m_bSlotChangeChosen == false)
+							{
+								m_nEquipmentSlotChangeIndex++;
+								if(m_nEquipmentSlotChangeIndex > 7)
+									m_nEquipmentSlotChangeIndex = 0;
+							}
+							else if(m_bSlotChangeChosen == true)
+							{
+								//cycle through the different items available for the slot that was selected
+								int nItemType = m_nEquipmentSlotChangeIndex + (int)BaseItemScript.ITEM_TYPES.eHELMARMOR;
+								if(nItemType > (int)BaseItemScript.ITEM_TYPES.eTRINKET)
+									nItemType = (int)BaseItemScript.ITEM_TYPES.eTRINKET;
+								List<DCScript.CharactersItems> inv = new List<DCScript.CharactersItems>();
+								foreach(DCScript.CharactersItems item in dc.GetInventory())
+								{
+									if(nItemType == item.m_nItemType)
+										inv.Add(item);
+								}
+								if(inv.Count > 0)
+								{
+									m_nItemSlotIndex++;
+									if(m_nItemSlotIndex >= inv.Count)
+										m_nItemSlotIndex = 0;
+								}
+								
+							}
+						}
+					}
+				}
+				else if(Input.GetKeyDown(KeyCode.UpArrow))
+				{
+					if(m_bCharacterBeingSelected == true && m_bShowDifferentMenuScreen == false)
+					{
+						//If we're selecting a character
+						m_nCharacterSelectionIndex--;
+						if(m_nCharacterSelectionIndex < 0)
+						{
+							m_nCharacterSelectionIndex = dc.GetParty().Count - 1;
+						}
+					}
+					else if(m_bCharacterBeingSelected == false && m_bShowDifferentMenuScreen == false)
+					{
+						//If we're selecting a menu option
+						m_nMenuSelectionIndex--;
+						if(m_nMenuSelectionIndex < 0)
+						{
+							m_nMenuSelectionIndex = 5;
+						}
+					}
+					else if(m_bShowDifferentMenuScreen == true && m_dFunc == EquipmentScreen)
+					{
+						//we're in the equipment screen.. 
+						if(m_bChangeSelected == false && m_bOptimizeSelected == false && m_bClearSelected == false)
+						{
+							//nothing in the equipment options has been selected yet, cycle through the options
+							m_nEquipmentChangeIndex--;
+							if(m_nEquipmentChangeIndex < 0)
+								m_nEquipmentChangeIndex = 2;
+						}
+						else if(m_bChangeSelected == true && m_bSlotChangeChosen == false)
+						{
+							//cycle through the different slots that the character can wear
+							m_nEquipmentSlotChangeIndex--;
+							if(m_nEquipmentSlotChangeIndex < 0)
+								m_nEquipmentSlotChangeIndex = 7;
 						}
 						else if(m_bSlotChangeChosen == true)
 						{
@@ -169,156 +233,96 @@ public class MenuScreenScript : MonoBehaviour
 							}
 							if(inv.Count > 0)
 							{
-								m_nItemSlotIndex++;
-								if(m_nItemSlotIndex >= inv.Count)
-									m_nItemSlotIndex = 0;
+								m_nItemSlotIndex--;
+								if(m_nItemSlotIndex < 0 )
+									m_nItemSlotIndex = inv.Count - 1;
 							}
 							
 						}
 					}
 				}
-			}
-			else if(Input.GetKeyDown(KeyCode.UpArrow))
-			{
-				if(m_bCharacterBeingSelected == true && m_bShowDifferentMenuScreen == false)
+				else if(Input.GetKeyDown(KeyCode.Return))
 				{
-					//If we're selecting a character
-					m_nCharacterSelectionIndex--;
-					if(m_nCharacterSelectionIndex < 0)
+					//if you're selecting a character
+					if(m_bCharacterBeingSelected == true && m_bShowDifferentMenuScreen == false)
 					{
-						m_nCharacterSelectionIndex = dc.GetParty().Count - 1;
-					}
-				}
-				else if(m_bCharacterBeingSelected == false && m_bShowDifferentMenuScreen == false)
-				{
-					//If we're selecting a menu option
-					m_nMenuSelectionIndex--;
-					if(m_nMenuSelectionIndex < 0)
-					{
-						m_nMenuSelectionIndex = 5;
-					}
-				}
-				else if(m_bShowDifferentMenuScreen == true && m_dFunc == EquipmentScreen)
-				{
-					//we're in the equipment screen.. 
-					if(m_bChangeSelected == false && m_bOptimizeSelected == false && m_bClearSelected == false)
-					{
-						//nothing in the equipment options has been selected yet, cycle through the options
-						m_nEquipmentChangeIndex--;
-						if(m_nEquipmentChangeIndex < 0)
-							m_nEquipmentChangeIndex = 2;
-					}
-					else if(m_bChangeSelected == true && m_bSlotChangeChosen == false)
-					{
-						//cycle through the different slots that the character can wear
-						m_nEquipmentSlotChangeIndex--;
-						if(m_nEquipmentSlotChangeIndex < 0)
-							m_nEquipmentSlotChangeIndex = 7;
-					}
-					else if(m_bSlotChangeChosen == true)
-					{
-						//cycle through the different items available for the slot that was selected
-						int nItemType = m_nEquipmentSlotChangeIndex + (int)BaseItemScript.ITEM_TYPES.eHELMARMOR;
-						if(nItemType > (int)BaseItemScript.ITEM_TYPES.eTRINKET)
-							nItemType = (int)BaseItemScript.ITEM_TYPES.eTRINKET;
-						List<DCScript.CharactersItems> inv = new List<DCScript.CharactersItems>();
-						foreach(DCScript.CharactersItems item in dc.GetInventory())
-						{
-							if(nItemType == item.m_nItemType)
-								inv.Add(item);
-						}
-						if(inv.Count > 0)
-						{
-							m_nItemSlotIndex--;
-							if(m_nItemSlotIndex < 0 )
-								m_nItemSlotIndex = inv.Count - 1;
-						}
-						
-					}
-				}
-			}
-			else if(Input.GetKeyDown(KeyCode.Return))
-			{
-				//if you're selecting a character
-				if(m_bCharacterBeingSelected == true && m_bShowDifferentMenuScreen == false)
-				{
-					m_bShowDifferentMenuScreen = true;
-				}
-				//else, you're selecting a menu option? (might need to change this as the menu becomes more robust)
-				else if(m_bCharacterBeingSelected == false && m_bShowDifferentMenuScreen == false)
-				{
-					switch(m_nMenuSelectionIndex)
-					{
-					case 0:
-					{
-						//Inventory
 						m_bShowDifferentMenuScreen = true;
-						m_dFunc = InventoryScreen;
 					}
-						break;
-					case 1:
+					//else, you're selecting a menu option? (might need to change this as the menu becomes more robust)
+					else if(m_bCharacterBeingSelected == false && m_bShowDifferentMenuScreen == false)
 					{
-						//Status
-						m_bCharacterBeingSelected = true;
-						m_dFunc = StatusScreen;
-					}
-						break;
-					case 2:
-					{
-						//Equipment
-						m_bCharacterBeingSelected = true;
-						m_dFunc = EquipmentScreen;
-					}
-						break;
-					case 3:
-					{
-						//Save Game
-						if(Application.loadedLevelName == "Regilance")
-							m_dFunc = SaveGame;
-					}
-						break;
-					case 4:
-					{
-						//Quit to the main menu
-						GameObject data = GameObject.Find("PersistantData");
-						if(data)
+						switch(m_nMenuSelectionIndex)
 						{
-							Destroy(data);
+						case 0:
+						{
+							//Inventory
+							m_bShowDifferentMenuScreen = true;
+							m_dFunc = InventoryScreen;
 						}
-						Application.LoadLevel("Intro_Scene");
-					}
-						break;
-					case 5:
-					{
-						//Exit the menu
-						m_nMenuSelectionIndex = 0;
-						m_bShowDifferentMenuScreen = false;
-						
-						m_bShouldPause = !m_bShouldPause;
-						if(m_bShouldPause == false)
+							break;
+						case 1:
 						{
-							GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-							Camera.main.GetComponent<GreyScaleScript>().SendMessage("EndGreyScale");
-							m_dFunc = null;
+							//Status
+							m_bCharacterBeingSelected = true;
+							m_dFunc = StatusScreen;
 						}
-						else
+							break;
+						case 2:
 						{
-							if(GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
+							//Equipment
+							m_bCharacterBeingSelected = true;
+							m_dFunc = EquipmentScreen;
+						}
+							break;
+						case 3:
+						{
+							//Save Game
+							if(Application.loadedLevelName == "Regilance")
+								m_dFunc = SaveGame;
+						}
+							break;
+						case 4:
+						{
+							//Quit to the main menu
+							GameObject data = GameObject.Find("PersistantData");
+							if(data)
 							{
-								GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
-								Camera.main.GetComponent<GreyScaleScript>().SendMessage("StartGreyScale");
+								Destroy(data);
+							}
+							Application.LoadLevel("Intro_Scene");
+						}
+							break;
+						case 5:
+						{
+							//Exit the menu
+							m_nMenuSelectionIndex = 0;
+							m_bShowDifferentMenuScreen = false;
+							
+							m_bShouldPause = !m_bShouldPause;
+							if(m_bShouldPause == false)
+							{
+								GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+								Camera.main.GetComponent<GreyScaleScript>().SendMessage("EndGreyScale");
+								m_dFunc = null;
 							}
 							else
-								m_bShouldPause = false;
+							{
+								if(GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
+								{
+									GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
+									Camera.main.GetComponent<GreyScaleScript>().SendMessage("StartGreyScale");
+								}
+								else
+									m_bShouldPause = false;
+							}
+							GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 						}
-						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-					}
-						break;
+							break;
+						}
 					}
 				}
 			}
 		}
-		
 		
 		#endregion
 	}
@@ -349,6 +353,7 @@ public class MenuScreenScript : MonoBehaviour
 			//opening up the inventory
 			m_goMenu.GetComponent<Animator>().Play("ClosingMenu");
 			m_goInventory.GetComponent<Animator>().Play("OpeningInventory");
+
 		}
 			break;
 		}
@@ -450,6 +455,7 @@ public class MenuScreenScript : MonoBehaviour
 		//m_gPartyMembers[characterIndex];
 		DCScript.CharactersItems item = dc.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
 		DCScript.ItemData dcItemData = dc.GetItemFromDictionary(item.m_szItemName);
+		m_nCharacterSelectedIndexForItemUse = characterIndex;
 		switch(dcItemData.m_szDescription)
 		{
 			case "Cures Poison.":
@@ -530,10 +536,6 @@ public class MenuScreenScript : MonoBehaviour
 							GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect("Poison");
 						}
 					}
-					else
-					{
-						//no unit had the status effect we're trying to remove.
-					}
 					
 				}
 				
@@ -554,46 +556,80 @@ public class MenuScreenScript : MonoBehaviour
 			default:
 			{
 				//If we landed in here it means that it's just a heal item.
-				
+				m_bDisableInput = true;
 				int healingAmnt = dcItemData.m_nHPMod;
 				//check to see if it's healing all targets or just one.
 				if(dcItemData.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
 				{
-					//yep, heal everyone in the party, then go back to the inventory screen.
-					foreach(DCScript.CharacterData unit in dc.GetParty())
+
+					//play the heal animation for each portrait
+					for(int i =0 ; i < m_lParty.Count; ++i)
 					{
-						unit.m_nCurHP += healingAmnt;
-						if(unit.m_nCurHP > unit.m_nMaxHP)
-							unit.m_nCurHP = unit.m_nMaxHP;
+						GameObject pMem = m_goCharacterSelector.transform.FindChild("Scaled_PartyMember" +(i+1).ToString()).gameObject;
+						pMem.transform.FindChild("Animated Effect").GetComponent<Image>().enabled = true;
+						pMem.transform.FindChild("Animated Effect").GetComponent<Animator>().Play("HealPortrait");
 					}
 				}
 				else
 				{
 					//heal whichever unit is selected
-					DCScript.CharacterData unit = dc.GetParty()[characterIndex];
-					unit.m_nCurHP += healingAmnt;
-					if(unit.m_nCurHP > unit.m_nMaxHP)
-						unit.m_nCurHP = unit.m_nMaxHP;
+					GameObject pMem = m_goCharacterSelector.transform.FindChild("Scaled_PartyMember" +(characterIndex+1).ToString()).gameObject;
+					pMem.transform.FindChild("Animated Effect").GetComponent<Image>().enabled = true;
+					pMem.transform.FindChild("Animated Effect").GetComponent<Animator>().Play("HealPortrait");
 				}
-				
-				//is this the last of this item?
-				if(item.m_nItemCount == 1)
-				{
-					m_goCharacterSelector.SetActive(false);
-					dc.RemoveItem(item);
-				}
-				//this isn't the last item? just remove one of it then.
-				else
-					dc.RemoveItem(item);
-				
-				
 				
 			}
 				break;
 		}
+
+	}
+
+	public void AnimationEnded()
+	{
+		m_bDisableInput = false;
+		if(m_goItemSelected != null)
+		{
+			DCScript.CharactersItems item = dc.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
+			DCScript.ItemData dcItemData = dc.GetItemFromDictionary(item.m_szItemName);
+			int healingAmnt = dcItemData.m_nHPMod;
+
+			if(dcItemData.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
+			{
+				//yep, heal everyone in the party, then go back to the inventory screen.
+				foreach(DCScript.CharacterData unit in dc.GetParty())
+				{
+					unit.m_nCurHP += healingAmnt;
+					if(unit.m_nCurHP > unit.m_nMaxHP)
+						unit.m_nCurHP = unit.m_nMaxHP;
+				}
+				for(int i =0 ; i < m_lParty.Count; ++i)
+				{
+					GameObject pMem = m_goCharacterSelector.transform.FindChild("Scaled_PartyMember" +(i+1).ToString()).gameObject;
+					pMem.transform.FindChild("Animated Effect").GetComponent<Image>().enabled = false;
+				}
+			}
+			else
+			{
+				//heal whichever unit is selected
+				DCScript.CharacterData unit = dc.GetParty()[m_nCharacterSelectedIndexForItemUse];
+				unit.m_nCurHP += healingAmnt;
+				if(unit.m_nCurHP > unit.m_nMaxHP)
+					unit.m_nCurHP = unit.m_nMaxHP;
+				GameObject pMem = m_goCharacterSelector.transform.FindChild("Scaled_PartyMember" +(m_nCharacterSelectedIndexForItemUse+1).ToString()).gameObject;
+				pMem.transform.FindChild("Animated Effect").GetComponent<Image>().enabled = false;
+			}
+			dc.RemoveItem(item);
+			if(item.m_nItemCount == 0)
+			{
+				m_goCharacterSelector.SetActive(false);
+				transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
+				m_goItemSelected = null;
+			}
+
+		}
 		PopulateInventory(0);
 	}
-	
+
 	List<DCScript.CharactersItems> GetItemsOfType(int type)
 	{
 		List<DCScript.CharactersItems> inv = new List<DCScript.CharactersItems>();
@@ -661,7 +697,6 @@ public class MenuScreenScript : MonoBehaviour
 			pMem.SetActive(true);
 			pMem.transform.FindChild("Character Name").GetComponent<Text>().text = character.m_szCharacterName;
 			pMem.transform.FindChild("Character HP").GetComponent<Text>().text = "HP: " + character.m_nCurHP.ToString() + " / " + character.m_nMaxHP.ToString();
-
 			i++;
 		}
 		for(;i<3; ++i)
@@ -676,7 +711,6 @@ public class MenuScreenScript : MonoBehaviour
 	}
 	public void Image_Darken(GameObject image)
 	{
-		Debug.Log(image);
 		image.GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f);
 	}
 }
