@@ -237,7 +237,9 @@ public class ToAEventHandler : BaseEventSystemScript
 		if(dc)
 		{
 			List<string> bossEncounter = new List<string>();
-			bossEncounter.Add("Boar, Boar, Boar");
+			bossEncounter.Add("Boar");
+			bossEncounter.Add("Boar");
+			bossEncounter.Add("Boar");
 			//Set the names of the list of enemies the player is about to fight
 			dc.GetComponent<DCScript>().SetEnemyNames(bossEncounter);
 			//Set the position of the player before the battle starts
@@ -246,10 +248,8 @@ public class ToAEventHandler : BaseEventSystemScript
 			go.GetComponent<DCScript>().SetPreviousPosition(m_goPlayer.transform.position);
 			go.GetComponent<DCScript>().SetPreviousFacingDirection(m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir);
 			go.GetComponent<DCScript>().SetPreviousFieldName(Application.loadedLevelName);
-			go.GetComponent<DCScript>().SetBattleFieldBackgroundIter(3);
-			
-			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
-			Briol.GetComponent<PlayerBattleScript>().SetUnitStats();
+			go.GetComponent<DCScript>().SetBattleFieldBackgroundIter(2);
+
 			
 			Application.LoadLevel("Battle_Scene");
 		}
