@@ -40,7 +40,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			m_goBoar.SetActive(false);
 			}	
 			foreach (GameObject go in Phase1_waypoints)
-				go.SetActive (false);
+				go.SetActive (true);
 		}
 		else
 		{
