@@ -219,7 +219,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			briol.GetComponent<BoxCollider2D> ().enabled = true;
 			NPCScript bNpc = briol.GetComponent<NPCScript> ();
 			bNpc.m_bIsComingOutOfPlayer = true;
-			bNpc.m_bIsMoving = true;
+			bNpc.m_bIsMoving = false;
 			bNpc.m_bActive = true;
 			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
 			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
