@@ -79,6 +79,8 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject boar = GameObject.Find ("Boar");
 			boar.GetComponent<NPCScript> ().DHF_NPCMoveToGameobject (GameObject.Find ("Boar_Battle"), true);
 			GameObject.Find ("Boar_Battle").GetComponent<BoxCollider2D> ().enabled = true;
+			Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
+			Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
 			StartBoarBattle();
 		}
 		break;
