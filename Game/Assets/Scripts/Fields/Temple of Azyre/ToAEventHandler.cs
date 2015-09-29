@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class ToAEventHandler : BaseEventSystemScript 
 {
 	public GameObject[] Phase1_waypoints;
-	public GameObject[] Phase2_waypoints;
 	public GameObject m_goBoar;
 	public GameObject m_goBoar2;
 	public GameObject m_goBoarBoss;
@@ -119,7 +118,6 @@ public class ToAEventHandler : BaseEventSystemScript
 			briol.GetComponent<SpriteRenderer> ().enabled = true;
 			briol.GetComponent<BoxCollider2D> ().enabled = true;
 		}
-	
 	}
 	
 	// Update is called once per frame
@@ -155,18 +153,11 @@ public class ToAEventHandler : BaseEventSystemScript
 			
 			break;
 		
-		case "Boar_Battle":
+		case "BoarBattle":
 		{
 			GameObject src = GameObject.Find ("Player");
 			src.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("Boar_Battle"), true);
 			GameObject.Find ("Boar_Battle").GetComponent<BoxCollider2D> ().enabled = true;
-			GameObject boar = GameObject.Find ("Boar");
-			boar.GetComponent<NPCScript> ().DHF_NPCMoveToGameobject (GameObject.Find ("Boar_Battle"), true);
-			GameObject.Find ("Boar_Battle").GetComponent<BoxCollider2D> ().enabled = true;
-			ds.m_dStoryFlagField.Add("BoarBattle", 1);
-			Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
-			Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
-			StartBoarBattle();
 		}
 		break;
 		case "AfterBossBattle":
@@ -447,6 +438,45 @@ public class ToAEventHandler : BaseEventSystemScript
 			briol.GetComponent<MessageHandler> ().BeginDialogue ("B0");
 		}
 			break;
+		case "BoarBattle2":
+		{
+			Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
+			Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
+			StartBoarBattle();
+		}
+			break;
+		case "Boar_Battle":
+		{
+			m_goBoar.SetActive(true);
+			GameObject boar = GameObject.Find ("Boar");
+			boar.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("BoarBattle2"), true);
+			GameObject.Find ("BoarBattle2").GetComponent<BoxCollider2D> ().enabled = true;
+			ds.m_dStoryFlagField.Add("BoarBattle", 1);
+		}
+			break;
+		case "To Forest":
+		{
+			GameObject src = GameObject.Find("Player");
+			src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
+			src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
+			GameObject.Find("StepBack").GetComponent<BoxCollider2D>().enabled = true;
+			
+		}
+			break;
+		case "StepBack":
+		{
+			GameObject player = GameObject.Find("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
+				GameObject.Find("StepBack").GetComponent<BoxCollider2D>().enabled = false;
+			}
+		}
+			break;
 		case "Interior":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag ("Player");
@@ -457,15 +487,12 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject briol = GameObject.Find ("Briol");
 			briol.transform.position = player.transform.position;
 			briol.GetComponent<SpriteRenderer> ().enabled = true;
-			briol.GetComponent<BoxCollider2D> ().enabled = true;
 			NPCScript bNpc = briol.GetComponent<NPCScript> ();
 			bNpc.m_bIsComingOutOfPlayer = true;
-			bNpc.m_bIsMoving = false;
-			bNpc.m_bActive = true;
+			bNpc.DHF_NPCMoveToGameobject (GameObject.Find ("Briol1"),false);
 			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
 			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
-			GameObject messageSystem = GameObject.Find ("Briol");
-			messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("A0");
+			briol.GetComponent<MessageHandler> ().BeginDialogue ("A0");
 		}
 			break;
 		case "BoarRunoff":

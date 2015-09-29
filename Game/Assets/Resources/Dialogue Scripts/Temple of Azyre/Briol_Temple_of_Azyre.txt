@@ -4,7 +4,7 @@ A2|1|Briol||We still need to be careful. It's very dangerous in here.||A3
 A3|1|Callan||Whatever. I'll be over here||A4
 A4|1|Narrator||You're going to get yourself killed.||A5
 A5|1|Callan||Says you!||A6
-A6|3|Boar_Battle
+A6|3|BoarBattle
 A7|1|Briol||What did I just tell you?!? We need to stay together||A8
 A8|1|Callan||Alright. Let's go.||A9
 A9|3|End_Dialogue
