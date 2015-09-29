@@ -481,7 +481,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			briol.GetComponent<SpriteRenderer> ().enabled = true;
 			NPCScript bNpc = briol.GetComponent<NPCScript> ();
 			bNpc.m_bIsComingOutOfPlayer = true;
-			bNpc.DHF_NPCMoveToGameobject ("BRIOL");
+			bNpc.DHF_NPCMoveToGameobject (GameObject.Find ("BRIOL"),false);
 			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eRIGHT;
 			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
 			briol.GetComponent<MessageHandler> ().BeginDialogue ("B0");
