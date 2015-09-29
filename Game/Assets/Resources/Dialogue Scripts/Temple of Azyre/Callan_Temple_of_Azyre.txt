@@ -25,8 +25,9 @@ B15|1|Briol||Yeah! The knight lives near the ocean to the South-West in a little
 B16|1|Callan||I'll lead the way!||B17
 B17|1|Briol||But you don't know the way...||B18
 B18|1|Callan||I'll make it up as a go. That what good leaders do!||B19
-B19|1|Briol||I don't think that's right, but whatever. Lead the way.||B20
-B20|3|End Temple_Clean_Dialogue
+B19|1|Briol||I don't think that's right, but whatever. Lead the way.||B21
+B20|3|End Temple_Clean_Dialogue1
+B21|3|End_Temple_Clean_Dialogue2
 C0|1|Callan||Who would worship in a place like this?||C1
 C1|1|Briol||It says 'Beneath these hollowed grounds blow the Gales of Azyre.'||C2
 C2|1|Callan||But...we're underground already. How are these Gales below us?||C3
