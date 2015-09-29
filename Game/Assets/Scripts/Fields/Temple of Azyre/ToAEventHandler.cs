@@ -190,27 +190,6 @@ public class ToAEventHandler : BaseEventSystemScript
 			messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("C5");
 		}
 			break;
-		case "Interior":
-		{
-			GameObject player = GameObject.FindGameObjectWithTag ("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
-			}
-			GameObject briol = GameObject.Find ("Briol");
-			briol.transform.position = player.transform.position;
-			briol.GetComponent<SpriteRenderer> ().enabled = true;
-			briol.GetComponent<BoxCollider2D> ().enabled = true;
-			NPCScript bNpc = briol.GetComponent<NPCScript> ();
-			bNpc.m_bIsComingOutOfPlayer = true;
-			bNpc.m_bIsMoving = false;
-			bNpc.m_bActive = true;
-			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
-			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
-			GameObject messageSystem = GameObject.Find ("Briol");
-			messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("A0");
-		}
-			break;
 		case "InnKeeper_Sleep":
 		{
 			GameObject[] keepers = GameObject.FindGameObjectsWithTag("InnKeeper");
@@ -466,6 +445,27 @@ public class ToAEventHandler : BaseEventSystemScript
 			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eRIGHT;
 			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
 			briol.GetComponent<MessageHandler> ().BeginDialogue ("B0");
+		}
+			break;
+		case "Interior":
+		{
+			GameObject player = GameObject.FindGameObjectWithTag ("Player");
+			if(player)
+			{
+				player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
+			}
+			GameObject briol = GameObject.Find ("Briol");
+			briol.transform.position = player.transform.position;
+			briol.GetComponent<SpriteRenderer> ().enabled = true;
+			briol.GetComponent<BoxCollider2D> ().enabled = true;
+			NPCScript bNpc = briol.GetComponent<NPCScript> ();
+			bNpc.m_bIsComingOutOfPlayer = true;
+			bNpc.m_bIsMoving = false;
+			bNpc.m_bActive = true;
+			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
+			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
+			GameObject messageSystem = GameObject.Find ("Briol");
+			messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("A0");
 		}
 			break;
 		case "BoarRunoff":
