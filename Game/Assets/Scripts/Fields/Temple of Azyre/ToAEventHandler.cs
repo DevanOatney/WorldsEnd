@@ -34,7 +34,6 @@ public class ToAEventHandler : BaseEventSystemScript
 			if (result == 1)
 			{
 				ds.m_dStoryFlagField.Remove("AfterOpening");
-				HandleEvent("Interior");
 			}
 			else
 			{
@@ -480,15 +479,12 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject briol = GameObject.Find ("Briol");
 			briol.transform.position = player.transform.position;
 			briol.GetComponent<SpriteRenderer> ().enabled = true;
-			briol.GetComponent<BoxCollider2D> ().enabled = true;
 			NPCScript bNpc = briol.GetComponent<NPCScript> ();
 			bNpc.m_bIsComingOutOfPlayer = true;
-			bNpc.m_bIsMoving = false;
-			bNpc.m_bActive = true;
+			bNpc.DHF_NPCMoveToGameobject ("BRIOL");
 			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eRIGHT;
 			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
-			GameObject messageSystem = GameObject.Find ("Briol");
-			messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("B0");
+			briol.GetComponent<MessageHandler> ().BeginDialogue ("B0");
 		}
 			break;
 		}
