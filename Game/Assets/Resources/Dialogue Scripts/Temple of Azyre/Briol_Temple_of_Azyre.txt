@@ -26,4 +26,5 @@ D1|1|Callan||How deep do you think this is? Do you thinkn it's bottomless?!?||D2
 D2|1|Narrator||No, dumbass. It's just dark.||D3
 D3|1|Callan||Quiet you!||D4
 D4|1|Briol||What?||D5
-D5|1|Callan||Nothing. Let's find another way around.||A9
+D5|1|Callan||Nothing. Let's find another way around.||D6
+D6|3|PitSeen
