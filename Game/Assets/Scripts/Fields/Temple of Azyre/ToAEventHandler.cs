@@ -45,6 +45,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			if (result == 1)
 			{
 				ds.m_dStoryFlagField.Remove("AfterOpening");
+				HandleEvent ("AfterBoar");
 			}
 			else
 			{
@@ -53,7 +54,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			foreach(GameObject wpnt in Phase1_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
+				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 			foreach(GameObject wpnt in Phase3_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			foreach(GameObject wpnt in Phase4_waypoints)
