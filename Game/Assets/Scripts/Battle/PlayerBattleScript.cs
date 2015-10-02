@@ -697,9 +697,10 @@ public class PlayerBattleScript : UnitScript {
 			if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
 			{
 				int nChanceToHit = UnityEngine.Random.Range(0,100);
-				int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
+				int nRange = 70 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
 				if(nRange < 5)
 					nRange = 5;
+				Debug.Log("Chance: " + nChanceToHit + "    Range: " + nRange);
 				if(nChanceToHit <	nRange)
 				{
 					//Target was hit

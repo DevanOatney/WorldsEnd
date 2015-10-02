@@ -319,18 +319,11 @@ public class ToAEventHandler : BaseEventSystemScript
 				GameObject briol = GameObject.Find ("Briol");
 				NPCScript bNpc = briol.GetComponent<NPCScript> ();
 				bNpc.DHF_NPCMoveIntoPlayer ();
-				GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject> ();
-				foreach (GameObject g in gObjs) {
-					if (g.GetComponent<MessageHandler> () != null) {
-						if (g.GetComponent<NPCScript> () != null)
-							g.GetComponent<NPCScript> ().m_bIsBeingInterractedWith = false;
-						g.GetComponent<MessageHandler> ().m_bShouldDisplayDialogue = false;
-					}
-				}
 				foreach (GameObject wpnt in Phase3_waypoints)
 					wpnt.GetComponent<BoxCollider2D> ().enabled = false;
 				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) {
+				if (player) 
+				{
 					player.GetComponent<FieldPlayerMovementScript> ().ReleaseBind ();
 				}
 			}
@@ -365,23 +358,15 @@ public class ToAEventHandler : BaseEventSystemScript
 
 		case "AfterBoar":
 			{
+
 				GameObject player = GameObject.FindGameObjectWithTag ("Player");
 				if (player) {
 					player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
 				}
 				m_goBoar.SetActive (false);
 				GameObject briol = GameObject.Find ("Briol");
-				briol.transform.position = player.transform.position;
-				briol.GetComponent<SpriteRenderer> ().enabled = true;
-				briol.GetComponent<BoxCollider2D> ().enabled = true;
-				NPCScript bNpc = briol.GetComponent<NPCScript> ();
-				bNpc.m_bIsComingOutOfPlayer = true;
-				bNpc.m_bIsMoving = true;
-				bNpc.m_bActive = true;
-				bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
-				bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
-				GameObject messageSystem = GameObject.Find ("Briol");
-				messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("A7");
+				briol.GetComponent<SpriteRenderer> ().enabled = false;
+				briol.GetComponent<MessageHandler> ().BeginDialogue ("A7");
 			}
 			break;
 		case "End Temple_Clean_Dialogue1":

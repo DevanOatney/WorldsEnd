@@ -287,7 +287,6 @@ public class OverWatcherScript : MonoBehaviour {
 			}
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 		}
-		/*
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
 			//reset all of the iters and flags
@@ -321,7 +320,6 @@ public class OverWatcherScript : MonoBehaviour {
 				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 			}
 		}
-		*/
 		if(m_bShouldPause == false)
 		{
 			m_fTimer += Time.deltaTime;
@@ -343,7 +341,6 @@ public class OverWatcherScript : MonoBehaviour {
 			}
 		}
 		#endregion
-		/*
 		#region Input For Menu
 		if(m_bShouldPause == true)
 		{
@@ -559,7 +556,6 @@ public class OverWatcherScript : MonoBehaviour {
 
 
 		#endregion
-		*/
 	}
 
 
