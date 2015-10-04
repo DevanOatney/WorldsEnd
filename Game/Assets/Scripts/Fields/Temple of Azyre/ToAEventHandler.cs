@@ -61,6 +61,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			case 2:
 			{
 				//The player has seen the boar run down into the basement
+				GameObject.Find("EncounterThePit").GetComponent<BoxCollider2D>().enabled = true;
 			}
 				break;
 				
@@ -109,6 +110,23 @@ public class ToAEventHandler : BaseEventSystemScript
 				GameObject.Find ("PlayerStop_EncounterBoar").GetComponent<BoxCollider2D> ().enabled = true;
 			}
 			break;
+		case "Pan_to_Boar_Azyre":
+		{
+			//Pan the camera to the boar and have the boar start running toward the stairs
+			Camera.main.GetComponent<CameraFollowTarget>().m_goNextTarget = m_goBoar;
+			m_goBoar.SetActive(true);
+			m_goBoar.transform.position = GameObject.Find("BoarRunOffStartPosition").transform.position;
+			GameObject.Find ("EncounterBoarDestination").GetComponent<BoxCollider2D>().enabled = true;
+			m_goBoar.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find ("EncounterBoarDestination"), false);
+		}
+			break;
+		case "EndSeeBoar":
+		{
+			//move briol back to callan
+			GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveIntoPlayer();
+			GameObject.Find("EncounterThePit").GetComponent<BoxCollider2D>().enabled = true;
+		}
+			break;
 		case "AfterBossBattle":
 			{
 				//messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("C5");
@@ -137,11 +155,6 @@ public class ToAEventHandler : BaseEventSystemScript
 			
 			}
 			break;
-		case "Basement1":
-			{
-				//messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("D0");
-			}
-			break;
 		case "AfterOpen":
 			{	
 				GameObject briol = GameObject.Find ("Briol");
@@ -168,7 +181,8 @@ public class ToAEventHandler : BaseEventSystemScript
 			{
 
 				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) {
+				if (player) 
+				{
 					player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
 				}
 				m_goBoar.SetActive (false);
@@ -267,13 +281,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			Briol.GetComponent<MessageHandler>().BeginDialogue("B0");
 		}
 			break;
-		case "Pan_to_Boar_Azyre":
-		{
-			Camera.main.GetComponent<CameraFollowTarget>().m_goNextTarget = m_goBoar;
-			m_goBoar.transform.position = GameObject.Find("BoarRunOffStartPosition").transform.position;
-			m_goBoar.GetComponent<Animator>().Play("Boar_IdleRight");
-		}
-			break;
+		
 		case "To Forest":
 		{
 			GameObject src = GameObject.Find("Player");
@@ -311,6 +319,46 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject briol = GameObject.Find ("Briol");
 			briol.GetComponent<MessageHandler> ().BeginDialogue ("A0");
 
+		}
+			break;
+		case "EncounterBoarDestination":
+		{
+			//Boar has reached stairs, deactivate, set the camera target back to the player and play the last bit of dialogue for the scene
+			m_goBoar.SetActive(false);
+			Camera.main.GetComponent<CameraFollowTarget>().m_goNextTarget = GameObject.Find("Player");
+			GameObject.Find("Briol").GetComponent<MessageHandler>().BeginDialogue("B2");
+		}
+			break;
+		case "EncounterThePit":
+		{
+			/*
+   					Briol emerges from the party and runs off toward the hole
+   					Callan follows and Briol_Temple_Dialogue starts at line D0
+   					Charcters form one unit and scene ends
+				*/
+			GameObject player = GameObject.FindGameObjectWithTag ("Player");
+			if (player) 
+			{
+				player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
+			}
+			GameObject Briol = GameObject.Find("Briol");
+			NPCScript bscrpt = Briol.GetComponent<NPCScript>();
+			Briol.GetComponent<SpriteRenderer>().enabled = true;
+			bscrpt.m_bIsComingOutOfPlayer = true;
+			GameObject.Find("PitPoint_Briol").GetComponent<BoxCollider2D>().enabled = true;
+			bscrpt.DHF_NPCMoveToGameobject(GameObject.Find("PitPoint_Briol"), false);
+		}
+			break;
+		case "PitPoint_Briol":
+		{
+			//Briol has moved to the edge of the pit, have the main character move up beside her.
+			GameObject.Find("PitPoint_Callan").GetComponent<BoxCollider2D>().enabled = true;
+			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find ("PitPoint_Callan"), false);
+		}
+			break;
+		case "PitPoint_Callan":
+		{
+			GameObject.Find("Briol").GetComponent<MessageHandler>().BeginDialogue("D0");
 		}
 			break;
 		}
