@@ -16,20 +16,26 @@ Running into Boar:
    Pan back and continue dialogue
    Characters move into one unit and scene ends
 Giant hole:
+   Triggered by waypoint "Basement1"
    Briol emerges from the party and runs off toward the hole
-   Callan follows and Briol_Temple_DIalogue starts at line D0
+   Callan follows and Briol_Temple_Dialogue starts at line D0
    Charcters form one unit and scene ends
 Altar to the Gales of Azyre I:
-   Near entrance t ohallway to Altar room, Briol emerges from party, stands next to Callan, and both approach Alter
+   Upon interaction with Alter, Briol emerges from player
    Start Callan_Temple_Dialogue at line C0
-   Characters form one unit and scene ends 
+   Characters form one unit and scene ends
+   Further interaction just playes Alter dialogue as if NPC 
 Temple Boss:
-   Characters slowly approach Boar boss in a single file line with Briol in front
+   Triggered by waypoint "Basement2"
+   Characters approach "BoarBossPoint"
    Start Briol_Temple_of_Azyre dialogue at line C0
-   Diaogue is interupted at line C4 and the boss battle starts
-   After the battle concludes the dialogue continues
-   Characters form one unit and screen fades to black
-   Screen fades back in, the characters are standing just inside the enterance to the Temple, the rubble layer has gone and the battles are turned off
+   Caracters charge to waypoint "BoarBoss" and Battle Starts
+   After the battle the dialogue continues at line C5
+   Screen fades to black, rubble layer and battles are removed
+   Screen fades back in, the characters are standing at Game Object "AfterBattlePoint" facing into the Temple
    Characters turn to face each other   
    Start Callan_Temple_of_Azyre dialogue at B0
+   Hunter flag is added if Hunter path is chosen or Knight flag is added if Knight path is chosen
    Characters form one unit and scene ends
+StepBack:
+   Player is barred from leaving the area until Boar Boss is defeated
