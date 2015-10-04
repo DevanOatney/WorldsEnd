@@ -14,6 +14,10 @@ public class ToAEventHandler : BaseEventSystemScript
 	{
 		ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		SetWaypoints();
+
+		GameObject player = GameObject.Find("Player");
+		GameObject briol = GameObject.Find("Briol");
+		Physics2D.IgnoreCollision(player.GetComponent<BoxCollider2D>(), briol.GetComponent<BoxCollider2D>());
 	}
 
 	//putting this in it's own function so that when you cheat it can update it there without you having to re-start that scene.
@@ -244,10 +248,12 @@ public class ToAEventHandler : BaseEventSystemScript
 			//Callan is now in position to encounter the boar before it runs downstairs, now move Briol.
 			GameObject Player = GameObject.Find("Player");
 			Player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+
 			GameObject Briol  = GameObject.Find("Briol");
 			Briol.transform.position = Player.transform.position;
 			Briol.GetComponent<SpriteRenderer>().enabled = true;
 			Briol.GetComponent<NPCScript>().m_bIsComingOutOfPlayer = true;
+			Briol.GetComponent<BoxCollider2D>().enabled = true;
 			Briol.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("Briol_MoveTowardBoar"), false);
 			GameObject.Find("Briol_MoveTowardBoar").GetComponent<BoxCollider2D>().enabled = true;
 		}
@@ -255,6 +261,8 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "Briol_MoveTowardBoar":
 		{
 			//Briol exclaims about there being a boar
+			GameObject Player = GameObject.Find("Player");
+			Player.GetComponent<Animator>().SetInteger("m_nFacingDir", 2);
 			GameObject Briol  = GameObject.Find("Briol");
 			Briol.GetComponent<MessageHandler>().BeginDialogue("B0");
 		}
