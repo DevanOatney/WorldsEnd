@@ -12,6 +12,9 @@ public class BaseEventSystemScript : MonoBehaviour {
 	void Update () {
 	
 	}
+	virtual public void SetWaypoints()
+	{
+	}
 	virtual public void HandleEvent(string eventID)
 	{
 	}

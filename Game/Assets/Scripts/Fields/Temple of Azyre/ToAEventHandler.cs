@@ -5,189 +5,65 @@ using System.Collections.Generic;
 public class ToAEventHandler : BaseEventSystemScript 
 {
 	public GameObject[] Phase1_waypoints;
-	public GameObject[] Phase2_waypoints;
-	public GameObject[] Phase3_waypoints;
-	public GameObject[] Phase4_waypoints;
-	public GameObject[] Phase5_waypoints;
 	public GameObject m_goBoar;
-	public GameObject m_goBoar2;
 	public GameObject m_goBoarBoss;
 	DCScript ds;
-
+	public List<GameObject[]> m_lEvents;
 	// Use this for initialization
 	void Start()
 	{
 		ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
+		SetWaypoints();
+	}
+
+	//putting this in it's own function so that when you cheat it can update it there without you having to re-start that scene.
+	override public void SetWaypoints()
+	{
+		GameObject[] wypnts = GameObject.FindGameObjectsWithTag("Waypoint");
+		foreach(GameObject wypnt in wypnts)
+			wypnt.GetComponent<BoxCollider2D>().enabled = false;
 		int result;
-		if(ds.m_dStoryFlagField.TryGetValue("AfterOpening", out result) == false)
+		if(ds.m_dStoryFlagField.TryGetValue("ToAEvent", out result) == false)
 		{
 			//This is the introduction, play it yo!
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<FieldPlayerMovementScript>().BindInput();
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 			player.GetComponent<MessageHandler>().BeginDialogue("A0");
-			ds.m_dStoryFlagField.Add("AfterOpening", 1);
+			ds.m_dStoryFlagField.Add("ToAEvent", 0);
 			foreach(GameObject wpnt in Phase1_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-			foreach(GameObject wpnt in Phase5_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			GameObject Briol = GameObject.Find("Briol");
+			Briol.GetComponent<SpriteRenderer>().enabled = true;
+			Briol.GetComponent<BoxCollider2D>().enabled = true;
 			Camera.main.GetComponent<CameraFollowTarget>().m_goTarget = Briol;
 		}
-		else if (ds.m_dStoryFlagField.TryGetValue("AfterOpening", out result))
+		else if (ds.m_dStoryFlagField.TryGetValue("ToAEvent", out result))
 		{
-			if (result == 1)
+			switch(result)
 			{
-				ds.m_dStoryFlagField.Remove("AfterOpening");
-				HandleEvent ("AfterBoar");
+			case 0:
+			{
+				//The player has gone through the opening event of this scene
+				GameObject.Find("Interior").GetComponent<BoxCollider2D>().enabled = true;
 			}
-			else
+				break;
+			case 1:
 			{
-				m_goBoar.SetActive(false);
+				//The player has gone into the entrance of the Temple for the first time
+				GameObject.Find("EncounterBoarBeforeRunOff").GetComponent<BoxCollider2D>().enabled = true;
 			}
-			foreach(GameObject wpnt in Phase1_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-			foreach(GameObject wpnt in Phase5_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-		}
-
-		else if (ds.m_dStoryFlagField.TryGetValue("BoarBattle", out result))
-		{
-			if (result == 1)
+				break;
+			case 2:
 			{
-				ds.m_dStoryFlagField.Remove("BoarBattle");
-				ds.m_dStoryFlagField.Add("BoarBattle", 2);
-				m_goBoar.SetActive(false);
-				HandleEvent("AfterBoar");
+				//The player has seen the boar run down into the basement
 			}
-			else
-			{
-			m_goBoar.SetActive(false);
-			m_goBoar2.SetActive(false);
-			m_goBoarBoss.SetActive(false);
-			}	
-			foreach(GameObject wpnt in Phase1_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-			foreach(GameObject wpnt in Phase5_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-		}
-		else if (ds.m_dStoryFlagField.TryGetValue ("AfterBoarBattle", out result)) 
-		{
-			if (result == 1) {
-				ds.m_dStoryFlagField.Remove ("AfterBoarBattle");
-				ds.m_dStoryFlagField.Add ("AfterCleanup", 1);
-				HandleEvent ("AfterBossBattle");
-			} 
-			else 
-			{
-				m_goBoar.SetActive (false);
-				m_goBoar2.SetActive (false);
-				m_goBoarBoss.SetActive (false);
-			}	
-			foreach(GameObject wpnt in Phase1_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase5_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-		}
-		else if (ds.m_dStoryFlagField.TryGetValue ("AfterCleanup", out result)) 
-		{
-			if (result == 1) 
-			{
-				ds.m_dStoryFlagField.Remove ("AfterBoarBattle");
-				HandleEvent ("FinishedCleanup");
+				break;
+				
 			}
-			foreach(GameObject wpnt in Phase1_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase5_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-		}
-		else if (ds.m_dStoryFlagField.TryGetValue ("Hunter", out result))
-		{
-			if (result == 1) 
-			{
-				m_goBoar.SetActive (false);
-				m_goBoar2.SetActive (false);
-				m_goBoarBoss.SetActive (false);
-				GameObject overwatcher = GameObject.Find ("OverWatcher");
-				overwatcher.GetComponent<EncounterGroupLoaderScript> ().enabled = false;
-			}
-			foreach(GameObject wpnt in Phase1_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase5_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-		}
-		else if (ds.m_dStoryFlagField.TryGetValue ("Knight", out result))
-		{
-			if (result == 1) 
-			{
-				m_goBoar.SetActive (false);
-				m_goBoar2.SetActive (false);
-				m_goBoarBoss.SetActive (false);
-				GameObject overwatcher = GameObject.Find ("OverWatcher");
-				overwatcher.GetComponent<EncounterGroupLoaderScript> ().enabled = false;
-			}
-			foreach(GameObject wpnt in Phase1_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase5_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-		}
-		else
-		{
-			foreach(GameObject wpnt in Phase1_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase5_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -199,14 +75,15 @@ public class ToAEventHandler : BaseEventSystemScript
 		switch (eventID) {
 		case "Callan_runoff":
 			{
+				//Callan runs forward to bridge then stops and waits for Briol
 				GameObject src = GameObject.Find ("Player");
-				src.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("XWaypoint"), true);
-				GameObject.Find ("XWaypoint").GetComponent<BoxCollider2D> ().enabled = true;
-				src.GetComponent<MessageHandler> ().BeginDialogue ("A6");
+				src.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("StopAtBridge"), true);
+				GameObject.Find ("StopAtBridge").GetComponent<BoxCollider2D> ().enabled = true;
 			}
 			break;
 		case "Temple Bed":
 			{
+				//Callan has interacted with the bed, give him the option to rest.
 				GameObject player = GameObject.FindGameObjectWithTag ("Player");
 				if (player) {
 					player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
@@ -221,41 +98,34 @@ public class ToAEventHandler : BaseEventSystemScript
 		
 		case "BoarBattle":
 			{
+
+				//Callan begins to run upward after entering the temple for the first time.
 				GameObject src = GameObject.Find ("Player");
-				src.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("Boar_Battle"), true);
-				GameObject.Find ("Boar_Battle").GetComponent<BoxCollider2D> ().enabled = true;
+				src.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("PlayerStop_EncounterBoar"), true);
+				GameObject.Find ("PlayerStop_EncounterBoar").GetComponent<BoxCollider2D> ().enabled = true;
 			}
 			break;
 		case "AfterBossBattle":
 			{
-				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) {
-					player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
-				}
-				GameObject briol = GameObject.Find ("Briol");
-				briol.transform.position = player.transform.position;
-				briol.GetComponent<SpriteRenderer> ().enabled = true;
-				briol.GetComponent<BoxCollider2D> ().enabled = true;
-				NPCScript bNpc = briol.GetComponent<NPCScript> ();
-				bNpc.m_bIsComingOutOfPlayer = true;
-				bNpc.m_bIsMoving = false;
-				bNpc.m_bActive = true;
-				bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eDOWN;
-				bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
-				GameObject messageSystem = GameObject.Find ("Briol");
-				messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("C5");
+				//messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("C5");
 			}
 			break;
 		case "InnKeeper_Sleep":
 			{
+				//Player has selected to sleep.
 				GameObject[] keepers = GameObject.FindGameObjectsWithTag ("InnKeeper");
-				foreach (GameObject keeper in keepers) {
-					if (keeper.GetComponent<NPCScript> ().m_bIsBeingInterractedWith == true) {
+				foreach (GameObject keeper in keepers) 
+				{
+					if (keeper.GetComponent<NPCScript> ().m_bIsBeingInterractedWith == true) 
+					{
 						//found the game object that is the innkeeper, check if the player can afford it, if not.. ?   if you can, go to sleep after deducting the cost
-						if (ds.m_nGold - keeper.GetComponent<NPCScript> ().m_nCost >= 0) {
+						if (ds.m_nGold - keeper.GetComponent<NPCScript> ().m_nCost >= 0) 
+						{
 							ds.m_nGold = ds.m_nGold - keeper.GetComponent<NPCScript> ().m_nCost;
 							GameObject.Find ("Inn Keeper").GetComponent<InnKeeperScript> ().BeginFade ();
-						} else {
+						} 
+						else 
+						{
 							HandleEvent ("EndDialogue");
 						}
 					}
@@ -265,67 +135,14 @@ public class ToAEventHandler : BaseEventSystemScript
 			break;
 		case "Basement1":
 			{
-				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) {
-					player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
-				}
-				GameObject src = GameObject.Find ("Player");
-				src.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("PitPoint"), true);
-				GameObject.Find ("PitPoint").GetComponent<BoxCollider2D> ().enabled = true;
-				GameObject briol = GameObject.Find ("Briol");
-				briol.transform.position = player.transform.position;
-				briol.GetComponent<SpriteRenderer> ().enabled = true;
-				briol.GetComponent<BoxCollider2D> ().enabled = true;
-				NPCScript bNpc = briol.GetComponent<NPCScript> ();
-				bNpc.m_bIsComingOutOfPlayer = true;
-				bNpc.m_bIsMoving = true;
-				bNpc.m_bActive = true;
-				bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
-				bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
-				GameObject messageSystem = GameObject.Find ("Briol");
-				messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("D0");
-			}
-			break;
-		case "FinishedCleanup":
-			{
-				GameObject ABP = GameObject.Find ("AfterBattlePosition");
-				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				player.transform.position = ABP.transform.position;
-				GameObject briol = GameObject.Find ("Briol");
-				briol.transform.position = player.transform.position;
-				briol.GetComponent<SpriteRenderer> ().enabled = true;
-				briol.GetComponent<BoxCollider2D> ().enabled = true;
-				NPCScript bNpc = briol.GetComponent<NPCScript> ();
-				bNpc.m_bIsComingOutOfPlayer = true;
-				bNpc.m_bIsMoving = true;
-				bNpc.m_bActive = true;
-				bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
-				bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
-				GameObject messageSystem = GameObject.Find ("Callan");
-				messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("B0");
+				//messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("D0");
 			}
 			break;
 		case "AfterOpen":
 			{	
-				GameObject XWaypoint = GameObject.Find ("XWaypoint");
-				XWaypoint.GetComponent<WaypointScript> ().m_szTarget = "SzTarget";
 				GameObject briol = GameObject.Find ("Briol");
 				NPCScript bNpc = briol.GetComponent<NPCScript> ();
 				bNpc.DHF_NPCMoveIntoPlayer ();
-			}
-			break;
-		case "EndSeeBoar":
-			{
-				GameObject briol = GameObject.Find ("Briol");
-				NPCScript bNpc = briol.GetComponent<NPCScript> ();
-				bNpc.DHF_NPCMoveIntoPlayer ();
-				foreach (GameObject wpnt in Phase3_waypoints)
-					wpnt.GetComponent<BoxCollider2D> ().enabled = false;
-				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) 
-				{
-					player.GetComponent<FieldPlayerMovementScript> ().ReleaseBind ();
-				}
 			}
 			break;
 		case "Boar_Boss":
@@ -342,19 +159,6 @@ public class ToAEventHandler : BaseEventSystemScript
 				StartBoarBossBattle ();
 			}
 			break;
-			
-		case "Pan_to_Boar_Azyre":
-			{
-				GameObject Boar2 = GameObject.Find ("Boar2");
-				Camera.main.GetComponent<CameraFollowTarget> ().m_goTarget = Boar2;
-				Boar2.GetComponent<NPCScript> ().DHF_NPCMoveToGameobject (GameObject.Find ("to basement"), true);
-				GameObject.Find ("to basement").GetComponent<BoxCollider2D> ().enabled = true;
-				GameObject player = GameObject.Find ("Player");
-				Camera.main.GetComponent<CameraFollowTarget> ().m_goTarget = player;
-				GameObject messageSystem = GameObject.Find ("Briol");
-				messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("B2");
-			}
-			break;
 
 		case "AfterBoar":
 			{
@@ -369,108 +173,26 @@ public class ToAEventHandler : BaseEventSystemScript
 				briol.GetComponent<MessageHandler> ().BeginDialogue ("A7");
 			}
 			break;
-		case "End Temple_Clean_Dialogue1":
-			{
-				ds.m_dStoryFlagField.Remove ("AfterCleanup");
-				ds.m_dStoryFlagField.Add ("Hunter", 1);
-				GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject> ();
-				foreach (GameObject g in gObjs) {
-					if (g.GetComponent<MessageHandler> () != null) {
-						if (g.GetComponent<NPCScript> () != null)
-							g.GetComponent<NPCScript> ().m_bIsBeingInterractedWith = false;
-						g.GetComponent<MessageHandler> ().m_bShouldDisplayDialogue = false;
-					}
-				}
-				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) {
-					player.GetComponent<FieldPlayerMovementScript> ().ReleaseBind ();
-				}
-			}
-			break;
-		case "PitSeen":
-			{
-				GameObject briol = GameObject.Find ("Briol");
-				NPCScript bNpc = briol.GetComponent<NPCScript> ();
-				bNpc.DHF_NPCMoveIntoPlayer ();
-				GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject> ();
-				foreach (GameObject g in gObjs) {
-					if (g.GetComponent<MessageHandler> () != null) {
-						if (g.GetComponent<NPCScript> () != null)
-							g.GetComponent<NPCScript> ().m_bIsBeingInterractedWith = false;
-						g.GetComponent<MessageHandler> ().m_bShouldDisplayDialogue = false;
-					}
-				}
-				foreach (GameObject wpnt in Phase4_waypoints)
-					wpnt.GetComponent<BoxCollider2D> ().enabled = false;
-				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) {
-					player.GetComponent<FieldPlayerMovementScript> ().ReleaseBind ();
-				}
-			}
-			break;
-		case "End Temple_Clean_Dialogue2":
-			{
-				ds.m_dStoryFlagField.Remove ("AfterCleanup");
-				ds.m_dStoryFlagField.Add ("Knight", 1);
-				GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject> ();
-				foreach (GameObject g in gObjs) {
-					if (g.GetComponent<MessageHandler> () != null) {
-						if (g.GetComponent<NPCScript> () != null)
-							g.GetComponent<NPCScript> ().m_bIsBeingInterractedWith = false;
-						g.GetComponent<MessageHandler> ().m_bShouldDisplayDialogue = false;
-					}
-				}
-				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) {
-					player.GetComponent<FieldPlayerMovementScript> ().ReleaseBind ();
-				}
-			}
-			break;
-		case "Lion Statue":
-			{
-				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) {
-					player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
-				}
-				int lionRes = -1;
-				if (ds.m_dStoryFlagField.TryGetValue ("Lion_Statue", out lionRes) == false) {
-					GameObject briol = GameObject.Find ("Briol");
-					briol.transform.position = player.transform.position;
-					briol.GetComponent<SpriteRenderer> ().enabled = true;
-					briol.GetComponent<BoxCollider2D> ().enabled = true;
-					NPCScript bNpc = briol.GetComponent<NPCScript> ();
-					bNpc.m_bIsComingOutOfPlayer = true;
-					bNpc.m_bIsMoving = true;
-					bNpc.m_bActive = true;
-					bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
-					bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
-					GameObject messageSystem = GameObject.Find ("Callan");
-					messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("C0");
-				} else {
-					GameObject messageSystem = GameObject.Find ("Lion Statue");
-					messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("A0");
-				}
-			}
-			break;
-		case "Temple_Alter_1":
-			{
-				ds.m_dStoryFlagField.Add ("Lion_Statue", 1);
-				GameObject.Find ("Briol").GetComponent<NPCScript> ().DHF_NPCMoveIntoPlayer ();
-			}
-			break;
+		
+		
 		case "EndDialogue":
 			{
 				//turn off all dialogues happening, release bind on input.. umn.. i think that's it?
 				GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject> ();
-				foreach (GameObject g in gObjs) {
-					if (g.GetComponent<MessageHandler> () != null) {
+				foreach (GameObject g in gObjs) 
+				{
+					if (g.GetComponent<MessageHandler> () != null) 
+					{
 						if (g.GetComponent<NPCScript> () != null)
+						{
 							g.GetComponent<NPCScript> ().m_bIsBeingInterractedWith = false;
+						}
 						g.GetComponent<MessageHandler> ().m_bShouldDisplayDialogue = false;
 					}
 				}
 				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) {
+				if (player) 
+				{
 					player.GetComponent<FieldPlayerMovementScript> ().ReleaseBind ();
 				}
 			}
@@ -481,51 +203,67 @@ public class ToAEventHandler : BaseEventSystemScript
 
 	override public void WaypointTriggered(Collider2D c)
 	{
+		c.enabled = false;
 		switch(c.name)
 		{
-		case "XWaypoint":
+		case "StopAtBridge":
 		{
+			//Player has gotten to the bridge in the beginning.  Turn off the collider and have Briol begin to move to him
 			GameObject src = GameObject.Find("Player");
 			src.GetComponent<MessageHandler>().BeginDialogue("A6");
+			GameObject.Find("Interior").GetComponent<BoxCollider2D>().enabled = true;
 		}
 			break;
-		case "Basement2":
+		case "BoarStop_EncounterBoar":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag ("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
-			}
-			player.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("BoarBossPoint"), true);
-			GameObject.Find ("BoarBossPoint").GetComponent<BoxCollider2D> ().enabled = true;
-			GameObject briol = GameObject.Find ("Briol");
-			briol.transform.position = player.transform.position;
-			briol.GetComponent<SpriteRenderer> ().enabled = true;
-			briol.GetComponent<BoxCollider2D> ().enabled = true;
-			NPCScript bNpc = briol.GetComponent<NPCScript> ();
-			bNpc.m_bIsComingOutOfPlayer = true;
-			bNpc.m_bIsMoving = false;
-			bNpc.m_bActive = true;
-			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eRIGHT;
-			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
-			briol.GetComponent<MessageHandler> ().BeginDialogue ("B0");
-		}
-			break;
-		case "BoarBattle2":
-		{
+			//The boar has charged at the player after entering the temple for the first time, blur the camera and begin battle!
 			Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
 			Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
 			StartBoarBattle();
 		}
 			break;
-		case "Boar_Battle":
+		case "PlayerStop_EncounterBoar":
 		{
+			//Player has ran upward after entering the temple for the first time.   Activate the boar and move it toward the waypoint near the player.
 			m_goBoar.SetActive(true);
-			GameObject boar = GameObject.Find ("Boar");
-			boar.GetComponent<NPCScript>().m_bIsMoving = true;
-			boar.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("BoarBattle2"), true);
-			GameObject.Find ("BoarBattle2").GetComponent<BoxCollider2D> ().enabled = true;
-			ds.m_dStoryFlagField.Add("BoarBattle", 1);
+			m_goBoar.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("BoarStop_EncounterBoar"), true);
+			GameObject.Find ("BoarStop_EncounterBoar").GetComponent<BoxCollider2D> ().enabled = true;
+		}
+			break;
+		case "EncounterBoarBeforeRunOff":
+		{
+			//Encountering the boar that is going to run toward the stairs.
+			GameObject Player = GameObject.Find("Player");
+			Player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			Player.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("Callan_MoveTowardBoar"), false);
+			GameObject.Find("Callan_MoveTowardBoar").GetComponent<BoxCollider2D>().enabled = true;
+		}
+			break;
+		case "Callan_MoveTowardBoar":
+		{
+			//Callan is now in position to encounter the boar before it runs downstairs, now move Briol.
+			GameObject Player = GameObject.Find("Player");
+			Player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+			GameObject Briol  = GameObject.Find("Briol");
+			Briol.transform.position = Player.transform.position;
+			Briol.GetComponent<SpriteRenderer>().enabled = true;
+			Briol.GetComponent<NPCScript>().m_bIsComingOutOfPlayer = true;
+			Briol.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("Briol_MoveTowardBoar"), false);
+			GameObject.Find("Briol_MoveTowardBoar").GetComponent<BoxCollider2D>().enabled = true;
+		}
+			break;
+		case "Briol_MoveTowardBoar":
+		{
+			//Briol exclaims about there being a boar
+			GameObject Briol  = GameObject.Find("Briol");
+			Briol.GetComponent<MessageHandler>().BeginDialogue("B0");
+		}
+			break;
+		case "Pan_to_Boar_Azyre":
+		{
+			Camera.main.GetComponent<CameraFollowTarget>().m_goNextTarget = m_goBoar;
+			m_goBoar.transform.position = GameObject.Find("BoarRunOffStartPosition").transform.position;
+			m_goBoar.GetComponent<Animator>().Play("Boar_IdleRight");
 		}
 			break;
 		case "To Forest":
@@ -540,19 +278,9 @@ public class ToAEventHandler : BaseEventSystemScript
 			
 		}
 			break;
-		case "StepBack":
-		{
-			GameObject player = GameObject.Find("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
-				GameObject.Find("StepBack").GetComponent<BoxCollider2D>().enabled = false;
-			}
-		}
-			break;
 		case "Interior":
 		{
+			//Is entering the temple for the first time, Stop the player, move briol away a little bit, begin dialogue.
 			GameObject player = GameObject.FindGameObjectWithTag ("Player");
 			if(player)
 			{
@@ -563,33 +291,26 @@ public class ToAEventHandler : BaseEventSystemScript
 			briol.GetComponent<SpriteRenderer> ().enabled = true;
 			NPCScript bNpc = briol.GetComponent<NPCScript> ();
 			bNpc.m_bIsComingOutOfPlayer = true;
-			bNpc.DHF_NPCMoveToGameobject (GameObject.Find ("Briol1"),false);
-			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
-			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
+			bNpc.DHF_NPCMoveToGameobject (GameObject.Find ("Briol_AwayFromPlayerAtEntrance"),false);
 			briol.GetComponent<MessageHandler> ().BeginDialogue ("A0");
+			ds.m_dStoryFlagField.Remove("ToAEvent");
+			ds.m_dStoryFlagField.Add("ToAEvent", 1);
 		}
 			break;
-		case "BoarRunoff":
+		case "Briol_AwayFromPlayerAtEntrance":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag ("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
-			}
-			m_goBoar2.SetActive(true);
+			//Briol has moved to the location, begin dialogue
 			GameObject briol = GameObject.Find ("Briol");
-			briol.transform.position = player.transform.position;
-			briol.GetComponent<SpriteRenderer> ().enabled = true;
-			NPCScript bNpc = briol.GetComponent<NPCScript> ();
-			bNpc.m_bIsComingOutOfPlayer = true;
-			bNpc.DHF_NPCMoveToGameobject (GameObject.Find ("BRIOL"),false);
-			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eRIGHT;
-			bNpc.ResetAnimFlagsExcept (bNpc.m_nFacingDir);
-			briol.GetComponent<MessageHandler> ().BeginDialogue ("B0");
+			briol.GetComponent<MessageHandler> ().BeginDialogue ("A0");
+
 		}
 			break;
 		}
 	}
+
+
+
+	//Helper functions for battles------
 	void StartBoarBattle()
 	{
 		GameObject dc = GameObject.Find("PersistantData");
@@ -607,7 +328,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			go.GetComponent<DCScript>().SetPreviousPosition(m_goPlayer.transform.position);
 			go.GetComponent<DCScript>().SetPreviousFacingDirection(m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir);
 			go.GetComponent<DCScript>().SetPreviousFieldName(Application.loadedLevelName);
-			go.GetComponent<DCScript>().SetBattleFieldBackgroundIter(2);
+			go.GetComponent<DCScript>().SetBattleFieldBackgroundIter(1);
 
 			
 			Application.LoadLevel("Battle_Scene");
@@ -629,8 +350,6 @@ public class ToAEventHandler : BaseEventSystemScript
 			go.GetComponent<DCScript>().SetPreviousFacingDirection(m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir);
 			go.GetComponent<DCScript>().SetPreviousFieldName(Application.loadedLevelName);
 			go.GetComponent<DCScript>().SetBattleFieldBackgroundIter(2);
-			
-			
 			Application.LoadLevel("Battle_Scene");
 		}
 	}

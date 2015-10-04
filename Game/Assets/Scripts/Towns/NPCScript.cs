@@ -145,6 +145,7 @@ public class NPCScript : MonoBehaviour
 			}
 			else
 			{
+				ResetAnimFlagsExcept(-1);
 				m_bMoveTowardLocation = false;
 				m_vTargetLocation = Vector3.zero;
 			}

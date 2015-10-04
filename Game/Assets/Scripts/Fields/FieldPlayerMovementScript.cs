@@ -11,7 +11,10 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		BindInput();
 		m_bIsMovingToLocation = true;
 		m_vTargetLocation = (Vector2)_TargetLocation.transform.position;
-		m_vTargetLocation.y += _TargetLocation.GetComponent<BoxCollider2D>().size.y * 0.5f;
+		if(_TargetLocation.GetComponent<BoxCollider2D>() != null)
+		{
+			m_vTargetLocation.y += _TargetLocation.GetComponent<BoxCollider2D>().size.y * 0.5f;
+		}
 		m_bIsRunning = _ShouldIRun;
 		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
 		

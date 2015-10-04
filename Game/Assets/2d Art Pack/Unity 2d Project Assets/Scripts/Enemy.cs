@@ -86,7 +86,6 @@ public class Enemy : MonoBehaviour
 		dead = true;
 
 		// Allow the enemy to rotate and spin it by adding a torque.
-		GetComponent<Rigidbody2D>().fixedAngle = false;
 		GetComponent<Rigidbody2D>().AddTorque(Random.Range(deathSpinMin,deathSpinMax));
 
 		// Find all of the colliders on the gameobject and set them all to be triggers.

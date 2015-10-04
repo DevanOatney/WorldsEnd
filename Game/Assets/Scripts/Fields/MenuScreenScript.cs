@@ -557,7 +557,6 @@ public class MenuScreenScript : MonoBehaviour
 			{
 				//If we landed in here it means that it's just a heal item.
 				m_bDisableInput = true;
-				int healingAmnt = dcItemData.m_nHPMod;
 				//check to see if it's healing all targets or just one.
 				if(dcItemData.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
 				{
