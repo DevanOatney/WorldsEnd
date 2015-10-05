@@ -20,7 +20,7 @@ C4|3|Boar_Boss
 C5|1|Briol||That's your plan? 'Get it?' Wow...||C6
 C6|1|Callan||Well, it worked didn't it?||C7
 C7|1|Briol||Whatever. Better start cleaning up this dump.||C8
-C8|3|End Boar_Boss_Battle
+C8|3|End_Boar_Boss_Battle
 D0|1|Briol||Shit! Now how do we get through?||D1
 D1|1|Callan||How deep do you think this is? Do you thinkn it's bottomless?!?||D2
 D2|1|Narrator||No, dumbass. It's just dark.||D3

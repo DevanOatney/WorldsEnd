@@ -73,9 +73,16 @@ public class ToAEventHandler : BaseEventSystemScript
 			case 4:
 			{
 				//Player just returned from fighting the boar boss
+				HandleEvent("ReturnedFromBoarBossFight");
+				ds.m_dStoryFlagField.Remove("ToAEvent");
+				ds.m_dStoryFlagField.Add("ToAEvent", 5);
 			}
 				break;
-				
+			case 5:
+			{
+				//Temple was cleared out and a choice was made over Knight/Ranger
+			}
+				break;
 			}
 		}
 	}
@@ -209,8 +216,39 @@ public class ToAEventHandler : BaseEventSystemScript
 				briol.GetComponent<MessageHandler> ().BeginDialogue ("A7");
 			}
 			break;
-		
-		
+		case "ReturnedFromBoarBossFight":
+		{
+			//The player just returned from the boar boss fight Briol/Player face each other and dialogue starts
+			GameObject player = GameObject.Find("Player");
+			GameObject briol = GameObject.Find("Briol");
+			player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			player.transform.position = GameObject.Find("BoarBossChargePoint_Callan").transform.position;
+			briol.transform.position = GameObject.Find("BoarBossChargePoint_Briol").transform.position;
+			player.GetComponent<Animator>().SetInteger("m_nFacingDir", 2);
+			briol.GetComponent<SpriteRenderer>().enabled = true;
+			briol.GetComponent<NPCScript>().ResetAnimFlagsExcept(-1);
+			briol.GetComponent<Animator>().SetInteger("m_nFacingDir", 1);
+			briol.GetComponent<MessageHandler>().BeginDialogue("C5");
+
+		}
+			break;
+		case "End_Boar_Boss_Battle":
+		{
+			/*
+   				Start Callan_Temple_of_Azyre dialogue at B0
+   				Hunter flag is added if Hunter path is chosen or Knight flag is added if Knight path is chosen
+   				Characters form one unit and scene ends
+			 */
+			GameObject player = GameObject.Find("Player");
+			GameObject briol = GameObject.Find("Briol");
+			player.transform.position = GameObject.Find("BoarBossChargePoint_Callan").transform.position;
+			briol.transform.position = GameObject.Find("BoarBossChargePoint_Briol").transform.position;
+			player.GetComponent<Animator>().SetInteger("m_nFacingDir", 2);
+			briol.GetComponent<Animator>().SetInteger("m_nFacingDir", 1);
+			Camera.main.SendMessage("fadeOut");
+			Invoke("FadeBackIn", 1.0f);
+		}
+			break;
 		case "EndDialogue":
 			{
 				//turn off all dialogues happening, release bind on input.. umn.. i think that's it?
@@ -383,15 +421,6 @@ public class ToAEventHandler : BaseEventSystemScript
 			break;
 		case "EncounterBoarBoss_Start":
 		{
-			/*
-   				After the battle the dialogue continues at line C5
-   				Screen fades to black, rubble layer and battles are removed
-   				Screen fades back in, the characters are standing at Game Object "AfterBattlePoint" facing into the Temple
-   				Characters turn to face each other   
-   				Start Callan_Temple_of_Azyre dialogue at B0
-   				Hunter flag is added if Hunter path is chosen or Knight flag is added if Knight path is chosen
-   				Characters form one unit and scene ends
-			 */
 			//Move the player into starting position for encountering the boar boss.
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<FieldPlayerMovementScript>().BindInput();
@@ -472,5 +501,25 @@ public class ToAEventHandler : BaseEventSystemScript
 			go.GetComponent<DCScript>().SetBattleFieldBackgroundIter(2);
 			Application.LoadLevel("Battle_Scene");
 		}
+	}
+
+	//Fading back in after the boar boss fight
+	void FadeBackIn()
+	{
+		GameObject player = GameObject.Find("Player");
+		GameObject briol = GameObject.Find("Briol");
+		player.transform.position = GameObject.Find("AfterBoarBattlePosition").transform.position;
+		briol.transform.position = GameObject.Find("AfterBoarBattlePositionBriol").transform.position;
+		player.GetComponent<Animator>().SetInteger("m_nFacingDir", 2);
+		briol.GetComponent<Animator>().SetInteger("m_nFacingDir", 1);
+		Camera.main.SendMessage("fadeIn");
+		Invoke("StartChat", 1.0f);
+	}
+
+	//has faded back in, start the dialogue where the player chooses knight or ranger
+	void StartChat()
+	{
+		GameObject player = GameObject.Find("Player");
+		player.GetComponent<MessageHandler>().BeginDialogue("B0");
 	}
 }

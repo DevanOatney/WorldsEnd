@@ -29,7 +29,6 @@ public class TreasureChestScript : MonoBehaviour {
 		m_ciItemHeld = new DCScript.CharactersItems();
 		m_ciItemHeld.m_szItemName = m_szItemName;
 		m_ciItemHeld.m_nItemCount = Random.Range(1, 4);
-		//
 
 		m_fAnimLength = m_acOpeningAnim.length;
 		m_vSizeOfMessage = new Vector2((m_ciItemHeld.m_szItemName.Length + 10)* 15 , 25);
