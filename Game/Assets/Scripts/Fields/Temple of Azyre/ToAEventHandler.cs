@@ -64,6 +64,17 @@ public class ToAEventHandler : BaseEventSystemScript
 				GameObject.Find("EncounterThePit").GetComponent<BoxCollider2D>().enabled = true;
 			}
 				break;
+			case 3:
+			{
+				//The player has seen the pit
+				GameObject.Find("EncounterBoarBoss_Start").GetComponent<BoxCollider2D>().enabled = true;
+			}
+				break;
+			case 4:
+			{
+				//Player just returned from fighting the boar boss
+			}
+				break;
 				
 			}
 		}
@@ -162,18 +173,25 @@ public class ToAEventHandler : BaseEventSystemScript
 				bNpc.DHF_NPCMoveIntoPlayer ();
 			}
 			break;
+		case "PitSeen":
+		{
+			//The pit in the basement scene is over, have briol return to the character
+			GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveIntoPlayer();
+			GameObject.Find("EncounterBoarBoss_Start").GetComponent<BoxCollider2D>().enabled = true;
+		}
+			break;
 		case "Boar_Boss":
 			{
-				ds.m_dStoryFlagField.Remove ("BoarBattle");
-				ds.m_dStoryFlagField.Add ("AfterBoarBattle", 1);
-				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				player.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("BoarBoss"), true);
-				GameObject.Find ("BoarBoss").GetComponent<BoxCollider2D> ().enabled = true;
+				//Caracters charge to waypoint "BoarBoss" and Battle Starts
+				ds.m_dStoryFlagField.Remove ("ToAEvent");
+				ds.m_dStoryFlagField.Add ("ToAEvent", 4);
+				GameObject player = GameObject.Find ("Player");
 				GameObject briol = GameObject.Find ("Briol");
-				briol.GetComponent<NPCScript> ().DHF_NPCMoveToGameobject (GameObject.Find ("BoarBoss"), true);
-				Camera.main.GetComponent<CameraFollowTarget> ().m_bShouldSwirl = true;
-				Camera.main.GetComponent<VEffects> ().SendMessage ("StartBlur");
-				StartBoarBossBattle ();
+				GameObject.Find("BoarBossChargePoint_Callan").GetComponent<BoxCollider2D>().enabled = true;
+				GameObject.Find("BoarBossChargePoint_Briol").GetComponent<BoxCollider2D>().enabled = true;
+				player.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("BoarBossChargePoint_Callan"), true);
+				briol.GetComponent<NPCScript> ().DHF_NPCMoveToGameobject (GameObject.Find ("BoarBossChargePoint_Briol"), true);
+				m_goBoarBoss.SetActive(true);
 			}
 			break;
 
@@ -261,7 +279,7 @@ public class ToAEventHandler : BaseEventSystemScript
 		{
 			//Callan is now in position to encounter the boar before it runs downstairs, now move Briol.
 			GameObject Player = GameObject.Find("Player");
-			Player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+			Player.GetComponent<FieldPlayerMovementScript>().DHF_StopMovingFaceDirection(2);
 
 			GameObject Briol  = GameObject.Find("Briol");
 			Briol.transform.position = Player.transform.position;
@@ -275,8 +293,6 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "Briol_MoveTowardBoar":
 		{
 			//Briol exclaims about there being a boar
-			GameObject Player = GameObject.Find("Player");
-			Player.GetComponent<Animator>().SetInteger("m_nFacingDir", 2);
 			GameObject Briol  = GameObject.Find("Briol");
 			Briol.GetComponent<MessageHandler>().BeginDialogue("B0");
 		}
@@ -341,7 +357,10 @@ public class ToAEventHandler : BaseEventSystemScript
 			{
 				player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
 			}
+			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 			GameObject Briol = GameObject.Find("Briol");
+			Briol.transform.position = player.transform.position;
+			Briol.GetComponent<BoxCollider2D>().enabled = true;
 			NPCScript bscrpt = Briol.GetComponent<NPCScript>();
 			Briol.GetComponent<SpriteRenderer>().enabled = true;
 			bscrpt.m_bIsComingOutOfPlayer = true;
@@ -358,7 +377,52 @@ public class ToAEventHandler : BaseEventSystemScript
 			break;
 		case "PitPoint_Callan":
 		{
+			//Callan has moved beside briol to look at the pit, begin dialogue
 			GameObject.Find("Briol").GetComponent<MessageHandler>().BeginDialogue("D0");
+		}
+			break;
+		case "EncounterBoarBoss_Start":
+		{
+			/*
+   				After the battle the dialogue continues at line C5
+   				Screen fades to black, rubble layer and battles are removed
+   				Screen fades back in, the characters are standing at Game Object "AfterBattlePoint" facing into the Temple
+   				Characters turn to face each other   
+   				Start Callan_Temple_of_Azyre dialogue at B0
+   				Hunter flag is added if Hunter path is chosen or Knight flag is added if Knight path is chosen
+   				Characters form one unit and scene ends
+			 */
+			//Move the player into starting position for encountering the boar boss.
+			GameObject player = GameObject.Find("Player");
+			player.GetComponent<FieldPlayerMovementScript>().BindInput();
+			GameObject.Find("BoarBossPoint_Callan").GetComponent<BoxCollider2D>().enabled = true;
+			player.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("BoarBossPoint_Callan"), false, 3);
+		}
+			break;
+		case "BoarBossPoint_Callan":
+		{
+			//Callan has moved into initial position for encountering the boar boss, now move Briol
+			GameObject Briol = GameObject.Find("Briol");
+			GameObject.Find("BoarBossPoint_Briol").GetComponent<BoxCollider2D>().enabled = true;
+			Briol.transform.position = GameObject.Find("Player").transform.position;
+			Briol.GetComponent<SpriteRenderer>().enabled = true;
+			Briol.GetComponent<BoxCollider2D>().enabled = true;
+			Briol.GetComponent<NPCScript>().m_bIsComingOutOfPlayer = true;
+			Briol.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("BoarBossPoint_Briol"), false, 3);
+		}
+			break;
+		case "BoarBossPoint_Briol":
+		{
+			//Briol has moved into initial position for encountering the boar boss, start the dialogue
+			GameObject.Find("Briol").GetComponent<MessageHandler>().BeginDialogue("C0");
+		}
+			break;
+		case "BoarBossChargePoint_Callan":
+		{
+			//Characters have charged at the boar, start the battle stuff
+			Camera.main.GetComponent<CameraFollowTarget> ().m_bShouldSwirl = true;
+			Camera.main.GetComponent<VEffects> ().SendMessage ("StartBlur");
+			Invoke("StartBoarBossBattle", 0.5f);
 		}
 			break;
 		}

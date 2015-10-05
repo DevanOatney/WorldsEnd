@@ -15,6 +15,13 @@ public class NPCScript : MonoBehaviour
 		m_vTargetLocation = _target.transform.position;
 		m_vTargetLocation.y += _target.GetComponent<BoxCollider2D>().size.y * 0.5f;
 	}
+	public void DHF_NPCMoveToGameobject(GameObject _target, bool _shouldIRun, int _nextFacingDir)
+	{
+		m_bMoveTowardLocation = true;
+		m_vTargetLocation = _target.transform.position;
+		m_vTargetLocation.y += _target.GetComponent<BoxCollider2D>().size.y * 0.5f;
+		m_nNextFacingDir = _nextFacingDir;
+	}
 	#endregion
 
 
@@ -38,7 +45,8 @@ public class NPCScript : MonoBehaviour
 	protected float m_fTimer = 0.0f;
 	protected int m_nStepsIter = 0;
 	public Animator m_aAnim;
-
+	//For helper functions of moving, if -1 it doesn't do anything, else it faces the player this way after moving to the location
+	int m_nNextFacingDir = -1;
 	//This is toggled when there's a collision/trigger hit.  
 	bool m_bCanMove = true;
 	//cost for if it's an innkeeper
@@ -146,6 +154,11 @@ public class NPCScript : MonoBehaviour
 			else
 			{
 				ResetAnimFlagsExcept(-1);
+				if(m_nNextFacingDir != -1)
+				{
+					m_aAnim.SetInteger("m_nFacingDir", m_nNextFacingDir);
+					m_nNextFacingDir = -1;
+				}
 				m_bMoveTowardLocation = false;
 				m_vTargetLocation = Vector3.zero;
 			}

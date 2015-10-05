@@ -6,7 +6,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 {
 	#region DESIGNER_HELPER_FUNCTIONS
 	//Function for the player to move to a target game object, set the flag to true if you want the player to run.
-	public void DHF_PlayerMoveToGameObject(GameObject _TargetLocation, bool _ShouldIRun)
+	public void DHF_PlayerMoveToGameObject(GameObject _TargetLocation)
 	{
 		BindInput();
 		m_bIsMovingToLocation = true;
@@ -15,9 +15,46 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		{
 			m_vTargetLocation.y += _TargetLocation.GetComponent<BoxCollider2D>().size.y * 0.5f;
 		}
-		m_bIsRunning = _ShouldIRun;
+		m_bIsRunning = false;
 		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
 		
+	}
+	public void DHF_PlayerMoveToGameObject(GameObject _TargetLocation, bool _bShouldIRun)
+	{
+		BindInput();
+		m_bIsMovingToLocation = true;
+		m_vTargetLocation = (Vector2)_TargetLocation.transform.position;
+		if(_TargetLocation.GetComponent<BoxCollider2D>() != null)
+		{
+			m_vTargetLocation.y += _TargetLocation.GetComponent<BoxCollider2D>().size.y * 0.5f;
+		}
+		m_bIsRunning = _bShouldIRun;
+		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
+		
+	}
+	public void DHF_PlayerMoveToGameObject(GameObject _TargetLocation, bool _bShouldIRun, int _nextFacingDirection)
+	{
+		BindInput();
+		m_bIsMovingToLocation = true;
+		m_vTargetLocation = (Vector2)_TargetLocation.transform.position;
+		if(_TargetLocation.GetComponent<BoxCollider2D>() != null)
+		{
+			m_vTargetLocation.y += _TargetLocation.GetComponent<BoxCollider2D>().size.y * 0.5f;
+		}
+		m_bIsRunning = _bShouldIRun;
+		m_nNextFacingDir = _nextFacingDirection;
+		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
+		
+	}
+
+	public void DHF_StopMovingFaceDirection(int _facingDir)
+	{
+		m_bIsMovingToLocation = false;
+		m_vTargetLocation = Vector3.zero;
+		m_bIsRunning = false;
+		m_aAnim.SetBool("m_bRunButtonIsPressed", false);
+		m_nFacingDir = _facingDir;
+		m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
 	}
 	#endregion
 
@@ -37,6 +74,8 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	//2 : Right
 	//3 : Up
 	public int m_nFacingDir = 0;
+	//For helper functions of moving, if -1 it doesn't do anything, else it faces the player this way after moving to the location
+	int m_nNextFacingDir = -1;
 
 	bool m_bIsRunning = false;
 	public void SetIsRunning(bool flag) {m_bIsRunning = flag;}
@@ -218,11 +257,16 @@ public class FieldPlayerMovementScript : MonoBehaviour
 				}
 				else
 				{
+					ResetAnimFlagsExcept(-1);
+					if(m_nNextFacingDir != -1)
+					{
+						m_aAnim.SetInteger("m_nFacingDir", m_nNextFacingDir);
+						m_nNextFacingDir = -1;
+					}
 					m_bIsRunning = false;
 					m_bIsMovingToLocation = false;
 					m_bShouldMove = false;
 					m_vTargetLocation = Vector3.zero;
-					ResetAnimFlagsExcept(-1);
 					m_nState = (int)States.eIDLE;
 					m_aAnim.SetBool("m_bRunButtonIsPressed", false);
 					ReleaseBind();
