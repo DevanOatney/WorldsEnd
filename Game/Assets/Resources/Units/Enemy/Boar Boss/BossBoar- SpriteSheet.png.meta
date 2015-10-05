@@ -1,0 +1,561 @@
+fileFormatVersion: 2
+guid: 76df4cade5e5d85438226b894a680f24
+timeCreated: 1444080826
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BossBoar- SpriteSheet_0
+    21300002: BossBoar- SpriteSheet_1
+    21300004: BossBoar- SpriteSheet_2
+    21300006: BossBoar- SpriteSheet_3
+    21300008: BossBoar- SpriteSheet_4
+    21300010: BossBoar- SpriteSheet_5
+    21300012: BossBoar- SpriteSheet_6
+    21300014: BossBoar- SpriteSheet_7
+    21300016: BossBoar- SpriteSheet_8
+    21300018: BossBoar- SpriteSheet_9
+    21300020: BossBoar- SpriteSheet_10
+    21300022: BossBoar- SpriteSheet_11
+    21300024: BossBoar- SpriteSheet_12
+    21300026: BossBoar- SpriteSheet_13
+    21300028: BossBoar- SpriteSheet_14
+    21300030: BossBoar- SpriteSheet_15
+    21300032: BossBoar- SpriteSheet_16
+    21300034: BossBoar- SpriteSheet_17
+    21300036: BossBoar- SpriteSheet_18
+    21300038: BossBoar- SpriteSheet_19
+    21300040: BossBoar- SpriteSheet_20
+    21300042: BossBoar- SpriteSheet_21
+    21300044: BossBoar- SpriteSheet_22
+    21300046: BossBoar- SpriteSheet_23
+    21300048: BossBoar- SpriteSheet_24
+    21300050: BossBoar- SpriteSheet_25
+    21300052: BossBoar- SpriteSheet_26
+    21300054: BossBoar- SpriteSheet_27
+    21300056: BossBoar- SpriteSheet_28
+    21300058: BossBoar- SpriteSheet_29
+    21300060: BossBoar- SpriteSheet_30
+    21300062: BossBoar- SpriteSheet_31
+    21300064: BossBoar- SpriteSheet_32
+    21300066: BossBoar- SpriteSheet_33
+    21300068: BossBoar- SpriteSheet_34
+    21300070: BossBoar- SpriteSheet_35
+    21300072: BossBoar- SpriteSheet_36
+    21300074: BossBoar- SpriteSheet_37
+    21300076: BossBoar- SpriteSheet_38
+    21300078: BossBoar- SpriteSheet_39
+    21300080: BossBoar- SpriteSheet_40
+    21300082: BossBoar- SpriteSheet_41
+    21300084: BossBoar- SpriteSheet_42
+    21300086: BossBoar- SpriteSheet_43
+    21300088: BossBoar- SpriteSheet_44
+    21300090: BossBoar- SpriteSheet_45
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: BossBoar- SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 869
+        width: 36
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 869
+        width: 36
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 803
+        width: 93
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 803
+        width: 95
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 736
+        width: 93
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 736
+        width: 94
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 736
+        width: 94
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 736
+        width: 95
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 666
+        width: 93
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 667
+        width: 103
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 666
+        width: 94
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 666
+        width: 93
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 567
+        width: 94
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 567
+        width: 92
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 567
+        width: 93
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 567
+        width: 81
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 567
+        width: 95
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 567
+        width: 94
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 501
+        width: 94
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 501
+        width: 93
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 435
+        width: 94
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 435
+        width: 90
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 435
+        width: 95
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 435
+        width: 95
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 369
+        width: 94
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 369
+        width: 94
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 302
+        width: 93
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 302
+        width: 94
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 302
+        width: 94
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 302
+        width: 95
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 232
+        width: 93
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 232
+        width: 94
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 233
+        width: 103
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 232
+        width: 93
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 133
+        width: 94
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 133
+        width: 95
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 133
+        width: 81
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 133
+        width: 93
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_38
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 133
+        width: 92
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_39
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 133
+        width: 94
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_40
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 67
+        width: 92
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_41
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 67
+        width: 95
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_42
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 0
+        width: 95
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_43
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 95
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_44
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 0
+        width: 90
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossBoar- SpriteSheet_45
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 0
+        width: 94
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
