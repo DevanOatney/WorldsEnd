@@ -30,6 +30,7 @@ public class ToAEventHandler : BaseEventSystemScript
 		if(ds.m_dStoryFlagField.TryGetValue("ToAEvent", out result) == false)
 		{
 			//This is the introduction, play it yo!
+			GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = true;
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<FieldPlayerMovementScript>().BindInput();
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
@@ -49,30 +50,35 @@ public class ToAEventHandler : BaseEventSystemScript
 			case 0:
 			{
 				//The player has gone through the opening event of this scene
+				GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = true;
 				GameObject.Find("Interior").GetComponent<BoxCollider2D>().enabled = true;
 			}
 				break;
 			case 1:
 			{
 				//The player has gone into the entrance of the Temple for the first time
+				GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = true;
 				GameObject.Find("EncounterBoarBeforeRunOff").GetComponent<BoxCollider2D>().enabled = true;
 			}
 				break;
 			case 2:
 			{
 				//The player has seen the boar run down into the basement
+				GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = true;
 				GameObject.Find("EncounterThePit").GetComponent<BoxCollider2D>().enabled = true;
 			}
 				break;
 			case 3:
 			{
 				//The player has seen the pit
+				GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = true;
 				GameObject.Find("EncounterBoarBoss_Start").GetComponent<BoxCollider2D>().enabled = true;
 			}
 				break;
 			case 4:
 			{
 				//Player just returned from fighting the boar boss
+				GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = false;
 				HandleEvent("ReturnedFromBoarBossFight");
 				ds.m_dStoryFlagField.Remove("ToAEvent");
 				ds.m_dStoryFlagField.Add("ToAEvent", 5);
@@ -81,6 +87,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			case 5:
 			{
 				//Temple was cleared out and a choice was made over Knight/Ranger
+				GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = false;
 			}
 				break;
 			}
