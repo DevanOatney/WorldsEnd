@@ -460,7 +460,7 @@ public class ToAEventHandler : BaseEventSystemScript
 		if(dc)
 		{
 			List<string> bossEncounter = new List<string>();
-			bossEncounter.Add("BoarBoss");
+			bossEncounter.Add("Boar Boss");
 			//Set the names of the list of enemies the player is about to fight
 			dc.GetComponent<DCScript>().SetEnemyNames(bossEncounter);
 			//Set the position of the player before the battle starts

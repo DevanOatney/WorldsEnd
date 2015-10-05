@@ -404,9 +404,6 @@ public class PercentBeserkEnemyScript : UnitScript {
 		if(dmg < 0)
 			dmg = 0;
 		m_nCurHP -= dmg;
-		Debug.Log("Max: " + m_nMaxHP);
-		Debug.Log("Cur: " + m_nCurHP);
-		Debug.Log(m_nCurHP/m_nMaxHP);
 		if(m_nCurHP / m_nMaxHP <= m_fPercentToEndFight)
 		{
 			m_nState = (int)States.eIDLE;
