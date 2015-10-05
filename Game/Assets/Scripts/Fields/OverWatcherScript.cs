@@ -259,67 +259,7 @@ public class OverWatcherScript : MonoBehaviour {
 		}
 		//for day/night cycle
 		#region Day and Night Cycle
-		if(Input.GetKeyDown(KeyCode.M) && m_bCharacterBeingSelected == false)
-		{
-			//reset all of the iters and flags
 
-			m_bCharacterBeingSelected = false;
-			m_nMenuSelectionIndex = 0;
-			m_nCharacterSelectionIndex = 0;
-			m_bShowDifferentMenuScreen = false;
-
-			m_bShouldPause = !m_bShouldPause;
-			if(m_bShouldPause == false)
-			{
-				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-				Camera.main.GetComponent<GreyScaleScript>().SendMessage("EndGreyScale");
-				m_dFunc = null;
-			}
-			else
-			{
-				if(GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
-				{
-					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
-					Camera.main.GetComponent<GreyScaleScript>().SendMessage("StartGreyScale");
-				}
-				else
-					m_bShouldPause = false;
-			}
-			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-		}
-		if(Input.GetKeyDown(KeyCode.Escape))
-		{
-			//reset all of the iters and flags
-			if(m_bCharacterBeingSelected == true)
-			{
-				m_bCharacterBeingSelected = false;
-				m_nCharacterSelectionIndex = 0;
-			}
-			else
-			{
-				m_nMenuSelectionIndex = 0;
-				m_bShowDifferentMenuScreen = false;
-				
-				m_bShouldPause = !m_bShouldPause;
-				if(m_bShouldPause == false)
-				{
-					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-					Camera.main.GetComponent<GreyScaleScript>().SendMessage("EndGreyScale");
-					m_dFunc = null;
-				}
-				else
-				{
-					if(GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
-					{
-						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
-						Camera.main.GetComponent<GreyScaleScript>().SendMessage("StartGreyScale");
-					}
-					else
-						m_bShouldPause = false;
-				}
-				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-			}
-		}
 		if(m_bShouldPause == false)
 		{
 			m_fTimer += Time.deltaTime;
