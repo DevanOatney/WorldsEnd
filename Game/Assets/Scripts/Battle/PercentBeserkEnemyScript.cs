@@ -46,7 +46,10 @@ public class PercentBeserkEnemyScript : UnitScript {
 	//Enemy Stats
 	public TextAsset m_taStats;
 	public float m_fPercentToEndFight = 0.25f;
-	
+
+	//Used for if this enemy can now actually be killed
+	bool m_bShouldIgnorePercent = false;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -87,7 +90,23 @@ public class PercentBeserkEnemyScript : UnitScript {
 			break;
 		}
 		transform.position = m_vInitialPos;
+
+
+		CheckUnitChange();
 	}
+
+	void CheckUnitChange()
+	{
+		//used for if this unit can now actually be killed, unsure what this will become, currently just check if it's the
+		//second time you fight the boar boss
+		int result;
+		GameObject dc = GameObject.Find("PersistantData");
+		if(dc.GetComponent<DCScript>().m_dStoryFlagField.TryGetValue("ToAEvent", out result))
+		{
+			m_bShouldIgnorePercent = true;
+		}
+	}
+
 	void SetUnitStats()
 	{
 		string[] stats = m_taStats.text.Split('\n');
@@ -404,7 +423,7 @@ public class PercentBeserkEnemyScript : UnitScript {
 		if(dmg < 0)
 			dmg = 0;
 		m_nCurHP -= dmg;
-		if(m_nCurHP / m_nMaxHP <= m_fPercentToEndFight)
+		if(m_nCurHP / m_nMaxHP <= m_fPercentToEndFight && m_bShouldIgnorePercent == false)
 		{
 			m_nState = (int)States.eIDLE;
 			GameObject tw = GameObject.Find("TurnWatcher");
@@ -413,7 +432,19 @@ public class PercentBeserkEnemyScript : UnitScript {
 				tw.GetComponent<TurnWatcherScript>().RemoveMeFromList(gameObject, m_acDyingAnim.length);
 			}
 		}
-		
+		else if(m_nCurHP <= 0)
+		{
+			m_nState = (int)States.eDEAD;
+			m_fDeadBucket = m_acDyingAnim.length;
+			anim.SetBool("m_bIsDying", true);
+			if(m_acDyingAudio)
+				GetComponent<AudioSource>().PlayOneShot(m_acDyingAudio, 0.5f + GO.GetComponent<DCScript>().m_fSFXVolume);
+			GameObject tw = GameObject.Find("TurnWatcher");
+			if(tw)
+			{
+				tw.GetComponent<TurnWatcherScript>().RemoveMeFromList(gameObject, m_acDyingAnim.length);
+			}
+		}
 		else
 		{
 			if(m_acDamagedAudio)

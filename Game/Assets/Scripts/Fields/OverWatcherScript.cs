@@ -176,6 +176,7 @@ public class OverWatcherScript : MonoBehaviour {
 				if(encGrps == null)
 					encGrps = es.GetDayEncounterGroups();
 			}
+			Debug.Log(encGrps.Count);
 			if(encGrps.Count > 0)
 			{
 				int rndmGrp = Random.Range(0, encGrps.Count);
@@ -191,7 +192,6 @@ public class OverWatcherScript : MonoBehaviour {
 				dc.SetPreviousPosition(m_goPlayer.transform.position);
 				dc.SetPreviousFacingDirection(m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir);
 				dc.SetPreviousFieldName(Application.loadedLevelName);
-				Debug.Log("battle");
 				Application.LoadLevel("Battle_Scene");
 			}
 		}
