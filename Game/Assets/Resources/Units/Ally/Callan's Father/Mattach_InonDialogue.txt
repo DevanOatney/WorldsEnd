@@ -1,19 +1,19 @@
-A1|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_1|Ah, son, you finally made it. I was almost beginning to wonder if you had chosen to cower beneath the covers all day. Hahahah! But I'm glad that you found the gall to get up and follow after your sister and I. She has been raring to go! I could barely keep her from running off without you. I didn't want to have to explain myself twice though. So, let's continue on.|1|A2
+A1|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_1|Ah, son, you finally made it. I was almost beginning to wonder if you had chosen to cower beneath the covers all day. Ha ha ha! But I'm glad that you found the gall to get up and follow after your sister and me. She has been raring to go! I could barely keep her from running off without you. I didn't want to have to explain myself twice though. So, let's continue on.|1|A2
 A2|1|Narrator|Sounds/Voice/The Narrator/The_Narrator_Ritual_1|Well, doesn't he have high hopes for you.|1|A3
 A3|1|Callan|Sounds/Voice/Callan/Callan_Ritual_1|Of course he does! He's my father. I just overslept, that's all.|1|A4
 A4|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_2|What are you going on about?|1|A5
 A5|1|Briol|Sounds/Voice/Briol/Briol_Ritual_1|I always knew there was something weird about you.|1|A6
 A6|2|1|2|Did you not hear that voice just now?|A7|It's nothing, forget I said anything.|A8
 A7|1|Briol|Sounds/Voice/Briol/Briol_Ritual_2|Only the sound of your embarassment.|1|A8
-A8|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_3|Continuing on, I brought the two of you out here to seek your mother's blessing on your endevor to create your own hunters guild. It will most certainly be filled with many dangers and you will have to fill the guild with many people, some of whom aren't trustworthy.|1|A9
+A8|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_3|Continuing on, I brought the two of you out here to seek your mother's blessing on your endeavor to create your own hunters guild. It will most certainly be filled with many dangers and you will have to fill the guild with many people, some of whom aren't trustworthy.|1|A9
 A9|1|Callan|Sounds/Voice/Callan/Callan_Ritual_2|Haven't our whole lives been leading up to this point?|1|A10
 A10|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Ritual_2|You know that, I know that, Briol knows that, but the player isn't privy to this information yet.||A11
 A11|1|Callan|Sounds/Voice/Callan/Callan_Ritual_3|Who?||A12
 A12|1|Briol|Sounds/Voice/Briol/Briol_Ritual_3|Who what?||A13
-A13|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Ritual_3|Don't worry about it. It's just someone controling your every move. Think nothing of it.||A14
+A13|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Ritual_3|Don't worry about it. It's just someone controlling your every move. Think nothing of it.||A14
 A14|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_4|Are you alright Callan? You're looking a little pale...|0|A16
 A16|1|Briol|Sounds/Voice/Briol/Briol_Ritual_4|He's a Sealgair! He'll recover soon enough.||A17
-A17|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_5|Good, that's what I like to hear. But before we continue, I want to refresh your memory on how combat works. Ah, here comes your first lessson.||A18
+A17|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_5|Good, that's what I like to hear. But before we continue, I want to refresh your memory on how combat works. Ah, here comes your first lesson.||A18
 A18|3|BoarTutorial
 B1|1|Mattach|Sounds/Voice/Mattach/Mattach_Ritual_6|I'm proud of the both of you. It fills me with joy to see you growing up. Faster than I would have liked, but such is life. The two of you are following a long line of tradition that has been passed down for generations. It is your turn to go out now; to start a guild, or die trying.||B2
 B2|2|1|2|I'm not sure how I feel about the dying part...|B3|If you feel we're ready, then let's do it!|B4

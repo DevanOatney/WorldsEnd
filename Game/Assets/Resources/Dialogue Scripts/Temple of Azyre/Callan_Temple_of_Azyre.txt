@@ -1,15 +1,15 @@
 A0|1|Callan||Wow! This place is amazing!||A1
 A1|1|Briol||Huh...yeah. Where did that boar get to? We were right behind it.||A2
-A2|1|Callan||It's perfect! Don't you see Briol?!? This is what we've Been looking for!||A3
+A2|1|Callan||It's perfect! Don't you see Briol?!? This is what we've been looking for!||A3
 A3|1|Briol||What do you mean 'What we've been looking for?' We've barely left town.||A4
-A4|1|Callan||But look at the size of this place! We could definately start a guild here! I'm going in!||A5
+A4|1|Callan||But look at the size of this place! We could definitely start a guild here! I'm going in!||A5
 A5|3|Callan_runoff
 A6|1|Briol||Callan wait! It's dangerous! This whole place is over run with boars. There is probably a nest inside...with an alpha boar...yeah...I'm not letting you have all the fun!||A7
 A7|3|AfterOpen
 B0|1|Callan||See? I told you we could do this.||B1
 B1|1|Briol||Alright, you win. This place is perfect, especially now that the boar problem is gone.||B2
 B2|1|Callan||So...Where do we go from here?||B3
-B3|1|Briol||We're going to need someone to train the hunters we recruit. I heard of an old Knight that is looking to take on apprentices that would be a perfect opertunity for him.||B4
+B3|1|Briol||We're going to need someone to train the hunters we recruit. I heard of an old Knight that is looking to take on apprentices that would be a perfect opportunity for him.||B4
 B4|1|Callan||Oh, yeah. I heard of a retired hunter that is bored in retirement and looking to train new hunters in the old ways.||B5
 B5|1|Briol||So, who should we go see?||B6
 B6|2|1|2|Definately the Hunter! It was my idea and makes the most sense.|B7|You know, I think a strong knight's skill could be useful in hunting. Let's go there!|B15

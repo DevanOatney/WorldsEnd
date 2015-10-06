@@ -1,3 +1,3 @@
-A1|1|Matthew||You may want to get a move on, your sister was over the moon about the ceremony today. She may not wait around.|1|A2
+A1|1|Matthew||You may want to get a move on. Your sister was over the moon about the ceremony today. She may not wait around.|1|A2
 A2|3|EndDialogue
 A3|1|Matthew||I pray that Illuyani watches over you on your journey.|1|A2

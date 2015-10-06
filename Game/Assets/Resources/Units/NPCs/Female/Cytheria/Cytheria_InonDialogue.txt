@@ -1,4 +1,4 @@
-A1|1|Cytheria||There's this boy...I don't know if he knows me...or even knows I exist...but I see him around all the time. I hope that he notices me too. I think I'm in love. He's so strong, and hard working. Even my dad thinks that he is a good guy too!I don't know what I should do...|1|A2
+A1|1|Cytheria||There's this boy...I don't know if he knows me...or even knows I exist...but I see him around all the time. I hope that he notices me too. I think I'm in love. He's so strong, and hard working. Even my dad thinks that he is a good guy too! I don't know what I should do...|1|A2
 A2|2|1|2|Well, you could stay here and do nothing...|A3|Tell him you love him, he might feel the same way.|A4
 A3|1|Cytheria||Yeah...|1|A6
 A4|1|Cytheria||You're right! I'm going to tell him how I feel.|1|A5
