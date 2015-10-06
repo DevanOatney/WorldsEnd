@@ -256,11 +256,11 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject rubble1 = GameObject.Find("Temple of Azyre int").transform.FindChild("rubble_04").gameObject;
 			rubble1.SetActive(false);
 			GameObject rubble2 = GameObject.Find("Temple of Azyre int2").transform.FindChild("rubble_04").gameObject;
-			rubble1.SetActive(false);
-			GameObject rubble3 = GameObject.Find("Temple of Azyre int roof").transform.FindChild("rubble_04").gameObject;
-			rubble1.SetActive(false);
-			GameObject rubble4 = GameObject.Find("Temple of Azyre int basement").transform.FindChild("rubble_03").gameObject;
-			rubble1.SetActive(false);
+			rubble2.SetActive(false);
+			GameObject rubble3 = GameObject.Find("Temple of Azyre roof").transform.FindChild("rubble_04").gameObject;
+			rubble3.SetActive(false);
+			GameObject rubble4 = GameObject.Find("Temple of Azyre basment").transform.FindChild("rubble_03").gameObject;
+			rubble4.SetActive(false);
 			Invoke("FadeBackIn", 1.0f);
 		}
 			break;
