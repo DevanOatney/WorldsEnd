@@ -20,6 +20,10 @@ ModelImporter:
     100024: mesh_[05]_[05]
     100026: //RootNode
     100028: mesh_[03]_[01]
+    100030: mesh_[04]_[04]
+    100032: mesh_[05]_[01]
+    100034: mesh_[06]_[02]
+    100036: mesh_[06]_[05]
     400000: mesh_[00]_[01]
     400002: mesh_[00]_[06]
     400004: mesh_[00]_[07]
@@ -35,6 +39,10 @@ ModelImporter:
     400024: mesh_[05]_[05]
     400026: //RootNode
     400028: mesh_[03]_[01]
+    400030: mesh_[04]_[04]
+    400032: mesh_[05]_[01]
+    400034: mesh_[06]_[02]
+    400036: mesh_[06]_[05]
     2300000: mesh_[00]_[01]
     2300002: mesh_[00]_[06]
     2300004: mesh_[00]_[07]
@@ -49,6 +57,10 @@ ModelImporter:
     2300022: mesh_[05]_[02]
     2300024: mesh_[05]_[05]
     2300026: mesh_[03]_[01]
+    2300028: mesh_[04]_[04]
+    2300030: mesh_[05]_[01]
+    2300032: mesh_[06]_[02]
+    2300034: mesh_[06]_[05]
     3300000: mesh_[00]_[01]
     3300002: mesh_[00]_[06]
     3300004: mesh_[00]_[07]
@@ -63,6 +75,10 @@ ModelImporter:
     3300022: mesh_[05]_[02]
     3300024: mesh_[05]_[05]
     3300026: mesh_[03]_[01]
+    3300028: mesh_[04]_[04]
+    3300030: mesh_[05]_[01]
+    3300032: mesh_[06]_[02]
+    3300034: mesh_[06]_[05]
     4300000: mesh_[00]_[01]
     4300002: mesh_[00]_[06]
     4300004: mesh_[00]_[07]
@@ -77,6 +93,10 @@ ModelImporter:
     4300022: mesh_[05]_[02]
     4300024: mesh_[05]_[05]
     4300026: mesh_[03]_[01]
+    4300028: mesh_[04]_[04]
+    4300030: mesh_[05]_[01]
+    4300032: mesh_[06]_[02]
+    4300034: mesh_[06]_[05]
     11400000: mesh_[00]_[01]
     11400002: mesh_[00]_[06]
     11400004: mesh_[00]_[07]
@@ -91,6 +111,10 @@ ModelImporter:
     11400022: mesh_[05]_[02]
     11400024: mesh_[05]_[05]
     11400026: mesh_[03]_[01]
+    11400028: mesh_[04]_[04]
+    11400030: mesh_[05]_[01]
+    11400032: mesh_[06]_[02]
+    11400034: mesh_[06]_[05]
   materials:
     importMaterials: 0
     materialName: 0
@@ -100,6 +124,10 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5

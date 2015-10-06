@@ -88,6 +88,11 @@
    <polyline points="0,0 97,-1 97,-416 235,-413 232,-378 196,-385 197,-372 165,-371 161,-385 109,-382 110,0 505,-1 499,-385 484,-381 484,-374 452,-373 449,-356 418,-355 417,-370 319,-372 320,-385 312,-382 312,-413 501,-416 501,-672 324,-669 324,-500 124,-505 121,-543 311,-539 311,-668 295,-668"/>
   </object>
  </objectgroup>
+ <layer name="rubble" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIwUYyFDfTHUqmZlJgjn6ZNhZiKYHm7vJMZdcgO5fDTQ+JW4hJizRzUfm44pTasX1cAHocYYMaJWWkOMA2Q5y8zbIPGLjNROH3ehyIJBFhJnDLT3hivPl0gwMK6Tx60VOS+hlFTFgPdD8DQTsgIGVQHWrgHg1HvXY3LAdqH4Hmh5c6W4jUN0mIN4sTVzaJKX8h4GdQLN3AfFuIv1Njh24AL68TwsAS1vY0hgAEdEZVg==
+  </data>
+ </layer>
  <layer name="Wall" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJztkbsOgkAQRadzdxstqdHSV6Fo4ev/P4HSRDtpVGKHl+jGzcLwChglnOQUu7PMZTJESfqSaAAjgYNMeVATDnr3oGgwI6at83CcMOdZ8HVfvszDycko0qMMd/QMDS8wyJjjV4ga3reN3p/WVURDOFLJWtFd24T45vh2jL4TOIUzOFefmvbB5Gb9h5mxQM8l9OAKrpmMGPs+7Y3mapw36LmFO7iHB8XPXzWjLm5dRmX+NaMt++gyvpvxBILpWGU=

@@ -253,6 +253,14 @@ public class ToAEventHandler : BaseEventSystemScript
 			player.GetComponent<Animator>().SetInteger("m_nFacingDir", 2);
 			briol.GetComponent<Animator>().SetInteger("m_nFacingDir", 1);
 			Camera.main.SendMessage("fadeOut");
+			GameObject rubble1 = GameObject.Find("Temple of Azyre int").transform.FindChild("rubble_04").gameObject;
+			rubble1.SetActive(false);
+			GameObject rubble2 = GameObject.Find("Temple of Azyre int2").transform.FindChild("rubble_04").gameObject;
+			rubble1.SetActive(false);
+			GameObject rubble3 = GameObject.Find("Temple of Azyre int roof").transform.FindChild("rubble_04").gameObject;
+			rubble1.SetActive(false);
+			GameObject rubble4 = GameObject.Find("Temple of Azyre int basement").transform.FindChild("rubble_03").gameObject;
+			rubble1.SetActive(false);
 			Invoke("FadeBackIn", 1.0f);
 		}
 			break;

@@ -144,6 +144,11 @@
    eJzt0DsNACAQRMErkIB/Y4AHSkpkHJ+ZZPvNiwB4SysR/fCNkl0JgFmzH9xjaQUAAAB8agOlnSbR
   </data>
  </layer>
+ <layer name="rubble" width="75" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt1jEKg0AQBdC9g17CdLHzcoIRAioImiJ2sRDS5BzqsfxlmiCB3XF2/Q+mWpD/h0XWGCIiIhlJbMwlPjqFH67YUxr4rrLA+2k1R0cnoLPw4a49kXFwkDO3+M1JyR5fyDF+ZVks5bpb7PdRsqv3To4C5zdM+WfeVkk/SRU615jGcXcf/ld7OnToMY8Auti2CuyE71r6ReL+ERERkXsb0FoS9g==
+  </data>
+ </layer>
  <objectgroup name="Collision">
   <object id="1" x="326.667" y="160" width="1328" height="500"/>
   <object id="2" x="386.667" y="161.333">

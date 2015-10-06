@@ -321,6 +321,11 @@
   <object id="51" x="1148" y="2640" width="38" height="46"/>
   <object id="52" x="1216" y="2634" width="31" height="50"/>
  </objectgroup>
+ <layer name="rubble" width="75" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt3E1ugzAQhuGs0h25A6eBXe5/mgpRq9Qd22MwkPG8jxSpUtNU/jT+p308AABYPcf1tfU1yu/F6l3Ip/R9+DUdqI24n/aOrOodyQyyYVxfSPPa32J7amV2nl3NmOU1K6/t3kPKijV5Gy/HOeZqiP75V6m/xXk9WWOhgPpoo3S+53Gu1M5rcXYes6rlec2g3dt4zgj71dQNY9V/rNtXnHFex2vN1bSb+VDPc1apMSuVCfcUOANzJ47g3h6teV4X7MX6QI+sdMhJR3oWGTLO8gAAAADgVw97pNq74rlwj7+cCfZ6LjiNujOEkME2h1IuS65z9P7g0/9eulRDQ9SWuD1SXprPlVjPKvUzS7tqn3nfZmH9+ZvQ7+6+x7JyhhhqZb5hPLZcZ1fPXxazkua2q36vxWfb4nyuystiVhpnzGUWs5pumg972PcsStm1yLaXrGIt10A97Rel/Q1ZrebMHiaXkYX19hlSeaXOCVq4e391hLTf3WZluW1nyJ2VtKyrYZS//nSp9VU8HrXOKny+lawmxdlUzpG1t+W5Yc/Zu8V9SgvzT1/Unjto6zE3J/Q0X7wye0WP/2/0K3GXU3vOLK33pbzC5/VUU5LU2cwg5BTGMsv1NW3aK41H0l5QM45/+j1Wrfcmp7fQ7yahPhaa+T2ut5CtlfVTSbwObTGGeF1HAAAAAAAAAFf5BoKiOwk=
+  </data>
+ </layer>
  <layer name="Behind wall" width="75" height="100">
   <data encoding="base64" compression="zlib">
    eJzt0LEJgDAURdG/wd9/FEuXiJ1ZRRBUAgZMZ+AceMVrbwQAAAAAAAAAAAAAAAAAAAAAAAAAADNb8vuIWPNZyfZf27S6vfXRqk+rMVqN27Nd1epUdAAAAAAAAIBfOQAqMSot
