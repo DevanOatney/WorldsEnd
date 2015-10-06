@@ -60,11 +60,12 @@ public class InonForestEventHandler : BaseEventSystemScript
 		break;
 		case "BoarChase":
 		{
-			GameObject goBoar = GameObject.Find("BoarBoss");
-			goBoar.GetComponent<NPCScript>().m_bActive = true;
-			goBoar.GetComponent<NPCScript>().m_bIsMoving = true;
-			goBoar.GetComponent<NPCScript>().m_nFacingDir = 2;
-
+			m_goBossBoar.SetActive(true);
+			m_goBossBoar.GetComponent<NPCScript>().m_bActive = true;
+			m_goBossBoar.GetComponent<NPCScript>().m_bIsMoving = true;
+			m_goBossBoar.GetComponent<NPCScript>().m_nFacingDir = 2;
+			m_goBossBoar.GetComponent<Animator>().SetBool("m_bIsMoving", true);
+			m_goBossBoar.GetComponent<Animator>().Play("BoarBoss_ChargeRight");
 			GameObject.Find("to Temple").GetComponent<BoxCollider2D>().enabled = true;
 		}	
 		break;
@@ -92,13 +93,6 @@ public class InonForestEventHandler : BaseEventSystemScript
 			Application.LoadLevel("Battle_Scene");
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-	
-	}
-
 
 	override public void WaypointTriggered(Collider2D c)
 	{
@@ -184,6 +178,8 @@ public class InonForestEventHandler : BaseEventSystemScript
 			break;
 		case "Forest scene start":
 		{
+			m_goBossBoar.SetActive(true);
+			m_goBossBoar.GetComponent<Animator>().Play("BoarBoss_IdleLeft");
 			
 			GameObject.Find("Forest scene start").GetComponent<BoxCollider2D>().enabled = false;
 			GameObject dest = GameObject.Find("XWaypoint");

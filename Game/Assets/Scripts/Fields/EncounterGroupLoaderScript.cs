@@ -56,7 +56,6 @@ public class EncounterGroupLoaderScript : MonoBehaviour
 			List<string> lEnemies = new List<string>();
 			foreach(string e in enemies)
 			{
-				Debug.Log(e);
 				lEnemies.Add(e.Trim());
 			}
 			if(m_bNightTime == false)
