@@ -13,6 +13,12 @@ public class InonForestEventHandler : BaseEventSystemScript
 	{
 		ds = GameObject.Find ("PersistantData").GetComponent<DCScript> ();
 		int result;
+		if(ds.m_dStoryFlagField.TryGetValue("ToAEvent", out result))
+		{
+			//hasn't been to the temple yet
+			m_goBossBoar.SetActive(true);
+			m_goBossBoar.GetComponent<Animator>().Play("BoarBoss_IdleLeft");
+		}
 		if (ds.m_dStoryFlagField.TryGetValue ("BoarBossPart1Finished", out result)) 
 		{
 			if(result == 1)
@@ -178,8 +184,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 			break;
 		case "Forest scene start":
 		{
-			m_goBossBoar.SetActive(true);
-			m_goBossBoar.GetComponent<Animator>().Play("BoarBoss_IdleLeft");
+
 			
 			GameObject.Find("Forest scene start").GetComponent<BoxCollider2D>().enabled = false;
 			GameObject dest = GameObject.Find("XWaypoint");
