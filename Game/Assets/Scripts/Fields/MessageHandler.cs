@@ -21,14 +21,20 @@ public class MessageHandler : MonoBehaviour
 	//for hero dialogue
 	private int selectedIndex = 0;
 	public Texture2D selectedTexture;
-	public Texture2D WindowTexture;
+	Sprite WindowTexture;
+	Sprite Nameplate;
 	float bufferedInputTimer = 0.0f;
 	float bufferedInputBucket = 0.2f;
+
+	string m_szDialogueBoxPath = "Misc/DialogBox";
+	string m_szNameplatePath = "Misc/NameBox";
 
 	/****************************************************************/                                           
 	// Use this for initialization
 	void Awake()
 	{
+		WindowTexture = Resources.Load<Sprite>(m_szDialogueBoxPath);
+		Nameplate = Resources.Load<Sprite>(m_szNameplatePath);
 		DialogueScriptLoaderScript GO = gameObject.GetComponent<DialogueScriptLoaderScript>();
 		if(GO)
 		{
@@ -150,7 +156,7 @@ public class MessageHandler : MonoBehaviour
 			float yOffset = height * 0.65f;
 
 			GUIStyle windowStyle = new GUIStyle(GUI.skin.box);
-			windowStyle.normal.background = WindowTexture;
+			windowStyle.normal.background = WindowTexture.texture;
 			//draw the selector box for the dialogue choice
 			Color tColor=GUI.color;
 			GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.6f);
@@ -202,7 +208,9 @@ public class MessageHandler : MonoBehaviour
 					int catchFont = GUI.skin.box.fontSize;
 					GUI.skin.label.fontSize = 20;
 					GUI.Box(new Rect(96, yOffset-28, szName.Length*11, 28), "");
-					GUI.Label(new Rect(96, yOffset-28, szName.Length*11, 28), szName);
+					windowStyle.normal.background = Nameplate.texture;
+					GUI.Box(new Rect(70, yOffset-28, szName.Length*25, 33), "", windowStyle); 
+					GUI.Label(new Rect(110, yOffset-28, szName.Length*11, 28), szName);
 					GUI.skin.label.fontSize = catchFont;
 				}
 				else
@@ -211,12 +219,14 @@ public class MessageHandler : MonoBehaviour
 					int catchFont = GUI.skin.box.fontSize;
 					GUI.skin.label.fontSize = 20;
 					GUI.Box(new Rect(xOffset, yOffset-28, szName.Length*11, 28), "");
-					GUI.Label(new Rect(xOffset, yOffset-28, szName.Length*11, 28), szName);
+					windowStyle.normal.background = Nameplate.texture;
+					GUI.Box(new Rect(Screen.width*0.05f, yOffset-33, Screen.width*0.35f, 33), "", windowStyle); 
+					GUI.Label(new Rect(Screen.width*0.15f, yOffset-28, szName.Length*22, 28), szName);
 					GUI.skin.label.fontSize = catchFont;
 				}
 				int nFont = GUI.skin.box.fontSize;
 				GUI.skin.label.fontSize = 16;
-				GUI.Label(new Rect(xOffset +5,yOffset +5, width - xOffset*2 - 10, yOffset * 0.35f), line);
+				GUI.Label(new Rect(xOffset +25,yOffset +5, width - xOffset*2 - 30, yOffset * 0.35f), line);
 				GUI.skin.label.fontSize = nFont;
 			}
 				break;
@@ -237,12 +247,14 @@ public class MessageHandler : MonoBehaviour
 				myStyle.normal.background = selectedTexture;
 				//draw the selector box for the dialogue choice
 				GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
-				GUI.Box((new Rect(xOffset, yOffset + 5 + (15*selectedIndex), lengthOfText, 17)), "",myStyle);
+				GUI.Box((new Rect(xOffset, yOffset + 5 + (17*selectedIndex), Screen.width*0.7f, 17)), "",myStyle);
 				GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 				string szName = "Callan";
 				int catchFont = GUI.skin.box.fontSize;
-				GUI.skin.box.fontSize = 20;
-				GUI.Box(new Rect(xOffset, yOffset-28, 75, 28), szName);
+				GUI.skin.label.fontSize = 20;
+				windowStyle.normal.background = Nameplate.texture;
+				GUI.Box(new Rect(xOffset -15, yOffset-33, 120, 33), "", windowStyle); 
+				GUI.Label(new Rect(xOffset +15, yOffset-28, 75, 28), szName);
 				GUI.skin.box.fontSize = catchFont;
 
 			}

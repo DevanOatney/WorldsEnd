@@ -80,6 +80,7 @@
      <None Include="Assets\2d Art Pack\readme.txt" />
      <None Include="Assets\Resources\Sounds\Voice\Mattach\settings.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />
+     <None Include="Assets\Tiled2Unity\Shaders\Tiled_Diffuse.shader" />
      <None Include="Assets\Tiled2Unity\Imported\untitled.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Resources\Units\Enemy\CharacterReference\Stats.txt" />
@@ -152,6 +153,7 @@
      <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
      <None Include="Assets\Tiled2Unity\Prefabs\_ReadMe.txt" />
      <None Include="Assets\Resources\Units\NPCs\Female\Delaria\Delaria_InonDialogue.txt" />
+     <None Include="Assets\Tiled2Unity\Shaders\Normal-Diffuse.shader" />
      <None Include="Assets\Resources\Units\Enemy\KillerBee\Stats.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
      <None Include="Assets\Tiled2Unity\Imported\Solomnia_Part5of7.tiled2unity.xml" />
@@ -233,6 +235,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ContrastComposite.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\DLAA.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableBlur.shader" />
+     <None Include="Assets\Resources\Save Files\2.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionEffect.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseAndGrainDX11.shader" />
@@ -313,7 +316,7 @@
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendForBloom.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
  <Reference Include="Assembly-UnityScript">
- <HintPath>C:/Users/wazoo_000/Desktop/CCS/Games/Magnum Opus Saga/World's End/trunk/Game/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ <HintPath>C:/Users/TiberiusMaximus/Desktop/CrowdControlStudios/Games/Magnum Opus/World's End/trunk/Game/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

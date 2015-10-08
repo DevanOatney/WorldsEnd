@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a97d1fdbd50e5384497fca0a813dca8d
-timeCreated: 1432753178
+guid: 95771ada8c2f7994c82f6ac9cb7423ef
+timeCreated: 1444296488
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -10,7 +10,7 @@ TextureImporter:
     enableMipMap: 1
     linearTexture: 0
     correctGamma: 0
-    fadeOut: 1
+    fadeOut: 0
     borderMipMap: 0
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
@@ -37,7 +37,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -50,6 +50,6 @@ TextureImporter:
   spriteSheet:
     sprites: []
   spritePackingTag: 
-  userData: tiled2unity
+  userData: 
   assetBundleName: 
   assetBundleVariant: 
