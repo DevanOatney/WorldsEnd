@@ -666,7 +666,7 @@ public class InonEventHandler : BaseEventSystemScript
 		{
 			m_goForestLine.GetComponent<EdgeCollider2D>().enabled = false;
 			m_goBoar.SetActive(true);
-			m_goBoar.GetComponent<BoarRitualScript>().m_bIsActive = true;
+			m_goBoar.GetComponent<BoarRitualScript>().ActivateBoar();
 
 		}
 			break;

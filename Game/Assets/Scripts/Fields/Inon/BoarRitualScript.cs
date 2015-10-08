@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BoarRitualScript : MonoBehaviour 
 {
-	public bool m_bIsActive = false;
+	bool m_bIsActive = false;
 	private bool m_bIsAttacking = false;
 	public AnimationClip m_acAttackAnim;
 	float m_fAttackBucket = 0.0f;
@@ -30,6 +30,12 @@ public class BoarRitualScript : MonoBehaviour
 				GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent("StartBoarBattle");
 			}
 		}
+	}
+
+	public void ActivateBoar()
+	{
+		m_bIsActive = true;
+		GetComponent<Animator>().Play("Boar_Charge");
 	}
 
 	void OnTriggerEnter2D(Collider2D c)

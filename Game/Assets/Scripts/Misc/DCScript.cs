@@ -47,6 +47,8 @@ public class DCScript : MonoBehaviour
 
 	public int m_nMusicIter;
 
+	//The amount of time that the player has played for.
+	public float m_fTimePlayed = 0.0f;
 
 	public class ItemData
 	{
@@ -338,15 +340,25 @@ public class DCScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		m_fTimePlayed = PlayerPrefs.GetFloat("Time_Played", 0.0f);
+		StartCoroutine(IncrementTimePlayed());
 		AdjustValues(); 
 		m_nGold = 100;
 		LoadStatProgressions();
+	}
+
+	public IEnumerator  IncrementTimePlayed () 
+	{
+		while(true)
+		{
+			m_fTimePlayed +=1;
+			yield return new WaitForSeconds(1);
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-
 	}
 
 	void LoadStatProgressions()
