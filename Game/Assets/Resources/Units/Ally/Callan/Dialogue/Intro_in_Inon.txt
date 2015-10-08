@@ -18,3 +18,4 @@ C4|2|1|2|No, they knew I was tired because I couldn't sleep the night before my 
 C5|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_9|Sure, if rationalizing the pain of abandonment helps you sleep at night.|1|C6
 C6|2|1|2|I knew you would understand.|C7|You're a good friend for understanding.|C7
 C7|3|EndDialogue
+F0|1|Callan||I can't leave until I meet with my father...|1|C7

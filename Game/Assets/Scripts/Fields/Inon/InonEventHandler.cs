@@ -855,9 +855,10 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject player = GameObject.Find("Player");
 			if(player)
 			{
-				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
 				GameObject.Find("StepBackNorth").GetComponent<BoxCollider2D>().enabled = false;
+				player.GetComponent<MessageHandler>().BeginDialogue("F0");
+				GameObject.Find("LeaveFromNorthWaypoint").GetComponent<BoxCollider2D>().enabled = true;
 			}
 		}
 			break;
@@ -866,20 +867,18 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject player = GameObject.Find("Player");
 			if(player)
 			{
-				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
 				GameObject.Find("StepBackSouth").GetComponent<BoxCollider2D>().enabled = false;
+				player.GetComponent<MessageHandler>().BeginDialogue("F0");
+				GameObject.Find("LeaveFromSouthWaypoint").GetComponent<BoxCollider2D>().enabled = true;
 			}
 		}
 			break;
 		case "LeaveFromSouthWaypoint":
 		{
 			GameObject src = GameObject.Find("Player");
-			src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
-			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
-			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
-			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
-			src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
+			src.GetComponent<FieldPlayerMovementScript>().BindInput();
+			src.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("StepBackSouth"), false);
 			GameObject.Find("StepBackSouth").GetComponent<BoxCollider2D>().enabled = true;
 
 		}
@@ -887,11 +886,8 @@ public class InonEventHandler : BaseEventSystemScript
 		case "LeaveFromNorthWaypoint":
 		{
 			GameObject src = GameObject.Find("Player");
-			src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKDOWN);
-			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveDown", true);
-			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
-			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 0);
-			src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
+			src.GetComponent<FieldPlayerMovementScript>().BindInput();
+			src.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("StepBackNorth"), false);
 			GameObject.Find("StepBackNorth").GetComponent<BoxCollider2D>().enabled = true;
 		}
 			break;
