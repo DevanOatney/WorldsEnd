@@ -1,4 +1,3 @@
-Date bug occured:
 What is the description of the bug:
 What was the action taking place when the bug occured:
 On a scale of 1-3 (1 being the game is unaffected and 3 being the game is unplayable), how would you scale the bug found:
