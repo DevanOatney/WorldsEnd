@@ -54,7 +54,7 @@ public class NPC_BlacksmithScript : NPCScript
 					else
 					{
 						ResetValues();
-						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseAllBinds();
 					}
 			
 				}
@@ -134,7 +134,7 @@ public class NPC_BlacksmithScript : NPCScript
 				else if(m_bEnhanceChosen == false && m_bModifyChosen == false)
 				{
 					ResetValues();
-					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseAllBinds();
 				}
 			}
 			else if(Input.GetKey(KeyCode.UpArrow))
