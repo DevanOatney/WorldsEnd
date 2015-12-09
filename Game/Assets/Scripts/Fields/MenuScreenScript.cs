@@ -356,6 +356,23 @@ public class MenuScreenScript : MonoBehaviour
 
 		}
 			break;
+		case 5:
+		{
+			//Quit to menu
+			GameObject dc = GameObject.Find("PersistantData");
+			if(dc)
+			{
+				Destroy(dc);
+			}
+			Application.LoadLevel("Intro_Scene");
+		}
+			break;
+		case 6:
+		{
+			//Exit Game
+			Application.Quit();
+		}
+			break;
 		}
 	}
 
