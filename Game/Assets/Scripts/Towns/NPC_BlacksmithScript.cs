@@ -512,7 +512,10 @@ public class NPC_BlacksmithScript : NPCScript
 				m_bIsMoving = false;
 				m_bIsBeingInterractedWith = true;
 				if(m_szDialoguePath != "")
+				{
+					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 					GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent(m_szDialoguePath);
+				}
 			}
 		}
 	}

@@ -378,7 +378,10 @@ public class NPCScript : MonoBehaviour
 			if(GetComponent<MessageHandler>())
 			{
 				if(m_szDialoguePath != "")
+				{
+					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 					GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent(m_szDialoguePath);
+				}
 			}
 		}
 	}

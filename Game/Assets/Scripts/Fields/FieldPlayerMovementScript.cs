@@ -80,8 +80,8 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	bool m_bIsRunning = false;
 	public void SetIsRunning(bool flag) {m_bIsRunning = flag;}
 	public bool GetIsRunning() {return m_bIsRunning;}
-	float  m_fWalkingSpeed = 2.0f;
-	float  m_fRunningSpeed = 6.0f;
+	float  m_fWalkingSpeed = 4.0f;
+	float  m_fRunningSpeed = 8.0f;
 	//flag for if the player is being moved without player input
 	bool m_bShouldMove = false;
 
@@ -192,10 +192,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			{
 
 				//temporarily suspend the ability for input
-				m_bAllowInput = false;
 				//reset anim flags so that the player goes into idle anim
-				ResetAnimFlagsExcept(-1);
-				BindInput();
 				GameObject box = Instantiate(m_goActionBox, m_goPredictor.transform.position, Quaternion.identity) as GameObject;
 				Destroy(box, 0.25f);
 				box.GetComponent<InterractingBoxScript>().SetOwner(gameObject);
