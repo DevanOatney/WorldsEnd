@@ -175,7 +175,6 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\MinMaxReduction.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader" />
      <None Include="Assets\Resources\Units\Ally\ClassStatProgression.txt" />
-     <None Include="Assets\Resources\Units\Ally\Matt\StartingStats.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Main House_LivingRoom.tiled2unity.xml" />
      <None Include="Assets\Resources\Units\NPCs\Female\Cytheria\Cytheria_InonDialogue.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\MobileBlur.shader" />
@@ -244,7 +243,6 @@
      <None Include="Assets\Resources\Units\Ally\Callan\StartingStats.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
      <None Include="Assets\Resources\Dialogue Scripts\Temple of Azyre\Altar_Dialogue.txt" />
-     <None Include="Assets\Resources\Units\Ally\Devan\StartingStats.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrain.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableBlur.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlurClear.shader" />
