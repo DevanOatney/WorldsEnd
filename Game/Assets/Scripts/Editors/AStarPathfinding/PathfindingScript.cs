@@ -7,6 +7,8 @@ public class PathfindingScript : MonoBehaviour {
 	public Transform seeker, target;
 	
 	CGrid grid;
+
+	bool m_bAllowDiagonal = false;
 	
 	void Awake() 
 	{
@@ -15,10 +17,15 @@ public class PathfindingScript : MonoBehaviour {
 	
 	void Update() 
 	{
-		FindPath(seeker.position,target.position);
+		if(Input.GetKeyDown(KeyCode.A))
+		{
+			m_bAllowDiagonal = !m_bAllowDiagonal;
+			Debug.Log (m_bAllowDiagonal);
+		}
+		FindPath(seeker.position,target.position, m_bAllowDiagonal);
 	}
 	
-	void FindPath(Vector3 startPos, Vector3 targetPos) 
+	void FindPath(Vector3 startPos, Vector3 targetPos, bool bAllowDiagonal) 
 	{
 		CNode startNode = grid.NodeFromWorldPoint(startPos);
 		CNode targetNode = grid.NodeFromWorldPoint(targetPos);
@@ -27,10 +34,13 @@ public class PathfindingScript : MonoBehaviour {
 		HashSet<CNode> closedSet = new HashSet<CNode>();
 		openSet.Add(startNode);
 		
-		while (openSet.Count > 0) {
+		while (openSet.Count > 0) 
+		{
 			CNode currentNode = openSet[0];
-			for (int i = 1; i < openSet.Count; i ++) {
-				if (openSet[i].fCost < currentNode.fCost || openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost) {
+			for (int i = 1; i < openSet.Count; i ++) 
+			{
+				if (openSet[i].fCost < currentNode.fCost || openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost) 
+				{
 					currentNode = openSet[i];
 				}
 			}
@@ -44,7 +54,7 @@ public class PathfindingScript : MonoBehaviour {
 				return;
 			}
 			
-			foreach (CNode neighbour in grid.GetNeighbours(currentNode)) 
+			foreach (CNode neighbour in grid.GetNeighbours(currentNode, bAllowDiagonal)) 
 			{
 				if (!neighbour.walkable || closedSet.Contains(neighbour)) 
 				{

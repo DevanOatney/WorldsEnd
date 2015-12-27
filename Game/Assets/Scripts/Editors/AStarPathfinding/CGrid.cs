@@ -61,8 +61,9 @@ public class CGrid : MonoBehaviour
 			}
 		}
 	}
-
-	public List<CNode> GetNeighbours(CNode node) {
+	
+	public List<CNode> GetNeighbours(CNode node, bool bAllowDiagonal) 
+	{
 		List<CNode> neighbours = new List<CNode>();
 		
 		for (int x = -1; x <= 1; x++) 
@@ -71,7 +72,11 @@ public class CGrid : MonoBehaviour
 			{
 				if (x == 0 && y == 0)
 					continue;
-				
+				if(bAllowDiagonal == false)
+				{
+					if(Mathf.Abs(x) == Mathf.Abs(y))
+						continue;
+				}
 				int checkX = node.gridX + x;
 				int checkY = node.gridY + y;
 				
