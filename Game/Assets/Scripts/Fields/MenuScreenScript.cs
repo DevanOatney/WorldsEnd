@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuScreenScript : MonoBehaviour 
 {
@@ -277,7 +278,7 @@ public class MenuScreenScript : MonoBehaviour
 						case 3:
 						{
 							//Save Game
-							if(Application.loadedLevelName == "Regilance")
+							if(SceneManager.GetActiveScene().name == "Regilance")
 								m_dFunc = SaveGame;
 						}
 							break;
@@ -289,7 +290,7 @@ public class MenuScreenScript : MonoBehaviour
 							{
 								Destroy(data);
 							}
-							Application.LoadLevel("Intro_Scene");
+                            SceneManager.LoadScene("Intro_Scene");
 						}
 							break;
 						case 5:
@@ -364,7 +365,7 @@ public class MenuScreenScript : MonoBehaviour
 			{
 				Destroy(dc);
 			}
-			Application.LoadLevel("Intro_Scene");
+            SceneManager.LoadScene("Intro_Scene");
 		}
 			break;
 		case 6:

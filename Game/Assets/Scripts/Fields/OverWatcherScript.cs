@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -82,7 +83,6 @@ public class OverWatcherScript : MonoBehaviour {
 	bool m_bShowDifferentMenuScreen = false;
 	//delegate for handling the different party menu renderings
 	delegate void m_delegate(DCScript.CharacterData g);
-	m_delegate m_dFunc;
 	//iterator for item type currently selected
 	int m_nItemTypeIter = 0;
 	//flag for if input should change item type or item
@@ -131,7 +131,7 @@ public class OverWatcherScript : MonoBehaviour {
 		m_goPlayer = GameObject.Find("Player");
 
 		//check to see if the last scene was a battle, if it was the position data of where the player should go is in the datacanister. Also check if this was the last scene (loading game)
-		if(dc.GetPreviousFieldName() == "Battle_Scene" || dc.GetPreviousFieldName() == Application.loadedLevelName)
+        if (dc.GetPreviousFieldName() == "Battle_Scene" || dc.GetPreviousFieldName() == SceneManager.GetActiveScene().name)
 			m_goPlayer.transform.position = dc.GetPreviousPosition();
 		//else, the player just entered the scene, put the player where the scene wants the player to start
 		else
@@ -146,7 +146,7 @@ public class OverWatcherScript : MonoBehaviour {
 		m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir = dc.GetPreviousFacingDirection();
 		m_vLastPos = m_goPlayer.transform.position;
 		//set the previous scene to this one now
-		dc.SetPreviousFieldName(Application.loadedLevelName);
+		dc.SetPreviousFieldName(SceneManager.GetActiveScene().name);
 		Camera.main.GetComponent<Light>().intensity =dc.m_fBrightness + m_fInitialBrightness;
 
 		//Fade in the music
@@ -191,8 +191,8 @@ public class OverWatcherScript : MonoBehaviour {
 				//Set the position of the player before the battle starts
 				dc.SetPreviousPosition(m_goPlayer.transform.position);
 				dc.SetPreviousFacingDirection(m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir);
-				dc.SetPreviousFieldName(Application.loadedLevelName);
-				Application.LoadLevel("Battle_Scene");
+				dc.SetPreviousFieldName(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene("Battle_Scene");
 			}
 		}
 	}
@@ -303,7 +303,7 @@ public class OverWatcherScript : MonoBehaviour {
 			yOffset += boxHeight + boxSpacing;
 			GUI.Box(new Rect(xOffset, yOffset, boxWidth, boxHeight), "Equipment");
 			yOffset += boxHeight + boxSpacing;
-			if(Application.loadedLevelName != "Regilance")
+			if(SceneManager.GetActiveScene().name != "Regilance")
 				GUI.contentColor = new Color(0.6f, 0.6f, 0.6f, 0.85f);
 			GUI.Box(new Rect(xOffset, yOffset, boxWidth, boxHeight), "Save Game");
 			GUI.contentColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -411,7 +411,6 @@ public class OverWatcherScript : MonoBehaviour {
 				List<DCScript.CharacterData> lParty = dc.GetParty();
 				character = lParty[m_nCharacterSelectionIndex];
 			}
-			m_dFunc(character);
 
 			GUI.EndGroup();
 		}

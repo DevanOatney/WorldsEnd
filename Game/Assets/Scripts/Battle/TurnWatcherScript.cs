@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -504,8 +505,8 @@ public class TurnWatcherScript : MonoBehaviour
 	{
 		//called when the battle was scripted and is now over, handle any dictionary adding/removal beforehand
 		string previousField = ds.GetPreviousFieldName();
-		ds.SetPreviousFieldName(Application.loadedLevelName);
-		Application.LoadLevel(previousField);
+		ds.SetPreviousFieldName(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(previousField);
 	}
 
 	void Win()
@@ -602,11 +603,11 @@ public class TurnWatcherScript : MonoBehaviour
 		}
 		//TODO: chance to win items based on enemies defeated/set items that are won during that specific battle
 		string previousField = ds.GetPreviousFieldName();
-		ds.SetPreviousFieldName(Application.loadedLevelName);
-		Application.LoadLevel(previousField);
+		ds.SetPreviousFieldName(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(previousField);
 	}
 	void Lose()
 	{
-		Application.LoadLevel("GameOver_Scene");
+        SceneManager.LoadScene("GameOver_Scene");
 	}
 }

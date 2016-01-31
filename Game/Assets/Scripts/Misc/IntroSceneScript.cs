@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class IntroSceneScript : MonoBehaviour 
 {
@@ -18,6 +19,6 @@ public class IntroSceneScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		Application.LoadLevel("IntroMenu_Scene");
+        SceneManager.LoadScene("IntroMenu_Scene");
 	}
 }

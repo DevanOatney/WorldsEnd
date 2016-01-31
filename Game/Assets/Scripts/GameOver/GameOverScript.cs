@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour {
 
@@ -19,7 +20,7 @@ public class GameOverScript : MonoBehaviour {
 			{
 				Destroy(dc);
 			}
-			Application.LoadLevel("Intro_Scene");
+            SceneManager.LoadScene("Intro_Scene");
 		}
 	}
 }

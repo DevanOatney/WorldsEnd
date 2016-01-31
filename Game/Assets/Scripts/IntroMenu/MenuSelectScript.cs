@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MenuSelectScript : MonoBehaviour 
 {
@@ -41,19 +42,19 @@ public class MenuSelectScript : MonoBehaviour
 			//GameObject Devan = Resources.Load<GameObject>("Units/Ally/Devan/Devan");
 			//Devan.GetComponent<PlayerBattleScript>().SetUnitStats();
 
-			Application.LoadLevel("Inon_Scene");
+            SceneManager.LoadScene("Inon_Scene");
 		}
 			break;
 		case 1:
 		{
 			//Continue
-			Application.LoadLevel("IntroContinue_Scene");
+            SceneManager.LoadScene("IntroContinue_Scene");
 		}
 			break;
 		case 2:
 		{
 			//Settings
-			Application.LoadLevel("IntroSettings_Scene");
+            SceneManager.LoadScene("IntroSettings_Scene");
 		}
 			break;
 		case 3:

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SaveButtonScript : MonoBehaviour {
 
@@ -20,7 +21,7 @@ public class SaveButtonScript : MonoBehaviour {
     }
 	void ChangeScreen()
 	{
-		Application.LoadLevel("IntroMenu_Scene");
+        SceneManager.LoadScene("IntroMenu_Scene");
 	}
 
 	void OnMouseDown()

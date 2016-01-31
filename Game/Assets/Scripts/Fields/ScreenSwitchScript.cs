@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ScreenSwitchScript : MonoBehaviour 
 {
@@ -71,7 +72,7 @@ public class ScreenSwitchScript : MonoBehaviour
 				dcs.GetStatusEffects().Add(se);
 			}
 
-			Application.LoadLevel(m_szSceneName);
+            SceneManager.LoadScene(m_szSceneName);
 		}
 		else
 		{

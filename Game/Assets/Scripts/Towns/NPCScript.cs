@@ -12,49 +12,72 @@ public class NPCScript : MonoBehaviour
 	public void DHF_NPCMoveToGameobject(GameObject _target, bool _shouldIRun)
 	{
 		m_bMoveTowardLocation = true;
+        m_bShouldRun = _shouldIRun;
 		m_vTargetLocation = _target.transform.position;
 		m_vTargetLocation.y += _target.GetComponent<BoxCollider2D>().size.y * 0.5f;
 	}
 	public void DHF_NPCMoveToGameobject(GameObject _target, bool _shouldIRun, int _nextFacingDir)
 	{
 		m_bMoveTowardLocation = true;
+        m_bShouldRun = _shouldIRun;
 		m_vTargetLocation = _target.transform.position;
 		m_vTargetLocation.y += _target.GetComponent<BoxCollider2D>().size.y * 0.5f;
 		m_nNextFacingDir = _nextFacingDir;
 	}
+	public void DHF_NPCPathfindToGameobject(GameObject _target, bool _shouldIRun, int _nextFacingDir, bool _allowDiagonal)
+	{
+        m_bShouldRun = _shouldIRun;
+		m_nNextFacingDir = _nextFacingDir;
+        CPathRequestManager.RequestPath(transform.position, _target.transform.position, FinishedPathRequest);
+	}
 	#endregion
 
-
+    void FinishedPathRequest(Vector3[] p_Path, bool p_bSuccess)
+    {
+        if (p_bSuccess == true)
+        {
+            //found a path
+            m_vWaypoints = p_Path;
+            m_bMoveTowardLocation = true;
+            m_nWaypointIndex = 0;
+        }
+        else
+        {
+            //couldn't find path
+        }
+    }
 
 	public enum FACINGDIR {eDOWN, eLEFT, eRIGHT, eUP}
 	public int m_nFacingDir = 0;
-	//Tool for if the character has scripted pathing
-	public TextAsset m_taPathing;
 	//If this NPC is active and should move/be interracted with
 	public bool m_bActive = false;
 	//Path directory to dialogue for this character in this scene
 	public string m_szDialoguePath = "";
 
 	public float m_fWalkingSpeed = 2.0f;
+    bool m_bShouldRun = false;
+
 	//Should the characters moving logic be active? (Must have m_bActive set to true for this to effect the NPC)
 	public bool m_bIsMoving = false;
 	//Is the NPC being interracted with?  Will stop moving if it is.
 	public bool m_bIsBeingInterractedWith = false;
 	//Turn this on to ignore collision with the player
 	public bool m_bIsComingOutOfPlayer = false;
-	protected float m_fTimer = 0.0f;
-	protected int m_nStepsIter = 0;
 	public Animator m_aAnim;
 	//For helper functions of moving, if -1 it doesn't do anything, else it faces the player this way after moving to the location
 	int m_nNextFacingDir = -1;
-	//This is toggled when there's a collision/trigger hit.  
-	bool m_bCanMove = true;
 	//cost for if it's an innkeeper
 	public int m_nCost = 0;
 
 	bool m_bReturnToPlayer = false;
 	bool m_bMoveTowardLocation = false;
 	Vector3 m_vTargetLocation = Vector3.zero;
+
+
+
+    //pathfinding stuff
+    Vector3[] m_vWaypoints;
+    int m_nWaypointIndex = 0;
 
 
 
@@ -125,15 +148,26 @@ public class NPCScript : MonoBehaviour
 		#endregion
 		else if(m_bMoveTowardLocation == true)
 		{
-			Vector3 npcPos = transform.position;
-			Vector3 toTarget = m_vTargetLocation - npcPos;
+            
+            if (m_vWaypoints.Length > 0)
+            {
+                //doing pathfinding
+                m_vTargetLocation = m_vWaypoints[m_nWaypointIndex];
+
+            }
+            Vector3 npcPos = transform.position;
+            Vector3 toTarget = m_vTargetLocation - npcPos;
+			
 			if(toTarget.x > 0.1f || toTarget.x < -0.1f)
 			{
 				ResetAnimFlagsExcept(-1);
-				if(toTarget.x > 0.1f)
-					m_aAnim.SetBool("m_bMoveRight", true);
-				else
-					m_aAnim.SetBool("m_bMoveLeft", true);
+				if(m_aAnim != null)
+				{
+					if(toTarget.x > 0.1f)
+						m_aAnim.SetBool("m_bMoveRight", true);
+					else
+						m_aAnim.SetBool("m_bMoveLeft", true);
+				}
 				toTarget.y = 0.0f;
 				toTarget.Normalize();
 				toTarget.x *= m_fWalkingSpeed;
@@ -142,10 +176,13 @@ public class NPCScript : MonoBehaviour
 			else if(toTarget.y > 0.1f || toTarget.y  < -0.1f)
 			{
 				ResetAnimFlagsExcept(-1);
-				if(toTarget.y > 0.1f)
-					m_aAnim.SetBool("m_bMoveUp", true);
-				else
-					m_aAnim.SetBool("m_bMoveDown", true);
+				if(m_aAnim != null)
+				{
+					if(toTarget.y > 0.1f)
+						m_aAnim.SetBool("m_bMoveUp", true);
+					else
+						m_aAnim.SetBool("m_bMoveDown", true);
+				}
 				toTarget.x = 0.0f;
 				toTarget.Normalize();
 				toTarget.y *= m_fWalkingSpeed;
@@ -153,132 +190,54 @@ public class NPCScript : MonoBehaviour
 			}
 			else
 			{
-				ResetAnimFlagsExcept(-1);
-				if(m_nNextFacingDir != -1)
-				{
-					m_aAnim.SetInteger("m_nFacingDir", m_nNextFacingDir);
-					m_nNextFacingDir = -1;
-				}
-				m_bMoveTowardLocation = false;
-				m_vTargetLocation = Vector3.zero;
+                //reached target location
+
+                if (m_vWaypoints.Length > 0)
+                {
+                    //we're doing waypoints, so check to see if there's another location to go, if so, go there.
+                    if (m_nWaypointIndex < m_vWaypoints.Length-1)
+                    {
+						ResetAnimFlagsExcept(-1);
+                        m_nWaypointIndex++;
+                    }
+                    else
+                    {
+                        //reached the end of the waypoints (maybe later adjust for looping paths?)
+                        StopMovement();
+                    }
+                }
+                else
+                {
+                    //doing some non-waypoint movement (/shrug) stop movement now that destination is reached
+                    StopMovement();
+                }
+				
 			}
 		}
 
 		#region Scripted Pathing
-		else if(m_bActive == true)
-		{
-			if(m_bIsBeingInterractedWith == false)
-			{
-				//Handle step logic
-				if(m_lSteps.Count > 0)
-				{
-					m_fTimer += Time.deltaTime;
-					if(m_fTimer >= m_lSteps[m_nStepsIter].fTime)
-					{
-						m_fTimer = 0.0f;
-						if(m_lSteps[m_nStepsIter].bOneShot == true)
-						{
-							m_lSteps.RemoveAt(m_nStepsIter);
-							if(m_nStepsIter >= m_lSteps.Count)
-								m_nStepsIter = 0;
-						}
-						else
-						{
-							m_nStepsIter++;
-							if(m_nStepsIter >= m_lSteps.Count)
-								m_nStepsIter = 0;
-						}
-						
-						if(m_lSteps.Count > 0)
-						{
-							//We're now doing a new step
-							//GetComponent<Rigidbody2D>().isKinematic = false;
-							m_bCanMove = true;
-							m_nFacingDir = m_lSteps[m_nStepsIter].nDirection;
-							if(m_lSteps[m_nStepsIter].bMove == true)
-							{
-								m_bIsMoving = true;
-								m_aAnim.SetBool("m_bIsMoving", true);
-								Vector2 dir = GetNPCFacing();
-								m_aAnim.SetFloat("m_fXDir", dir.x);
-								m_aAnim.SetFloat("m_fYDir", dir.y);
-								//ResetAnimFlagsExcept(m_nFacingDir);
-							}
-							else
-							{
-								m_bIsMoving = false;
-								m_aAnim.SetBool("m_bIsMoving", false);
-								Vector2 dir = GetNPCFacing();
-								m_aAnim.SetFloat("m_fXDir", dir.x);
-								m_aAnim.SetFloat("m_fYDir", dir.y);
-								//ResetAnimFlagsExcept(-1);
-							}
-							
-						}
-						
-					}
-				}
-			#endregion
+        #endregion
+    }
 
-
-
-				//Handle movement logic
-				if(m_bIsMoving == true)
-				{
-					Vector3 moveDir = new Vector2();
-					switch(m_nFacingDir)
-					{
-					case (int)FACINGDIR.eDOWN:
-						moveDir.y = -1;
-						break;
-					case (int)FACINGDIR.eLEFT:
-						moveDir.x = -1;
-						break;
-					case (int)FACINGDIR.eRIGHT:
-						moveDir.x = 1;
-						break;
-					case (int)FACINGDIR.eUP:
-						moveDir.y = 1;
-						break;
-					}
-					if(m_bCanMove == true)
-					{
-						GetComponent<Rigidbody2D>().velocity = moveDir * m_fWalkingSpeed;
-					}
-				}
-			}
-			else
-			{
-				//Player is currently interracting with this NPC.
-				
-				
-				
-				//Face the NPC toward the direction of the player.
-				Vector2 DirOfPlayer = GameObject.Find("Player").transform.position - transform.position;
-				if(DirOfPlayer.x > 0.1f || DirOfPlayer.x < -0.1f)
-				{
-					ResetAnimFlagsExcept(-1);
-					if(DirOfPlayer.x > 0.1f)
-						m_aAnim.SetInteger("m_nFacingDir", 2);
-					else
-						m_aAnim.SetInteger("m_nFacingDir", 1);
-				}
-				else if(DirOfPlayer.y > 0.1f || DirOfPlayer.y  < -0.1f)
-				{
-					ResetAnimFlagsExcept(-1);
-					if(DirOfPlayer.y > 0.1f)
-						m_aAnim.SetInteger("m_nFacingDir", 3);
-					else
-						m_aAnim.SetInteger("m_nFacingDir", 0);
-				}
-			}
-		}
-	}
+    void StopMovement()
+    {
+        ResetAnimFlagsExcept(-1);
+        if (m_nNextFacingDir != -1)
+        {
+            m_aAnim.SetInteger("m_nFacingDir", m_nNextFacingDir);
+            m_nNextFacingDir = -1;
+        }
+        m_bMoveTowardLocation = false;
+        m_vTargetLocation = Vector3.zero;
+		m_nWaypointIndex = 0;
+    }
 
 	// Update is called once per frame
 	void Update () 
 	{
 		HandleMovement();
+		if(Input.GetKeyDown(KeyCode.A))
+			DHF_NPCPathfindToGameobject(GameObject.Find("Target"), false, 2, false);
 	}
 
 	//Get the direction the NPC is looking
@@ -302,6 +261,7 @@ public class NPCScript : MonoBehaviour
 	//Load the steps of the NPC
 	protected void LoadSteps()
 	{
+        /*
 		if(m_taPathing != null)
 		{
 			string[] lines = m_taPathing.text.Split('\n');
@@ -316,57 +276,61 @@ public class NPCScript : MonoBehaviour
 				m_lSteps.Add(newStep);
 			}
 		}
+         * */
 	}
 
 	public void ResetAnimFlagsExcept(int exception)
 	{
-		m_aAnim.SetInteger("m_nFacingDir", exception);
-		switch(exception)
+		if(m_aAnim != null)
 		{
-		case 0:
-		{
-			//Down
-			m_aAnim.SetBool("m_bMoveLeft", false);
-			m_aAnim.SetBool("m_bMoveRight", false);
-			m_aAnim.SetBool("m_bMoveUp", false);
-			m_aAnim.SetBool("m_bMoveDown", true);
-
-		}
-			break;
-		case 1:
-		{
-			//Left
-			m_aAnim.SetBool("m_bMoveRight", false);
-			m_aAnim.SetBool("m_bMoveUp", false);
-			m_aAnim.SetBool("m_bMoveDown", false);
-			m_aAnim.SetBool("m_bMoveLeft", true);
-		}
-			break;
-		case 2:
-		{
-			//Right
-			m_aAnim.SetBool("m_bMoveDown", false);
-			m_aAnim.SetBool("m_bMoveLeft", false);
-			m_aAnim.SetBool("m_bMoveRight", true);
-			m_aAnim.SetBool("m_bMoveUp", false);
-		}
-			break;
-		case 3:
-		{
-			m_aAnim.SetBool("m_bMoveUp", true);
-			m_aAnim.SetBool("m_bMoveDown", false);
-			m_aAnim.SetBool("m_bMoveLeft", false);
-			m_aAnim.SetBool("m_bMoveRight", false);
-		}
-			break;
-		default:
-		{
-			m_aAnim.SetBool("m_bMoveUp", false);
-			m_aAnim.SetBool("m_bMoveDown", false);
-			m_aAnim.SetBool("m_bMoveLeft", false);
-			m_aAnim.SetBool("m_bMoveRight", false);
-		}
-			break;
+			m_aAnim.SetInteger("m_nFacingDir", exception);
+			switch(exception)
+			{
+			case 0:
+			{
+				//Down
+				m_aAnim.SetBool("m_bMoveLeft", false);
+				m_aAnim.SetBool("m_bMoveRight", false);
+				m_aAnim.SetBool("m_bMoveUp", false);
+				m_aAnim.SetBool("m_bMoveDown", true);
+			
+			}
+				break;
+			case 1:
+			{
+				//Left
+				m_aAnim.SetBool("m_bMoveRight", false);
+				m_aAnim.SetBool("m_bMoveUp", false);
+				m_aAnim.SetBool("m_bMoveDown", false);
+				m_aAnim.SetBool("m_bMoveLeft", true);
+			}
+				break;
+			case 2:
+			{
+				//Right
+				m_aAnim.SetBool("m_bMoveDown", false);
+				m_aAnim.SetBool("m_bMoveLeft", false);
+				m_aAnim.SetBool("m_bMoveRight", true);
+				m_aAnim.SetBool("m_bMoveUp", false);
+			}
+				break;
+			case 3:
+			{
+				m_aAnim.SetBool("m_bMoveUp", true);
+				m_aAnim.SetBool("m_bMoveDown", false);
+				m_aAnim.SetBool("m_bMoveLeft", false);
+				m_aAnim.SetBool("m_bMoveRight", false);
+			}
+				break;
+			default:
+			{
+				m_aAnim.SetBool("m_bMoveUp", false);
+				m_aAnim.SetBool("m_bMoveDown", false);
+				m_aAnim.SetBool("m_bMoveLeft", false);
+				m_aAnim.SetBool("m_bMoveRight", false);
+			}
+				break;
+			}
 		}
 	}
 
@@ -390,7 +354,7 @@ public class NPCScript : MonoBehaviour
 	{
 		if(m_bIsComingOutOfPlayer == false)
 		{
-			m_bCanMove = false;
+			//m_bCanMove = false;
 			if(GetComponent<Rigidbody2D>())
 				GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		}
@@ -398,13 +362,23 @@ public class NPCScript : MonoBehaviour
 
 	void OnCollisionExit2D(Collision2D c)
 	{
-		//GetComponent<Rigidbody2D>().isKinematic = false;
-		m_bCanMove = true;
+		//m_bCanMove = true;
 	}
 
-	public void RestartPathing()
+	public void OnDrawGizmos()
 	{
-		m_bIsBeingInterractedWith = false;
-		//ResetAnimFlagsExcept(m_lSteps[m_nStepsIter].nDirection);
+		if(m_vWaypoints != null)
+		{
+			for(int i = m_nWaypointIndex; i < m_vWaypoints.Length; ++i)
+			{
+				Gizmos.color = Color.black;
+				Gizmos.DrawCube(m_vWaypoints[i], Vector3.one);
+				if(i == m_nWaypointIndex)
+					Gizmos.DrawLine(transform.position, m_vWaypoints[i]);
+				else
+					Gizmos.DrawLine(m_vWaypoints[i-1], m_vWaypoints[i]);
+			}
+		}
 	}
+
 }

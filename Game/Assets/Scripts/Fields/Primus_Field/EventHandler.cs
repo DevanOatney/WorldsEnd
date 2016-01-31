@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 public class EventHandler : BaseEventSystemScript 
@@ -259,7 +260,7 @@ public class EventHandler : BaseEventSystemScript
 	}
 	void WinTheGame()
 	{
-		Application.LoadLevel("CreditsScreen_Scene");
+        SceneManager.LoadScene("CreditsScreen_Scene");
 	}
 	void WaitForBossDialogue()
 	{
@@ -313,8 +314,8 @@ public class EventHandler : BaseEventSystemScript
 			GameObject m_goPlayer = GameObject.Find("Player");
 			go.GetComponent<DCScript>().SetPreviousPosition(m_goPlayer.transform.position);
 			go.GetComponent<DCScript>().SetPreviousFacingDirection(m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir);
-			go.GetComponent<DCScript>().SetPreviousFieldName(Application.loadedLevelName);
-			Application.LoadLevel("Battle_Scene");
+			go.GetComponent<DCScript>().SetPreviousFieldName(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("Battle_Scene");
 		}
 	}
 }

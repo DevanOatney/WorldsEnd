@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -76,12 +77,12 @@ public class ContinueHighlightInputScript : MonoBehaviour {
 			{
 				GetComponent<AudioSource>().PlayOneShot(m_aSelectionMade, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
 				gameObject.GetComponent<LoadingScript>().Load(m_nSelectedIndex + 1);
-				Application.LoadLevel(m_lSaveFilesData[m_nSelectedIndex].m_szFieldName);
+                SceneManager.LoadScene(m_lSaveFilesData[m_nSelectedIndex].m_szFieldName);
 			}
 		}
 		if(Input.GetKeyUp(KeyCode.Escape))
 		{
-			Application.LoadLevel("IntroMenu_Scene");
+            SceneManager.LoadScene("IntroMenu_Scene");
 		}
 	}
 

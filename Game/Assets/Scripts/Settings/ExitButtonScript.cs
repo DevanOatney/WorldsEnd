@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ExitButtonScript : MonoBehaviour 
 {
@@ -53,7 +54,7 @@ public class ExitButtonScript : MonoBehaviour
 			GO.GetComponent<DCScript>().AdjustValues();
 			GO.GetComponent<DCScript>().SetMasterVolume();
 		}
-		Application.LoadLevel("IntroMenu_Scene");
+        SceneManager.LoadScene("IntroMenu_Scene");
 	}
 
 	void OnMouseDown()

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -162,7 +163,7 @@ public class SavingScript : MonoBehaviour
 		}
 		//The scene to load
 		//sw.WriteLine(Application.loadedLevelName);
-		m_lOutputData.Add(Application.loadedLevelName);
+		m_lOutputData.Add(SceneManager.GetActiveScene().name);
 		//The position of the player on that field
 		//sw.WriteLine(dcs.GetPreviousPosition());
 		m_lOutputData.Add(dcs.GetPreviousPosition().ToString());

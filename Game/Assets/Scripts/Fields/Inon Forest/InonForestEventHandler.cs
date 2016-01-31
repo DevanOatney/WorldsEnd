@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -93,10 +94,10 @@ public class InonForestEventHandler : BaseEventSystemScript
 			GameObject m_goPlayer = GameObject.Find("Player");
 			go.GetComponent<DCScript>().SetPreviousPosition(m_goPlayer.transform.position);
 			go.GetComponent<DCScript>().SetPreviousFacingDirection(m_goPlayer.GetComponent<FieldPlayerMovementScript>().m_nFacingDir);
-			go.GetComponent<DCScript>().SetPreviousFieldName(Application.loadedLevelName);
+            go.GetComponent<DCScript>().SetPreviousFieldName(SceneManager.GetActiveScene().name);
 			go.GetComponent<DCScript>().SetBattleFieldBackgroundIter(2);
 
-			Application.LoadLevel("Battle_Scene");
+            SceneManager.LoadScene("Battle_Scene");
 		}
 	}
 
