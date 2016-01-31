@@ -59,7 +59,7 @@ public class InonEventHandler : BaseEventSystemScript
 		{
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 			//have completed the ritual battle, but haven't completed the full ritual yet, begin the final bits of dialogue for the ritual
-			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("B1");
+			GameObject.Find("Mattach").GetComponentInChildren<MessageHandler>().BeginDialogue("B1");
 			ds.m_dStoryFlagField.Remove("Inon_RitualBattleComplete");
 			foreach(GameObject wpnt in Phase1_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
@@ -110,7 +110,7 @@ public class InonEventHandler : BaseEventSystemScript
 					ds.m_dStoryFlagField.Add("Inon_HasMoved", 1);
 					player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 					player.GetComponent<FieldPlayerMovementScript>().BindInput();
-					player.GetComponent<MessageHandler>().BeginDialogue("B1");
+					player.GetComponentInChildren<MessageHandler>().BeginDialogue("B1");
 					GameObject.Find("NoteFromFamily").GetComponent<BoxCollider2D>().enabled = true;
 				}
 			}
@@ -135,7 +135,7 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
 				player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-				player.GetComponent<MessageHandler>().BeginDialogue("D1");
+				player.GetComponentInChildren<MessageHandler>().BeginDialogue("D1");
 				GameObject.Find("NoteFromFamily").GetComponent<BoxCollider2D>().enabled = false;
 			}
 		}
@@ -147,22 +147,9 @@ public class InonEventHandler : BaseEventSystemScript
 			foreach(GameObject go in Phase1_waypoints)
 				go.SetActive(false);
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
-			GameObject.Find("Player").GetComponent<MessageHandler>().BeginDialogue("C1");
+			GameObject.Find("Player").GetComponentInChildren<MessageHandler>().BeginDialogue("C1");
 
 		}
-			break;
-		case "FemaleDancerDialogue":
-			int result;
-			if(ds.m_dStoryFlagField.TryGetValue("Inon_CrossedBridge", out result))
-			{
-				//If the player has previously gone over the bridge
-				BeginDialogue(1);
-			}
-			else
-			{
-				//If the player hasn't gone over the bridge
-				BeginDialogue(0);
-			}
 			break;
 		case "Cytheria":
 		{
@@ -176,13 +163,13 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				int cythRes = -1;
 				if(ds.m_dStoryFlagField.TryGetValue("Inon_Cytheria", out cythRes) == false)
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 				else
 				{
 					if(cythRes == 1)
-						messageSystem.GetComponent<MessageHandler>().BeginDialogue("B0");
+						messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("B0");
 					else if(cythRes == 2)
-						messageSystem.GetComponent<MessageHandler>().BeginDialogue("C0");
+						messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("C0");
 				}
 			}
 		}
@@ -221,10 +208,10 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				int delRes = -1;
 				if(ds.m_dStoryFlagField.TryGetValue("Inon_Delaria", out delRes) == false)
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 				else
 				{
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue("B0");
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("B0");
 				}
 			}
 		}
@@ -252,10 +239,10 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				int timRes = -1;
 				if(ds.m_dStoryFlagField.TryGetValue("Inon_Timmy", out timRes) == false)
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 				else
 				{
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue("A3");
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("A3");
 				}
 			}
 		}
@@ -283,10 +270,10 @@ public class InonEventHandler : BaseEventSystemScript
 				
 				int mattRes = -1;
 				if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out mattRes) == false)
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 				else
 				{
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue("A3");
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("A3");
 				}
 			}
 		}
@@ -301,7 +288,7 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject messageSystem = GameObject.Find("Marcus");
 			if(messageSystem)
 			{
-				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 			}
 		}
 
@@ -316,7 +303,7 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject messageSystem = GameObject.Find("Bedrest");
 			if(messageSystem)
 			{
-				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 			}
 		}
 			
@@ -333,11 +320,11 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				int briRes = -1;
 				if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out briRes))
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue("C0");
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("C0");
 				else if(ds.m_dStoryFlagField.TryGetValue("Inon_Bartholomew", out briRes) == false)
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 				else
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue("B0");
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("B0");
 			}
 		}
 			break;
@@ -365,10 +352,10 @@ public class InonEventHandler : BaseEventSystemScript
 
 				int oldRes = -1;
 				if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out oldRes) == false)
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 				else
 				{
-						messageSystem.GetComponent<MessageHandler>().BeginDialogue("A3");
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("A3");
 				}
 			}
 		}
@@ -385,9 +372,9 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				int cassRes = -1;
 				if(ds.m_dStoryFlagField.TryGetValue("Inon_Cassandra", out cassRes) == false)
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 				else
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue("A5");
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("A5");
 			}
 		}
 			break;
@@ -416,7 +403,7 @@ public class InonEventHandler : BaseEventSystemScript
 				{
 					if(lydRes == 12)
 					{
-						messageSystem.GetComponent<MessageHandler>().BeginDialogue("D0");
+						messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("D0");
 					}
 					else if(lydRes == 11)
 					{
@@ -429,31 +416,31 @@ public class InonEventHandler : BaseEventSystemScript
 								//has gotten all of the items.
 								ds.RemoveItemAll(mushroom);
 								ds.m_dStoryFlagField["Inon_Lydia"] = 12;
-								messageSystem.GetComponent<MessageHandler>().BeginDialogue("D0");
+								messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("D0");
 							}
 							else
-								messageSystem.GetComponent<MessageHandler>().BeginDialogue("C0");
+								messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("C0");
 						}
 						else
-							messageSystem.GetComponent<MessageHandler>().BeginDialogue("C0");
+							messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("C0");
 					}
 					else if(lydRes == 10)
 					{
 						lydRes++;
 						ds.m_dStoryFlagField["Inon_Lydia"] = lydRes;
-						messageSystem.GetComponent<MessageHandler>().BeginDialogue("B0");
+							messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("B0");
 					}
 					else if(lydRes < 10)
 					{
 						lydRes++;
 						ds.m_dStoryFlagField["Inon_Lydia"] = lydRes;
-						messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+						messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 					}
 				}
 				else
 				{
 					ds.m_dStoryFlagField.Add("Inon_Lydia", 1);
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 				}
 
 			}
@@ -469,7 +456,7 @@ public class InonEventHandler : BaseEventSystemScript
 				{
 					if(g.GetComponent<NPCScript>() != null)
 						g.GetComponent<NPCScript>().m_bIsBeingInterractedWith = false;
-					g.GetComponent<MessageHandler>().m_bShouldDisplayDialogue = false;
+					g.GetComponentInChildren<MessageHandler>().m_bShouldDisplayDialogue = false;
 				}
 			}
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -492,10 +479,10 @@ public class InonEventHandler : BaseEventSystemScript
 				
 				int bartRes = -1;
 				if(ds.m_dStoryFlagField.TryGetValue("Inon_Bartholomew", out bartRes) == false)
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 				else
 				{
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue("A4");
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("A4");
 				}
 			}
 		}
@@ -523,10 +510,10 @@ public class InonEventHandler : BaseEventSystemScript
 
 				int constRes = -1;
 				if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out constRes) == false)
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 				else
 				{
-					messageSystem.GetComponent<MessageHandler>().BeginDialogue("A3");
+					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("A3");
 				}
 			}
 		}
@@ -541,7 +528,7 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject messageSystem = GameObject.Find("NPC_Dancer");
 			if(messageSystem)
 			{
-				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 			}
 		}
 			break;
@@ -555,7 +542,7 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject messageSystem = GameObject.Find("NPC_Merchant1");
 			if(messageSystem)
 			{
-				messageSystem.GetComponent<MessageHandler>().BeginDialogue(0);
+				messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 			}
 		}
 
@@ -565,9 +552,9 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject>();
 			foreach(GameObject g in gObjs)
 			{
-				if(g.GetComponent<MessageHandler>() != null)
+				if(g.GetComponentInChildren<MessageHandler>() != null)
 				{
-					g.GetComponent<MessageHandler>().m_bShouldDisplayDialogue = false;
+					g.GetComponentInChildren<MessageHandler>().m_bShouldDisplayDialogue = false;
 				}
 			}
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -583,11 +570,11 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject>();
 			foreach(GameObject g in gObjs)
 			{
-				if(g.GetComponent<MessageHandler>() != null)
+				if(g.GetComponentInChildren<MessageHandler>() != null)
 				{
 					if(g.GetComponent<NPCScript>() != null)
 						g.GetComponent<NPCScript>().m_bIsBeingInterractedWith = false;
-					g.GetComponent<MessageHandler>().m_bShouldDisplayDialogue = false;
+					g.GetComponentInChildren<MessageHandler>().m_bShouldDisplayDialogue = false;
 				}
 			}
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -640,9 +627,9 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject>();
 			foreach(GameObject g in gObjs)
 			{
-				if(g.GetComponent<MessageHandler>() != null)
+				if(g.GetComponentInChildren<MessageHandler>() != null)
 				{
-					g.GetComponent<MessageHandler>().m_bShouldDisplayDialogue = false;
+					g.GetComponentInChildren<MessageHandler>().m_bShouldDisplayDialogue = false;
 				}
 			}
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -685,7 +672,7 @@ public class InonEventHandler : BaseEventSystemScript
 			foreach(GameObject wpnt in Phase4_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 			m_goDeadBoar.GetComponent<SpriteRenderer>().sprite = m_t2dDeadBoarWithoutTusk;
-			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("D0");
+			GameObject.Find("Mattach").GetComponentInChildren<MessageHandler>().BeginDialogue("D0");
 		}
 			break;
 		case "RitualEnd":
@@ -717,7 +704,7 @@ public class InonEventHandler : BaseEventSystemScript
 		GameObject messageSystem = GameObject.Find("Female Dancer");
 		if(messageSystem)
 		{
-			messageSystem.GetComponent<MessageHandler>().BeginDialogue(iter);
+			messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(iter);
 		}
 	}
 
@@ -837,7 +824,7 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-			GameObject.Find("Mattach").GetComponent<MessageHandler>().BeginDialogue("A1");
+			GameObject.Find("Mattach").GetComponentInChildren<MessageHandler>().BeginDialogue("A1");
 			GameObject.Find("ArrivedAtRitualWaypoint").GetComponent<BoxCollider2D>().enabled = false;
 		}
 			break;
@@ -854,7 +841,7 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
 				GameObject.Find("StepBackNorth").GetComponent<BoxCollider2D>().enabled = false;
-				player.GetComponent<MessageHandler>().BeginDialogue("F0");
+				player.GetComponentInChildren<MessageHandler>().BeginDialogue("F0");
 				GameObject.Find("LeaveFromNorthWaypoint").GetComponent<BoxCollider2D>().enabled = true;
 			}
 		}
@@ -866,7 +853,7 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
 				GameObject.Find("StepBackSouth").GetComponent<BoxCollider2D>().enabled = false;
-				player.GetComponent<MessageHandler>().BeginDialogue("F0");
+				player.GetComponentInChildren<MessageHandler>().BeginDialogue("F0");
 				GameObject.Find("LeaveFromSouthWaypoint").GetComponent<BoxCollider2D>().enabled = true;
 			}
 		}
