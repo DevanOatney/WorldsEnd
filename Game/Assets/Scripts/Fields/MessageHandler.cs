@@ -87,10 +87,11 @@ public class MessageHandler : MonoBehaviour
 							line = "";
 							timer = 0.0f;
 							textIter = 0; 
-							GetComponent<AudioSource>().Stop();
+							GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
 						}
 						else
 						{
+							GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
 							line = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).Line;
 							textIter = line.Length;
 						}
@@ -177,16 +178,9 @@ public class MessageHandler : MonoBehaviour
 						string filePath = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).DialogueFilePath; 
 						if(filePath != "null" && filePath.Length > 1)
 						{
-							AudioClip clip = (AudioClip)Resources.Load(filePath);
-							if(clip)
-							{
-								GameObject GO = GameObject.Find("PersistantData");
-								if(GO)
-								{
-									GetComponent<AudioSource>().Stop();
-									GetComponent<AudioSource>().PlayOneShot(clip, 0.5f + GO.GetComponent<DCScript>().m_fVoiceVolume);
-								}
-							}
+
+								GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
+								GetComponent<MorseCodePlayer>().PlayMorseCodeMessage(((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).Line);
 						}
 					}
 					if(textIter < ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).Line.Length)

@@ -30,7 +30,7 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<FieldPlayerMovementScript>().BindInput();
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-			player.GetComponent<MessageHandler>().BeginDialogue(0);
+			player.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
 			ds.m_dStoryFlagField.Add("Intro_in_Inon", 1);
 			foreach(GameObject wpnt in Phase1_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
