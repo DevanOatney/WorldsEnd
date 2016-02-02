@@ -33,28 +33,21 @@ public class ItemGroupDamage : BaseItemScript
 					Destroy(animation, 1.4f);
 				}
 				m_pOwner.GetComponent<Animator>().SetBool("m_bIsCasting", true);
-				if(m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm != null)
-				{
-					m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm.GetComponentInChildren<Animator>().SetBool("m_bIsCasting", true);
-					m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm.GetComponent<SpriteRenderer>().enabled = true;
-				}
 				//in x amount of time, the player's turn is over and it's time to destroy this object
 				Invoke("DoneAnimating", 1.5f);
 				//Decrement the amount of that item in the inventory
-				List<DCScript.CharactersItems> inventory = GameObject.Find("PersistantData").GetComponent<DCScript>().GetInventory();
-				foreach(DCScript.CharactersItems item in inventory.ToArray())
+				List<ItemLibrary.CharactersItems> inventory = GameObject.Find("PersistantData").GetComponent<DCScript>().m_lItemLibrary.m_lInventory;
+				foreach(ItemLibrary.CharactersItems item in inventory.ToArray())
 					if(item.m_szItemName == GetItemName())
-						GameObject.Find("PersistantData").GetComponent<DCScript>().RemoveItem(item);
+						GameObject.Find("PersistantData").GetComponent<DCScript>().m_lItemLibrary.RemoveItem(item);
 				//turn off the flags for the item/inventory rendering
-				m_pOwner.GetComponent<PlayerBattleScript>().m_bIsMyTurn = false;
-				m_pOwner.GetComponent<PlayerBattleScript>().SetItemChosen(false);
-				m_pOwner.GetComponent<PlayerBattleScript>().SetChoosingItemFlag(false);
+				m_pOwner.GetComponent<CAllyBattleScript>().m_nState = (int)CAllyBattleScript.ALLY_STATES.USING_ITEM;
 			}
 			else if(Input.GetKeyUp(KeyCode.Escape))
 			{
 				m_bDraw = false;
-				m_pOwner.GetComponent<PlayerBattleScript>().SetAllowInput(true);
-				m_pOwner.GetComponent<PlayerBattleScript>().TurnOffFlags();
+				m_pOwner.GetComponent<CAllyBattleScript>().SetAllowInput(true);
+				m_pOwner.GetComponent<CAllyBattleScript>().m_nState = (int)CAllyBattleScript.ALLY_STATES.USEITEM_CHOSEN;
 				DisableAllCursors();
 				Destroy(gameObject);
 			}
@@ -72,11 +65,6 @@ public class ItemGroupDamage : BaseItemScript
 	{
 		//end the animation
 		m_pOwner.GetComponent<Animator>().SetBool("m_bIsCasting", false);
-		if(m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm != null)
-		{
-			m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm.GetComponentInChildren<Animator>().SetBool("m_bIsCasting", false);
-			m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm.GetComponent<SpriteRenderer>().enabled = false;
-		}
 		//Do the effect
 		GameObject[] Enemies = GameObject.FindGameObjectsWithTag(GetTargets());
 		foreach(GameObject enemy in Enemies)
@@ -87,8 +75,7 @@ public class ItemGroupDamage : BaseItemScript
 		
 		
 		//end units turn
-		m_pOwner.GetComponent<PlayerBattleScript>().EndMyTurn();
-		m_pOwner.GetComponent<PlayerBattleScript>().SetAllowInput(true);
+		m_pOwner.GetComponent<CAllyBattleScript>().m_nState = (int)CAllyBattleScript.ALLY_STATES.STATUS_EFFECTS;
 		Destroy(gameObject);
 	}
 
@@ -96,7 +83,7 @@ public class ItemGroupDamage : BaseItemScript
 	{
 		m_pOwner = pOwner;
 		m_bDraw = true;
-		m_pOwner.GetComponent<PlayerBattleScript>().SetAllowInput(false);
+		m_pOwner.GetComponent<CAllyBattleScript>().SetAllowInput(false);
 		GameObject[] Enemies = GameObject.FindGameObjectsWithTag(GetTargets());
 		foreach(GameObject enemy in Enemies)
 		{

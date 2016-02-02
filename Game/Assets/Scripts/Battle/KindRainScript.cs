@@ -34,24 +34,18 @@ public class KindRainScript : MonoBehaviour
 					Destroy(animation, 1.2f);
 				}
 				m_pOwner.GetComponent<Animator>().SetBool("m_bIsCasting", true);
-				if(m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm != null)
-				{
-					m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm.GetComponentInChildren<Animator>().SetBool("m_bIsCasting", true);
-					m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm.GetComponent<SpriteRenderer>().enabled = true;
-				}
 				//in x amount of time, the player's turn is over and it's time to destroy this object
 				Invoke("DoneAnimating", 1.5f);
 
 				//turn off the flags for the item/inventory rendering
-				m_pOwner.GetComponent<PlayerBattleScript>().m_bIsMyTurn = false;
-				m_pOwner.GetComponent<PlayerBattleScript>().SetMagicChosen(false);
-				m_pOwner.GetComponent<PlayerBattleScript>().SetChoosingMagicFlag(false);
+				m_pOwner.GetComponent<CAllyBattleScript>().m_nState = (int)CAllyBattleScript.ALLY_STATES.STATUS_EFFECTS;
 			}
 			else if(Input.GetKeyUp(KeyCode.Escape))
 			{
 				m_bDraw = false;
-				m_pOwner.GetComponent<PlayerBattleScript>().SetAllowInput(true);
-				m_pOwner.GetComponent<PlayerBattleScript>().TurnOffFlags();
+				m_pOwner.GetComponent<CAllyBattleScript>().SetAllowInput(true);
+				//TODO: inform unit to go back to magic selection screen?
+				m_pOwner.GetComponent<CAllyBattleScript>().m_nState = (int)CAllyBattleScript.ALLY_STATES.USEMAGIC_CHOSEN;
 				DisableAllCursors();
 				Destroy(gameObject);
 			}
@@ -62,26 +56,14 @@ public class KindRainScript : MonoBehaviour
 	{
 		//end the animation
 		m_pOwner.GetComponent<Animator>().SetBool("m_bIsCasting", false);
-		if(m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm != null)
-		{
-			m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm.GetComponentInChildren<Animator>().SetBool("m_bIsCasting", false);
-			m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm.GetComponent<SpriteRenderer>().enabled = false;
-		}
 		//Do the effect
 		GameObject[] allies = GameObject.FindGameObjectsWithTag("Ally");
 		foreach(GameObject ally in allies)
 		{
 			//heal the unit (adjust hp is for taking damage.. so sending a negative number should heal
 			ally.GetComponent<UnitScript>().AdjustHP(m_pOwner.GetComponent<UnitScript>().GetSTR() * -1);
-			
 		}
-		
-		
-		//end units turn
-		GameObject tw = GameObject.Find("TurnWatcher");
-		if(tw)
-			tw.GetComponent<TurnWatcherScript>().MyTurnIsOver(m_pOwner);
-		m_pOwner.GetComponent<PlayerBattleScript>().SetAllowInput(true);
+
 		Destroy(gameObject);
 	}
 	
@@ -94,7 +76,6 @@ public class KindRainScript : MonoBehaviour
 	{
 		m_pOwner = pOwner;
 		m_bDraw = true;
-		m_pOwner.GetComponent<PlayerBattleScript>().SetAllowInput(false);
 		
 		GameObject[] Allies = GameObject.FindGameObjectsWithTag("Ally");
 		foreach(GameObject ally in Allies)
@@ -105,9 +86,9 @@ public class KindRainScript : MonoBehaviour
 
 	public void DisableAllCursors()
 	{
-		for(int i = 0; i < 3; ++i)
+		for(int i = 0; i < 5; ++i)
 			GameObject.Find("Enemy_Cursor" + i).GetComponent<SpriteRenderer>().enabled = false;
-		for(int i = 0; i < 3; ++i)
+		for(int i = 0; i < 5; ++i)
 			GameObject.Find("Ally_Cursor" + i).GetComponent<SpriteRenderer>().enabled = false;
 	}
 }

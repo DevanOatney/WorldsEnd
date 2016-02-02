@@ -120,15 +120,15 @@ public class WigglingBushScript : MonoBehaviour
 	void AddItemToPlayersInventory(string szItemName, int nAmount)
 	{
 		DCScript dcs = GameObject.Find("PersistantData").GetComponent<DCScript>();
-		foreach(KeyValuePair<string, DCScript.ItemData> kvp in dcs.GetItemDictionary())
+		foreach(KeyValuePair<string, ItemLibrary.ItemData> kvp in dcs.m_lItemLibrary.GetItemDictionary())
 		{
-			if(dcs.GetItemFromDictionary(szItemName) != null)
+			if(dcs.m_lItemLibrary.GetItemFromDictionary(szItemName) != null)
 			{
 				//Great success, add that amount of that item to the inventory
-				DCScript.CharactersItems m_ciItemHeld = new DCScript.CharactersItems();
+				ItemLibrary.CharactersItems m_ciItemHeld = new ItemLibrary.CharactersItems();
 				m_ciItemHeld.m_szItemName = kvp.Key;
 				m_ciItemHeld.m_nItemCount = nAmount;
-				dcs.AddItem(m_ciItemHeld);
+				dcs.m_lItemLibrary.AddItem(m_ciItemHeld);
 			}
 			else
 			{

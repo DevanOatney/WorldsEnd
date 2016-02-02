@@ -36,7 +36,7 @@ public class BriolInonRitualScript : MonoBehaviour
 		if(c.collider.name == "Player")
 		{
 			Debug.Log ("hit1");
-			GameObject.Find("PersistantData").GetComponent<DCScript>().AddItem("Boar Tusk");
+			GameObject.Find("PersistantData").GetComponent<DCScript>().m_lItemLibrary.AddItem("Boar Tusk");
 		}
 	}
 }

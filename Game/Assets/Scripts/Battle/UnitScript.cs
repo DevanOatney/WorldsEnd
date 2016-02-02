@@ -100,12 +100,12 @@ public class UnitScript : MonoBehaviour
 			{
 			case (int)UnitTypes.ALLY_MELEE:
 			{
-				gameObject.GetComponent<PlayerBattleScript>().AdjustHP(dmg);
+				gameObject.GetComponent<CAllyBattleScript>().AdjustHP(dmg);
 			}
 				break;
 			case (int)UnitTypes.ALLY_RANGED:
 			{
-				gameObject.GetComponent<PlayerBattleScript>().AdjustHP(dmg);
+				gameObject.GetComponent<CAllyBattleScript>().AdjustHP(dmg);
 			}
 				break;
 			case (int)UnitTypes.BASICENEMY:
@@ -135,12 +135,12 @@ public class UnitScript : MonoBehaviour
 			{
 			case (int)UnitTypes.ALLY_MELEE:
 			{
-				gameObject.GetComponent<PlayerBattleScript>().Missed();
+				gameObject.GetComponent<CAllyBattleScript>().Missed();
 			}
 				break;
 			case (int)UnitTypes.ALLY_RANGED:
 			{
-				gameObject.GetComponent<PlayerBattleScript>().Missed();
+				gameObject.GetComponent<CAllyBattleScript>().Missed();
 			}
 				break;
 			case (int)UnitTypes.BASICENEMY:
@@ -164,20 +164,7 @@ public class UnitScript : MonoBehaviour
 
 	public void StartMyTurn()
 	{
-		//Update any of the status effects. (use a new list, as some of the master list may get removed
-		for(int i = 0; i < m_lStatusEffects.Count; ++i)
-		{
-			if(m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_bToBeRemoved == true)
-			{
-				
-				GameObject.Find("PersistantData").GetComponent<DCScript>().RemoveMeFromStatus(name, i);
-				m_lStatusEffects.RemoveAt(i);
-				i--;
-			}
-			else
-				m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_dFunc();
-		}
-		m_bAllowInput = true;
+		
 	}
 	
 	public void EndMyTurn()
@@ -217,4 +204,55 @@ public class UnitScript : MonoBehaviour
 		}
 	}
 
+
+	bool CheckIfHit()
+	{
+		GameObject[] posTargs = null;
+		switch(m_nUnitType)
+		{
+		case (int)UnitTypes.ALLY_MELEE:
+			{
+				posTargs = GameObject.FindGameObjectsWithTag("Ally");
+			}
+			break;
+		case (int)UnitTypes.ALLY_RANGED:
+			{
+				posTargs = GameObject.FindGameObjectsWithTag("Ally");
+			}
+			break;
+		case (int)UnitTypes.BASICENEMY:
+			{
+				posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+			}
+			break;
+		case (int)UnitTypes.PERCENTENEMY:
+			{
+				posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+			}
+			break;
+		}
+
+		foreach(GameObject tar in posTargs)
+		{
+			if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+			{
+				int nChanceToHit = UnityEngine.Random.Range(0,100);
+				int nRange = 85 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
+				if(nRange < 5)
+					nRange = 5;
+				Debug.Log("Chance: " + nChanceToHit + "    Range: " + nRange);
+				if(nChanceToHit <	nRange)
+				{
+					//Target was hit
+					return true;
+				}
+				else
+				{
+					//target was missed
+					return false;
+				}
+			}
+		}
+		return false;
+	}
 }

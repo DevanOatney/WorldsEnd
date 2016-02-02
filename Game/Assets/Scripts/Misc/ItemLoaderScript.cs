@@ -25,13 +25,13 @@ public class ItemLoaderScript : MonoBehaviour
 		LoadQuestItems();
 
 
-		foreach(KeyValuePair<string, DCScript.ItemData> kvp in dcs.GetItemDictionary())
+		foreach(KeyValuePair<string, ItemLibrary.ItemData> kvp in dcs.m_lItemLibrary.GetItemDictionary())
 		{
-			DCScript.CharactersItems m_ciItemHeld = new DCScript.CharactersItems();
+			ItemLibrary.CharactersItems m_ciItemHeld = new ItemLibrary.CharactersItems();
 			m_ciItemHeld.m_szItemName = kvp.Key;
 			m_ciItemHeld.m_nItemCount = 1;
 			m_ciItemHeld.m_nItemType = kvp.Value.m_nItemType;
-			dcs.AddItem(m_ciItemHeld);
+			dcs.m_lItemLibrary.AddItem(m_ciItemHeld);
 		}
 	}
 
@@ -80,7 +80,7 @@ public class ItemLoaderScript : MonoBehaviour
 
 	void LoadUseableItems()
 	{
-		Dictionary<string, DCScript.ItemData> useableItemDatabase = new Dictionary<string, DCScript.ItemData>();
+		Dictionary<string, ItemLibrary.ItemData> useableItemDatabase = new Dictionary<string, ItemLibrary.ItemData>();
 		string[] lines = m_szUseableItems.text.Split('\n');
 		int counter = 0;
 		foreach(string line in lines)
@@ -91,7 +91,7 @@ public class ItemLoaderScript : MonoBehaviour
 				break;
 
 			string[] szPieces = line.Split(',');
-			DCScript.ItemData item = new DCScript.ItemData();
+			ItemLibrary.ItemData item = new ItemLibrary.ItemData();
 			item.m_szItemName = szPieces[0].Trim();
 			item.m_nItemType = int.Parse(szPieces[1].Trim());
 			item.m_nHPMod = int.Parse(szPieces[2].Trim());
@@ -105,7 +105,7 @@ public class ItemLoaderScript : MonoBehaviour
 			useableItemDatabase.Add(item.m_szItemName,  item);
 
 		}
-		dcs.SetItemDictionary(useableItemDatabase);
+		dcs.m_lItemLibrary.SetItemDictionary(useableItemDatabase);
 	}
 
 	void LoadArmorItems()
@@ -120,7 +120,7 @@ public class ItemLoaderScript : MonoBehaviour
 				break;
 			////name, id, hp, pow, def, spd, cost, spc id, spc mod, description
 			string[] szPieces = line.Split(',');
-			DCScript.ArmorData armor = new DCScript.ArmorData();
+			ItemLibrary.ArmorData armor = new ItemLibrary.ArmorData();
 			armor.m_szItemName = szPieces[0].Trim();
 			armor.m_nItemType = int.Parse(szPieces[1].Trim());
 			armor.m_nHPMod = int.Parse(szPieces[2].Trim());
@@ -133,7 +133,7 @@ public class ItemLoaderScript : MonoBehaviour
 			armor.m_nSpecialType = int.Parse(szPieces[9].Trim());
 			armor.m_nSpecialModifier = int.Parse(szPieces[10].Trim());
 			armor.m_szDescription = szPieces[11].Trim();
-			dcs.GetItemDictionary().Add(armor.m_szItemName, armor);
+			dcs.m_lItemLibrary.GetItemDictionary().Add(armor.m_szItemName, armor);
 			
 		}
 	}
@@ -149,11 +149,11 @@ public class ItemLoaderScript : MonoBehaviour
 			if(counter == lines.Length)
 				break;
 			string[] szPieces = line.Split(',');
-			DCScript.ItemData keyItem = new DCScript.ItemData();
+			ItemLibrary.ItemData keyItem = new ItemLibrary.ItemData();
 			keyItem.m_szItemName = szPieces[0].Trim();
 			keyItem.m_nItemType = (int)BaseItemScript.ITEM_TYPES.eKEYITEM;
 			keyItem.m_szDescription = szPieces[1].Trim();
-			dcs.GetItemDictionary().Add(keyItem.m_szItemName, keyItem);
+			dcs.m_lItemLibrary.GetItemDictionary().Add(keyItem.m_szItemName, keyItem);
 
 		}
 	}

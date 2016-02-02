@@ -8,9 +8,9 @@ public class TreasureChestScript : MonoBehaviour {
 	public void SetIsOpening( bool b) { m_bIsOpening = b;}
 	public bool m_bIsOpened = false;
 
-	DCScript.CharactersItems m_ciItemHeld;
-	public DCScript.CharactersItems GetItemHeld() {return m_ciItemHeld;}
-	public void SetItemHeld(DCScript.CharactersItems item){m_ciItemHeld = item;}
+	ItemLibrary.CharactersItems m_ciItemHeld;
+	public ItemLibrary.CharactersItems GetItemHeld() {return m_ciItemHeld;}
+	public void SetItemHeld(ItemLibrary.CharactersItems item){m_ciItemHeld = item;}
 	//the amount of the item held within to give to the player
 	public int m_nAmountofItem = 1;
 	Vector2 m_vSizeOfMessage;
@@ -26,7 +26,7 @@ public class TreasureChestScript : MonoBehaviour {
 	void Start () 
 	{
 		//TEMP FOR TESTING
-		m_ciItemHeld = new DCScript.CharactersItems();
+		m_ciItemHeld = new ItemLibrary.CharactersItems();
 		m_ciItemHeld.m_szItemName = m_szItemName;
 		m_ciItemHeld.m_nItemCount = Random.Range(1, 4);
 
@@ -57,7 +57,7 @@ public class TreasureChestScript : MonoBehaviour {
 				m_bIsOpened = true;
 				if(m_ciItemHeld.m_szItemName != "Spyr")
 				{
-					GameObject.Find("PersistantData").GetComponent<DCScript>().AddItem(m_ciItemHeld);
+					GameObject.Find("PersistantData").GetComponent<DCScript>().m_lItemLibrary.AddItem(m_ciItemHeld);
 					GameObject.Find("PersistantData").GetComponent<DCScript>().m_dStoryFlagField.Add(name, 1);
 				}
 				else

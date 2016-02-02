@@ -53,8 +53,8 @@ public class InonForestEventHandler : BaseEventSystemScript
 		{
 		case "mushroom":
 		{
-			ds.AddItem("Rare Mushroom");
-			Debug.Log(ds.GetItemFromInventory("Rare Mushroom").m_nItemCount);
+			ds.m_lItemLibrary.AddItem("Rare Mushroom");
+				//TODO: when you get all of the mushrooms maybe have some dialogue like "hey let's go return these to 'character'"
 		}
 			break;
 		case "BoarBossEndDialogue":

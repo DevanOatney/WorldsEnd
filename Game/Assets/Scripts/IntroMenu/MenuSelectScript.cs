@@ -36,7 +36,7 @@ public class MenuSelectScript : MonoBehaviour
 			//New Game
 			GameObject.Find("PersistantData").GetComponent<DCScript>().GetParty().Clear();
 			GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
-			Callan.GetComponent<PlayerBattleScript>().SetUnitStats();
+			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
 
 
 			//GameObject Devan = Resources.Load<GameObject>("Units/Ally/Devan/Devan");

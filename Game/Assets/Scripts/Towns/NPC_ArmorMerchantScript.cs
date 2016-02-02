@@ -71,14 +71,14 @@ public class NPC_ArmorMerchantScript : NPCScript
 					MerchantItem newItem = new MerchantItem();
 					newItem.m_szItemName = piece[0].Trim();
 					newItem.m_nCost = int.Parse(piece[2].Trim());
-					DCScript.CharactersItems cItem = dc.GetItemFromInventory(newItem.m_szItemName);
+					ItemLibrary.CharactersItems cItem = dc.m_lItemLibrary.GetItemFromInventory(newItem.m_szItemName);
 					if(cItem == null)
 						Debug.Log("Merchant item loading data failed");
 					else
 					{
 						newItem.m_nAmountCarried = cItem.m_nItemCount;
 						newItem.m_nItemType = cItem.m_nItemType;
-						newItem.m_szItemDescription = dc.GetItemFromDictionary(newItem.m_szItemName).m_szDescription;
+						newItem.m_szItemDescription = dc.m_lItemLibrary.GetItemFromDictionary(newItem.m_szItemName).m_szDescription;
 					}
 					m_lItems.Add(newItem);
 				}
@@ -89,15 +89,15 @@ public class NPC_ArmorMerchantScript : NPCScript
 	void LoadSellItems()
 	{
 		m_lItems.Clear();
-		foreach(DCScript.CharactersItems item in dc.GetInventory())
+		foreach(ItemLibrary.CharactersItems item in dc.m_lItemLibrary.m_lInventory)
 		{
 			MerchantItem newItem = new MerchantItem();
 			newItem.m_szItemName = item.m_szItemName;
 			newItem.m_nAmountCarried = item.m_nItemCount;
 			newItem.m_nAmountToBarter = 0;
-			newItem.m_nItemType = dc.GetItemFromDictionary(item.m_szItemName).m_nItemType;
-			newItem.m_nCost = dc.GetItemFromDictionary(item.m_szItemName).m_nBaseValue;
-			newItem.m_szItemDescription = dc.GetItemFromDictionary(item.m_szItemName).m_szDescription;
+			newItem.m_nItemType = dc.m_lItemLibrary.GetItemFromDictionary(item.m_szItemName).m_nItemType;
+			newItem.m_nCost = dc.m_lItemLibrary.GetItemFromDictionary(item.m_szItemName).m_nBaseValue;
+			newItem.m_szItemDescription = dc.m_lItemLibrary.GetItemFromDictionary(item.m_szItemName).m_szDescription;
 			m_lItems.Add(newItem);
 		}
 	}
@@ -176,21 +176,21 @@ public class NPC_ArmorMerchantScript : NPCScript
 							if(item.m_nAmountToBarter > 0)
 							{
 								counter++;
-								DCScript.CharactersItems newItem = new DCScript.CharactersItems();
+								ItemLibrary.CharactersItems newItem = new ItemLibrary.CharactersItems();
 								newItem.m_szItemName = item.m_szItemName;
 								newItem.m_nItemType = item.m_nItemType;
 								newItem.m_nItemCount = item.m_nAmountToBarter;
-								dc.AddItem(newItem);
+								dc.m_lItemLibrary.AddItem(newItem);
 								item.m_nAmountToBarter = 0;
 							}
 						}
 						if(counter == 0)
 						{
-							DCScript.CharactersItems newItem = new DCScript.CharactersItems();
+							ItemLibrary.CharactersItems newItem = new ItemLibrary.CharactersItems();
 							newItem.m_szItemName = m_lItems[m_nItemIter].m_szItemName;
 							newItem.m_nItemType = m_lItems[m_nItemIter].m_nItemType;
 							newItem.m_nItemCount = m_lItems[m_nItemIter].m_nAmountToBarter;
-							dc.AddItem(newItem);
+							dc.m_lItemLibrary.AddItem(newItem);
 						}
 					}
 					m_nConfirmIter = 0;
@@ -210,10 +210,10 @@ public class NPC_ArmorMerchantScript : NPCScript
 							if(item.m_nAmountToBarter > 0)
 							{
 								counter++;
-								DCScript.CharactersItems newItem = new DCScript.CharactersItems();
+								ItemLibrary.CharactersItems newItem = new ItemLibrary.CharactersItems();
 								newItem.m_szItemName = item.m_szItemName;
 								newItem.m_nItemCount = item.m_nAmountToBarter;
-								dc.RemoveItem(newItem);
+								dc.m_lItemLibrary.RemoveItem(newItem);
 							}
 							if(counter == 0)
 							{
@@ -676,7 +676,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 			if(m_bBuyIsChosen == true && m_lItems.Count > 0)
 				GUI.Label(new Rect(0, screenHeight*0.832f, screenWidth, screenHeight * 0.166f), m_lItems[m_nItemIter].m_szItemDescription);
 			if(m_bSellIsChosen == true && m_lItems.Count > 0)
-				GUI.Label(new Rect(screenWidth*0.02f, screenHeight*0.84f, screenWidth, screenHeight * 0.166f), dc.GetItemFromDictionary(dc.GetInventory()[m_nItemIter].m_szItemName).m_szDescription);
+				GUI.Label(new Rect(screenWidth*0.02f, screenHeight*0.84f, screenWidth, screenHeight * 0.166f), dc.m_lItemLibrary.GetItemFromDictionary(dc.m_lItemLibrary.m_lInventory[m_nItemIter].m_szItemName).m_szDescription);
 
 			//Draw the background for the items stat block
 			GUI.Box(new Rect(screenWidth * 0.7f, screenHeight*0.832f, screenWidth, screenHeight), "");
@@ -743,7 +743,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 			string szName;
 			szName = m_lItems[m_nItemIter].m_szItemName;
 			
-			DCScript.ItemData item = dc.GetItemFromDictionary(szName);
+			ItemLibrary.ItemData item = dc.m_lItemLibrary.GetItemFromDictionary(szName);
 			
 			GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.84f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nHPMod.ToString());
 			GUI.Box(new Rect(Screen.width * 0.9f, Screen.height*0.875f, Screen.width * 0.15f, Screen.height * 0.035f), item.m_nPowMod.ToString());

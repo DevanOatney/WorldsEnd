@@ -345,21 +345,21 @@ public class LoadingScript : MonoBehaviour
 			szLine = sr.ReadLine();
 			if(szLine.Trim() != "NULL")
 			{
-				DCScript.ArmorData helm = (DCScript.ArmorData)NewData.GetItemFromDictionary(szLine.Trim());
+				ItemLibrary.ArmorData helm = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
 				character.m_idHelmSlot = helm;
 			}
 			//Shoulder name
 			szLine = sr.ReadLine();
 			if(szLine.Trim() != "NULL")
 			{
-				DCScript.ArmorData shoulder = (DCScript.ArmorData)NewData.GetItemFromDictionary(szLine.Trim());
+				ItemLibrary.ArmorData shoulder = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
 				character.m_idShoulderSlot = shoulder;
 			}
 			//Armor name
 			szLine = sr.ReadLine();
 			if(szLine.Trim() != "NULL")
 			{
-				DCScript.ArmorData armor = (DCScript.ArmorData)NewData.GetItemFromDictionary(szLine.Trim());
+				ItemLibrary.ArmorData armor = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
 				character.m_idChestSlot = armor;
 			}
 
@@ -367,28 +367,28 @@ public class LoadingScript : MonoBehaviour
 			szLine = sr.ReadLine();
 			if(szLine.Trim() != "NULL")
 			{
-				DCScript.ArmorData glove = (DCScript.ArmorData)NewData.GetItemFromDictionary(szLine.Trim());
+				ItemLibrary.ArmorData glove = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
 				character.m_idGloveSlot = glove;
 			}
 			//Belt name
 			szLine = sr.ReadLine();
 			if(szLine.Trim() != "NULL")
 			{
-				DCScript.ArmorData belt = (DCScript.ArmorData)NewData.GetItemFromDictionary(szLine.Trim());
+				ItemLibrary.ArmorData belt = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
 				character.m_idBeltSlot = belt;
 			}
 			//leg name
 			szLine = sr.ReadLine();
 			if(szLine.Trim() != "NULL")
 			{
-				DCScript.ArmorData leg = (DCScript.ArmorData)NewData.GetItemFromDictionary(szLine.Trim());
+				ItemLibrary.ArmorData leg = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
 				character.m_idLegSlot = leg;
 			}
 			//Trinket 1 name
 			szLine = sr.ReadLine();
 			if(szLine.Trim() != "NULL")
 			{
-				DCScript.ItemData trinket1 = NewData.GetItemFromDictionary(szLine.Trim());
+				ItemLibrary.ItemData trinket1 = NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
 				character.m_idTrinket1 = trinket1;
 			}
 
@@ -396,7 +396,7 @@ public class LoadingScript : MonoBehaviour
 			szLine = sr.ReadLine();
 			if(szLine.Trim() != "NULL")
 			{
-				DCScript.ItemData trinket2 = NewData.GetItemFromDictionary(szLine.Trim());
+				ItemLibrary.ItemData trinket2 = NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
 				character.m_idTrinket2 = trinket2;
 			}
 
@@ -443,10 +443,10 @@ public class LoadingScript : MonoBehaviour
 		int inventoryCount = int.Parse(szLine);
 		
 		//Inventory
-		List<DCScript.CharactersItems> lInventory = new List<DCScript.CharactersItems>();
+		List<ItemLibrary.CharactersItems> lInventory = new List<ItemLibrary.CharactersItems>();
 		for(int i = 0; i < inventoryCount; ++i)
 		{
-			DCScript.CharactersItems item = new DCScript.CharactersItems();
+			ItemLibrary.CharactersItems item = new ItemLibrary.CharactersItems();
 			szLine = sr.ReadLine();
 			item.m_szItemName = szLine.Trim();
 			szLine = sr.ReadLine();
@@ -455,7 +455,7 @@ public class LoadingScript : MonoBehaviour
 			item.m_nItemType = int.Parse(szLine.Trim());
 			lInventory.Add(item);
 		}
-		NewData.SetInventory(lInventory);
+		NewData.m_lItemLibrary.m_lInventory = lInventory;
 		
 		
 		//The scene to load

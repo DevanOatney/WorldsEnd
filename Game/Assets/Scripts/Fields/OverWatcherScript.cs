@@ -114,9 +114,9 @@ public class OverWatcherScript : MonoBehaviour {
 			pdata.name = pdata.name.Replace("(Clone)", "");
 			GameObject.Find("PersistantData").GetComponent<DCScript>().GetParty().Clear();
 			GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
-			Callan.GetComponent<PlayerBattleScript>().SetUnitStats();
+			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
 			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
-			Briol.GetComponent<PlayerBattleScript>().SetUnitStats();
+			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
 		}
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		if(CAudioHelper.Instance == null)
@@ -454,7 +454,7 @@ public class OverWatcherScript : MonoBehaviour {
 				if(m_bInventoryItemSelected == false)
 				{
 					m_bInventoryItemSelected = true;
-					List<DCScript.CharactersItems> theInv = new List<DCScript.CharactersItems>();
+					List<ItemLibrary.CharactersItems> theInv = new List<ItemLibrary.CharactersItems>();
 					theInv = GetItemsOfType(m_nItemTypeIter);
 					if(theInv[m_nItemIter].m_nItemType < (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL || theInv[m_nItemIter].m_nItemType > (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
 						m_nInventoryItemSelectedIndex = 1;
@@ -471,10 +471,10 @@ public class OverWatcherScript : MonoBehaviour {
 					else if(m_nInventoryItemSelectedIndex == 1)
 					{
 						//discard
-						List<DCScript.CharactersItems> theInv = new List<DCScript.CharactersItems>();
+						List<ItemLibrary.CharactersItems> theInv = new List<ItemLibrary.CharactersItems>();
 						theInv = GetItemsOfType(m_nItemTypeIter);
 						m_bInventoryItemSelected = false;
-						dc.RemoveItemAll(theInv[m_nItemIter]);
+						dc.m_lItemLibrary.RemoveItemAll(theInv[m_nItemIter]);
 						theInv.RemoveAt(m_nItemIter);
 						if(m_nItemIter >= theInv.Count)
 							m_nItemIter--;
@@ -490,9 +490,9 @@ public class OverWatcherScript : MonoBehaviour {
 				else
 				{
 					//using an item on a character.
-					List<DCScript.CharactersItems> theInv = new List<DCScript.CharactersItems>();
+					List<ItemLibrary.CharactersItems> theInv = new List<ItemLibrary.CharactersItems>();
 					theInv = GetItemsOfType(m_nItemTypeIter);
-					DCScript.ItemData ni = dc.GetItemFromDictionary(theInv[m_nItemIter].m_szItemName);
+					ItemLibrary.ItemData ni = dc.m_lItemLibrary.GetItemFromDictionary(theInv[m_nItemIter].m_szItemName);
 					switch(ni.m_szDescription)
 					{
 					case "Cures Poison.":
@@ -521,7 +521,7 @@ public class OverWatcherScript : MonoBehaviour {
 								{
 									m_bInventoryUseSelected = false;
 									m_bInventoryItemSelected = false;
-									dc.RemoveItem(theInv[m_nItemIter]);
+									dc.m_lItemLibrary.RemoveItem(theInv[m_nItemIter]);
 									theInv.RemoveAt(m_nItemIter);
 									if(m_nItemIter >= theInv.Count)
 										m_nItemIter--;
@@ -530,7 +530,7 @@ public class OverWatcherScript : MonoBehaviour {
 								}
 								//this isn't the last item? just remove one of it then.
 								else
-									dc.RemoveItem(theInv[m_nItemIter]);
+									dc.m_lItemLibrary.RemoveItem(theInv[m_nItemIter]);
 								//remove the status effect from the party
 								dc.GetStatusEffects().RemoveAt(removeIter);
 								GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect("Poison");
@@ -568,7 +568,7 @@ public class OverWatcherScript : MonoBehaviour {
 								{
 									m_bInventoryUseSelected = false;
 									m_bInventoryItemSelected = false;
-									dc.RemoveItem(theInv[m_nItemIter]);
+									dc.m_lItemLibrary.RemoveItem(theInv[m_nItemIter]);
 									theInv.RemoveAt(m_nItemIter);
 									if(m_nItemIter >= theInv.Count)
 										m_nItemIter--;
@@ -577,7 +577,7 @@ public class OverWatcherScript : MonoBehaviour {
 								}
 								//this isn't the last item? just remove one of it then.
 								else
-									dc.RemoveItem(theInv[m_nItemIter]);
+									dc.m_lItemLibrary.RemoveItem(theInv[m_nItemIter]);
 								//if there are no more effect members, remove the status effect from the party.
 								if(dc.GetStatusEffects()[removeIter].m_lEffectedMembers.Count == 0)
 								{
@@ -636,7 +636,7 @@ public class OverWatcherScript : MonoBehaviour {
 						{
 							m_bInventoryUseSelected = false;
 							m_bInventoryItemSelected = false;
-							dc.RemoveItem(theInv[m_nItemIter]);
+							dc.m_lItemLibrary.RemoveItem(theInv[m_nItemIter]);
 							theInv.RemoveAt(m_nItemIter);
 							if(m_nItemIter >= theInv.Count)
 								m_nItemIter--;
@@ -645,7 +645,7 @@ public class OverWatcherScript : MonoBehaviour {
 						}
 						//this isn't the last item? just remove one of it then.
 						else
-							dc.RemoveItem(theInv[m_nItemIter]);
+							dc.m_lItemLibrary.RemoveItem(theInv[m_nItemIter]);
 
 
 
@@ -664,7 +664,7 @@ public class OverWatcherScript : MonoBehaviour {
 				if(m_bInventoryUseSelected == false)
 				{
 					//first check the item to see if it's even useable, if it's not, the only option is to discard
-					List<DCScript.CharactersItems> theInv = new List<DCScript.CharactersItems>();
+					List<ItemLibrary.CharactersItems> theInv = new List<ItemLibrary.CharactersItems>();
 					theInv = GetItemsOfType(m_nItemTypeIter);
 					if(theInv[m_nItemIter].m_nItemType >= (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL && theInv[m_nItemIter].m_nItemType <= (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
 					{
@@ -695,7 +695,7 @@ public class OverWatcherScript : MonoBehaviour {
 				if(m_bInventoryUseSelected == false)
 				{
 					//first check the item to see if it's even useable, if it's not, the only option is to discard
-					List<DCScript.CharactersItems> theInv = new List<DCScript.CharactersItems>();
+					List<ItemLibrary.CharactersItems> theInv = new List<ItemLibrary.CharactersItems>();
 					theInv = GetItemsOfType(m_nItemTypeIter);
 					if(theInv[m_nItemIter].m_nItemType >= (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL && theInv[m_nItemIter].m_nItemType <= (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
 					{
@@ -774,7 +774,7 @@ public class OverWatcherScript : MonoBehaviour {
 
 		
 		//create the current inv list based on what item type is currently being selected
-		List<DCScript.CharactersItems> inv = new List<DCScript.CharactersItems>();
+		List<ItemLibrary.CharactersItems> inv = new List<ItemLibrary.CharactersItems>();
 		inv = GetItemsOfType(m_nItemTypeIter);
 		if(m_bInputFlagForInventory == false)
 		{
@@ -833,7 +833,7 @@ public class OverWatcherScript : MonoBehaviour {
 		float baseXOffset = 100.0f;
 		float characterYOffset = 100.0f;
 		float characterXOffset = baseXOffset;
-		foreach(DCScript.CharactersItems item in inv)
+		foreach(ItemLibrary.CharactersItems item in inv)
 		{
 			if(characterXOffset > baseXOffset + 500)
 			{
@@ -863,7 +863,7 @@ public class OverWatcherScript : MonoBehaviour {
 			//Draw the box for the description
 			GUI.Box(new Rect(Screen.width * 0.1f, Screen.height * 0.7f, 500, 30), "");
 			GUI.Box(new Rect(Screen.width * 0.1f, Screen.height * 0.7f, 500, 30), "");
-			DCScript.ItemData item = dc.GetItemFromDictionary(inv[m_nItemIter].m_szItemName);
+			ItemLibrary.ItemData item = dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemIter].m_szItemName);
 			GUI.Label(new Rect(Screen.width * 0.1f + 5, Screen.height * 0.7f + 2, 500, 21), item.m_szDescription);
 
 
@@ -970,11 +970,11 @@ public class OverWatcherScript : MonoBehaviour {
 
 	}
 	
-	List<DCScript.CharactersItems> GetItemsOfType(int type)
+	List<ItemLibrary.CharactersItems> GetItemsOfType(int type)
 	{
-		List<DCScript.CharactersItems> inv = new List<DCScript.CharactersItems>();
-		List<DCScript.CharactersItems> fullInv =  dc.GetInventory();
-		foreach(DCScript.CharactersItems item in fullInv)
+		List<ItemLibrary.CharactersItems> inv = new List<ItemLibrary.CharactersItems>();
+		List<ItemLibrary.CharactersItems> fullInv =  dc.m_lItemLibrary.m_lInventory;
+		foreach(ItemLibrary.CharactersItems item in fullInv)
 		{
 			// 0 - useable item, 1- Armor, 2- Trinkets, 3- Junk, 4: key
 			//1-4 : useable item, 5 : weapon, 6: armor, 7: junk, 8: key
@@ -1198,12 +1198,12 @@ public class OverWatcherScript : MonoBehaviour {
 		//Draw Character
 		GUIStyle portrait = new GUIStyle(GUI.skin.box);
 		GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
-		portrait.normal.background = unit.GetComponent<PlayerBattleScript>().m_tLargeBust;
+		portrait.normal.background = unit.GetComponent<CAllyBattleScript>().m_tLargeBust;
 		GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		GUI.Box(new Rect(Screen.width * 0.25f, Screen.height *0.2f, 134, 256),"", portrait);
 	}
 
-	void AdjustStats(DCScript.ItemData item, bool bRemove)
+	void AdjustStats(ItemLibrary.ItemData item, bool bRemove)
 	{
 		if(item != null)
 		{
@@ -1285,8 +1285,8 @@ public class OverWatcherScript : MonoBehaviour {
 				int nItemType = m_nEquipmentSlotChangeIndex + (int)BaseItemScript.ITEM_TYPES.eHELMARMOR;
 				if(nItemType > (int)BaseItemScript.ITEM_TYPES.eTRINKET)
 					nItemType = (int)BaseItemScript.ITEM_TYPES.eTRINKET;
-				List<DCScript.CharactersItems> inv = new List<DCScript.CharactersItems>();
-				foreach(DCScript.CharactersItems item in dc.GetInventory())
+				List<ItemLibrary.CharactersItems> inv = new List<ItemLibrary.CharactersItems>();
+				foreach(ItemLibrary.CharactersItems item in dc.m_lItemLibrary.m_lInventory)
 				{
 					if(nItemType == item.m_nItemType)
 						inv.Add(item);
@@ -1302,21 +1302,21 @@ public class OverWatcherScript : MonoBehaviour {
 						if(character.m_idHelmSlot != null)
 						{
 							//character already has something equipped, put it in the inventory and replace.
-							DCScript.CharactersItems item = new DCScript.CharactersItems();
+							ItemLibrary.CharactersItems item = new ItemLibrary.CharactersItems();
 							item.m_nItemCount = 1;
 							item.m_nItemType = character.m_idHelmSlot.m_nItemType;
 							item.m_szItemName = character.m_idHelmSlot.m_szItemName;
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							dc.AddItem(item);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							dc.m_lItemLibrary.AddItem(item);
 							AdjustStats(character.m_idHelmSlot, true);
-							character.m_idHelmSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							character.m_idHelmSlot = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idHelmSlot, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							character.m_idHelmSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							character.m_idHelmSlot = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idHelmSlot, false);
 						}
 						break;
@@ -1325,21 +1325,21 @@ public class OverWatcherScript : MonoBehaviour {
 						if(character.m_idShoulderSlot != null)
 						{
 							//character already has something equipped, put it in the inventory and replace.
-							DCScript.CharactersItems item = new DCScript.CharactersItems();
+							ItemLibrary.CharactersItems item = new ItemLibrary.CharactersItems();
 							item.m_nItemCount = 1;
 							item.m_nItemType = character.m_idShoulderSlot.m_nItemType;
 							item.m_szItemName = character.m_idShoulderSlot.m_szItemName;
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							dc.AddItem(item);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							dc.m_lItemLibrary.AddItem(item);
 							AdjustStats(character.m_idShoulderSlot, true);
-							character.m_idShoulderSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							character.m_idShoulderSlot = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idShoulderSlot, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							character.m_idShoulderSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							character.m_idShoulderSlot = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idShoulderSlot, false);
 						}
 
@@ -1349,21 +1349,21 @@ public class OverWatcherScript : MonoBehaviour {
 						if(character.m_idChestSlot != null)
 						{
 							//character already has something equipped, put it in the inventory and replace.
-							DCScript.CharactersItems item = new DCScript.CharactersItems();
+							ItemLibrary.CharactersItems item = new ItemLibrary.CharactersItems();
 							item.m_nItemCount = 1;
 							item.m_nItemType = character.m_idChestSlot.m_nItemType;
 							item.m_szItemName = character.m_idChestSlot.m_szItemName;
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							dc.AddItem(item);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							dc.m_lItemLibrary.AddItem(item);
 							AdjustStats(character.m_idChestSlot, true);
-							character.m_idChestSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							character.m_idChestSlot = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idChestSlot, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							character.m_idChestSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							character.m_idChestSlot = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idChestSlot, false);
 						}
 						break;
@@ -1372,21 +1372,21 @@ public class OverWatcherScript : MonoBehaviour {
 						if(character.m_idGloveSlot != null)
 						{
 							//character already has something equipped, put it in the inventory and replace.
-							DCScript.CharactersItems item = new DCScript.CharactersItems();
+							ItemLibrary.CharactersItems item = new ItemLibrary.CharactersItems();
 							item.m_nItemCount = 1;
 							item.m_nItemType = character.m_idGloveSlot.m_nItemType;
 							item.m_szItemName = character.m_idGloveSlot.m_szItemName;
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							dc.AddItem(item);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							dc.m_lItemLibrary.AddItem(item);
 							AdjustStats(character.m_idGloveSlot, true);
-							character.m_idGloveSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							character.m_idGloveSlot = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idGloveSlot, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							character.m_idGloveSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							character.m_idGloveSlot = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idGloveSlot, false);
 						}
 						break;
@@ -1395,21 +1395,21 @@ public class OverWatcherScript : MonoBehaviour {
 						if(character.m_idBeltSlot != null)
 						{
 							//character already has something equipped, put it in the inventory and replace.
-							DCScript.CharactersItems item = new DCScript.CharactersItems();
+							ItemLibrary.CharactersItems item = new ItemLibrary.CharactersItems();
 							item.m_nItemCount = 1;
 							item.m_nItemType = character.m_idBeltSlot.m_nItemType;
 							item.m_szItemName = character.m_idBeltSlot.m_szItemName;
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							dc.AddItem(item);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							dc.m_lItemLibrary.AddItem(item);
 							AdjustStats(character.m_idBeltSlot, true);
-							character.m_idBeltSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							character.m_idBeltSlot = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idBeltSlot, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							character.m_idBeltSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							character.m_idBeltSlot = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idBeltSlot, false);
 						}
 						break;
@@ -1418,21 +1418,21 @@ public class OverWatcherScript : MonoBehaviour {
 						if(character.m_idLegSlot != null)
 						{
 							//character already has something equipped, put it in the inventory and replace.
-							DCScript.CharactersItems item = new DCScript.CharactersItems();
+							ItemLibrary.CharactersItems item = new ItemLibrary.CharactersItems();
 							item.m_nItemCount = 1;
 							item.m_nItemType = character.m_idLegSlot.m_nItemType;
 							item.m_szItemName = character.m_idLegSlot.m_szItemName;
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							dc.AddItem(item);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							dc.m_lItemLibrary.AddItem(item);
 							AdjustStats(character.m_idLegSlot, true);
-							character.m_idLegSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							character.m_idLegSlot = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idLegSlot, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							character.m_idLegSlot = (DCScript.ArmorData)dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							character.m_idLegSlot = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idLegSlot, false);
 						}
 						break;
@@ -1441,21 +1441,21 @@ public class OverWatcherScript : MonoBehaviour {
 						if(character.m_idTrinket1 != null)
 						{
 							//character already has something equipped, put it in the inventory and replace.
-							DCScript.CharactersItems item = new DCScript.CharactersItems();
+							ItemLibrary.CharactersItems item = new ItemLibrary.CharactersItems();
 							item.m_nItemCount = 1;
 							item.m_nItemType = character.m_idTrinket1.m_nItemType;
 							item.m_szItemName = character.m_idTrinket1.m_szItemName;
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							dc.AddItem(item);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							dc.m_lItemLibrary.AddItem(item);
 							AdjustStats(character.m_idTrinket1, true);
-							character.m_idTrinket1 = dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							character.m_idTrinket1 = dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idTrinket1, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							character.m_idTrinket1 = dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							character.m_idTrinket1 = dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idTrinket1, false);
 						}
 						break;
@@ -1464,21 +1464,21 @@ public class OverWatcherScript : MonoBehaviour {
 						if(character.m_idTrinket2 != null)
 						{
 							//character already has something equipped, put it in the inventory and replace.
-							DCScript.CharactersItems item = new DCScript.CharactersItems();
+							ItemLibrary.CharactersItems item = new ItemLibrary.CharactersItems();
 							item.m_nItemCount = 1;
 							item.m_nItemType = character.m_idTrinket2.m_nItemType;
 							item.m_szItemName = character.m_idTrinket2.m_szItemName;
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							dc.AddItem(item);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							dc.m_lItemLibrary.AddItem(item);
 							AdjustStats(character.m_idTrinket2, true);
-							character.m_idTrinket2 = dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							character.m_idTrinket2 = dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idTrinket2, false);
 						}
 						else
 						{
 							//character doesn't have anything in that slot, remove item from inventory and put it on character
-							dc.RemoveItem(inv[m_nItemSlotIndex]);
-							character.m_idTrinket2 = dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+							dc.m_lItemLibrary.RemoveItem(inv[m_nItemSlotIndex]);
+							character.m_idTrinket2 = dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 							AdjustStats(character.m_idTrinket2, false);
 						}
 						break;
@@ -1544,7 +1544,7 @@ public class OverWatcherScript : MonoBehaviour {
 			m_bOptimizeSelected = false;
 			int nItemType = (int)BaseItemScript.ITEM_TYPES.eHELMARMOR;
 			//helm
-			DCScript.ItemData bis = GetBISFromInventory(nItemType);
+			ItemLibrary.ItemData bis = GetBISFromInventory(nItemType);
 			if(bis != null)
 			{
 				if(character.m_idHelmSlot != null)
@@ -1552,12 +1552,12 @@ public class OverWatcherScript : MonoBehaviour {
 					int eSum = bis.m_nHPMod + bis.m_nPowMod + bis.m_nDefMod + bis.m_nSpdMod;
 					int nSum = character.m_idHelmSlot.m_nHPMod + character.m_idHelmSlot.m_nPowMod + character.m_idHelmSlot.m_nDefMod +  character.m_idHelmSlot.m_nSpdMod;
 					if(eSum > nSum)
-						character.m_idHelmSlot = (DCScript.ArmorData)bis;
+						character.m_idHelmSlot = (ItemLibrary.ArmorData)bis;
 				}
 				else
 				{
 					Debug.Log(bis.m_szItemName);
-					character.m_idHelmSlot = (DCScript.ArmorData)bis;
+					character.m_idHelmSlot = (ItemLibrary.ArmorData)bis;
 				}
 			}
 
@@ -1571,10 +1571,10 @@ public class OverWatcherScript : MonoBehaviour {
 					int eSum = bis.m_nHPMod + bis.m_nPowMod + bis.m_nDefMod + bis.m_nSpdMod;
 					int nSum = character.m_idShoulderSlot.m_nHPMod + character.m_idShoulderSlot.m_nPowMod + character.m_idShoulderSlot.m_nDefMod +  character.m_idShoulderSlot.m_nSpdMod;
 					if(eSum > nSum)
-						character.m_idShoulderSlot = (DCScript.ArmorData)bis;
+						character.m_idShoulderSlot = (ItemLibrary.ArmorData)bis;
 				}
 				else
-					character.m_idShoulderSlot = (DCScript.ArmorData)bis;
+					character.m_idShoulderSlot = (ItemLibrary.ArmorData)bis;
 			}
 
 			//Chest
@@ -1587,10 +1587,10 @@ public class OverWatcherScript : MonoBehaviour {
 					int eSum = bis.m_nHPMod + bis.m_nPowMod + bis.m_nDefMod + bis.m_nSpdMod;
 					int nSum = character.m_idChestSlot.m_nHPMod + character.m_idChestSlot.m_nPowMod + character.m_idChestSlot.m_nDefMod +  character.m_idChestSlot.m_nSpdMod;
 					if(eSum > nSum)
-						character.m_idChestSlot = (DCScript.ArmorData)bis;
+						character.m_idChestSlot = (ItemLibrary.ArmorData)bis;
 				}
 				else
-					character.m_idChestSlot = (DCScript.ArmorData)bis;
+					character.m_idChestSlot = (ItemLibrary.ArmorData)bis;
 			}
 
 			//Gloves
@@ -1603,10 +1603,10 @@ public class OverWatcherScript : MonoBehaviour {
 					int eSum = bis.m_nHPMod + bis.m_nPowMod + bis.m_nDefMod + bis.m_nSpdMod;
 					int nSum = character.m_idGloveSlot.m_nHPMod + character.m_idGloveSlot.m_nPowMod + character.m_idGloveSlot.m_nDefMod +  character.m_idGloveSlot.m_nSpdMod;
 					if(eSum > nSum)
-						character.m_idGloveSlot = (DCScript.ArmorData)bis;
+						character.m_idGloveSlot = (ItemLibrary.ArmorData)bis;
 				}
 				else
-					character.m_idGloveSlot = (DCScript.ArmorData)bis;
+					character.m_idGloveSlot = (ItemLibrary.ArmorData)bis;
 			}
 
 			//Belt
@@ -1619,10 +1619,10 @@ public class OverWatcherScript : MonoBehaviour {
 					int eSum = bis.m_nHPMod + bis.m_nPowMod + bis.m_nDefMod + bis.m_nSpdMod;
 					int nSum = character.m_idBeltSlot.m_nHPMod + character.m_idBeltSlot.m_nPowMod + character.m_idBeltSlot.m_nDefMod +  character.m_idBeltSlot.m_nSpdMod;
 					if(eSum > nSum)
-						character.m_idBeltSlot = (DCScript.ArmorData)bis;
+						character.m_idBeltSlot = (ItemLibrary.ArmorData)bis;
 				}
 				else
-					character.m_idBeltSlot = (DCScript.ArmorData)bis;
+					character.m_idBeltSlot = (ItemLibrary.ArmorData)bis;
 			}
 
 			//Leg
@@ -1635,10 +1635,10 @@ public class OverWatcherScript : MonoBehaviour {
 					int eSum = bis.m_nHPMod + bis.m_nPowMod + bis.m_nDefMod + bis.m_nSpdMod;
 					int nSum = character.m_idLegSlot.m_nHPMod + character.m_idLegSlot.m_nPowMod + character.m_idLegSlot.m_nDefMod +  character.m_idLegSlot.m_nSpdMod;
 					if(eSum > nSum)
-						character.m_idLegSlot = (DCScript.ArmorData)bis;
+						character.m_idLegSlot = (ItemLibrary.ArmorData)bis;
 				}
 				else
-					character.m_idLegSlot = (DCScript.ArmorData)bis;
+					character.m_idLegSlot = (ItemLibrary.ArmorData)bis;
 			}
 
 
@@ -1647,7 +1647,7 @@ public class OverWatcherScript : MonoBehaviour {
 		else if(m_bClearSelected == true)
 		{
 			m_bClearSelected = false;
-			DCScript.CharactersItems item = new DCScript.CharactersItems();
+			ItemLibrary.CharactersItems item = new ItemLibrary.CharactersItems();
 
 			//helm
 			if(character.m_idHelmSlot != null)
@@ -1655,7 +1655,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_szItemName = character.m_idHelmSlot.m_szItemName;
 				item.m_nItemType = character.m_idHelmSlot.m_nItemType;
 				item.m_nItemCount = 1;
-				dc.AddItem(item);
+				dc.m_lItemLibrary.AddItem(item);
 				AdjustStats(character.m_idHelmSlot, true);
 				character.m_idHelmSlot = null;
 			}
@@ -1665,7 +1665,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_szItemName = character.m_idShoulderSlot.m_szItemName;
 				item.m_nItemType = character.m_idShoulderSlot.m_nItemType;
 				item.m_nItemCount = 1;
-				dc.AddItem(item);
+				dc.m_lItemLibrary.AddItem(item);
 				AdjustStats(character.m_idShoulderSlot, true);
 				character.m_idShoulderSlot = null;
 			}
@@ -1675,7 +1675,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_szItemName = character.m_idChestSlot.m_szItemName;
 				item.m_nItemType = character.m_idChestSlot.m_nItemType;
 				item.m_nItemCount = 1;
-				dc.AddItem(item);
+				dc.m_lItemLibrary.AddItem(item);
 				AdjustStats(character.m_idChestSlot, true);
 				character.m_idChestSlot = null;
 			}
@@ -1685,7 +1685,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_szItemName = character.m_idGloveSlot.m_szItemName;
 				item.m_nItemType = character.m_idGloveSlot.m_nItemType;
 				item.m_nItemCount = 1;
-				dc.AddItem(item);
+				dc.m_lItemLibrary.AddItem(item);
 				AdjustStats(character.m_idGloveSlot, true);
 				character.m_idGloveSlot = null;
 			}
@@ -1695,7 +1695,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_szItemName = character.m_idBeltSlot.m_szItemName;
 				item.m_nItemType = character.m_idBeltSlot.m_nItemType;
 				item.m_nItemCount = 1;
-				dc.AddItem(item);
+				dc.m_lItemLibrary.AddItem(item);
 				AdjustStats(character.m_idBeltSlot, true);
 				character.m_idBeltSlot = null;
 			}
@@ -1705,7 +1705,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_szItemName = character.m_idLegSlot.m_szItemName;
 				item.m_nItemType = character.m_idLegSlot.m_nItemType;
 				item.m_nItemCount = 1;
-				dc.AddItem(item);
+				dc.m_lItemLibrary.AddItem(item);
 				AdjustStats(character.m_idLegSlot, true);
 				character.m_idLegSlot = null;
 			}
@@ -1715,7 +1715,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_szItemName = character.m_idTrinket1.m_szItemName;
 				item.m_nItemType = character.m_idTrinket1.m_nItemType;
 				item.m_nItemCount = 1;
-				dc.AddItem(item);
+				dc.m_lItemLibrary.AddItem(item);
 				AdjustStats(character.m_idTrinket1, true);
 				character.m_idTrinket1 = null;
 			}
@@ -1725,7 +1725,7 @@ public class OverWatcherScript : MonoBehaviour {
 				item.m_szItemName = character.m_idTrinket2.m_szItemName;
 				item.m_nItemType = character.m_idTrinket2.m_nItemType;
 				item.m_nItemCount = 1;
-				dc.AddItem(item);
+				dc.m_lItemLibrary.AddItem(item);
 				AdjustStats(character.m_idTrinket2, true);
 				character.m_idTrinket2 = null;
 			}
@@ -1826,13 +1826,13 @@ public class OverWatcherScript : MonoBehaviour {
 			int nItemType = m_nEquipmentSlotChangeIndex + (int)BaseItemScript.ITEM_TYPES.eHELMARMOR;
 			if(nItemType > (int)BaseItemScript.ITEM_TYPES.eTRINKET)
 				nItemType = (int)BaseItemScript.ITEM_TYPES.eTRINKET;
-			List<DCScript.CharactersItems> inv = new List<DCScript.CharactersItems>();
-			foreach(DCScript.CharactersItems item in dc.GetInventory())
+			List<ItemLibrary.CharactersItems> inv = new List<ItemLibrary.CharactersItems>();
+			foreach(ItemLibrary.CharactersItems item in dc.m_lItemLibrary.m_lInventory)
 			{
 				if(nItemType == item.m_nItemType)
 					inv.Add(item);
 			}
-			foreach(DCScript.CharactersItems item in inv)
+			foreach(ItemLibrary.CharactersItems item in inv)
 			{
 				int prevMod = -1;
 				switch(m_nEquipmentSlotChangeIndex)
@@ -1870,10 +1870,10 @@ public class OverWatcherScript : MonoBehaviour {
 						prevMod = character.m_idTrinket2.m_nHPMod + character.m_idTrinket2.m_nPowMod + character.m_idTrinket2.m_nDefMod +  character.m_idTrinket2.m_nSpdMod;
 					break;
 				}
-				int newMod = dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nHPMod + 
-							 dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nPowMod + 
-							 dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nDefMod + 
-							 dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nSpdMod;
+				int newMod = dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nHPMod + 
+							 dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nPowMod + 
+							 dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nDefMod + 
+							 dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName).m_nSpdMod;
 				Color toolTip = Color.white;
 				if(prevMod > newMod)
 					toolTip = Color.red;
@@ -1887,7 +1887,7 @@ public class OverWatcherScript : MonoBehaviour {
 
 			if(inv.Count > 0)
 			{
-				DCScript.ItemData item = dc.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
+				ItemLibrary.ItemData item = dc.m_lItemLibrary.GetItemFromDictionary(inv[m_nItemSlotIndex].m_szItemName);
 				GUI.Box(new Rect(Screen.width * 0.1f, 510.0f, 500, 100), item.m_szDescription);
 			}
 		}
@@ -1898,7 +1898,7 @@ public class OverWatcherScript : MonoBehaviour {
 		//Draw Character
 		GUIStyle portrait = new GUIStyle(GUI.skin.box);
 		GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
-		portrait.normal.background = unit.GetComponent<PlayerBattleScript>().m_tLargeBust;
+		portrait.normal.background = unit.GetComponent<CAllyBattleScript>().m_tLargeBust;
 		GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		GUI.Box(new Rect(Screen.width * 0.4f - 30, Screen.height *0.2f, 185, 300),"", portrait);
 		//box for helm
@@ -2006,16 +2006,16 @@ public class OverWatcherScript : MonoBehaviour {
 	}
 
 	//Helper function, retrieves the best in slot item of specified item type from the characters inventory
-	DCScript.ItemData GetBISFromInventory(int nItemType)
+	ItemLibrary.ItemData GetBISFromInventory(int nItemType)
 	{
-		DCScript.ItemData bis = null;
+		ItemLibrary.ItemData bis = null;
 		int highestValue = -1;
-		List<DCScript.CharactersItems> inv = dc.GetInventory();
-		foreach(DCScript.CharactersItems item in inv)
+		List<ItemLibrary.CharactersItems> inv = dc.m_lItemLibrary.m_lInventory;
+		foreach(ItemLibrary.CharactersItems item in inv)
 		{
 			if(item.m_nItemType == nItemType)
 			{
-				DCScript.ItemData temp = dc.GetItemFromDictionary(item.m_szItemName);
+				ItemLibrary.ItemData temp = dc.m_lItemLibrary.GetItemFromDictionary(item.m_szItemName);
 				int tSum = temp.m_nHPMod + temp.m_nPowMod + temp.m_nDefMod + temp.m_nSpdMod;
 				if(tSum > highestValue)
 				{

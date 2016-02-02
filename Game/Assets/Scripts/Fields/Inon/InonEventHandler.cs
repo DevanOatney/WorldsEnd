@@ -408,13 +408,13 @@ public class InonEventHandler : BaseEventSystemScript
 					else if(lydRes == 11)
 					{
 						//TODO: check player inventory for mushrooms
-						DCScript.CharactersItems mushroom = ds.GetItemFromInventory("Rare Mushroom");
+						ItemLibrary.CharactersItems mushroom = ds.m_lItemLibrary.GetItemFromInventory("Rare Mushroom");
 						if(mushroom != null)
 						{
 							if( mushroom.m_nItemCount <= 5)
 							{
 								//has gotten all of the items.
-								ds.RemoveItemAll(mushroom);
+								ds.m_lItemLibrary.RemoveItemAll(mushroom);
 								ds.m_dStoryFlagField["Inon_Lydia"] = 12;
 								messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("D0");
 							}
@@ -900,7 +900,7 @@ public class InonEventHandler : BaseEventSystemScript
 			go.GetComponent<DCScript>().SetBattleFieldBackgroundIter(1);
 
 			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
-			Briol.GetComponent<PlayerBattleScript>().SetUnitStats();
+			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
 
             SceneManager.LoadScene("Battle_Scene");
 		}

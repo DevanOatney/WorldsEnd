@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class TurnWatcherScript : MonoBehaviour 
 {
+	public Dictionary<string,int> m_dEventTriggers = new Dictionary<string, int>();
 	public List<GameObject> m_goUnits;
 	public int m_nOrderIter = 0;
 	// Use this for initialization
@@ -24,6 +25,7 @@ public class TurnWatcherScript : MonoBehaviour
 
 	//bool so that after everything is instantiated we can set up a turn order
 	bool m_bHasStarted = false;
+
 	//to keep the screen from fading before death animations happen
 	public List<AudioClip>   m_lACMuicFiles = new List<AudioClip> ();
 
@@ -95,7 +97,7 @@ public class TurnWatcherScript : MonoBehaviour
 				//Set the name so (Clone) isn't in the name.
 				Ally.name = g.m_szCharacterName;
 
-				Ally.GetComponent<UnitScript>().m_nPositionOnField = FormationCounter;
+				Ally.GetComponent<UnitScript>().m_nPositionOnField = g.m_nFormationIter;
 				//Set the stats of the unit to the object it instantiated from
 				Ally.GetComponent<UnitScript>().SetMaxHP(g.m_nMaxHP);
 				Ally.GetComponent<UnitScript>().SetCurHP(g.m_nCurHP);
@@ -103,18 +105,17 @@ public class TurnWatcherScript : MonoBehaviour
 				Ally.GetComponent<UnitScript>().SetDEF(g.m_nDEF);
 				Ally.GetComponent<UnitScript>().SetSPD(g.m_nSPD);
 				Ally.GetComponent<UnitScript>().SetUnitLevel(g.m_nLevel);
-				Ally.GetComponent<PlayerBattleScript>().m_szClassName = g.m_szCharacterClassType;
-				Ally.GetComponent<PlayerBattleScript>().SetCurrentExperience(g.m_nCurrentEXP);
-				Ally.GetComponent<PlayerBattleScript>().SetSpellList(g.m_lSpellsKnown);
-				Ally.GetComponent<PlayerBattleScript>().SetHelmSlotData(g.m_idHelmSlot);
-				Ally.GetComponent<PlayerBattleScript>().SetShoulderSlotData(g.m_idShoulderSlot);
-				Ally.GetComponent<PlayerBattleScript>().SetChestSlotData(g.m_idChestSlot);
-				Ally.GetComponent<PlayerBattleScript>().SetGloveSlotData(g.m_idGloveSlot);
-				Ally.GetComponent<PlayerBattleScript>().SetBeltSlotData(g.m_idBeltSlot);
-				Ally.GetComponent<PlayerBattleScript>().SetLegSlotData(g.m_idLegSlot);
-				Ally.GetComponent<PlayerBattleScript>().SetTrinket1Data(g.m_idTrinket1);
-				Ally.GetComponent<PlayerBattleScript>().SetTrinket2Data(g.m_idTrinket2);
-				FormationCounter++;
+				Ally.GetComponent<CAllyBattleScript>().m_szClassName = g.m_szCharacterClassType;
+				Ally.GetComponent<CAllyBattleScript>().m_nCurrentExperience = g.m_nCurrentEXP;
+				Ally.GetComponent<CAllyBattleScript>().m_lSpellList = g.m_lSpellsKnown;
+				Ally.GetComponent<CAllyBattleScript>().m_idHelmSlot = g.m_idHelmSlot;
+				Ally.GetComponent<CAllyBattleScript>().m_idShoulderSlot = g.m_idShoulderSlot;
+				Ally.GetComponent<CAllyBattleScript>().m_idChestSlot = g.m_idChestSlot;
+				Ally.GetComponent<CAllyBattleScript>().m_idGloveSlot = g.m_idGloveSlot;
+				Ally.GetComponent<CAllyBattleScript>().m_idBeltSlot = g.m_idBeltSlot;
+				Ally.GetComponent<CAllyBattleScript>().m_idLegSlot = g.m_idLegSlot;
+				Ally.GetComponent<CAllyBattleScript>().m_idTrinket1 = g.m_idTrinket1;
+				Ally.GetComponent<CAllyBattleScript>().m_idTrinket2 = g.m_idTrinket2;
 			}
 
 		}
@@ -134,7 +135,7 @@ public class TurnWatcherScript : MonoBehaviour
 			
 			m_lPreviousExperience[gUnit.name] += m_fExpTickSpeed;
 			m_lNewExperienceTotal[gUnit.name] -= m_fExpTickSpeed;
-			if(m_lPreviousExperience[gUnit.name] >= gUnit.GetComponent<PlayerBattleScript>().GetExperienceToLevel())
+			if(m_lPreviousExperience[gUnit.name] >= gUnit.GetComponent<CAllyBattleScript>().m_nExperienceToLevel)
 			{
 				//Level!
 				m_lPreviousExperience[gUnit.name] = 0;
@@ -155,18 +156,16 @@ public class TurnWatcherScript : MonoBehaviour
 	
 	void SortTurnOrder()
 	{
-		for(int i = 1; i < m_goUnits.Count; ++i)
+		//sort units based on turn order (make sure this is set to highest goes first
+		m_goUnits.Sort(delegate(GameObject a, GameObject b){return (a.GetComponent<UnitScript>().GetSPD().CompareTo(b.GetComponent<UnitScript>().GetSPD()));});
+		foreach(GameObject go in m_goUnits)
 		{
-			GameObject temp = m_goUnits[i];
-			int j = i - 1;
-			for(; j >= 0 && m_goUnits[j].GetComponent<UnitScript>().GetSPD() < temp.GetComponent<UnitScript>().GetSPD(); --j)
-			{
-				m_goUnits[j+1] = m_goUnits[j];
-			}
-			m_goUnits[j+1] = temp;
-
+			Debug.Log(go.GetComponent<UnitScript>().GetSPD());
 		}
+		//Activate the first unit in the turn order
+		m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
 
+		/*
 		//Check to  make sure this isn't the second part of the boss battle, if it is...
 		int result;
 		if(ds.m_dStoryFlagField.TryGetValue("Battle_ReadMessage", out result))
@@ -197,6 +196,7 @@ public class TurnWatcherScript : MonoBehaviour
 		{
 			m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
 		}
+		*/
 
 	}
 
@@ -216,7 +216,6 @@ public class TurnWatcherScript : MonoBehaviour
 		{
 			m_bHasStarted = true;
 			SortTurnOrder();
-
 		}
 	}
 
@@ -237,8 +236,8 @@ public class TurnWatcherScript : MonoBehaviour
 					
 					foreach(GameObject Ally in Allies)
 					{
-						m_lPreviousExperience[Ally.name] = Ally.GetComponent<PlayerBattleScript>().GetCurrentExperience();
-						m_lPreviousLevels[Ally.name] = Ally.GetComponent<PlayerBattleScript>().GetUnitLevel();
+						m_lPreviousExperience[Ally.name] = Ally.GetComponent<CAllyBattleScript>().m_nExperienceToLevel;
+						m_lPreviousLevels[Ally.name] = Ally.GetComponent<CAllyBattleScript>().GetUnitLevel();
 						m_lNewExperienceTotal[Ally.name] = 0;
 					}
 				}
@@ -523,40 +522,40 @@ public class TurnWatcherScript : MonoBehaviour
 			GameObject foundAlly = GameObject.Find(ally.m_szCharacterName);
 			
 			//Catch the previous amount of xp the character had incase they level
-			int prevExp = foundAlly.GetComponent<PlayerBattleScript>().GetCurrentExperience();
+			int prevExp = foundAlly.GetComponent<CAllyBattleScript>().m_nCurrentExperience;
 			m_lPreviousLevels.Add(ally.m_szCharacterName, ally.m_nLevel);
 			//Award experience (their script will check if it levels and return a bool .. maybe I want to do some level up effect?  Not sure..
-			int nExp = foundAlly.GetComponent<PlayerBattleScript>().AwardExperience(m_lExperienceToAward);
+			int nExp = foundAlly.GetComponent<CAllyBattleScript>().AwardExperience(m_lExperienceToAward);
 			//add the previous exp of this unit to the list
 			m_lPreviousExperience.Add(ally.m_szCharacterName, prevExp);
 			//add the total experience the character is going to gain to the list
 			m_lNewExperienceTotal.Add(ally.m_szCharacterName, nExp);
 
-			if(nExp + prevExp >= foundAlly.GetComponent<PlayerBattleScript>().GetExperienceToLevel())
+			if(nExp + prevExp >= foundAlly.GetComponent<CAllyBattleScript>().m_nExperienceToLevel)
 			{
 				//the character leveled up
-				ally.m_nCurHP = foundAlly.GetComponent<PlayerBattleScript>().GetMaxHP();
+				ally.m_nCurHP = foundAlly.GetComponent<CAllyBattleScript>().GetMaxHP();
 
 			}
 			else
 			{
-				ally.m_nCurHP = foundAlly.GetComponent<PlayerBattleScript>().GetCurHP();
+				ally.m_nCurHP = foundAlly.GetComponent<CAllyBattleScript>().GetCurHP();
 			}
-			ally.m_nMaxHP = foundAlly.GetComponent<PlayerBattleScript>().GetMaxHP();
-			ally.m_nSTR = foundAlly.GetComponent<PlayerBattleScript>().GetSTR();
-			ally.m_nDEF = foundAlly.GetComponent<PlayerBattleScript>().GetDEF();
-			ally.m_nSPD = foundAlly.GetComponent<PlayerBattleScript>().GetSPD();
-			ally.m_nLevel = foundAlly.GetComponent<PlayerBattleScript>().GetUnitLevel();
-			ally.m_nCurrentEXP = foundAlly.GetComponent<PlayerBattleScript>().GetCurrentExperience();
-			ally.m_idHelmSlot = foundAlly.GetComponent<PlayerBattleScript>().GetHelmSlot();
-			ally.m_idShoulderSlot = foundAlly.GetComponent<PlayerBattleScript>().GetShoulderSlot();
-			ally.m_idChestSlot = foundAlly.GetComponent<PlayerBattleScript>().GetChestSlot();
-			ally.m_idGloveSlot = foundAlly.GetComponent<PlayerBattleScript>().GetGloveSlot();
-			ally.m_idBeltSlot = foundAlly.GetComponent<PlayerBattleScript>().GetBeltSlot();
-			ally.m_idLegSlot = foundAlly.GetComponent<PlayerBattleScript>().GetLegSlot();
-			ally.m_idTrinket1 = foundAlly.GetComponent<PlayerBattleScript>().GetTrinket1();
-			ally.m_idTrinket2 = foundAlly.GetComponent<PlayerBattleScript>().GetTrinket2();
-			ally.m_lSpellsKnown = foundAlly.GetComponent<PlayerBattleScript>().GetSpellList();
+			ally.m_nMaxHP = foundAlly.GetComponent<CAllyBattleScript>().GetMaxHP();
+			ally.m_nSTR = foundAlly.GetComponent<CAllyBattleScript>().GetSTR();
+			ally.m_nDEF = foundAlly.GetComponent<CAllyBattleScript>().GetDEF();
+			ally.m_nSPD = foundAlly.GetComponent<CAllyBattleScript>().GetSPD();
+			ally.m_nLevel = foundAlly.GetComponent<CAllyBattleScript>().GetUnitLevel();
+			ally.m_nCurrentEXP = foundAlly.GetComponent<CAllyBattleScript>().m_nCurrentExperience;
+			ally.m_idHelmSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idHelmSlot;
+			ally.m_idShoulderSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idShoulderSlot;
+			ally.m_idChestSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idChestSlot;
+			ally.m_idGloveSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idGloveSlot;
+			ally.m_idBeltSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idBeltSlot;
+			ally.m_idLegSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idLegSlot;
+			ally.m_idTrinket1 = foundAlly.GetComponent<CAllyBattleScript>().m_idTrinket1;
+			ally.m_idTrinket2 = foundAlly.GetComponent<CAllyBattleScript>().m_idTrinket2;
+			ally.m_lSpellsKnown = foundAlly.GetComponent<CAllyBattleScript>().m_lSpellList;
 		}
 		ds.SetParty(party);
 

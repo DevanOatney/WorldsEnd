@@ -153,9 +153,9 @@ public class SavingScript : MonoBehaviour
 		}
 
 		//Amount of items in inventory
-		m_lOutputData.Add(dcs.GetInventory().Count.ToString());
+		m_lOutputData.Add(dcs.m_lItemLibrary.m_lInventory.Count.ToString());
 		//Characters inventory
-		foreach(DCScript.CharactersItems item in dcs.GetInventory())
+		foreach(ItemLibrary.CharactersItems item in dcs.m_lItemLibrary.m_lInventory)
 		{
 			m_lOutputData.Add (item.m_szItemName);
 			m_lOutputData.Add(item.m_nItemCount.ToString());

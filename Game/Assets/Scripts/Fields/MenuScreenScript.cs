@@ -166,8 +166,8 @@ public class MenuScreenScript : MonoBehaviour
 								int nItemType = m_nEquipmentSlotChangeIndex + (int)BaseItemScript.ITEM_TYPES.eHELMARMOR;
 								if(nItemType > (int)BaseItemScript.ITEM_TYPES.eTRINKET)
 									nItemType = (int)BaseItemScript.ITEM_TYPES.eTRINKET;
-								List<DCScript.CharactersItems> inv = new List<DCScript.CharactersItems>();
-								foreach(DCScript.CharactersItems item in dc.GetInventory())
+								List<ItemLibrary.CharactersItems> inv = new List<ItemLibrary.CharactersItems>();
+								foreach(ItemLibrary.CharactersItems item in dc.m_lItemLibrary.m_lInventory)
 								{
 									if(nItemType == item.m_nItemType)
 										inv.Add(item);
@@ -226,8 +226,8 @@ public class MenuScreenScript : MonoBehaviour
 							int nItemType = m_nEquipmentSlotChangeIndex + (int)BaseItemScript.ITEM_TYPES.eHELMARMOR;
 							if(nItemType > (int)BaseItemScript.ITEM_TYPES.eTRINKET)
 								nItemType = (int)BaseItemScript.ITEM_TYPES.eTRINKET;
-							List<DCScript.CharactersItems> inv = new List<DCScript.CharactersItems>();
-							foreach(DCScript.CharactersItems item in dc.GetInventory())
+							List<ItemLibrary.CharactersItems> inv = new List<ItemLibrary.CharactersItems>();
+							foreach(ItemLibrary.CharactersItems item in dc.m_lItemLibrary.m_lInventory)
 							{
 								if(nItemType == item.m_nItemType)
 									inv.Add(item);
@@ -384,11 +384,11 @@ public class MenuScreenScript : MonoBehaviour
 		{
 			Destroy(child.gameObject);
 		}
-		List<DCScript.CharactersItems> m_lInv = GetItemsOfType(type);
+		List<ItemLibrary.CharactersItems> m_lInv = GetItemsOfType(type);
 		int i = 0;
 		float xOffset = -240.0f; float xAdj = 240.0f;
 		float yOffset = 380.0f; float yAdj = -40.0f;
-		foreach(DCScript.CharactersItems item in m_lInv)
+		foreach(ItemLibrary.CharactersItems item in m_lInv)
 		{
 			GameObject pMem = Instantiate(m_goItemPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 			RectTransform myRect = pMem.GetComponent<RectTransform>();
@@ -417,7 +417,7 @@ public class MenuScreenScript : MonoBehaviour
 		if(tChoice.gameObject.activeSelf == false)
 		{
 			m_goItemSelected = pItem;
-			DCScript.CharactersItems item = dc.GetItemFromInventory(pItem.transform.FindChild("Item Name").GetComponent<Text>().text);
+			ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(pItem.transform.FindChild("Item Name").GetComponent<Text>().text);
 			
 			tChoice.gameObject.SetActive(true);
 			if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL)
@@ -442,7 +442,7 @@ public class MenuScreenScript : MonoBehaviour
 	//"Use" has been chosen
 	public void ItemChoice_USE()
 	{
-		DCScript.CharactersItems item = dc.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
+		ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
 		if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL ||
 		   item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
 		{
@@ -454,10 +454,10 @@ public class MenuScreenScript : MonoBehaviour
 	//"Discard" has been selected
 	public void ItemChoice_DISCARD()
 	{
-		DCScript.CharactersItems item = dc.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
+		ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
 		transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
 		m_goCharacterSelector.SetActive(false);
-		dc.RemoveItem(item);
+		dc.m_lItemLibrary.RemoveItem(item);
 	}
 
 	//"Cancel" has been selected
@@ -471,8 +471,8 @@ public class MenuScreenScript : MonoBehaviour
 	public void UseItemOnSelectedCharacter(int characterIndex)
 	{
 		//m_gPartyMembers[characterIndex];
-		DCScript.CharactersItems item = dc.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
-		DCScript.ItemData dcItemData = dc.GetItemFromDictionary(item.m_szItemName);
+		ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
+		ItemLibrary.ItemData dcItemData = dc.m_lItemLibrary.GetItemFromDictionary(item.m_szItemName);
 		m_nCharacterSelectedIndexForItemUse = characterIndex;
 		switch(dcItemData.m_szDescription)
 		{
@@ -501,11 +501,11 @@ public class MenuScreenScript : MonoBehaviour
 						if(item.m_nItemCount == 1)
 						{
 							m_goCharacterSelector.SetActive(false);
-							dc.RemoveItem(item);
+							dc.m_lItemLibrary.RemoveItem(item);
 						}
 						//this isn't the last item? just remove one of it then.
 						else
-							dc.RemoveItem(item);
+							dc.m_lItemLibrary.RemoveItem(item);
 						              //remove the status effect from the party
 						dc.GetStatusEffects().RemoveAt(removeIter);
 						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect("Poison");
@@ -542,11 +542,11 @@ public class MenuScreenScript : MonoBehaviour
 						if(item.m_nItemCount == 1)
 						{
 							m_goCharacterSelector.SetActive(false);
-							dc.RemoveItem(item);
+							dc.m_lItemLibrary.RemoveItem(item);
 						}
 						//this isn't the last item? just remove one of it then.
 						else
-							dc.RemoveItem(item);
+							dc.m_lItemLibrary.RemoveItem(item);
 						//if there are no more effect members, remove the status effect from the party.
 						if(dc.GetStatusEffects()[removeIter].m_lEffectedMembers.Count == 0)
 						{
@@ -606,8 +606,8 @@ public class MenuScreenScript : MonoBehaviour
 		m_bDisableInput = false;
 		if(m_goItemSelected != null)
 		{
-			DCScript.CharactersItems item = dc.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
-			DCScript.ItemData dcItemData = dc.GetItemFromDictionary(item.m_szItemName);
+			ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
+			ItemLibrary.ItemData dcItemData = dc.m_lItemLibrary.GetItemFromDictionary(item.m_szItemName);
 			int healingAmnt = dcItemData.m_nHPMod;
 
 			if(dcItemData.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
@@ -635,7 +635,7 @@ public class MenuScreenScript : MonoBehaviour
 				GameObject pMem = m_goCharacterSelector.transform.FindChild("Scaled_PartyMember" +(m_nCharacterSelectedIndexForItemUse+1).ToString()).gameObject;
 				pMem.transform.FindChild("Animated Effect").GetComponent<Image>().enabled = false;
 			}
-			dc.RemoveItem(item);
+			dc.m_lItemLibrary.RemoveItem(item);
 			if(item.m_nItemCount == 0)
 			{
 				m_goCharacterSelector.SetActive(false);
@@ -647,11 +647,11 @@ public class MenuScreenScript : MonoBehaviour
 		PopulateInventory(0);
 	}
 
-	List<DCScript.CharactersItems> GetItemsOfType(int type)
+	List<ItemLibrary.CharactersItems> GetItemsOfType(int type)
 	{
-		List<DCScript.CharactersItems> inv = new List<DCScript.CharactersItems>();
-		List<DCScript.CharactersItems> fullInv =  dc.GetInventory();
-		foreach(DCScript.CharactersItems item in fullInv)
+		List<ItemLibrary.CharactersItems> inv = new List<ItemLibrary.CharactersItems>();
+		List<ItemLibrary.CharactersItems> fullInv =  dc.m_lItemLibrary.m_lInventory;
+		foreach(ItemLibrary.CharactersItems item in fullInv)
 		{
 			// 0 - useable item, 1- Armor, 2- Trinkets, 3- Junk, 4: key
 			//1-4 : useable item, 5 : weapon, 6: armor, 7: junk, 8: key

@@ -33,23 +33,17 @@ public class ThunderScript : MonoBehaviour
 					Destroy(animation, 1.4f);
 				}
 				m_pOwner.GetComponent<Animator>().SetBool("m_bIsCasting", true);
-				if(m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm != null)
-				{
-					m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm.GetComponentInChildren<Animator>().SetBool("m_bIsCasting", true);
-					m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm.GetComponent<SpriteRenderer>().enabled = true;
-				}
 				//in x amount of time, the player's turn is over and it's time to destroy this object
 				Invoke("DoneAnimating", 1.5f);
 				//turn off the flags for the item/inventory rendering
-				m_pOwner.GetComponent<PlayerBattleScript>().m_bIsMyTurn = false;
-				m_pOwner.GetComponent<PlayerBattleScript>().SetItemChosen(false);
-				m_pOwner.GetComponent<PlayerBattleScript>().SetChoosingItemFlag(false);
+				m_pOwner.GetComponent<CAllyBattleScript>().m_bIsMyTurn = false;
+				m_pOwner.GetComponent<CAllyBattleScript>().m_nState = (int)CAllyBattleScript.ALLY_STATES.STATUS_EFFECTS;
 			}
 			else if(Input.GetKeyUp(KeyCode.Escape))
 			{
 				m_bDraw = false;
-				m_pOwner.GetComponent<PlayerBattleScript>().SetAllowInput(true);
-				m_pOwner.GetComponent<PlayerBattleScript>().TurnOffFlags();
+				m_pOwner.GetComponent<CAllyBattleScript>().SetAllowInput(true);
+				m_pOwner.GetComponent<CAllyBattleScript>().m_nState = (int)CAllyBattleScript.ALLY_STATES.USEITEM_CHOSEN;
 				DisableAllCursors();
 				Destroy(gameObject);
 			}
@@ -60,11 +54,6 @@ public class ThunderScript : MonoBehaviour
 	{
 		//end the animation
 		m_pOwner.GetComponent<Animator>().SetBool("m_bIsCasting", false);
-		if(m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm != null)
-		{
-			m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm.GetComponentInChildren<Animator>().SetBool("m_bIsCasting", false);
-			m_pOwner.GetComponent<PlayerBattleScript>().m_goUnitArm.GetComponent<SpriteRenderer>().enabled = false;
-		}
 		//Do the effect
 		GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		foreach(GameObject enemy in Enemies)
@@ -78,7 +67,7 @@ public class ThunderScript : MonoBehaviour
 		GameObject tw = GameObject.Find("TurnWatcher");
 		if(tw)
 			tw.GetComponent<TurnWatcherScript>().MyTurnIsOver(m_pOwner);
-		m_pOwner.GetComponent<PlayerBattleScript>().SetAllowInput(true);
+		m_pOwner.GetComponent<CAllyBattleScript>().SetAllowInput(true);
 		Destroy(gameObject);
 	}
 	
@@ -86,7 +75,7 @@ public class ThunderScript : MonoBehaviour
 	{
 		m_pOwner = pOwner;
 		m_bDraw = true;
-		m_pOwner.GetComponent<PlayerBattleScript>().SetAllowInput(false);
+		m_pOwner.GetComponent<CAllyBattleScript>().SetAllowInput(false);
 		GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		foreach(GameObject enemy in Enemies)
 		{
