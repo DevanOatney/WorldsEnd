@@ -80,7 +80,7 @@ public class KindRainScript : MonoBehaviour
 		GameObject[] Allies = GameObject.FindGameObjectsWithTag("Ally");
 		foreach(GameObject ally in Allies)
 		{
-			GameObject.Find("Ally_Cursor" + ally.GetComponent<UnitScript>().m_nPositionOnField).GetComponent<SpriteRenderer>().enabled = true;
+			GameObject.Find("Ally_Cursor" + ally.GetComponent<UnitScript>().FieldPosition).GetComponent<SpriteRenderer>().enabled = true;
 		}
 	}
 

@@ -13,7 +13,8 @@ public class UnitScript : MonoBehaviour
 	//0 : Center
 	//1 : Top
 	//2 : Bottom
-	public int m_nPositionOnField = 0;
+	int m_nPositionOnField = 0;
+	public int FieldPosition { get {return m_nPositionOnField;} set {m_nPositionOnField = value;}}
 	//iter for your targets position on field
 	public int m_nTargetPositionOnField = 0;
 	//vector to hold the initial position of the unit on the field for each time the unit moves

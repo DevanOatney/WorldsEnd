@@ -76,7 +76,7 @@ public class BaseItemScript : MonoBehaviour
 		foreach(GameObject t in _Targets)
 		{
 			if(t.GetComponent<UnitScript>().GetCurHP() > 0)
-				switch(t.GetComponent<UnitScript>().m_nPositionOnField)
+				switch(t.GetComponent<UnitScript>().FieldPosition)
 			{
 				case 0:
 				{
@@ -120,7 +120,7 @@ public class BaseItemScript : MonoBehaviour
 		foreach(GameObject t in _Targets)
 		{
 			if(t.GetComponent<UnitScript>().GetCurHP() > 0)
-				switch(t.GetComponent<UnitScript>().m_nPositionOnField)
+				switch(t.GetComponent<UnitScript>().FieldPosition)
 			{
 				case 0:
 				{
@@ -269,7 +269,7 @@ public class BaseItemScript : MonoBehaviour
 		foreach(GameObject t in _Targets)
 		{
 			if(t.GetComponent<UnitScript>().GetCurHP() > 0)
-				switch(t.GetComponent<UnitScript>().m_nPositionOnField)
+				switch(t.GetComponent<UnitScript>().FieldPosition)
 			{
 				case 0:
 				{

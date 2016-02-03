@@ -38,7 +38,7 @@ public class ItemSingleDamage : BaseItemScript
 					foreach(GameObject enemy in Enemies)
 					{
 						//find the unit the player is trying to damage
-						if(enemy.GetComponent<UnitScript>().m_nPositionOnField == m_pOwner.GetComponent<UnitScript>().m_nTargetPositionOnField)
+						if(enemy.GetComponent<UnitScript>().FieldPosition == m_pOwner.GetComponent<UnitScript>().m_nTargetPositionOnField)
 						{
 							//Instantiate the animation at the target location
 							Vector2 pos = enemy.transform.position;
@@ -79,7 +79,7 @@ public class ItemSingleDamage : BaseItemScript
 		foreach(GameObject enemy in Enemies)
 		{
 			//find the unit the player is trying to damage
-			if(enemy.GetComponent<UnitScript>().m_nPositionOnField == m_pOwner.GetComponent<UnitScript>().m_nTargetPositionOnField)
+			if(enemy.GetComponent<UnitScript>().FieldPosition == m_pOwner.GetComponent<UnitScript>().m_nTargetPositionOnField)
 			{
 				//damage the unit
 				enemy.GetComponent<UnitScript>().AdjustHP(GetHPMod());

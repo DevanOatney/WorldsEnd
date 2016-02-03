@@ -85,49 +85,6 @@ public class CAllyBattleScript : UnitScript
 		m_twTurnWatcher = GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>();
 		m_aAnim = GetComponent<Animator>();
 		m_vInitialPos = new Vector3();
-		string szgoName = "Ally_StartPos" + m_nPositionOnField.ToString();
-		GameObject go = GameObject.Find(szgoName);
-		m_vInitialPos.x = go.transform.position.x;
-		m_vInitialPos.y = go.transform.position.y;
-		m_vInitialPos.z = 0.0f;
-		switch(m_nPositionOnField)
-		{
-		case 0:
-			{
-				//Top right
-			}
-			break;
-		case 1:
-			{
-				//Middle right
-					GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
-			}
-			break;
-		case 2:
-			{
-				//Bottom right
-					GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
-			}
-			break;
-		case 3:
-			{
-				//Top left
-			}
-			break;
-		case 4:
-			{
-				//Middle Left
-				GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
-			}
-			break;
-		case 5:
-			{
-				//Bottom left
-				GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
-			}
-			break;
-		}
-		transform.position = m_vInitialPos;
 		InitializeTargetReticle();
 		m_nState = (int)ALLY_STATES.DIALOGUE;
 
@@ -276,6 +233,18 @@ public class CAllyBattleScript : UnitScript
 				{
 					//Attack
 					m_nState = (int)ALLY_STATES.ATTACK_CHOSEN;
+					InitializeTargetReticle();
+					for(int i = 0; i < 6; ++i)
+					{
+						if(i == m_nTargetPositionOnField)
+						{
+							GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = true;
+						}
+						else
+						{
+							GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
+						}
+					}
 				}
 				break;
 			case 1:
@@ -309,6 +278,59 @@ public class CAllyBattleScript : UnitScript
 				}
 				break;
 			}
+		}
+	}
+
+	void HandleSingleTargetInput()
+	{
+		if(Input.GetKeyDown(KeyCode.DownArrow))
+		{
+			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+			int lowPos = 5, hiPos = 0;
+			foreach(GameObject e in enemies)
+			{
+				if(e.GetComponent<UnitScript>().FieldPosition < lowPos)
+					lowPos = e.GetComponent<UnitScript>().FieldPosition;
+				if(e.GetComponent<UnitScript>().FieldPosition > hiPos)
+					hiPos = e.GetComponent<UnitScript>().FieldPosition;
+			}
+			if(m_nTargetPositionOnField++ < hiPos)
+			{
+				//TODO: adjust for units Range and targets position in formation so that you can't target units that are out of range.
+				m_nTargetPositionOnField++;
+			}
+			//else wrap around to the lowest formation counter active on the field.
+			else
+			{
+				//TODO: adjust for units Range and targets position in formation so that you can't target units that are out of range.
+				m_nTargetPositionOnField = lowPos;
+			}
+
+			UpdateTargetReticles();
+		}
+		else if(Input.GetKeyDown(KeyCode.UpArrow))
+		{
+			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+			int lowPos = 5, hiPos = 0;
+			foreach(GameObject e in enemies)
+			{
+				if(e.GetComponent<UnitScript>().FieldPosition < lowPos)
+					lowPos = e.GetComponent<UnitScript>().FieldPosition;
+				if(e.GetComponent<UnitScript>().FieldPosition > hiPos)
+					hiPos = e.GetComponent<UnitScript>().FieldPosition;
+			}
+			if(m_nTargetPositionOnField-- >= lowPos)
+			{
+				//TODO: adjust for units Range and targets position in formation so that you can't target units that are out of range.
+				m_nTargetPositionOnField--;
+			}
+			//else wrap around to the highest formation counter active on the field.
+			else
+			{
+				//TODO: adjust for units Range and targets position in formation so that you can't target units that are out of range.
+				m_nTargetPositionOnField = hiPos;
+			}
+			UpdateTargetReticles();
 		}
 	}
 
@@ -375,9 +397,7 @@ public class CAllyBattleScript : UnitScript
 			return 0;
 		}
 		return nTotalExp;
-	}
-
-
+  	}
 	void LevelUp()
 	{
 		SetUnitLevel(GetUnitLevel() +1);
@@ -403,8 +423,7 @@ public class CAllyBattleScript : UnitScript
 			SetEVA(GetEVA() + 1);
 			SetHIT(GetHIT() + 1);
 		}
-	}
-
+  	}
 	public void SetUnitStats()
 	{
 		if(m_taStartingStats)
@@ -522,14 +541,81 @@ public class CAllyBattleScript : UnitScript
 	//Initialize the target reticle so that there isn't a crash (preference to front row enemies
 	void InitializeTargetReticle()
 	{
+		
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		for(int i = enemies.Length-1; i >=0; i--)
+		{
+			if(m_nTargetPositionOnField == enemies[i].GetComponent<UnitScript>().FieldPosition && enemies[i].GetComponent<UnitScript>().GetCurHP() > 0)
+				return;
+		}
 		for(int i = enemies.Length-1; i >=0; i--)
 		{
 			if(enemies[i].GetComponent<UnitScript>().GetCurHP() > 0)
 			{
-				m_nTargetPositionOnField = enemies[i].GetComponent<UnitScript>().m_nPositionOnField;
+				m_nTargetPositionOnField = enemies[i].GetComponent<UnitScript>().FieldPosition;
+
 			}
 		}
 
+	}
+	void UpdateTargetReticles()
+	{
+		for(int i = 0; i < 6; ++i)
+		{
+			if(i == m_nTargetPositionOnField)
+			{
+				GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = true;
+			}
+			else
+			{
+				GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
+			}
+		}
+	}
+	public void UpdatePositionOnField()
+	{
+		string szgoName = "Ally_StartPos" + FieldPosition.ToString();
+		GameObject go = GameObject.Find(szgoName);
+		m_vInitialPos.x = go.transform.position.x;
+		m_vInitialPos.y = go.transform.position.y;
+		m_vInitialPos.z = 0.0f;
+		switch(FieldPosition)
+		{
+		case 0:
+			{
+				//Top right
+			}
+			break;
+		case 1:
+			{
+				//Middle right
+				GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
+			}
+			break;
+		case 2:
+			{
+				//Bottom right
+				GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
+			}
+			break;
+		case 3:
+			{
+				//Top left
+			}
+			break;
+		case 4:
+			{
+				//Middle Left
+				GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
+			}
+			break;
+		case 5:
+			{
+				//Bottom left
+				GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
+			}
+			break;
+		}
+		transform.position = m_vInitialPos;
 	}
 }

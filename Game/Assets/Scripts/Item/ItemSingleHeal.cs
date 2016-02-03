@@ -38,7 +38,7 @@ public class ItemSingleHeal : BaseItemScript
 					foreach(GameObject ally in allies)
 					{
 						//find the unit the player is trying to heal
-						if(ally.GetComponent<UnitScript>().m_nPositionOnField == m_pOwner.GetComponent<UnitScript>().m_nTargetPositionOnField)
+						if(ally.GetComponent<UnitScript>().FieldPosition == m_pOwner.GetComponent<UnitScript>().m_nTargetPositionOnField)
 						{
 							//Instantiate the animation at the target location
 							Vector2 pos = ally.transform.position;
@@ -79,7 +79,7 @@ public class ItemSingleHeal : BaseItemScript
 		foreach(GameObject ally in allies)
 		{
 			//find the unit the player is trying to heal
-			if(ally.GetComponent<UnitScript>().m_nPositionOnField == m_pOwner.GetComponent<UnitScript>().m_nTargetPositionOnField)
+			if(ally.GetComponent<UnitScript>().FieldPosition == m_pOwner.GetComponent<UnitScript>().m_nTargetPositionOnField)
 			{
 				//heal the unit (adjust hp is for taking damage.. so sending a negative number should heal
 				ally.GetComponent<UnitScript>().AdjustHP(GetHPMod() * -1);

@@ -56,74 +56,106 @@ public class TurnWatcherScript : MonoBehaviour
 	//flag for if the players has already pressed return during the victory screen
 	bool m_bHasPressedEnter = false;
 
+	void Awake()
+	{
+		GameObject pdata = GameObject.Find("PersistantData");
+		if(pdata == null)
+		{
+			//This is a debug play then.   Create a data canister, and put the main character in the party
+			pdata = Instantiate(Resources.Load("Misc/PersistantData", typeof(GameObject))) as GameObject;
+			pdata.name = pdata.name.Replace("(Clone)", "");
+			GameObject.Find("PersistantData").GetComponent<DCScript>().GetParty().Clear();
+			GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
+			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
+			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
+			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
+			List<string> lEnemies = new List<string>();
+			lEnemies.Add("Boar");
+			lEnemies.Add("KillerBee");
+			pdata.GetComponent<DCScript>().SetEnemyNames(lEnemies);
+			ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
+			List<DCScript.CharacterData> party = ds.GetParty();
+			foreach(DCScript.CharacterData ally in party)
+			{
+				if(ally.m_szCharacterName == "Briol")
+					ally.m_nFormationIter = 3;
+				else
+					ally.m_nFormationIter = 4;
+			}
+			ds.SetParty(party);
+		}
+		else
+			ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
+
+
+	}
+
 	void Start () 
 	{
-		GameObject dataCanister = GameObject.Find("PersistantData");
-		if(dataCanister)
+		Camera.main.GetComponent<AudioSource>().volume = 0.5f + ds.m_fMusicVolume;
+		//load enemies
+		List<string> enemies = ds.GetEnemyNames();
+		int FormationCounter = 0;
+		foreach(string s in enemies)
 		{
-			ds = dataCanister.GetComponent<DCScript>();
-			Camera.main.GetComponent<AudioSource>().volume = 0.5f + ds.m_fMusicVolume;
-			//load enemies
-			List<string> enemies = ds.GetEnemyNames();
-			int FormationCounter = 0;
-			foreach(string s in enemies)
+			string fullPath = m_szFirstPart + s + "/" + s;
+			GameObject loadedEnemy = Resources.Load<GameObject>(fullPath);
+			GameObject enemy = Instantiate(loadedEnemy) as GameObject;
+			//remove the "(clone)"
+			enemy.name = loadedEnemy.name;
+			//Set it's position on the field accordingly
+			enemy.GetComponent<UnitScript>().FieldPosition = FormationCounter;
+			enemy.GetComponent<UnitScript>().SetUnitLevel(loadedEnemy.GetComponent<UnitScript>().GetUnitLevel());
+			//if(enemy.name == "CharacterReference")
+
+
+
+			//e the stats of the unit to the object it instantiated from
+			enemy.GetComponent<UnitScript>().SetMaxHP(loadedEnemy.GetComponent<UnitScript>().GetMaxHP());
+			enemy.GetComponent<UnitScript>().SetCurHP(loadedEnemy.GetComponent<UnitScript>().GetCurHP());
+			enemy.GetComponent<UnitScript>().SetSTR(loadedEnemy.GetComponent<UnitScript>().GetSTR());
+			enemy.GetComponent<UnitScript>().SetDEF(loadedEnemy.GetComponent<UnitScript>().GetDEF());
+			enemy.GetComponent<UnitScript>().SetSPD(loadedEnemy.GetComponent<UnitScript>().GetSPD());
+
+			FormationCounter++;
+		}
+		FormationCounter = 0;
+		List<DCScript.CharacterData> allies = ds.GetParty();
+		foreach(DCScript.CharacterData g in allies)
+		{
+			GameObject Ally = Instantiate(Resources.Load<GameObject>("Units/Ally/" + g.m_szCharacterName + "/" + g.m_szCharacterName)) as GameObject;
+			//Set the name so (Clone) isn't in the name.
+			Ally.name = g.m_szCharacterName;
+			//because if it's not 0 it means this is just debugging
+			if(Ally.GetComponent<UnitScript>().FieldPosition == 0)
 			{
-				string fullPath = m_szFirstPart + s + "/" + s;
-				GameObject loadedEnemy = Resources.Load<GameObject>(fullPath);
-				GameObject enemy = Instantiate(loadedEnemy) as GameObject;
-				//remove the "(clone)"
-				enemy.name = loadedEnemy.name;
-				//Set it's position on the field accordingly
-				enemy.GetComponent<UnitScript>().m_nPositionOnField = FormationCounter;
-				enemy.GetComponent<UnitScript>().SetUnitLevel(loadedEnemy.GetComponent<UnitScript>().GetUnitLevel());
-				//if(enemy.name == "CharacterReference")
-
-
-
-				//Set the stats of the unit to the object it instantiated from
-				enemy.GetComponent<UnitScript>().SetMaxHP(loadedEnemy.GetComponent<UnitScript>().GetMaxHP());
-				enemy.GetComponent<UnitScript>().SetCurHP(loadedEnemy.GetComponent<UnitScript>().GetCurHP());
-				enemy.GetComponent<UnitScript>().SetSTR(loadedEnemy.GetComponent<UnitScript>().GetSTR());
-				enemy.GetComponent<UnitScript>().SetDEF(loadedEnemy.GetComponent<UnitScript>().GetDEF());
-				enemy.GetComponent<UnitScript>().SetSPD(loadedEnemy.GetComponent<UnitScript>().GetSPD());
-
-				FormationCounter++;
+				Ally.GetComponent<UnitScript>().FieldPosition = g.m_nFormationIter;
+				Ally.GetComponent<CAllyBattleScript>().UpdatePositionOnField();
 			}
-			FormationCounter = 0;
-			List<DCScript.CharacterData> allies = ds.GetParty();
-			foreach(DCScript.CharacterData g in allies)
-			{
-				GameObject Ally = Instantiate(Resources.Load<GameObject>("Units/Ally/" + g.m_szCharacterName + "/" + g.m_szCharacterName)) as GameObject;
-				//Set the name so (Clone) isn't in the name.
-				Ally.name = g.m_szCharacterName;
-
-				Ally.GetComponent<UnitScript>().m_nPositionOnField = g.m_nFormationIter;
-				//Set the stats of the unit to the object it instantiated from
-				Ally.GetComponent<UnitScript>().SetMaxHP(g.m_nMaxHP);
-				Ally.GetComponent<UnitScript>().SetCurHP(g.m_nCurHP);
-				Ally.GetComponent<UnitScript>().SetSTR(g.m_nSTR);
-				Ally.GetComponent<UnitScript>().SetDEF(g.m_nDEF);
-				Ally.GetComponent<UnitScript>().SetSPD(g.m_nSPD);
-				Ally.GetComponent<UnitScript>().SetUnitLevel(g.m_nLevel);
-				Ally.GetComponent<CAllyBattleScript>().m_szClassName = g.m_szCharacterClassType;
-				Ally.GetComponent<CAllyBattleScript>().m_nCurrentExperience = g.m_nCurrentEXP;
-				Ally.GetComponent<CAllyBattleScript>().m_lSpellList = g.m_lSpellsKnown;
-				Ally.GetComponent<CAllyBattleScript>().m_idHelmSlot = g.m_idHelmSlot;
-				Ally.GetComponent<CAllyBattleScript>().m_idShoulderSlot = g.m_idShoulderSlot;
-				Ally.GetComponent<CAllyBattleScript>().m_idChestSlot = g.m_idChestSlot;
-				Ally.GetComponent<CAllyBattleScript>().m_idGloveSlot = g.m_idGloveSlot;
-				Ally.GetComponent<CAllyBattleScript>().m_idBeltSlot = g.m_idBeltSlot;
-				Ally.GetComponent<CAllyBattleScript>().m_idLegSlot = g.m_idLegSlot;
-				Ally.GetComponent<CAllyBattleScript>().m_idTrinket1 = g.m_idTrinket1;
-				Ally.GetComponent<CAllyBattleScript>().m_idTrinket2 = g.m_idTrinket2;
-			}
-
+			//Set the stats of the unit to the object it instantiated from
+			Ally.GetComponent<UnitScript>().SetMaxHP(g.m_nMaxHP);
+			Ally.GetComponent<UnitScript>().SetCurHP(g.m_nCurHP);
+			Ally.GetComponent<UnitScript>().SetSTR(g.m_nSTR);
+			Ally.GetComponent<UnitScript>().SetDEF(g.m_nDEF);
+			Ally.GetComponent<UnitScript>().SetSPD(g.m_nSPD);
+			Ally.GetComponent<UnitScript>().SetUnitLevel(g.m_nLevel);
+			Ally.GetComponent<CAllyBattleScript>().m_szClassName = g.m_szCharacterClassType;
+			Ally.GetComponent<CAllyBattleScript>().m_nCurrentExperience = g.m_nCurrentEXP;
+			Ally.GetComponent<CAllyBattleScript>().m_lSpellList = g.m_lSpellsKnown;
+			Ally.GetComponent<CAllyBattleScript>().m_idHelmSlot = g.m_idHelmSlot;
+			Ally.GetComponent<CAllyBattleScript>().m_idShoulderSlot = g.m_idShoulderSlot;
+			Ally.GetComponent<CAllyBattleScript>().m_idChestSlot = g.m_idChestSlot;
+			Ally.GetComponent<CAllyBattleScript>().m_idGloveSlot = g.m_idGloveSlot;
+			Ally.GetComponent<CAllyBattleScript>().m_idBeltSlot = g.m_idBeltSlot;
+			Ally.GetComponent<CAllyBattleScript>().m_idLegSlot = g.m_idLegSlot;
+			Ally.GetComponent<CAllyBattleScript>().m_idTrinket1 = g.m_idTrinket1;
+			Ally.GetComponent<CAllyBattleScript>().m_idTrinket2 = g.m_idTrinket2;
 		}
 
 
 		m_bHasStarted = false;
-		dataCanister.GetComponent<DCScript>().SetMasterVolume();
-		GetComponent<AudioSource>().PlayOneShot(m_lACMuicFiles[dataCanister.GetComponent<DCScript>().m_nMusicIter], 0.5f + ds.m_fMusicVolume); 
+		ds.SetMasterVolume();
+		GetComponent<AudioSource>().PlayOneShot(m_lACMuicFiles[ds.m_nMusicIter], 0.5f + ds.m_fMusicVolume); 
 	}
 
 
@@ -158,10 +190,7 @@ public class TurnWatcherScript : MonoBehaviour
 	{
 		//sort units based on turn order (make sure this is set to highest goes first
 		m_goUnits.Sort(delegate(GameObject a, GameObject b){return (a.GetComponent<UnitScript>().GetSPD().CompareTo(b.GetComponent<UnitScript>().GetSPD()));});
-		foreach(GameObject go in m_goUnits)
-		{
-			Debug.Log(go.GetComponent<UnitScript>().GetSPD());
-		}
+		m_goUnits.Reverse();
 		//Activate the first unit in the turn order
 		m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
 
@@ -261,7 +290,7 @@ public class TurnWatcherScript : MonoBehaviour
 			foreach(GameObject Ally in Allies)
 			{
 				//base the y position as to the units position on the field so it correlates correctly
-				switch(Ally.GetComponent<UnitScript>().m_nPositionOnField)
+				switch(Ally.GetComponent<UnitScript>().FieldPosition)
 				{
 				case 0:
 				{
@@ -291,9 +320,9 @@ public class TurnWatcherScript : MonoBehaviour
 
 				//Start the coroutine for the unit to gain exp
 				//TODO: Set this up so it's only called once per character
-				if(m_bHasEnteredEXP[Ally.GetComponent<UnitScript>().m_nPositionOnField] == false)
+				if(m_bHasEnteredEXP[Ally.GetComponent<UnitScript>().FieldPosition] == false)
 				{
-					m_bHasEnteredEXP[Ally.GetComponent<UnitScript>().m_nPositionOnField] = true;
+					m_bHasEnteredEXP[Ally.GetComponent<UnitScript>().FieldPosition] = true;
 					StartCoroutine("GainExp", Ally);
 				}
 
@@ -336,7 +365,7 @@ public class TurnWatcherScript : MonoBehaviour
 			{
 				//Debug.Log(Ally.name + " pos on field " + Ally.GetComponent<UnitScript>().m_nPositionOnField);
 				//base the y position as to the units position on the field so it correlates correctly
-				switch(Ally.GetComponent<UnitScript>().m_nPositionOnField)
+				switch(Ally.GetComponent<UnitScript>().FieldPosition)
 				{
 				case 0:
 				{

@@ -58,12 +58,12 @@ public class PercentBeserkEnemyScript : UnitScript {
 			anim = GetComponentInChildren<Animator>();
 		SetUnitStats();
 		m_vInitialPos = new Vector3();
-		string szgoName = "Enemy_StartPos" + m_nPositionOnField.ToString();
+		string szgoName = "Enemy_StartPos" + FieldPosition.ToString();
 		GameObject go = GameObject.Find(szgoName);
 		m_vInitialPos.x = go.transform.position.x;
 		m_vInitialPos.y = go.transform.position.y;
 		m_vInitialPos.z = 0.0f;
-		switch(m_nPositionOnField)
+		switch(FieldPosition)
 		{
 		case 0:
 		{
@@ -161,7 +161,7 @@ public class PercentBeserkEnemyScript : UnitScript {
 						anim.SetBool("m_bIsMoving", true);
 						m_bIsMyTurn = false;
 						m_fDelayTimer = 0.0f;
-						m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().m_nPositionOnField;
+						m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
 					}
 				}
 					break;
@@ -187,7 +187,7 @@ public class PercentBeserkEnemyScript : UnitScript {
 						anim.SetBool("m_bIsMoving", true);
 						m_bIsMyTurn = false;
 						m_fDelayTimer = 0.0f;
-						m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().m_nPositionOnField;
+						m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
 					}
 				}
 					break;
@@ -269,7 +269,7 @@ public class PercentBeserkEnemyScript : UnitScript {
 			break;
 		case (int)States.eRETURN:
 		{
-			GameObject target = GameObject.Find("Enemy_StartPos" + m_nPositionOnField.ToString());
+			GameObject target = GameObject.Find("Enemy_StartPos" + FieldPosition.ToString());
 			if(target)
 			{
 				Vector3 targetPos = target.transform.position;
@@ -290,7 +290,7 @@ public class PercentBeserkEnemyScript : UnitScript {
 				GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
 				foreach(GameObject tar in posTargs)
 				{
-					if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+					if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
 					{
 						int nChanceToHit = UnityEngine.Random.Range(0,100);
 						int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
@@ -346,7 +346,7 @@ public class PercentBeserkEnemyScript : UnitScript {
 	
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.name == "Near_Ally" + m_nTargetPositionOnField.ToString() || other.name == "Enemy_StartPos" + m_nPositionOnField.ToString())
+		if(other.name == "Near_Ally" + m_nTargetPositionOnField.ToString() || other.name == "Enemy_StartPos" + FieldPosition.ToString())
 			WaypointTriggered(other);
 	}
 	public void WaypointTriggered(Collider c)
@@ -359,7 +359,7 @@ public class PercentBeserkEnemyScript : UnitScript {
 			m_nState = (int)States.eATTACK;
 			m_fAttackBucket = m_acAttackAnim.length + 0.01f;
 			c.enabled = false;
-			GameObject wypnt = GameObject.Find("Enemy_StartPos" + m_nPositionOnField.ToString());
+			GameObject wypnt = GameObject.Find("Enemy_StartPos" + FieldPosition.ToString());
 			if(wypnt)
 			{
 				wypnt.GetComponent<BoxCollider>().enabled = true;
@@ -367,7 +367,7 @@ public class PercentBeserkEnemyScript : UnitScript {
 			GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
 			foreach(GameObject tar in posTargs)
 			{
-				if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+				if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
 				{
 					GameObject GO = GameObject.Find("PersistantData");
 					if(GO != null)
@@ -382,7 +382,7 @@ public class PercentBeserkEnemyScript : UnitScript {
 			
 			Invoke("EndMyTurn", 2.5f);
 		}
-		else if(c.name == "Enemy_StartPos" + m_nPositionOnField.ToString())
+		else if(c.name == "Enemy_StartPos" + FieldPosition.ToString())
 		{
 			transform.position = m_vInitialPos;
 			
@@ -475,7 +475,7 @@ public class PercentBeserkEnemyScript : UnitScript {
 		GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
 		foreach(GameObject tar in posTargs)
 		{
-			if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+			if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
 			{
 				int nChanceToHit = UnityEngine.Random.Range(0,100);
 				int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();

@@ -52,7 +52,7 @@ public class BeserkEnemyScript : UnitScript {
 		GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
 		foreach(GameObject tar in posTargs)
 		{
-			if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+			if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
 			{
 				int nChanceToHit = UnityEngine.Random.Range(0,100);
 				int nRange = 60 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
@@ -85,12 +85,12 @@ public class BeserkEnemyScript : UnitScript {
 			anim = GetComponentInChildren<Animator>();
 		SetUnitStats();
 		m_vInitialPos = new Vector3();
-		string szgoName = "Enemy_StartPos" + m_nPositionOnField.ToString();
+		string szgoName = "Enemy_StartPos" + FieldPosition.ToString();
 		GameObject go = GameObject.Find(szgoName);
 		m_vInitialPos.x = go.transform.position.x;
 		m_vInitialPos.y = go.transform.position.y;
 		m_vInitialPos.z = 0.0f;
-		switch(m_nPositionOnField)
+		switch(FieldPosition)
 		{
 		case 0:
 		{
@@ -173,7 +173,7 @@ public class BeserkEnemyScript : UnitScript {
 						anim.SetBool("m_bIsMoving", true);
 						m_bIsMyTurn = false;
 						m_fDelayTimer = 0.0f;
-						m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().m_nPositionOnField;
+						FieldPosition = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
 					}
 				}
 					break;
@@ -199,7 +199,7 @@ public class BeserkEnemyScript : UnitScript {
 						anim.SetBool("m_bIsMoving", true);
 						m_bIsMyTurn = false;
 						m_fDelayTimer = 0.0f;
-						m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().m_nPositionOnField;
+							m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
 					}
 				}
 					break;
@@ -275,7 +275,7 @@ public class BeserkEnemyScript : UnitScript {
 			break;
 		case (int)States.eRETURN:
 		{
-			GameObject target = GameObject.Find("Enemy_StartPos" + m_nPositionOnField.ToString());
+			GameObject target = GameObject.Find("Enemy_StartPos" + FieldPosition.ToString());
 			if(target)
 			{
 				Vector3 targetPos = target.transform.position;
@@ -317,7 +317,7 @@ public class BeserkEnemyScript : UnitScript {
 	
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.name == "Near_Ally" + m_nTargetPositionOnField.ToString() || other.name == "Enemy_StartPos" + m_nPositionOnField.ToString())
+		if(other.name == "Near_Ally" + FieldPosition.ToString() || other.name == "Enemy_StartPos" + FieldPosition.ToString())
 			WaypointTriggered(other);
 	}
 	public void WaypointTriggered(Collider c)
@@ -329,7 +329,7 @@ public class BeserkEnemyScript : UnitScript {
 			anim.SetBool("m_bIsAttacking", true);
 			m_nState = (int)States.eATTACK;
 			c.enabled = false;
-			GameObject wypnt = GameObject.Find("Enemy_StartPos" + m_nPositionOnField.ToString());
+			GameObject wypnt = GameObject.Find("Enemy_StartPos" + FieldPosition.ToString());
 			if(wypnt)
 			{
 				wypnt.GetComponent<BoxCollider>().enabled = true;
@@ -337,7 +337,7 @@ public class BeserkEnemyScript : UnitScript {
 			GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
 			foreach(GameObject tar in posTargs)
 			{
-				if(tar.GetComponent<UnitScript>().m_nPositionOnField == m_nTargetPositionOnField)
+				if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
 				{
 					GameObject GO = GameObject.Find("PersistantData");
 					if(GO != null)
@@ -352,7 +352,7 @@ public class BeserkEnemyScript : UnitScript {
 			
 			Invoke("EndMyTurn", 2.5f);
 		}
-		else if(c.name == "Enemy_StartPos" + m_nPositionOnField.ToString())
+		else if(c.name == "Enemy_StartPos" + FieldPosition.ToString())
 		{
 			transform.position = m_vInitialPos;
 			
@@ -361,10 +361,6 @@ public class BeserkEnemyScript : UnitScript {
 			c.enabled = false;
 			m_nState = (int)States.eIDLE;
 			GameObject wypnt = GameObject.Find("Near_Ally" + m_nTargetPositionOnField.ToString());
-			if(wypnt)
-			{
-				wypnt.GetComponent<BoxCollider>().enabled = true;
-			}
 		}
 	}
 	

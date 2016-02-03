@@ -79,7 +79,7 @@ public class ThunderScript : MonoBehaviour
 		GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		foreach(GameObject enemy in Enemies)
 		{
-			GameObject.Find("Enemy_Cursor" + enemy.GetComponent<UnitScript>().m_nPositionOnField).GetComponent<SpriteRenderer>().enabled = true;
+			GameObject.Find("Enemy_Cursor" + enemy.GetComponent<UnitScript>().FieldPosition).GetComponent<SpriteRenderer>().enabled = true;
 		}
 	}
 	
