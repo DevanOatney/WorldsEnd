@@ -19,18 +19,14 @@ public class CAllyBattleScript : UnitScript
 		CASTING_SPELL,   //player has chosen a spell and a target, play animation, resolve spell effect, move to STATUS_EFFECT
 		STATUS_EFFECTS	 //Cycle through status effects, tick off one cycle of the effects, remove/update effects, inform TURNWATCHER of end of turn and end your turn.
 	}
-
-
-	//Variables for choosing which action to do.
-	int m_nMaxActionCount = 6; //(attack, defend, magic, use item, switch, escape)
-	int m_nActionSelectionIndex = 0; //what is the player currently selecting in the main action selection
+		
+	//int m_nActionSelectionIndex = 0; //what is the player currently selecting in the main action selection
 	int m_nMagicSelectionIndex = 0;  //which spell does the player have selected?
 	Vector2 m_vMagicScrollPosition = Vector2.zero; //the position of the scroll bar in the spell list
 	Vector2 m_vMagicSelectorPosition = Vector2.zero; //positional data for the selector in the spell list
 	int m_nItemSelectionIndex = 0;   //which item does the player have selected?
 	Vector2 m_vItemScrollPosition = Vector2.zero; //the position of the scroll bar in the inventory
 	Vector2 m_vItemSelectorPosition = Vector2.zero; //positional data for the selector in the inventory
-	float m_fTextHeight = 35.0f; //the height of the text for the inventory/spell list
 
 	float m_fMovementSpeed = 8.0f; //The speed in which this unit moves accross the battlefield.
 	bool m_bAmIDefending = false;  //flag for if the unit was defending the previous turn
@@ -125,7 +121,10 @@ public class CAllyBattleScript : UnitScript
 	// Update is called once per frame
 	void Update () 
 	{
-	
+		if(m_bIsMyTurn == true)
+		{
+			HandleMainStates();
+		}
 	}
 
 	void HandleMainStates()
@@ -145,6 +144,7 @@ public class CAllyBattleScript : UnitScript
 				}
 				if(_bShouldAct == true)
 				{
+					m_twTurnWatcher.m_goActionSelector.SetActive(true);
 					m_nState = (int)ALLY_STATES.ACTION_SELECTION;
 				}
 			}
@@ -156,6 +156,7 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.ATTACK_CHOSEN:
 			{
+				HandleSingleTargetInput();
 			}
 			break;
 		case (int)ALLY_STATES.ATTACKING:
@@ -204,80 +205,80 @@ public class CAllyBattleScript : UnitScript
 				m_nState = (int)ALLY_STATES.DIALOGUE;
 				m_nItemSelectionIndex = 0;
 				m_nMagicSelectionIndex = 0;
-				m_nActionSelectionIndex = 0;
+				m_twTurnWatcher.m_goActionSelector.GetComponent<CBattleActionsScript>().ChangeIndex(0);
 				EndMyTurn();
 			}
 			break;
 		}
 	}
+	public void HandleActionSelected(int p_nIndex)
+	{
+		switch(p_nIndex)
+		{
+		case 0:
+			{
+				//Attack
+				m_nState = (int)ALLY_STATES.ATTACK_CHOSEN;
+				InitializeTargetReticle();
+				for(int i = 0; i < 6; ++i)
+				{
+					if(i == m_nTargetPositionOnField)
+					{
+						GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = true;
+					}
+					else
+					{
+						GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
+					}
+				}
+			}
+			break;
+		case 1:
+			{
+				//Defend
+				m_bAmIDefending = true;
+				m_nState = (int)ALLY_STATES.STATUS_EFFECTS;
+			}
+			break;
+		case 2:
+			{
+				//Magic
+				m_nState = (int)ALLY_STATES.USEMAGIC_CHOSEN;
+			}
+			break;
+		case 3:
+			{
+				//Use Item
+				m_nState = (int)ALLY_STATES.USEITEM_CHOSEN;
+			}
+			break;
+		case 4:
+			{
+				//Switch
 
+			}
+			break;
+		case 5:
+			{
+				//Escape
+			}
+			break;
+		}
+	}
 	void HandleActionSelectionInput()
 	{
 		if(Input.GetKeyDown(KeyCode.DownArrow))
 		{
-			m_nActionSelectionIndex++;
-			if(m_nActionSelectionIndex >= m_nMaxActionCount)
-				m_nActionSelectionIndex = 0;
+			m_twTurnWatcher.m_goActionSelector.GetComponent<CBattleActionsScript>().ChangeIndex(m_twTurnWatcher.m_goActionSelector.GetComponent<CBattleActionsScript>().ActionIndex()+1);
 		}
 		else if(Input.GetKeyDown(KeyCode.UpArrow))
 		{
-			m_nActionSelectionIndex--;
-			if(m_nActionSelectionIndex < 0)
-				m_nActionSelectionIndex = m_nMaxActionCount - 1;
+			m_twTurnWatcher.m_goActionSelector.GetComponent<CBattleActionsScript>().ChangeIndex(m_twTurnWatcher.m_goActionSelector.GetComponent<CBattleActionsScript>().ActionIndex()-1);
 		}
 		else if(Input.GetKeyDown(KeyCode.Return))
 		{
-			switch(m_nActionSelectionIndex)
-			{
-			case 0:
-				{
-					//Attack
-					m_nState = (int)ALLY_STATES.ATTACK_CHOSEN;
-					InitializeTargetReticle();
-					for(int i = 0; i < 6; ++i)
-					{
-						if(i == m_nTargetPositionOnField)
-						{
-							GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = true;
-						}
-						else
-						{
-							GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
-						}
-					}
-				}
-				break;
-			case 1:
-				{
-					//Defend
-					m_bAmIDefending = true;
-					m_nState = (int)ALLY_STATES.STATUS_EFFECTS;
-				}
-				break;
-			case 2:
-				{
-					//Magic
-					m_nState = (int)ALLY_STATES.USEMAGIC_CHOSEN;
-				}
-				break;
-			case 3:
-				{
-					//Use Item
-					m_nState = (int)ALLY_STATES.USEITEM_CHOSEN;
-				}
-				break;
-			case 4:
-				{
-					//Switch
-
-				}
-				break;
-			case 5:
-				{
-					//Escape
-				}
-				break;
-			}
+			m_twTurnWatcher.m_goActionSelector.SetActive(false);
+			HandleActionSelected(m_twTurnWatcher.m_goActionSelector.GetComponent<CBattleActionsScript>().ActionIndex());
 		}
 	}
 
@@ -331,6 +332,15 @@ public class CAllyBattleScript : UnitScript
 				m_nTargetPositionOnField = hiPos;
 			}
 			UpdateTargetReticles();
+		}
+		else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+		{
+			//Disable targeting cursors
+			ClearTargetReticles();
+			//enable action selection box
+			m_twTurnWatcher.m_goActionSelector.SetActive(true);
+			//put us back in the state to select actions
+			m_nState = (int)ALLY_STATES.ACTION_SELECTION;
 		}
 	}
 
@@ -570,6 +580,13 @@ public class CAllyBattleScript : UnitScript
 			{
 				GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
 			}
+		}
+	}
+	void ClearTargetReticles()
+	{
+		for(int i = 0; i < 6; ++i)
+		{
+			GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
 		}
 	}
 	public void UpdatePositionOnField()

@@ -11,6 +11,9 @@ public class TurnWatcherScript : MonoBehaviour
 	public int m_nOrderIter = 0;
 	// Use this for initialization
 	DCScript ds;
+	[HideInInspector]
+	public GameObject m_goActionSelector;
+
 	//The amount of enemies on the field
 	int m_nEnemyCount = 0;
 	//The amount of allies on the field
@@ -59,6 +62,9 @@ public class TurnWatcherScript : MonoBehaviour
 	void Awake()
 	{
 		GameObject pdata = GameObject.Find("PersistantData");
+		m_goActionSelector = GameObject.Find("Actions");
+		m_goActionSelector.SetActive(false);
+
 		if(pdata == null)
 		{
 			//This is a debug play then.   Create a data canister, and put the main character in the party
@@ -637,5 +643,18 @@ public class TurnWatcherScript : MonoBehaviour
 	void Lose()
 	{
         SceneManager.LoadScene("GameOver_Scene");
+	}
+
+	public void ActionSelected(int p_nIndex)
+	{
+		foreach(GameObject unit in m_goUnits)
+		{
+			if(unit.GetComponent<UnitScript>().m_bIsMyTurn == true)
+			{
+				//assuming it's an ally.. because if you're in the action menu selecting an action.. it must be an allies turn
+				m_goActionSelector.SetActive(false);
+				unit.GetComponent<CAllyBattleScript>().HandleActionSelected(p_nIndex);
+			}
+		}
 	}
 }
