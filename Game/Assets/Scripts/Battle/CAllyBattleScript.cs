@@ -12,10 +12,16 @@ public class CAllyBattleScript : UnitScript
 		ATTACK_CHOSEN,  //player has chosen to attack, now needs to select which enemy to attack. (cycle through targets, select target, move to ATTACKING state)
 		ATTACKING,		//player has selected target to attack, play animation, resolve attack, move unit back to point of origin, the move to STATUS_EFFECT state)
 		USEITEM_CHOSEN, //player has chosen to use an item, display inventory on screen to allow player to select from useable items. (Cycle through items, select item, move to ITEM_PICKED)
-		ITEM_PICKED,    //item has been picked, now needs to select the target to use this item on.  (Cycle through targets, select target, move to USING_ITEM)
+		ITEM_PICKED_SINGLEDMG,    //item has been picked, now needs to select the target to use this item on.  (Cycle through targets, select target, move to USING_ITEM)
+		ITEM_PICKED_AOEDMG,
+		ITEM_PICKED_SINGLEHEAL,
+		ITEM_PICKED_AOEHEAL,
 		USING_ITEM,     //Player has chosen which item to use and what target to use it on, play animation, resolve item useage, then move to STATUS_EFFECT
 		USEMAGIC_CHOSEN, //same as USEITEM_CHOSEN, but with magic, (cycle through and select with spell to cast, move to SPELL_PICKED)
-		SPELL_PICKED,	 //same at ITEM_PICKED, but with magic, (Cycle through targets, select target, move to CASTING_SPELL)
+		SPELL_PICKED_SINGLEDMG,	 //same at ITEM_PICKED, but with magic, (Cycle through targets, select target, move to CASTING_SPELL)
+		SPELL_PICKED_AOEDMG,
+		SPELL_PICKED_SINGLEHEAL,
+		SPELL_PICKED_AOEHEAL,
 		CASTING_SPELL,   //player has chosen a spell and a target, play animation, resolve spell effect, move to STATUS_EFFECT
 		STATUS_EFFECTS	 //Cycle through status effects, tick off one cycle of the effects, remove/update effects, inform TURNWATCHER of end of turn and end your turn.
 	}
@@ -167,7 +173,19 @@ public class CAllyBattleScript : UnitScript
 			{
 			}
 			break;
-		case (int)ALLY_STATES.ITEM_PICKED:
+		case (int)ALLY_STATES.ITEM_PICKED_SINGLEDMG:
+			{
+			}
+			break;
+		case (int)ALLY_STATES.ITEM_PICKED_AOEDMG:
+			{
+			}
+			break;
+		case (int)ALLY_STATES.ITEM_PICKED_SINGLEHEAL:
+			{
+			}
+			break;
+		case (int)ALLY_STATES.ITEM_PICKED_AOEHEAL:
 			{
 			}
 			break;
@@ -179,7 +197,19 @@ public class CAllyBattleScript : UnitScript
 			{
 			}
 			break;
-		case (int)ALLY_STATES.SPELL_PICKED:
+		case (int)ALLY_STATES.SPELL_PICKED_SINGLEDMG:
+			{
+			}
+			break;
+		case (int)ALLY_STATES.SPELL_PICKED_AOEDMG:
+			{
+			}
+			break;
+		case (int)ALLY_STATES.SPELL_PICKED_SINGLEHEAL:
+			{
+			}
+			break;
+		case (int)ALLY_STATES.SPELL_PICKED_AOEHEAL:
 			{
 			}
 			break;
@@ -307,7 +337,7 @@ public class CAllyBattleScript : UnitScript
 				m_nTargetPositionOnField = lowPos;
 			}
 
-			UpdateTargetReticles();
+			UpdateTargetReticles(true);
 		}
 		else if(Input.GetKeyDown(KeyCode.UpArrow))
 		{
@@ -331,7 +361,7 @@ public class CAllyBattleScript : UnitScript
 				//TODO: adjust for units Range and targets position in formation so that you can't target units that are out of range.
 				m_nTargetPositionOnField = hiPos;
 			}
-			UpdateTargetReticles();
+			UpdateTargetReticles(true);
 		}
 		else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
 		{
@@ -376,6 +406,25 @@ public class CAllyBattleScript : UnitScript
 			m_nItemSelectionIndex--;
 			if(m_nItemSelectionIndex < 0)
 				m_nItemSelectionIndex = theInv.Count - 1;
+		}
+	}
+
+	public void ChangeEnemyTarget(int p_nIndex)
+	{
+		if(m_nState == (int)ALLY_STATES.ATTACK_CHOSEN || m_nState == (int)ALLY_STATES.ITEM_PICKED_SINGLEDMG || m_nState == (int)ALLY_STATES.SPELL_PICKED_SINGLEDMG)
+		{
+			m_nTargetPositionOnField = p_nIndex;
+			UpdateTargetReticles(true);
+		}
+	}
+
+	public void ChangeAllyTarget(int p_nIndex)
+	{
+		//TODO: add in logic for targetting a dead ally to work only if you're trying to revive them
+		if(m_nState == (int)ALLY_STATES.ITEM_PICKED_SINGLEHEAL || m_nState == (int)ALLY_STATES.SPELL_PICKED_SINGLEHEAL)
+		{
+			m_nTargetPositionOnField = p_nIndex;
+			UpdateTargetReticles(false);
 		}
 	}
 
@@ -568,17 +617,23 @@ public class CAllyBattleScript : UnitScript
 		}
 
 	}
-	void UpdateTargetReticles()
+	void UpdateTargetReticles(bool _isEnemy)
 	{
 		for(int i = 0; i < 6; ++i)
 		{
 			if(i == m_nTargetPositionOnField)
 			{
-				GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = true;
+				if(_isEnemy == true)
+					GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = true;
+				else 
+					GameObject.Find("Ally_Cursor"+i).GetComponent<SpriteRenderer>().enabled = true;
 			}
 			else
 			{
-				GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
+				if(_isEnemy == true)
+					GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
+				else
+					GameObject.Find("Ally_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
 			}
 		}
 	}

@@ -155,6 +155,7 @@
      <None Include="Assets\Tiled2Unity\Imported\Inon Forest.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\Armory.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
+     <None Include="Assets\Scripts\Battle\Spells\New Text Document.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\NFAA.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\VortexEffect.shader" />
@@ -194,6 +195,7 @@
      <None Include="Assets\Resources\Units\NPCs\Female\Lydia\Lydia_InonDialogue.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Main Char. Room.tiled2unity.xml" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
+     <None Include="Assets\Scripts\Battle\Enemies\New Text Document.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ContrastComposite.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset3.shader" />
@@ -268,6 +270,7 @@
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
      <None Include="Assets\Resources\Units\NPCs\Male\Matthew\Matthew_InonDialogue.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Luminance.shader" />
+     <None Include="Assets\Scripts\Battle\Status Effects\New Text Document.txt" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
      <None Include="Assets\Tiled2Unity\Imported\Solomonia_house5of8.tiled2unity.xml" />
