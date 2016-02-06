@@ -174,6 +174,7 @@ public class UnitScript : MonoBehaviour
 		GameObject tw = GameObject.Find("TurnWatcher");
 		if(tw)
 		{
+			m_bIsMyTurn = false;
 			tw.GetComponent<TurnWatcherScript>().MyTurnIsOver(gameObject);
 			m_bFirstPass = true;
 		}

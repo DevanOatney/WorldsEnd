@@ -51,13 +51,16 @@ public class TurnWatcherScript : MonoBehaviour
 	//speed of the counter showing the characters current exp
 	int m_fExpTickSpeed = 1;
 	float m_fExpBucket = 0.01f;
-	bool[] m_bHasEnteredEXP = {false, false, false};
+	bool[] m_bHasEnteredEXP = {false, false, false, false, false, false};
 
 
 	//for leveling up characters
 	public GameObject m_gLevelUpObj;
 	//flag for if the players has already pressed return during the victory screen
 	bool m_bHasPressedEnter = false;
+	[HideInInspector]
+	float m_fChanceToEscape = 60.0f;
+	public float GetChanceToEscape() {return m_fChanceToEscape;}
 
 	void Awake()
 	{
@@ -235,6 +238,15 @@ public class TurnWatcherScript : MonoBehaviour
 
 	}
 
+	public void PlayMessage(string p_szMessage)
+	{
+		m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = false;
+		GameObject messageWindow = GameObject.Find("MessageWindow");
+		messageWindow.GetComponent<SpriteRenderer>().enabled = true;
+		GameObject.Find("TextOnWindow").SetActive(true);
+		messageWindow.GetComponent<MessageWindowScript>().BeginMessage(p_szMessage);
+	}
+
 	void DoneReadingMessage()
 	{
 		ds.m_dStoryFlagField.Remove("Battle_ReadMessage");
@@ -320,7 +332,7 @@ public class TurnWatcherScript : MonoBehaviour
 				//Display their name on the left of the box
 				GUI.Box(new Rect(fXAdjust, fYAdjust, 100, 25.0f), Ally.name);
 				fXAdjust += 105.0f;
-				GUI.Label(new Rect(fXAdjust, fYAdjust, 40.0f, 25.0f),"Lv: " +  m_lPreviousLevels[Ally.name].ToString());
+				//GUI.Label(new Rect(fXAdjust, fYAdjust, 40.0f, 25.0f),"Lv: " +  m_lPreviousLevels[Ally.name].ToString());
 				fXAdjust += 50.0f;
 
 
@@ -335,7 +347,7 @@ public class TurnWatcherScript : MonoBehaviour
 
 				//Display their current exp just to the right
 				//int digitCount = (int)(Mathf.Log10( m_lPreviousExperience[Ally.name]) +1);
-				GUI.Label(new Rect(fXAdjust, fYAdjust, 30.0f, 25.0f), m_lPreviousExperience[Ally.name].ToString());
+				//GUI.Label(new Rect(fXAdjust, fYAdjust, 30.0f, 25.0f), m_lPreviousExperience[Ally.name].ToString());
 
 
 
@@ -345,99 +357,6 @@ public class TurnWatcherScript : MonoBehaviour
 
 
 
-			GUI.EndGroup();
-		}
-		//check to see if the unit that is acting is a ally
-		else if(m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_nUnitType <= (int)UnitScript.UnitTypes.NPC && m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn == true)
-		{
-			//For incrementing down the screen to display each character
-			float fYAdjust = 15.0f;
-			//For shifting to the right as things are drawn
-			float fXAdjust = 0.0f;
-			//get a list of all of the allies on the map
-			GameObject[] Allies = GameObject.FindGameObjectsWithTag("Ally");
-			Vector2 WidthOfBackgroundBox = new Vector2(200,	90);
-			Rect BackgroundBoxForHPs = new Rect(Screen.width - WidthOfBackgroundBox.x, 0, WidthOfBackgroundBox.x, WidthOfBackgroundBox.y);
-
-			GUI.BeginGroup(BackgroundBoxForHPs);
-			GUI.Box(new Rect(0, 0, WidthOfBackgroundBox.x, WidthOfBackgroundBox.y), "");
-
-
-			//store the initial font size to revert back to it
-			int backup = GUI.skin.label.fontSize;
-			GUI.skin.label.fontSize = 16;
-			GUI.skin.box.fontSize = 16;
-			foreach(GameObject Ally in Allies)
-			{
-				//Debug.Log(Ally.name + " pos on field " + Ally.GetComponent<UnitScript>().m_nPositionOnField);
-				//base the y position as to the units position on the field so it correlates correctly
-				switch(Ally.GetComponent<UnitScript>().FieldPosition)
-				{
-				case 0:
-				{
-					fYAdjust = 30.0f;
-				}
-					break;
-				case 1:
-				{
-					fYAdjust = 0.0f;
-				}
-					break;
-				case 2:
-				{
-					fYAdjust = 60.0f;
-				}
-					break;
-				}
-
-				//Draw a background box for fun
-				GUI.Box(new Rect(0, fYAdjust, 200, 30.0f), "");
-				//Display their name on the left of the box
-				GUI.Box(new Rect(fXAdjust, fYAdjust, 100, 30.0f), Ally.name);
-				fXAdjust += 100.0f;
-				//Debug.Log(Ally.name + " is my turn? " + Ally.GetComponent<UnitScript>().m_bIsMyTurn);
-				Color colorBackUp = GUI.color;
-				if(Ally.GetComponent<UnitScript>().m_bIsMyTurn == true)
-				{
-					//Draw a selector box around the label of the person currently acting.. just to help out the user.. /shrug
-					//draw selector
-					GUIStyle selectorStyle = new GUIStyle(GUI.skin.box);
-					selectorStyle.normal.background = m_t2dSelector;
-					GUI.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
-					GUI.Box((new Rect(0,fYAdjust+5, 200, 15)), "",selectorStyle);
-				}
-
-				//coding at 3am.. too sleepy to bother with casts... lol
-				float healthPercent = ((float)Ally.GetComponent<UnitScript>().GetCurHP() / (float)Ally.GetComponent<UnitScript>().GetMaxHP());
-				if(healthPercent > 0.8)
-					GUI.color = Color.green;
-				else if(healthPercent > 0.3)
-					GUI.color = Color.yellow;
-				else if(healthPercent > 0)
-					GUI.color = Color.red;
-				else if(Ally.GetComponent<UnitScript>().GetCurHP() == 0)
-					GUI.color = Color.black;
-
-				//Display their current health just to the right
-				GUI.Label(new Rect(fXAdjust, fYAdjust, 30, 30.0f), Ally.GetComponent<UnitScript>().GetCurHP().ToString());
-				fXAdjust += 30.0f;
-
-
-				//Set the color back to what it started at
-				GUI.color = colorBackUp;
-				//Draw a '/' mark just to the right of the current health
-				GUI.Label(new Rect(fXAdjust, fYAdjust, 15, 30.0f), " / ");
-				fXAdjust += 15.0f;
-				//Display their max hp to the right of the '/' Mark
-				GUI.Label(new Rect(fXAdjust, fYAdjust, 30, 30.0f), Ally.GetComponent<UnitScript>().GetMaxHP().ToString());
-
-
-				//reset the x adjustment for the next character
-				fXAdjust = 0.0f;
-			}
-			//set font back to what it was
-			GUI.skin.label.fontSize = backup;
-			GUI.skin.box.fontSize = backup;
 			GUI.EndGroup();
 		}
 	}
@@ -545,8 +464,6 @@ public class TurnWatcherScript : MonoBehaviour
 
 	void Win()
 	{
-		foreach(string s in m_lPreviousLevels.Keys)
-			Debug.Log(s);
 		//Play victory fanfare
 		GetComponent<AudioSource>().Stop();
 		GetComponent<AudioSource>().PlayOneShot(m_acVictoryFanfare, 0.5f + ds.m_fSFXVolume);
@@ -594,6 +511,14 @@ public class TurnWatcherScript : MonoBehaviour
 		}
 		ds.SetParty(party);
 
+	}
+
+	public void Escape()
+	{
+		BeginFading();
+		FadeInOutSound obj = Camera.main.GetComponent<FadeInOutSound>();
+		StartCoroutine(obj.FadeAudio(1.0f, FadeInOutSound.Fade.Out));
+		Invoke("Finish", 1.0f);
 	}
 
 	void Finish()

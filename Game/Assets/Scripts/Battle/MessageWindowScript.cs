@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class MessageWindowScript : MonoBehaviour 
 {
+	GameObject m_goTextWindow;
 	string m_szCompleteMessage = "";
 	int m_nLetterIter = 0;
 	bool m_bReadMessage = false;
@@ -11,8 +12,9 @@ public class MessageWindowScript : MonoBehaviour
 	float m_fTextBucket = 0.05f;
 	bool m_bTimeToClose = false;
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		m_goTextWindow = GameObject.Find("TextOnWindow");
 	}
 	
 	// Update is called once per frame
@@ -33,7 +35,7 @@ public class MessageWindowScript : MonoBehaviour
 			else if(m_fTextTimer >= m_fTextBucket)
 			{
 				m_nLetterIter++;
-				if(m_nLetterIter >= m_szCompleteMessage.Length)
+				if(m_nLetterIter > m_szCompleteMessage.Length)
 				{
 
 					m_bTimeToClose = true;
@@ -43,13 +45,18 @@ public class MessageWindowScript : MonoBehaviour
 					string newLine = "";
 					for(int i = 0; i < m_nLetterIter; ++i)
 						newLine += m_szCompleteMessage[i];
-					GameObject.Find("TextOnWindow").GetComponent<Text>().text = newLine;
+					m_goTextWindow.GetComponent<Text>().text = newLine;
 					m_fTextTimer = 0.0f;
 				}
-
 			}
 			else
 				m_fTextTimer += Time.deltaTime;
+
+			if(Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
+			{
+				m_nLetterIter = m_szCompleteMessage.Length;
+				m_goTextWindow.GetComponent<Text>().text = m_szCompleteMessage;
+			}
 		}
 	}
 

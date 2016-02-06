@@ -11,6 +11,7 @@ public class CAllyBattleScript : UnitScript
 		ACTION_SELECTION, //player chooses between (Attack, Defend, Magic, Use Item, Switch, or Escape) (Cycle through options, select one, move to whichever state was selected)
 		ATTACK_CHOSEN,  //player has chosen to attack, now needs to select which enemy to attack. (cycle through targets, select target, move to ATTACKING state)
 		ATTACKING,		//player has selected target to attack, play animation, resolve attack, move unit back to point of origin, the move to STATUS_EFFECT state)
+		DEFENDING,		//unit starts animation for defending, then moves to STATUS_EFFECT
 		USEITEM_CHOSEN, //player has chosen to use an item, display inventory on screen to allow player to select from useable items. (Cycle through items, select item, move to ITEM_PICKED)
 		ITEM_PICKED_SINGLEDMG,    //item has been picked, now needs to select the target to use this item on.  (Cycle through targets, select target, move to USING_ITEM)
 		ITEM_PICKED_AOEDMG,
@@ -23,6 +24,9 @@ public class CAllyBattleScript : UnitScript
 		SPELL_PICKED_SINGLEHEAL,
 		SPELL_PICKED_AOEHEAL,
 		CASTING_SPELL,   //player has chosen a spell and a target, play animation, resolve spell effect, move to STATUS_EFFECT
+		SWITCHING,		 //Unit switches with either unit infront or behind (depending on formation) afterward move to STATUS_EFFECT
+		ESCAPING_FAILED,		 //Unit tries to escape, if failed go to STATUS_EFFECT, if succeeded end the fight.
+		ESCAPING_SUCCEEDED,
 		STATUS_EFFECTS	 //Cycle through status effects, tick off one cycle of the effects, remove/update effects, inform TURNWATCHER of end of turn and end your turn.
 	}
 		
@@ -169,6 +173,10 @@ public class CAllyBattleScript : UnitScript
 			{
 			}
 			break;
+		case (int)ALLY_STATES.DEFENDING:
+			{
+			}
+			break;
 		case (int)ALLY_STATES.USEITEM_CHOSEN:
 			{
 			}
@@ -215,6 +223,20 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.CASTING_SPELL:  
 			{
+			}
+			break;
+		case (int)ALLY_STATES.SWITCHING:
+			{
+			}
+			break;
+		case (int)ALLY_STATES.ESCAPING_FAILED:
+			{
+				m_nState = (int)ALLY_STATES.STATUS_EFFECTS;
+			}
+			break;
+		case (int)ALLY_STATES.ESCAPING_SUCCEEDED:
+			{
+				m_twTurnWatcher.Escape();
 			}
 			break;
 		case (int)ALLY_STATES.STATUS_EFFECTS:	 
@@ -267,7 +289,7 @@ public class CAllyBattleScript : UnitScript
 			{
 				//Defend
 				m_bAmIDefending = true;
-				m_nState = (int)ALLY_STATES.STATUS_EFFECTS;
+				m_nState = (int)ALLY_STATES.DEFENDING;
 			}
 			break;
 		case 2:
@@ -285,12 +307,13 @@ public class CAllyBattleScript : UnitScript
 		case 4:
 			{
 				//Switch
-
+				m_nState = (int)ALLY_STATES.SWITCHING;
 			}
 			break;
 		case 5:
 			{
 				//Escape
+				AttemptToEscape();
 			}
 			break;
 		}
@@ -689,5 +712,68 @@ public class CAllyBattleScript : UnitScript
 			break;
 		}
 		transform.position = m_vInitialPos;
+	}
+
+	public void AttemptToEscape()
+	{
+		float _fChanceToEscape = m_twTurnWatcher.GetChanceToEscape();
+		if(_fChanceToEscape < 1.0f)
+		{
+			//Can't escape this fight, so auto fail.
+			FailedToEscape();
+			m_nState = (int)ALLY_STATES.STATUS_EFFECTS;
+		}
+		else
+		{
+			GameObject[] _allies = GameObject.FindGameObjectsWithTag("Ally");
+			int partyAveLevel = 0;
+			foreach(GameObject ally in _allies)
+			{
+				UnitScript unit = ally.GetComponent<UnitScript>();
+				if(unit.GetCurHP() > 0)
+				{
+					partyAveLevel += unit.GetUnitLevel();
+				}
+			}
+			partyAveLevel = partyAveLevel / _allies.Length;
+			GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
+			int enemyAveLevel = 0;
+			foreach(GameObject enemy in _enemies)
+			{
+				UnitScript unit = enemy.GetComponent<UnitScript>();
+				if(unit.GetCurHP() > 0)
+				{
+					enemyAveLevel += GetUnitLevel();
+				}
+			}
+			enemyAveLevel = enemyAveLevel / _enemies.Length;
+			float escChanceMod = partyAveLevel - enemyAveLevel;
+
+			int escRoll = UnityEngine.Random.Range(0, 100);
+
+			Debug.Log("Esc base : " + _fChanceToEscape + "  Esc mod : " + escChanceMod + " Esc Roll : " + escRoll);
+			if(escRoll <= escChanceMod + _fChanceToEscape)
+			{
+				//succeeded
+				SucceededToEscape();
+			}
+			else
+			{
+				//failed to escape
+				FailedToEscape();
+			}
+		}
+	}
+	void SucceededToEscape()
+	{
+		//TODO: add in a message about succeeding to escape before ending the fight
+		m_nState = (int)ALLY_STATES.ESCAPING_SUCCEEDED;
+		m_twTurnWatcher.PlayMessage("Successfully escaped the battle!");
+	}
+	void FailedToEscape()
+	{
+		//TODO: add in a message about failing to escape before transitioning states
+		m_nState = (int)ALLY_STATES.ESCAPING_FAILED;
+		m_twTurnWatcher.PlayMessage("Failed to escape the battle...");
 	}
 }
