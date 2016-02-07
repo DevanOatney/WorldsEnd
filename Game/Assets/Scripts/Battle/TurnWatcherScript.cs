@@ -28,12 +28,10 @@ public class TurnWatcherScript : MonoBehaviour
 
 	//bool so that after everything is instantiated we can set up a turn order
 	bool m_bHasStarted = false;
+	bool m_bOneShotAfterVictory = false;
 
-	//to keep the screen from fading before death animations happen
 	public List<AudioClip>   m_lACMuicFiles = new List<AudioClip> ();
-
 	public Texture2D m_t2dSelector;
-
 	public AudioClip m_acVictoryFanfare;
 
 	//list of levels of enemies that are defeated
@@ -51,7 +49,7 @@ public class TurnWatcherScript : MonoBehaviour
 	//speed of the counter showing the characters current exp
 	int m_fExpTickSpeed = 1;
 	float m_fExpBucket = 0.01f;
-	bool[] m_bHasEnteredEXP = {false, false, false, false, false, false};
+
 
 
 	//for leveling up characters
@@ -61,6 +59,7 @@ public class TurnWatcherScript : MonoBehaviour
 	[HideInInspector]
 	float m_fChanceToEscape = 60.0f;
 	public float GetChanceToEscape() {return m_fChanceToEscape;}
+	List<GameObject> m_lPartyPanels = new List<GameObject>();
 
 	void Awake()
 	{
@@ -115,10 +114,6 @@ public class TurnWatcherScript : MonoBehaviour
 			//Set it's position on the field accordingly
 			enemy.GetComponent<UnitScript>().FieldPosition = FormationCounter;
 			enemy.GetComponent<UnitScript>().SetUnitLevel(loadedEnemy.GetComponent<UnitScript>().GetUnitLevel());
-			//if(enemy.name == "CharacterReference")
-
-
-
 			//e the stats of the unit to the object it instantiated from
 			enemy.GetComponent<UnitScript>().SetMaxHP(loadedEnemy.GetComponent<UnitScript>().GetMaxHP());
 			enemy.GetComponent<UnitScript>().SetCurHP(loadedEnemy.GetComponent<UnitScript>().GetCurHP());
@@ -159,8 +154,17 @@ public class TurnWatcherScript : MonoBehaviour
 			Ally.GetComponent<CAllyBattleScript>().m_idLegSlot = g.m_idLegSlot;
 			Ally.GetComponent<CAllyBattleScript>().m_idTrinket1 = g.m_idTrinket1;
 			Ally.GetComponent<CAllyBattleScript>().m_idTrinket2 = g.m_idTrinket2;
+			FormationCounter++;
 		}
+		for(int i = FormationCounter; i <= FormationCounter; ++i)
+		{
+			m_lPartyPanels.Add(GameObject.Find("Character"+i));
 
+		}
+		for(;FormationCounter < 6; ++FormationCounter)
+		{
+			GameObject.Find("Character"+FormationCounter).SetActive(false);
+		}
 
 		m_bHasStarted = false;
 		ds.SetMasterVolume();
@@ -244,7 +248,7 @@ public class TurnWatcherScript : MonoBehaviour
 		GameObject messageWindow = GameObject.Find("MessageWindow");
 		messageWindow.GetComponent<SpriteRenderer>().enabled = true;
 		GameObject.Find("TextOnWindow").SetActive(true);
-		messageWindow.GetComponent<MessageWindowScript>().BeginMessage(p_szMessage);
+		messageWindow.GetComponent<MessageWindowScript>().AddMessage(p_szMessage);
 	}
 
 	void DoneReadingMessage()
@@ -274,13 +278,21 @@ public class TurnWatcherScript : MonoBehaviour
 			//get a list of all of the allies on the map
 			GameObject[] Allies = GameObject.FindGameObjectsWithTag("Ally");
 
-			if(Input.GetKeyUp(KeyCode.Return) && m_VictoryScreenOneShot == false)
+			if(m_bOneShotAfterVictory == false)
 			{
+				m_bOneShotAfterVictory = true;
+				GameObject.Find("Party").GetComponent<Animator>().Play("Party_SlideIn");
+				GameObject.Find("ItemWon").GetComponent<Animator>().Play("ItemWon_SlideIn");
+				foreach(GameObject Ally in Allies)
+					StartCoroutine("GainExp", Ally);
+			}
+
+			if((Input.GetKeyUp(KeyCode.Return) || Input.GetMouseButtonDown(0)) && m_VictoryScreenOneShot == false)
+			{
+				//If this is the first time the player hits the button during the victory screen, just stop animating things and show the final results
 				if(m_bHasPressedEnter == false)
 				{
 					m_bHasPressedEnter = true;
-
-					
 					foreach(GameObject Ally in Allies)
 					{
 						m_lPreviousExperience[Ally.name] = Ally.GetComponent<CAllyBattleScript>().m_nExperienceToLevel;
@@ -288,6 +300,7 @@ public class TurnWatcherScript : MonoBehaviour
 						m_lNewExperienceTotal[Ally.name] = 0;
 					}
 				}
+				//If this is the second time the player hits the button(or if the animations are over), fade and end the battle scene
 				else
 				{
 					//just move on
@@ -298,66 +311,10 @@ public class TurnWatcherScript : MonoBehaviour
 					Invoke("Finish", 1.0f);
 				}
 			}
-
-			GUI.BeginGroup(new Rect(Screen.width * 0.3f, Screen.height * 0.3f, 200, 200));
-			GUI.Box(new Rect(0, 0, 200, 200), "");
-			//For incrementing down the screen to display each character
-			float fYAdjust = 15.0f;
-			//For shifting to the right as things are drawn
-			float fXAdjust = 0.0f;
-			foreach(GameObject Ally in Allies)
-			{
-				//base the y position as to the units position on the field so it correlates correctly
-				switch(Ally.GetComponent<UnitScript>().FieldPosition)
-				{
-				case 0:
-				{
-					fYAdjust = 15.0f + 25.0f;
-				}
-					break;
-				case 1:
-				{
-					fYAdjust = 15.0f;
-				}
-					break;
-				case 2:
-				{
-					fYAdjust = 15.0f + 50.0f;
-				}
-					break;
-				}
-
-				//Draw a background box for fun
-				GUI.Box(new Rect(0, fYAdjust, 200, 25.0f), "");
-				//Display their name on the left of the box
-				GUI.Box(new Rect(fXAdjust, fYAdjust, 100, 25.0f), Ally.name);
-				fXAdjust += 105.0f;
 				//GUI.Label(new Rect(fXAdjust, fYAdjust, 40.0f, 25.0f),"Lv: " +  m_lPreviousLevels[Ally.name].ToString());
-				fXAdjust += 50.0f;
-
-
-				//Start the coroutine for the unit to gain exp
-				//TODO: Set this up so it's only called once per character
-				if(m_bHasEnteredEXP[Ally.GetComponent<UnitScript>().FieldPosition] == false)
-				{
-					m_bHasEnteredEXP[Ally.GetComponent<UnitScript>().FieldPosition] = true;
-					StartCoroutine("GainExp", Ally);
-				}
-
-
 				//Display their current exp just to the right
 				//int digitCount = (int)(Mathf.Log10( m_lPreviousExperience[Ally.name]) +1);
 				//GUI.Label(new Rect(fXAdjust, fYAdjust, 30.0f, 25.0f), m_lPreviousExperience[Ally.name].ToString());
-
-
-
-				//reset the x adjustment for the next character
-				fXAdjust = 0.0f;
-			}
-
-
-
-			GUI.EndGroup();
 		}
 	}
 
