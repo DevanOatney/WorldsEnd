@@ -156,10 +156,10 @@ public class TurnWatcherScript : MonoBehaviour
 			Ally.GetComponent<CAllyBattleScript>().m_idTrinket2 = g.m_idTrinket2;
 			FormationCounter++;
 		}
-		for(int i = FormationCounter; i <= FormationCounter; ++i)
+		for(int i = 0; i < allies.Count; ++i)
 		{
 			m_lPartyPanels.Add(GameObject.Find("Character"+i));
-
+			UpdateCharacterPanel(m_lPartyPanels[i].GetComponent<CharacterPanelContainer>(), allies[i]);
 		}
 		for(;FormationCounter < 6; ++FormationCounter)
 		{
@@ -171,6 +171,85 @@ public class TurnWatcherScript : MonoBehaviour
 		GetComponent<AudioSource>().PlayOneShot(m_lACMuicFiles[ds.m_nMusicIter], 0.5f + ds.m_fMusicVolume); 
 	}
 
+	void UpdateCharacterPanel(CharacterPanelContainer _cpc, DCScript.CharacterData _c)
+	{
+		GameObject unit = GameObject.Find(_c.m_szCharacterName);
+		_cpc.m_goCharacterName.GetComponent<Text>().text = _c.m_szCharacterName;
+		_cpc.m_goCharacterLevel.FindChild("Text").GetComponent<Text>().text = _c.m_nLevel.ToString();
+		_cpc.m_goCharacterEXP.FindChild("Text").GetComponent<Text>().text = _c.m_nCurrentEXP.ToString();
+		_cpc.m_goCharacterMaxHP.GetComponent<Text>().text = _c.m_nMaxHP.ToString();
+		_cpc.m_goCharacterPortrait.GetComponent<Image>().sprite = Sprite.Create(unit.GetComponent<CAllyBattleScript>().m_tLargeBust,
+			new Rect(0, 0, unit.GetComponent<CAllyBattleScript>().m_tLargeBust.width, unit.GetComponent<CAllyBattleScript>().m_tLargeBust.height),
+			new Vector2(0.5f, 0.5f));
+
+
+
+		//The rest is the mess that is figuring out the current hp in regards to digits and displaying the cur health value in a color coded manner... I really never want to look at this code again, lol
+		#region HealthMess
+		float fPercentHealthLeft = (float)(_c.m_nCurHP / _c.m_nMaxHP);
+		Color cHealthColor = Color.green;
+		if(fPercentHealthLeft < 0.3f)
+			cHealthColor = Color.red;
+		else if(fPercentHealthLeft < 0.6f)
+			cHealthColor = Color.yellow;
+		int nDigitCount = (int)(Mathf.Log10(_c.m_nCurHP) +1);
+
+		for(int i = 0; i < nDigitCount; ++i)
+		{
+			Transform _tDigit = null;
+			switch(i)
+			{
+			case 0:
+				{
+					_tDigit = _cpc.m_goCharacterCurHP.FindChild("Single");
+				}
+				break;
+			case 1:
+				{
+					_tDigit = _cpc.m_goCharacterCurHP.FindChild("Ten");
+				}
+				break;
+			case 2:
+				{
+					_tDigit = _cpc.m_goCharacterCurHP.FindChild("Hundred");
+				}
+				break;
+			case 3:
+				{
+					_tDigit = _cpc.m_goCharacterCurHP.FindChild("Thousand");
+				}
+				break;
+			}
+			_tDigit.GetComponent<Text>().text = _c.m_nCurHP.ToString()[_c.m_nCurHP.ToString().Length-i-1].ToString();
+			_tDigit.GetComponent<Text>().color = cHealthColor;
+		}
+		for(int i = nDigitCount+1; i < 5; ++i)
+		{
+			switch(i)
+			{
+			case 2:
+				{
+					Transform _tDigit = _cpc.m_goCharacterCurHP.FindChild("Ten");
+					_tDigit.GetComponent<Text>().text = "";
+				}
+				break;
+			case 3:
+				{
+					Transform _tDigit = _cpc.m_goCharacterCurHP.FindChild("Hundred");
+					_tDigit.GetComponent<Text>().text = "";
+				}
+				break;
+			case 4:
+				{
+					Transform _tDigit = _cpc.m_goCharacterCurHP.FindChild("Thousand");
+					_tDigit.GetComponent<Text>().text = "";
+				}
+				break;
+			}
+		}
+		#endregion
+
+	}
 
 	IEnumerator  GainExp (GameObject gUnit) 
 	{
