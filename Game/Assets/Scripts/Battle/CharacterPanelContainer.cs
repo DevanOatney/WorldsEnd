@@ -15,8 +15,7 @@ public class CharacterPanelContainer : MonoBehaviour
 	public Transform m_goCharacterCurHP;
 	[HideInInspector]
 	public Transform m_goCharacterMaxHP;
-	// Use this for initialization
-	void Start () 
+	void Awake()
 	{
 		m_goCharacterLevel = transform.FindChild("LVL");
 		m_goCharacterEXP = transform.FindChild("EXP");
@@ -24,6 +23,11 @@ public class CharacterPanelContainer : MonoBehaviour
 		m_goCharacterCurHP = transform.FindChild("HP").FindChild("CURHP");
 		m_goCharacterMaxHP = transform.FindChild("HP").FindChild("MAXHP");
 		m_goCharacterPortrait = transform.FindChild("Portrait");
+	}
+	// Use this for initialization
+	void Start () 
+	{
+		
 	}
 	
 	// Update is called once per frame

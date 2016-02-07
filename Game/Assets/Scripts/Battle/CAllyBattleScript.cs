@@ -11,6 +11,7 @@ public class CAllyBattleScript : UnitScript
 		ACTION_SELECTION, //player chooses between (Attack, Defend, Magic, Use Item, Switch, or Escape) (Cycle through options, select one, move to whichever state was selected)
 		ATTACK_CHOSEN,  //player has chosen to attack, now needs to select which enemy to attack. (cycle through targets, select target, move to ATTACKING state)
 		ATTACKING,		//player has selected target to attack, play animation, resolve attack, move unit back to point of origin, the move to STATUS_EFFECT state)
+		ATTACK_RETURNING,
 		DEFENDING,		//unit starts animation for defending, then moves to STATUS_EFFECT
 		USEITEM_CHOSEN, //player has chosen to use an item, display inventory on screen to allow player to select from useable items. (Cycle through items, select item, move to ITEM_PICKED)
 		ITEM_PICKED_SINGLEDMG,    //item has been picked, now needs to select the target to use this item on.  (Cycle through targets, select target, move to USING_ITEM)
@@ -83,6 +84,7 @@ public class CAllyBattleScript : UnitScript
 	[HideInInspector]
 	public ItemLibrary.ItemData m_idTrinket2;
 
+	Transform m_tTargetPositionOnField = null;
 
 	// Use this for initialization
 	void Start () 
@@ -166,11 +168,27 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.ATTACK_CHOSEN:
 			{
-				HandleSingleTargetInput();
+				HandleEnemySingleTargetInput();
+				if(Input.GetKeyDown(KeyCode.Return))
+				{
+					EnemyToAttackSelected(m_nTargetPositionOnField);
+				}
 			}
 			break;
 		case (int)ALLY_STATES.ATTACKING:
 			{
+				Vector3 toTarget = m_tTargetPositionOnField.position - transform.position;
+				if(toTarget.sqrMagnitude > 0.1f)
+				{
+					toTarget.Normalize();
+					transform.position += toTarget * m_fMovementSpeed * Time.deltaTime;
+				}
+				else
+				{
+					m_aAnim.SetBool("m_bIsMoving", false);
+					m_aAnim.SetBool("m_bIsAttacking", true);
+				}
+
 			}
 			break;
 		case (int)ALLY_STATES.DEFENDING:
@@ -335,56 +353,185 @@ public class CAllyBattleScript : UnitScript
 		}
 	}
 
-	void HandleSingleTargetInput()
+	void HandleEnemySingleTargetInput()
 	{
 		if(Input.GetKeyDown(KeyCode.DownArrow))
 		{
+			List<int> lValidPos = new List<int>();
 			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-			int lowPos = 5, hiPos = 0;
 			foreach(GameObject e in enemies)
 			{
-				if(e.GetComponent<UnitScript>().FieldPosition < lowPos)
-					lowPos = e.GetComponent<UnitScript>().FieldPosition;
-				if(e.GetComponent<UnitScript>().FieldPosition > hiPos)
-					hiPos = e.GetComponent<UnitScript>().FieldPosition;
+				lValidPos.Add(e.GetComponent<UnitScript>().FieldPosition);
 			}
-			if(m_nTargetPositionOnField++ < hiPos)
+			foreach(int n in lValidPos)
 			{
-				//TODO: adjust for units Range and targets position in formation so that you can't target units that are out of range.
-				m_nTargetPositionOnField++;
+				int index = m_nTargetPositionOnField;
+				while(index != 5)
+				{
+					index++;
+					if(index == n)
+					{
+						m_nTargetPositionOnField = index;
+						UpdateTargetReticles(true);
+						return;
+					}
+				}
+				index = m_nTargetPositionOnField;
+				while(index != 0)
+				{
+					index--;
+					if(index == n)
+					{
+						m_nTargetPositionOnField = index;
+						UpdateTargetReticles(true);
+						return;
+					}
+				}
 			}
-			//else wrap around to the lowest formation counter active on the field.
-			else
-			{
-				//TODO: adjust for units Range and targets position in formation so that you can't target units that are out of range.
-				m_nTargetPositionOnField = lowPos;
-			}
-
-			UpdateTargetReticles(true);
 		}
 		else if(Input.GetKeyDown(KeyCode.UpArrow))
 		{
+			List<int> lValidPos = new List<int>();
 			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-			int lowPos = 5, hiPos = 0;
 			foreach(GameObject e in enemies)
 			{
-				if(e.GetComponent<UnitScript>().FieldPosition < lowPos)
-					lowPos = e.GetComponent<UnitScript>().FieldPosition;
-				if(e.GetComponent<UnitScript>().FieldPosition > hiPos)
-					hiPos = e.GetComponent<UnitScript>().FieldPosition;
+				lValidPos.Add(e.GetComponent<UnitScript>().FieldPosition);
 			}
-			if(m_nTargetPositionOnField-- >= lowPos)
+			foreach(int n in lValidPos)
 			{
-				//TODO: adjust for units Range and targets position in formation so that you can't target units that are out of range.
-				m_nTargetPositionOnField--;
+				int index = m_nTargetPositionOnField;
+				while(index != 0)
+				{
+					index--;
+					if(index == n)
+					{
+						m_nTargetPositionOnField = index;
+						UpdateTargetReticles(true);
+						return;
+					}
+				}
+				index = m_nTargetPositionOnField;
+				while(index != 5)
+				{
+					index++;
+					if(index == n)
+					{
+						m_nTargetPositionOnField = index;
+						UpdateTargetReticles(true);
+						return;
+					}
+				}
+
 			}
-			//else wrap around to the highest formation counter active on the field.
+		}
+		else if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			List<int> lValidPos = new List<int>();
+			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+			foreach(GameObject e in enemies)
+			{
+				lValidPos.Add(e.GetComponent<UnitScript>().FieldPosition);
+			}
+			if(FieldPosition <= 2)
+			{
+				
+
+				foreach(int n in lValidPos)
+				{
+					if(m_nTargetPositionOnField + 3 == n)
+					{
+						m_nTargetPositionOnField = m_nTargetPositionOnField + 3;
+						UpdateTargetReticles(true);
+						return;
+					}
+				}
+				foreach(int n in lValidPos)
+				{
+					
+					if(m_nTargetPositionOnField + 3 == n)
+					{
+						m_nTargetPositionOnField = m_nTargetPositionOnField + 3;
+						UpdateTargetReticles(true);
+						return;
+					}
+					if(m_nTargetPositionOnField == 2)
+					{
+						if(m_nTargetPositionOnField + 1 == n)
+						{
+							//wrapped around, is top right available?
+							m_nTargetPositionOnField = m_nTargetPositionOnField + 1;
+							UpdateTargetReticles(true);
+							return;
+						}
+					}
+					else if(m_nTargetPositionOnField + 4 == n)
+					{
+						m_nTargetPositionOnField = m_nTargetPositionOnField + 4;
+						UpdateTargetReticles(true);
+						return;
+					}
+					if(m_nTargetPositionOnField == 0)
+					{
+						if(m_nTargetPositionOnField + 5 == n)
+						{
+							m_nTargetPositionOnField = m_nTargetPositionOnField + 5;
+							UpdateTargetReticles(true);
+							return;
+						}
+					}
+					else if(m_nTargetPositionOnField + 2 == n)
+					{
+						m_nTargetPositionOnField = m_nTargetPositionOnField + 2;
+						UpdateTargetReticles(true);
+						return;
+					}
+				}
+			}
 			else
 			{
-				//TODO: adjust for units Range and targets position in formation so that you can't target units that are out of range.
-				m_nTargetPositionOnField = hiPos;
+				//right side
+				foreach(int n in lValidPos)
+				{
+					if(m_nTargetPositionOnField - 3 == n)
+					{
+						m_nTargetPositionOnField = m_nTargetPositionOnField - 3;
+						UpdateTargetReticles(true);
+						return;
+					}
+					if(m_nTargetPositionOnField == 3)
+					{
+						if(m_nTargetPositionOnField - 1 == n)
+						{
+							m_nTargetPositionOnField = m_nTargetPositionOnField - 1;
+							UpdateTargetReticles(true);
+							return;
+						}
+					}
+					else if(m_nTargetPositionOnField - 4 == n)
+					{
+						m_nTargetPositionOnField = m_nTargetPositionOnField - 4;
+						UpdateTargetReticles(true);
+						return;
+					}
+					if(m_nTargetPositionOnField == 5)
+					{
+						if(m_nTargetPositionOnField - 5 == n)
+						{
+							m_nTargetPositionOnField = m_nTargetPositionOnField - 5;
+							UpdateTargetReticles(true);
+							return;
+						}
+					}
+					else if(m_nTargetPositionOnField - 2 == n)
+					{
+						m_nTargetPositionOnField = m_nTargetPositionOnField - 2;
+						UpdateTargetReticles(true);
+						return;
+					}
+
+				}
+
 			}
-			UpdateTargetReticles(true);
 		}
 		else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
 		{
@@ -714,6 +861,97 @@ public class CAllyBattleScript : UnitScript
 		transform.position = m_vInitialPos;
 	}
 
+	public void EnemyToAttackSelected(int p_nTargetPosition)
+	{
+		if(m_nState == (int)ALLY_STATES.ATTACK_CHOSEN)
+		{
+			GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
+			foreach(GameObject e in _enemies)
+			{
+				if(e.GetComponent<UnitScript>().FieldPosition == p_nTargetPosition)
+				{
+					ClearTargetReticles();
+					m_tTargetPositionOnField = GameObject.Find("Near_Enemy" + p_nTargetPosition).transform;
+
+					if(m_nUnitType == (int)UnitTypes.ALLY_MELEE)
+					{
+						m_nState = (int)ALLY_STATES.ATTACKING;
+						m_aAnim.SetBool("m_bIsMoving", true);
+					}
+					else if(m_nUnitType == (int)UnitTypes.ALLY_RANGED)
+					{
+						m_nState = (int)ALLY_STATES.ATTACK_RETURNING;
+						m_aAnim.SetBool("m_bIsAttacking", true);
+					}
+				}
+			}
+		}
+	}
+
+	void AttackAnimationEnd(int unitType) 
+	{
+		if(m_nUnitType == (int)UnitTypes.ALLY_MELEE)
+		{
+			m_nState = (int)ALLY_STATES.ATTACK_RETURNING;
+			m_aAnim.SetBool("m_bIsMoving", true);
+			if(CheckIfHit())
+			{
+				//HIT
+				int dmgAdjustment = UnityEngine.Random.Range(1, 5) + m_nStr;
+				GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+				foreach(GameObject tar in posTargs)
+				{
+					if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
+					{
+						tar.GetComponent<UnitScript>().AdjustHP(dmgAdjustment);
+					}
+				}
+			}
+			else
+			{
+				//MISS
+				GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+				foreach(GameObject tar in posTargs)
+				{
+					if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
+					{
+						tar.GetComponent<UnitScript>().Missed();
+					}
+				}
+			}
+		}
+		else if(m_nUnitType == (int)UnitTypes.ALLY_RANGED)
+		{
+			
+			GameObject goArrow = Instantiate(Resources.Load<GameObject>("Spell Effects/Arrow")) as GameObject;
+			goArrow.transform.position = transform.position;
+			int dmg = 0;
+			if(CheckIfHit())
+				dmg  = UnityEngine.Random.Range(1, 5) + m_nStr;
+			else
+				dmg = -1;
+			goArrow.GetComponent<ProjectileScript>().m_fSpeed = 20;
+			goArrow.GetComponent<ProjectileScript>().m_fRotationSpeed = 50;
+			GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+			foreach(GameObject tar in posTargs)
+			{
+				if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
+				{
+					goArrow.GetComponent<ProjectileScript>().m_goTarget = tar;
+				}
+			}
+			goArrow.GetComponent<ProjectileScript>().m_nDamageDealt = dmg;
+			Invoke("ChangeStateToStatusEffect", 2.0f);
+		}
+		m_aAnim.SetBool("m_bIsAttacking", false);
+	}
+
+	//Can't think of a better way for ranged units to wait until their projectile hits their target to wait.. since there could be more than one projectile.. and it seems silly to create a pointer/counter
+	void ChangeStateToStatusEffect()
+	{
+		m_nState = (int)ALLY_STATES.STATUS_EFFECTS;
+	}
+
 	public void AttemptToEscape()
 	{
 		float _fChanceToEscape = m_twTurnWatcher.GetChanceToEscape();
@@ -775,5 +1013,31 @@ public class CAllyBattleScript : UnitScript
 		//TODO: add in a message about failing to escape before transitioning states
 		m_nState = (int)ALLY_STATES.ESCAPING_FAILED;
 		m_twTurnWatcher.PlayMessage("Failed to escape the battle...");
+	}
+	bool CheckIfHit()
+	{
+		GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
+		foreach(GameObject tar in posTargs)
+		{
+			if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
+			{
+				int nChanceToHit = UnityEngine.Random.Range(0,100);
+				int nRange = 85 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
+				if(nRange < 5)
+					nRange = 5;
+				Debug.Log("Chance: " + nChanceToHit + "    Range: " + nRange);
+				if(nChanceToHit <	nRange)
+				{
+					//Target was hit
+					return true;
+				}
+				else
+				{
+					//target was missed
+					return false;
+				}
+			}
+		}
+		return false;
 	}
 }

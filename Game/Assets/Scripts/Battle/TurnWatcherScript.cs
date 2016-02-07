@@ -619,7 +619,7 @@ public class TurnWatcherScript : MonoBehaviour
 		}
 	}
 
-	public void Enemy_TargetSelected(int p_nIndex)
+	public void Enemy_TargetHighlighted(int p_nIndex)
 	{
 		GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		foreach(GameObject e in _enemies)
@@ -633,6 +633,28 @@ public class TurnWatcherScript : MonoBehaviour
 						if(unit.GetComponent<UnitScript>().m_bIsMyTurn == true)
 						{
 							unit.GetComponent<CAllyBattleScript>().ChangeEnemyTarget(p_nIndex);
+							return;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public void Enemy_TargetSelected(int p_nIndex)
+	{
+		GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		foreach(GameObject e in _enemies)
+		{
+			if(e.GetComponent<UnitScript>().FieldPosition == p_nIndex)
+			{
+				if(e.GetComponent<UnitScript>().GetCurHP() > 0)
+				{
+					foreach(GameObject unit in m_goUnits)
+					{
+						if(unit.GetComponent<UnitScript>().m_bIsMyTurn == true)
+						{
+							unit.GetComponent<CAllyBattleScript>().EnemyToAttackSelected(p_nIndex);
 							return;
 						}
 					}
