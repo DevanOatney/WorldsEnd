@@ -40,7 +40,7 @@ public class CAllyBattleScript : UnitScript
 	Vector2 m_vItemSelectorPosition = Vector2.zero; //positional data for the selector in the inventory
 
 	float m_fMovementSpeed = 8.0f; //The speed in which this unit moves accross the battlefield.
-	bool m_bAmIDefending = false;  //flag for if the unit was defending the previous turn
+	bool m_bAmIDefending = false;
 
 	//hooks to components/gameobjects
 	Animator m_aAnim;				
@@ -92,10 +92,10 @@ public class CAllyBattleScript : UnitScript
 		m_dcPersistantData = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		m_twTurnWatcher = GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>();
 		m_aAnim = GetComponent<Animator>();
-		m_vInitialPos = new Vector3();
+		if(m_aAnim == null)
+			m_aAnim = GetComponentInChildren<Animator>();
 		InitializeTargetReticle();
 		m_nState = (int)ALLY_STATES.DIALOGUE;
-
 		//Grab any status effects that are currently effecting this character.
 		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects();
 		foreach(DCScript.StatusEffect se in effects)
@@ -189,6 +189,25 @@ public class CAllyBattleScript : UnitScript
 					m_aAnim.SetBool("m_bIsAttacking", true);
 				}
 
+			}
+			break;
+		case (int)ALLY_STATES.ATTACK_RETURNING:
+			{
+				if(m_nUnitType == (int)UnitTypes.ALLY_MELEE)
+				{
+					Vector3 toTarget = m_vInitialPos - transform.position;
+					if(toTarget.sqrMagnitude > 0.1f)
+					{
+						toTarget.Normalize();
+						transform.position += toTarget * m_fMovementSpeed * Time.deltaTime;
+					}
+					else
+					{
+						transform.position = m_vInitialPos;
+						m_aAnim.SetBool("m_bIsMoving", false);
+						m_nState = (int)ALLY_STATES.STATUS_EFFECTS;
+					}
+				}
 			}
 			break;
 		case (int)ALLY_STATES.DEFENDING:
@@ -818,9 +837,11 @@ public class CAllyBattleScript : UnitScript
 	{
 		string szgoName = "Ally_StartPos" + FieldPosition.ToString();
 		GameObject go = GameObject.Find(szgoName);
+		m_vInitialPos = new Vector3();
 		m_vInitialPos.x = go.transform.position.x;
 		m_vInitialPos.y = go.transform.position.y;
 		m_vInitialPos.z = 0.0f;
+		transform.position = m_vInitialPos;
 		switch(FieldPosition)
 		{
 		case 0:
@@ -831,13 +852,13 @@ public class CAllyBattleScript : UnitScript
 		case 1:
 			{
 				//Middle right
-				GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
+				gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
 			}
 			break;
 		case 2:
 			{
 				//Bottom right
-				GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
+				gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
 			}
 			break;
 		case 3:
@@ -848,17 +869,16 @@ public class CAllyBattleScript : UnitScript
 		case 4:
 			{
 				//Middle Left
-				GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
+				gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
 			}
 			break;
 		case 5:
 			{
 				//Bottom left
-				GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
+				gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
 			}
 			break;
 		}
-		transform.position = m_vInitialPos;
 	}
 
 	public void EnemyToAttackSelected(int p_nTargetPosition)

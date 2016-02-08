@@ -24,38 +24,7 @@ public class StandardEnemyScript : UnitScript
 	{
 		SetUnitStats();
 		m_vInitialPos = new Vector3();
-		string szgoName = "Enemy_StartPos" + FieldPosition.ToString();
-		GameObject go = GameObject.Find(szgoName);
-		m_vInitialPos.x = go.transform.position.x;
-		m_vInitialPos.y = go.transform.position.y;
-		m_vInitialPos.z = 0.0f;
-		switch(FieldPosition)
-		{
-		case 0:
-			{
-				//Middle
-			}
-			break;
-		case 1:
-			{
-				//Top
-				if(GetComponent<SpriteRenderer>() != null)
-					GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1;
-				else 
-					GetComponentInChildren<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder - 1;
-			}
-			break;
-		case 2:
-			{
-				//Bottom
-				if(GetComponent<SpriteRenderer>() != null)
-					GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder + 1;
-				else 
-					GetComponentInChildren<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
-			}
-			break;
-		}
-		transform.position = m_vInitialPos;
+		UpdatePositionOnField();
 	}
 	
 	// Update is called once per frame
@@ -156,5 +125,52 @@ public class StandardEnemyScript : UnitScript
 		textPos.y += (gameObject.GetComponent<BoxCollider>().size.y * 0.75f);
 		textPos = Camera.main.WorldToViewportPoint(textPos);
 		newText.transform.position = textPos;
+	}
+
+	public void UpdatePositionOnField()
+	{
+		string szgoName = "Enemy_StartPos" + FieldPosition.ToString();
+		GameObject go = GameObject.Find(szgoName);
+		m_vInitialPos.x = go.transform.position.x;
+		m_vInitialPos.y = go.transform.position.y;
+		m_vInitialPos.z = 0.0f;
+		switch(FieldPosition)
+		{
+		case 0:
+			{
+				//Top Left
+			}
+			break;
+		case 1:
+			{
+				//Middle Left
+				m_aAnim.gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
+			}
+			break;
+		case 2:
+			{
+				//Bottom Left
+				m_aAnim.gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
+			}
+			break;
+		case 3:
+			{
+				//Top Right
+			}
+			break;
+		case 4:
+			{
+				//Middle Right
+				m_aAnim.gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
+			}
+			break;
+		case 5:
+			{
+				//Bottom Right
+				m_aAnim.gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
+			}
+			break;
+		}
+		transform.position = m_vInitialPos;
 	}
 }
