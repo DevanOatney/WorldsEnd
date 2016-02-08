@@ -197,6 +197,32 @@ public class UnitScript : MonoBehaviour
 		}
 	}
 
+	public void IDied()
+	{
+		switch(m_nUnitType)
+		{
+		case (int)UnitTypes.ALLY_MELEE:
+			{
+
+			}
+			break;
+		case (int)UnitTypes.ALLY_RANGED:
+			{
+
+			}
+			break;
+		case (int)UnitTypes.BASICENEMY:
+			{
+				gameObject.GetComponent<StandardEnemyScript>().IDied();
+			}
+			break;
+		case (int)UnitTypes.PERCENTENEMY:
+			{
+			}
+			break;
+		}
+
+	}
 
 	bool CheckIfHit()
 	{

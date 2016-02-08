@@ -37,14 +37,14 @@ public class TurnWatcherScript : MonoBehaviour
 	//list of levels of enemies that are defeated
 	List<int> m_lExperienceToAward = new List<int>();
 
-	//The previous amount of experience each character had before they level.
-	Dictionary<string, int> m_lPreviousExperience = new Dictionary<string, int>();
+	//The previous amount of experience each character will have at the end.
+	Dictionary<string, int> m_lNextExperience = new Dictionary<string, int>();
 
 	//The new amount of experience each character is gaining
 	Dictionary<string, int> m_lNewExperienceTotal = new Dictionary<string, int>();
 
-	//The levels that the characters previously were
-	Dictionary<string, int> m_lPreviousLevels = new Dictionary<string, int>();
+	//The levels that the characters will be at the end of the experience tally
+	Dictionary<string, int> m_lNextLevel = new Dictionary<string, int>();
 
 	//speed of the counter showing the characters current exp
 	int m_fExpTickSpeed = 1;
@@ -159,7 +159,7 @@ public class TurnWatcherScript : MonoBehaviour
 		for(int i = 0; i < allies.Count; ++i)
 		{
 			m_lPartyPanels.Add(GameObject.Find("Character"+i));
-			UpdateCharacterPanel(m_lPartyPanels[i].GetComponent<CharacterPanelContainer>(), allies[i]);
+			UpdateCharacterPanel(m_lPartyPanels[i].GetComponent<CharacterPanelContainer>(), GameObject.Find(allies[i].m_szCharacterName).GetComponent<CAllyBattleScript>());
 		}
 		for(;FormationCounter < 6; ++FormationCounter)
 		{
@@ -171,28 +171,27 @@ public class TurnWatcherScript : MonoBehaviour
 		GetComponent<AudioSource>().PlayOneShot(m_lACMuicFiles[ds.m_nMusicIter], 0.5f + ds.m_fMusicVolume); 
 	}
 
-	void UpdateCharacterPanel(CharacterPanelContainer _cpc, DCScript.CharacterData _c)
+	void UpdateCharacterPanel(CharacterPanelContainer _cpc, CAllyBattleScript _c)
 	{
-		GameObject unit = GameObject.Find(_c.m_szCharacterName);
-		_cpc.m_goCharacterName.GetComponent<Text>().text = _c.m_szCharacterName;
-		_cpc.m_goCharacterLevel.FindChild("Text").GetComponent<Text>().text = _c.m_nLevel.ToString();
-		_cpc.m_goCharacterEXP.FindChild("Text").GetComponent<Text>().text = _c.m_nCurrentEXP.ToString();
-		_cpc.m_goCharacterMaxHP.GetComponent<Text>().text = _c.m_nMaxHP.ToString();
-		_cpc.m_goCharacterPortrait.GetComponent<Image>().sprite = Sprite.Create(unit.GetComponent<CAllyBattleScript>().m_tLargeBust,
-			new Rect(0, 0, unit.GetComponent<CAllyBattleScript>().m_tLargeBust.width, unit.GetComponent<CAllyBattleScript>().m_tLargeBust.height),
+		_cpc.m_goCharacterName.GetComponent<Text>().text = _c.name;
+		_cpc.m_goCharacterLevel.FindChild("Text").GetComponent<Text>().text = _c.GetUnitLevel().ToString();
+		_cpc.m_goCharacterEXP.FindChild("Text").GetComponent<Text>().text = _c.m_nCurrentExperience.ToString();
+		_cpc.m_goCharacterMaxHP.GetComponent<Text>().text = _c.GetMaxHP().ToString();
+		_cpc.m_goCharacterPortrait.GetComponent<Image>().sprite = Sprite.Create(_c.m_tLargeBust,
+			new Rect(0, 0, _c.m_tLargeBust.width, _c.m_tLargeBust.height),
 			new Vector2(0.5f, 0.5f));
 
 
 
 		//The rest is the mess that is figuring out the current hp in regards to digits and displaying the cur health value in a color coded manner... I really never want to look at this code again, lol
 		#region HealthMess
-		float fPercentHealthLeft = (float)(_c.m_nCurHP / _c.m_nMaxHP);
+		float fPercentHealthLeft = (float)(_c.GetCurHP() / _c.GetMaxHP());
 		Color cHealthColor = Color.green;
 		if(fPercentHealthLeft < 0.3f)
 			cHealthColor = Color.red;
 		else if(fPercentHealthLeft < 0.6f)
 			cHealthColor = Color.yellow;
-		int nDigitCount = (int)(Mathf.Log10(_c.m_nCurHP) +1);
+		int nDigitCount = (int)(Mathf.Log10(_c.GetCurHP()) +1);
 
 		for(int i = 0; i < nDigitCount; ++i)
 		{
@@ -220,7 +219,7 @@ public class TurnWatcherScript : MonoBehaviour
 				}
 				break;
 			}
-			_tDigit.GetComponent<Text>().text = _c.m_nCurHP.ToString()[_c.m_nCurHP.ToString().Length-i-1].ToString();
+			_tDigit.GetComponent<Text>().text = _c.GetCurHP().ToString()[_c.GetCurHP().ToString().Length-i-1].ToString();
 			_tDigit.GetComponent<Text>().color = cHealthColor;
 		}
 		for(int i = nDigitCount+1; i < 5; ++i)
@@ -255,15 +254,22 @@ public class TurnWatcherScript : MonoBehaviour
 	{
 		while(m_lNewExperienceTotal[gUnit.name] > 0)
 		{
-
-			
-			m_lPreviousExperience[gUnit.name] += m_fExpTickSpeed;
-			m_lNewExperienceTotal[gUnit.name] -= m_fExpTickSpeed;
-			if(m_lPreviousExperience[gUnit.name] >= gUnit.GetComponent<CAllyBattleScript>().m_nExperienceToLevel)
+			int remainder = m_lNewExperienceTotal[gUnit.name] - m_fExpTickSpeed;
+			if(remainder < 0)
+			{
+				gUnit.GetComponent<CAllyBattleScript>().m_nCurrentExperience += remainder + m_fExpTickSpeed;
+				m_lNewExperienceTotal[gUnit.name] -= m_fExpTickSpeed;
+			}
+			else
+			{
+				gUnit.GetComponent<CAllyBattleScript>().m_nCurrentExperience += m_fExpTickSpeed;
+				m_lNewExperienceTotal[gUnit.name] -= m_fExpTickSpeed;
+			}
+			if(gUnit.GetComponent<CAllyBattleScript>().m_nCurrentExperience >= gUnit.GetComponent<CAllyBattleScript>().m_nExperienceToLevel)
 			{
 				//Level!
-				m_lPreviousExperience[gUnit.name] = 0;
-				m_lPreviousLevels[gUnit.name] += 1;
+				gUnit.GetComponent<CAllyBattleScript>().LevelUp();
+				gUnit.GetComponent<CAllyBattleScript>().m_nCurrentExperience = 0;
 				
 				
 				GameObject Catch = Instantiate(m_gLevelUpObj) as GameObject;
@@ -271,6 +277,13 @@ public class TurnWatcherScript : MonoBehaviour
 				pos.z -= 0.1f;
 				Catch.transform.position = pos;
 				Destroy(Catch, 1.35f);
+			}
+			foreach(GameObject panel in m_lPartyPanels)
+			{
+				if(panel.transform.FindChild("Character Name").GetComponent<Text>().text == gUnit.name)
+				{
+					UpdateCharacterPanel(panel.GetComponent<CharacterPanelContainer>(), gUnit.GetComponent<CAllyBattleScript>());
+				}
 			}
 			yield return new WaitForSeconds( m_fExpBucket);
 		}
@@ -360,10 +373,16 @@ public class TurnWatcherScript : MonoBehaviour
 			if(m_bOneShotAfterVictory == false)
 			{
 				m_bOneShotAfterVictory = true;
-				GameObject.Find("Party").GetComponent<Animator>().Play("Party_SlideIn");
-				GameObject.Find("ItemWon").GetComponent<Animator>().Play("ItemWon_SlideIn");
+				GameObject.Find("Party").GetComponent<Animator>().Play("PartyRoster_SlideIn");
+				GameObject.Find("Items Won").GetComponent<Animator>().Play("ItemsWon_SlideIn");
+
 				foreach(GameObject Ally in Allies)
-					StartCoroutine("GainExp", Ally);
+				{
+					if(Ally.name.Contains("Clone") == false)
+					{
+						StartCoroutine("GainExp", Ally);
+					}
+				}
 			}
 
 			if((Input.GetKeyUp(KeyCode.Return) || Input.GetMouseButtonDown(0)) && m_VictoryScreenOneShot == false)
@@ -374,9 +393,21 @@ public class TurnWatcherScript : MonoBehaviour
 					m_bHasPressedEnter = true;
 					foreach(GameObject Ally in Allies)
 					{
-						m_lPreviousExperience[Ally.name] = Ally.GetComponent<CAllyBattleScript>().m_nExperienceToLevel;
-						m_lPreviousLevels[Ally.name] = Ally.GetComponent<CAllyBattleScript>().GetUnitLevel();
+						Ally.GetComponent<CAllyBattleScript>().m_nCurrentExperience = m_lNextExperience[Ally.name];
+						int remainder = m_lNextLevel[Ally.name] - Ally.GetComponent<CAllyBattleScript>().GetUnitLevel();
+						while(remainder > 0)
+						{
+							Ally.GetComponent<CAllyBattleScript>().LevelUp();
+							remainder--;
+						}
 						m_lNewExperienceTotal[Ally.name] = 0;
+						foreach(GameObject panel in m_lPartyPanels)
+						{
+							if(panel.transform.FindChild("Character Name").GetComponent<Text>().text == Ally.name)
+							{
+								UpdateCharacterPanel(panel.GetComponent<CharacterPanelContainer>(), Ally.GetComponent<CAllyBattleScript>());
+							}
+						}
 					}
 				}
 				//If this is the second time the player hits the button(or if the animations are over), fade and end the battle scene
@@ -389,6 +420,7 @@ public class TurnWatcherScript : MonoBehaviour
 					StartCoroutine(obj.FadeAudio(1.0f, FadeInOutSound.Fade.Out));
 					Invoke("Finish", 1.0f);
 				}
+				Input.ResetInputAxes();
 			}
 				//GUI.Label(new Rect(fXAdjust, fYAdjust, 40.0f, 25.0f),"Lv: " +  m_lPreviousLevels[Ally.name].ToString());
 				//Display their current exp just to the right
@@ -511,11 +543,12 @@ public class TurnWatcherScript : MonoBehaviour
 			
 			//Catch the previous amount of xp the character had incase they level
 			int prevExp = foundAlly.GetComponent<CAllyBattleScript>().m_nCurrentExperience;
-			m_lPreviousLevels.Add(ally.m_szCharacterName, ally.m_nLevel);
 			//Award experience (their script will check if it levels and return a bool .. maybe I want to do some level up effect?  Not sure..
-			int nExp = foundAlly.GetComponent<CAllyBattleScript>().AwardExperience(m_lExperienceToAward);
-			//add the previous exp of this unit to the list
-			m_lPreviousExperience.Add(ally.m_szCharacterName, prevExp);
+			int nextExp = 0;
+			int nextLvl = 0;
+			int nExp = foundAlly.GetComponent<CAllyBattleScript>().AwardExperience(m_lExperienceToAward, ref nextExp, ref nextLvl);
+			m_lNextExperience.Add(ally.m_szCharacterName, nextExp);
+			m_lNextLevel.Add(ally.m_szCharacterName, nextLvl);
 			//add the total experience the character is going to gain to the list
 			m_lNewExperienceTotal.Add(ally.m_szCharacterName, nExp);
 

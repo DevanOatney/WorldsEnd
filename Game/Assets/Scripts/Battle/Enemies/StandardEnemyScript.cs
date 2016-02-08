@@ -10,20 +10,16 @@ public class StandardEnemyScript : UnitScript
 	//Enemy Stats
 	public TextAsset m_taStats;
 
-	void Awake()
-	{
-		m_aAnim = GetComponent<Animator>();
-		if(m_aAnim == null)
-		{
-			m_aAnim = GetComponentInChildren<Animator>();
-		}
-	}
-
 	// Use this for initialization
 	void Start () 
 	{
 		SetUnitStats();
 		m_vInitialPos = new Vector3();
+		m_aAnim = GetComponent<Animator>();
+		if(m_aAnim == null)
+		{
+			m_aAnim = GetComponentInChildren<Animator>();
+		}
 		UpdatePositionOnField();
 	}
 	
@@ -125,6 +121,12 @@ public class StandardEnemyScript : UnitScript
 		textPos.y += (gameObject.GetComponent<BoxCollider>().size.y * 0.75f);
 		textPos = Camera.main.WorldToViewportPoint(textPos);
 		newText.transform.position = textPos;
+	}
+
+	new public void IDied()
+	{
+		GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>().RemoveMeFromList(gameObject, 0.0f);
+		Destroy(gameObject);
 	}
 
 	public void UpdatePositionOnField()

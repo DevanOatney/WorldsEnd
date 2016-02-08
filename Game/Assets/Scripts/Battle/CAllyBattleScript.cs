@@ -618,7 +618,7 @@ public class CAllyBattleScript : UnitScript
 	}
 
 	//returns the amount of experience the player earned
-	public int AwardExperience(List<int> _levelsOfEnemies)
+	public int AwardExperience(List<int> _levelsOfEnemies, ref int nextExp, ref int nextLvl)
 	{
 		int nTotalExp = 0;
 
@@ -633,20 +633,21 @@ public class CAllyBattleScript : UnitScript
 				baseExp = 5;
 			nTotalExp += baseExp;
 		}
-		m_nCurrentExperience = m_nCurrentExperience + nTotalExp;
-		while(m_nCurrentExperience >= m_nExperienceToLevel && GetUnitLevel() < 99)
+		nextExp = m_nCurrentExperience + nTotalExp;
+		nextLvl = GetUnitLevel();
+		while(nextExp >= m_nExperienceToLevel && nextLvl < 99)
 		{
-			LevelUp();
-			m_nCurrentExperience = m_nCurrentExperience - m_nExperienceToLevel;
+			nextLvl++;
+			nextExp = nextExp - m_nExperienceToLevel;
 		}
-		if(GetUnitLevel() == 99 && m_nCurrentExperience > 999)
+		if(nextLvl == 99 && nextExp > 999)
 		{
-			m_nCurrentExperience = 999;
+			nextExp = 999;
 			return 0;
 		}
 		return nTotalExp;
   	}
-	void LevelUp()
+	public void LevelUp()
 	{
 		SetUnitLevel(GetUnitLevel() +1);
 		DCScript.ClassStats c = m_dcPersistantData.GetClassType(m_szClassName);
