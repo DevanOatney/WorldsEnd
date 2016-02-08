@@ -77,7 +77,6 @@
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
-     <None Include="Assets\Resources\Units\Enemy\Mewtwo\Stats.txt" />
      <None Include="Assets\2d Art Pack\!IMPORTANT.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
@@ -96,7 +95,6 @@
      <None Include="Assets\Tiled2Unity\Shaders\Tiled_Diffuse.shader" />
      <None Include="Assets\Tiled2Unity\Imported\untitled.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
-     <None Include="Assets\Resources\Units\Enemy\CharacterReference\Stats.txt" />
      <None Include="Assets\Resources\Units\Ally\Briol\StartingStats.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Guild Hall Interior.tiled2unity.xml" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SunShaftsComposite.shader" />
@@ -147,7 +145,6 @@
      <None Include="Assets\Resources\Units\NPCs\Female\Lydia\Lydia_InonDialogue.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Main Char. Room.tiled2unity.xml" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
-     <None Include="Assets\Scripts\Battle\Enemies\New Text Document.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ContrastComposite.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset3.shader" />
@@ -295,7 +292,6 @@
      <None Include="Assets\Resources\Field\Battle Formations\Inon Forest\BATTLEZ.txt" />
      <None Include="Assets\Tiled2Unity\License.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\PrepareSunShaftsBlur.shader" />
-     <None Include="Assets\Resources\Units\Enemy\Pinky with gun\Stats.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
      <None Include="Assets\Scripts\Fields\SwirlShader.shader" />
@@ -323,7 +319,6 @@
      <None Include="Assets\Resources\Sounds\Music\InonBGM\MusicPlacementInon.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Farm House.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
-     <None Include="Assets\Resources\Units\Enemy\OtherApplicant\Stats.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Resources\Dialogue Scripts\Temple of Azyre\Briol_Temple_of_Azyre.txt" />

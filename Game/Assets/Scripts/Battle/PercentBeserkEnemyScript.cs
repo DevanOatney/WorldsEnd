@@ -191,31 +191,6 @@ public class PercentBeserkEnemyScript : UnitScript {
 					}
 				}
 					break;
-				case (int)UnitScript.UnitTypes.MEWTWO:
-				{
-					GameObject WeakestTarget = null;
-					int lowestHP = int.MaxValue;
-					GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
-					foreach(GameObject tar in posTargs)
-					{
-						if(tar.GetComponent<UnitScript>().GetCurHP() < lowestHP && tar.GetComponent<UnitScript>().GetCurHP() > 0)
-						{
-							WeakestTarget = tar;
-							lowestHP = WeakestTarget.GetComponent<UnitScript>().GetCurHP();
-						}
-					}
-					if(WeakestTarget != null)
-					{
-						GetComponent<MewtwoAttackScript>().BeginFiring(WeakestTarget);
-						//TODO: make it so that the unit moves to a position in which to fire? or something.
-						Vector3 newPos = transform.position;
-						newPos.y = WeakestTarget.transform.position.y;
-						newPos.x += 2.0f;
-						GetComponentInChildren<Animator>().SetBool("m_bIsCasting", true);
-						m_bIsMyTurn = false;
-					}
-				}
-					break;
 				}
 			}
 		}
@@ -341,60 +316,6 @@ public class PercentBeserkEnemyScript : UnitScript {
 			}
 		}
 			break;
-		}
-	}
-	
-	void OnTriggerEnter(Collider other)
-	{
-		if(other.name == "Near_Ally" + m_nTargetPositionOnField.ToString() || other.name == "Enemy_StartPos" + FieldPosition.ToString())
-			WaypointTriggered(other);
-	}
-	public void WaypointTriggered(Collider c)
-	{
-		
-		if(c.name == "Near_Ally" + m_nTargetPositionOnField.ToString())
-		{
-			anim.SetBool("m_bIsMoving", false);
-			anim.SetBool("m_bIsAttacking", true);
-			m_nState = (int)States.eATTACK;
-			m_fAttackBucket = m_acAttackAnim.length + 0.01f;
-			c.enabled = false;
-			GameObject wypnt = GameObject.Find("Enemy_StartPos" + FieldPosition.ToString());
-			if(wypnt)
-			{
-				wypnt.GetComponent<BoxCollider>().enabled = true;
-			}
-			GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
-			foreach(GameObject tar in posTargs)
-			{
-				if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
-				{
-					GameObject GO = GameObject.Find("PersistantData");
-					if(GO != null)
-					{
-						GetComponent<AudioSource>().PlayOneShot(m_acAttackAudio, 0.5f + GO.GetComponent<DCScript>().m_fSFXVolume);
-					}
-					else
-						GetComponent<AudioSource>().PlayOneShot(m_acAttackAudio, 0.5f);
-					
-				}
-			}
-			
-			Invoke("EndMyTurn", 2.5f);
-		}
-		else if(c.name == "Enemy_StartPos" + FieldPosition.ToString())
-		{
-			transform.position = m_vInitialPos;
-			
-			if(anim)
-				anim.SetBool("m_bIsMoving", false);
-			c.enabled = false;
-			m_nState = (int)States.eIDLE;
-			GameObject wypnt = GameObject.Find("Near_Ally" + m_nTargetPositionOnField.ToString());
-			if(wypnt)
-			{
-				wypnt.GetComponent<BoxCollider>().enabled = true;
-			}
 		}
 	}
 	

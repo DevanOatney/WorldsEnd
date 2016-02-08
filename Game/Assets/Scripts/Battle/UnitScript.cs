@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class UnitScript : MonoBehaviour 
 {
-	public enum UnitTypes{ALLY_MELEE, ALLY_RANGED, NPC, BASICENEMY, PERCENTENEMY, MEWTWO};
+	public enum UnitTypes{ALLY_MELEE, ALLY_RANGED, NPC, BASICENEMY, PERCENTENEMY};
 	public bool m_bIsMyTurn = false;
 	public int m_nState;
 	//for knowing which script to call for TakeDamage
@@ -112,17 +112,12 @@ public class UnitScript : MonoBehaviour
 				break;
 			case (int)UnitTypes.BASICENEMY:
 			{
-				gameObject.GetComponent<BeserkEnemyScript>().AdjustHP(dmg);
+				gameObject.GetComponent<StandardEnemyScript>().AdjustHP(dmg);
 			}
 				break;
 			case (int)UnitTypes.PERCENTENEMY:
 			{
 				gameObject.GetComponent<PercentBeserkEnemyScript>().AdjustHP(dmg);
-			}
-				break;
-			case (int)UnitTypes.MEWTWO:
-			{
-				gameObject.GetComponent<BeserkEnemyScript>().AdjustHP(dmg);
 			}
 				break;
 			}
@@ -147,17 +142,12 @@ public class UnitScript : MonoBehaviour
 				break;
 			case (int)UnitTypes.BASICENEMY:
 			{
-				gameObject.GetComponent<BeserkEnemyScript>().Missed();
+				gameObject.GetComponent<StandardEnemyScript>().Missed();
 			}
 				break;
 			case (int)UnitTypes.PERCENTENEMY:
 			{
 				gameObject.GetComponent<PercentBeserkEnemyScript>().Missed();
-			}
-				break;
-			case (int)UnitTypes.MEWTWO:
-			{
-				gameObject.GetComponent<BeserkEnemyScript>().Missed();
 			}
 				break;
 			}
@@ -196,7 +186,7 @@ public class UnitScript : MonoBehaviour
 			break;
 		case (int)UnitTypes.BASICENEMY:
 		{
-			gameObject.GetComponent<BeserkEnemyScript>().EVENT_AttackAnimEnd();
+			gameObject.GetComponent<StandardEnemyScript>().AttackAnimEnd();
 		}
 			break;
 		case (int)UnitTypes.PERCENTENEMY:
