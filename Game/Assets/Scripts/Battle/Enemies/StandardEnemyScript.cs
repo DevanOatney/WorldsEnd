@@ -3,12 +3,21 @@ using System.Collections;
 
 public class StandardEnemyScript : UnitScript 
 {
-	public enum ENEMY_STATES {eIDLE, eCHARGE, eRETURN, eATTACK, eDAMAGED, eDEAD};
+	public enum ENEMY_STATES {eIDLE, eCHARGE, eRETURN, eATTACK, eDAMAGED, eSTATUS_EFFECT, eDEAD};
 	Animator m_aAnim;
 	//for fading text
 	public GameObject m_goFadingText;
 	//Enemy Stats
 	public TextAsset m_taStats;
+	float m_fMovementSpeed = 8.0f;
+	//delay to make it look like some sort of calculation is happening when it's the enemies turn (lol)
+	float m_fDelayBucket = 2.0f;
+	float m_fDelayTimer = 0.0f;
+	//Stuff for the shadow clones that spawn during movement... maybe special attacks if I have time?
+	public GameObject m_goShadowClone;
+	float m_fShadowTimer = 0.0f;
+	float m_fShadowTimerBucket = 0.1f;
+	public Vector3 m_vTargetPosition = new Vector3();
 
 	// Use this for initialization
 	void Start () 
@@ -24,9 +33,175 @@ public class StandardEnemyScript : UnitScript
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+
+		if(m_bIsMyTurn && GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>().GetAllyCount() > 0 && m_nState != (int)ENEMY_STATES.eDEAD)
+		{
+			//Make sure somethings even alive on the map to fight against
+
+			m_fDelayTimer += Time.deltaTime;
+			if(m_fDelayTimer >= m_fDelayBucket)
+			{
+				switch(m_nUnitType)
+				{
+				case (int)UnitScript.UnitTypes.PERCENTENEMY:
+					{
+						//Pick from the available enemy (the allies) targets, attack the one with the lowest HP
+						GameObject WeakestTarget = null;
+						int lowestHP = int.MaxValue;
+						GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
+						foreach(GameObject tar in posTargs)
+						{
+							if(tar.GetComponent<UnitScript>().GetCurHP() < lowestHP && tar.GetComponent<UnitScript>().GetCurHP() > 0)
+							{
+								WeakestTarget = tar;
+								lowestHP = WeakestTarget.GetComponent<UnitScript>().GetCurHP();
+							}
+						}
+						if(WeakestTarget != null)
+						{
+							m_nState = (int)ENEMY_STATES.eCHARGE;
+							m_aAnim.SetBool("m_bIsMoving", true);
+							m_fDelayTimer = 0.0f;
+							m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
+						}
+					}
+					break;
+				case (int)UnitScript.UnitTypes.BASICENEMY:
+					{
+						//Pick from the available enemy (the allies) targets, attack the one with the lowest HP
+						GameObject WeakestTarget = null;
+						int lowestHP = int.MaxValue;
+						GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
+						foreach(GameObject tar in posTargs)
+						{
+							if(tar.name.Contains("(Clone)"))
+								continue;
+							if(tar.GetComponent<UnitScript>().GetCurHP() < lowestHP && tar.GetComponent<UnitScript>().GetCurHP() > 0)
+							{
+								WeakestTarget = tar;
+								lowestHP = WeakestTarget.GetComponent<UnitScript>().GetCurHP();
+							}
+						}
+						if(WeakestTarget != null)
+						{
+							m_nState = (int)ENEMY_STATES.eCHARGE;
+							m_aAnim.SetBool("m_bIsMoving", true);
+							m_fDelayTimer = 0.0f;
+							m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
+							GameObject targetPosition = GameObject.Find("Near_Ally" + m_nTargetPositionOnField);
+							m_vTargetPosition = targetPosition.transform.position;
+						}
+					}
+					break;
+				}
+			}
+		}
+		HandleStates();
 	}
+
+	void HandleStates()
+	{
+		switch(m_nState)
+		{
+		case (int)ENEMY_STATES.eIDLE:
+			{
+			}
+			break;
+		case (int)ENEMY_STATES.eCHARGE:
+			{
+				Vector3 dir = m_vTargetPosition - transform.position;
+				if(dir.sqrMagnitude <= 0.1f)
+				{
+					//Reached target
+					m_aAnim.SetBool("m_bIsMoving", false);
+					m_aAnim.SetBool("m_bIsAttacking", true);
+					m_nState = (int)ENEMY_STATES.eATTACK;
+				}
+				else
+				{
+					//continue moving toward target
+					dir.Normalize();
+					Vector3 curPos = transform.position;
+					curPos += dir * m_fMovementSpeed * Time.deltaTime;
+					transform.position = curPos;
+					
+					if(m_fShadowTimer >= m_fShadowTimerBucket)
+					{
+						if(m_goShadowClone != null)
+						{
+							GameObject newShadow = Instantiate(m_goShadowClone, transform.position, Quaternion.identity) as GameObject;
+							newShadow.GetComponent<SpriteRenderer>().sprite = m_aAnim.gameObject.GetComponent<SpriteRenderer>().sprite;
+							Vector3 cloneTransform = m_aAnim.gameObject.transform.localScale;
+							newShadow.transform.localScale = cloneTransform;
+							//adjust so the clone is behind the unit
+							if(GetComponent<SpriteRenderer>() != null)
+								newShadow.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1;
+							else
+								newShadow.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder - 1;
+							Destroy(newShadow, m_fShadowTimerBucket*3);
+							m_fShadowTimer = 0.0f;
+						}
+					}
+					else
+						m_fShadowTimer += Time.deltaTime;
+				}
+
+			}
+			break;
+		case (int)ENEMY_STATES.eRETURN:
+			{
+				Vector3 targetPos = m_vTargetPosition;
+				Vector3 dir = targetPos - transform.position;
+				if(dir.sqrMagnitude <= 0.1f)
+				{
+					transform.position = m_vInitialPos;
+					m_nState = (int)ENEMY_STATES.eSTATUS_EFFECT;
+					m_aAnim.SetBool("m_bIsMoving", false);
+				}
+				else
+				{
+					dir.Normalize();
+					Vector3 curPos = transform.position;
+					curPos += dir * m_fMovementSpeed * Time.deltaTime;
+					transform.position = curPos;
+				}
+			}
+			break;
+		case (int)ENEMY_STATES.eATTACK:
+			{
+
+			}
+			break;
+		case (int) ENEMY_STATES.eDAMAGED:
+			{
+			}
+			break;
+		case (int) ENEMY_STATES.eSTATUS_EFFECT:
+			{
+				//Update any of the status effects. (use a new list, as some of the master list may get removed
+				for(int i = 0; i < m_lStatusEffects.Count; ++i)
+				{
+					if(m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_bToBeRemoved == true)
+					{
+						m_lStatusEffects.RemoveAt(i);
+						i--;
+					}
+					else
+						m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_dFunc();
+				}
+				m_nState = (int)ENEMY_STATES.eIDLE;
+				EndMyTurn();
+			}
+			break;
+		case (int)ENEMY_STATES.eDEAD:
+			{
+			}
+			break;
+		}
+	}
+
 	void SetUnitStats()
 	{
 		string[] stats = m_taStats.text.Split('\n');
@@ -109,6 +284,7 @@ public class StandardEnemyScript : UnitScript
 		m_nState = (int)ENEMY_STATES.eRETURN;
 		m_aAnim.SetBool("m_bIsAttacking", false);
 		m_aAnim.SetBool("m_bIsMoving", true);
+		m_vTargetPosition = GameObject.Find("Enemy_StartPos" + FieldPosition).transform.position;
 	}
 
 	new public void Missed()

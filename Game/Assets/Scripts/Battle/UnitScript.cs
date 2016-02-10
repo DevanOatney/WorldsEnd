@@ -62,6 +62,54 @@ public class UnitScript : MonoBehaviour
 
 	//List of status effects that could be effecting the player/units   Poison, Confusion, Paralyze, Stone (examples)
 	public List<GameObject> m_lStatusEffects = new List<GameObject>();
+
+	//effectName - name of effect, nTicks - how many rounds this lasts (-1 for permanent), nMod - any adjuster, like damage dealt, chance effect happens each round, etc.
+	public void AddStatusEffect(string effectName, int nTicks, int nMod)
+	{
+		for(int i = 0; i < m_lStatusEffects.Count; ++ i)
+		{
+			if(effectName == m_lStatusEffects[i].name)
+			{
+				switch(m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_nEffectType)
+				{
+				case (int)BattleBaseEffectScript.EFFECT_TYPES.ePOISON:
+					{
+						//GameObject owner, int damage, int tickAmount)
+						BattlePoisonEffectScript poisonScript = m_lStatusEffects[i].GetComponent<BattlePoisonEffectScript>();
+						if(poisonScript.m_nAmountOfTicks < nTicks || nTicks == -1)
+							poisonScript.m_nAmountOfTicks = nTicks;
+						if(poisonScript.m_nMod < nMod)
+							poisonScript.m_nMod = nMod;
+						return;
+					}
+				case (int)BattleBaseEffectScript.EFFECT_TYPES.ePARALYZE:
+					{
+						return;
+					}
+				case (int)BattleBaseEffectScript.EFFECT_TYPES.eSTONE:
+					{
+						return;
+					}
+				}
+			}
+		}
+		switch(effectName)
+		{
+		case "Poison":
+			{
+			}
+			break;
+		case "Paralyze":
+			{
+			}
+			break;
+		case "Stone":
+			{
+			}
+			break;
+		}
+	}
+
 	public void RemoveStatusEffect(string effectName)
 	{
 		for (int i = m_lStatusEffects.Count - 1; i >= 0; i--)

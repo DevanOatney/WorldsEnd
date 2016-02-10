@@ -55,8 +55,10 @@ public class DCScript : MonoBehaviour
 
 	public class StatusEffect
 	{
+		public StatusEffect(string name, int count, int mod){m_szName = name; m_nCount = count; m_nMod = mod;}
 		public string m_szName;
 		public int m_nCount;
+		public int m_nMod;
 		public List<string> m_lEffectedMembers = new List<string>();
 	}
 	//list of status effects that are inflicting the party
@@ -75,14 +77,15 @@ public class DCScript : MonoBehaviour
 				foreach(string s in m_lStatusEffects[catchIter].m_lEffectedMembers)
 				{
 					if(s == c)
+						
 						inList = true;
 				}
 				if(inList == false)
 					m_lStatusEffects[catchIter].m_lEffectedMembers.Add(c);
 
-
 				if(m_lStatusEffects[catchIter].m_nCount < se.m_nCount)
 					m_lStatusEffects[catchIter].m_nCount = se.m_nCount;
+				return;
 			}
 		}
 		else

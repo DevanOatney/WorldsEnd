@@ -9,8 +9,6 @@ public class PoisonEffectScript : FieldBaseStatusEffectScript
 {
 	//pointer to the object that turns green infront of the character
 	public GameObject m_goPoisonClone;
-	//amount of damage that is dealt to the effected units
-	public int m_nDamagePerTick = 0;
 	//how quickly these ticks should fire off
 	float m_fRateOfTicks = 0.0f;
 	//internal use for keeping track of tick fire rate
@@ -30,7 +28,7 @@ public class PoisonEffectScript : FieldBaseStatusEffectScript
 	public void Initialize(GameObject owner, List<string> szCharactersEffected, int damage, int tickAmount, float rateOfTick)
 	{
 		m_goOwner = owner;
-		m_nDamagePerTick = damage;
+		m_nMod = damage;
 		m_nAmountOfTicks = tickAmount;
 		m_fRateOfTicks = rateOfTick;
 		m_lEffectedUnits = szCharactersEffected;
@@ -79,7 +77,7 @@ public class PoisonEffectScript : FieldBaseStatusEffectScript
 					{
 						if(chara.m_szCharacterName == c)
 						{
-							chara.m_nCurHP -= m_nDamagePerTick;
+							chara.m_nCurHP -= m_nMod;
 							if(chara.m_nCurHP <= 0)
 								chara.m_nCurHP = 1;
 						}

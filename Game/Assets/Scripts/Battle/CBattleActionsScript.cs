@@ -41,11 +41,11 @@ public class CBattleActionsScript : MonoBehaviour
 			if(_nCounter == m_nActionIter)
 			{
 				//this is the one selected
-				child.gameObject.GetComponent<Image>().color = Color.black;
+				child.FindChild("HoverImage").GetComponent<Image>().enabled = true;
 			}
 			else
 			{
-				child.gameObject.GetComponent<Image>().color = Color.white;
+				child.FindChild("HoverImage").GetComponent<Image>().enabled = false;
 			}
 			++_nCounter;
 		}

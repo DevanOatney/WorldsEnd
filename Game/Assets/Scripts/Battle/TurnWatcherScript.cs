@@ -622,9 +622,10 @@ public class TurnWatcherScript : MonoBehaviour
 				else
 				{
 					//effect needs to be added
-					DCScript.StatusEffect se = new DCScript.StatusEffect();
-					se.m_szName =  effect.GetComponent<BattleBaseEffectScript>().name;
-					se.m_nCount =  effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks;
+					DCScript.StatusEffect se = new DCScript.StatusEffect(
+						effect.GetComponent<BattleBaseEffectScript>().name,
+						effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks, 
+						effect.GetComponent<BattleBaseEffectScript>().m_nMod);
 					se.m_lEffectedMembers.Add(Ally.name);
 				}
 			}

@@ -5,8 +5,6 @@ public class BattlePoisonEffectScript : BattleBaseEffectScript
 {
 	//pointer to the object that turns green infront of the character
 	public GameObject m_goPoisonClone;
-	//amount of damage that is dealt to the effected units
-	public int m_nDamagePerTick = 0;
 	
 	// Use this for initialization
 	void Start () 
@@ -22,8 +20,9 @@ public class BattlePoisonEffectScript : BattleBaseEffectScript
 	public void Initialize(GameObject owner, int damage, int tickAmount)
 	{
 		m_goOwner = owner;
-		m_nDamagePerTick = damage;
+		m_nMod = damage;
 		m_nAmountOfTicks = tickAmount;
+		m_nEffectType = (int)EFFECT_TYPES.ePOISON;
 		m_dFunc = Step;
 	}
 	
@@ -54,6 +53,6 @@ public class BattlePoisonEffectScript : BattleBaseEffectScript
 			}
 			
 		}
-		m_goOwner.GetComponent<UnitScript>().AdjustHP(m_nDamagePerTick);
+		m_goOwner.GetComponent<UnitScript>().AdjustHP(m_nMod);
 	}
 }

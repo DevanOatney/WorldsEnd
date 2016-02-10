@@ -176,6 +176,8 @@ public class LoadingScript : MonoBehaviour
 			sr.ReadLine();
 			//amount of ticks left on the effect
 			sr.ReadLine();
+			//mod of effect
+			sr.ReadLine();
 			//amount of units effected
 			int unitsEffected = int.Parse(sr.ReadLine().Trim());
 			for(int x = 0; x < unitsEffected; ++x)
@@ -422,10 +424,7 @@ public class LoadingScript : MonoBehaviour
 		List<DCScript.StatusEffect> lStatusEffects = new List<DCScript.StatusEffect>();
 		for(int j = 0; j < effectCount; ++j)
 		{
-			DCScript.StatusEffect se = new DCScript.StatusEffect();
-			se.m_szName = sr.ReadLine().Trim();
-			se.m_nCount = int.Parse(sr.ReadLine().Trim());
-			
+			DCScript.StatusEffect se = new DCScript.StatusEffect(sr.ReadLine().Trim(), int.Parse(sr.ReadLine().Trim()), int.Parse(sr.ReadLine().Trim()));
 			int unitCount = int.Parse(sr.ReadLine().Trim());
 			List<string> lEffectUnits = new List<string>();
 			for(int x = 0; x < unitCount; ++x)

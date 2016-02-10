@@ -146,6 +146,8 @@ public class SavingScript : MonoBehaviour
 			m_lOutputData.Add(se.m_szName);
 			//amount of ticks remaining on the effect
 			m_lOutputData.Add(se.m_nCount.ToString());
+			//the mod of this effect
+			m_lOutputData.Add(se.m_nMod.ToString());
 			//the amount of units effected
 			m_lOutputData.Add(se.m_lEffectedMembers.Count.ToString());
 			foreach(string s in se.m_lEffectedMembers)

@@ -28,7 +28,8 @@ public class CAllyBattleScript : UnitScript
 		SWITCHING,		 //Unit switches with either unit infront or behind (depending on formation) afterward move to STATUS_EFFECT
 		ESCAPING_FAILED,		 //Unit tries to escape, if failed go to STATUS_EFFECT, if succeeded end the fight.
 		ESCAPING_SUCCEEDED,
-		STATUS_EFFECTS	 //Cycle through status effects, tick off one cycle of the effects, remove/update effects, inform TURNWATCHER of end of turn and end your turn.
+		STATUS_EFFECTS,	 //Cycle through status effects, tick off one cycle of the effects, remove/update effects, inform TURNWATCHER of end of turn and end your turn.
+		DEAD
 	}
 		
 	//int m_nActionSelectionIndex = 0; //what is the player currently selecting in the main action selection
@@ -104,27 +105,7 @@ public class CAllyBattleScript : UnitScript
 			{
 				if(charName == name)
 				{
-					switch(se.m_szName)
-					{
-					case "Poison":
-						{
-							m_poison.GetComponent<BattlePoisonEffectScript>().Initialize(gameObject, 1, se.m_nCount);
-							m_lStatusEffects.Add(m_poison);
-						}
-						break;
-					case "Paralyze":
-						{
-						}
-						break;
-					case "Stone":
-						{
-						}
-						break;
-					case "Confuse":
-						{
-						}
-						break;
-					}
+					AddStatusEffect(se.m_szName, se.m_nCount, se.m_nMod);
 				}
 			}
 		}
@@ -145,6 +126,7 @@ public class CAllyBattleScript : UnitScript
 		{
 		case (int)ALLY_STATES.DIALOGUE:
 			{
+				m_bAmIDefending = false;
 				bool _bShouldAct = true;
 				foreach(KeyValuePair<string,int> kvp in m_twTurnWatcher.m_dEventTriggers)
 				{
@@ -182,6 +164,20 @@ public class CAllyBattleScript : UnitScript
 				{
 					toTarget.Normalize();
 					transform.position += toTarget * m_fMovementSpeed * Time.deltaTime;
+					if(m_fShadowTimer >= m_fShadowTimerBucket)
+					{
+						GameObject newShadow = Instantiate(m_goShadowClone, transform.position, Quaternion.identity) as GameObject;
+						newShadow.GetComponent<SpriteRenderer>().sprite = m_aAnim.gameObject.GetComponent<SpriteRenderer>().sprite;
+						Vector3 cloneTransform = m_aAnim.gameObject.transform.localScale;
+						newShadow.transform.localScale = cloneTransform;
+						Vector3 pos = transform.position;
+						//adjust so the clone is behind the unit
+						pos.z += 0.1f;
+						Destroy(newShadow, m_fShadowTimerBucket*3);
+						m_fShadowTimer = 0.0f;
+					}
+					else
+						m_fShadowTimer += Time.deltaTime;
 				}
 				else
 				{
@@ -212,6 +208,8 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.DEFENDING:
 			{
+				//maybe some animation stuff? not sure, this could be a useless state
+				m_nState = (int)ALLY_STATES.STATUS_EFFECTS;
 			}
 			break;
 		case (int)ALLY_STATES.USEITEM_CHOSEN:
@@ -331,26 +329,26 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case 2:
 			{
-				//Magic
-				m_nState = (int)ALLY_STATES.USEMAGIC_CHOSEN;
+				//Switch
+				m_nState = (int)ALLY_STATES.SWITCHING;
 			}
 			break;
 		case 3:
+			{
+				//Escape
+				AttemptToEscape();
+			}
+			break;
+		case 4:
 			{
 				//Use Item
 				m_nState = (int)ALLY_STATES.USEITEM_CHOSEN;
 			}
 			break;
-		case 4:
-			{
-				//Switch
-				m_nState = (int)ALLY_STATES.SWITCHING;
-			}
-			break;
 		case 5:
 			{
-				//Escape
-				AttemptToEscape();
+				//Magic
+				m_nState = (int)ALLY_STATES.USEMAGIC_CHOSEN;
 			}
 			break;
 		}
@@ -967,6 +965,11 @@ public class CAllyBattleScript : UnitScript
 		m_aAnim.SetBool("m_bIsAttacking", false);
 	}
 
+	void DamagedAnimationOver()
+	{
+		m_aAnim.SetBool("m_bIsDamaged", false);
+	}
+
 	//Can't think of a better way for ranged units to wait until their projectile hits their target to wait.. since there could be more than one projectile.. and it seems silly to create a pointer/counter
 	void ChangeStateToStatusEffect()
 	{
@@ -1060,5 +1063,77 @@ public class CAllyBattleScript : UnitScript
 			}
 		}
 		return false;
+	}
+
+	new public void AdjustHP(int dmg)
+	{
+		GameObject newText = Instantiate(m_goFadingText);
+		if(dmg >= 0)
+		{
+			int totalDefense = AdjustDefense(m_nDef);
+
+			if(m_bAmIDefending == true)
+				dmg = dmg - totalDefense*2;
+			else 
+				dmg = dmg - totalDefense;
+
+			if(dmg < 0)
+				dmg = 0;
+		}
+		m_nCurHP -= dmg;
+		if(m_nCurHP <= 0)
+		{
+			m_nCurHP = 0;
+			m_aAnim.SetBool("m_bIsDying", true);
+			m_nState = (int)ALLY_STATES.DEAD;
+			newText.GetComponent<GUI_FadeText>().SetColor(true);
+			GameObject tw = GameObject.Find("TurnWatcher");
+			if(tw)
+			{
+				EndMyTurn();
+			}
+		}
+		else if(dmg >= 0)
+		{
+			m_aAnim.SetBool("m_bIsDamaged", true);
+			newText.GetComponent<GUI_FadeText>().SetColor(true);
+		}
+		else
+		{
+			//Make sure that the cur HP never goes above the max hp
+			if(GetCurHP() > GetMaxHP())
+				SetCurHP(GetMaxHP());
+			newText.GetComponent<GUI_FadeText>().SetColor(false);
+		}
+
+		newText.GetComponent<GUI_FadeText>().SetText((Mathf.Abs(dmg)).ToString());
+		newText.GetComponent<GUI_FadeText>().SetShouldFloat(true);
+		Vector3 textPos = transform.GetComponent<Collider>().transform.position;
+		textPos.y += (gameObject.GetComponent<BoxCollider>().size.y * 0.75f);
+		textPos = Camera.main.WorldToViewportPoint(textPos);
+		newText.transform.position = textPos;
+
+	}
+	//returns defense of this unit with respect to items equipped.
+	int AdjustDefense(int def)
+	{
+		if(m_idChestSlot != null)
+		{
+			def += m_idChestSlot.m_nDefMod;
+			GameObject gItem = Instantiate(Resources.Load<GameObject>("Items/Armor")) as GameObject;
+			gItem.GetComponent<BaseItemScript>().SetItemName(m_idChestSlot.m_szItemName);
+			gItem.GetComponent<BaseItemScript>().SetDescription(m_idChestSlot.m_szDescription);
+			gItem.GetComponent<BaseItemScript>().SetItemType(m_idChestSlot.m_nItemType);
+			gItem.GetComponent<BaseItemScript>().SetHPMod(m_idChestSlot.m_nHPMod);
+			gItem.GetComponent<BaseItemScript>().SetPowMod(m_idChestSlot.m_nPowMod);
+			gItem.GetComponent<BaseItemScript>().SetDefMod(m_idChestSlot.m_nDefMod);
+			gItem.GetComponent<BaseItemScript>().SetSpdMod(m_idChestSlot.m_nSpdMod);
+			gItem.GetComponent<ArmorItemScript>().SetSpecialItemType(m_idChestSlot.m_nSpecialType);
+			gItem.GetComponent<ArmorItemScript>().SetSpecialItemModifier(m_idChestSlot.m_nSpecialModifier);
+			gItem.GetComponent<ArmorItemScript>().Initialize();
+			gItem.GetComponent<ArmorItemScript>().m_dFunc(gameObject);
+		}
+
+		return def;
 	}
 }
