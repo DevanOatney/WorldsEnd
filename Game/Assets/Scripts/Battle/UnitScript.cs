@@ -322,4 +322,69 @@ public class UnitScript : MonoBehaviour
 		}
 		return false;
 	}
+	//if it returns -1, switch wasn't possible.  Else it returns 0-5 in relation to where this unit is able to switch to in the formation.
+	protected int TryToSwitch(bool _isAlly)
+	{
+		GameObject[] _units;
+		int posToSwitch = -1;
+		int nMod = 1;
+		if(_isAlly == true)
+		{
+			_units = GameObject.FindGameObjectsWithTag("Ally");
+		}
+		else
+		{
+			_units = GameObject.FindGameObjectsWithTag("Enemy");
+		}
+		if(FieldPosition > 2)
+		{
+			//front row, switching to back row
+			nMod = -1;
+		}
+		else
+		{
+			//back row, switching to front row
+			nMod = 1;
+		}
+
+
+
+		List<int> lValidPos = new List<int>();
+		foreach(GameObject e in _units)
+		{
+			lValidPos.Add(e.GetComponent<UnitScript>().FieldPosition);
+		}
+		if(lValidPos.Contains(FieldPosition + (3*nMod)))
+		{
+			//able to switch directly behind
+			posToSwitch = FieldPosition + (3*nMod);
+		}
+		else if(FieldPosition == 3 || FieldPosition == 2)
+		{
+			if(lValidPos.Contains(FieldPosition + (1*nMod)))
+			{
+				posToSwitch = FieldPosition + (1*nMod);
+			}
+		}
+		else if(FieldPosition == 5 || FieldPosition == 0)
+		{
+			if(lValidPos.Contains(FieldPosition + (5*nMod)))
+			{
+				posToSwitch = FieldPosition + (5*nMod);
+			}
+		}
+		else
+		{
+			if(lValidPos.Contains(FieldPosition + (2*nMod)))
+			{
+				posToSwitch = FieldPosition + (2*nMod);
+			}
+			else if(lValidPos.Contains(FieldPosition + (4*nMod)))
+			{
+				posToSwitch = FieldPosition + (4*nMod);
+			}
+		}
+
+		return posToSwitch;
+	}
 }

@@ -26,6 +26,7 @@ public class CAllyBattleScript : UnitScript
 		SPELL_PICKED_AOEHEAL,
 		CASTING_SPELL,   //player has chosen a spell and a target, play animation, resolve spell effect, move to STATUS_EFFECT
 		SWITCHING,		 //Unit switches with either unit infront or behind (depending on formation) afterward move to STATUS_EFFECT
+		SWITCHING_NOTMYTURN,     //State for switching when it's not your turn, this is to allow non-turn units to be able to animate/move but not go to STATUS_EFFECT afterward.
 		ESCAPING_FAILED,		 //Unit tries to escape, if failed go to STATUS_EFFECT, if succeeded end the fight.
 		ESCAPING_SUCCEEDED,
 		STATUS_EFFECTS,	 //Cycle through status effects, tick off one cycle of the effects, remove/update effects, inform TURNWATCHER of end of turn and end your turn.
@@ -159,32 +160,35 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.ATTACKING:
 			{
-				Vector3 toTarget = m_tTargetPositionOnField.position - transform.position;
-				if(toTarget.sqrMagnitude > 0.1f)
+				if(m_tTargetPositionOnField != null)
 				{
-					toTarget.Normalize();
-					transform.position += toTarget * m_fMovementSpeed * Time.deltaTime;
-					if(m_fShadowTimer >= m_fShadowTimerBucket)
+					Vector3 toTarget = m_tTargetPositionOnField.position - transform.position;
+					if(toTarget.sqrMagnitude > 0.1f)
 					{
-						GameObject newShadow = Instantiate(m_goShadowClone, transform.position, Quaternion.identity) as GameObject;
-						newShadow.GetComponent<SpriteRenderer>().sprite = m_aAnim.gameObject.GetComponent<SpriteRenderer>().sprite;
-						Vector3 cloneTransform = m_aAnim.gameObject.transform.localScale;
-						newShadow.transform.localScale = cloneTransform;
-						Vector3 pos = transform.position;
-						//adjust so the clone is behind the unit
-						pos.z += 0.1f;
-						Destroy(newShadow, m_fShadowTimerBucket*3);
-						m_fShadowTimer = 0.0f;
+						toTarget.Normalize();
+						transform.position += toTarget * m_fMovementSpeed * Time.deltaTime;
+						if(m_fShadowTimer >= m_fShadowTimerBucket)
+						{
+							GameObject newShadow = Instantiate(m_goShadowClone, transform.position, Quaternion.identity) as GameObject;
+							newShadow.GetComponent<SpriteRenderer>().sprite = m_aAnim.gameObject.GetComponent<SpriteRenderer>().sprite;
+							Vector3 cloneTransform = m_aAnim.gameObject.transform.localScale;
+							newShadow.transform.localScale = cloneTransform;
+							Vector3 pos = transform.position;
+							//adjust so the clone is behind the unit
+							pos.z += 0.1f;
+							Destroy(newShadow, m_fShadowTimerBucket*3);
+							m_fShadowTimer = 0.0f;
+						}
+						else
+							m_fShadowTimer += Time.deltaTime;
 					}
 					else
-						m_fShadowTimer += Time.deltaTime;
+					{
+						m_tTargetPositionOnField = null;
+						m_aAnim.SetBool("m_bIsMoving", false);
+						m_aAnim.SetBool("m_bIsAttacking", true);
+					}
 				}
-				else
-				{
-					m_aAnim.SetBool("m_bIsMoving", false);
-					m_aAnim.SetBool("m_bIsAttacking", true);
-				}
-
 			}
 			break;
 		case (int)ALLY_STATES.ATTACK_RETURNING:
@@ -262,6 +266,57 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.SWITCHING:
 			{
+				if(m_tTargetPositionOnField == null)
+				{
+					m_tTargetPositionOnField = GameObject.Find("Ally_StartPos" + FieldPosition).transform;
+				}
+				
+				Vector3 toTarget = m_tTargetPositionOnField.position - transform.position;
+				if(toTarget.sqrMagnitude > 0.1f)
+				{
+					toTarget.Normalize();
+					transform.position += toTarget * m_fMovementSpeed * Time.deltaTime;
+				}
+				else
+				{
+					transform.position = m_tTargetPositionOnField.position;
+					m_tTargetPositionOnField = null;
+					m_aAnim.SetBool("m_bIsMoving", false);
+					m_nState = (int)ALLY_STATES.STATUS_EFFECTS;
+				}
+			}
+			break;
+		case (int)ALLY_STATES.SWITCHING_NOTMYTURN:
+			{
+				if(m_tTargetPositionOnField == null)
+				{
+					m_tTargetPositionOnField = GameObject.Find("Ally_StartPos" + FieldPosition).transform;
+					if(GetCurHP() > 0)
+						m_aAnim.SetBool("m_bIsMoving", true);
+				}
+
+				Vector3 toTarget = m_tTargetPositionOnField.position - transform.position;
+				if(toTarget.sqrMagnitude > 0.1f)
+				{
+					toTarget.Normalize();
+					transform.position += toTarget * m_fMovementSpeed * Time.deltaTime;
+				}
+				else
+				{
+					transform.position = m_tTargetPositionOnField.position;
+					m_tTargetPositionOnField = null;
+					m_bIsMyTurn = false;
+					if(GetCurHP() > 0)
+					{
+						m_aAnim.SetBool("m_bIsMoving", false);
+						m_nState = (int)ALLY_STATES.DIALOGUE;
+					}
+					else
+					{
+						m_nState = (int)ALLY_STATES.DEAD;
+					}
+					
+				}
 			}
 			break;
 		case (int)ALLY_STATES.ESCAPING_FAILED:
@@ -330,7 +385,36 @@ public class CAllyBattleScript : UnitScript
 		case 2:
 			{
 				//Switch
-				m_nState = (int)ALLY_STATES.SWITCHING;
+
+				//find if we can switch
+				int nPosToSwitchTo = TryToSwitch(true);
+				if(nPosToSwitchTo != -1)
+				{
+					//switch is possible.
+					foreach(GameObject unit in m_twTurnWatcher.m_goUnits)
+					{
+						if(unit.GetComponent<UnitScript>().FieldPosition == nPosToSwitchTo && unit.GetComponent<UnitScript>().m_nUnitType <= (int)UnitScript.UnitTypes.NPC)
+						{
+							int nOldPos = FieldPosition;
+							//set movement position to target position of new formation
+							FieldPosition = nPosToSwitchTo;
+							m_nState = (int)ALLY_STATES.SWITCHING;
+							//set movement position for the other unit
+							unit.GetComponent<UnitScript>().FieldPosition = nOldPos;
+							unit.GetComponent<UnitScript>().m_nState = (int)ALLY_STATES.SWITCHING_NOTMYTURN;
+							unit.GetComponent<UnitScript>().m_bIsMyTurn = true;
+							break;
+						}
+					}
+				}
+				else
+				{
+					//enable action selection box
+					m_twTurnWatcher.m_goActionSelector.SetActive(true);
+					//put us back in the state to select actions
+					m_nState = (int)ALLY_STATES.ACTION_SELECTION;
+				}
+
 			}
 			break;
 		case 3:

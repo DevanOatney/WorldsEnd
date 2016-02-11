@@ -88,7 +88,7 @@ public class TurnWatcherScript : MonoBehaviour
 				if(ally.m_szCharacterName == "Briol")
 					ally.m_nFormationIter = 3;
 				else
-					ally.m_nFormationIter = 4;
+					ally.m_nFormationIter = 0;
 			}
 			ds.SetParty(party);
 		}
@@ -649,6 +649,7 @@ public class TurnWatcherScript : MonoBehaviour
 				//assuming it's an ally.. because if you're in the action menu selecting an action.. it must be an allies turn
 				m_goActionSelector.SetActive(false);
 				unit.GetComponent<CAllyBattleScript>().HandleActionSelected(p_nIndex);
+				break;
 			}
 		}
 	}
