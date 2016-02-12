@@ -136,7 +136,7 @@ public class DCScript : MonoBehaviour
 		public string m_szCharacterRace;
 		public string m_szCharacterClassType;
 		public string m_szCharacterBio;
-		public int m_nFormationIter;
+		public int m_nFormationIter = 5;
 
 	}
 
@@ -144,7 +144,24 @@ public class DCScript : MonoBehaviour
 	List<CharacterData> m_lPartyMembers = new List<CharacterData>();
 	public List<CharacterData> GetParty() {return m_lPartyMembers;}
 	public void SetParty(List<CharacterData> p) {m_lPartyMembers = p;}
-	public void AddPartyMember(CharacterData character) {m_lPartyMembers.Add(character);}
+	public void AddPartyMember(CharacterData character) 
+	{
+		List<int> lAvailableSpots = new List<int>();
+		for(int i = 0; i < 6; ++i){lAvailableSpots.Add(i);}
+		int nLowestSpot = 6;
+		foreach(CharacterData c in m_lPartyMembers)
+		{
+			if(lAvailableSpots.Contains(c.m_nFormationIter))
+				lAvailableSpots.Remove(c.m_nFormationIter);
+		}
+		foreach(int n in lAvailableSpots)
+		{
+			if(nLowestSpot > n)
+				nLowestSpot = n;
+		}
+		character.m_nFormationIter = nLowestSpot;
+		m_lPartyMembers.Add(character);
+	}
 	public void RemovePartyMember(CharacterData character) {m_lPartyMembers.Remove(character);}
 	public CharacterData GetCharacter(string szName)
 	{

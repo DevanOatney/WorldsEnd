@@ -48,7 +48,7 @@ public class CAllyBattleScript : UnitScript
 	Animator m_aAnim;				
 	public GameObject m_goFadingText; //for displaying damage taken (or any other fading text to float above this unit.
 	DCScript m_dcPersistantData;
-	TurnWatcherScript m_twTurnWatcher;
+
 	public GameObject m_goShadowClone; //for shadow trails of this unit
 	public Texture2D m_tLargeBust;     //the portrait of this character  (to be displayed during victory screen)
 	public Texture2D m_t2dSelector;    //texture to display selector when choosing an action/spell/item
@@ -1147,6 +1147,18 @@ public class CAllyBattleScript : UnitScript
 			}
 		}
 		return false;
+	}
+
+	new public void Missed()
+	{
+		GameObject newText = Instantiate(m_goFadingText);
+		newText.GetComponent<GUI_FadeText>().SetColor(true);
+		newText.GetComponent<GUI_FadeText>().SetText("Miss");
+		newText.GetComponent<GUI_FadeText>().SetShouldFloat(true);
+		Vector3 textPos = transform.GetComponent<Collider>().transform.position;
+		textPos.y += (gameObject.GetComponent<BoxCollider>().size.y * 0.75f);
+		textPos = Camera.main.WorldToViewportPoint(textPos);
+		newText.transform.position = textPos;
 	}
 
 	new public void AdjustHP(int dmg)

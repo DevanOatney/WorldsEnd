@@ -117,6 +117,9 @@ public class OverWatcherScript : MonoBehaviour {
 			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
 			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
 			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
+			DCScript.StatusEffect se = new DCScript.StatusEffect("Poison", 20, 1);
+			se.m_lEffectedMembers.Add("Callan");
+			pdata.GetComponent<DCScript>().AddStatusEffect(se);
 		}
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		if(CAudioHelper.Instance == null)
@@ -176,7 +179,6 @@ public class OverWatcherScript : MonoBehaviour {
 				if(encGrps == null)
 					encGrps = es.GetDayEncounterGroups();
 			}
-			Debug.Log(encGrps.Count);
 			if(encGrps.Count > 0)
 			{
 				int rndmGrp = Random.Range(0, encGrps.Count);

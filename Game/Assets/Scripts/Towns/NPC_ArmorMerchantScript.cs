@@ -778,7 +778,7 @@ public class NPC_ArmorMerchantScript : NPCScript
 	{
 		if(c.name == "Action Box(Clone)")
 		{
-			if(GetComponent<MessageHandler>())
+			if(GetComponentInChildren<MessageHandler>())
 			{
 				//set to about to be active
 				m_bAboutToBeActive = true;

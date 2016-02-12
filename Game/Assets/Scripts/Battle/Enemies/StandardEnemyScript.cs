@@ -224,7 +224,6 @@ public class StandardEnemyScript : UnitScript
 	new public void AdjustHP(int dmg)
 	{
 		GameObject newText = Instantiate(m_goFadingText);
-		GameObject GO = GameObject.Find("PersistantData");
 		if(dmg >= 0)
 		{
 			dmg = dmg - m_nDef;

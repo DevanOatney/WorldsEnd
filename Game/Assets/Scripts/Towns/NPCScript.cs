@@ -339,7 +339,7 @@ public class NPCScript : MonoBehaviour
 		if(c.name == "Action Box(Clone)")
 		{
 			m_bIsBeingInterractedWith = true;
-			if(GetComponent<MessageHandler>())
+			if(GetComponentInChildren<MessageHandler>())
 			{
 				if(m_szDialoguePath != "")
 				{

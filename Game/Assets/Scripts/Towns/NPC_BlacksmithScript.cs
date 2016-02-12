@@ -506,7 +506,7 @@ public class NPC_BlacksmithScript : NPCScript
 	{
 		if(c.name == "Action Box(Clone)")
 		{
-			if(GetComponent<MessageHandler>())
+			if(GetComponentInChildren<MessageHandler>())
 			{
 				//set to about to be active
 				m_bIsMoving = false;

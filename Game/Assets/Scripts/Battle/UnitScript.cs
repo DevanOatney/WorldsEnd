@@ -59,7 +59,7 @@ public class UnitScript : MonoBehaviour
 	public void SetUnitLevel(int lvl) {m_nUnitLevel = lvl;}
 
 
-
+	protected TurnWatcherScript m_twTurnWatcher;
 	//List of status effects that could be effecting the player/units   Poison, Confusion, Paralyze, Stone (examples)
 	public List<GameObject> m_lStatusEffects = new List<GameObject>();
 
@@ -97,6 +97,13 @@ public class UnitScript : MonoBehaviour
 		{
 		case "Poison":
 			{
+				GameObject newPoison = m_twTurnWatcher.FindStatusEffect("Poison");
+				if(newPoison != null)
+				{
+					newPoison = Instantiate(newPoison);
+					newPoison.GetComponent<BattlePoisonEffectScript>().Initialize(gameObject,nMod, nTicks);
+					m_lStatusEffects.Add(newPoison);
+				}
 			}
 			break;
 		case "Paralyze":
@@ -120,21 +127,16 @@ public class UnitScript : MonoBehaviour
 			}
 		}
 	}
-	//temp for status effect testing
-	public GameObject m_poison;
 
 	void Awake()
 	{
-		GameObject tw = GameObject.Find("TurnWatcher");
-		if(tw)
-		{
-			tw.GetComponent<TurnWatcherScript>().AddMeToList(gameObject);
-		}
+		m_twTurnWatcher = GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>();
+		m_twTurnWatcher.AddMeToList(gameObject);
 	}
 	// Use this for initialization
 	void Start () 
 	{
-
+		
 	}
 	
 	// Update is called once per frame
@@ -209,13 +211,9 @@ public class UnitScript : MonoBehaviour
 	
 	public void EndMyTurn()
 	{
-		GameObject tw = GameObject.Find("TurnWatcher");
-		if(tw)
-		{
-			m_bIsMyTurn = false;
-			tw.GetComponent<TurnWatcherScript>().MyTurnIsOver(gameObject);
-			m_bFirstPass = true;
-		}
+		m_bIsMyTurn = false;
+		m_twTurnWatcher.MyTurnIsOver(gameObject);
+		m_bFirstPass = true;
 	}
 
 	public void AttackAnimationEnded()

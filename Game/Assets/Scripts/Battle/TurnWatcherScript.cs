@@ -54,6 +54,7 @@ public class TurnWatcherScript : MonoBehaviour
 
 	//for leveling up characters
 	public GameObject m_gLevelUpObj;
+	public List<GameObject> m_lStatusEffectList;
 	//flag for if the players has already pressed return during the victory screen
 	bool m_bHasPressedEnter = false;
 	[HideInInspector]
@@ -79,7 +80,6 @@ public class TurnWatcherScript : MonoBehaviour
 			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
 			List<string> lEnemies = new List<string>();
 			lEnemies.Add("Boar");
-			lEnemies.Add("KillerBee");
 			pdata.GetComponent<DCScript>().SetEnemyNames(lEnemies);
 			ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
 			List<DCScript.CharacterData> party = ds.GetParty();
@@ -640,6 +640,16 @@ public class TurnWatcherScript : MonoBehaviour
         SceneManager.LoadScene("GameOver_Scene");
 	}
 
+	public GameObject FindStatusEffect(string szName)
+	{
+		foreach(GameObject go in m_lStatusEffectList)
+		{
+			if(go.name == szName)
+				return go;
+		}
+		return null;
+	}
+
 	public void ActionSelected(int p_nIndex)
 	{
 		foreach(GameObject unit in m_goUnits)
@@ -667,7 +677,8 @@ public class TurnWatcherScript : MonoBehaviour
 					{
 						if(unit.GetComponent<UnitScript>().m_bIsMyTurn == true)
 						{
-							unit.GetComponent<CAllyBattleScript>().ChangeEnemyTarget(p_nIndex);
+							if(unit.GetComponent<UnitScript>().m_nUnitType <= (int)UnitScript.UnitTypes.NPC)
+								unit.GetComponent<CAllyBattleScript>().ChangeEnemyTarget(p_nIndex);
 							return;
 						}
 					}
@@ -689,7 +700,8 @@ public class TurnWatcherScript : MonoBehaviour
 					{
 						if(unit.GetComponent<UnitScript>().m_bIsMyTurn == true)
 						{
-							unit.GetComponent<CAllyBattleScript>().EnemyToAttackSelected(p_nIndex);
+							if(unit.GetComponent<UnitScript>().m_nUnitType <= (int)UnitScript.UnitTypes.NPC)
+								unit.GetComponent<CAllyBattleScript>().EnemyToAttackSelected(p_nIndex);
 							return;
 						}
 					}
@@ -709,7 +721,7 @@ public class TurnWatcherScript : MonoBehaviour
 				{
 					if(b.GetComponent<UnitScript>().m_bIsMyTurn == true)
 					{
-						
+						Debug.Log("target changed");
 					}
 				}
 			}
