@@ -97,13 +97,11 @@ public class UnitScript : MonoBehaviour
 		{
 		case "Poison":
 			{
-				GameObject newPoison = m_twTurnWatcher.FindStatusEffect("Poison");
-				if(newPoison != null)
-				{
-					newPoison = Instantiate(newPoison);
-					newPoison.GetComponent<BattlePoisonEffectScript>().Initialize(gameObject,nMod, nTicks);
-					m_lStatusEffects.Add(newPoison);
-				}
+				GameObject newPoison = m_twTurnWatcher.FindStatusEffect("BattlePoison");
+				newPoison = Instantiate(newPoison);
+				newPoison.name = "Poison";
+				newPoison.GetComponent<BattlePoisonEffectScript>().Initialize(gameObject,nMod, nTicks);
+				m_lStatusEffects.Add(newPoison);
 			}
 			break;
 		case "Paralyze":
@@ -123,6 +121,7 @@ public class UnitScript : MonoBehaviour
 		{
 			if(m_lStatusEffects[i].name == effectName)
 			{
+				m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_bHasBeenRemoved = true;
 				m_lStatusEffects.RemoveAt(i);
 			}
 		}

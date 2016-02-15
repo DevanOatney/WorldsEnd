@@ -117,8 +117,9 @@ public class OverWatcherScript : MonoBehaviour {
 			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
 			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
 			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
-			DCScript.StatusEffect se = new DCScript.StatusEffect("Poison", 20, 1);
+			DCScript.StatusEffect se = new DCScript.StatusEffect("Poison", 2, 20);
 			se.m_lEffectedMembers.Add("Callan");
+			se.m_lEffectedMembers.Add("Briol");
 			pdata.GetComponent<DCScript>().AddStatusEffect(se);
 		}
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
@@ -181,6 +182,11 @@ public class OverWatcherScript : MonoBehaviour {
 			}
 			if(encGrps.Count > 0)
 			{
+				//temp for status effect test
+				foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
+				{
+					Debug.Log (se.m_szName + " " + se.m_nCount);
+				}
 				int rndmGrp = Random.Range(0, encGrps.Count);
 
 				//Set the names of the list of enemies the player is about to fight

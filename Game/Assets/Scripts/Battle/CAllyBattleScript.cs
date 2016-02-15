@@ -338,7 +338,7 @@ public class CAllyBattleScript : UnitScript
 					{
 
 						m_dcPersistantData.RemoveMeFromStatus(name, i);
-						m_lStatusEffects.RemoveAt(i);
+						RemoveStatusEffect(m_lStatusEffects[i].name);
 						i--;
 					}
 					else

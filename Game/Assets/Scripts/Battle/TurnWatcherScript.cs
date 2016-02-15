@@ -465,13 +465,8 @@ public class TurnWatcherScript : MonoBehaviour
 
 			if(m_nEnemyCount <= 0)
 			{
-				int result;
-				if(ds.m_dStoryFlagField.TryGetValue("Primus_ReturnFromFixFight", out result))
-				{
-					ds.m_dStoryFlagField.Remove("Primus_ReturnFromFixFight");
-					ds.m_dStoryFlagField.Add("DefeatedApplicant", 1);
-				}
 				m_bIsBattleOver  = true;
+				m_goActionSelector.SetActive(false);
 				Win();
 			}
 		}
@@ -480,25 +475,9 @@ public class TurnWatcherScript : MonoBehaviour
 			m_nAllyCount--;
 			if(m_nAllyCount <= 0)
 			{
+				m_goActionSelector.SetActive(false);
 				Invoke("BeginFading", m_fFadeDuration);
-				int result;
-				if(ds.m_dStoryFlagField.TryGetValue("FixedFight", out result))
-				{
-					if(!ds.m_dStoryFlagField.TryGetValue("Primus_ReturnFromFixFight", out result))
-					{
-							ds.m_dStoryFlagField.Remove("FixedFight");
-							ds.m_dStoryFlagField.Add("Primus_ReturnFromFixFight", 1);
-							Invoke ("ReturnToField", 3.0f);
-					}
-					else
-					{
-						Invoke("Lose",3.0f + m_fFadeDuration);
-					}
-				}
-				else
-				{
-					Invoke("Lose", 3.0f + m_fFadeDuration);
-				}
+				Invoke("Lose", 3.0f + m_fFadeDuration);
 			}
 		}
 	}
@@ -589,9 +568,34 @@ public class TurnWatcherScript : MonoBehaviour
 		StartCoroutine(obj.FadeAudio(1.0f, FadeInOutSound.Fade.Out));
 		Invoke("Finish", 1.0f);
 	}
-
+	//Called just before finishing this scene, updates the data canister's party to reflect any leveling, status effects, or equipment changes.
+	void UpdatePartyStatsForScreenSwitch()
+	{
+		List<DCScript.CharacterData> party = ds.GetParty();
+		foreach(DCScript.CharacterData ally in party)
+		{
+			GameObject foundAlly = GameObject.Find(ally.m_szCharacterName);
+			ally.m_nMaxHP = foundAlly.GetComponent<CAllyBattleScript>().GetMaxHP();
+			ally.m_nSTR = foundAlly.GetComponent<CAllyBattleScript>().GetSTR();
+			ally.m_nDEF = foundAlly.GetComponent<CAllyBattleScript>().GetDEF();
+			ally.m_nSPD = foundAlly.GetComponent<CAllyBattleScript>().GetSPD();
+			ally.m_nLevel = foundAlly.GetComponent<CAllyBattleScript>().GetUnitLevel();
+			ally.m_nCurrentEXP = foundAlly.GetComponent<CAllyBattleScript>().m_nCurrentExperience;
+			ally.m_idHelmSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idHelmSlot;
+			ally.m_idShoulderSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idShoulderSlot;
+			ally.m_idChestSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idChestSlot;
+			ally.m_idGloveSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idGloveSlot;
+			ally.m_idBeltSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idBeltSlot;
+			ally.m_idLegSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idLegSlot;
+			ally.m_idTrinket1 = foundAlly.GetComponent<CAllyBattleScript>().m_idTrinket1;
+			ally.m_idTrinket2 = foundAlly.GetComponent<CAllyBattleScript>().m_idTrinket2;
+			ally.m_lSpellsKnown = foundAlly.GetComponent<CAllyBattleScript>().m_lSpellList;
+		}
+		ds.SetParty(party);
+	}
 	void Finish()
 	{
+		UpdatePartyStatsForScreenSwitch();
 		//grab each status effect and add it back to the list in the data canister, if the status effect already exists, add the character to the list of effected characters.
 		GameObject[] Allies = GameObject.FindGameObjectsWithTag("Ally");
 		foreach(GameObject Ally in Allies)

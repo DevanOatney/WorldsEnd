@@ -15,6 +15,8 @@ public class BattlePoisonEffectScript : BattleBaseEffectScript
 	// Update is called once per frame
 	void Update () 
 	{
+		if(m_bHasBeenRemoved == true)
+			Destroy(gameObject);
 	}
 	
 	public void Initialize(GameObject owner, int damage, int tickAmount)

@@ -13,6 +13,8 @@ public class BattleBaseEffectScript : MonoBehaviour
 	public int m_nAmountOfTicks = 0;
 	//mod for use (i.e., damage done per tick, chance for paralyze to happen each round 0-100, etc)
 	public int m_nMod = 0;
+	//if this is set, destroy the game object
+	public bool m_bHasBeenRemoved = false;
 	// Use this for initialization
 	void Start () 
 	{

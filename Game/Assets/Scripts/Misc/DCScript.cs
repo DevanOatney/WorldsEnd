@@ -93,6 +93,14 @@ public class DCScript : MonoBehaviour
 			m_lStatusEffects.Add (se);
 		}
 	}
+	public void ReduceStatusEffectCount(string szName)
+	{
+		foreach(StatusEffect se in m_lStatusEffects)
+		{
+			Debug.Log(se.m_nCount);
+			se.m_nCount--;
+		}
+	}
 	public void RemoveMeFromStatus(string szName, int iter)
 	{
 		m_lStatusEffects[iter].m_lEffectedMembers.Remove(szName);
