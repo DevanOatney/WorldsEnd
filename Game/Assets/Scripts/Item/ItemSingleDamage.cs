@@ -73,7 +73,5 @@ public class ItemSingleDamage : BaseItemScript
 	public void SingleDamageFunction(GameObject pOwner)
 	{
 		m_pOwner = pOwner;
-		m_pOwner.GetComponent<CAllyBattleScript>().SetAllowInput(false);
-		UnitScript us = m_pOwner.GetComponent<UnitScript>();
 	}
 }

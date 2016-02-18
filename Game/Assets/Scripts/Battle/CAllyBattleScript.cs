@@ -89,7 +89,8 @@ public class CAllyBattleScript : UnitScript
 	Transform m_tTargetPositionOnField = null;
 
 	//For when this character is trying to use an item in battle
-	GameObject m_goItemBeingUsed = null;
+	[HideInInspector]
+	public GameObject m_goItemBeingUsed = null;
 
 	// Use this for initialization
 	void Start () 
@@ -154,7 +155,7 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.ATTACK_CHOSEN:
 			{
-				HandleEnemySingleTargetInput();
+				HandleSingleTargetInput(false);
 				if(Input.GetKeyDown(KeyCode.Return))
 				{
 					EnemyToAttackSelected(m_nTargetPositionOnField);
@@ -225,19 +226,13 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.ITEM_PICKED_SINGLEDMG:
 			{
-				HandleEnemySingleTargetInput();
+				HandleSingleTargetInput(false);
 				if(Input.GetKeyDown(KeyCode.Return))
 				{
 					//turn off the flags for the item/inventory rendering
 					m_nState = (int)CAllyBattleScript.ALLY_STATES.USING_ITEM;
 					m_goItemBeingUsed.GetComponent<ItemSingleDamage>().m_bShouldActivate = true;
 					ClearTargetReticles();
-				}
-				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
-				{
-					m_nState = (int)CAllyBattleScript.ALLY_STATES.USEITEM_CHOSEN;
-					ClearTargetReticles();
-					HandleActionSelected(4);
 				}
 			}
 			break;
@@ -259,11 +254,30 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.ITEM_PICKED_SINGLEHEAL:
 			{
-				
+				HandleSingleTargetInput(true);
+				if(Input.GetKeyDown(KeyCode.Return))
+				{
+					//turn off the flags for the item/inventory rendering
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USING_ITEM;
+					m_goItemBeingUsed.GetComponent<ItemSingleHeal>().m_bShouldActivate = true;
+					ClearTargetReticles();
+				}
 			}
 			break;
 		case (int)ALLY_STATES.ITEM_PICKED_AOEHEAL:
 			{
+				if(Input.GetKeyDown(KeyCode.Return))
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USING_ITEM;
+					m_goItemBeingUsed.GetComponent<ItemGroupHeal>().m_bShouldActivate = true;
+					ClearTargetReticles();
+				}
+				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USEITEM_CHOSEN;
+					ClearTargetReticles();
+					HandleActionSelected(4);
+				}
 			}
 			break;
 		case (int)ALLY_STATES.USING_ITEM:    
@@ -502,13 +516,21 @@ public class CAllyBattleScript : UnitScript
 		}
 	}
 
-	void HandleEnemySingleTargetInput()
+	void HandleSingleTargetInput(bool isAlly)
 	{
 		if(Input.GetKeyDown(KeyCode.DownArrow))
 		{
 			List<int> lValidPos = new List<int>();
-			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-			foreach(GameObject e in enemies)
+			GameObject[] units;
+			if(isAlly == true)
+			{
+				units = GameObject.FindGameObjectsWithTag("Ally");
+			}
+			else
+			{
+				units = GameObject.FindGameObjectsWithTag("Enemy");
+			}
+			foreach(GameObject e in units)
 			{
 				lValidPos.Add(e.GetComponent<UnitScript>().FieldPosition);
 			}
@@ -541,8 +563,16 @@ public class CAllyBattleScript : UnitScript
 		else if(Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			List<int> lValidPos = new List<int>();
-			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-			foreach(GameObject e in enemies)
+			GameObject[] units;
+			if(isAlly == true)
+			{
+				units = GameObject.FindGameObjectsWithTag("Ally");
+			}
+			else
+			{
+				units = GameObject.FindGameObjectsWithTag("Enemy");
+			}
+			foreach(GameObject e in units)
 			{
 				lValidPos.Add(e.GetComponent<UnitScript>().FieldPosition);
 			}
@@ -576,8 +606,16 @@ public class CAllyBattleScript : UnitScript
 		else if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			List<int> lValidPos = new List<int>();
-			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-			foreach(GameObject e in enemies)
+			GameObject[] units;
+			if(isAlly == true)
+			{
+				units = GameObject.FindGameObjectsWithTag("Ally");
+			}
+			else
+			{
+				units = GameObject.FindGameObjectsWithTag("Enemy");
+			}
+			foreach(GameObject e in units)
 			{
 				lValidPos.Add(e.GetComponent<UnitScript>().FieldPosition);
 			}
@@ -686,29 +724,34 @@ public class CAllyBattleScript : UnitScript
 		{
 			//Disable targeting cursors
 			ClearTargetReticles();
-			//enable action selection box
-			m_twTurnWatcher.m_goActionSelector.SetActive(true);
-			//put us back in the state to select actions
-			m_nState = (int)ALLY_STATES.ACTION_SELECTION;
-		}
-	}
+			switch(m_nState)
+			{
+			case (int)ALLY_STATES.ATTACK_CHOSEN:
+				{
+					//enable action selection box
+					m_twTurnWatcher.m_goActionSelector.SetActive(true);
+					//put us back in the state to select actions
+					m_nState = (int)ALLY_STATES.ACTION_SELECTION;
+				}
+				break;
+			case (int)ALLY_STATES.ITEM_PICKED_SINGLEDMG:
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USEITEM_CHOSEN;
+					ClearTargetReticles();
+					HandleActionSelected(4);
+				}
+				break;
+			case (int)ALLY_STATES.ITEM_PICKED_SINGLEHEAL:
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USEITEM_CHOSEN;
+					ClearTargetReticles();
+					HandleActionSelected(4);
+				}
+				break;
+			}
 
-	void HandleMagicSelectionInput()
-	{
-
-		if(Input.GetKeyDown(KeyCode.DownArrow))
-		{
-			m_nMagicSelectionIndex++;
-			if(m_nMagicSelectionIndex >= m_lSpellList.Count)
-				m_nMagicSelectionIndex = 0;
 		}
-		else if(Input.GetKeyDown(KeyCode.UpArrow))
-		{
-			m_nMagicSelectionIndex--;
-			if(m_nMagicSelectionIndex < 0)
-				m_nMagicSelectionIndex = m_lSpellList.Count - 1;
-		}
-	}
+  	}
 
 	void HandleItemSelectionInput()
 	{
@@ -962,6 +1005,7 @@ public class CAllyBattleScript : UnitScript
 		for(int i = 0; i < 6; ++i)
 		{
 			GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
+			GameObject.Find("Ally_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
 		}
 	}
 	public void UpdatePositionOnField()
@@ -1049,6 +1093,22 @@ public class CAllyBattleScript : UnitScript
 			m_nState = (int)CAllyBattleScript.ALLY_STATES.USING_ITEM;
 			m_goItemBeingUsed.GetComponent<ItemGroupDamage>().m_bShouldActivate = true;
 			ClearTargetReticles();
+		}
+	}
+
+	public void AllyToActSelected(int p_nTargetPosition)
+	{
+		if(m_nState == (int)ALLY_STATES.ITEM_PICKED_SINGLEHEAL)
+		{
+			ClearTargetReticles();
+			m_nState = (int)CAllyBattleScript.ALLY_STATES.USING_ITEM;
+			m_goItemBeingUsed.GetComponent<ItemSingleHeal>().m_bShouldActivate = true;
+		}
+		else if(m_nState == (int)ALLY_STATES.ITEM_PICKED_AOEHEAL)
+		{
+			ClearTargetReticles();
+			m_nState = (int)CAllyBattleScript.ALLY_STATES.USING_ITEM;
+			m_goItemBeingUsed.GetComponent<ItemGroupHeal>().m_bShouldActivate = true;
 		}
 	}
 

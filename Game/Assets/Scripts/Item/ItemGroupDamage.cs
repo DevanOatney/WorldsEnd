@@ -62,7 +62,6 @@ public class ItemGroupDamage : BaseItemScript
 	public void GroupDamageFunction(GameObject pOwner)
 	{
 		m_pOwner = pOwner;
-		m_pOwner.GetComponent<CAllyBattleScript>().SetAllowInput(false);
 		GameObject[] Enemies = GameObject.FindGameObjectsWithTag(GetTargets());
 		foreach(GameObject enemy in Enemies)
 		{

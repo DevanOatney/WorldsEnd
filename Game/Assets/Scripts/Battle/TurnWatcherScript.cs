@@ -742,6 +742,38 @@ public class TurnWatcherScript : MonoBehaviour
 		}
 	}
 
+	public void Ally_TargetHighlighted(int p_nIndex)
+	{
+		GameObject[] _allies = GameObject.FindGameObjectsWithTag("Ally");
+		foreach(GameObject a in _allies)
+		{
+			if(a.GetComponent<UnitScript>().FieldPosition == p_nIndex)
+			{
+				foreach(GameObject b in _allies)
+				{
+					if(b.GetComponent<UnitScript>().m_bIsMyTurn == true)
+					{
+						if(b.GetComponent<UnitScript>().m_nState == (int)CAllyBattleScript.ALLY_STATES.ITEM_PICKED_SINGLEHEAL)
+						{
+							if(a.GetComponent<UnitScript>().GetCurHP() == 0)
+							{
+								if(b.GetComponent<CAllyBattleScript>().m_goItemBeingUsed.GetComponent<BaseItemScript>().m_bCanTargetDeadUnits == true)
+								{
+									//in here it means that you're using an item that can target a dead person, and you've highlighted over a dead person.. so.. target them ;)
+									b.GetComponent<CAllyBattleScript>().ChangeAllyTarget(p_nIndex);
+								}
+							}
+							else
+							{
+								b.GetComponent<CAllyBattleScript>().ChangeAllyTarget(p_nIndex);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 	public void Ally_TargetSelected(int p_nIndex)
 	{
 		GameObject[] _allies = GameObject.FindGameObjectsWithTag("Ally");
@@ -753,7 +785,7 @@ public class TurnWatcherScript : MonoBehaviour
 				{
 					if(b.GetComponent<UnitScript>().m_bIsMyTurn == true)
 					{
-						Debug.Log("target changed");
+						b.GetComponent<CAllyBattleScript>().AllyToActSelected(p_nIndex);
 					}
 				}
 			}

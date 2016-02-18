@@ -47,6 +47,7 @@ public class BaseItemScript : MonoBehaviour
 	int m_nSpdMod;
 	public int GetSpdMod() {return m_nSpdMod;}
 	public void SetSpdMod(int spd) {m_nSpdMod = spd;}
+	public bool m_bCanTargetDeadUnits = false;
 
 	public delegate void m_delegate(GameObject pOwner);
 	public m_delegate m_dFunc;
