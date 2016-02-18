@@ -14,6 +14,7 @@ public class TurnWatcherScript : MonoBehaviour
 	[HideInInspector]
 	public GameObject m_goActionSelector;
 
+
 	//The amount of enemies on the field
 	int m_nEnemyCount = 0;
 	//The amount of allies on the field
@@ -68,6 +69,7 @@ public class TurnWatcherScript : MonoBehaviour
 		m_goActionSelector = GameObject.Find("Actions");
 		m_goActionSelector.SetActive(false);
 
+
 		if(pdata == null)
 		{
 			//This is a debug play then.   Create a data canister, and put the main character in the party
@@ -79,6 +81,7 @@ public class TurnWatcherScript : MonoBehaviour
 			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
 			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
 			List<string> lEnemies = new List<string>();
+			lEnemies.Add("Boar");
 			lEnemies.Add("Boar");
 			pdata.GetComponent<DCScript>().SetEnemyNames(lEnemies);
 			ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
@@ -432,6 +435,31 @@ public class TurnWatcherScript : MonoBehaviour
 	public void MyTurnIsOver(GameObject go)
 	{
 		if(m_bIsBattleOver == true)
+			return;
+		//do a premeditated check to see if the battle is going to end (i.e. if everyone's hp is at 0, that way we don't start another persons turn for no reason.
+		int aliveEnemies = 0;
+		int aliveAllies = 0;
+		foreach(GameObject unit in m_goUnits)
+		{
+			if(unit.GetComponent<UnitScript>().m_nUnitType <= (int)UnitScript.UnitTypes.NPC)
+			{
+				if(unit.GetComponent<UnitScript>().GetCurHP() > 0)
+				{
+					aliveAllies++;
+					continue;
+				}
+			}
+			if(unit.GetComponent<UnitScript>().m_nUnitType > (int)UnitScript.UnitTypes.NPC)
+			{
+				if(unit.GetComponent<UnitScript>().GetCurHP() > 0)
+				{
+					aliveEnemies++;
+					continue;
+				}
+			}
+
+		}
+		if(aliveAllies == 0 || aliveEnemies == 0)
 			return;
 		if(go == m_goUnits[m_nOrderIter])
 		{

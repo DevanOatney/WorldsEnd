@@ -88,6 +88,9 @@ public class CAllyBattleScript : UnitScript
 
 	Transform m_tTargetPositionOnField = null;
 
+	//For when this character is trying to use an item in battle
+	GameObject m_goItemBeingUsed = null;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -222,14 +225,41 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.ITEM_PICKED_SINGLEDMG:
 			{
+				HandleEnemySingleTargetInput();
+				if(Input.GetKeyDown(KeyCode.Return))
+				{
+					//turn off the flags for the item/inventory rendering
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USING_ITEM;
+					m_goItemBeingUsed.GetComponent<ItemSingleDamage>().m_bShouldActivate = true;
+					ClearTargetReticles();
+				}
+				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USEITEM_CHOSEN;
+					ClearTargetReticles();
+					HandleActionSelected(4);
+				}
 			}
 			break;
 		case (int)ALLY_STATES.ITEM_PICKED_AOEDMG:
 			{
+				if(Input.GetKeyDown(KeyCode.Return))
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USING_ITEM;
+					m_goItemBeingUsed.GetComponent<ItemGroupDamage>().m_bShouldActivate = true;
+					ClearTargetReticles();
+				}
+				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USEITEM_CHOSEN;
+					ClearTargetReticles();
+					HandleActionSelected(4);
+				}
 			}
 			break;
 		case (int)ALLY_STATES.ITEM_PICKED_SINGLEHEAL:
 			{
+				
 			}
 			break;
 		case (int)ALLY_STATES.ITEM_PICKED_AOEHEAL:
@@ -427,12 +457,30 @@ public class CAllyBattleScript : UnitScript
 			{
 				//Use Item
 				m_nState = (int)ALLY_STATES.USEITEM_CHOSEN;
+				List<DCScript.CharacterData> allies = m_dcPersistantData.GetParty();
+				foreach(DCScript.CharacterData g in allies)
+				{
+					if(g.m_szCharacterName == name)
+					{
+						m_twTurnWatcher.gameObject.GetComponent<ItemsAndSpellsContainer>().SwitchContainerTypeTo(g, 0);
+						break;
+					}
+				}	
 			}
 			break;
 		case 5:
 			{
 				//Magic
 				m_nState = (int)ALLY_STATES.USEMAGIC_CHOSEN;
+				List<DCScript.CharacterData> allies = m_dcPersistantData.GetParty();
+				foreach(DCScript.CharacterData g in allies)
+				{
+					if(g.m_szCharacterName == name)
+					{
+						m_twTurnWatcher.gameObject.GetComponent<ItemsAndSpellsContainer>().SwitchContainerTypeTo(g, 1);
+						break;
+					}
+				}
 			}
 			break;
 		}
@@ -989,6 +1037,19 @@ public class CAllyBattleScript : UnitScript
 				}
 			}
 		}
+		else if(m_nState == (int) ALLY_STATES.ITEM_PICKED_SINGLEDMG)
+		{
+			//turn off the flags for the item/inventory rendering
+			ClearTargetReticles();
+			m_nState = (int)CAllyBattleScript.ALLY_STATES.USING_ITEM;
+			m_goItemBeingUsed.GetComponent<ItemSingleDamage>().m_bShouldActivate = true;
+		}
+		else if(m_nState == (int)ALLY_STATES.ITEM_PICKED_AOEDMG)
+		{
+			m_nState = (int)CAllyBattleScript.ALLY_STATES.USING_ITEM;
+			m_goItemBeingUsed.GetComponent<ItemGroupDamage>().m_bShouldActivate = true;
+			ClearTargetReticles();
+		}
 	}
 
 	void AttackAnimationEnd(int unitType) 
@@ -1231,5 +1292,89 @@ public class CAllyBattleScript : UnitScript
 		}
 
 		return def;
+	}
+
+	public void ItemToUseSelected(string m_szItem)
+	{
+		if(m_nState == (int)ALLY_STATES.USEITEM_CHOSEN)
+		{
+			ItemLibrary.ItemData ItemData = m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(m_szItem);
+
+			if(ItemData != null)
+			{
+				switch(ItemData.m_nItemType)
+				{
+				case (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL:
+					{
+						m_goItemBeingUsed = Instantiate(Resources.Load("Items/SingleItemHeal")) as GameObject;
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetItemName(ItemData.m_szItemName);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetDescription(ItemData.m_szDescription);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetItemType(ItemData.m_nItemType);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetHPMod(ItemData.m_nHPMod);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetPowMod(ItemData.m_nPowMod);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetDefMod(ItemData.m_nDefMod);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetSpdMod(ItemData.m_nSpdMod);
+
+						m_goItemBeingUsed.GetComponent<ItemSingleHeal>().Initialize();
+						m_goItemBeingUsed.GetComponent<ItemSingleHeal>().m_dFunc(gameObject);
+
+						m_nState = (int)ALLY_STATES.ITEM_PICKED_SINGLEHEAL;
+					}
+					break;
+				case (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL:
+					{
+						m_goItemBeingUsed = Instantiate(Resources.Load("Items/GroupItemHeal")) as GameObject;
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetItemName(ItemData.m_szItemName);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetDescription(ItemData.m_szDescription);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetItemType(ItemData.m_nItemType);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetHPMod(ItemData.m_nHPMod);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetPowMod(ItemData.m_nPowMod);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetDefMod(ItemData.m_nDefMod);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetSpdMod(ItemData.m_nSpdMod);
+
+						m_goItemBeingUsed.GetComponent<ItemGroupHeal>().Initialize();
+						m_goItemBeingUsed.GetComponent<ItemGroupHeal>().m_dFunc(gameObject);
+
+						m_nState = (int)ALLY_STATES.ITEM_PICKED_AOEHEAL;
+					}
+					break;
+				case (int)BaseItemScript.ITEM_TYPES.eSINGLE_DAMAGE:
+					{
+						m_goItemBeingUsed = Instantiate(Resources.Load("Items/SingleItemDamage")) as GameObject;
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetItemName(ItemData.m_szItemName);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetDescription(ItemData.m_szDescription);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetItemType(ItemData.m_nItemType);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetHPMod(ItemData.m_nHPMod);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetPowMod(ItemData.m_nPowMod);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetDefMod(ItemData.m_nDefMod);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetSpdMod(ItemData.m_nSpdMod);
+
+						m_goItemBeingUsed.GetComponent<ItemSingleDamage>().Initialize();
+						m_goItemBeingUsed.GetComponent<ItemSingleDamage>().m_dFunc(gameObject);
+
+						m_nState = (int)ALLY_STATES.ITEM_PICKED_SINGLEDMG;
+					}
+					break;
+				case (int)BaseItemScript.ITEM_TYPES.eGROUP_DAMAGE:
+					{
+						m_goItemBeingUsed = Instantiate(Resources.Load("Items/GroupItemDamage")) as GameObject;
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetItemName(ItemData.m_szItemName);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetDescription(ItemData.m_szDescription);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetItemType(ItemData.m_nItemType);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetHPMod(ItemData.m_nHPMod);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetPowMod(ItemData.m_nPowMod);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetDefMod(ItemData.m_nDefMod);
+						m_goItemBeingUsed.GetComponent<BaseItemScript>().SetSpdMod(ItemData.m_nSpdMod);
+
+						m_goItemBeingUsed.GetComponent<ItemGroupDamage>().Initialize();
+						m_goItemBeingUsed.GetComponent<ItemGroupDamage>().m_dFunc(gameObject);
+
+						m_nState = (int)ALLY_STATES.ITEM_PICKED_AOEDMG;
+					}
+					break;
+				}
+
+			}
+		}
 	}
 }
