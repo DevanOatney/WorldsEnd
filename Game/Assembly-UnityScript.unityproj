@@ -105,7 +105,6 @@
      <None Include="Assets\Tiled2Unity\Imported\Inon Forest.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\Armory.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
-     <None Include="Assets\Scripts\Battle\Spells\New Text Document.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\NFAA.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\VortexEffect.shader" />
