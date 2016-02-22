@@ -23,7 +23,7 @@ public class IntContainer : MonoBehaviour
 
 	public void BeenClicked()
 	{
-		m_twTurnWatcher.GetComponent<ItemsAndSpellsContainer>().SelectionSelected(m_nInteger);
+		m_twTurnWatcher.GetComponent<ItemsAndSpellsContainer>().SelectionSelected();
 	}
 
 	public void DelayedHighlight()

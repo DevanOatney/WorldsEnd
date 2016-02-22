@@ -222,6 +222,18 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.USEITEM_CHOSEN:
 			{
+
+				if(Input.GetKeyDown(KeyCode.Return))
+				{
+					m_twTurnWatcher.gameObject.GetComponent<ItemsAndSpellsContainer>().SelectionSelected();
+				}
+				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+				{
+					m_twTurnWatcher.GetComponent<ItemsAndSpellsContainer>().m_goItemAndSpellSelector.SetActive(false);
+					m_twTurnWatcher.GetComponent<ItemsAndSpellsContainer>().m_goItemAndSpellDescriptor.SetActive(false);
+					m_twTurnWatcher.m_goActionSelector.SetActive(true);
+					m_nState = (int)ALLY_STATES.ACTION_SELECTION;
+				}
 			}
 			break;
 		case (int)ALLY_STATES.ITEM_PICKED_SINGLEDMG:
@@ -543,7 +555,7 @@ public class CAllyBattleScript : UnitScript
 					if(index == n)
 					{
 						m_nTargetPositionOnField = index;
-						UpdateTargetReticles(true);
+						UpdateTargetReticles(isAlly);
 						return;
 					}
 				}
@@ -554,7 +566,7 @@ public class CAllyBattleScript : UnitScript
 					if(index == n)
 					{
 						m_nTargetPositionOnField = index;
-						UpdateTargetReticles(true);
+						UpdateTargetReticles(isAlly);
 						return;
 					}
 				}
@@ -585,7 +597,7 @@ public class CAllyBattleScript : UnitScript
 					if(index == n)
 					{
 						m_nTargetPositionOnField = index;
-						UpdateTargetReticles(true);
+						UpdateTargetReticles(isAlly);
 						return;
 					}
 				}
@@ -596,7 +608,7 @@ public class CAllyBattleScript : UnitScript
 					if(index == n)
 					{
 						m_nTargetPositionOnField = index;
-						UpdateTargetReticles(true);
+						UpdateTargetReticles(isAlly);
 						return;
 					}
 				}
@@ -628,7 +640,7 @@ public class CAllyBattleScript : UnitScript
 					if(m_nTargetPositionOnField + 3 == n)
 					{
 						m_nTargetPositionOnField = m_nTargetPositionOnField + 3;
-						UpdateTargetReticles(true);
+						UpdateTargetReticles(isAlly);
 						return;
 					}
 				}
@@ -638,7 +650,7 @@ public class CAllyBattleScript : UnitScript
 					if(m_nTargetPositionOnField + 3 == n)
 					{
 						m_nTargetPositionOnField = m_nTargetPositionOnField + 3;
-						UpdateTargetReticles(true);
+						UpdateTargetReticles(isAlly);
 						return;
 					}
 					if(m_nTargetPositionOnField == 2)
@@ -647,14 +659,14 @@ public class CAllyBattleScript : UnitScript
 						{
 							//wrapped around, is top right available?
 							m_nTargetPositionOnField = m_nTargetPositionOnField + 1;
-							UpdateTargetReticles(true);
+							UpdateTargetReticles(isAlly);
 							return;
 						}
 					}
 					else if(m_nTargetPositionOnField + 4 == n)
 					{
 						m_nTargetPositionOnField = m_nTargetPositionOnField + 4;
-						UpdateTargetReticles(true);
+						UpdateTargetReticles(isAlly);
 						return;
 					}
 					if(m_nTargetPositionOnField == 0)
@@ -662,14 +674,14 @@ public class CAllyBattleScript : UnitScript
 						if(m_nTargetPositionOnField + 5 == n)
 						{
 							m_nTargetPositionOnField = m_nTargetPositionOnField + 5;
-							UpdateTargetReticles(true);
+							UpdateTargetReticles(isAlly);
 							return;
 						}
 					}
 					else if(m_nTargetPositionOnField + 2 == n)
 					{
 						m_nTargetPositionOnField = m_nTargetPositionOnField + 2;
-						UpdateTargetReticles(true);
+						UpdateTargetReticles(isAlly);
 						return;
 					}
 				}
@@ -682,7 +694,7 @@ public class CAllyBattleScript : UnitScript
 					if(m_nTargetPositionOnField - 3 == n)
 					{
 						m_nTargetPositionOnField = m_nTargetPositionOnField - 3;
-						UpdateTargetReticles(true);
+						UpdateTargetReticles(isAlly);
 						return;
 					}
 					if(m_nTargetPositionOnField == 3)
@@ -690,14 +702,14 @@ public class CAllyBattleScript : UnitScript
 						if(m_nTargetPositionOnField - 1 == n)
 						{
 							m_nTargetPositionOnField = m_nTargetPositionOnField - 1;
-							UpdateTargetReticles(true);
+							UpdateTargetReticles(isAlly);
 							return;
 						}
 					}
 					else if(m_nTargetPositionOnField - 4 == n)
 					{
 						m_nTargetPositionOnField = m_nTargetPositionOnField - 4;
-						UpdateTargetReticles(true);
+						UpdateTargetReticles(isAlly);
 						return;
 					}
 					if(m_nTargetPositionOnField == 5)
@@ -705,14 +717,14 @@ public class CAllyBattleScript : UnitScript
 						if(m_nTargetPositionOnField - 5 == n)
 						{
 							m_nTargetPositionOnField = m_nTargetPositionOnField - 5;
-							UpdateTargetReticles(true);
+							UpdateTargetReticles(isAlly);
 							return;
 						}
 					}
 					else if(m_nTargetPositionOnField - 2 == n)
 					{
 						m_nTargetPositionOnField = m_nTargetPositionOnField - 2;
-						UpdateTargetReticles(true);
+						UpdateTargetReticles(isAlly);
 						return;
 					}
 
@@ -753,30 +765,12 @@ public class CAllyBattleScript : UnitScript
 		}
   	}
 
-	void HandleItemSelectionInput()
-	{
-		if(Input.GetKeyDown(KeyCode.DownArrow))
-		{
-			List<ItemLibrary.CharactersItems> theInv = m_dcPersistantData.m_lItemLibrary.GetInstance().GetItemsOfType(0);
-			m_nItemSelectionIndex++;
-			if(m_nItemSelectionIndex >= theInv.Count)
-				m_nItemSelectionIndex = 0;
-		}
-		else if(Input.GetKeyDown(KeyCode.UpArrow))
-		{
-			List<ItemLibrary.CharactersItems> theInv = m_dcPersistantData.m_lItemLibrary.GetInstance().GetItemsOfType(0);
-			m_nItemSelectionIndex--;
-			if(m_nItemSelectionIndex < 0)
-				m_nItemSelectionIndex = theInv.Count - 1;
-		}
-	}
-
 	public void ChangeEnemyTarget(int p_nIndex)
 	{
 		if(m_nState == (int)ALLY_STATES.ATTACK_CHOSEN || m_nState == (int)ALLY_STATES.ITEM_PICKED_SINGLEDMG || m_nState == (int)ALLY_STATES.SPELL_PICKED_SINGLEDMG)
 		{
 			m_nTargetPositionOnField = p_nIndex;
-			UpdateTargetReticles(true);
+			UpdateTargetReticles(false);
 		}
 	}
 
@@ -786,7 +780,7 @@ public class CAllyBattleScript : UnitScript
 		if(m_nState == (int)ALLY_STATES.ITEM_PICKED_SINGLEHEAL || m_nState == (int)ALLY_STATES.SPELL_PICKED_SINGLEHEAL)
 		{
 			m_nTargetPositionOnField = p_nIndex;
-			UpdateTargetReticles(false);
+			UpdateTargetReticles(true);
 		}
 	}
 
@@ -987,20 +981,20 @@ public class CAllyBattleScript : UnitScript
 		}
 
 	}
-	void UpdateTargetReticles(bool _isEnemy)
+	void UpdateTargetReticles(bool _isAlly)
 	{
 		for(int i = 0; i < 6; ++i)
 		{
 			if(i == m_nTargetPositionOnField)
 			{
-				if(_isEnemy == true)
+				if(_isAlly == false)
 					GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = true;
 				else 
 					GameObject.Find("Ally_Cursor"+i).GetComponent<SpriteRenderer>().enabled = true;
 			}
 			else
 			{
-				if(_isEnemy == true)
+				if(_isAlly == false)
 					GameObject.Find("Enemy_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
 				else
 					GameObject.Find("Ally_Cursor"+i).GetComponent<SpriteRenderer>().enabled = false;
@@ -1384,7 +1378,8 @@ public class CAllyBattleScript : UnitScript
 
 						m_goItemBeingUsed.GetComponent<ItemSingleHeal>().Initialize();
 						m_goItemBeingUsed.GetComponent<ItemSingleHeal>().m_dFunc(gameObject);
-
+						m_nTargetPositionOnField = FieldPosition;
+						UpdateTargetReticles(true);
 						m_nState = (int)ALLY_STATES.ITEM_PICKED_SINGLEHEAL;
 					}
 					break;
@@ -1401,7 +1396,8 @@ public class CAllyBattleScript : UnitScript
 
 						m_goItemBeingUsed.GetComponent<ItemGroupHeal>().Initialize();
 						m_goItemBeingUsed.GetComponent<ItemGroupHeal>().m_dFunc(gameObject);
-
+						m_nTargetPositionOnField = FieldPosition;
+						UpdateTargetReticles(true);
 						m_nState = (int)ALLY_STATES.ITEM_PICKED_AOEHEAL;
 					}
 					break;
@@ -1418,7 +1414,8 @@ public class CAllyBattleScript : UnitScript
 
 						m_goItemBeingUsed.GetComponent<ItemSingleDamage>().Initialize();
 						m_goItemBeingUsed.GetComponent<ItemSingleDamage>().m_dFunc(gameObject);
-
+						InitializeTargetReticle();
+						UpdateTargetReticles(false);
 						m_nState = (int)ALLY_STATES.ITEM_PICKED_SINGLEDMG;
 					}
 					break;
@@ -1435,7 +1432,8 @@ public class CAllyBattleScript : UnitScript
 
 						m_goItemBeingUsed.GetComponent<ItemGroupDamage>().Initialize();
 						m_goItemBeingUsed.GetComponent<ItemGroupDamage>().m_dFunc(gameObject);
-
+						InitializeTargetReticle();
+						UpdateTargetReticles(false);
 						m_nState = (int)ALLY_STATES.ITEM_PICKED_AOEDMG;
 					}
 					break;
