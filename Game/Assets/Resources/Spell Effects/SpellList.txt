@@ -1,3 +1,3 @@
-KindRain,ELE:0,MPCost:15,HEALAMNT: 10 ,MPREGEN:0,POWBUFF:0,DEFBUFF:0,SPDBUFF:0,HITBUFF:0
+KindRain,ELE:0,MPCost:15,HEALAMNT: 10 ,MPREGEN:0,POWBUFF:0,DEFBUFF:0,SPDBUFF:0,HITBUFF:0,EVABUFF:0,Num Of Effects:0
 /This is a commented line, and therefor ignored by the spell loader.. use these if you want to describe the spell
-Thunder,ELE:4,MP Cost:10,DMGAMNT:10,MPDMG:0,POWDMG:0,DEFDMG:0,SPDDMG:0,HITDMG:0
+Thunder,ELE:4,MP Cost:10,DMGAMNT:10,MPDMG:0,POWDMG:0,DEFDMG:0,SPDDMG:0,HITDMG:0,EVADMG:0,Num of Effects:0

@@ -22,6 +22,8 @@ public class SpellLibrary
 		public int m_nDEFMod;
 		public int m_nSPDMod;
 		public int m_nHITMod;
+		public int m_nEVAMod;
+		public List<string> m_lStatusEffects = new List<string>();
 	}
 	public List<cSpellData> m_lAllSpells = new List<cSpellData>();
 
@@ -55,6 +57,12 @@ public class SpellLibrary
 			newSpell.m_nDEFMod = int.Parse(_lData[6].Trim());
 			newSpell.m_nSPDMod = int.Parse(_lData[7].Trim());
 			newSpell.m_nHITMod = int.Parse(_lData[8].Trim());
+			newSpell.m_nEVAMod = int.Parse(_lData[9].Trim());
+			int numOfEffects = int.Parse(_lData[10].Trim());
+			for(int i = 0; i < numOfEffects; ++i)
+			{
+				newSpell.m_lStatusEffects.Add(_lData[11+i].Trim());
+			}
 			m_lAllSpells.Add(newSpell);
 		}
 	}
