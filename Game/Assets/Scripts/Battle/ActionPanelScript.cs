@@ -6,7 +6,12 @@ public class ActionPanelScript : MonoBehaviour
 {
 	public int m_nActionIter;
 	TurnWatcherScript m_twTurnWatcher;
-	bool m_bIsHighlighted = false;
+	[HideInInspector]
+	public bool m_bIsHighlighted = false;
+
+	//optimization variables so that the hover event does spam rapidly.
+	float m_fHoverTimer = 1.0f;
+	float m_fHoverBucket = 0.4f;
 	// Use this for initialization
 	void Start () 
 	{
@@ -26,7 +31,18 @@ public class ActionPanelScript : MonoBehaviour
 	{
 		m_bIsHighlighted = true;
 		transform.parent.parent.GetComponent<CBattleActionsScript>().ChangeIndex(m_nActionIter);
-		transform.parent.FindChild("HoverImage").GetComponent<Image>().enabled = true;
+		//transform.parent.FindChild("HoverImage").GetComponent<Image>().enabled = true;
+	}
+
+	void OnMouseOver()
+	{
+		if(m_fHoverTimer >= m_fHoverBucket)
+		{
+			OnMouseEnter();
+			m_fHoverTimer = 0.0f;
+		}
+		else
+			m_fHoverTimer += Time.deltaTime;
 	}
 
 	void OnMouseExit()

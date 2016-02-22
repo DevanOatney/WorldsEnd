@@ -298,6 +298,17 @@ public class CAllyBattleScript : UnitScript
 			break;
 	    case (int)ALLY_STATES.USEMAGIC_CHOSEN:
 			{
+				if(Input.GetKeyDown(KeyCode.Return))
+				{
+					m_twTurnWatcher.gameObject.GetComponent<ItemsAndSpellsContainer>().SelectionSelected();
+				}
+				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+				{
+					m_twTurnWatcher.GetComponent<ItemsAndSpellsContainer>().m_goItemAndSpellSelector.SetActive(false);
+					m_twTurnWatcher.GetComponent<ItemsAndSpellsContainer>().m_goItemAndSpellDescriptor.SetActive(false);
+					m_twTurnWatcher.m_goActionSelector.SetActive(true);
+					m_nState = (int)ALLY_STATES.ACTION_SELECTION;
+				}
 			}
 			break;
 		case (int)ALLY_STATES.SPELL_PICKED_SINGLEDMG:

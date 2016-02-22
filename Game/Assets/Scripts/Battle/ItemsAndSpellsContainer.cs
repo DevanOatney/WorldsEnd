@@ -106,13 +106,14 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 		m_nElementCount = 0;
 		foreach(GameObject go in previousItems)
 			Destroy(go);
+		Button prevButton = null;
 		switch(m_nKey)
 		{
 		case 0:
 			{
 				//Items - Grab all of the useable items and how many there are of them and set those values.
 				List<ItemLibrary.CharactersItems> lInventory = m_dcDataCanister.GetComponent<DCScript>().m_lItemLibrary.GetItemsOfType(0);
-				Button prevButton = null;
+
 				foreach(ItemLibrary.CharactersItems item in lInventory)
 				{
 					//Create a new button and initialize it's data
@@ -177,6 +178,25 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 							newCell.transform.SetParent(m_goSelectionRoot.transform);
 							newCell.transform.localScale = new Vector3(1, 1, 1);
 
+
+							//Set up button Navigation
+							if(prevButton == null)
+							{
+								newCell.GetComponent<IntContainer>().DelayedHighlight();
+								prevButton = newCell.GetComponent<Button>();
+							}
+							else
+							{
+								Navigation _adjustNav = newCell.GetComponent<Button>().navigation;
+								_adjustNav.selectOnUp = prevButton;
+								newCell.GetComponent<Button>().navigation = _adjustNav;
+								_adjustNav = prevButton.GetComponent<Button>().navigation;
+								_adjustNav.selectOnDown = newCell.GetComponent<Button>();
+								prevButton.GetComponent<Button>().navigation = _adjustNav;
+								prevButton = newCell.GetComponent<Button>();
+							}
+
+
 							//Create a new data member for the container of elements for later iteration access.
 							cData newData = new cData();
 							newData.m_szName = spell.m_szSpellName;
@@ -187,9 +207,14 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 
 							//increment amount of elements total.. though we could just use the count of the list of elements.. but... idk maybe that will not be a thing later?
 							m_nElementCount++;
+
+
+
 						}
 					}
 				}
+
+
 			}
 			break;
 		}

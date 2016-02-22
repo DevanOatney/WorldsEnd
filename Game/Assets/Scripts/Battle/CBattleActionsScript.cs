@@ -23,6 +23,8 @@ public class CBattleActionsScript : MonoBehaviour
 
 	public void ChangeIndex(int p_nIndex)
 	{
+		if(p_nIndex == m_nActionIter)
+			return;
 		m_nActionIter = p_nIndex;
 		if(m_nActionIter >= m_nMaxActions)
 			m_nActionIter = 0;
@@ -41,10 +43,12 @@ public class CBattleActionsScript : MonoBehaviour
 			if(_nCounter == m_nActionIter)
 			{
 				//this is the one selected
+				child.FindChild("Collider").GetComponent<ActionPanelScript>().m_bIsHighlighted = true;
 				child.FindChild("HoverImage").GetComponent<Image>().enabled = true;
 			}
 			else
 			{
+				child.FindChild("Collider").GetComponent<ActionPanelScript>().m_bIsHighlighted = false;
 				child.FindChild("HoverImage").GetComponent<Image>().enabled = false;
 			}
 			++_nCounter;
