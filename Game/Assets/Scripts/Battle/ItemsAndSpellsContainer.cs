@@ -77,12 +77,18 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 					//Set up button Navigation
 					if(prevButton == null)
 					{
-						newCell.GetComponent<Button>().Select();
-						prevButton = GetComponent<Button>();
+						newCell.GetComponent<IntContainer>().DelayedHighlight();
+						prevButton = newCell.GetComponent<Button>();
 					}
 					else
 					{
-						prevButton = GetComponent<Button>();
+						Navigation _adjustNav = newCell.GetComponent<Button>().navigation;
+						_adjustNav.selectOnUp = prevButton;
+						newCell.GetComponent<Button>().navigation = _adjustNav;
+						_adjustNav = prevButton.GetComponent<Button>().navigation;
+						_adjustNav.selectOnDown = newCell.GetComponent<Button>();
+						prevButton.GetComponent<Button>().navigation = _adjustNav;
+						prevButton = newCell.GetComponent<Button>();
 					}
 
 					//Create a new data member for the container of elements for later iteration access.
@@ -103,8 +109,35 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 		case 1:
 			{
 				//Spells - Grab all of the spells this character knows and their mp costs.
-				foreach(string spell in m_cCurrentCharacter.m_lSpellsKnown)
+				foreach(string spellName in m_cCurrentCharacter.m_lSpellsKnown)
 				{
+					foreach(SpellLibrary.cSpellData spell in m_dcDataCanister.GetComponent<DCScript>().m_lSpellLibrary.m_lAllSpells)
+					{
+						if(spellName == spell.m_szSpellName)
+						{
+							//Create a new button and initialize it's data
+							GameObject newCell = Instantiate(m_goSelection);
+							newCell.transform.FindChild("Selection Name").GetComponent<Text>().text = spell.m_szSpellName;
+							newCell.transform.FindChild("Selection Count").GetComponent<Text>().text = spell.m_nMPCost.ToString();
+							//Hardcoded because I can't think of a time when an items icon would be different, since they're all just useable items (maybe by item type eventually when we have more artists?)
+							newCell.transform.FindChild("Icon").GetComponent<Image>().sprite = m_goSpriteIcons[0];
+							newCell.GetComponent<IntContainer>().m_nInteger = m_nElementCount;
+							newCell.GetComponent<IntContainer>().m_twTurnWatcher = gameObject;
+							newCell.transform.SetParent(m_goSelectionRoot.transform);
+							newCell.transform.localScale = new Vector3(1, 1, 1);
+
+							//Create a new data member for the container of elements for later iteration access.
+							cData newData = new cData();
+							newData.m_szName = spell.m_szSpellName;
+							newData.m_nAmount = spell.m_nMPCost;
+							//Hardcoded because I can't think of a time when an items icon would be different, since they're all just useable items (maybe by item type eventually when we have more artists?)
+							newData.m_nIconType = 0;
+							m_lElementList.Add(newData);
+
+							//increment amount of elements total.. though we could just use the count of the list of elements.. but... idk maybe that will not be a thing later?
+							m_nElementCount++;
+						}
+					}
 				}
 			}
 			break;

@@ -4,6 +4,7 @@ using System.Collections;
 public class BaseSpellBattleScript : MonoBehaviour 
 {
 	public enum ELEMENTS{eWATER, eEARTH, eWIND, eFIRE, eLIGHTNING}
+	public string m_szSpellName;
 	public int m_nElementType;
 	public int m_nMPCost;
 	public int m_nHPMod;

@@ -852,7 +852,14 @@ public class CAllyBattleScript : UnitScript
 		{
 			DCScript.CharacterData c = new DCScript.CharacterData();
 			//m_taStartingStats
-			string[] lines = m_taStartingStats.text.Split('\n');
+			string[] _szlines = m_taStartingStats.text.Split('\n');
+			List<string> lines = new List<string>();
+			foreach(string s in _szlines)
+			{
+				//This is to ignore anything on the left side of :
+				string[] data = s.Split(':');
+				lines.Add(data[data.Length-1].Trim());
+			}
 			//Name
 			c.m_szCharacterName = name;
 			//Max HP
@@ -883,7 +890,7 @@ public class CAllyBattleScript : UnitScript
 			c.m_nSTR += c.m_nWeaponDamageModifier;
 			//Weapon Mod name
 			c.m_szWeaponModifierName = lines[12].Trim();
-			if(c.m_szWeaponModifierName == "NONE")
+			if(c.m_szWeaponModifierName == "NULL")
 				c.m_szWeaponModifierName = "";
 			//Head
 			if(lines[13].Trim() != "NULL")

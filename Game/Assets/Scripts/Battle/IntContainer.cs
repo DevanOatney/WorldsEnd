@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class IntContainer : MonoBehaviour 
 {
@@ -25,11 +26,9 @@ public class IntContainer : MonoBehaviour
 		m_twTurnWatcher.GetComponent<ItemsAndSpellsContainer>().SelectionSelected(m_nInteger);
 	}
 
-	void OnMouseEnter()
+	public void DelayedHighlight()
 	{
-		//float yAxis = GetComponent<RectTransform>().position.y;
-		//if(yAxis < -10 && yAxis > -16)
-		//	m_twTurnWatcher.GetComponent<ItemsAndSpellsContainer>().AdjustHighlighter(yAxis, m_nInteger);
+		Invoke("BeenHighlighted", 0.1f);
 	}
 
 }

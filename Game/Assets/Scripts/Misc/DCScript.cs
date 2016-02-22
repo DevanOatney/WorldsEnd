@@ -50,7 +50,11 @@ public class DCScript : MonoBehaviour
 	//The amount of time that the player has played for.
 	public float m_fTimePlayed = 0.0f;
 
+	//the library of items (holds data for every item in the game, and also the inventory for the player)
 	public ItemLibrary m_lItemLibrary = new ItemLibrary();
+
+	//the library of spells that exist in the game. (loaded at runtime, does not need to be saved/loaded with player)
+	public SpellLibrary m_lSpellLibrary = new SpellLibrary();
 
 
 	public class StatusEffect
