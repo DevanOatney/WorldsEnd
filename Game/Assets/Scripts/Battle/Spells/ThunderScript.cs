@@ -12,6 +12,7 @@ public class ThunderScript  : BaseSpellBattleScript
 	{
 		if(m_bShouldActivate == true)
 		{
+			m_bShouldActivate = false;
 			GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
 			foreach(GameObject enemy in Enemies)
 			{
@@ -44,12 +45,16 @@ public class ThunderScript  : BaseSpellBattleScript
 		m_goOwner.GetComponent<CAllyBattleScript>().m_nState = (int)CAllyBattleScript.ALLY_STATES.STATUS_EFFECTS;
 		Destroy(gameObject);
 	}
-	
-	public void ThunderFunction(GameObject pOwner)
-	{
-		m_goOwner = pOwner;
-	}
 
+	public override void Initialize(GameObject _pOwner)
+	{
+		m_goOwner = _pOwner;
+		GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		foreach(GameObject enemy in Enemies)
+		{
+			GameObject.Find("Enemy_Cursor" + enemy.GetComponent<UnitScript>().FieldPosition).GetComponent<SpriteRenderer>().enabled = true;
+		}
+	}
 	new public void DoneWithRuneEffect()
 	{
 

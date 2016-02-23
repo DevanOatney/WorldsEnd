@@ -1,7 +1,7 @@
-4
-2
-1
-4
-9
-2
-3
+HP:15
+POW:2
+DEF:1
+SPD:4
+HIT:9
+EVA:2
+UNIT LEVEL:3

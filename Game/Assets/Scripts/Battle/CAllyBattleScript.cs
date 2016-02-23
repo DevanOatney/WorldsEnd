@@ -310,7 +310,7 @@ public class CAllyBattleScript : UnitScript
 				{
 					//turn off the flags for the item/inventory rendering
 					m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
-					//m_goItemBeingUsed.GetComponent<ItemSingleDamage>().m_bShouldActivate = true;
+					m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
 					ClearTargetReticles();
 				}
 			}
@@ -320,7 +320,7 @@ public class CAllyBattleScript : UnitScript
 				if(Input.GetKeyDown(KeyCode.Return))
 				{
 					m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
-					//m_goItemBeingUsed.GetComponent<ItemGroupDamage>().m_bShouldActivate = true;
+					m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
 					ClearTargetReticles();
 				}
 				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
@@ -338,7 +338,7 @@ public class CAllyBattleScript : UnitScript
 				{
 					//turn off the flags for the item/inventory rendering
 					m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
-					//m_goItemBeingUsed.GetComponent<ItemSingleDamage>().m_bShouldActivate = true;
+					m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
 					ClearTargetReticles();
 				}
 			}
@@ -348,7 +348,7 @@ public class CAllyBattleScript : UnitScript
 				if(Input.GetKeyDown(KeyCode.Return))
 				{
 					m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
-					//m_goItemBeingUsed.GetComponent<ItemGroupDamage>().m_bShouldActivate = true;
+					m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
 					ClearTargetReticles();
 				}
 				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
@@ -1150,6 +1150,18 @@ public class CAllyBattleScript : UnitScript
 			m_goItemBeingUsed.GetComponent<ItemGroupDamage>().m_bShouldActivate = true;
 			ClearTargetReticles();
 		}
+		else if(m_nState == (int)ALLY_STATES.SPELL_PICKED_SINGLEDMG)
+		{
+			m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
+			m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+			ClearTargetReticles();
+		}
+		else if(m_nState == (int)ALLY_STATES.SPELL_PICKED_AOEDMG)
+		{
+			m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
+			m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+			ClearTargetReticles();
+		}
 	}
 
 	public void AllyToActSelected(int p_nTargetPosition)
@@ -1165,6 +1177,18 @@ public class CAllyBattleScript : UnitScript
 			ClearTargetReticles();
 			m_nState = (int)CAllyBattleScript.ALLY_STATES.USING_ITEM;
 			m_goItemBeingUsed.GetComponent<ItemGroupHeal>().m_bShouldActivate = true;
+		}
+		else if(m_nState == (int)ALLY_STATES.SPELL_PICKED_SINGLEHEAL)
+		{
+			ClearTargetReticles();
+			m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
+			m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+		}
+		else if(m_nState == (int)ALLY_STATES.SPELL_PICKED_AOEHEAL)
+		{
+			ClearTargetReticles();
+			m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
+			m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
 		}
 	}
 
@@ -1448,6 +1472,22 @@ public class CAllyBattleScript : UnitScript
 					}
 					break;
 				}
+				m_goItemBeingUsed = Instantiate(Resources.Load("Spell Effects" + "/" + _Spell.m_szSpellName)) as GameObject;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_szSpellName = _Spell.m_szSpellName;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_nElementType = _Spell.m_nElementType;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_nTargetType = _Spell.m_nTargetType;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_nMPCost = _Spell.m_nMPCost;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_nHPMod = _Spell.m_nHPMod;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_nMPMod = _Spell.m_nMPMod;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_nPOWMod = _Spell.m_nPOWMod;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_nDEFMod = _Spell.m_nDEFMod;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_nSPDMod = _Spell.m_nSPDMod;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_nHITMod = _Spell.m_nHITMod;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_nEVAMod = _Spell.m_nEVAMod;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_lStatusEffect = _Spell.m_lStatusEffects;
+
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().Initialize(gameObject);
+
 			}
 		}
 	}

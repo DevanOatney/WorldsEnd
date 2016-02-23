@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class StandardEnemyScript : UnitScript 
 {
@@ -205,21 +206,27 @@ public class StandardEnemyScript : UnitScript
 	void SetUnitStats()
 	{
 		string[] stats = m_taStats.text.Split('\n');
+		List<string> _lStats = new List<string>();
+		foreach(string stat in stats)
+		{
+			string[] piece = stat.Split(':');
+			_lStats.Add(piece[1].Trim());
+		}
 		//Max HP
-		SetMaxHP(int.Parse(stats[0].Trim()));
+		SetMaxHP(int.Parse(_lStats[0].Trim()));
 		SetCurHP(GetMaxHP());
 		//STR
-		SetSTR(int.Parse(stats[1].Trim()));
+		SetSTR(int.Parse(_lStats[1].Trim()));
 		//DEF
-		SetDEF(int.Parse(stats[2].Trim()));
+		SetDEF(int.Parse(_lStats[2].Trim()));
 		//SPD
-		SetSPD(int.Parse(stats[3].Trim()));
+		SetSPD(int.Parse(_lStats[3].Trim()));
 		//HIT
-		SetHIT(int.Parse(stats[4].Trim()));
+		SetHIT(int.Parse(_lStats[4].Trim()));
 		//EVA
-		SetEVA(int.Parse(stats[5].Trim()));
+		SetEVA(int.Parse(_lStats[5].Trim()));
 		//Lvl
-		SetUnitLevel(int.Parse(stats[6].Trim()));
+		SetUnitLevel(int.Parse(_lStats[6].Trim()));
 	}
 	new public void AdjustHP(int dmg)
 	{
@@ -240,7 +247,7 @@ public class StandardEnemyScript : UnitScript
 		}
 		else
 		{
-			m_aAnim.SetBool("m_bIsDamaged", true);
+			m_aAnim.SetTrigger("m_bIsDamaged");
 		}
 		if(dmg >= 0)
 			newText.GetComponent<GUI_FadeText>().SetColor(true);
@@ -350,4 +357,6 @@ public class StandardEnemyScript : UnitScript
 		}
 		transform.position = m_vInitialPos;
 	}
+
+
 }
