@@ -85,6 +85,7 @@ public class TurnWatcherScript : MonoBehaviour
 			enemy.m_szEnemyName = "Boar";
 			enemy.m_nFormationIter = 3;
 			lEnemies.Add(enemy);
+			enemy = new EncounterGroupLoaderScript.cEnemyData();
 			enemy.m_szEnemyName = "Boar";
 			enemy.m_nFormationIter = 0;
 			lEnemies.Add(enemy);

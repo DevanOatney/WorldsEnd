@@ -511,6 +511,14 @@ public class ToAEventHandler : BaseEventSystemScript
 		{
 			List<EncounterGroupLoaderScript.cEnemyData> bossEncounter = new List<EncounterGroupLoaderScript.cEnemyData>();
 			EncounterGroupLoaderScript.cEnemyData enemy = new EncounterGroupLoaderScript.cEnemyData();
+			enemy.m_szEnemyName = "Boar";
+			enemy.m_nFormationIter = 3;
+			bossEncounter.Add(enemy);
+			enemy = new EncounterGroupLoaderScript.cEnemyData();
+			enemy.m_szEnemyName = "Boar";
+			enemy.m_nFormationIter = 5;
+			bossEncounter.Add(enemy);
+			enemy = new EncounterGroupLoaderScript.cEnemyData();
 			enemy.m_szEnemyName = "Boar Boss";
 			enemy.m_nFormationIter = 4;
 			bossEncounter.Add(enemy);
