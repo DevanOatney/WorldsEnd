@@ -14,14 +14,21 @@ public class EncounterGroupLoaderScript : MonoBehaviour
 	public int m_nEncounterGroupIter = 0;
 
 	//Listception! lawl
-	List<List<string>> m_lDayEncounterGroups = new List<List<string>>();
-	public List<List<string>> GetDayEncounterGroups() {return m_lDayEncounterGroups;}
+	List<List<cEnemyData>> m_lDayEncounterGroups = new List<List<cEnemyData>>();
+	public List<List<cEnemyData>> GetDayEncounterGroups() {return m_lDayEncounterGroups;}
 
-	List<List<string>> m_lNightEncounterGroups = new List<List<string>>();
-	public List<List<string>> GetNightEncounterGroups() {return m_lNightEncounterGroups;}
+	List<List<cEnemyData>> m_lNightEncounterGroups = new List<List<cEnemyData>>();
+	public List<List<cEnemyData>> GetNightEncounterGroups() {return m_lNightEncounterGroups;}
 
 	//flag for if we should now be adding the monsters into the night category instead of the day one
 	bool m_bNightTime = false;
+	public List<cEnemyData> m_lEnemies = new List<cEnemyData>();
+
+	public class cEnemyData
+	{
+		public string m_szEnemyName;
+		public int m_nFormationIter;
+	}
 
 	//flag for if we're now loading the night time enemy group (if there is none, the overwatcher needs to just access the daytime one
 	// Use this for initialization
@@ -53,16 +60,19 @@ public class EncounterGroupLoaderScript : MonoBehaviour
 				continue;
 			}
 			string[] enemies = group.Split(',');
-			List<string> lEnemies = new List<string>();
 			foreach(string e in enemies)
 			{
-				lEnemies.Add(e.Trim());
+				string[] pieces = e.Split(':');
+				cEnemyData enemy = new cEnemyData();
+				enemy.m_szEnemyName = pieces[0].Trim();
+				enemy.m_nFormationIter = int.Parse(pieces[1].Trim());
+				m_lEnemies.Add(enemy);
 			}
 			if(m_bNightTime == false)
-				m_lDayEncounterGroups.Add(lEnemies);
+				m_lDayEncounterGroups.Add(m_lEnemies);
 			else
-				m_lNightEncounterGroups.Add(lEnemies);
-			lEnemies = new List<string>();
+				m_lNightEncounterGroups.Add(m_lEnemies);
+			m_lEnemies = new List<cEnemyData>();
 		}
 	}
 

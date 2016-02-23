@@ -305,18 +305,58 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.SPELL_PICKED_SINGLEDMG:
 			{
+				HandleSingleTargetInput(false);
+				if(Input.GetKeyDown(KeyCode.Return))
+				{
+					//turn off the flags for the item/inventory rendering
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
+					//m_goItemBeingUsed.GetComponent<ItemSingleDamage>().m_bShouldActivate = true;
+					ClearTargetReticles();
+				}
 			}
 			break;
 		case (int)ALLY_STATES.SPELL_PICKED_AOEDMG:
 			{
+				if(Input.GetKeyDown(KeyCode.Return))
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
+					//m_goItemBeingUsed.GetComponent<ItemGroupDamage>().m_bShouldActivate = true;
+					ClearTargetReticles();
+				}
+				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USEMAGIC_CHOSEN;
+					ClearTargetReticles();
+					HandleActionSelected(5);
+				}
 			}
 			break;
 		case (int)ALLY_STATES.SPELL_PICKED_SINGLEHEAL:
 			{
+				HandleSingleTargetInput(true);
+				if(Input.GetKeyDown(KeyCode.Return))
+				{
+					//turn off the flags for the item/inventory rendering
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
+					//m_goItemBeingUsed.GetComponent<ItemSingleDamage>().m_bShouldActivate = true;
+					ClearTargetReticles();
+				}
 			}
 			break;
 		case (int)ALLY_STATES.SPELL_PICKED_AOEHEAL:
 			{
+				if(Input.GetKeyDown(KeyCode.Return))
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
+					//m_goItemBeingUsed.GetComponent<ItemGroupDamage>().m_bShouldActivate = true;
+					ClearTargetReticles();
+				}
+				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USEMAGIC_CHOSEN;
+					ClearTargetReticles();
+					HandleActionSelected(5);
+				}
 			}
 			break;
 		case (int)ALLY_STATES.CASTING_SPELL:  
@@ -632,7 +672,7 @@ public class CAllyBattleScript : UnitScript
 			{
 				lValidPos.Add(e.GetComponent<UnitScript>().FieldPosition);
 			}
-			if(FieldPosition <= 2)
+			if(m_nTargetPositionOnField <= 2)
 			{
 				
 
@@ -759,6 +799,20 @@ public class CAllyBattleScript : UnitScript
 					m_nState = (int)CAllyBattleScript.ALLY_STATES.USEITEM_CHOSEN;
 					ClearTargetReticles();
 					HandleActionSelected(4);
+				}
+				break;
+			case (int)ALLY_STATES.SPELL_PICKED_SINGLEDMG:
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USEMAGIC_CHOSEN;
+					ClearTargetReticles();
+					HandleActionSelected(5);
+				}
+				break;
+			case (int)ALLY_STATES.SPELL_PICKED_SINGLEHEAL:
+				{
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.USEMAGIC_CHOSEN;
+					ClearTargetReticles();
+					HandleActionSelected(5);
 				}
 				break;
 			}
@@ -1358,6 +1412,44 @@ public class CAllyBattleScript : UnitScript
 
 	public void SpellToUseSelected(string _szSpellName)
 	{
+		if(m_nState == (int)ALLY_STATES.USEMAGIC_CHOSEN)
+		{
+			SpellLibrary.cSpellData _Spell =  m_dcPersistantData.m_lSpellLibrary.GetSpellFromLibrary(_szSpellName);
+			if(_Spell != null)
+			{
+				switch(_Spell.m_nTargetType)
+				{
+				case 1:
+					{
+						//Single Heal
+						m_nState = (int)ALLY_STATES.SPELL_PICKED_SINGLEHEAL;
+						m_nTargetPositionOnField = FieldPosition;
+						UpdateTargetReticles(true);
+					}
+					break;
+				case 2:
+					{
+						//Group Heal
+						m_nState = (int)ALLY_STATES.SPELL_PICKED_AOEHEAL;
+					}
+					break;
+				case 3:
+					{
+						//Single Damage
+						m_nState = (int)ALLY_STATES.SPELL_PICKED_SINGLEDMG;
+						InitializeTargetReticle();
+						UpdateTargetReticles(false);
+					}
+					break;
+				case 4:
+					{
+						//Group Damage
+						m_nState = (int)ALLY_STATES.SPELL_PICKED_AOEDMG;
+					}
+					break;
+				}
+			}
+		}
 	}
 
 	public void ItemToUseSelected(string _szItem)

@@ -80,9 +80,14 @@ public class TurnWatcherScript : MonoBehaviour
 			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
 			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
 			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
-			List<string> lEnemies = new List<string>();
-			lEnemies.Add("Boar");
-			lEnemies.Add("Boar");
+			List<EncounterGroupLoaderScript.cEnemyData> lEnemies = new List<EncounterGroupLoaderScript.cEnemyData>();
+			EncounterGroupLoaderScript.cEnemyData enemy = new EncounterGroupLoaderScript.cEnemyData();
+			enemy.m_szEnemyName = "Boar";
+			enemy.m_nFormationIter = 3;
+			lEnemies.Add(enemy);
+			enemy.m_szEnemyName = "Boar";
+			enemy.m_nFormationIter = 0;
+			lEnemies.Add(enemy);
 			pdata.GetComponent<DCScript>().SetEnemyNames(lEnemies);
 			ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
 			List<DCScript.CharacterData> party = ds.GetParty();
@@ -105,17 +110,17 @@ public class TurnWatcherScript : MonoBehaviour
 	{
 		Camera.main.GetComponent<AudioSource>().volume = 0.5f + ds.m_fMusicVolume;
 		//load enemies
-		List<string> enemies = ds.GetEnemyNames();
+		List<EncounterGroupLoaderScript.cEnemyData> enemies = ds.GetEnemyNames();
 		int FormationCounter = 0;
-		foreach(string s in enemies)
+		foreach(EncounterGroupLoaderScript.cEnemyData e in enemies)
 		{
-			string fullPath = m_szFirstPart + s + "/" + s;
+			string fullPath = m_szFirstPart + e.m_szEnemyName + "/" + e.m_szEnemyName;
 			GameObject loadedEnemy = Resources.Load<GameObject>(fullPath);
 			GameObject enemy = Instantiate(loadedEnemy) as GameObject;
 			//remove the "(clone)"
 			enemy.name = loadedEnemy.name;
 			//Set it's position on the field accordingly
-			enemy.GetComponent<UnitScript>().FieldPosition = FormationCounter;
+			enemy.GetComponent<UnitScript>().FieldPosition = e.m_nFormationIter;
 			enemy.GetComponent<UnitScript>().SetUnitLevel(loadedEnemy.GetComponent<UnitScript>().GetUnitLevel());
 			//e the stats of the unit to the object it instantiated from
 			enemy.GetComponent<UnitScript>().SetMaxHP(loadedEnemy.GetComponent<UnitScript>().GetMaxHP());
@@ -762,6 +767,17 @@ public class TurnWatcherScript : MonoBehaviour
 									//in here it means that you're using an item that can target a dead person, and you've highlighted over a dead person.. so.. target them ;)
 									b.GetComponent<CAllyBattleScript>().ChangeAllyTarget(p_nIndex);
 								}
+							}
+							else
+							{
+								b.GetComponent<CAllyBattleScript>().ChangeAllyTarget(p_nIndex);
+							}
+						}
+						else if(b.GetComponent<UnitScript>().m_nState == (int)CAllyBattleScript.ALLY_STATES.SPELL_PICKED_SINGLEHEAL)
+						{
+							if(a.GetComponent<UnitScript>().GetCurHP() == 0)
+							{
+								//If the unit is dead, check to see if this spell can target dead people. haha.. can you see dead people?
 							}
 							else
 							{

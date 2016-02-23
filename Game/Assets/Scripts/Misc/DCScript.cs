@@ -19,9 +19,9 @@ public class DCScript : MonoBehaviour
 	//FIELD INFORMATION
 
 	//for encounter information
-	List<string> m_lEnemies;
-	public List<string> GetEnemyNames() {return m_lEnemies;}
-	public void SetEnemyNames(List<string> e) {m_lEnemies = e;}
+	List<EncounterGroupLoaderScript.cEnemyData> m_lEnemies;
+	public List<EncounterGroupLoaderScript.cEnemyData> GetEnemyNames() {return m_lEnemies;}
+	public void SetEnemyNames(List<EncounterGroupLoaderScript.cEnemyData> e) {m_lEnemies = e;}
 
 	//The name of the scene that the player was on before the encounter started.  Needs to be set at the field just before the battle is started.
 	//Also using this for loading/saving to be the current scene that the player is in when they save.

@@ -886,8 +886,11 @@ public class InonEventHandler : BaseEventSystemScript
 		GameObject dc = GameObject.Find("PersistantData");
 		if(dc)
 		{
-			List<string> bossEncounter = new List<string>();
-			bossEncounter.Add("Boar");
+			List<EncounterGroupLoaderScript.cEnemyData> bossEncounter = new List<EncounterGroupLoaderScript.cEnemyData>();
+			EncounterGroupLoaderScript.cEnemyData enemy = new EncounterGroupLoaderScript.cEnemyData();
+			enemy.m_szEnemyName = "Boar";
+			enemy.m_nFormationIter = 4;
+			bossEncounter.Add(enemy);
 
 			//Set the names of the list of enemies the player is about to fight
 			dc.GetComponent<DCScript>().SetEnemyNames(bossEncounter);

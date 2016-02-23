@@ -1,6 +1,0 @@
-Stinging Bee,Queen Bee,Stinging Bee
-Stinging Bee,Raging Boar,Stinging Bee
-Raging Boar,Raging Boar,Raging Boar
-Raging Boar,Queen Bee,Raging Boar
-Stinging Bee,Raging Boar,Stinging Bee
-Queen Bee,Raging Boar,Stinging Bee

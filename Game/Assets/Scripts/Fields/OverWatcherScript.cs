@@ -169,7 +169,7 @@ public class OverWatcherScript : MonoBehaviour {
 		EncounterGroupLoaderScript es = gameObject.GetComponent<EncounterGroupLoaderScript>();
 		if(es)
 		{
-			List<List<string>> encGrps = new List<List<string>>();
+			List<List<EncounterGroupLoaderScript.cEnemyData>> encGrps = new List<List<EncounterGroupLoaderScript.cEnemyData>>();
 			if(m_bDayTime == true)
 				encGrps = es.GetDayEncounterGroups();
 			else

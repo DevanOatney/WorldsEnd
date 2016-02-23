@@ -481,10 +481,15 @@ public class ToAEventHandler : BaseEventSystemScript
 		GameObject dc = GameObject.Find("PersistantData");
 		if(dc)
 		{
-			List<string> bossEncounter = new List<string>();
-			bossEncounter.Add("Boar");
-			bossEncounter.Add("Boar");
-			bossEncounter.Add("Boar");
+			List<EncounterGroupLoaderScript.cEnemyData> bossEncounter = new List<EncounterGroupLoaderScript.cEnemyData>();
+			EncounterGroupLoaderScript.cEnemyData enemy = new EncounterGroupLoaderScript.cEnemyData();
+			enemy.m_szEnemyName = "Boar";
+			enemy.m_nFormationIter = 3;
+			bossEncounter.Add(enemy);
+			enemy.m_nFormationIter = 4;
+			bossEncounter.Add(enemy);
+			enemy.m_nFormationIter = 5;
+			bossEncounter.Add(enemy);
 			//Set the names of the list of enemies the player is about to fight
 			dc.GetComponent<DCScript>().SetEnemyNames(bossEncounter);
 			//Set the position of the player before the battle starts
@@ -504,8 +509,11 @@ public class ToAEventHandler : BaseEventSystemScript
 		GameObject dc = GameObject.Find("PersistantData");
 		if(dc)
 		{
-			List<string> bossEncounter = new List<string>();
-			bossEncounter.Add("Boar Boss");
+			List<EncounterGroupLoaderScript.cEnemyData> bossEncounter = new List<EncounterGroupLoaderScript.cEnemyData>();
+			EncounterGroupLoaderScript.cEnemyData enemy = new EncounterGroupLoaderScript.cEnemyData();
+			enemy.m_szEnemyName = "Boar Boss";
+			enemy.m_nFormationIter = 4;
+			bossEncounter.Add(enemy);
 			//Set the names of the list of enemies the player is about to fight
 			dc.GetComponent<DCScript>().SetEnemyNames(bossEncounter);
 			//Set the position of the player before the battle starts

@@ -352,7 +352,6 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\SSAA.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
      <None Include="Assets\Resources\Dialogue Scripts\Inon Forest\Boar Boss.txt" />
-     <None Include="Assets\Resources\Field\Battle Formations\Field_Primus\EncounterGroups.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SimpleClear.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
@@ -362,7 +361,6 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
      <None Include="Assets\Resources\Dialogue Scripts\Primus\BossEncounterDialogue.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA3Console.shader" />
-     <None Include="Assets\Resources\Field\Battle Formations\old temple forest formations\old temple forest formations.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Regilance.tiled2unity.xml" />
      <None Include="Assets\Resources\Sounds\Music\InonBGM\MusicPlacementInon.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Farm House.tiled2unity.xml" />
