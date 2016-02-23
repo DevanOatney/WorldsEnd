@@ -16,6 +16,7 @@ public class ItemGroupHeal : BaseItemScript
 	{
 		if(m_bShouldActivate == true)
 		{
+			m_bShouldActivate = false;
 			GameObject[] allies = GameObject.FindGameObjectsWithTag("Ally");
 			foreach(GameObject ally in allies)
 			{

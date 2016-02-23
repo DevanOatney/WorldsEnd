@@ -32,14 +32,6 @@ public class CAllyBattleScript : UnitScript
 		STATUS_EFFECTS,	 //Cycle through status effects, tick off one cycle of the effects, remove/update effects, inform TURNWATCHER of end of turn and end your turn.
 		DEAD
 	}
-		
-	//int m_nActionSelectionIndex = 0; //what is the player currently selecting in the main action selection
-	int m_nMagicSelectionIndex = 0;  //which spell does the player have selected?
-	Vector2 m_vMagicScrollPosition = Vector2.zero; //the position of the scroll bar in the spell list
-	Vector2 m_vMagicSelectorPosition = Vector2.zero; //positional data for the selector in the spell list
-	int m_nItemSelectionIndex = 0;   //which item does the player have selected?
-	Vector2 m_vItemScrollPosition = Vector2.zero; //the position of the scroll bar in the inventory
-	Vector2 m_vItemSelectorPosition = Vector2.zero; //positional data for the selector in the inventory
 
 	float m_fMovementSpeed = 8.0f; //The speed in which this unit moves accross the battlefield.
 	bool m_bAmIDefending = false;
@@ -412,8 +404,6 @@ public class CAllyBattleScript : UnitScript
 						m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_dFunc();
 				}
 				m_nState = (int)ALLY_STATES.DIALOGUE;
-				m_nItemSelectionIndex = 0;
-				m_nMagicSelectionIndex = 0;
 				m_twTurnWatcher.m_goActionSelector.GetComponent<CBattleActionsScript>().ChangeIndex(0);
 				EndMyTurn();
 			}
@@ -1366,11 +1356,15 @@ public class CAllyBattleScript : UnitScript
 		return def;
 	}
 
-	public void ItemToUseSelected(string m_szItem)
+	public void SpellToUseSelected(string _szSpellName)
+	{
+	}
+
+	public void ItemToUseSelected(string _szItem)
 	{
 		if(m_nState == (int)ALLY_STATES.USEITEM_CHOSEN)
 		{
-			ItemLibrary.ItemData ItemData = m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(m_szItem);
+			ItemLibrary.ItemData ItemData = m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(_szItem);
 
 			if(ItemData != null)
 			{
@@ -1408,7 +1402,6 @@ public class CAllyBattleScript : UnitScript
 						m_goItemBeingUsed.GetComponent<ItemGroupHeal>().Initialize();
 						m_goItemBeingUsed.GetComponent<ItemGroupHeal>().m_dFunc(gameObject);
 						m_nTargetPositionOnField = FieldPosition;
-						UpdateTargetReticles(true);
 						m_nState = (int)ALLY_STATES.ITEM_PICKED_AOEHEAL;
 					}
 					break;
@@ -1443,8 +1436,6 @@ public class CAllyBattleScript : UnitScript
 
 						m_goItemBeingUsed.GetComponent<ItemGroupDamage>().Initialize();
 						m_goItemBeingUsed.GetComponent<ItemGroupDamage>().m_dFunc(gameObject);
-						InitializeTargetReticle();
-						UpdateTargetReticles(false);
 						m_nState = (int)ALLY_STATES.ITEM_PICKED_AOEDMG;
 					}
 					break;

@@ -44,10 +44,4 @@ public class ActionPanelScript : MonoBehaviour
 		else
 			m_fHoverTimer += Time.deltaTime;
 	}
-
-	void OnMouseExit()
-	{
-		m_bIsHighlighted = false;
-		transform.parent.FindChild("HoverImage").GetComponent<Image>().enabled = false;
-	}
 }

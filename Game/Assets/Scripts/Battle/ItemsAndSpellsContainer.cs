@@ -230,10 +230,15 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 				m_fPercentViewed = 1.0f;
 			else
 			{
-				m_goScrollBar.GetComponent<Scrollbar>().numberOfSteps = m_nElementCount / m_nAmountViewable;
+				float steps =Mathf.CeilToInt((float)((float)m_nElementCount / (float)m_nAmountViewable));
+				m_goScrollBar.GetComponent<Scrollbar>().numberOfSteps = (int)steps;
 				m_fPercentViewed = (float)((float)m_nAmountViewable/(float)m_nElementCount);
 			}
 			SelectionChanged(0);
+		}
+		else
+		{
+			ClearDescriptor();
 		}
 	}
 	public void SelectionSelected()
@@ -249,6 +254,9 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 			break;
 		case 1:
 			{
+				GameObject.Find(m_cCurrentCharacter.m_szCharacterName).GetComponent<CAllyBattleScript>().SpellToUseSelected(m_lElementList[m_nSelectedIndex].m_szName);
+				m_goItemAndSpellSelector.SetActive(false);
+				m_goItemAndSpellDescriptor.SetActive(false);
 			}
 			break;
 		}
@@ -278,6 +286,22 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 		}
 
 		UpdateDescriptor(m_nSelectedIndex);
+	}
+
+	void ClearDescriptor()
+	{
+		Transform EleIcon = m_goItemAndSpellDescriptor.transform.FindChild("Element Icon");
+		EleIcon.GetComponent<Image>().sprite = null;
+		Transform EleName = m_goItemAndSpellDescriptor.transform.FindChild("Element Name");
+		EleName.GetComponent<Text>().text = "";
+		Transform EleCount = m_goItemAndSpellDescriptor.transform.FindChild("Element Count");
+		EleCount.GetComponent<Text>().text = "";
+		Transform targetType = m_goItemAndSpellDescriptor.transform.FindChild("Target Type");
+		targetType.GetComponent<Text>().text = "";
+		Transform EleDesc = m_goItemAndSpellDescriptor.transform.FindChild("Element Description");
+		EleDesc.GetComponent<Text>().text = "";
+		Transform EleFlavor = m_goItemAndSpellDescriptor.transform.FindChild("Element Flavor");
+		EleFlavor.GetComponent<Text>().text = "";
 	}
 
 	void UpdateDescriptor(int nIndex)

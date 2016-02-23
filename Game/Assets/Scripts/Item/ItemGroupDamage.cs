@@ -14,6 +14,7 @@ public class ItemGroupDamage : BaseItemScript
 	{
 		if(m_bShouldActivate == true)
 		{
+			m_bShouldActivate = false;
 			GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
 			foreach(GameObject enemy in Enemies)
 			{
