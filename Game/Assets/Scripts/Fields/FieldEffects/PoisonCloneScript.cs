@@ -17,7 +17,7 @@ public class PoisonCloneScript : MonoBehaviour
 	void Update () 
 	{
 		transform.position = m_gOwner.transform.position;
-		m_srSprite.sprite = m_gOwner.GetComponent<SpriteRenderer>().sprite;
+		m_srSprite.sprite = m_gOwner.GetComponentInChildren<SpriteRenderer>().sprite;
 		m_cColor.r -= m_fFadeSpeed * Time.deltaTime;
 		m_cColor.g += m_fFadeSpeed * Time.deltaTime;
 		m_cColor.b -= m_fFadeSpeed * Time.deltaTime;

@@ -46,4 +46,27 @@ public class StatusEffectLibrary
 			m_lStatusEffectData.Add(newEffect);
 		}
 	}
+
+	public DCScript.StatusEffect ConvertToDCStatusEffect(string effectName)
+	{
+		DCScript.StatusEffect newEffect = new DCScript.StatusEffect();
+		foreach(cStatusEffectData effect in m_lStatusEffectData)
+		{
+			if(effect.m_szEffectName == effectName)
+			{
+				newEffect.m_szEffectName = effect.m_szEffectName;
+				newEffect.m_nEffectType = effect.m_nEffectType;
+				newEffect.m_nAmountOfTicks = effect.m_nEffectCount;
+				newEffect.m_nHPMod = effect.m_nHPMod;
+				newEffect.m_nMPMod = effect.m_nMPMod;
+				newEffect.m_nPOWMod = effect.m_nPOWMod;
+				newEffect.m_nDEFMod = effect.m_nDEFMod;
+				newEffect.m_nSPDMod = effect.m_nSPDMod;
+				newEffect.m_nHITMod = effect.m_nHITMod;
+				newEffect.m_nEVAMod = effect.m_nEVAMod;
+				return newEffect;
+			}
+		}
+		return null;
+	}
 }

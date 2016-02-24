@@ -26,7 +26,6 @@ public class ThunderScript  : BaseSpellBattleScript
 			//in x amount of time, the player's turn is over and it's time to destroy this object
 			Invoke("DoneAnimating", 1.5f);
 			//turn off the flags for the item/inventory rendering
-
 		}
 	}
 
@@ -40,6 +39,10 @@ public class ThunderScript  : BaseSpellBattleScript
 		{
 			//damage the unit
 			enemy.GetComponent<UnitScript>().AdjustHP(m_goOwner.GetComponent<UnitScript>().GetSTR() /2);
+			foreach(string effect in m_lStatusEffect)
+			{
+				enemy.GetComponent<UnitScript>().AddStatusEffect(GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffectLibrary.ConvertToDCStatusEffect(effect));
+			}
 		}
 		
 		m_goOwner.GetComponent<CAllyBattleScript>().m_nState = (int)CAllyBattleScript.ALLY_STATES.STATUS_EFFECTS;

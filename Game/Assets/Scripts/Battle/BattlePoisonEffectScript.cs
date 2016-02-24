@@ -38,7 +38,7 @@ public class BattlePoisonEffectScript : BattleBaseEffectScript
 	void Step()
 	{
 		//instantiate green image of player infront of the player on the field.
-		m_goPoisonClone.GetComponent<SpriteRenderer>().sprite = m_goOwner.GetComponent<SpriteRenderer>().sprite;
+		m_goPoisonClone.GetComponent<SpriteRenderer>().sprite = m_goOwner.GetComponentInChildren<SpriteRenderer>().sprite;
 		Vector3 cloneTransform = m_goOwner.transform.localScale;
 		m_goPoisonClone.transform.localScale = cloneTransform;
 		Vector3 pos = m_goOwner.transform.position;

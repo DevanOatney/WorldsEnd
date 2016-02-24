@@ -36,69 +36,6 @@ public class StandardEnemyScript : UnitScript
 	// Update is called once per frame
 	void Update () 
 	{
-
-		if(m_bIsMyTurn && GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>().GetAllyCount() > 0 && m_nState != (int)ENEMY_STATES.eDEAD)
-		{
-			//Make sure somethings even alive on the map to fight against
-
-			m_fDelayTimer += Time.deltaTime;
-			if(m_fDelayTimer >= m_fDelayBucket)
-			{
-				switch(m_nUnitType)
-				{
-				case (int)UnitScript.UnitTypes.PERCENTENEMY:
-					{
-						//Pick from the available enemy (the allies) targets, attack the one with the lowest HP
-						GameObject WeakestTarget = null;
-						int lowestHP = int.MaxValue;
-						GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
-						foreach(GameObject tar in posTargs)
-						{
-							if(tar.GetComponent<UnitScript>().GetCurHP() < lowestHP && tar.GetComponent<UnitScript>().GetCurHP() > 0)
-							{
-								WeakestTarget = tar;
-								lowestHP = WeakestTarget.GetComponent<UnitScript>().GetCurHP();
-							}
-						}
-						if(WeakestTarget != null)
-						{
-							m_nState = (int)ENEMY_STATES.eCHARGE;
-							m_aAnim.SetBool("m_bIsMoving", true);
-							m_fDelayTimer = 0.0f;
-							m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
-						}
-					}
-					break;
-				case (int)UnitScript.UnitTypes.BASICENEMY:
-					{
-						//Pick from the available enemy (the allies) targets, attack the one with the lowest HP
-						GameObject WeakestTarget = null;
-						int lowestHP = int.MaxValue;
-						GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
-						foreach(GameObject tar in posTargs)
-						{
-							if(tar.name.Contains("(Clone)"))
-								continue;
-							if(tar.GetComponent<UnitScript>().GetCurHP() < lowestHP && tar.GetComponent<UnitScript>().GetCurHP() > 0)
-							{
-								WeakestTarget = tar;
-								lowestHP = WeakestTarget.GetComponent<UnitScript>().GetCurHP();
-							}
-						}
-						if(WeakestTarget != null)
-						{
-							m_nState = (int)ENEMY_STATES.eCHARGE;
-							m_aAnim.SetBool("m_bIsMoving", true);
-							m_fDelayTimer = 0.0f;
-							m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
-							GameObject targetPosition = GameObject.Find("Near_Ally" + m_nTargetPositionOnField);
-							m_vTargetPosition = targetPosition.transform.position;
-						}
-					}
-					break;
-				}
-			}
-		}
 		HandleStates();
 	}
 
@@ -108,6 +45,66 @@ public class StandardEnemyScript : UnitScript
 		{
 		case (int)ENEMY_STATES.eIDLE:
 			{
+				if(m_bIsMyTurn == true && GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>().GetAllyCount() > 0)
+				{
+					m_fDelayTimer += Time.deltaTime;
+					if(m_fDelayTimer >= m_fDelayBucket)
+					{
+						switch(m_nUnitType)
+						{
+						case (int)UnitScript.UnitTypes.PERCENTENEMY:
+							{
+								//Pick from the available enemy (the allies) targets, attack the one with the lowest HP
+								GameObject WeakestTarget = null;
+								int lowestHP = int.MaxValue;
+								GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
+								foreach(GameObject tar in posTargs)
+								{
+									if(tar.GetComponent<UnitScript>().GetCurHP() < lowestHP && tar.GetComponent<UnitScript>().GetCurHP() > 0)
+									{
+										WeakestTarget = tar;
+										lowestHP = WeakestTarget.GetComponent<UnitScript>().GetCurHP();
+									}
+								}
+								if(WeakestTarget != null)
+								{
+									m_nState = (int)ENEMY_STATES.eCHARGE;
+									m_aAnim.SetBool("m_bIsMoving", true);
+									m_fDelayTimer = 0.0f;
+									m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
+								}
+							}
+							break;
+						case (int)UnitScript.UnitTypes.BASICENEMY:
+							{
+								//Pick from the available enemy (the allies) targets, attack the one with the lowest HP
+								GameObject WeakestTarget = null;
+								int lowestHP = int.MaxValue;
+								GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
+								foreach(GameObject tar in posTargs)
+								{
+									if(tar.name.Contains("(Clone)"))
+										continue;
+									if(tar.GetComponent<UnitScript>().GetCurHP() < lowestHP && tar.GetComponent<UnitScript>().GetCurHP() > 0)
+									{
+										WeakestTarget = tar;
+										lowestHP = WeakestTarget.GetComponent<UnitScript>().GetCurHP();
+									}
+								}
+								if(WeakestTarget != null)
+								{
+									m_nState = (int)ENEMY_STATES.eCHARGE;
+									m_aAnim.SetBool("m_bIsMoving", true);
+									m_fDelayTimer = 0.0f;
+									m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
+									GameObject targetPosition = GameObject.Find("Near_Ally" + m_nTargetPositionOnField);
+									m_vTargetPosition = targetPosition.transform.position;
+								}
+							}
+							break;
+						}
+					}
+				}
 			}
 			break;
 		case (int)ENEMY_STATES.eCHARGE:
@@ -117,7 +114,7 @@ public class StandardEnemyScript : UnitScript
 				{
 					//Reached target
 					m_aAnim.SetBool("m_bIsMoving", false);
-					m_aAnim.SetBool("m_bIsAttacking", true);
+					m_aAnim.SetTrigger("m_bIsAttacking");
 					m_nState = (int)ENEMY_STATES.eATTACK;
 				}
 				else
@@ -288,7 +285,6 @@ public class StandardEnemyScript : UnitScript
 			}
 		}
 		m_nState = (int)ENEMY_STATES.eRETURN;
-		m_aAnim.SetBool("m_bIsAttacking", false);
 		m_aAnim.SetBool("m_bIsMoving", true);
 		m_vTargetPosition = GameObject.Find("Enemy_StartPos" + FieldPosition).transform.position;
 	}
