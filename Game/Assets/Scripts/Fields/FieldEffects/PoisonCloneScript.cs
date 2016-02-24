@@ -18,6 +18,7 @@ public class PoisonCloneScript : MonoBehaviour
 	{
 		transform.position = m_gOwner.transform.position;
 		m_srSprite.sprite = m_gOwner.GetComponentInChildren<SpriteRenderer>().sprite;
+		gameObject.transform.localScale = m_gOwner.transform.localScale;
 		m_cColor.r -= m_fFadeSpeed * Time.deltaTime;
 		m_cColor.g += m_fFadeSpeed * Time.deltaTime;
 		m_cColor.b -= m_fFadeSpeed * Time.deltaTime;
