@@ -64,55 +64,25 @@ public class UnitScript : MonoBehaviour
 	public List<GameObject> m_lStatusEffects = new List<GameObject>();
 
 	//effectName - name of effect, nTicks - how many rounds this lasts (-1 for permanent), nMod - any adjuster, like damage dealt, chance effect happens each round, etc.
-	public void AddStatusEffect(string effectName, int nTicks, int nMod)
+	public void AddStatusEffect(DCScript.StatusEffect se)
 	{
 		for(int i = 0; i < m_lStatusEffects.Count; ++ i)
 		{
-			if(effectName == m_lStatusEffects[i].name)
+			if(se.m_nEffectType == m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_nEffectType)
 			{
-				switch(m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_nEffectType)
-				{
-				case (int)BattleBaseEffectScript.EFFECT_TYPES.ePOISON:
-					{
-						//GameObject owner, int damage, int tickAmount)
-						BattlePoisonEffectScript poisonScript = m_lStatusEffects[i].GetComponent<BattlePoisonEffectScript>();
-						if(poisonScript.m_nAmountOfTicks < nTicks || nTicks == -1)
-							poisonScript.m_nAmountOfTicks = nTicks;
-						if(poisonScript.m_nMod < nMod)
-							poisonScript.m_nMod = nMod;
-						return;
-					}
-				case (int)BattleBaseEffectScript.EFFECT_TYPES.ePARALYZE:
-					{
-						return;
-					}
-				case (int)BattleBaseEffectScript.EFFECT_TYPES.eSTONE:
-					{
-						return;
-					}
-				}
+				
+				BattleBaseEffectScript effectScript = m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>();
+				effectScript.RefreshEffect(se);
+				return;
+					
 			}
 		}
-		switch(effectName)
-		{
-		case "Poison":
-			{
-				GameObject newPoison = m_twTurnWatcher.FindStatusEffect("BattlePoison");
-				newPoison = Instantiate(newPoison);
-				newPoison.name = "Poison";
-				newPoison.GetComponent<BattlePoisonEffectScript>().Initialize(gameObject,nMod, nTicks);
-				m_lStatusEffects.Add(newPoison);
-			}
-			break;
-		case "Paralyze":
-			{
-			}
-			break;
-		case "Stone":
-			{
-			}
-			break;
-		}
+		//If we've gotten this far, it means this character is not currently effected by this type of effect.  Add this effect to the list of effects currently effecting this character
+		GameObject newEffect = m_twTurnWatcher.FindStatusEffect(se.m_szEffectName);
+		newEffect = Instantiate(newEffect);
+		newEffect.name = se.m_szEffectName;
+		newEffect.GetComponent<BattleBaseEffectScript>().Initialize(gameObject,se.m_nEffectType, se.m_nAmountOfTicks, se.m_nHPMod, se.m_nMPMod, se.m_nPOWMod, se.m_nDEFMod, se.m_nSPDMod, se.m_nHITMod, se.m_nEVAMod);
+		m_lStatusEffects.Add(newEffect);
 	}
 
 	public void RemoveStatusEffect(string effectName)
@@ -143,7 +113,7 @@ public class UnitScript : MonoBehaviour
 	
 	}
 	//negative numbers are for healing
-	public void AdjustHP(int dmg)
+	public virtual void AdjustHP(int dmg)
 	{
 		if(GetCurHP() > 0)
 		{

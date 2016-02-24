@@ -65,9 +65,12 @@ public class ScreenSwitchScript : MonoBehaviour
 			dcs.GetStatusEffects().Clear();
 			foreach(GameObject status in player.GetComponent<FieldPlayerMovementScript>().m_lStatusEffects)
 			{
-				DCScript.StatusEffect se = new DCScript.StatusEffect(status.name, status.GetComponent<FieldBaseStatusEffectScript>().m_nAmountOfTicks, status.GetComponent<FieldBaseStatusEffectScript>().m_nMod);
+				DCScript.StatusEffect se = new DCScript.StatusEffect();
+				se.m_szEffectName = status.name;
+				se.m_nAmountOfTicks = status.GetComponent<FieldBaseStatusEffectScript>().m_nAmountOfTicks;
+				se.m_nHPMod = status.GetComponent<FieldBaseStatusEffectScript>().m_nMod;
 				se.m_lEffectedMembers = status.GetComponent<FieldBaseStatusEffectScript>().m_lEffectedUnits;
-				dcs.GetStatusEffects().Add(se);
+				dcs.AddStatusEffect(se);
 			}
 
             SceneManager.LoadScene(m_szSceneName);

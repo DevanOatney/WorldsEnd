@@ -117,7 +117,11 @@ public class OverWatcherScript : MonoBehaviour {
 			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
 			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
 			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
-			DCScript.StatusEffect se = new DCScript.StatusEffect("Poison", 2, 20);
+			DCScript.StatusEffect se = new DCScript.StatusEffect();
+			//"Poison", 2, 20
+			se.m_szEffectName = "Poison";
+			se.m_nAmountOfTicks = 2;
+			se.m_nHPMod = 20;
 			se.m_lEffectedMembers.Add("Callan");
 			se.m_lEffectedMembers.Add("Briol");
 			pdata.GetComponent<DCScript>().AddStatusEffect(se);
@@ -183,10 +187,6 @@ public class OverWatcherScript : MonoBehaviour {
 			if(encGrps.Count > 0)
 			{
 				//temp for status effect test
-				foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
-				{
-					Debug.Log (se.m_szName + " " + se.m_nCount);
-				}
 				int rndmGrp = Random.Range(0, encGrps.Count);
 
 				//Set the names of the list of enemies the player is about to fight
@@ -379,7 +379,7 @@ public class OverWatcherScript : MonoBehaviour {
 					{
 						if(s == g.m_szCharacterName)
 						{
-							if(se.m_szName == "Poison")
+							if(se.m_szEffectName == "Poison")
 							{
 								//this character is effected by this status, display the icon, increment the offset for the next icon (if it exists, lol)
 								GUI.DrawTexture(new Rect(seXOffset,  charBoxHeight * 0.1f + 98, 32, 32), m_PoisonIcon);
@@ -513,7 +513,7 @@ public class OverWatcherScript : MonoBehaviour {
 							int counter = 0;
 							foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
 							{
-								if(se.m_szName == "Poison")
+								if(se.m_szEffectName == "Poison")
 								{
 									removeIter = counter;
 									se.m_lEffectedMembers.Clear();
@@ -558,7 +558,7 @@ public class OverWatcherScript : MonoBehaviour {
 							bool effectFound = false;
 							foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
 							{
-								if(se.m_szName == "Poison")
+								if(se.m_szEffectName == "Poison")
 								{
 									removeIter = counter;
 									if(se.m_lEffectedMembers.Remove(dc.GetParty()[m_nInventoryUseIter].m_szCharacterName) == true)
@@ -945,7 +945,7 @@ public class OverWatcherScript : MonoBehaviour {
 							{
 								if(s == g.m_szCharacterName)
 								{
-									if(se.m_szName == "Poison")
+									if(se.m_szEffectName == "Poison")
 									{
 										//this character is effected by this status, display the icon, increment the offset for the next icon (if it exists, lol)
 										GUI.DrawTexture(new Rect(seXOffset,  charBoxHeight * 0.1f + 98, 32, 32), m_PoisonIcon);

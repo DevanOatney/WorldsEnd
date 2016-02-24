@@ -56,13 +56,22 @@ public class DCScript : MonoBehaviour
 	//the library of spells that exist in the game. (loaded at runtime, does not need to be saved/loaded with player)
 	public SpellLibrary m_lSpellLibrary = new SpellLibrary();
 
+	//the library of all of the status effects that exist in the game
+	public StatusEffectLibrary m_lStatusEffectLibrary = new StatusEffectLibrary();
+
 
 	public class StatusEffect
 	{
-		public StatusEffect(string name, int count, int mod){m_szName = name; m_nCount = count; m_nMod = mod;}
-		public string m_szName;
-		public int m_nCount;
-		public int m_nMod;
+		public string m_szEffectName;
+		public int m_nEffectType; //0-Poison, 1-Paralyze, 2-Stone
+		public int m_nAmountOfTicks;
+		public int m_nHPMod;
+		public int m_nMPMod;
+		public int m_nPOWMod;
+		public int m_nDEFMod;
+		public int m_nSPDMod;
+		public int m_nHITMod;
+		public int m_nEVAMod;
 		public List<string> m_lEffectedMembers = new List<string>();
 	}
 	//list of status effects that are inflicting the party
@@ -71,7 +80,7 @@ public class DCScript : MonoBehaviour
 	public void SetStatusEffects(List<StatusEffect> l) {m_lStatusEffects.Clear(); m_lStatusEffects = l;}
 	public void AddStatusEffect(StatusEffect se)
 	{
-		int catchIter = IsStatusEffectInList(se.m_szName);
+		int catchIter = IsStatusEffectInList(se.m_nEffectType);
 		if(catchIter != -1)
 		{
 			foreach(string c in se.m_lEffectedMembers)
@@ -86,9 +95,8 @@ public class DCScript : MonoBehaviour
 				}
 				if(inList == false)
 					m_lStatusEffects[catchIter].m_lEffectedMembers.Add(c);
-
-				if(m_lStatusEffects[catchIter].m_nCount < se.m_nCount)
-					m_lStatusEffects[catchIter].m_nCount = se.m_nCount;
+				if(m_lStatusEffects[catchIter].m_nAmountOfTicks < se.m_nAmountOfTicks)
+					m_lStatusEffects[catchIter].m_nAmountOfTicks = se.m_nAmountOfTicks;
 				return;
 			}
 		}
@@ -101,8 +109,7 @@ public class DCScript : MonoBehaviour
 	{
 		foreach(StatusEffect se in m_lStatusEffects)
 		{
-			Debug.Log(se.m_nCount);
-			se.m_nCount--;
+			se.m_nAmountOfTicks = se.m_nAmountOfTicks - 1;
 		}
 	}
 	public void RemoveMeFromStatus(string szName, int iter)
@@ -111,12 +118,12 @@ public class DCScript : MonoBehaviour
 		if(m_lStatusEffects[iter].m_lEffectedMembers.Count <= 0)
 			m_lStatusEffects.RemoveAt(iter);
 	}
-	public int IsStatusEffectInList(string szName)
+	public int IsStatusEffectInList(int szEffectType)
 	{
 		int counter = 0;
 		foreach(StatusEffect se in m_lStatusEffects)
 		{
-			if(se.m_szName == szName)
+			if(se.m_nEffectType == szEffectType)
 				return counter;
 			counter++;
 		}
@@ -290,7 +297,7 @@ public class DCScript : MonoBehaviour
 		}
 		foreach(StatusEffect se in m_lStatusEffects)
 		{
-			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect(se.m_szName);
+			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect(se.m_szEffectName);
 		}
 		m_lStatusEffects.Clear();
 	}

@@ -486,7 +486,7 @@ public class MenuScreenScript : MonoBehaviour
 					int counter = 0;
 					foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
 					{
-						if(se.m_szName == "Poison")
+						if(se.m_szEffectName == "Poison")
 						{
 							removeIter = counter;
 							se.m_lEffectedMembers.Clear();
@@ -525,7 +525,7 @@ public class MenuScreenScript : MonoBehaviour
 					bool effectFound = false;
 					foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
 					{
-						if(se.m_szName == "Poison")
+						if(se.m_szEffectName == "Poison")
 						{
 							removeIter = counter;
 							if(se.m_lEffectedMembers.Remove(dc.GetParty()[characterIndex].m_szCharacterName) == true)

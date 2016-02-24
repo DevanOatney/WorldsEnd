@@ -19,11 +19,18 @@ public class BattlePoisonEffectScript : BattleBaseEffectScript
 			Destroy(gameObject);
 	}
 	
-	public void Initialize(GameObject owner, int damage, int tickAmount)
+	public override void Initialize(GameObject owner, int nEffectType, int nTickCount, int nHP, int nMP, int nPOW, int nDEF, int nSPD, int nHIT, int nEVA)
 	{
 		m_goOwner = owner;
-		m_nMod = damage;
-		m_nAmountOfTicks = tickAmount;
+		m_nEffectType = nEffectType;
+		m_nHPMod = nHP;
+		m_nMPMod = nMP;
+		m_nPOWMod = nPOW;
+		m_nDEFMod = nDEF;
+		m_nSPDMod = nSPD;
+		m_nHITMod = nHIT;
+		m_nEVAMod = nEVA;
+		m_nAmountOfTicks = nTickCount;
 		m_nEffectType = (int)EFFECT_TYPES.ePOISON;
 		m_dFunc = Step;
 	}
@@ -55,6 +62,6 @@ public class BattlePoisonEffectScript : BattleBaseEffectScript
 			}
 			
 		}
-		m_goOwner.GetComponent<UnitScript>().AdjustHP(m_nMod);
+		m_goOwner.GetComponent<UnitScript>().AdjustHP(m_nHPMod);
 	}
 }

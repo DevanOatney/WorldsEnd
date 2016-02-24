@@ -153,16 +153,16 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			foreach(GameObject go in m_lStatusEffects)
 			{
 
-				if(se.m_szName.Trim() == go.name.Trim())
+				if(se.m_szEffectName.Trim() == go.name.Trim())
 					alreadyIn = true;
 			}
 			if(alreadyIn == false)
 			{
-				switch(se.m_szName)
+				switch(se.m_szEffectName)
 				{
 				case "Poison":
 				{
-					m_poison.GetComponent<PoisonEffectScript>().Initialize(gameObject, se.m_lEffectedMembers, 1, se.m_nCount, 1.0f);
+					m_poison.GetComponent<PoisonEffectScript>().Initialize(gameObject, se.m_lEffectedMembers, se.m_nHPMod, se.m_nAmountOfTicks, 1.0f);
 					m_lStatusEffects.Add(m_poison);
 				}
 					break;

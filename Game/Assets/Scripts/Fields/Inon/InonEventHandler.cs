@@ -424,7 +424,7 @@ public class InonEventHandler : BaseEventSystemScript
 						else
 							messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("C0");
 					}
-					else if(lydRes == 10)
+					else if(lydRes == 3)
 					{
 						lydRes++;
 						ds.m_dStoryFlagField["Inon_Lydia"] = lydRes;

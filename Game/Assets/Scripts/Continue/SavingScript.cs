@@ -143,11 +143,25 @@ public class SavingScript : MonoBehaviour
 		foreach(DCScript.StatusEffect se in dcs.GetStatusEffects())
 		{
 			//name of the status effect
-			m_lOutputData.Add(se.m_szName);
-			//amount of ticks remaining on the effect
-			m_lOutputData.Add(se.m_nCount.ToString());
-			//the mod of this effect
-			m_lOutputData.Add(se.m_nMod.ToString());
+			m_lOutputData.Add(se.m_szEffectName);
+			//what type of effect is this?
+			m_lOutputData.Add(se.m_nEffectType.ToString());
+			//How many ticks are left in this effect?
+			m_lOutputData.Add(se.m_nAmountOfTicks.ToString());
+			//HP mod of effect
+			m_lOutputData.Add(se.m_nHPMod.ToString());
+			//MP mod of effect
+			m_lOutputData.Add(se.m_nMPMod.ToString());
+			//POW mod of effect
+			m_lOutputData.Add(se.m_nPOWMod.ToString());
+			//DEF mod of effect
+			m_lOutputData.Add(se.m_nDEFMod.ToString());
+			//SPD mod of effect
+			m_lOutputData.Add(se.m_nSPDMod.ToString());
+			//HIT mod of effect
+			m_lOutputData.Add(se.m_nHITMod.ToString());
+			//EVA mod of effect
+			m_lOutputData.Add(se.m_nEVAMod.ToString());
 			//the amount of units effected
 			m_lOutputData.Add(se.m_lEffectedMembers.Count.ToString());
 			foreach(string s in se.m_lEffectedMembers)

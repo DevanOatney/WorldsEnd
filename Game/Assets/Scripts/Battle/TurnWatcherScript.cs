@@ -636,8 +636,7 @@ public class TurnWatcherScript : MonoBehaviour
 		{
 			foreach(GameObject effect in Ally.GetComponent<UnitScript>().m_lStatusEffects)
 			{
-				Debug.Log (effect.name);
-				int catchIter = ds.IsStatusEffectInList(effect.GetComponent<BattleBaseEffectScript>().name);
+				int catchIter = ds.IsStatusEffectInList(effect.GetComponent<BattleBaseEffectScript>().m_nEffectType);
 				if( catchIter != -1)
 				{
 					//effect already exists in list
@@ -652,19 +651,24 @@ public class TurnWatcherScript : MonoBehaviour
 						//character is not on the list of effected characters
 						ds.GetStatusEffects()[catchIter].m_lEffectedMembers.Add(Ally.name);
 					}
-
-					if(effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks > ds.GetStatusEffects()[catchIter].m_nCount)
-						ds.GetStatusEffects()[catchIter].m_nCount = effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks;
-					Debug.Log (ds.GetStatusEffects()[catchIter].m_nCount = effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks);
+					effect.GetComponent<BattleBaseEffectScript>().RefreshEffect(ds.GetStatusEffects()[catchIter]);
+					ds.AddStatusEffect(effect.GetComponent<BattleBaseEffectScript>().ConvertToDCStatusEffect());
 				}
 				else
 				{
 					//effect needs to be added
-					DCScript.StatusEffect se = new DCScript.StatusEffect(
-						effect.GetComponent<BattleBaseEffectScript>().name,
-						effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks, 
-						effect.GetComponent<BattleBaseEffectScript>().m_nMod);
+					DCScript.StatusEffect se = new DCScript.StatusEffect();
+					BattleBaseEffectScript e = effect.GetComponent<BattleBaseEffectScript>();
+					se.m_szEffectName = e.name;
+					se.m_nEffectType = e.m_nEffectType;
+					se.m_nAmountOfTicks = e.m_nAmountOfTicks;
+					se.m_nPOWMod = e.m_nPOWMod;
+					se.m_nDEFMod = e.m_nDEFMod;
+					se.m_nSPDMod = e.m_nSPDMod;
+					se.m_nHITMod = e.m_nHITMod;
+					se.m_nEVAMod = e.m_nEVAMod;
 					se.m_lEffectedMembers.Add(Ally.name);
+					ds.AddStatusEffect(se);
 				}
 			}
 		}

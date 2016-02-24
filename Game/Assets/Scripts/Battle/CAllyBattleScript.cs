@@ -102,7 +102,7 @@ public class CAllyBattleScript : UnitScript
 			{
 				if(charName == name)
 				{
-					AddStatusEffect(se.m_szName, se.m_nCount, se.m_nMod);
+					AddStatusEffect(se);
 				}
 			}
 		}

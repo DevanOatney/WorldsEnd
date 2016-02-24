@@ -260,6 +260,7 @@
      <None Include="Assets\Resources\Spell Effects\SpellList.txt" />
      <None Include="Assets\Resources\Sounds\Voice\The Narrator\settings.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseAndGrain.shader" />
+     <None Include="Assets\Resources\Battle\StatusEffectList.txt" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\Resources\Dialogue Scripts\Inon\Inon_Blacksmith1.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\VignettingShader.shader" />
