@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MenuScreenScript : MonoBehaviour 
 {
 
-	public enum MENU_STATES{eINNACTIVE, eTOPTAB_SELECTION, ePARTYTAB, eSTATUS_SUBTAB, eFORMATION_SUBTAB, eROSTER_SUBTAB, eITEMTAB, eMAGICTAB, eSKILLSTAB, eLOGTAB, eSYSTEMTAB}
+	public enum MENU_STATES{eINNACTIVE, eTOPTAB_SELECTION, ePARTYTAB, eSTATUS_SUBTAB, eVIEWSTATUSSCREEN, eFORMATION_SUBTAB, eROSTER_SUBTAB, eITEMTAB, eMAGICTAB, eSKILLSTAB, eLOGTAB, eSYSTEMTAB}
 	public int m_nMenuState = (int)MENU_STATES.eINNACTIVE;
 	bool m_bShouldPause = false;
 	//iter for which tab on the top of the menu is selected
@@ -31,6 +31,8 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject[] m_goCharacterPanels;
 	//Flag to stop ALL input until some event is over
 	bool m_bWaiting = false;
+	//Flag for first time back after waiting for events
+	bool m_bFirstTimeFlag = false;
 
 
 	//flag for showing a different screen other than the main party meny
@@ -235,6 +237,33 @@ public class MenuScreenScript : MonoBehaviour
 					StatusTabMenu_Input();
 			}
 			break;
+		case (int)MENU_STATES.eVIEWSTATUSSCREEN:
+			{
+				//This is really just viewing the status screen, I believe the only input is to go BACK to the previous state. First, don't do anything till the slide event is over...
+				if(m_bWaiting == false)
+				{
+					//If this is the first frame after waiting, set the status screen panel to active
+					if(m_bFirstTimeFlag == true)
+					{
+						m_bFirstTimeFlag = false;
+						m_goStatus.SetActive(true);
+						AdjustStatusScreen(RetrieveCharacter(m_nCharacterPanelSelectionIndex));
+					}
+					//mmk, if the user hits back...
+					if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetMouseButtonDown(1))
+					{
+						m_bWaiting = true;
+						m_bFirstTimeFlag = true;
+						m_nMenuState = (int)MENU_STATES.eSTATUS_SUBTAB;
+						m_goStatus.SetActive(false);
+						foreach(GameObject go in m_goCharacterPanels)
+						{
+							go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
+						}
+					}
+				}
+			}
+			break;
 		}
 	}
 
@@ -420,6 +449,7 @@ public class MenuScreenScript : MonoBehaviour
 			foreach(GameObject go in m_goCharacterPanels)
 			{
 				m_bWaiting = true;
+				m_bFirstTimeFlag = true;
 				foreach(GameObject panel in m_goCharacterPanels)
 					Image_Brighten(panel);
 				go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
@@ -427,11 +457,7 @@ public class MenuScreenScript : MonoBehaviour
 		}
 		else if(Input.GetKeyDown(KeyCode.Return))
 		{
-			foreach(GameObject go in m_goCharacterPanels)
-			{
-				m_bWaiting = true;
-				go.GetComponent<CharacterPanelScript>().BeginSlide(gameObject, m_goCharacterPanels[0].GetComponent<RectTransform>().localPosition);
-			}
+			CharacterSelected(m_nCharacterPanelSelectionIndex);
 		}
 		else if(Input.GetKeyDown(KeyCode.LeftArrow))
 		{
@@ -444,6 +470,7 @@ public class MenuScreenScript : MonoBehaviour
 			{
 				//wasn't able to shift left
 				m_bWaiting = true;
+				m_bFirstTimeFlag = true;
 				m_nMenuState = (int)MENU_STATES.ePARTYTAB;
 				m_nCharacterPanelSelectionIndex = 0;
 				foreach(GameObject panel in m_goCharacterPanels)
@@ -464,6 +491,36 @@ public class MenuScreenScript : MonoBehaviour
 			else
 			{
 				//wasn't able to shift right
+			}
+		}
+	}
+
+	void CharacterSelected(int nIndex)
+	{
+		//first check to see if this character is even a valid selection...
+		DCScript.CharacterData character = RetrieveCharacter(nIndex);
+		if(character == null)
+			return;
+		else
+		{
+			//So we've selected a character...  let's see what we should be doing next!
+			switch(m_nMenuState)
+			{
+			case (int)MENU_STATES.eSTATUS_SUBTAB:
+				{
+					//Pause input so that the panels can do their slide event
+					m_bWaiting = true;
+					m_bFirstTimeFlag = true;
+					//Move the state to viewing the status screen panel
+					m_nMenuState = (int)MENU_STATES.eVIEWSTATUSSCREEN;
+					m_nCharacterPanelSelectionIndex = nIndex;
+					//Tell each of the panels to begin sliding
+					foreach(GameObject go in m_goCharacterPanels)
+					{
+						go.GetComponent<CharacterPanelScript>().BeginSlide(gameObject, m_goCharacterPanels[0].GetComponent<RectTransform>().localPosition);
+					}
+				}
+				break;
 			}
 		}
 	}
@@ -765,6 +822,22 @@ public class MenuScreenScript : MonoBehaviour
 				cMP.GetComponent<Text>().text = "MP : " + character.m_nCurMP.ToString();
 				Transform cEXP = panel.transform.FindChild("CharacterEXP");
 				cEXP.GetComponent<Text>().text = "EXP : " + character.m_nCurrentEXP.ToString();
+				Transform cPort = panel.transform.FindChild("CharacterImage");
+				cPort.GetComponent<Image>().color = Color.white;
+				GameObject pCont = GameObject.Find("Portraits Container");
+				Texture2D texture;
+				if(pCont.GetComponent<PortraitContainerScript>().m_dPortraits.TryGetValue(character.m_szCharacterName + "1", out texture))
+				{
+					cPort.GetComponent<Image>().sprite = Sprite.Create(texture, 
+						new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+				}
+				else
+				{
+					GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
+					cPort.GetComponent<Image>().sprite = Sprite.Create(unit.GetComponent<CAllyBattleScript>().m_tLargeBust, 
+						new Rect(0, 0, unit.GetComponent<CAllyBattleScript>().m_tLargeBust.width,
+						unit.GetComponent<CAllyBattleScript>().m_tLargeBust.height), new Vector2(0.5f, 0.5f));
+				}
 			}
 			else
 			{
@@ -777,6 +850,9 @@ public class MenuScreenScript : MonoBehaviour
 				cMP.GetComponent<Text>().text = "";
 				Transform cEXP = panel.transform.FindChild("CharacterEXP");
 				cEXP.GetComponent<Text>().text = "";
+				Transform cPort = panel.transform.FindChild("CharacterImage");
+				cPort.GetComponent<Image>().sprite = null;
+				cPort.GetComponent<Image>().color = Color.clear;
 			}
 			counter++;
 		}
@@ -798,6 +874,29 @@ public class MenuScreenScript : MonoBehaviour
 			}
 			counter++;
 		}
+	}
+	void AdjustStatusScreen(DCScript.CharacterData character)
+	{
+		foreach(Transform child in m_goStatus.transform)
+		{
+			Debug.Log(child.name);
+		}
+		Transform characterName = m_goStatus.transform.FindChild("CharacterName");
+		characterName.GetComponent<Text>().text = character.m_szCharacterName;
+		Transform characterDesc = m_goStatus.transform.FindChild("CharacterDescription");
+		characterDesc.GetComponent<Text>().text = character.m_szCharacterBio;
+
+		Transform weaponPanel = m_goStatus.transform.FindChild("WeaponPanel");
+		Transform weaponName = weaponPanel.FindChild("WeaponName");
+		weaponName.GetComponent<Text>().text = character.m_szWeaponName;
+		Transform weaponLevel = weaponPanel.FindChild("WeaponLevel");
+		weaponLevel.GetComponent<Text>().text = "Weapon Level: " + character.m_nWeaponLevel.ToString();
+		Transform weaponMod = weaponPanel.FindChild("WeaponMod");
+		if(character.m_szWeaponModifierName != "")
+			weaponMod.GetComponent<Text>().text = "Weapon Mod : " + character.m_szWeaponModifierName;
+		else
+			weaponMod.GetComponent<Text>().text = "Weapon Mod : None";
+
 	}
 	bool RecursivePanelShiftRight(int nIndex)
 	{

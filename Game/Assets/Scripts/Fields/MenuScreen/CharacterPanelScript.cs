@@ -11,7 +11,7 @@ public class CharacterPanelScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-	
+		m_vOriginalPosition = GetComponent<RectTransform>().localPosition;
 	}
 	
 	// Update is called once per frame
