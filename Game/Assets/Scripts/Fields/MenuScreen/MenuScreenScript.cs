@@ -1,0 +1,916 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class MenuScreenScript : MonoBehaviour 
+{
+
+	public enum MENU_STATES{eINNACTIVE, eTOPTAB_SELECTION, ePARTYTAB, eSTATUS_SUBTAB, eFORMATION_SUBTAB, eROSTER_SUBTAB, eITEMTAB, eMAGICTAB, eSKILLSTAB, eLOGTAB, eSYSTEMTAB}
+	public int m_nMenuState = (int)MENU_STATES.eINNACTIVE;
+	bool m_bShouldPause = false;
+	//iter for which tab on the top of the menu is selected
+	[HideInInspector]
+	public int m_nTopTabMenuSelectionIndex = 0;
+	//iter for which sub-tab on the left most of the menu is selected
+	[HideInInspector]
+	public int m_nSubTabMenuSelectionIndex = 0;
+	//iter for which character panel is selected.  DOES NOT reflect which character is selected, need to call RetrieveCharacter(int panelIndex) to get which character is being selected;
+	[HideInInspector]
+	public int m_nCharacterPanelSelectionIndex = 0;
+	//counter for how many panels are done sliding. (reset back to zero at the end of each event)
+	int m_nPanelsThatHaveFinishedSliding = 0;
+	//Hook to the canvas
+	public GameObject m_goMainMenu;
+	//Hooks to the top tab options
+	public GameObject[] m_goTopTabs;
+	//Hooks to the Party Sub Tab Options
+	public GameObject[] m_goPartySubTabs;
+	//Hooks to the character panels
+	public GameObject[] m_goCharacterPanels;
+	//Flag to stop ALL input until some event is over
+	bool m_bWaiting = false;
+
+
+	//flag for showing a different screen other than the main party meny
+	bool m_bShowDifferentMenuScreen = false;
+	//delegate for handling the different party menu renderings
+	delegate void m_delegate(DCScript.CharacterData g);
+	m_delegate m_dFunc;
+	//iter for the options "Change, Optimize, Unequipped All"
+	int m_nEquipmentChangeIndex = 0;
+	//flags for if the character chooses chng/opt/uneq
+	bool m_bChangeSelected = false;
+	bool m_bOptimizeSelected = false;
+	bool m_bClearSelected = false;
+	//iter for selecting which slot of gear to change
+	int m_nEquipmentSlotChangeIndex = 0;
+	//flag for if a slot to change has been chosen
+	bool m_bSlotChangeChosen = false;
+	//iter for which item in the list is being highlighted
+	int m_nItemSlotIndex = 0;
+	List<DCScript.CharacterData> m_lParty;
+
+	DCScript dc;
+
+	public GameObject m_goCharacterSelector;
+
+
+	public GameObject m_goMenu;
+	public GameObject m_goInventory;
+	public GameObject m_goStatus;
+	public GameObject m_goEquipment;
+
+	public GameObject m_goItemPrefab;
+	public GameObject m_goItemSelected = null;
+	int m_nCharacterSelectedIndexForItemUse = 0;
+	bool m_bDisableInput = false;
+
+
+	// Use this for initialization
+	void Start () 
+	{
+		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
+		foreach(Transform child in transform)
+		{
+			child.gameObject.SetActive(false);
+		}
+		PopulatePartyMembers();
+
+	}
+	
+	// Update is called once per frame
+	void Update () 
+	{
+		HandleState();
+		#region Input For Menu
+		if(m_bDisableInput == false)
+		{
+			if(Input.GetKeyDown(KeyCode.Escape))
+			{
+				{
+					
+				}
+			}
+			if(m_bShouldPause == true)
+			{
+				if(Input.GetKeyDown(KeyCode.DownArrow))
+				{
+					if(m_bShowDifferentMenuScreen == true && m_dFunc == EquipmentScreen)
+					{
+						//we're in the equipment screen.. 
+						if(m_bChangeSelected == false && m_bOptimizeSelected == false && m_bClearSelected == false)
+						{
+							//nothing in the equipment options has been selected yet, cycle through the options
+							m_nEquipmentChangeIndex++;
+							if(m_nEquipmentChangeIndex >= 3)
+								m_nEquipmentChangeIndex = 0;
+						}
+						else if(m_bChangeSelected == true)
+						{
+							if(m_bSlotChangeChosen == false && m_bSlotChangeChosen == false)
+							{
+								m_nEquipmentSlotChangeIndex++;
+								if(m_nEquipmentSlotChangeIndex > 7)
+									m_nEquipmentSlotChangeIndex = 0;
+							}
+							else if(m_bSlotChangeChosen == true)
+							{
+								//cycle through the different items available for the slot that was selected
+								int nItemType = m_nEquipmentSlotChangeIndex + (int)BaseItemScript.ITEM_TYPES.eHELMARMOR;
+								if(nItemType > (int)BaseItemScript.ITEM_TYPES.eTRINKET)
+									nItemType = (int)BaseItemScript.ITEM_TYPES.eTRINKET;
+								List<ItemLibrary.CharactersItems> inv = new List<ItemLibrary.CharactersItems>();
+								foreach(ItemLibrary.CharactersItems item in dc.m_lItemLibrary.m_lInventory)
+								{
+									if(nItemType == item.m_nItemType)
+										inv.Add(item);
+								}
+								if(inv.Count > 0)
+								{
+									m_nItemSlotIndex++;
+									if(m_nItemSlotIndex >= inv.Count)
+										m_nItemSlotIndex = 0;
+								}
+								
+							}
+						}
+					}
+				}
+				else if(Input.GetKeyDown(KeyCode.UpArrow))
+				{
+					if(m_bShowDifferentMenuScreen == true && m_dFunc == EquipmentScreen)
+					{
+						//we're in the equipment screen.. 
+						if(m_bChangeSelected == false && m_bOptimizeSelected == false && m_bClearSelected == false)
+						{
+							//nothing in the equipment options has been selected yet, cycle through the options
+							m_nEquipmentChangeIndex--;
+							if(m_nEquipmentChangeIndex < 0)
+								m_nEquipmentChangeIndex = 2;
+						}
+						else if(m_bChangeSelected == true && m_bSlotChangeChosen == false)
+						{
+							//cycle through the different slots that the character can wear
+							m_nEquipmentSlotChangeIndex--;
+							if(m_nEquipmentSlotChangeIndex < 0)
+								m_nEquipmentSlotChangeIndex = 7;
+						}
+						else if(m_bSlotChangeChosen == true)
+						{
+							//cycle through the different items available for the slot that was selected
+							int nItemType = m_nEquipmentSlotChangeIndex + (int)BaseItemScript.ITEM_TYPES.eHELMARMOR;
+							if(nItemType > (int)BaseItemScript.ITEM_TYPES.eTRINKET)
+								nItemType = (int)BaseItemScript.ITEM_TYPES.eTRINKET;
+							List<ItemLibrary.CharactersItems> inv = new List<ItemLibrary.CharactersItems>();
+							foreach(ItemLibrary.CharactersItems item in dc.m_lItemLibrary.m_lInventory)
+							{
+								if(nItemType == item.m_nItemType)
+									inv.Add(item);
+							}
+							if(inv.Count > 0)
+							{
+								m_nItemSlotIndex--;
+								if(m_nItemSlotIndex < 0 )
+									m_nItemSlotIndex = inv.Count - 1;
+							}
+							
+						}
+					}
+				}
+				else if(Input.GetKeyDown(KeyCode.Return))
+				{
+					
+
+				}
+			}
+		}
+		
+		#endregion
+	}
+
+	void HandleState()
+	{
+		switch(m_nMenuState)
+		{
+		case (int)MENU_STATES.eINNACTIVE:
+			{
+				//Escape opens up the menu
+				if(Input.GetKeyDown(KeyCode.Escape))
+				{
+					m_nTopTabMenuSelectionIndex = 0;
+					m_nMenuState = (int)MENU_STATES.eTOPTAB_SELECTION;
+					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
+					Camera.main.GetComponent<GreyScaleScript>().SendMessage("StartGreyScale");
+					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+					m_goMainMenu.SetActive(true);
+					DisplayCharacterPanels(false);
+				}
+			}	
+				
+			break;
+		case (int)MENU_STATES.eTOPTAB_SELECTION:
+			{
+				//arrow keys and mouse can select one of the top options, escape closes the menu.
+				AdjustTopTabLayers();
+				if(m_bWaiting == false)
+					TopTabMenu_Input();
+
+			}
+			break;
+		case (int)MENU_STATES.ePARTYTAB:
+			{
+				//arrow keys and mouse can select one of the sub tab options in menu, escape returns to top tab selection
+				AdjustPartyTabSelection();
+				if(m_bWaiting == false)
+					PartyTabMenu_Input();
+
+			}
+			break;
+		case (int)MENU_STATES.eSTATUS_SUBTAB:
+			{
+				AdjustPartyPanels();
+				if(m_bWaiting == false)
+					StatusTabMenu_Input();
+			}
+			break;
+		}
+	}
+
+	#region TopMenu
+	void TopTabMenu_Input()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+		{
+			m_goMainMenu.SetActive(false);
+			m_nMenuState = (int)MENU_STATES.eINNACTIVE;
+			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			Camera.main.GetComponent<GreyScaleScript>().SendMessage("EndGreyScale");
+			m_dFunc = null;
+		}
+		else if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Return))
+		{
+			TopTabSelectionSelected();
+		}
+		else if(Input.GetKeyDown(KeyCode.LeftArrow))
+		{
+			m_nTopTabMenuSelectionIndex = m_nTopTabMenuSelectionIndex - 1;
+			if(m_nTopTabMenuSelectionIndex < 0)
+				m_nTopTabMenuSelectionIndex = 5;
+		}
+		else if(Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			m_nTopTabMenuSelectionIndex += 1;
+			if(m_nTopTabMenuSelectionIndex > 5)
+				m_nTopTabMenuSelectionIndex = 0;
+		}
+	}
+	void TopTabSelectionSelected()
+	{
+		switch(m_nTopTabMenuSelectionIndex)
+		{
+		case 0:
+			{
+				//Party
+				m_nMenuState = (int)MENU_STATES.ePARTYTAB;
+				DisplayCharacterPanels(true);
+			}
+			break;
+		case 1:
+			{
+				//Item
+				m_nMenuState = (int)MENU_STATES.eITEMTAB;
+			}
+			break;
+		case 2:
+			{
+				//Magic
+				m_nMenuState = (int)MENU_STATES.eMAGICTAB;
+			}
+			break;
+		case 3:
+			{
+				//Skills
+				m_nMenuState = (int)MENU_STATES.eSKILLSTAB;
+			}
+			break;
+		case 4:
+			{
+				//Log
+				m_nMenuState = (int)MENU_STATES.eLOGTAB;
+			}
+			break;
+		case 5:
+			{
+				//system
+				m_nMenuState = (int)MENU_STATES.eSYSTEMTAB;
+			}
+			break;
+		}
+	}
+	void AdjustTopTabLayers()
+	{
+		int counter = 0;
+		foreach(GameObject go in m_goTopTabs)
+		{
+			if(counter == m_nTopTabMenuSelectionIndex)
+			{
+				go.GetComponent<Canvas>().sortingOrder = 1;
+				foreach(Transform child in go.transform)
+				{
+					if(child.name != "Text")
+						child.gameObject.SetActive(true);
+				}
+				Image_Darken(go);
+			}
+			else
+			{
+				go.GetComponent<Canvas>().sortingOrder = -1;
+				foreach(Transform child in go.transform)
+				{
+					if(child.name != "Text")
+						child.gameObject.SetActive(false);
+				}
+				Image_Brighten(go);
+			}
+			counter++;
+		}
+	}
+	#endregion
+	#region PartyMenu
+	void PartyTabMenu_Input()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+		{
+			m_nSubTabMenuSelectionIndex = 0;
+			m_nMenuState = (int)MENU_STATES.eTOPTAB_SELECTION;
+			DisplayCharacterPanels(false);
+			foreach(GameObject go in m_goPartySubTabs)
+				Image_Brighten(go);
+		}
+		else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Return))
+		{
+			switch(m_nSubTabMenuSelectionIndex)
+			{
+			case 0:
+				{
+					//STATUS
+					if(RecursivePanelShiftRight(m_nCharacterPanelSelectionIndex) == true)
+					{
+						m_nMenuState = (int)MENU_STATES.eSTATUS_SUBTAB;
+					}
+				}
+				break;
+			case 1:
+				{
+					//FORMATION
+				}
+				break;
+			case 2:
+				{
+					//ROSTER
+				}
+				break;
+			}
+
+		}
+		else if(Input.GetKeyDown(KeyCode.UpArrow))
+		{
+			m_nSubTabMenuSelectionIndex = m_nSubTabMenuSelectionIndex - 1;
+			if(m_nSubTabMenuSelectionIndex < 0)
+			{
+				m_nSubTabMenuSelectionIndex = 0;
+				m_nMenuState = (int)MENU_STATES.eTOPTAB_SELECTION;
+				DisplayCharacterPanels(false);
+				foreach(GameObject go in m_goPartySubTabs)
+					Image_Brighten(go);
+			}
+		}
+		else if(Input.GetKeyDown(KeyCode.DownArrow))
+		{
+			m_nSubTabMenuSelectionIndex += 1;
+			if(m_nSubTabMenuSelectionIndex > 2)
+				m_nSubTabMenuSelectionIndex = 2;
+		}
+	}
+	void AdjustPartyTabSelection()
+	{
+		int counter = 0;
+		foreach(GameObject go in m_goPartySubTabs)
+		{
+			if(counter == m_nSubTabMenuSelectionIndex)
+			{
+				Image_Darken(go);
+			}
+			else
+			{
+				Image_Brighten(go);
+			}
+			counter++;
+		}
+	}
+	#endregion
+	#region StatusMenu
+	void StatusTabMenu_Input()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+		{
+			m_nMenuState = (int)MENU_STATES.ePARTYTAB;
+			foreach(GameObject go in m_goCharacterPanels)
+			{
+				m_bWaiting = true;
+				foreach(GameObject panel in m_goCharacterPanels)
+					Image_Brighten(panel);
+				go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
+			}
+		}
+		else if(Input.GetKeyDown(KeyCode.Return))
+		{
+			foreach(GameObject go in m_goCharacterPanels)
+			{
+				m_bWaiting = true;
+				go.GetComponent<CharacterPanelScript>().BeginSlide(gameObject, m_goCharacterPanels[0].GetComponent<RectTransform>().localPosition);
+			}
+		}
+		else if(Input.GetKeyDown(KeyCode.LeftArrow))
+		{
+			//For this you need to check if this panel actually has an active character first, else, move to the next, if there are no more to the left, go back to the previous selection.
+			if(RecursivePanelShiftLeft(m_nCharacterPanelSelectionIndex - 1) == true)
+			{
+				//was able to shift left
+			}
+			else
+			{
+				//wasn't able to shift left
+				m_bWaiting = true;
+				m_nMenuState = (int)MENU_STATES.ePARTYTAB;
+				m_nCharacterPanelSelectionIndex = 0;
+				foreach(GameObject panel in m_goCharacterPanels)
+					Image_Brighten(panel);
+				foreach(GameObject go in m_goCharacterPanels)
+				{
+					go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
+				}
+			}
+		}
+		else if(Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			//For this you need to check if this panel actually has an active character first, else, move to the next, if there are no more to the right, don't do anything.
+			if(RecursivePanelShiftRight(m_nCharacterPanelSelectionIndex + 1) == true)
+			{
+				//was able to shift right
+			}
+			else
+			{
+				//wasn't able to shift right
+			}
+		}
+	}
+	#endregion
+
+
+
+	void EquipmentScreen(DCScript.CharacterData character)
+	{
+	}
+
+	void InventoryScreen(DCScript.CharacterData character)
+	{
+	}
+
+	void StatusScreen(DCScript.CharacterData character)
+	{
+	}
+
+	void SaveGame(DCScript.CharacterData character)
+	{
+	}
+
+	//This function is called by the GUI, parameter is the index to which option was picked.
+	public void MenuSelected(int index)
+	{
+		switch(index)
+		{
+		case 0:
+		{
+			//opening up the inventory
+			m_goMenu.GetComponent<Animator>().Play("ClosingMenu");
+			m_goInventory.GetComponent<Animator>().Play("OpeningInventory");
+
+		}
+			break;
+		case 5:
+		{
+			//Quit to menu
+			GameObject dc = GameObject.Find("PersistantData");
+			if(dc)
+			{
+				Destroy(dc);
+			}
+            SceneManager.LoadScene("Intro_Scene");
+		}
+			break;
+		case 6:
+		{
+			//Exit Game
+			Application.Quit();
+		}
+			break;
+		}
+	}
+
+	#region Inventory Functions
+	public void PopulateInventory(int type)
+	{
+		Transform contents = gameObject.transform.FindChild("Inventory").transform.FindChild("Inventory Space").FindChild("Inventory Contents").transform;
+		foreach(Transform child in contents)
+		{
+			Destroy(child.gameObject);
+		}
+		List<ItemLibrary.CharactersItems> m_lInv = dc.m_lItemLibrary.GetItemsOfType(type);
+		int i = 0;
+		float xOffset = -240.0f; float xAdj = 240.0f;
+		float yOffset = 380.0f; float yAdj = -40.0f;
+		foreach(ItemLibrary.CharactersItems item in m_lInv)
+		{
+			GameObject pMem = Instantiate(m_goItemPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+			RectTransform myRect = pMem.GetComponent<RectTransform>();
+			myRect.SetParent(contents);
+			myRect.anchoredPosition = new Vector3(xOffset, yOffset, 0);
+			pMem.transform.FindChild("Item Name").GetComponent<Text>().text = item.m_szItemName;
+			pMem.transform.FindChild("Item Count").GetComponent<Text>().text = item.m_nItemCount.ToString();
+
+			if(i == 2)
+			{
+				xOffset = -240.0f;
+				yOffset += yAdj;
+				i = 0;
+			}
+			else
+			{
+				xOffset += xAdj;
+				i++;
+			}
+		}
+	}
+	public void InventoryItemSelected(GameObject pItem)
+	{
+		Transform tChoice = transform.FindChild("Inventory").FindChild("Item Choice");
+		if(tChoice.gameObject.activeSelf == false)
+		{
+			m_goItemSelected = pItem;
+			ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(pItem.transform.FindChild("Item Name").GetComponent<Text>().text);
+			
+			tChoice.gameObject.SetActive(true);
+			if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL)
+			{
+				//Single heal item, draw one selector and allow the player to move up/down.
+				tChoice.FindChild("Use").GetComponent<Image>().color = Color.white;
+				
+			}
+			else if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
+			{
+				//Group heal, draw selector over all units, heal if player presses confirm.
+				tChoice.FindChild("Use").GetComponent<Image>().color = Color.white;
+			}
+			else
+			{
+				//Just show discard option, grey out use option.
+				tChoice.FindChild("Use").GetComponent<Image>().color = Color.grey;
+			}
+		}
+  	}
+	//"Use" has been chosen
+	public void ItemChoice_USE()
+	{
+		ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
+		if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL ||
+		   item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
+		{
+			transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
+			transform.FindChild("Inventory").FindChild("Character Selector").gameObject.SetActive(true);
+		}
+  	}
+	//"Discard" has been selected
+	public void ItemChoice_DISCARD()
+	{
+		ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
+		transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
+		m_goCharacterSelector.SetActive(false);
+		dc.m_lItemLibrary.RemoveItem(item);
+  	}
+	//"Cancel" has been selected
+	public void ItemChoice_CANCEL()
+	{
+		m_goItemSelected = null;
+		transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
+  	}
+	//A character has been chosen to use an item on
+	public void UseItemOnSelectedCharacter(int characterIndex)
+	{
+		//m_gPartyMembers[characterIndex];
+		ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
+		ItemLibrary.ItemData dcItemData = dc.m_lItemLibrary.GetItemFromDictionary(item.m_szItemName);
+		m_nCharacterSelectedIndexForItemUse = characterIndex;
+		switch(dcItemData.m_szDescription)
+		{
+			case "Cures Poison.":
+			{
+				//check to see if it's healing all targets or just one.
+				if(dcItemData.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
+				{
+					//check to see if anyone is effected by poison
+					int removeIter = -1;
+					int counter = 0;
+					foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
+					{
+						if(se.m_szEffectName == "Poison")
+						{
+							removeIter = counter;
+							se.m_lEffectedMembers.Clear();
+						}
+						counter++;
+					}
+					if(removeIter != -1)
+					{
+						//some people were effected by poison, decrement the item count by one, remove the status effect.
+						
+						//is this the last of this item?
+						if(item.m_nItemCount == 1)
+						{
+							m_goCharacterSelector.SetActive(false);
+							dc.m_lItemLibrary.RemoveItem(item);
+						}
+						//this isn't the last item? just remove one of it then.
+						else
+							dc.m_lItemLibrary.RemoveItem(item);
+						              //remove the status effect from the party
+						dc.GetStatusEffects().RemoveAt(removeIter);
+						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect("Poison");
+					}
+					else
+					{
+						//no unit was effected by this status, do nothing
+					}
+					
+				}
+				else
+				{
+					//only trying to remove poison from a single target
+					//check to see if anyone is effected by poison
+					int removeIter = -1;
+					int counter = 0;
+					bool effectFound = false;
+					foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
+					{
+						if(se.m_szEffectName == "Poison")
+						{
+							removeIter = counter;
+							if(se.m_lEffectedMembers.Remove(dc.GetParty()[characterIndex].m_szCharacterName) == true)
+							{
+								//this unit WAS effected by the status
+								effectFound = true;
+							}
+						}
+						counter++;
+					}
+					if(removeIter != -1 && effectFound == true)
+					{
+						//is this the last of this item?
+						if(item.m_nItemCount == 1)
+						{
+							m_goCharacterSelector.SetActive(false);
+							dc.m_lItemLibrary.RemoveItem(item);
+						}
+						//this isn't the last item? just remove one of it then.
+						else
+							dc.m_lItemLibrary.RemoveItem(item);
+						//if there are no more effect members, remove the status effect from the party.
+						if(dc.GetStatusEffects()[removeIter].m_lEffectedMembers.Count == 0)
+						{
+							dc.GetStatusEffects().RemoveAt(removeIter);
+							GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect("Poison");
+						}
+					}
+					
+				}
+				
+			}
+				break;
+			case "Cures Stone.":
+			{
+			}
+				break;
+			case "Cures Paralyze":
+			{
+			}
+				break;
+			case "Cures Ailments.":
+			{
+			}
+				break;
+			default:
+			{
+				//If we landed in here it means that it's just a heal item.
+				m_bDisableInput = true;
+				//check to see if it's healing all targets or just one.
+				if(dcItemData.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
+				{
+
+					//play the heal animation for each portrait
+					for(int i =0 ; i < m_lParty.Count; ++i)
+					{
+						GameObject pMem = m_goCharacterSelector.transform.FindChild("Scaled_PartyMember" +(i+1).ToString()).gameObject;
+						pMem.transform.FindChild("Animated Effect").GetComponent<Image>().enabled = true;
+						pMem.transform.FindChild("Animated Effect").GetComponent<Animator>().Play("HealPortrait");
+					}
+				}
+				else
+				{
+					//heal whichever unit is selected
+					GameObject pMem = m_goCharacterSelector.transform.FindChild("Scaled_PartyMember" +(characterIndex+1).ToString()).gameObject;
+					pMem.transform.FindChild("Animated Effect").GetComponent<Image>().enabled = true;
+					pMem.transform.FindChild("Animated Effect").GetComponent<Animator>().Play("HealPortrait");
+				}
+				
+			}
+				break;
+		}
+
+	}
+	#endregion
+
+	#region Status Screen Functions
+
+	#endregion
+
+
+
+	#region Random Helper Functions
+	void PopulatePartyMembers()
+	{
+		int counter = 0;
+		foreach(GameObject panel in m_goCharacterPanels)
+		{
+			DCScript.CharacterData character = RetrieveCharacter(counter);
+			if(character != null)
+			{
+				//populate this panel with this character's information
+				Transform cName = panel.transform.FindChild("CharacterName");
+				cName.GetComponent<Text>().text = character.m_szCharacterName;
+				Transform cHP = panel.transform.FindChild("CharacterHP");
+				cHP.GetComponent<Text>().text =  "HP : " + character.m_nCurHP.ToString();
+				Transform cMP = panel.transform.FindChild("CharacterMP");
+				cMP.GetComponent<Text>().text = "MP : " + character.m_nCurMP.ToString();
+				Transform cEXP = panel.transform.FindChild("CharacterEXP");
+				cEXP.GetComponent<Text>().text = "EXP : " + character.m_nCurrentEXP.ToString();
+			}
+			else
+			{
+				//no character in this slot, de-activate the panel.
+				Transform cName = panel.transform.FindChild("CharacterName");
+				cName.GetComponent<Text>().text = "";
+				Transform cHP = panel.transform.FindChild("CharacterHP");
+				cHP.GetComponent<Text>().text =  "";
+				Transform cMP = panel.transform.FindChild("CharacterMP");
+				cMP.GetComponent<Text>().text = "";
+				Transform cEXP = panel.transform.FindChild("CharacterEXP");
+				cEXP.GetComponent<Text>().text = "";
+			}
+			counter++;
+		}
+	}
+	void AdjustPartyPanels()
+	{
+		int counter = 0;
+		foreach(GameObject panel in m_goCharacterPanels)
+		{
+			if(counter == m_nCharacterPanelSelectionIndex)
+			{
+				panel.GetComponent<Canvas>().sortingOrder = 1;
+				Image_Darken(panel);
+			}
+			else
+			{
+				panel.GetComponent<Canvas>().sortingOrder = -1;
+				Image_Brighten(panel);
+			}
+			counter++;
+		}
+	}
+	bool RecursivePanelShiftRight(int nIndex)
+	{
+		if(nIndex > 6)
+			return false;
+		if(RetrieveCharacter(nIndex) != null)
+		{
+			m_nCharacterPanelSelectionIndex = nIndex;
+			return true;
+		}
+		else
+			return RecursivePanelShiftRight(nIndex+1);
+	}
+	bool RecursivePanelShiftLeft(int nIndex)
+	{
+		if(nIndex < 0)
+			return false;
+		if(RetrieveCharacter(nIndex) != null)
+		{
+			m_nCharacterPanelSelectionIndex = nIndex;
+			return true;
+		}
+		else
+			return RecursivePanelShiftLeft(nIndex - 1);
+	}
+	DCScript.CharacterData RetrieveCharacter(int nPanelIndex)
+	{
+		int nFormationOfCharacter = 0;
+		//convert the index of panel selected, to the formation of that party member.
+		switch(nPanelIndex)
+		{
+		case 0:
+			{
+				//top left
+				nFormationOfCharacter = 3;
+			}
+			break;
+		case 1:
+			{
+				//mid left
+				nFormationOfCharacter = 4;
+			}
+			break;
+		case 2:
+			{
+				//bottom left
+				nFormationOfCharacter = 5;
+			}
+			break;
+		case 3:
+			{
+				//top right
+				nFormationOfCharacter = 0;
+			}
+			break;
+		case 4:
+			{
+				//mid right
+				nFormationOfCharacter = 1;
+			}
+			break;
+		case 5:
+			{
+				//bottom right
+				nFormationOfCharacter = 2;
+			}
+			break;
+		case 6:
+			{
+				//The support character
+				nFormationOfCharacter = -1;
+			}
+			break;
+		}
+		if(nFormationOfCharacter != -1)
+		{
+			List<DCScript.CharacterData> lParty = dc.GetParty();
+			foreach(DCScript.CharacterData character in lParty)
+			{
+				if(character.m_nFormationIter == nFormationOfCharacter)
+				{
+					return character;
+				}
+			}
+		}
+		else
+		{
+			//this is the support character.. not sure what to do here yet since support characters don't actually exist yet
+		}
+		return null;
+	}
+
+	public void Image_Brighten(GameObject image)
+	{
+		image.GetComponent<Image>().color = new Color(255, 255, 255);
+	}
+	public void Image_Darken(GameObject image)
+	{
+		image.GetComponent<Image>().color = new Color(0.3f, 0.3f, 0.3f);
+	}
+	public void DisplayCharacterPanels(bool bFlag)
+	{
+		foreach(GameObject panel in m_goCharacterPanels)
+			panel.SetActive(bFlag);
+	}
+	void PanelReachedSlot()
+	{
+		m_nPanelsThatHaveFinishedSliding += 1;
+		if(m_nPanelsThatHaveFinishedSliding == 7)
+		{
+			m_nPanelsThatHaveFinishedSliding = 0;
+			m_bWaiting = false;
+		}
+	}
+	#endregion
+}

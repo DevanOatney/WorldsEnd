@@ -133,7 +133,7 @@ public class DCScript : MonoBehaviour
 	public class CharacterData
 	{
 		public string m_szCharacterName;
-		public int m_nMaxHP, m_nCurHP, m_nSTR, m_nDEF, m_nSPD, m_nEVA, m_nHIT, m_nLevel, m_nCurrentEXP;
+		public int m_nMaxHP, m_nCurHP, m_nMaxMP, m_nCurMP, m_nSTR, m_nDEF, m_nSPD, m_nEVA, m_nHIT, m_nLevel, m_nCurrentEXP;
 
 		public string m_szWeaponName;
 		public int m_nWeaponDamageModifier;

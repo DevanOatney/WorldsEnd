@@ -90,7 +90,6 @@
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowConeTap.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrainDX11.shader" />
      <None Include="Assets\2d Art Pack\readme.txt" />
-     <None Include="Assets\Resources\Sounds\Voice\Mattach\settings.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />
      <None Include="Assets\Tiled2Unity\Shaders\Tiled_Diffuse.shader" />
      <None Include="Assets\Tiled2Unity\Imported\untitled.tiled2unity.xml" />
@@ -272,7 +271,6 @@
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Adaptation.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
      <None Include="Assets\Resources\Spell Effects\SpellList.txt" />
-     <None Include="Assets\Resources\Sounds\Voice\The Narrator\settings.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseAndGrain.shader" />
      <None Include="Assets\Resources\Battle\StatusEffectList.txt" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
@@ -312,7 +310,6 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
-     <None Include="Assets\Resources\Dialogue Scripts\Primus\BossEncounterDialogue.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA3Console.shader" />
      <None Include="Assets\Tiled2Unity\Imported\Regilance.tiled2unity.xml" />
      <None Include="Assets\Resources\Sounds\Music\InonBGM\MusicPlacementInon.txt" />
