@@ -1,24 +1,23 @@
-15
-40
-40
-40
-40
-40
-1
-Human
-Attacker
-Spear
-1
-1
-NULL
-NULL
-NULL
-NULL
-NULL
-NULL
-NULL
-NULL
-NULL
-Focuses on dealing the most damage
-1
-NULL
+HP:10
+POW:1
+DEF:1
+SPD:1
+EVA:1
+HIT:1
+LEVEL:1
+RACE:Human
+CLASS:Attacker
+WEAPON NAME:Spear
+WEAPONLVL:1
+WPNDMG:1
+WPNMOD:NULL
+HEAD:NULL
+SHOULDER:NULL
+CHEST:NULL
+ARM:NULL
+WAIST:NULL
+LEG:NULL
+T1:NULL
+T2:NULL
+BIO:Focuses on dealing the most damage
+SPCNT:0

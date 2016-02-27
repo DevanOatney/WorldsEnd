@@ -9,7 +9,6 @@ public class MenuScreenScript : MonoBehaviour
 
 	public enum MENU_STATES{eINNACTIVE, eTOPTAB_SELECTION, ePARTYTAB, eSTATUS_SUBTAB, eVIEWSTATUSSCREEN, eFORMATION_SUBTAB, eROSTER_SUBTAB, eITEMTAB, eMAGICTAB, eSKILLSTAB, eLOGTAB, eSYSTEMTAB}
 	public int m_nMenuState = (int)MENU_STATES.eINNACTIVE;
-	bool m_bShouldPause = false;
 	//iter for which tab on the top of the menu is selected
 	[HideInInspector]
 	public int m_nTopTabMenuSelectionIndex = 0;
@@ -29,29 +28,12 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject[] m_goPartySubTabs;
 	//Hooks to the character panels
 	public GameObject[] m_goCharacterPanels;
+	//Hook to the spider graph
+	public GameObject m_goRadarChart;
 	//Flag to stop ALL input until some event is over
 	bool m_bWaiting = false;
 	//Flag for first time back after waiting for events
 	bool m_bFirstTimeFlag = false;
-
-
-	//flag for showing a different screen other than the main party meny
-	bool m_bShowDifferentMenuScreen = false;
-	//delegate for handling the different party menu renderings
-	delegate void m_delegate(DCScript.CharacterData g);
-	m_delegate m_dFunc;
-	//iter for the options "Change, Optimize, Unequipped All"
-	int m_nEquipmentChangeIndex = 0;
-	//flags for if the character chooses chng/opt/uneq
-	bool m_bChangeSelected = false;
-	bool m_bOptimizeSelected = false;
-	bool m_bClearSelected = false;
-	//iter for selecting which slot of gear to change
-	int m_nEquipmentSlotChangeIndex = 0;
-	//flag for if a slot to change has been chosen
-	bool m_bSlotChangeChosen = false;
-	//iter for which item in the list is being highlighted
-	int m_nItemSlotIndex = 0;
 	List<DCScript.CharacterData> m_lParty;
 
 	DCScript dc;
@@ -59,7 +41,6 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goCharacterSelector;
 
 
-	public GameObject m_goMenu;
 	public GameObject m_goInventory;
 	public GameObject m_goStatus;
 	public GameObject m_goEquipment;
@@ -67,8 +48,6 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goItemPrefab;
 	public GameObject m_goItemSelected = null;
 	int m_nCharacterSelectedIndexForItemUse = 0;
-	bool m_bDisableInput = false;
-
 
 	// Use this for initialization
 	void Start () 
@@ -79,117 +58,13 @@ public class MenuScreenScript : MonoBehaviour
 			child.gameObject.SetActive(false);
 		}
 		PopulatePartyMembers();
-
+		m_goMainMenu.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
 		HandleState();
-		#region Input For Menu
-		if(m_bDisableInput == false)
-		{
-			if(Input.GetKeyDown(KeyCode.Escape))
-			{
-				{
-					
-				}
-			}
-			if(m_bShouldPause == true)
-			{
-				if(Input.GetKeyDown(KeyCode.DownArrow))
-				{
-					if(m_bShowDifferentMenuScreen == true && m_dFunc == EquipmentScreen)
-					{
-						//we're in the equipment screen.. 
-						if(m_bChangeSelected == false && m_bOptimizeSelected == false && m_bClearSelected == false)
-						{
-							//nothing in the equipment options has been selected yet, cycle through the options
-							m_nEquipmentChangeIndex++;
-							if(m_nEquipmentChangeIndex >= 3)
-								m_nEquipmentChangeIndex = 0;
-						}
-						else if(m_bChangeSelected == true)
-						{
-							if(m_bSlotChangeChosen == false && m_bSlotChangeChosen == false)
-							{
-								m_nEquipmentSlotChangeIndex++;
-								if(m_nEquipmentSlotChangeIndex > 7)
-									m_nEquipmentSlotChangeIndex = 0;
-							}
-							else if(m_bSlotChangeChosen == true)
-							{
-								//cycle through the different items available for the slot that was selected
-								int nItemType = m_nEquipmentSlotChangeIndex + (int)BaseItemScript.ITEM_TYPES.eHELMARMOR;
-								if(nItemType > (int)BaseItemScript.ITEM_TYPES.eTRINKET)
-									nItemType = (int)BaseItemScript.ITEM_TYPES.eTRINKET;
-								List<ItemLibrary.CharactersItems> inv = new List<ItemLibrary.CharactersItems>();
-								foreach(ItemLibrary.CharactersItems item in dc.m_lItemLibrary.m_lInventory)
-								{
-									if(nItemType == item.m_nItemType)
-										inv.Add(item);
-								}
-								if(inv.Count > 0)
-								{
-									m_nItemSlotIndex++;
-									if(m_nItemSlotIndex >= inv.Count)
-										m_nItemSlotIndex = 0;
-								}
-								
-							}
-						}
-					}
-				}
-				else if(Input.GetKeyDown(KeyCode.UpArrow))
-				{
-					if(m_bShowDifferentMenuScreen == true && m_dFunc == EquipmentScreen)
-					{
-						//we're in the equipment screen.. 
-						if(m_bChangeSelected == false && m_bOptimizeSelected == false && m_bClearSelected == false)
-						{
-							//nothing in the equipment options has been selected yet, cycle through the options
-							m_nEquipmentChangeIndex--;
-							if(m_nEquipmentChangeIndex < 0)
-								m_nEquipmentChangeIndex = 2;
-						}
-						else if(m_bChangeSelected == true && m_bSlotChangeChosen == false)
-						{
-							//cycle through the different slots that the character can wear
-							m_nEquipmentSlotChangeIndex--;
-							if(m_nEquipmentSlotChangeIndex < 0)
-								m_nEquipmentSlotChangeIndex = 7;
-						}
-						else if(m_bSlotChangeChosen == true)
-						{
-							//cycle through the different items available for the slot that was selected
-							int nItemType = m_nEquipmentSlotChangeIndex + (int)BaseItemScript.ITEM_TYPES.eHELMARMOR;
-							if(nItemType > (int)BaseItemScript.ITEM_TYPES.eTRINKET)
-								nItemType = (int)BaseItemScript.ITEM_TYPES.eTRINKET;
-							List<ItemLibrary.CharactersItems> inv = new List<ItemLibrary.CharactersItems>();
-							foreach(ItemLibrary.CharactersItems item in dc.m_lItemLibrary.m_lInventory)
-							{
-								if(nItemType == item.m_nItemType)
-									inv.Add(item);
-							}
-							if(inv.Count > 0)
-							{
-								m_nItemSlotIndex--;
-								if(m_nItemSlotIndex < 0 )
-									m_nItemSlotIndex = inv.Count - 1;
-							}
-							
-						}
-					}
-				}
-				else if(Input.GetKeyDown(KeyCode.Return))
-				{
-					
-
-				}
-			}
-		}
-		
-		#endregion
 	}
 
 	void HandleState()
@@ -276,7 +151,6 @@ public class MenuScreenScript : MonoBehaviour
 			m_nMenuState = (int)MENU_STATES.eINNACTIVE;
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 			Camera.main.GetComponent<GreyScaleScript>().SendMessage("EndGreyScale");
-			m_dFunc = null;
 		}
 		else if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Return))
 		{
@@ -544,39 +418,6 @@ public class MenuScreenScript : MonoBehaviour
 	{
 	}
 
-	//This function is called by the GUI, parameter is the index to which option was picked.
-	public void MenuSelected(int index)
-	{
-		switch(index)
-		{
-		case 0:
-		{
-			//opening up the inventory
-			m_goMenu.GetComponent<Animator>().Play("ClosingMenu");
-			m_goInventory.GetComponent<Animator>().Play("OpeningInventory");
-
-		}
-			break;
-		case 5:
-		{
-			//Quit to menu
-			GameObject dc = GameObject.Find("PersistantData");
-			if(dc)
-			{
-				Destroy(dc);
-			}
-            SceneManager.LoadScene("Intro_Scene");
-		}
-			break;
-		case 6:
-		{
-			//Exit Game
-			Application.Quit();
-		}
-			break;
-		}
-	}
-
 	#region Inventory Functions
 	public void PopulateInventory(int type)
 	{
@@ -769,8 +610,6 @@ public class MenuScreenScript : MonoBehaviour
 				break;
 			default:
 			{
-				//If we landed in here it means that it's just a heal item.
-				m_bDisableInput = true;
 				//check to see if it's healing all targets or just one.
 				if(dcItemData.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
 				{
@@ -877,14 +716,28 @@ public class MenuScreenScript : MonoBehaviour
 	}
 	void AdjustStatusScreen(DCScript.CharacterData character)
 	{
-		foreach(Transform child in m_goStatus.transform)
-		{
-			Debug.Log(child.name);
-		}
 		Transform characterName = m_goStatus.transform.FindChild("CharacterName");
 		characterName.GetComponent<Text>().text = character.m_szCharacterName;
 		Transform characterDesc = m_goStatus.transform.FindChild("CharacterDescription");
 		characterDesc.GetComponent<Text>().text = character.m_szCharacterBio;
+		Transform characterBody = m_goStatus.transform.FindChild("CharacterBody");
+		Color fadedWhite = Color.white;
+		fadedWhite.a = 0.3f;
+		characterBody.GetComponent<Image>().color = fadedWhite;
+		GameObject pCont = GameObject.Find("Portraits Container");
+		Texture2D texture;
+		if(pCont.GetComponent<PortraitContainerScript>().m_dPortraits.TryGetValue(character.m_szCharacterName + "1", out texture))
+		{
+			characterBody.GetComponent<Image>().sprite = Sprite.Create(texture, 
+				new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+		}
+		else
+		{
+			GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
+			characterBody.GetComponent<Image>().sprite = Sprite.Create(unit.GetComponent<CAllyBattleScript>().m_tLargeBust, 
+				new Rect(0, 0, unit.GetComponent<CAllyBattleScript>().m_tLargeBust.width,
+					unit.GetComponent<CAllyBattleScript>().m_tLargeBust.height), new Vector2(0.5f, 0.5f));
+		}
 
 		Transform weaponPanel = m_goStatus.transform.FindChild("WeaponPanel");
 		Transform weaponName = weaponPanel.FindChild("WeaponName");
@@ -896,6 +749,37 @@ public class MenuScreenScript : MonoBehaviour
 			weaponMod.GetComponent<Text>().text = "Weapon Mod : " + character.m_szWeaponModifierName;
 		else
 			weaponMod.GetComponent<Text>().text = "Weapon Mod : None";
+
+
+		//So we need to create a list of 0-1 floats that represent the stat fill radar chart.
+		List<float> lStatDistances = new List<float>();
+		List<int> lStats = new List<int>();
+		//SPD, DEF, HP, POW, HIT, MP, EVA (I think this is the order, more testing.
+		lStats.Add(character.m_nSPD);
+		m_goRadarChart.transform.FindChild("SPD").FindChild("Stat").GetComponent<Text>().text = character.m_nSPD.ToString();
+		lStats.Add(character.m_nEVA);
+		m_goRadarChart.transform.FindChild("EVA").FindChild("Stat").GetComponent<Text>().text = character.m_nEVA.ToString();
+		lStats.Add(character.m_nMaxMP);
+		m_goRadarChart.transform.FindChild("MP").FindChild("Stat").GetComponent<Text>().text = character.m_nMaxMP.ToString();
+		lStats.Add(character.m_nHIT);
+		m_goRadarChart.transform.FindChild("HIT").FindChild("Stat").GetComponent<Text>().text = character.m_nHIT.ToString();
+		lStats.Add(character.m_nSTR);
+		m_goRadarChart.transform.FindChild("POW").FindChild("Stat").GetComponent<Text>().text = character.m_nSTR.ToString();
+		lStats.Add(character.m_nMaxHP);
+		m_goRadarChart.transform.FindChild("HP").FindChild("Stat").GetComponent<Text>().text = character.m_nMaxHP.ToString();
+		lStats.Add(character.m_nDEF);
+		m_goRadarChart.transform.FindChild("DEF").FindChild("Stat").GetComponent<Text>().text = character.m_nDEF.ToString();
+
+		int highestStat = 0;
+		foreach(int n in lStats)
+			if(highestStat < n)
+				highestStat = n;
+		foreach(int n in lStats)
+		{
+			float distance = (float)((float)n / (float)highestStat);
+			lStatDistances.Add(distance);
+		}
+		m_goRadarChart.GetComponent<RadarGraphScript>().AdjustFill(lStatDistances);
 
 	}
 	bool RecursivePanelShiftRight(int nIndex)
