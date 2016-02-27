@@ -781,6 +781,72 @@ public class MenuScreenScript : MonoBehaviour
 		}
 		m_goRadarChart.GetComponent<RadarGraphScript>().AdjustFill(lStatDistances);
 
+		//Now let's populate the equipment.
+		if(character.m_idHelmSlot != null)
+		{
+			m_goEquipment.transform.FindChild("Head").GetComponent<Text>().text = "Head Slot : " + character.m_idHelmSlot.m_szItemName;
+		}
+		else
+		{
+			m_goEquipment.transform.FindChild("Head").GetComponent<Text>().text = "Head Slot : None";
+		}
+		if(character.m_idShoulderSlot != null)
+		{
+			m_goEquipment.transform.FindChild("Shoulder").GetComponent<Text>().text = "Shoulder Slot : " + character.m_idShoulderSlot.m_szItemName;
+		}
+		else
+		{
+			m_goEquipment.transform.FindChild("Shoulder").GetComponent<Text>().text = "Shoulder Slot : None";
+		}
+		if(character.m_idChestSlot != null)
+		{
+			m_goEquipment.transform.FindChild("Chest").GetComponent<Text>().text = "Chest Slot : " + character.m_idChestSlot.m_szItemName;
+		}
+		else
+		{
+			m_goEquipment.transform.FindChild("Chest").GetComponent<Text>().text = "Chest Slot : None";
+		}
+		if(character.m_idGloveSlot != null)
+		{
+			m_goEquipment.transform.FindChild("Arms").GetComponent<Text>().text = "Glove Slot : " + character.m_idGloveSlot.m_szItemName;
+		}
+		else
+		{
+			m_goEquipment.transform.FindChild("Arms").GetComponent<Text>().text = "Glove Slot : None";
+		}
+		if(character.m_idBeltSlot != null)
+		{
+			m_goEquipment.transform.FindChild("Waist").GetComponent<Text>().text = "Belt Slot : " + character.m_idBeltSlot.m_szItemName;
+		}
+		else
+		{
+			m_goEquipment.transform.FindChild("Waist").GetComponent<Text>().text = "Waist Slot : None";
+		}
+		if(character.m_idLegSlot != null)
+		{
+			m_goEquipment.transform.FindChild("Legs").GetComponent<Text>().text = "Leg Slot : " + character.m_idLegSlot.m_szItemName;
+		}
+		else
+		{
+			m_goEquipment.transform.FindChild("Legs").GetComponent<Text>().text = "Leg Slot : None";
+		}
+		if(character.m_idTrinket1 != null)
+		{
+			m_goEquipment.transform.FindChild("Trinket1").GetComponent<Text>().text = "Trinket Slot : " + character.m_idTrinket1.m_szItemName;
+		}
+		else
+		{
+			m_goEquipment.transform.FindChild("Trinket1").GetComponent<Text>().text = "Trinket Slot : None";
+		}
+		if(character.m_idTrinket2 != null)
+		{
+			m_goEquipment.transform.FindChild("Trinket2").GetComponent<Text>().text = "Trinket Slot : " + character.m_idTrinket2.m_szItemName;
+		}
+		else
+		{
+			m_goEquipment.transform.FindChild("Trinket1").GetComponent<Text>().text = "Trinket Slot : None";
+		}
+
 	}
 	bool RecursivePanelShiftRight(int nIndex)
 	{
