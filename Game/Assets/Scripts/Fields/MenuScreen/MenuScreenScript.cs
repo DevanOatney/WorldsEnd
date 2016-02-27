@@ -154,7 +154,7 @@ public class MenuScreenScript : MonoBehaviour
 		}
 		else if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Return))
 		{
-			TopTabSelectionSelected();
+			TopTabSelectionSelected(m_nTopTabMenuSelectionIndex);
 		}
 		else if(Input.GetKeyDown(KeyCode.LeftArrow))
 		{
@@ -169,8 +169,17 @@ public class MenuScreenScript : MonoBehaviour
 				m_nTopTabMenuSelectionIndex = 0;
 		}
 	}
-	void TopTabSelectionSelected()
+	public void TopTabHighlighted(int nIndex)
 	{
+		if(m_nMenuState != (int)MENU_STATES.eTOPTAB_SELECTION)
+			return;
+		m_nTopTabMenuSelectionIndex = nIndex;
+	}
+	public void TopTabSelectionSelected(int nIndex)
+	{
+		if(m_nMenuState != (int)MENU_STATES.eTOPTAB_SELECTION)
+			return;
+		m_nTopTabMenuSelectionIndex = nIndex;
 		switch(m_nTopTabMenuSelectionIndex)
 		{
 		case 0:
@@ -254,29 +263,8 @@ public class MenuScreenScript : MonoBehaviour
 		}
 		else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Return))
 		{
-			switch(m_nSubTabMenuSelectionIndex)
-			{
-			case 0:
-				{
-					//STATUS
-					if(RecursivePanelShiftRight(m_nCharacterPanelSelectionIndex) == true)
-					{
-						m_nMenuState = (int)MENU_STATES.eSTATUS_SUBTAB;
-					}
-				}
-				break;
-			case 1:
-				{
-					//FORMATION
-				}
-				break;
-			case 2:
-				{
-					//ROSTER
-				}
-				break;
-			}
-
+			
+			PartyTabSelectionSelected(m_nSubTabMenuSelectionIndex);
 		}
 		else if(Input.GetKeyDown(KeyCode.UpArrow))
 		{
@@ -311,6 +299,40 @@ public class MenuScreenScript : MonoBehaviour
 				Image_Brighten(go);
 			}
 			counter++;
+		}
+	}
+	public void PartyTabHighlighted(int nIndex)
+	{
+		if(m_nMenuState != (int)MENU_STATES.ePARTYTAB)
+			return;
+		m_nSubTabMenuSelectionIndex = nIndex;
+	}
+	public void PartyTabSelectionSelected(int nIndex)
+	{
+		if(m_nMenuState != (int)MENU_STATES.ePARTYTAB)
+			return;
+		m_nSubTabMenuSelectionIndex = nIndex;
+		switch(m_nSubTabMenuSelectionIndex)
+		{
+		case 0:
+			{
+				//STATUS
+				if(RecursivePanelShiftRight(m_nCharacterPanelSelectionIndex) == true)
+				{
+					m_nMenuState = (int)MENU_STATES.eSTATUS_SUBTAB;
+				}
+			}
+			break;
+		case 1:
+			{
+				//FORMATION
+			}
+			break;
+		case 2:
+			{
+				//ROSTER
+			}
+			break;
 		}
 	}
 	#endregion
@@ -369,8 +391,18 @@ public class MenuScreenScript : MonoBehaviour
 		}
 	}
 
-	void CharacterSelected(int nIndex)
+	public void CharacterHighlighted(int nIndex)
 	{
+		if(m_nMenuState != (int)MENU_STATES.eSTATUS_SUBTAB || m_bWaiting == true)
+			return;
+		m_nCharacterPanelSelectionIndex = nIndex;
+		RecursivePanelShiftLeft(m_nCharacterPanelSelectionIndex);
+	}
+
+	public void CharacterSelected(int nIndex)
+	{
+		if(m_nMenuState != (int)MENU_STATES.eSTATUS_SUBTAB || m_bWaiting == true)
+			return;
 		//first check to see if this character is even a valid selection...
 		DCScript.CharacterData character = RetrieveCharacter(nIndex);
 		if(character == null)
