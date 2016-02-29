@@ -33,6 +33,7 @@ public class PoisonEffectScript : FieldBaseStatusEffectScript
 		m_fRateOfTicks = rateOfTick;
 		m_lEffectedUnits = szCharactersEffected;
 		m_dFunc = Step;
+		m_bToBeRemoved = false;
 	}
 
 	void Step()

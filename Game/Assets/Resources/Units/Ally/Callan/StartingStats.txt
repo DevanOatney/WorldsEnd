@@ -1,4 +1,5 @@
 HP:40
+MP:10
 POW:20
 DEF:20
 SPD:20

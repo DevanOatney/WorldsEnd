@@ -1,4 +1,5 @@
 HP:10
+MP:5
 POW:1
 DEF:1
 SPD:1

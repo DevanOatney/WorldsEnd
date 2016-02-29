@@ -92,6 +92,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	public List<GameObject> m_lStatusEffects = new List<GameObject>();
 	public void RemoveStatusEffect(string effectName)
 	{
+		Debug.Log("Does this get called?");
 		for (int i = m_lStatusEffects.Count - 1; i >= 0; i--)
 		{
 			if(m_lStatusEffects[i].name == effectName)
@@ -140,12 +141,12 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		//temp for testing status
-		//DCScript.StatusEffect tse = new DCScript.StatusEffect();
-		//tse.m_szName = "Poison";
-		//tse.m_nCount = 20;
-		//tse.m_lEffectedMembers.Add("Callan");
-		//GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects().Add(tse);
+		//temp for testing poison status effect
+		DCScript.StatusEffect tse = GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffectLibrary.ConvertToDCStatusEffect("Poison");
+		tse.m_lEffectedMembers.Add("Callan");
+		GameObject.Find("PersistantData").GetComponent<DCScript>().AddStatusEffect(tse);
+
+
 		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects();
 		foreach(DCScript.StatusEffect se in effects)
 		{
@@ -185,7 +186,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 
 	void Update()
 	{
-
 		if(m_bAllowInput == true)
 		{
 			if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
@@ -370,8 +370,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			{
 				if(m_lStatusEffects[i].GetComponent<FieldBaseStatusEffectScript>().m_bToBeRemoved == true)
 				{
-
-					GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects().RemoveAt(i);
+					GameObject.Find("PersistantData").GetComponent<DCScript>().RemoveMeFromStatus(name, m_lStatusEffects[i].name);
 					m_lStatusEffects.RemoveAt(i);
 					i--;
 				}

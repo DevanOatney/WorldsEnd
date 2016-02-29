@@ -71,14 +71,6 @@ public class OverWatcherScript : MonoBehaviour
 			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
 			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
 			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
-			DCScript.StatusEffect se = new DCScript.StatusEffect();
-			//"Poison", 2, 20
-			se.m_szEffectName = "Poison";
-			se.m_nAmountOfTicks = 2;
-			se.m_nHPMod = 20;
-			se.m_lEffectedMembers.Add("Callan");
-			se.m_lEffectedMembers.Add("Briol");
-			pdata.GetComponent<DCScript>().AddStatusEffect(se);
 		}
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		if(CAudioHelper.Instance == null)

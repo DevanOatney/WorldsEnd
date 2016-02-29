@@ -47,33 +47,33 @@ public class LoadingScript : MonoBehaviour
 
 		string szLine = "";
 		sr = new StreamReader(m_szFileName + iter.ToString() + ".txt");
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 
 		//Music Volume
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		//Sound Effect Volume
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		//Voice Volume
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		//Brightness
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		//Battle animation flag
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		//Text Speed
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		//The amount of flags in the flag field
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		int flagCount = int.Parse(szLine);
 		for(int i = 0; i < flagCount; ++i)
 		{
-			szLine = sr.ReadLine();
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
+			szLine = sr.ReadLine().Trim();
 		}
 		//Amount of gold the player has
 		saveData.m_nGold = int.Parse(sr.ReadLine().Trim());
 		
 		//Amount of characters in the party
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		int partyCount = int.Parse(szLine);
 		for(int i = 0; i < partyCount; ++i)
 		{
@@ -82,34 +82,40 @@ public class LoadingScript : MonoBehaviour
 			saveData.m_szName = szLine.Trim();
 
 			//Race of character
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Class type
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//bio
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			
 			//Max HP
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			
 			//Cur HP
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
+
+			//MaxMP
+			szLine = sr.ReadLine().Trim();
+
+			//Cur MP
+			szLine = sr.ReadLine().Trim();
 			
 			//STR
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			
 			//DEF
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			
 			//SPD
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//EVA
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//HIT
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Level
 			szLine = sr.ReadLine();
@@ -117,103 +123,103 @@ public class LoadingScript : MonoBehaviour
 			saveData.m_nLevel = LVL;
 			
 			//Current exp
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Weapon Name
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Weapon Level
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Weapon Damage Mod
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Weapon Mod name
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Helm
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Shoulder
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Chest 
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Gloves
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Belt
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Legs
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Trinket 1
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Trinket 2
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 
 			//Amount of spells this character knows
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			int spellCount = int.Parse(szLine);
 			for(int j = 0; j < spellCount; ++j)
 			{
 				//Read the spell name
-				sr.ReadLine();
+				sr.ReadLine().Trim();
 			}
 			
 			
 		}
 
 		//amount of status effects effecting character
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		int effectCount = int.Parse(szLine.Trim());
 		for(int j = 0; j < effectCount; ++j)
 		{
 			//name of effect
-			sr.ReadLine();
+			sr.ReadLine().Trim();
 			//effect type
-			sr.ReadLine();
+			sr.ReadLine().Trim();
 			//amount of ticks left on the effect
-			sr.ReadLine();
+			sr.ReadLine().Trim();
 			//hp mod
-			sr.ReadLine();
+			sr.ReadLine().Trim();
 			//mp mod
-			sr.ReadLine();
+			sr.ReadLine().Trim();
 			//pow mod
-			sr.ReadLine();
+			sr.ReadLine().Trim();
 			//def mod
-			sr.ReadLine();
+			sr.ReadLine().Trim();
 			//spd mod
-			sr.ReadLine();
+			sr.ReadLine().Trim();
 			//hit mod
-			sr.ReadLine();
+			sr.ReadLine().Trim();
 			//eva mod
-			sr.ReadLine();
+			sr.ReadLine().Trim();
 			//amount of units effected
 			int unitsEffected = int.Parse(sr.ReadLine().Trim());
 			for(int x = 0; x < unitsEffected; ++x)
-				sr.ReadLine();
+				sr.ReadLine().Trim();
 		}
 
 		
 		//Amount of items in inventory
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		int inventoryCount = int.Parse(szLine);
 		
 		//Inventory
 		for(int i = 0; i < inventoryCount; ++i)
 		{
-			szLine = sr.ReadLine();
-			szLine = sr.ReadLine();
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
+			szLine = sr.ReadLine().Trim();
+			szLine = sr.ReadLine().Trim();
 		}
 		
 		
 		//The scene to load
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		saveData.m_szFieldName = szLine;
 
 		sr.Close();
@@ -235,38 +241,38 @@ public class LoadingScript : MonoBehaviour
 		//User settings
 		
 		//Master Volume
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		NewData.m_fMasterVolume = float.Parse(szLine);
 		NewData.SetMasterVolume();
 		//Music Volume
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		NewData.m_fMusicVolume = float.Parse(szLine);
 		//Sound Effect Volume
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		NewData.m_fSFXVolume = float.Parse(szLine);
 		//Voice Volume
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		NewData.m_fVoiceVolume = float.Parse(szLine);
 		//Brightness
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		NewData.m_fBrightness = float.Parse(szLine);
 		//Battle animation flag
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		NewData.m_bToUseBattleAnimations = bool.Parse(szLine);
 		//Text Speed
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		NewData.m_nTextSpeed = int.Parse(szLine);
 		//The amount of flags in the flag field
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		int flagCount = int.Parse(szLine);
 		Dictionary<string, int> dStoryFlagField = new Dictionary<string, int>();
 		for(int i = 0; i < flagCount; ++i)
 		{
 			string key;
 			int value;
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			key = szLine;
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			value = int.Parse(szLine);
 			dStoryFlagField.Add(key, value);
 		}
@@ -276,7 +282,7 @@ public class LoadingScript : MonoBehaviour
 		NewData.m_nGold = int.Parse(sr.ReadLine().Trim());
 		
 		//Amount of characters in the party
-		szLine = sr.ReadLine();
+		szLine = sr.ReadLine().Trim();
 		int partyCount = int.Parse(szLine);
 		for(int i = 0; i < partyCount; ++i)
 		{
@@ -284,63 +290,73 @@ public class LoadingScript : MonoBehaviour
 			//"Resources/Units/Ally/Name/Name.prefab
 			DCScript.CharacterData character = new DCScript.CharacterData();
 			//name of the character
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			character.m_szCharacterName = szLine.Trim();
 
 			//Race
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			character.m_szCharacterRace = szLine.Trim();
 
 			//Class
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			character.m_szCharacterClassType = szLine.Trim();
 
 			//Bio
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			character.m_szCharacterBio = szLine.Trim();
 
 			//Max HP
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			int MaxHP = int.Parse(szLine);
 			character.m_nMaxHP = MaxHP;
 		
 			//Cur HP
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			int CurHP = int.Parse(szLine);
 			character.m_nCurHP = CurHP;
+
+			//Max MP
+			szLine = sr.ReadLine().Trim();
+			int MaxMP = int.Parse(szLine);
+			character.m_nMaxMP = MaxMP;
+
+			//Cur MP
+			szLine = sr.ReadLine().Trim();
+			int CurMP = int.Parse(szLine);
+			character.m_nCurMP = int.Parse(szLine);
 		
 			//STR
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			int STR = int.Parse(szLine);
 			character.m_nSTR = STR;
 		
 			//DEF
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			int DEF = int.Parse(szLine);
 			character.m_nDEF = DEF;
 		
 			//SPD
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			int SPD = int.Parse(szLine);
 			character.m_nSPD = SPD;
 
 			//EVA
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			int EVA = int.Parse(szLine);
 			character.m_nEVA = EVA;
 
 			//HIT
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			int HIT = int.Parse(szLine);
 			character.m_nHIT = HIT;
 		
 			//Level
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			int LVL = int.Parse(szLine);
 			character.m_nLevel = LVL;
 		
 			//Current exp
-			szLine = sr.ReadLine();
+			szLine = sr.ReadLine().Trim();
 			int exp = int.Parse(szLine);
 			character.m_nCurrentEXP = exp;
 

@@ -92,7 +92,6 @@ public class CAllyBattleScript : UnitScript
 		m_aAnim = GetComponent<Animator>();
 		if(m_aAnim == null)
 			m_aAnim = GetComponentInChildren<Animator>();
-		InitializeTargetReticle();
 		m_nState = (int)ALLY_STATES.DIALOGUE;
 		//Grab any status effects that are currently effecting this character.
 		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects();
@@ -914,97 +913,100 @@ public class CAllyBattleScript : UnitScript
 			//Max HP
 			c.m_nMaxHP = int.Parse(lines[0].Trim());
 			c.m_nCurHP = c.m_nMaxHP;
+			//Max MP
+			c.m_nMaxMP = int.Parse(lines[1].Trim());
+			c.m_nCurMP = c.m_nMaxMP;
 			//STR
-			c.m_nSTR = int.Parse(lines[1].Trim());
+			c.m_nSTR = int.Parse(lines[2].Trim());
 			//DEF
-			c.m_nDEF = int.Parse(lines[2].Trim());
+			c.m_nDEF = int.Parse(lines[3].Trim());
 			//SPD
-			c.m_nSPD = int.Parse(lines[3].Trim());
+			c.m_nSPD = int.Parse(lines[4].Trim());
 			//EVA
-			c.m_nEVA = int.Parse(lines[4].Trim());
+			c.m_nEVA = int.Parse(lines[5].Trim());
 			//HIT
-			c.m_nHIT = int.Parse(lines[5].Trim());
+			c.m_nHIT = int.Parse(lines[6].Trim());
 			//LEVEL
-			c.m_nLevel = int.Parse(lines[6].Trim());
+			c.m_nLevel = int.Parse(lines[7].Trim());
 			//Race
-			c.m_szCharacterRace = lines[7].Trim ();
+			c.m_szCharacterRace = lines[8].Trim ();
 			//ClassType
-			c.m_szCharacterClassType = lines[8].Trim();
+			c.m_szCharacterClassType = lines[9].Trim();
 			//Weapon Name
-			c.m_szWeaponName = lines[9].Trim();
+			c.m_szWeaponName = lines[10].Trim();
 			//Weapon Level
-			c.m_nWeaponLevel = int.Parse(lines[10].Trim());
+			c.m_nWeaponLevel = int.Parse(lines[11].Trim());
 			//Weapon Damage
-			c.m_nWeaponDamageModifier = int.Parse(lines[11].Trim());
+			c.m_nWeaponDamageModifier = int.Parse(lines[12].Trim());
 			c.m_nSTR += c.m_nWeaponDamageModifier;
 			//Weapon Mod name
-			c.m_szWeaponModifierName = lines[12].Trim();
+			c.m_szWeaponModifierName = lines[13].Trim();
 			if(c.m_szWeaponModifierName == "NULL")
 				c.m_szWeaponModifierName = "";
 			//Head
-			if(lines[13].Trim() != "NULL")
+			if(lines[14].Trim() != "NULL")
 			{
 				c.m_idHelmSlot = (ItemLibrary.ArmorData)m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(lines[13].Trim());
 			}
 			else
 				c.m_idHelmSlot = null;
 			//Shoulders
-			if(lines[14].Trim() != "NULL")
+			if(lines[15].Trim() != "NULL")
 			{
 				c.m_idShoulderSlot = (ItemLibrary.ArmorData)m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(lines[14].Trim());
 			}
 			else
 				c.m_idShoulderSlot = null;
 			//Chest
-			if(lines[15].Trim() != "NULL")
+			if(lines[16].Trim() != "NULL")
 			{
 				c.m_idChestSlot = (ItemLibrary.ArmorData)m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(lines[15].Trim());
 			}
 			else
 				c.m_idChestSlot = null;
 			//Arms
-			if(lines[16].Trim() != "NULL")
+			if(lines[17].Trim() != "NULL")
 			{
 				c.m_idGloveSlot = (ItemLibrary.ArmorData)m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(lines[16].Trim());
 			}
 			else
 				c.m_idGloveSlot = null;
 			//Waist
-			if(lines[17].Trim() != "NULL")
+			if(lines[18].Trim() != "NULL")
 			{
 				c.m_idBeltSlot = (ItemLibrary.ArmorData)m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(lines[17].Trim());
 			}
 			else
 				c.m_idBeltSlot = null;
 			//Legs
-			if(lines[18].Trim() != "NULL")
+			if(lines[19].Trim() != "NULL")
 			{
 				c.m_idLegSlot = (ItemLibrary.ArmorData)m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(lines[18].Trim());
 			}
 			else
 				c.m_idLegSlot = null;
 			//Trinket1
-			if(lines[19].Trim() != "NULL")
+			if(lines[20].Trim() != "NULL")
 			{
 				c.m_idTrinket1 = m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(lines[19].Trim());
 			}
 			else
 				c.m_idTrinket1 = null;
 			//Trinket2
-			if(lines[20].Trim() != "NULL")
+			if(lines[21].Trim() != "NULL")
 			{
 				c.m_idTrinket2 = m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(lines[20].Trim());
 			}
 			else
 				c.m_idTrinket2 = null;
 			//Character Bio
-			c.m_szCharacterBio = lines[21].Trim();
+			c.m_szCharacterBio = lines[22].Trim();
 			//SpellCount
-			int amntOfSpells = int.Parse(lines[22].Trim());
+			int amntOfSpells = int.Parse(lines[23].Trim());
 			c.m_lSpellsKnown = new List<string>();
 			for(int i = 0; i < amntOfSpells; ++i)
 			{
-				c.m_lSpellsKnown.Add(lines[23+i].Trim());
+				c.m_lSpellsKnown.Add(lines[24+i].Trim());
 			}
 			UpdateStats();
 			GameObject.Find("PersistantData").GetComponent<DCScript>().AddPartyMember(c);
@@ -1023,6 +1025,7 @@ public class CAllyBattleScript : UnitScript
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		for(int i = enemies.Length-1; i >=0; i--)
 		{
+			Debug.Log(i + " in " + enemies.Length);
 			if(m_nTargetPositionOnField == enemies[i].GetComponent<UnitScript>().FieldPosition && enemies[i].GetComponent<UnitScript>().GetCurHP() > 0)
 				return;
 		}

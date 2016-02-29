@@ -1,0 +1,1 @@
+Poison,Effect Type: 0, Ticks:10, HP DMG: 1, MP DMG: 0, POW DMG: 0, DEF DMG: 0, SPD DMG: 0, HIT DMG: 0, EVA DMG: 0

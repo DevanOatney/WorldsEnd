@@ -186,6 +186,7 @@ public class MenuScreenScript : MonoBehaviour
 			{
 				//Party
 				m_nMenuState = (int)MENU_STATES.ePARTYTAB;
+				PopulatePartyMembers();
 				DisplayCharacterPanels(true);
 			}
 			break;
@@ -319,6 +320,7 @@ public class MenuScreenScript : MonoBehaviour
 				//STATUS
 				if(RecursivePanelShiftRight(m_nCharacterPanelSelectionIndex) == true)
 				{
+					PopulatePartyMembers();
 					m_nMenuState = (int)MENU_STATES.eSTATUS_SUBTAB;
 				}
 			}
@@ -676,6 +678,7 @@ public class MenuScreenScript : MonoBehaviour
 
 
 	#region Random Helper Functions
+	//Make sure to call this anytime we're going to be looking at the character panels, as their stats may have changed, or the formation may have changed.
 	void PopulatePartyMembers()
 	{
 		int counter = 0;
@@ -687,9 +690,29 @@ public class MenuScreenScript : MonoBehaviour
 				//populate this panel with this character's information
 				Transform cName = panel.transform.FindChild("CharacterName");
 				cName.GetComponent<Text>().text = character.m_szCharacterName;
+				Transform cLVL = panel.transform.FindChild("CharacterLVL");
+				cLVL.GetComponent<Text>().text = "Lvl : " + character.m_nLevel.ToString();
 				Transform cHP = panel.transform.FindChild("CharacterHP");
+				float fPercentHPLeft = (float)((float)character.m_nCurHP / (float)character.m_nMaxHP);
+				if(fPercentHPLeft > 0.8f)
+					cHP.GetComponent<Text>().color = Color.green;
+				else if(fPercentHPLeft > 0.3f)
+					cHP.GetComponent<Text>().color = Color.yellow;
+				else if(fPercentHPLeft > 0.001f)
+					cHP.GetComponent<Text>().color = Color.red;
+				else
+					cHP.GetComponent<Text>().color = Color.black;
 				cHP.GetComponent<Text>().text =  "HP : " + character.m_nCurHP.ToString();
 				Transform cMP = panel.transform.FindChild("CharacterMP");
+				fPercentHPLeft = (float)((float)character.m_nCurMP / (float)character.m_nMaxMP);
+				if(fPercentHPLeft > 0.8f)
+					cMP.GetComponent<Text>().color = Color.green;
+				else if(fPercentHPLeft > 0.3f)
+					cMP.GetComponent<Text>().color = Color.yellow;
+				else if(fPercentHPLeft > 0.001f)
+					cMP.GetComponent<Text>().color = Color.red;
+				else
+					cMP.GetComponent<Text>().color = Color.black;
 				cMP.GetComponent<Text>().text = "MP : " + character.m_nCurMP.ToString();
 				Transform cEXP = panel.transform.FindChild("CharacterEXP");
 				cEXP.GetComponent<Text>().text = "EXP : " + character.m_nCurrentEXP.ToString();
@@ -715,6 +738,8 @@ public class MenuScreenScript : MonoBehaviour
 				//no character in this slot, de-activate the panel.
 				Transform cName = panel.transform.FindChild("CharacterName");
 				cName.GetComponent<Text>().text = "";
+				Transform cLVL = panel.transform.FindChild("CharacterLVL");
+				cLVL.GetComponent<Text>().text = "";
 				Transform cHP = panel.transform.FindChild("CharacterHP");
 				cHP.GetComponent<Text>().text =  "";
 				Transform cMP = panel.transform.FindChild("CharacterMP");

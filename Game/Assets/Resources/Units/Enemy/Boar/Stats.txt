@@ -4,4 +4,4 @@ DEF:2
 SPD:3
 HIT:6
 EVA:5
-LVL:5
+LVL:20

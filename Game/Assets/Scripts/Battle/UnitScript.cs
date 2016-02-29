@@ -29,6 +29,8 @@ public class UnitScript : MonoBehaviour
 	//units stats
 	protected int m_nMaxHP;
 	protected int m_nCurHP;
+	protected int m_nMaxMP;
+	protected int m_nCurMP;
 	protected int m_nStr;
 	protected int m_nDef;
 	protected int m_nSpd;
@@ -38,6 +40,8 @@ public class UnitScript : MonoBehaviour
 	//accessors
 	public int GetMaxHP() {return m_nMaxHP;}
 	public int GetCurHP() {return m_nCurHP;}
+	public int GetMaxMP() {return m_nMaxMP;}
+	public int GetCurMP() {return m_nCurMP;}
 	public int GetSTR() {return m_nStr;}
 	public int GetDEF() {return m_nDef;}
 	public int GetSPD() {return m_nSpd;}
@@ -46,6 +50,8 @@ public class UnitScript : MonoBehaviour
 	//mutators
 	public void SetMaxHP(int hp) {m_nMaxHP = hp;}
 	public void SetCurHP(int hp) {m_nCurHP = hp;}
+	public void SetMaxMP(int mp) {m_nMaxMP = mp;}
+	public void SetCurMP(int mp) {m_nCurMP = mp;}
 	public void SetSTR(int str) {m_nStr = str;}
 	public void SetDEF(int def) {m_nDef = def;}
 	public void SetSPD(int spd) {m_nSpd = spd;}

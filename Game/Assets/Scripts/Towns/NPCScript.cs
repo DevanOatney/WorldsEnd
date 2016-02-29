@@ -236,8 +236,6 @@ public class NPCScript : MonoBehaviour
 	void Update () 
 	{
 		HandleMovement();
-		if(Input.GetKeyDown(KeyCode.A))
-			DHF_NPCPathfindToGameobject(GameObject.Find("Target"), false, 2, false);
 	}
 
 	//Get the direction the NPC is looking

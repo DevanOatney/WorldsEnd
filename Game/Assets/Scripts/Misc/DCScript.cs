@@ -90,11 +90,12 @@ public class DCScript : MonoBehaviour
 				foreach(string s in m_lStatusEffects[catchIter].m_lEffectedMembers)
 				{
 					if(s == c)
-						
 						inList = true;
 				}
 				if(inList == false)
+				{
 					m_lStatusEffects[catchIter].m_lEffectedMembers.Add(c);
+				}
 				if(m_lStatusEffects[catchIter].m_nAmountOfTicks < se.m_nAmountOfTicks)
 					m_lStatusEffects[catchIter].m_nAmountOfTicks = se.m_nAmountOfTicks;
 				return;
@@ -107,16 +108,30 @@ public class DCScript : MonoBehaviour
 	}
 	public void ReduceStatusEffectCount(string szName)
 	{
+		Debug.Log("Reduce SE count");
 		foreach(StatusEffect se in m_lStatusEffects)
 		{
 			se.m_nAmountOfTicks = se.m_nAmountOfTicks - 1;
 		}
 	}
-	public void RemoveMeFromStatus(string szName, int iter)
+	public void RemoveMeFromStatus(string szNameOfCharacter, int iter)
 	{
-		m_lStatusEffects[iter].m_lEffectedMembers.Remove(szName);
+		m_lStatusEffects[iter].m_lEffectedMembers.Remove(szNameOfCharacter);
 		if(m_lStatusEffects[iter].m_lEffectedMembers.Count <= 0)
 			m_lStatusEffects.RemoveAt(iter);
+	}
+	public void RemoveMeFromStatus(string szNameOfCharacter, string szNameOfStatusEffect)
+	{
+		int counter = 0;
+		foreach(StatusEffect se in m_lStatusEffects)
+		{
+			if(se.m_szEffectName == szNameOfStatusEffect)
+			{
+				RemoveMeFromStatus(szNameOfCharacter, counter);
+				return;
+			}
+			counter++;
+		}
 	}
 	public int IsStatusEffectInList(int szEffectType)
 	{

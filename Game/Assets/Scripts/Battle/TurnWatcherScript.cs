@@ -148,6 +148,8 @@ public class TurnWatcherScript : MonoBehaviour
 			//Set the stats of the unit to the object it instantiated from
 			Ally.GetComponent<UnitScript>().SetMaxHP(g.m_nMaxHP);
 			Ally.GetComponent<UnitScript>().SetCurHP(g.m_nCurHP);
+			Ally.GetComponent<UnitScript>().SetMaxMP(g.m_nMaxMP);
+			Ally.GetComponent<UnitScript>().SetCurMP(g.m_nCurMP);
 			Ally.GetComponent<UnitScript>().SetSTR(g.m_nSTR);
 			Ally.GetComponent<UnitScript>().SetDEF(g.m_nDEF);
 			Ally.GetComponent<UnitScript>().SetSPD(g.m_nSPD);
@@ -565,16 +567,7 @@ public class TurnWatcherScript : MonoBehaviour
 			//add the total experience the character is going to gain to the list
 			m_lNewExperienceTotal.Add(ally.m_szCharacterName, nExp);
 
-			if(nExp + prevExp >= foundAlly.GetComponent<CAllyBattleScript>().m_nExperienceToLevel)
-			{
-				//the character leveled up
-				ally.m_nCurHP = foundAlly.GetComponent<CAllyBattleScript>().GetMaxHP();
-
-			}
-			else
-			{
-				ally.m_nCurHP = foundAlly.GetComponent<CAllyBattleScript>().GetCurHP();
-			}
+			/*
 			ally.m_nMaxHP = foundAlly.GetComponent<CAllyBattleScript>().GetMaxHP();
 			ally.m_nSTR = foundAlly.GetComponent<CAllyBattleScript>().GetSTR();
 			ally.m_nDEF = foundAlly.GetComponent<CAllyBattleScript>().GetDEF();
@@ -590,8 +583,9 @@ public class TurnWatcherScript : MonoBehaviour
 			ally.m_idTrinket1 = foundAlly.GetComponent<CAllyBattleScript>().m_idTrinket1;
 			ally.m_idTrinket2 = foundAlly.GetComponent<CAllyBattleScript>().m_idTrinket2;
 			ally.m_lSpellsKnown = foundAlly.GetComponent<CAllyBattleScript>().m_lSpellList;
+			*/
 		}
-		ds.SetParty(party);
+		//ds.SetParty(party);
 
 	}
 
@@ -613,6 +607,16 @@ public class TurnWatcherScript : MonoBehaviour
 			ally.m_nSTR = foundAlly.GetComponent<CAllyBattleScript>().GetSTR();
 			ally.m_nDEF = foundAlly.GetComponent<CAllyBattleScript>().GetDEF();
 			ally.m_nSPD = foundAlly.GetComponent<CAllyBattleScript>().GetSPD();
+			if(ally.m_nLevel != foundAlly.GetComponent<CAllyBattleScript>().GetUnitLevel())
+			{
+				ally.m_nCurHP = ally.m_nMaxHP;
+				ally.m_nCurMP = ally.m_nMaxMP;
+			}
+			else
+			{
+				ally.m_nCurHP = foundAlly.GetComponent<CAllyBattleScript>().GetCurHP();
+				ally.m_nCurMP = foundAlly.GetComponent<CAllyBattleScript>().GetCurMP();
+			}
 			ally.m_nLevel = foundAlly.GetComponent<CAllyBattleScript>().GetUnitLevel();
 			ally.m_nCurrentEXP = foundAlly.GetComponent<CAllyBattleScript>().m_nCurrentExperience;
 			ally.m_idHelmSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idHelmSlot;
