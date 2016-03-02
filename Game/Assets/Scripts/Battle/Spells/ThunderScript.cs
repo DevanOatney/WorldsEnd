@@ -29,10 +29,8 @@ public class ThunderScript  : BaseSpellBattleScript
 		}
 	}
 
-	void DoneAnimating()
+	public override void DoneAnimating()
 	{
-		//end the animation
-		m_goOwner.GetComponent<Animator>().SetBool("m_bIsCasting", false);
 		//Do the effect
 		GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		foreach(GameObject enemy in Enemies)
@@ -45,8 +43,8 @@ public class ThunderScript  : BaseSpellBattleScript
 			}
 		}
 		
-		m_goOwner.GetComponent<CAllyBattleScript>().m_nState = (int)CAllyBattleScript.ALLY_STATES.STATUS_EFFECTS;
-		Destroy(gameObject);
+
+		base.DoneAnimating();
 	}
 
 	public override void Initialize(GameObject _pOwner)

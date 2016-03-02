@@ -93,6 +93,10 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 	public void SwitchContainerTypeTo(DCScript.CharacterData cCharacter, int nKey)
 	{
 		m_cCurrentCharacter = cCharacter;
+		//update the characters MP/HP
+		m_cCurrentCharacter.m_nCurHP = GameObject.Find(m_cCurrentCharacter.m_szCharacterName).GetComponent<UnitScript>().GetCurHP();
+		m_cCurrentCharacter.m_nCurMP = GameObject.Find(m_cCurrentCharacter.m_szCharacterName).GetComponent<UnitScript>().GetCurMP();
+
 		m_nKey = nKey;
 		UpdateContainer();
 	}
@@ -170,6 +174,10 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 							//Create a new button and initialize it's data
 							GameObject newCell = Instantiate(m_goSelection);
 							newCell.transform.FindChild("Selection Name").GetComponent<Text>().text = spell.m_szSpellName;
+							if(m_cCurrentCharacter.m_nCurMP >= spell.m_nMPCost)
+								newCell.GetComponent<Image>().color = Color.white;
+							else
+								newCell.GetComponent<Image>().color = Color.grey;
 							newCell.transform.FindChild("Selection Count").GetComponent<Text>().text = spell.m_nMPCost.ToString();
 							//Hardcoded because I can't think of a time when an items icon would be different, since they're all just useable items (maybe by item type eventually when we have more artists?)
 							newCell.transform.FindChild("Icon").GetComponent<Image>().sprite = m_goSpriteIcons[0];
@@ -254,6 +262,15 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 			break;
 		case 1:
 			{
+				//Check to see if we even have enough mana to cast this spell
+				int totalMana = m_cCurrentCharacter.m_nCurMP;
+				int manaCost = m_lElementList[m_nSelectedIndex].m_nAmount;
+				if(manaCost > totalMana)
+				{
+					//Can't cast the spell
+					return;
+				}
+				//Able to cast the spell
 				GameObject.Find(m_cCurrentCharacter.m_szCharacterName).GetComponent<CAllyBattleScript>().SpellToUseSelected(m_lElementList[m_nSelectedIndex].m_szName);
 				m_goItemAndSpellSelector.SetActive(false);
 				m_goItemAndSpellDescriptor.SetActive(false);
@@ -276,11 +293,11 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 				continue;
 			if(counter == m_nSelectedIndex)
 			{
-				go.GetComponent<Image>().color = Color.grey;
+				go.GetComponent<IntContainer>().ToggleHighlighter(true);
 			}
 			else
 			{
-				go.GetComponent<Image>().color = Color.white;
+				go.GetComponent<IntContainer>().ToggleHighlighter(false);
 			}
 			counter++;
 		}
@@ -291,7 +308,7 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 	void ClearDescriptor()
 	{
 		Transform EleIcon = m_goItemAndSpellDescriptor.transform.FindChild("Element Icon");
-		EleIcon.GetComponent<Image>().sprite = null;
+		EleIcon.GetComponent<Image>().color = Color.clear;
 		Transform EleName = m_goItemAndSpellDescriptor.transform.FindChild("Element Name");
 		EleName.GetComponent<Text>().text = "";
 		Transform EleCount = m_goItemAndSpellDescriptor.transform.FindChild("Element Count");

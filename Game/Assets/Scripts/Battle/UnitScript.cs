@@ -149,6 +149,11 @@ public class UnitScript : MonoBehaviour
 		}
 	}
 
+	public void AdjustMP(int mpAdjustment)
+	{
+		m_nCurMP = Mathf.Clamp(m_nCurMP + mpAdjustment, 0, m_nMaxMP);
+	}
+
 	public void Missed()
 	{
 		if(GetCurHP() > 0)
