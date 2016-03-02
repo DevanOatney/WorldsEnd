@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BattlePoisonEffectScript : BattleBaseEffectScript 
 {
@@ -65,5 +66,15 @@ public class BattlePoisonEffectScript : BattleBaseEffectScript
 			
 		}
 		m_goOwner.GetComponent<UnitScript>().AdjustHP(m_nHPMod);
+	}
+
+	public override List<int> AdjustTempStats(List<int> lStats)
+	{
+		lStats[2] = lStats[2] + m_nPOWMod;
+		lStats[3] = lStats[3] + m_nDEFMod;
+		lStats[4] = lStats[4] + m_nSPDMod;
+		lStats[5] = lStats[5] + m_nHITMod;
+		lStats[6] = lStats[6] + m_nEVAMod;
+		return lStats;
 	}
 }

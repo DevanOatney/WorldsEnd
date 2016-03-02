@@ -36,7 +36,7 @@ public class ThunderScript  : BaseSpellBattleScript
 		foreach(GameObject enemy in Enemies)
 		{
 			//damage the unit
-			enemy.GetComponent<UnitScript>().AdjustHP(m_goOwner.GetComponent<UnitScript>().GetSTR() /2);
+			enemy.GetComponent<UnitScript>().AdjustHP(m_goOwner.GetComponent<UnitScript>().GetTempSTR() /2);
 			foreach(string effect in m_lStatusEffect)
 			{
 				enemy.GetComponent<UnitScript>().AddStatusEffect(GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffectLibrary.ConvertToDCStatusEffect(effect));

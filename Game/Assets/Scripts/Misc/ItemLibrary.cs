@@ -23,6 +23,7 @@ public class ItemLibrary
 		//1-4 : useable item, 5 : weapon, 6: armor, 7: junk
 		public int m_nItemType;
 		public int m_nHPMod;
+		public int m_nMPMod;
 		public int m_nPowMod;
 		public int m_nDefMod;
 		public int m_nSpdMod;

@@ -95,13 +95,14 @@ public class ItemLoaderScript : MonoBehaviour
 			item.m_szItemName = szPieces[0].Trim();
 			item.m_nItemType = int.Parse(szPieces[1].Trim());
 			item.m_nHPMod = int.Parse(szPieces[2].Trim());
-			item.m_nPowMod = int.Parse(szPieces[3].Trim());
-			item.m_nDefMod = int.Parse(szPieces[4].Trim());
-			item.m_nSpdMod = int.Parse(szPieces[5].Trim());
-			item.m_nEvaMod = int.Parse(szPieces[6].Trim());
-			item.m_nHitMod = int.Parse(szPieces[7].Trim());
-			item.m_nBaseValue = int.Parse(szPieces[8].Trim());
-			item.m_szDescription = szPieces[9].Trim();
+			item.m_nMPMod = int.Parse(szPieces[3].Trim());
+			item.m_nPowMod = int.Parse(szPieces[4].Trim());
+			item.m_nDefMod = int.Parse(szPieces[5].Trim());
+			item.m_nSpdMod = int.Parse(szPieces[6].Trim());
+			item.m_nEvaMod = int.Parse(szPieces[7].Trim());
+			item.m_nHitMod = int.Parse(szPieces[8].Trim());
+			item.m_nBaseValue = int.Parse(szPieces[9].Trim());
+			item.m_szDescription = szPieces[10].Trim();
 			useableItemDatabase.Add(item.m_szItemName,  item);
 
 		}
@@ -124,15 +125,16 @@ public class ItemLoaderScript : MonoBehaviour
 			armor.m_szItemName = szPieces[0].Trim();
 			armor.m_nItemType = int.Parse(szPieces[1].Trim());
 			armor.m_nHPMod = int.Parse(szPieces[2].Trim());
-			armor.m_nPowMod = int.Parse(szPieces[3].Trim());
-			armor.m_nDefMod = int.Parse(szPieces[4].Trim());
-			armor.m_nSpdMod = int.Parse(szPieces[5].Trim());
-			armor.m_nEvaMod = int.Parse(szPieces[6].Trim());
-			armor.m_nHitMod = int.Parse(szPieces[7].Trim());
-			armor.m_nBaseValue = int.Parse(szPieces[8].Trim());
-			armor.m_nSpecialType = int.Parse(szPieces[9].Trim());
-			armor.m_nSpecialModifier = int.Parse(szPieces[10].Trim());
-			armor.m_szDescription = szPieces[11].Trim();
+			armor.m_nMPMod = int.Parse(szPieces[3].Trim());
+			armor.m_nPowMod = int.Parse(szPieces[4].Trim());
+			armor.m_nDefMod = int.Parse(szPieces[5].Trim());
+			armor.m_nSpdMod = int.Parse(szPieces[6].Trim());
+			armor.m_nEvaMod = int.Parse(szPieces[7].Trim());
+			armor.m_nHitMod = int.Parse(szPieces[8].Trim());
+			armor.m_nBaseValue = int.Parse(szPieces[9].Trim());
+			armor.m_nSpecialType = int.Parse(szPieces[10].Trim());
+			armor.m_nSpecialModifier = int.Parse(szPieces[11].Trim());
+			armor.m_szDescription = szPieces[12].Trim();
 			dcs.m_lItemLibrary.GetItemDictionary().Add(armor.m_szItemName, armor);
 			
 		}

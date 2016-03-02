@@ -37,6 +37,15 @@ public class UnitScript : MonoBehaviour
 	protected int m_nEva;
 	protected int m_nHit;
 
+	//temp unit stats (effected by equipment, weapons, status effects.. and unit skills(?)
+	protected int m_nTempMaxHP;
+	protected int m_nTempMaxMP;
+	protected int m_nTempStr;
+	protected int m_nTempDef;
+	protected int m_nTempSpd;
+	protected int m_nTempEva;
+	protected int m_nTempHit;
+
 	//accessors
 	public int GetMaxHP() {return m_nMaxHP;}
 	public int GetCurHP() {return m_nCurHP;}
@@ -47,6 +56,14 @@ public class UnitScript : MonoBehaviour
 	public int GetSPD() {return m_nSpd;}
 	public int GetEVA() {return m_nEva;}
 	public int GetHIT() {return m_nHit;}
+
+	public int GetTempMaxHP() {return m_nTempMaxHP;}
+	public int GetTempMaxMP() {return m_nTempMaxMP;}
+	public int GetTempSTR() {return m_nTempStr;}
+	public int GetTempDEF() {return m_nTempDef;}
+	public int GetTempSPD() {return m_nTempSpd;}
+	public int GetTempEVA() {return m_nTempEva;}
+	public int GetTempHIT() {return m_nTempHit;}
 	//mutators
 	public void SetMaxHP(int hp) {m_nMaxHP = hp;}
 	public void SetCurHP(int hp) {m_nCurHP = hp;}
@@ -57,6 +74,14 @@ public class UnitScript : MonoBehaviour
 	public void SetSPD(int spd) {m_nSpd = spd;}
 	public void SetEVA(int eva) {m_nEva = eva;}
 	public void SetHIT(int hit) {m_nHit = hit;}
+
+	public void SetTempMaxHP(int hp) {m_nTempMaxHP = hp;}
+	public void SetTempMaxMP(int mp) {m_nTempMaxMP = mp;}
+	public void SetTempSTR(int str) {m_nTempStr = str;}
+	public void SetTempDEF(int def) {m_nTempDef = def;}
+	public void SetTempSPD(int spd) {m_nTempSpd = spd;}
+	public void SetTempEVA(int eva) {m_nTempEva = eva;}
+	public void SetTempHIT(int hit) {m_nTempHit = hit;}
 
 
 	//The current level of the character
@@ -152,6 +177,17 @@ public class UnitScript : MonoBehaviour
 	public void AdjustMP(int mpAdjustment)
 	{
 		m_nCurMP = Mathf.Clamp(m_nCurMP + mpAdjustment, 0, m_nMaxMP);
+	}
+
+	public virtual void AdjustTempStats()
+	{
+		m_nTempMaxHP = m_nMaxHP;
+		m_nTempMaxMP = m_nMaxMP;
+		m_nTempStr = m_nStr;
+		m_nTempDef = m_nDef;
+		m_nTempSpd = m_nSpd;
+		m_nTempHit = m_nHit;
+		m_nTempEva = m_nEva;
 	}
 
 	public void Missed()

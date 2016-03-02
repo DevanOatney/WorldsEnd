@@ -19,7 +19,7 @@ public class ThunderShockScript : MonoBehaviour {
 		{
 			GameObject[] Allies = GameObject.FindGameObjectsWithTag("Ally");
 			foreach(GameObject ally in Allies)
-				ally.GetComponent<UnitScript>().AdjustHP(m_goOwner.GetComponent<UnitScript>().GetSTR());
+				ally.GetComponent<UnitScript>().AdjustHP(m_goOwner.GetComponent<UnitScript>().GetTempSTR());
 			m_goOwner.GetComponent<Animator>().SetBool("m_bIsCasting", false);
 			GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>().MyTurnIsOver(m_goOwner);
 			Destroy(gameObject);

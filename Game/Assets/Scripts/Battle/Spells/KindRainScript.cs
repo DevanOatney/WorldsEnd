@@ -44,7 +44,7 @@ public class KindRainScript : BaseSpellBattleScript
 			//heal the unit (adjust hp is for taking damage.. so sending a negative number should heal
 			if(ally.GetComponent<UnitScript>().FieldPosition == m_goOwner.GetComponent<UnitScript>().m_nTargetPositionOnField)
 			{
-				ally.GetComponent<UnitScript>().AdjustHP(m_goOwner.GetComponent<UnitScript>().GetSTR() * -1);
+				ally.GetComponent<UnitScript>().AdjustHP(m_goOwner.GetComponent<UnitScript>().GetTempSTR() * -1);
 				break;
 			}
 		}

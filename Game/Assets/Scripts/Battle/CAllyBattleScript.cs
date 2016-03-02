@@ -105,6 +105,7 @@ public class CAllyBattleScript : UnitScript
 				}
 			}
 		}
+		AdjustTempStats();
 	}
 	
 	// Update is called once per frame
@@ -429,6 +430,8 @@ public class CAllyBattleScript : UnitScript
 			break;
 		case (int)ALLY_STATES.STATUS_EFFECTS:	 
 			{
+				//Adjust the temp stats(if an enemy or something does something that should effect your stats, IT should call the function as well incase other things attack before you go(shouldn't cause any issues)
+				AdjustTempStats();
 				//Update any of the status effects. (use a new list, as some of the master list may get removed
 				for(int i = 0; i < m_lStatusEffects.Count; ++i)
 				{
@@ -838,6 +841,72 @@ public class CAllyBattleScript : UnitScript
 		}
 	}
 
+	public override void AdjustTempStats()
+	{
+		//must be called first
+		base.AdjustTempStats();
+		if(GetCurHP() <= 0)
+			return;
+		//Update the temp stats from gear (incase something broke?)
+		if(m_idHelmSlot != null)
+			AdjustTempStatFromItem(m_idHelmSlot);
+		if(m_idShoulderSlot != null)
+			AdjustTempStatFromItem(m_idShoulderSlot);
+		if(m_idChestSlot != null)
+			AdjustTempStatFromItem(m_idChestSlot);
+		if(m_idGloveSlot != null)
+			AdjustTempStatFromItem(m_idGloveSlot);
+		if(m_idBeltSlot != null)
+			AdjustTempStatFromItem(m_idBeltSlot);
+		if(m_idLegSlot != null)
+			AdjustTempStatFromItem(m_idLegSlot);
+		if(m_idTrinket1 != null)
+			AdjustTempStatFromItem(m_idTrinket1);
+		if(m_idTrinket2 != null)
+			AdjustTempStatFromItem(m_idTrinket2);
+
+		//Adjust temp stats from weapon
+		SetTempSTR(GetTempSTR() + m_dcPersistantData.GetCharacter(name).m_nWeaponDamageModifier);
+
+		//Update the temp stats from status effects.
+		foreach(GameObject effect in m_lStatusEffects)
+		{
+			AdjustTempStatFromEffects(effect.GetComponent<BattleBaseEffectScript>());
+		}
+		
+	}
+	void AdjustTempStatFromItem(ItemLibrary.ItemData item)
+	{
+		SetTempMaxHP(GetTempMaxHP() + item.m_nHPMod);
+		SetTempMaxMP(GetTempMaxMP() + item.m_nMPMod);
+		SetTempSTR(GetTempSTR() + item.m_nPowMod);
+		SetTempDEF(GetTempDEF() + item.m_nDefMod);
+		SetTempSPD(GetTempSPD() + item.m_nSpdMod);
+		SetTempHIT(GetTempHIT() + item.m_nHitMod);
+		SetTempEVA(GetTempEVA() + item.m_nEvaMod);
+	}
+	void AdjustTempStatFromEffects(BattleBaseEffectScript effect)
+	{
+		if(effect.m_bToBeRemoved == true)
+			return;
+		List<int> lStats = new List<int>();
+		lStats.Add(GetTempMaxHP());
+		lStats.Add(GetTempMaxMP());
+		lStats.Add(GetTempSTR());
+		lStats.Add(GetTempDEF());
+		lStats.Add(GetTempSPD());
+		lStats.Add(GetTempHIT());
+		lStats.Add(GetTempEVA());
+		lStats = effect.AdjustTempStats(lStats);
+		SetTempMaxHP(lStats[0]);
+		SetTempMaxMP(lStats[1]);
+		SetTempSTR(lStats[2]);
+		SetTempDEF(lStats[3]);
+		SetTempSPD(lStats[4]);
+		SetTempHIT(lStats[5]);
+		SetTempEVA(lStats[6]);
+	}
+
 	//returns the amount of experience the player earned
 	public int AwardExperience(List<int> _levelsOfEnemies, ref int nextExp, ref int nextLvl)
 	{
@@ -894,6 +963,8 @@ public class CAllyBattleScript : UnitScript
 			SetHIT(GetHIT() + 1);
 		}
   	}
+
+	//This should only be called once, when the character is very first being recruited. (not in battle or anywhere else)
 	public void SetUnitStats()
 	{
 		if(m_taStartingStats)
@@ -1025,7 +1096,6 @@ public class CAllyBattleScript : UnitScript
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		for(int i = enemies.Length-1; i >=0; i--)
 		{
-			Debug.Log(i + " in " + enemies.Length);
 			if(m_nTargetPositionOnField == enemies[i].GetComponent<UnitScript>().FieldPosition && enemies[i].GetComponent<UnitScript>().GetCurHP() > 0)
 				return;
 		}
@@ -1204,7 +1274,7 @@ public class CAllyBattleScript : UnitScript
 			if(CheckIfHit())
 			{
 				//HIT
-				int dmgAdjustment = UnityEngine.Random.Range(1, 5) + m_nStr;
+				int dmgAdjustment = UnityEngine.Random.Range((int)(m_nTempStr * -0.2f), (int)(m_nTempStr * 0.2f)) + m_nTempStr;
 				GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Enemy");
 				foreach(GameObject tar in posTargs)
 				{
@@ -1370,17 +1440,15 @@ public class CAllyBattleScript : UnitScript
 		GameObject newText = Instantiate(m_goFadingText);
 		if(dmg >= 0)
 		{
-			int totalDefense = AdjustDefense(m_nDef);
-
 			if(m_bAmIDefending == true)
-				dmg = dmg - totalDefense*2;
+				dmg = dmg - GetTempDEF()*2;
 			else 
-				dmg = dmg - totalDefense;
+				dmg = dmg - GetTempDEF();
 
 			if(dmg < 0)
 				dmg = 0;
 		}
-		m_nCurHP -= dmg;
+		m_nCurHP = Mathf.Clamp(m_nCurHP - dmg, 0, GetTempMaxHP());
 		if(m_nCurHP <= 0)
 		{
 			m_nCurHP = 0;
@@ -1401,8 +1469,6 @@ public class CAllyBattleScript : UnitScript
 		else
 		{
 			//Make sure that the cur HP never goes above the max hp
-			if(GetCurHP() > GetMaxHP())
-				SetCurHP(GetMaxHP());
 			newText.GetComponent<GUI_FadeText>().SetColor(false);
 		}
 
@@ -1413,28 +1479,6 @@ public class CAllyBattleScript : UnitScript
 		textPos = Camera.main.WorldToViewportPoint(textPos);
 		newText.transform.position = textPos;
 
-	}
-	//returns defense of this unit with respect to items equipped.
-	int AdjustDefense(int def)
-	{
-		if(m_idChestSlot != null)
-		{
-			def += m_idChestSlot.m_nDefMod;
-			GameObject gItem = Instantiate(Resources.Load<GameObject>("Items/Armor")) as GameObject;
-			gItem.GetComponent<BaseItemScript>().SetItemName(m_idChestSlot.m_szItemName);
-			gItem.GetComponent<BaseItemScript>().SetDescription(m_idChestSlot.m_szDescription);
-			gItem.GetComponent<BaseItemScript>().SetItemType(m_idChestSlot.m_nItemType);
-			gItem.GetComponent<BaseItemScript>().SetHPMod(m_idChestSlot.m_nHPMod);
-			gItem.GetComponent<BaseItemScript>().SetPowMod(m_idChestSlot.m_nPowMod);
-			gItem.GetComponent<BaseItemScript>().SetDefMod(m_idChestSlot.m_nDefMod);
-			gItem.GetComponent<BaseItemScript>().SetSpdMod(m_idChestSlot.m_nSpdMod);
-			gItem.GetComponent<ArmorItemScript>().SetSpecialItemType(m_idChestSlot.m_nSpecialType);
-			gItem.GetComponent<ArmorItemScript>().SetSpecialItemModifier(m_idChestSlot.m_nSpecialModifier);
-			gItem.GetComponent<ArmorItemScript>().Initialize();
-			gItem.GetComponent<ArmorItemScript>().m_dFunc(gameObject);
-		}
-
-		return def;
 	}
 
 	public void SpellToUseSelected(string _szSpellName)

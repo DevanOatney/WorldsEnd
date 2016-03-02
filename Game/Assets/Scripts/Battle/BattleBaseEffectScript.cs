@@ -76,4 +76,16 @@ public class BattleBaseEffectScript : MonoBehaviour
 		newEffect.m_lEffectedMembers.Add(m_goOwner.name);
 		return newEffect;
 	}
+
+	public virtual List<int> AdjustTempStats(List<int> lStats)
+	{
+		lStats[0] = lStats[0] + m_nHPMod;
+		lStats[1] = lStats[1] + m_nMPMod;
+		lStats[2] = lStats[2] + m_nPOWMod;
+		lStats[3] = lStats[3] + m_nDEFMod;
+		lStats[4] = lStats[4] + m_nSPDMod;
+		lStats[5] = lStats[5] + m_nHITMod;
+		lStats[6] = lStats[6] + m_nEVAMod;
+		return lStats;
+	}
 }
