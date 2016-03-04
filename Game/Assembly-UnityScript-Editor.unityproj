@@ -256,7 +256,7 @@
      <None Include="Assets\Tiled2Unity\Imported\Solomnia_Part7of7.tiled2unity.xml" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Adaptation.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
-     <None Include="Assets\Resources\Spell Effects\SpellList.txt" />
+     <None Include="Assets\Resources\Animation Effects\Spell Effects\SpellList.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseAndGrain.shader" />
      <None Include="Assets\Resources\Battle\StatusEffectList.txt" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ThunderScript  : BaseSpellBattleScript 
 {
+	public GameObject m_goThunderEffect;
 	void Start()
 	{
 		
@@ -18,9 +19,9 @@ public class ThunderScript  : BaseSpellBattleScript
 			{
 				//Instantiate the animation at the target location
 				Vector2 pos = enemy.transform.position;
-				GameObject animation = Instantiate(Resources.Load<GameObject>("Spell Effects/WindOrb")) as GameObject;
-				animation.transform.position = pos;
-				Destroy(animation, 1.4f);
+				GameObject newThunderEffect = Instantiate(m_goThunderEffect);
+				newThunderEffect.transform.position = pos;
+				Destroy(newThunderEffect, 1.4f);
 			}
 			m_goOwner.GetComponent<Animator>().SetBool("m_bIsCasting", true);
 			//in x amount of time, the player's turn is over and it's time to destroy this object

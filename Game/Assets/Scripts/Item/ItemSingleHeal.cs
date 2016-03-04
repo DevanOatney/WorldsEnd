@@ -24,9 +24,9 @@ public class ItemSingleHeal : BaseItemScript
 				{
 					//Instantiate the animation at the target location
 					Vector2 pos = ally.transform.position;
-					GameObject animation = Instantiate(Resources.Load<GameObject>("Spell Effects/HealingItem")) as GameObject;
-					animation.transform.position = pos;
-					Destroy(animation, 1.4f);
+					GameObject newEffect = Instantiate(m_goEffect);
+					newEffect.transform.position = pos;
+					Destroy(newEffect, 1.4f);
 				}
 			}
 			m_pOwner.GetComponent<Animator>().SetBool("m_bIsCasting", true);

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class KindRainScript : BaseSpellBattleScript 
 {
-
+	public GameObject m_goHealEffect;
 	void Start()
 	{
 
@@ -21,9 +21,10 @@ public class KindRainScript : BaseSpellBattleScript
 				{
 					//Instantiate the animation at the target location
 					Vector2 pos = ally.transform.position;
-					GameObject animation = Instantiate(Resources.Load<GameObject>("Spell Effects/WaterHeal")) as GameObject;
-					animation.transform.position = pos;
-					Destroy(animation, 1.2f);
+					//GameObject animation = Instantiate(Resources.Load<GameObject>("Spell Effects/WaterHeal")) as GameObject;
+					GameObject newHealEffect = Instantiate(m_goHealEffect);
+					newHealEffect.transform.position = pos;
+					Destroy(newHealEffect, 1.2f);
 					break;
 				}
 			}

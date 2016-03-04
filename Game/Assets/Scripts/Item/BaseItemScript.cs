@@ -53,6 +53,8 @@ public class BaseItemScript : MonoBehaviour
 	public m_delegate m_dFunc;
 	protected GameObject m_pOwner;
 
+
+	public GameObject m_goEffect;
 	// Use this for initialization
 	void Start () {
 	
