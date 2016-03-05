@@ -7,7 +7,8 @@ public class ThunderShockScript : MonoBehaviour {
 	public AnimationClip m_acShockAnim;
 	float m_fDuration;
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		m_fDuration = m_acShockAnim.length;
 	}
 	

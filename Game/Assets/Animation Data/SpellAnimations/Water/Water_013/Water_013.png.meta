@@ -1,13 +1,32 @@
 fileFormatVersion: 2
 guid: 056cb32044fef5240acc2e8526d9371c
-timeCreated: 1457125128
+timeCreated: 1457137070
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Water_013_0
+    21300002: Water_013_1
+    21300004: Water_013_2
+    21300006: Water_013_3
+    21300008: Water_013_4
+    21300010: Water_013_5
+    21300012: Water_013_6
+    21300014: Water_013_7
+    21300016: Water_013_8
+    21300018: Water_013_9
+    21300020: Water_013_10
+    21300022: Water_013_11
+    21300024: Water_013_12
+    21300026: Water_013_13
+    21300028: Water_013_14
+    21300030: Water_013_15
+    21300032: Water_013_16
+    21300034: Water_013_17
+    21300036: Water_013_18
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -29,8 +48,8 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +57,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +68,373 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Water_013_0
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 576
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 33, y: 11}
+        - {x: -24, y: 11}
+        - {x: -30, y: -10}
+        - {x: -30, y: -50}
+        - {x: -3, y: -62}
+        - {x: 18, y: -62}
+        - {x: 28, y: -50}
+        - {x: 41, y: -31}
+        - {x: 41, y: -7}
+    - name: Water_013_1
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 576
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: 28}
+        - {x: -38, y: 14}
+        - {x: -38, y: -56}
+        - {x: -15, y: -66}
+        - {x: 29, y: -66}
+        - {x: 55, y: -21}
+        - {x: 55, y: 8}
+        - {x: 22, y: 28}
+    - name: Water_013_2
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 576
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 39}
+        - {x: -52, y: 8}
+        - {x: -52, y: -30}
+        - {x: -32, y: -66}
+        - {x: 44, y: -66}
+        - {x: 63, y: -16}
+        - {x: 63, y: 9}
+        - {x: 47, y: 39}
+    - name: Water_013_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 576
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 49}
+        - {x: -31, y: 47}
+        - {x: -61, y: 4}
+        - {x: -61, y: -21}
+        - {x: -40, y: -52}
+        - {x: -30, y: -65}
+        - {x: 52, y: -65}
+        - {x: 70, y: -44}
+        - {x: 70, y: 28}
+        - {x: 44, y: 49}
+    - name: Water_013_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -59, y: 55}
+        - {x: -69, y: 28}
+        - {x: -69, y: -38}
+        - {x: -48, y: -64}
+        - {x: 47, y: -64}
+        - {x: 74, y: -19}
+        - {x: 74, y: 44}
+        - {x: 43, y: 55}
+    - name: Water_013_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 54, y: 63}
+        - {x: -53, y: 63}
+        - {x: -73, y: 36}
+        - {x: -73, y: -37}
+        - {x: -43, y: -62}
+        - {x: 49, y: -62}
+        - {x: 79, y: -15}
+        - {x: 79, y: 56}
+    - name: Water_013_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 71}
+        - {x: -79, y: 47}
+        - {x: -79, y: -24}
+        - {x: -67, y: -58}
+        - {x: 78, y: -58}
+        - {x: 84, y: -36}
+        - {x: 84, y: 54}
+        - {x: 62, y: 71}
+    - name: Water_013_7
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 46, y: 78}
+        - {x: -47, y: 78}
+        - {x: -85, y: 50}
+        - {x: -85, y: -19}
+        - {x: -74, y: -55}
+        - {x: 65, y: -55}
+        - {x: 88, y: -10}
+        - {x: 88, y: 60}
+        - {x: 85, y: 70}
+    - name: Water_013_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 84}
+        - {x: -90, y: 62}
+        - {x: -90, y: -3}
+        - {x: -68, y: -53}
+        - {x: 56, y: -53}
+        - {x: 92, y: -9}
+        - {x: 92, y: 51}
+        - {x: 66, y: 84}
+    - name: Water_013_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 92}
+        - {x: -94, y: 45}
+        - {x: -94, y: -17}
+        - {x: -64, y: -49}
+        - {x: 66, y: -49}
+        - {x: 96, y: -28}
+        - {x: 96, y: 60}
+        - {x: 76, y: 92}
+    - name: Water_013_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 96}
+        - {x: -96, y: 77}
+        - {x: -96, y: -1}
+        - {x: -82, y: -46}
+        - {x: -67, y: -47}
+        - {x: 62, y: -47}
+        - {x: 96, y: -5}
+        - {x: 96, y: 66}
+        - {x: 74, y: 96}
+    - name: Water_013_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 96}
+        - {x: -92, y: 76}
+        - {x: -96, y: 59}
+        - {x: -96, y: -27}
+        - {x: -82, y: -44}
+        - {x: 69, y: -44}
+        - {x: 96, y: -12}
+        - {x: 96, y: 67}
+        - {x: 60, y: 96}
+    - name: Water_013_12
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 96, y: 75}
+        - {x: 76, y: 96}
+        - {x: -96, y: 96}
+        - {x: -96, y: -37}
+        - {x: -75, y: -39}
+        - {x: 55, y: -39}
+        - {x: 63, y: -37}
+        - {x: 71, y: -34}
+        - {x: 96, y: -8}
+    - name: Water_013_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 96, y: -18}
+        - {x: 96, y: 96}
+        - {x: -63, y: 96}
+        - {x: -96, y: 83}
+        - {x: -96, y: -28}
+        - {x: -95, y: -35}
+        - {x: 78, y: -35}
+    - name: Water_013_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: 96}
+        - {x: -66, y: 94}
+        - {x: -96, y: 79}
+        - {x: -96, y: -16}
+        - {x: -84, y: -31}
+        - {x: 93, y: -31}
+        - {x: 96, y: -20}
+        - {x: 96, y: 85}
+        - {x: 77, y: 96}
+    - name: Water_013_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -89, y: 96}
+        - {x: -96, y: 73}
+        - {x: -96, y: -24}
+        - {x: -87, y: -27}
+        - {x: 54, y: -27}
+        - {x: 96, y: -18}
+        - {x: 96, y: 86}
+        - {x: 91, y: 96}
+    - name: Water_013_16
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 96, y: 71}
+        - {x: 74, y: 96}
+        - {x: -92, y: 96}
+        - {x: -96, y: 95}
+        - {x: -96, y: -23}
+        - {x: 44, y: -23}
+        - {x: 81, y: -9}
+        - {x: 96, y: -1}
+    - name: Water_013_17
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -74, y: 96}
+        - {x: -96, y: 75}
+        - {x: -96, y: -18}
+        - {x: 32, y: -18}
+        - {x: 96, y: 1}
+        - {x: 96, y: 85}
+        - {x: 60, y: 96}
+    - name: Water_013_18
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -60, y: 96}
+        - {x: -96, y: 83}
+        - {x: -96, y: -12}
+        - {x: 72, y: -12}
+        - {x: 96, y: 18}
+        - {x: 96, y: 72}
+        - {x: 80, y: 96}
     outline: []
   spritePackingTag: 
   userData: 
