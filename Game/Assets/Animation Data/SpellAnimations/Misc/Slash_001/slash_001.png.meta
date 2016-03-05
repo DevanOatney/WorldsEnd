@@ -1,13 +1,20 @@
 fileFormatVersion: 2
 guid: c67618fc1fed61b44b89370adf5594cb
-timeCreated: 1457125150
+timeCreated: 1457152939
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: slash_001_0
+    21300002: slash_001_1
+    21300004: slash_001_2
+    21300006: slash_001_3
+    21300008: slash_001_4
+    21300010: slash_001_5
+    21300012: slash_001_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -29,8 +36,8 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +45,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +56,145 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: slash_001_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 29, y: 35}
+        - {x: -34, y: -25}
+        - {x: -34, y: -36}
+        - {x: -27, y: -36}
+        - {x: 36, y: 17}
+        - {x: 37, y: 24}
+        - {x: 37, y: 35}
+    - name: slash_001_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 57, y: 60}
+        - {x: 47, y: 52}
+        - {x: 12, y: 20}
+        - {x: -46, y: -36}
+        - {x: -59, y: -56}
+        - {x: -59, y: -60}
+        - {x: -49, y: -60}
+        - {x: 58, y: 31}
+        - {x: 64, y: 54}
+        - {x: 64, y: 60}
+        - {x: 62, y: 61}
+    - name: slash_001_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 76, y: 78}
+        - {x: 58, y: 68}
+        - {x: -74, y: -65}
+        - {x: -74, y: -75}
+        - {x: -65, y: -75}
+        - {x: 76, y: 59}
+        - {x: 81, y: 72}
+        - {x: 81, y: 78}
+    - name: slash_001_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 84, y: 85}
+        - {x: 77, y: 81}
+        - {x: 21, y: 28}
+        - {x: -71, y: -62}
+        - {x: -81, y: -77}
+        - {x: -81, y: -82}
+        - {x: -77, y: -82}
+        - {x: -62, y: -73}
+        - {x: 77, y: 64}
+        - {x: 88, y: 81}
+        - {x: 88, y: 85}
+    - name: slash_001_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 84, y: 88}
+        - {x: -76, y: -66}
+        - {x: -84, y: -80}
+        - {x: -84, y: -85}
+        - {x: -77, y: -85}
+        - {x: 87, y: 67}
+        - {x: 91, y: 81}
+        - {x: 91, y: 88}
+    - name: slash_001_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 91, y: 89}
+        - {x: 85, y: 89}
+        - {x: -85, y: -78}
+        - {x: -85, y: -86}
+        - {x: -81, y: -86}
+        - {x: -71, y: -80}
+        - {x: 92, y: 84}
+        - {x: 92, y: 88}
+    - name: slash_001_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 87, y: 88}
+        - {x: -20, y: -17}
+        - {x: -84, y: -82}
+        - {x: -83, y: -85}
+        - {x: -80, y: -85}
+        - {x: 23, y: 9}
+        - {x: 91, y: 84}
+        - {x: 91, y: 88}
     outline: []
   spritePackingTag: 
   userData: 
