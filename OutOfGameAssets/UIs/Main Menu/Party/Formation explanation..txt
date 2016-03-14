@@ -1,0 +1,5 @@
+The formation screen looks just like the Status screen. For using the mouse: after clicking the Formation tab, the Formation screen appears, though it looks the same as the Party screen. 
+To change formations, click on the character you want ot move, then drag and drop there where you want them moved to. As the characters panel moves over other characters, their panels move to into the empty spots.
+For keyboard use: Once you click Enter on the Formation screen, the Top front character is highlighted. To move them, click Enter on them, then the Middle front character gets a second highlight. 
+Move this highlight to the character you want to switch with, click Enter, and the two character's panels slide to switch places with each other. the highlight then stays on the first character.
+The support character cannot be changed this way and can only be changed within the castle or by the storyline.

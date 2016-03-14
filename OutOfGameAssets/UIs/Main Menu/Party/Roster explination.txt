@@ -1,0 +1,7 @@
+The Roster screen is only available within your castle after a certain point in the story. Before then and while not within the castle, the tab is greyed out.
+After clicking on the roster tab, using the mouse: the screen changes to the roster screen. Floating the mouse over a character brings up a floating box with the characters stats identical to the status screen one.
+To add them to your party, drag and drop them into the desired position and the two will switch. If a character from the active area is drug into the active, the character isn't replaced, just removed.
+Whenever a character os being drug within the inactive box it looks like the character boxes in the list. As soon as they are out of the inactive box, they become a sprite of the character.
+When using the keyboard: When the Tab is clicked, the screen appears and the first character in the inactive list is highlighted. When you click a character in the Inactive side, the Top front character is then highlighted.
+Clicking on a caracter on the active side then switches the two characters. if you want ot just remove a character from the party, after selecting ht eroster tab, but before clicking on an inactive character, 
+if you click the left arrow key, the highlighter moves to the active side. clicking on an active character removes the character and moves the highlighter back to the inactive side.
