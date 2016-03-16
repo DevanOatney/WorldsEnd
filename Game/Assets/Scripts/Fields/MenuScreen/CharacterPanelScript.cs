@@ -6,13 +6,16 @@ public class CharacterPanelScript : MonoBehaviour
 {
 	GameObject m_goListener = null;
 	Vector3 m_vTargetPosition;
-	float m_fSlidingSpeed = 600.0f;
+	public float m_fSlidingSpeed = 600.0f;
 	bool m_bShouldSlide = false;
 	Vector3 m_vOriginalPosition;
 
 	//optimization variables so that the hover event does spam rapidly.
 	float m_fHoverTimer = 1.0f;
 	float m_fHoverBucket = 0.4f;
+
+	public GameObject m_goTargetForTopTabs;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -49,6 +52,8 @@ public class CharacterPanelScript : MonoBehaviour
 		m_goListener = listener;
 		m_bShouldSlide = true;
 		m_vTargetPosition = targetPos;
+		if(m_goTargetForTopTabs != null)
+			m_vTargetPosition = m_goTargetForTopTabs.transform.localPosition;
 	}
 	public void ReturnToPosition(GameObject listener)
 	{

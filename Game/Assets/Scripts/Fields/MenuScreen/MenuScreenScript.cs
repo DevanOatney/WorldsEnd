@@ -28,6 +28,8 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject[] m_goPartySubTabs;
 	//Hooks to the character panels
 	public GameObject[] m_goCharacterPanels;
+	//Hook to the top tabs of the character panels
+	public GameObject m_goTopCharacterTabs;
 	//Hook to the spider graph
 	public GameObject m_goRadarChart;
 	//Flag to stop ALL input until some event is over
@@ -74,7 +76,7 @@ public class MenuScreenScript : MonoBehaviour
 		case (int)MENU_STATES.eINNACTIVE:
 			{
 				//Escape opens up the menu
-				if(Input.GetKeyDown(KeyCode.Escape))
+				if(Input.GetKeyDown(KeyCode.Escape) && GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
 				{
 					m_nTopTabMenuSelectionIndex = 0;
 					m_nMenuState = (int)MENU_STATES.eTOPTAB_SELECTION;
@@ -135,6 +137,7 @@ public class MenuScreenScript : MonoBehaviour
 						{
 							go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 						}
+						m_goTopCharacterTabs.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 					}
 				}
 			}
@@ -352,6 +355,7 @@ public class MenuScreenScript : MonoBehaviour
 					Image_Brighten(panel);
 				go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 			}
+			m_goTopCharacterTabs.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 		}
 		else if(Input.GetKeyDown(KeyCode.Return))
 		{
@@ -377,6 +381,7 @@ public class MenuScreenScript : MonoBehaviour
 				{
 					go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 				}
+				m_goTopCharacterTabs.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 			}
 		}
 		else if(Input.GetKeyDown(KeyCode.RightArrow))
@@ -427,6 +432,7 @@ public class MenuScreenScript : MonoBehaviour
 					{
 						go.GetComponent<CharacterPanelScript>().BeginSlide(gameObject, m_goCharacterPanels[0].GetComponent<RectTransform>().localPosition);
 					}
+					m_goTopCharacterTabs.GetComponent<CharacterPanelScript>().BeginSlide(gameObject, Vector3.zero);
 				}
 				break;
 			}
@@ -1008,11 +1014,12 @@ public class MenuScreenScript : MonoBehaviour
 	{
 		foreach(GameObject panel in m_goCharacterPanels)
 			panel.SetActive(bFlag);
+		m_goTopCharacterTabs.SetActive(bFlag);
 	}
 	void PanelReachedSlot()
 	{
 		m_nPanelsThatHaveFinishedSliding += 1;
-		if(m_nPanelsThatHaveFinishedSliding == 7)
+		if(m_nPanelsThatHaveFinishedSliding == 8)
 		{
 			m_nPanelsThatHaveFinishedSliding = 0;
 			m_bWaiting = false;
