@@ -50,7 +50,7 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goItemPrefab;
 	public GameObject m_goItemSelected = null;
 	int m_nCharacterSelectedIndexForItemUse = 0;
-
+	int m_nCharacterSelectedForFormationSwap = -1;
 	// Use this for initialization
 	void Start () 
 	{
@@ -116,7 +116,7 @@ public class MenuScreenScript : MonoBehaviour
 			break;
 		case (int)MENU_STATES.eVIEWSTATUSSCREEN:
 			{
-				//This is really just viewing the status screen, I believe the only input is to go BACK to the previous state. First, don't do anything till the slide event is over...
+				//Input while viewing the status screen
 				if(m_bWaiting == false)
 				{
 					//If this is the first frame after waiting, set the status screen panel to active
@@ -140,6 +140,13 @@ public class MenuScreenScript : MonoBehaviour
 						m_goTopCharacterTabs.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 					}
 				}
+			}
+			break;
+		case (int)MENU_STATES.eFORMATION_SUBTAB:
+			{
+				AdjustPartyPanels();
+				if(m_bWaiting == false)
+					FormationTabMenuInput();
 			}
 			break;
 		}
@@ -331,6 +338,11 @@ public class MenuScreenScript : MonoBehaviour
 		case 1:
 			{
 				//FORMATION
+				if(RecursivePanelShiftRight(m_nCharacterPanelSelectionIndex) == true)
+				{
+					PopulatePartyMembers();
+					m_nMenuState = (int)MENU_STATES.eFORMATION_SUBTAB;
+				}
 			}
 			break;
 		case 2:
@@ -400,15 +412,20 @@ public class MenuScreenScript : MonoBehaviour
 
 	public void CharacterHighlighted(int nIndex)
 	{
-		if(m_nMenuState != (int)MENU_STATES.eSTATUS_SUBTAB || m_bWaiting == true)
+		if((m_nMenuState != (int)MENU_STATES.eSTATUS_SUBTAB && m_nMenuState != (int)MENU_STATES.eFORMATION_SUBTAB)|| m_bWaiting == true)
 			return;
 		m_nCharacterPanelSelectionIndex = nIndex;
 		RecursivePanelShiftLeft(m_nCharacterPanelSelectionIndex);
 	}
 
+	public void CharacterUnhighlighted(int nIndex)
+	{
+		
+	}
+
 	public void CharacterSelected(int nIndex)
 	{
-		if(m_nMenuState != (int)MENU_STATES.eSTATUS_SUBTAB || m_bWaiting == true)
+		if(m_bWaiting == true)
 			return;
 		//first check to see if this character is even a valid selection...
 		DCScript.CharacterData character = RetrieveCharacter(nIndex);
@@ -435,6 +452,77 @@ public class MenuScreenScript : MonoBehaviour
 					m_goTopCharacterTabs.GetComponent<CharacterPanelScript>().BeginSlide(gameObject, Vector3.zero);
 				}
 				break;
+			case (int)MENU_STATES.eFORMATION_SUBTAB:
+				{
+					//if this is the first character to be selected, shade them and slightly slide them upward a little
+					if(m_nCharacterSelectedForFormationSwap != -1)
+					{
+						m_nCharacterSelectedForFormationSwap = m_nCharacterPanelSelectionIndex;
+					}
+					//if this is the second character to be selected, unshade the previous one, slide them both to each others previous positions, and make sure to change the formation of that character in dc
+					else
+					{
+						
+						//also reset the selected iter for the first thing selected.
+						m_nCharacterSelectedForFormationSwap = -1;
+					}
+				}
+				break;
+			}
+		}
+	}
+	#endregion
+	#region FormationMenu
+	void FormationTabMenuInput()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+		{
+			m_nMenuState = (int)MENU_STATES.ePARTYTAB;
+			foreach(GameObject go in m_goCharacterPanels)
+			{
+				m_bWaiting = true;
+				m_bFirstTimeFlag = true;
+				foreach(GameObject panel in m_goCharacterPanels)
+					Image_Brighten(panel);
+			}
+		}
+		else if(Input.GetKeyDown(KeyCode.Return))
+		{
+			
+		}
+		else if(Input.GetKeyDown(KeyCode.LeftArrow))
+		{
+			//For this you need to check if this panel actually has an active character first, else, move to the next, if there are no more to the left, go back to the previous selection.
+			if(RecursivePanelShiftLeft(m_nCharacterPanelSelectionIndex - 1) == true)
+			{
+				//was able to shift left
+			}
+			else
+			{
+				//wasn't able to shift left
+				m_bWaiting = true;
+				m_bFirstTimeFlag = true;
+				m_nMenuState = (int)MENU_STATES.ePARTYTAB;
+				m_nCharacterPanelSelectionIndex = 0;
+				foreach(GameObject panel in m_goCharacterPanels)
+					Image_Brighten(panel);
+				foreach(GameObject go in m_goCharacterPanels)
+				{
+					go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
+				}
+				m_goTopCharacterTabs.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
+			}
+		}
+		else if(Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			//For this you need to check if this panel actually has an active character first, else, move to the next, if there are no more to the right, don't do anything.
+			if(RecursivePanelShiftRight(m_nCharacterPanelSelectionIndex + 1) == true)
+			{
+				//was able to shift right
+			}
+			else
+			{
+				//wasn't able to shift right
 			}
 		}
 	}
@@ -761,20 +849,27 @@ public class MenuScreenScript : MonoBehaviour
 	}
 	void AdjustPartyPanels()
 	{
-		int counter = 0;
-		foreach(GameObject panel in m_goCharacterPanels)
+		if(m_bWaiting == false)
 		{
-			if(counter == m_nCharacterPanelSelectionIndex)
+			int counter = 0;
+			foreach(GameObject panel in m_goCharacterPanels)
 			{
-				panel.GetComponent<Canvas>().sortingOrder = 1;
-				Image_Darken(panel);
+				if(counter == m_nCharacterPanelSelectionIndex)
+				{
+					panel.GetComponent<Canvas>().sortingOrder = 1;
+					Vector3 newPos = panel.GetComponent<CharacterPanelScript>().m_vOriginalPosition;;
+					newPos.y += 20.0f;
+					panel.transform.localPosition = newPos;
+					Image_Darken(panel);
+				}
+				else
+				{
+					panel.GetComponent<Canvas>().sortingOrder = -1;
+					panel.transform.localPosition = panel.GetComponent<CharacterPanelScript>().m_vOriginalPosition;
+					Image_Brighten(panel);
+				}
+				counter++;
 			}
-			else
-			{
-				panel.GetComponent<Canvas>().sortingOrder = -1;
-				Image_Brighten(panel);
-			}
-			counter++;
 		}
 	}
 	void AdjustStatusScreen(DCScript.CharacterData character)

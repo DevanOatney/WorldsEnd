@@ -8,7 +8,7 @@ public class CharacterPanelScript : MonoBehaviour
 	Vector3 m_vTargetPosition;
 	public float m_fSlidingSpeed = 600.0f;
 	bool m_bShouldSlide = false;
-	Vector3 m_vOriginalPosition;
+	public Vector3 m_vOriginalPosition;
 
 	//optimization variables so that the hover event does spam rapidly.
 	float m_fHoverTimer = 1.0f;
@@ -48,7 +48,6 @@ public class CharacterPanelScript : MonoBehaviour
 
 	public void BeginSlide(GameObject listener, Vector3 targetPos)
 	{
-		m_vOriginalPosition = GetComponent<RectTransform>().localPosition;
 		m_goListener = listener;
 		m_bShouldSlide = true;
 		m_vTargetPosition = targetPos;
@@ -66,8 +65,10 @@ public class CharacterPanelScript : MonoBehaviour
 	{
 		if(transform.FindChild("CharacterName").GetComponent<Text>().text == "")
 			return;
+		
 		GameObject.Find("FIELD_UI").GetComponent<MenuScreenScript>().CharacterHighlighted(nIndex);
 	}
+
 	public void PanelSelected(int nIndex)
 	{
 		if(transform.FindChild("CharacterName").GetComponent<Text>().text == "")
