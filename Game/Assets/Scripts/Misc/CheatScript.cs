@@ -20,6 +20,7 @@ public class CheatScript : MonoBehaviour
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		m_lCheatEntries.Add("event.");
 		m_lCheatEntries.Add("player.");
+		m_lCheatEntries.Add("nocombat");
 	}
 	
 	// Update is called once per frame
@@ -40,6 +41,7 @@ public class CheatScript : MonoBehaviour
 	{
 		if(m_bShowCheatLog == true)
 		{
+			
 			Event e = Event.current;
 			if (e.keyCode == KeyCode.Return && e.type == EventType.KeyUp)
 			{
@@ -126,6 +128,13 @@ public class CheatScript : MonoBehaviour
 										break;
 									}
 								}
+									break;
+								case "nocombat":
+									{
+										gameObject.GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = false;
+										m_bAbleToFindCommand = true;
+										m_lChatLog.Add("Combat disabled");
+									}
 									break;
 								default:
 									m_lChatLog.Add("Unable to find command " + m_szCheatString);
