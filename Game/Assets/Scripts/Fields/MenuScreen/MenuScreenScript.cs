@@ -49,12 +49,17 @@ public class MenuScreenScript : MonoBehaviour
 
 	public GameObject m_goItemPrefab;
 	public GameObject m_goItemSelected = null;
+	//Currently not in use
 	int m_nCharacterSelectedIndexForItemUse = 0;
+	//If a unit is selected for a formation swap
 	int m_nCharacterSelectedForFormationSwap = -1;
+	//Number of panels the script is waitng for to slide (used in the status screen and the formation screen.
+	int m_nNumberOfPanelsToWaitFor = 0;
 	// Use this for initialization
 	void Start () 
 	{
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
+		m_lParty = dc.GetParty();
 		foreach(Transform child in transform)
 		{
 			child.gameObject.SetActive(false);
@@ -135,9 +140,9 @@ public class MenuScreenScript : MonoBehaviour
 						m_goStatus.SetActive(false);
 						foreach(GameObject go in m_goCharacterPanels)
 						{
+							m_nNumberOfPanelsToWaitFor++;
 							go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 						}
-						m_goTopCharacterTabs.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 					}
 				}
 			}
@@ -340,6 +345,7 @@ public class MenuScreenScript : MonoBehaviour
 				//FORMATION
 				if(RecursivePanelShiftRight(m_nCharacterPanelSelectionIndex) == true)
 				{
+					m_nCharacterPanelSelectionIndex = 0;
 					PopulatePartyMembers();
 					m_nMenuState = (int)MENU_STATES.eFORMATION_SUBTAB;
 				}
@@ -365,9 +371,9 @@ public class MenuScreenScript : MonoBehaviour
 				m_bFirstTimeFlag = true;
 				foreach(GameObject panel in m_goCharacterPanels)
 					Image_Brighten(panel);
+				m_nNumberOfPanelsToWaitFor++;
 				go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 			}
-			m_goTopCharacterTabs.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 		}
 		else if(Input.GetKeyDown(KeyCode.Return))
 		{
@@ -391,9 +397,9 @@ public class MenuScreenScript : MonoBehaviour
 					Image_Brighten(panel);
 				foreach(GameObject go in m_goCharacterPanels)
 				{
+					m_nNumberOfPanelsToWaitFor++;
 					go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 				}
-				m_goTopCharacterTabs.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 			}
 		}
 		else if(Input.GetKeyDown(KeyCode.RightArrow))
@@ -415,7 +421,11 @@ public class MenuScreenScript : MonoBehaviour
 		if((m_nMenuState != (int)MENU_STATES.eSTATUS_SUBTAB && m_nMenuState != (int)MENU_STATES.eFORMATION_SUBTAB)|| m_bWaiting == true)
 			return;
 		m_nCharacterPanelSelectionIndex = nIndex;
-		RecursivePanelShiftLeft(m_nCharacterPanelSelectionIndex);
+		if(m_nMenuState != (int)MENU_STATES.eSTATUS_SUBTAB)
+			if(RecursivePanelShiftLeft(nIndex) == true)
+				m_nCharacterPanelSelectionIndex = nIndex;
+		else if(m_nMenuState != (int)MENU_STATES.eFORMATION_SUBTAB)
+			m_nCharacterPanelSelectionIndex = nIndex;
 	}
 
 	public void CharacterUnhighlighted(int nIndex)
@@ -427,48 +437,77 @@ public class MenuScreenScript : MonoBehaviour
 	{
 		if(m_bWaiting == true)
 			return;
-		//first check to see if this character is even a valid selection...
-		DCScript.CharacterData character = RetrieveCharacter(nIndex);
-		if(character == null)
-			return;
-		else
-		{
 			//So we've selected a character...  let's see what we should be doing next!
-			switch(m_nMenuState)
+		switch(m_nMenuState)
+		{
+		case (int)MENU_STATES.eSTATUS_SUBTAB:
 			{
-			case (int)MENU_STATES.eSTATUS_SUBTAB:
+				DCScript.CharacterData character = RetrieveCharacter(nIndex);
+				if(character == null)
+					return;
+				//Pause input so that the panels can do their slide event
+				m_bWaiting = true;
+				m_bFirstTimeFlag = true;
+				//Move the state to viewing the status screen panel
+				m_nMenuState = (int)MENU_STATES.eVIEWSTATUSSCREEN;
+				m_nCharacterPanelSelectionIndex = nIndex;
+				//Tell each of the panels to begin sliding
+				foreach(GameObject go in m_goCharacterPanels)
 				{
-					//Pause input so that the panels can do their slide event
-					m_bWaiting = true;
-					m_bFirstTimeFlag = true;
-					//Move the state to viewing the status screen panel
-					m_nMenuState = (int)MENU_STATES.eVIEWSTATUSSCREEN;
-					m_nCharacterPanelSelectionIndex = nIndex;
-					//Tell each of the panels to begin sliding
-					foreach(GameObject go in m_goCharacterPanels)
-					{
-						go.GetComponent<CharacterPanelScript>().BeginSlide(gameObject, m_goCharacterPanels[0].GetComponent<RectTransform>().localPosition);
-					}
-					m_goTopCharacterTabs.GetComponent<CharacterPanelScript>().BeginSlide(gameObject, Vector3.zero);
+					m_nNumberOfPanelsToWaitFor++;
+					go.GetComponent<CharacterPanelScript>().BeginSlide(gameObject, m_goCharacterPanels[0].GetComponent<RectTransform>().localPosition);
 				}
-				break;
-			case (int)MENU_STATES.eFORMATION_SUBTAB:
+			}
+			break;
+		case (int)MENU_STATES.eFORMATION_SUBTAB:
+			{
+				if(nIndex > 5)
+					return;
+				//if this is the first character to be selected, shade them and slightly slide them upward a little
+				if(m_nCharacterSelectedForFormationSwap == -1 && m_nCharacterSelectedForFormationSwap != m_nCharacterPanelSelectionIndex)
 				{
-					//if this is the first character to be selected, shade them and slightly slide them upward a little
-					if(m_nCharacterSelectedForFormationSwap != -1)
-					{
-						m_nCharacterSelectedForFormationSwap = m_nCharacterPanelSelectionIndex;
-					}
-					//if this is the second character to be selected, unshade the previous one, slide them both to each others previous positions, and make sure to change the formation of that character in dc
+					m_nCharacterSelectedForFormationSwap = m_nCharacterPanelSelectionIndex;
+				}
+				//Special case to handle right mouse input cancelling the panel selection since Unity's POINTERCLICK event doesn't check left/right input differences
+				else if(m_nCharacterSelectedForFormationSwap == -2)
+					m_nCharacterSelectedForFormationSwap = -1;
+				//if this is the second character to be selected, unshade the previous one, slide them both to each others previous positions, and make sure to change the formation of that character in dc
+				else
+				{
+					//If you selected the same character, just unhook the first panel selected)
+					if(m_nCharacterSelectedForFormationSwap == m_nCharacterPanelSelectionIndex)
+						m_nCharacterSelectedForFormationSwap = -1;
+					//Otherwise, it's time to do a formation swap!
 					else
 					{
-						
-						//also reset the selected iter for the first thing selected.
-						m_nCharacterSelectedForFormationSwap = -1;
+						//Check to make sure that at least one of the panels has a character to swap to (no sense swapping two empty panels)
+						bool timeToSwap = true;
+						if(RetrieveCharacter(m_nCharacterPanelSelectionIndex) == null && RetrieveCharacter(m_nCharacterSelectedForFormationSwap) == null)
+							timeToSwap = false;
+						//If this is true, then we're still good to swap
+						if(timeToSwap == true)
+						{
+							//Commands for sliding the panels to each others positions.
+							m_goCharacterPanels[m_nCharacterPanelSelectionIndex].GetComponent<CharacterPanelScript>().BeginSlide(gameObject, m_goCharacterPanels[m_nCharacterSelectedForFormationSwap].GetComponent<CharacterPanelScript>().m_vOriginalPosition, true);
+							m_goCharacterPanels[m_nCharacterSelectedForFormationSwap].GetComponent<CharacterPanelScript>().BeginSlide(gameObject, m_goCharacterPanels[m_nCharacterPanelSelectionIndex].GetComponent<CharacterPanelScript>().m_vOriginalPosition, true);
+							m_nNumberOfPanelsToWaitFor = 2;
+							m_bWaiting = true;
+							m_bFirstTimeFlag = true;
+							//Commands for changing the formation of the character's being swapped.
+							DCScript.CharacterData firstChar = RetrieveCharacter(m_nCharacterPanelSelectionIndex);
+							DCScript.CharacterData secChar = RetrieveCharacter(m_nCharacterSelectedForFormationSwap);
+							if(firstChar != null)
+								firstChar.m_nFormationIter = ConvertPanelIterToFormationNumber(m_nCharacterSelectedForFormationSwap);
+							if(secChar != null)
+								secChar.m_nFormationIter = ConvertPanelIterToFormationNumber(m_nCharacterPanelSelectionIndex);
+							//finally, reset the formation swap iter since the swap has been made
+							m_nCharacterSelectedForFormationSwap = -1;
+						}
 					}
+
 				}
-				break;
 			}
+			break;
 		}
 	}
 	#endregion
@@ -477,53 +516,66 @@ public class MenuScreenScript : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
 		{
-			m_nMenuState = (int)MENU_STATES.ePARTYTAB;
-			foreach(GameObject go in m_goCharacterPanels)
+			//If we've selected a unit to formation swap with, just unhook that unit from being selected
+			if(m_nCharacterSelectedForFormationSwap != -1)
 			{
+				m_nCharacterSelectedForFormationSwap = -2;
+			}
+			//Otherwise we're backing out of the formation menu
+			else
+			{
+				//Move the state back up one tier
+				m_nMenuState = (int)MENU_STATES.ePARTYTAB;
+				//We're going to be doing a panel slide wait, incase there are any moving pieces.
 				m_bWaiting = true;
+				//Turn on the first time flag so that it handles the initial update loop after this call
 				m_bFirstTimeFlag = true;
-				foreach(GameObject panel in m_goCharacterPanels)
-					Image_Brighten(panel);
+				//Reset the formation iter (slightly redundant as this SHOULD already be called earlier, but just incase)
+				m_nCharacterSelectedForFormationSwap = -1;
+				foreach(GameObject go in m_goCharacterPanels)
+				{
+					foreach(GameObject panel in m_goCharacterPanels)
+					{
+						//Brighten ALL of the panels because none of them should appear "Selected" if they come back to this screen.
+						Image_Brighten(panel);
+					}
+					//Slide the panels back to their original positions incase there are any positional movements previously.
+					m_nNumberOfPanelsToWaitFor++;
+					go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
+				}
 			}
 		}
 		else if(Input.GetKeyDown(KeyCode.Return))
 		{
-			
+			CharacterSelected(m_nCharacterPanelSelectionIndex);
 		}
 		else if(Input.GetKeyDown(KeyCode.LeftArrow))
 		{
-			//For this you need to check if this panel actually has an active character first, else, move to the next, if there are no more to the left, go back to the previous selection.
-			if(RecursivePanelShiftLeft(m_nCharacterPanelSelectionIndex - 1) == true)
+			--m_nCharacterPanelSelectionIndex;
+			if(m_nCharacterPanelSelectionIndex < 0)
 			{
-				//was able to shift left
-			}
-			else
-			{
-				//wasn't able to shift left
+				m_nCharacterPanelSelectionIndex = 0;
+				m_nMenuState = (int)MENU_STATES.ePARTYTAB;
 				m_bWaiting = true;
 				m_bFirstTimeFlag = true;
-				m_nMenuState = (int)MENU_STATES.ePARTYTAB;
-				m_nCharacterPanelSelectionIndex = 0;
-				foreach(GameObject panel in m_goCharacterPanels)
-					Image_Brighten(panel);
+				m_nCharacterSelectedForFormationSwap = -1;
 				foreach(GameObject go in m_goCharacterPanels)
 				{
+					foreach(GameObject panel in m_goCharacterPanels)
+					{
+						Image_Brighten(panel);
+
+					}
+					m_nNumberOfPanelsToWaitFor++;
 					go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 				}
-				m_goTopCharacterTabs.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
 			}
 		}
 		else if(Input.GetKeyDown(KeyCode.RightArrow))
 		{
-			//For this you need to check if this panel actually has an active character first, else, move to the next, if there are no more to the right, don't do anything.
-			if(RecursivePanelShiftRight(m_nCharacterPanelSelectionIndex + 1) == true)
-			{
-				//was able to shift right
-			}
-			else
-			{
-				//wasn't able to shift right
-			}
+			++m_nCharacterPanelSelectionIndex;
+			if(m_nCharacterPanelSelectionIndex > 6)
+				m_nCharacterPanelSelectionIndex = 6;
 		}
 	}
 	#endregion
@@ -854,12 +906,13 @@ public class MenuScreenScript : MonoBehaviour
 			int counter = 0;
 			foreach(GameObject panel in m_goCharacterPanels)
 			{
-				if(counter == m_nCharacterPanelSelectionIndex)
+				if(counter == m_nCharacterPanelSelectionIndex || counter == m_nCharacterSelectedForFormationSwap)
 				{
 					panel.GetComponent<Canvas>().sortingOrder = 1;
 					Vector3 newPos = panel.GetComponent<CharacterPanelScript>().m_vOriginalPosition;;
 					newPos.y += 20.0f;
-					panel.transform.localPosition = newPos;
+					if(counter == m_nCharacterPanelSelectionIndex)
+						panel.transform.localPosition = newPos;
 					Image_Darken(panel);
 				}
 				else
@@ -1032,59 +1085,13 @@ public class MenuScreenScript : MonoBehaviour
 	}
 	DCScript.CharacterData RetrieveCharacter(int nPanelIndex)
 	{
-		int nFormationOfCharacter = 0;
-		//convert the index of panel selected, to the formation of that party member.
-		switch(nPanelIndex)
-		{
-		case 0:
-			{
-				//top left
-				nFormationOfCharacter = 3;
-			}
-			break;
-		case 1:
-			{
-				//mid left
-				nFormationOfCharacter = 4;
-			}
-			break;
-		case 2:
-			{
-				//bottom left
-				nFormationOfCharacter = 5;
-			}
-			break;
-		case 3:
-			{
-				//top right
-				nFormationOfCharacter = 0;
-			}
-			break;
-		case 4:
-			{
-				//mid right
-				nFormationOfCharacter = 1;
-			}
-			break;
-		case 5:
-			{
-				//bottom right
-				nFormationOfCharacter = 2;
-			}
-			break;
-		case 6:
-			{
-				//The support character
-				nFormationOfCharacter = -1;
-			}
-			break;
-		}
+		int nFormationOfCharacter = ConvertPanelIterToFormationNumber(nPanelIndex);
+
 		if(nFormationOfCharacter != -1)
 		{
-			List<DCScript.CharacterData> lParty = dc.GetParty();
-			foreach(DCScript.CharacterData character in lParty)
+			foreach(DCScript.CharacterData character in m_lParty)
 			{
-				if(character.m_nFormationIter == nFormationOfCharacter)
+				if(character.m_nFormationIter == nFormationOfCharacter) 
 				{
 					return character;
 				}
@@ -1095,6 +1102,54 @@ public class MenuScreenScript : MonoBehaviour
 			//this is the support character.. not sure what to do here yet since support characters don't actually exist yet
 		}
 		return null;
+	}
+
+	public int ConvertPanelIterToFormationNumber(int nPanelIndex)
+	{
+		//convert the index of panel selected, to the formation of that party member.
+		switch(nPanelIndex)
+		{
+		case 0:
+			{
+				//top left
+				return 3;
+			}
+		case 1:
+			{
+				//mid left
+				return 4;
+			}
+		case 2:
+			{
+				//bottom left
+				return 5;
+			}
+		case 3:
+			{
+				//top right
+				return 0;
+			}
+		case 4:
+			{
+				//mid right
+				return 1;
+			}
+		case 5:
+			{
+				//bottom right
+				return 2;
+			}
+		case 6:
+			{
+				//The support character
+				return -1;
+			}
+			default:
+			{
+				//error catching
+				return -2;
+			}
+		}
 	}
 
 	public void Image_Brighten(GameObject image)
@@ -1114,11 +1169,14 @@ public class MenuScreenScript : MonoBehaviour
 	void PanelReachedSlot()
 	{
 		m_nPanelsThatHaveFinishedSliding += 1;
-		if(m_nPanelsThatHaveFinishedSliding == 8)
+		if(m_nPanelsThatHaveFinishedSliding == m_nNumberOfPanelsToWaitFor)
 		{
+			m_nNumberOfPanelsToWaitFor = 0;
 			m_nPanelsThatHaveFinishedSliding = 0;
 			m_bWaiting = false;
+			PopulatePartyMembers();
 		}
 	}
+
 	#endregion
 }

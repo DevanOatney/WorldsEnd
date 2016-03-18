@@ -6,9 +6,11 @@ public class CharacterPanelScript : MonoBehaviour
 {
 	GameObject m_goListener = null;
 	Vector3 m_vTargetPosition;
-	public float m_fSlidingSpeed = 600.0f;
+	float m_fSlidingSpeed = 900.0f;
 	bool m_bShouldSlide = false;
 	public Vector3 m_vOriginalPosition;
+	//Flag for if after the slide this object to change it's original position (like after a formation swap)
+	bool m_bShouldSwap = false;
 
 	//optimization variables so that the hover event does spam rapidly.
 	float m_fHoverTimer = 1.0f;
@@ -31,11 +33,25 @@ public class CharacterPanelScript : MonoBehaviour
 			Vector3 toTarget = m_vTargetPosition - pos;
 			if(toTarget.sqrMagnitude < 100.0f)
 			{
-				GetComponent<RectTransform>().localPosition = m_vTargetPosition;
-				m_bShouldSlide = false;
-				m_goListener.SendMessage("PanelReachedSlot");
-				m_goListener = null;
-				m_vTargetPosition = Vector3.zero;
+				
+				if(m_bShouldSwap == true)
+				{
+					m_bShouldSwap = false;
+					transform.localPosition = m_vOriginalPosition;
+					m_bShouldSlide = false;
+					m_goListener.SendMessage("PanelReachedSlot");
+					m_goListener = null;
+					m_vTargetPosition = Vector3.zero;
+				}
+				else
+				{
+					GetComponent<RectTransform>().localPosition = m_vTargetPosition;
+					m_bShouldSlide = false;
+					m_goListener.SendMessage("PanelReachedSlot");
+					m_goListener = null;
+					m_vTargetPosition = Vector3.zero;
+				}
+
 			}
 			else
 			{
@@ -48,12 +64,25 @@ public class CharacterPanelScript : MonoBehaviour
 
 	public void BeginSlide(GameObject listener, Vector3 targetPos)
 	{
+		transform.localPosition = m_vOriginalPosition;
 		m_goListener = listener;
 		m_bShouldSlide = true;
 		m_vTargetPosition = targetPos;
 		if(m_goTargetForTopTabs != null)
 			m_vTargetPosition = m_goTargetForTopTabs.transform.localPosition;
 	}
+
+	public void BeginSlide(GameObject listener, Vector3 targetPos, bool shouldSwap)
+	{
+		transform.localPosition = m_vOriginalPosition;
+		m_bShouldSwap = shouldSwap;
+		m_goListener = listener;
+		m_bShouldSlide = true;
+		m_vTargetPosition = targetPos;
+		if(m_goTargetForTopTabs != null)
+			m_vTargetPosition = m_goTargetForTopTabs.transform.localPosition;
+	}
+
 	public void ReturnToPosition(GameObject listener)
 	{
 		m_vTargetPosition = m_vOriginalPosition;
@@ -63,16 +92,11 @@ public class CharacterPanelScript : MonoBehaviour
 
 	public void PanelHighlighted(int nIndex)
 	{
-		if(transform.FindChild("CharacterName").GetComponent<Text>().text == "")
-			return;
-		
 		GameObject.Find("FIELD_UI").GetComponent<MenuScreenScript>().CharacterHighlighted(nIndex);
 	}
 
 	public void PanelSelected(int nIndex)
 	{
-		if(transform.FindChild("CharacterName").GetComponent<Text>().text == "")
-			return;
 		GameObject.Find("FIELD_UI").GetComponent<MenuScreenScript>().CharacterSelected(nIndex);
 	}
 	public void MouseHover(int nIndex)
