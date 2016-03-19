@@ -143,8 +143,11 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	{
 		//temp for testing poison status effect
 		DCScript.StatusEffect tse = GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffectLibrary.ConvertToDCStatusEffect("Poison");
-		tse.m_lEffectedMembers.Add("Callan");
-		GameObject.Find("PersistantData").GetComponent<DCScript>().AddStatusEffect(tse);
+		if(tse != null)
+		{
+			tse.m_lEffectedMembers.Add("Callan");
+			GameObject.Find("PersistantData").GetComponent<DCScript>().AddStatusEffect(tse);
+		}
 
 
 		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects();

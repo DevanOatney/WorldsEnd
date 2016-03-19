@@ -1300,7 +1300,7 @@ public class CAllyBattleScript : UnitScript
 		else if(m_nUnitType == (int)UnitTypes.ALLY_RANGED)
 		{
 			
-			GameObject goArrow = Instantiate(Resources.Load<GameObject>("Spell Effects/Arrow")) as GameObject;
+			GameObject goArrow = Instantiate(Resources.Load<GameObject>("Animation Effects/Arrow")) as GameObject;
 			goArrow.transform.position = transform.position;
 			int dmg = 0;
 			if(CheckIfHit())

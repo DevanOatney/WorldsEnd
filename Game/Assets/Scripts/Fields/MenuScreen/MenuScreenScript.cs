@@ -42,11 +42,12 @@ public class MenuScreenScript : MonoBehaviour
 
 	public GameObject m_goCharacterSelector;
 
-
+	public GameObject m_goRoster;
 	public GameObject m_goInventory;
 	public GameObject m_goStatus;
 	public GameObject m_goEquipment;
-
+	public GameObject m_goCharacterRoot;
+	public GameObject m_goCharacterPrefab;
 	public GameObject m_goItemPrefab;
 	public GameObject m_goItemSelected = null;
 	//Currently not in use
@@ -152,6 +153,12 @@ public class MenuScreenScript : MonoBehaviour
 				AdjustPartyPanels();
 				if(m_bWaiting == false)
 					FormationTabMenuInput();
+			}
+			break;
+		case (int)MENU_STATES.eROSTER_SUBTAB:
+			{
+				if(m_bWaiting == false)
+					RosterTabMenuInput();
 			}
 			break;
 		}
@@ -354,6 +361,25 @@ public class MenuScreenScript : MonoBehaviour
 		case 2:
 			{
 				//ROSTER
+				m_goRoster.SetActive(true);
+				m_nMenuState = (int)MENU_STATES.eROSTER_SUBTAB;
+				m_goTopCharacterTabs.SetActive(false);
+				foreach(GameObject go in m_goCharacterPanels)
+					go.SetActive(false);
+				//Remove all previous characters from the roster
+				GameObject[] previousCharacters = GameObject.FindGameObjectsWithTag("UI_Battle_Selection");
+				foreach(GameObject character in previousCharacters)
+					Destroy(character);
+				//TODO : Change this so that it goes of an entire roster, and not just the party
+				foreach(DCScript.CharacterData character in m_lParty)
+				{
+					GameObject characterInList = Instantiate(m_goCharacterPrefab);
+					characterInList.transform.FindChild("CharacterName").GetComponent<Text>().text = character.m_szCharacterName;
+					characterInList.transform.FindChild("CharacterLVL").GetComponent<Text>().text = character.m_nLevel.ToString();
+					characterInList.transform.SetParent(m_goCharacterRoot.transform);
+					characterInList.transform.localScale = new Vector3(1, 1, 1);
+				}
+				
 			}
 			break;
 		}
@@ -580,6 +606,18 @@ public class MenuScreenScript : MonoBehaviour
 	}
 	#endregion
 
+
+	void RosterTabMenuInput()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButton(1))
+		{
+			m_goRoster.SetActive(false);
+			m_goTopCharacterTabs.SetActive(true);
+			foreach(GameObject go in m_goCharacterPanels)
+				go.SetActive(true);
+			m_nMenuState = (int)MENU_STATES.ePARTYTAB;
+		}
+	}
 
 
 	void EquipmentScreen(DCScript.CharacterData character)
