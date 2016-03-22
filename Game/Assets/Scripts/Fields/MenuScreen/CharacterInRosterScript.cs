@@ -13,6 +13,7 @@ public class CharacterInRosterScript : MonoBehaviour, IBeginDragHandler, IDragHa
 	GameObject m_goNewDraggedObject;
 	public static string m_szCharacterBeingDragged = "";
 
+
 	void OnDestroy()
 	{
 		if(m_goNewDraggedObject != null)

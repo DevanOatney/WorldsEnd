@@ -28,6 +28,8 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject[] m_goPartySubTabs;
 	//Hooks to the character panels
 	public GameObject[] m_goCharacterPanels;
+	//Hooks to the Cells of the roster screen (for formation purposes)
+	public GameObject[] m_goRosterCells;
 	//Hook to the top tabs of the character panels
 	public GameObject m_goTopCharacterTabs;
 	//Hook to the spider graph
@@ -361,6 +363,8 @@ public class MenuScreenScript : MonoBehaviour
 		case 2:
 			{
 				//ROSTER
+				ClearRosterScreen();
+				AdjustRosterScreen();
 				m_goRoster.SetActive(true);
 				m_nMenuState = (int)MENU_STATES.eROSTER_SUBTAB;
 				m_goTopCharacterTabs.SetActive(false);
@@ -611,6 +615,9 @@ public class MenuScreenScript : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButton(1))
 		{
+			AdjustRosterScreen();
+			ClearRosterScreen();
+			PopulatePartyMembers();
 			m_goRoster.SetActive(false);
 			m_goTopCharacterTabs.SetActive(true);
 			foreach(GameObject go in m_goCharacterPanels)
@@ -1096,6 +1103,23 @@ public class MenuScreenScript : MonoBehaviour
 			m_goEquipment.transform.FindChild("Trinket1").GetComponent<Text>().text = "Trinket Slot : None";
 		}
 
+	}
+	void AdjustRosterScreen()
+	{
+		foreach(DCScript.CharacterData character in m_lParty)
+		{
+			m_goRosterCells[character.m_nFormationIter].GetComponent<RosterScreenCellScript>().InstantiateCharacter(character);
+		}
+	}
+	void ClearRosterScreen()
+	{
+		foreach(GameObject go in m_goRosterCells)
+		{
+			if(go.transform.childCount > 0)
+			{
+				go.GetComponent<RosterScreenCellScript>().Remove();
+			}
+		}
 	}
 	bool RecursivePanelShiftRight(int nIndex)
 	{
