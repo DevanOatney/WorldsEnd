@@ -1080,7 +1080,7 @@ public class CAllyBattleScript : UnitScript
 				c.m_lSpellsKnown.Add(lines[24+i].Trim());
 			}
 			UpdateStats();
-			GameObject.Find("PersistantData").GetComponent<DCScript>().AddPartyMember(c);
+			GameObject.Find("PersistantData").GetComponent<DCScript>().SetRosteredCharacterData(c);
 		}
 	}
 		

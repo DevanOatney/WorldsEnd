@@ -50,94 +50,21 @@ public class SavingScript : MonoBehaviour
 		//The amount of gold the player has
 		m_lOutputData.Add(dcs.m_nGold.ToString());
 
-		//The amount of characters written out
+		//The amount of characters in party
 		List<DCScript.CharacterData> party = dcs.GetParty();
 		m_lOutputData.Add(party.Count.ToString());
 		foreach(DCScript.CharacterData member in party)
 		{
-			//name
-			m_lOutputData.Add(member.m_szCharacterName);
-			//race
-			m_lOutputData.Add(member.m_szCharacterRace);
-			//class
-			m_lOutputData.Add(member.m_szCharacterClassType);
-			//bio
-			m_lOutputData.Add(member.m_szCharacterBio);
-			//max hp
-			m_lOutputData.Add(member.m_nMaxHP.ToString());
-			//cur hp
-			m_lOutputData.Add(member.m_nCurHP.ToString());
-			//str
-			m_lOutputData.Add(member.m_nSTR.ToString());
-			//def
-			m_lOutputData.Add(member.m_nDEF.ToString());
-			//spd
-			m_lOutputData.Add(member.m_nSPD.ToString());
-			//eva
-			m_lOutputData.Add(member.m_nEVA.ToString());
-			//hit
-			m_lOutputData.Add(member.m_nHIT.ToString());
-			//Level
-			m_lOutputData.Add(member.m_nLevel.ToString());
-			//Current Experience
-			m_lOutputData.Add(member.m_nCurrentEXP.ToString());
-			//Weapon Name
-			m_lOutputData.Add(member.m_szWeaponName);
-			//Weapon Level
-			m_lOutputData.Add(member.m_nWeaponLevel.ToString());
-			//Weapon Damage Mod
-			m_lOutputData.Add(member.m_nWeaponDamageModifier.ToString());
-			//Weapon Modifier Name
-			m_lOutputData.Add(member.m_szWeaponModifierName);
-
-			//Helm Armor
-			if(member.m_idHelmSlot != null)
-				m_lOutputData.Add(member.m_idShoulderSlot.m_szItemName);
-			else
-				m_lOutputData.Add("NULL");
-			//Shoulder Armor
-			if(member.m_idShoulderSlot != null)
-				m_lOutputData.Add(member.m_idShoulderSlot.m_szItemName);
-			else
-				m_lOutputData.Add("NULL");
-			//Chest Armor
-			if(member.m_idChestSlot != null)
-				m_lOutputData.Add(member.m_idChestSlot.m_szItemName);
-			else
-				m_lOutputData.Add("NULL");
-			//Glove Armor
-			if(member.m_idGloveSlot != null)
-				m_lOutputData.Add(member.m_idGloveSlot.m_szItemName);
-			else
-				m_lOutputData.Add("NULL");
-			//Belt Armor
-			if(member.m_idBeltSlot != null)
-				m_lOutputData.Add(member.m_idBeltSlot.m_szItemName);
-			else
-				m_lOutputData.Add("NULL");
-			//Leg Armor
-			if(member.m_idLegSlot != null)
-				m_lOutputData.Add(member.m_idLegSlot.m_szItemName);
-			else
-				m_lOutputData.Add("NULL");
-			//Trinket1
-			if(member.m_idTrinket1 != null)
-				m_lOutputData.Add(member.m_idTrinket1.m_szItemName);
-			else
-				m_lOutputData.Add("NULL");
-			//Trinket2
-			if(member.m_idTrinket2 != null)
-				m_lOutputData.Add(member.m_idTrinket2.m_szItemName);
-			else
-				m_lOutputData.Add("NULL");
-
-			//amount of spells the character knows
-			m_lOutputData.Add(member.m_lSpellsKnown.Count.ToString());
-			foreach(string s in member.m_lSpellsKnown)
-			{
-				m_lOutputData.Add(s);
-			}
+			WriteOutCharacter(member);
 		}
+
+		//Amount of characters in roster
+		List<DCScript.CharacterData> roster = dcs.GetRoster();
+		foreach(DCScript.CharacterData member in roster)
+		{
+			WriteOutCharacter(member);
+		}
+
 		//amount of status effects the party has
 		m_lOutputData.Add(dcs.GetStatusEffects().Count.ToString());
 		foreach(DCScript.StatusEffect se in dcs.GetStatusEffects())
@@ -194,5 +121,91 @@ public class SavingScript : MonoBehaviour
 		System.IO.File.Delete(Application.dataPath + "/Resources/Save Files/" + iter.ToString() + ".txt");
 		System.IO.File.WriteAllText(Application.dataPath + "/Resources/Save Files/" + iter.ToString() + ".txt", output);
 
+	}
+
+	void WriteOutCharacter(DCScript.CharacterData member)
+	{
+		//name
+		m_lOutputData.Add(member.m_szCharacterName);
+		//race
+		m_lOutputData.Add(member.m_szCharacterRace);
+		//class
+		m_lOutputData.Add(member.m_szCharacterClassType);
+		//bio
+		m_lOutputData.Add(member.m_szCharacterBio);
+		//max hp
+		m_lOutputData.Add(member.m_nMaxHP.ToString());
+		//cur hp
+		m_lOutputData.Add(member.m_nCurHP.ToString());
+		//str
+		m_lOutputData.Add(member.m_nSTR.ToString());
+		//def
+		m_lOutputData.Add(member.m_nDEF.ToString());
+		//spd
+		m_lOutputData.Add(member.m_nSPD.ToString());
+		//eva
+		m_lOutputData.Add(member.m_nEVA.ToString());
+		//hit
+		m_lOutputData.Add(member.m_nHIT.ToString());
+		//Level
+		m_lOutputData.Add(member.m_nLevel.ToString());
+		//Current Experience
+		m_lOutputData.Add(member.m_nCurrentEXP.ToString());
+		//Weapon Name
+		m_lOutputData.Add(member.m_szWeaponName);
+		//Weapon Level
+		m_lOutputData.Add(member.m_nWeaponLevel.ToString());
+		//Weapon Damage Mod
+		m_lOutputData.Add(member.m_nWeaponDamageModifier.ToString());
+		//Weapon Modifier Name
+		m_lOutputData.Add(member.m_szWeaponModifierName);
+
+		//Helm Armor
+		if(member.m_idHelmSlot != null)
+			m_lOutputData.Add(member.m_idShoulderSlot.m_szItemName);
+		else
+			m_lOutputData.Add("NULL");
+		//Shoulder Armor
+		if(member.m_idShoulderSlot != null)
+			m_lOutputData.Add(member.m_idShoulderSlot.m_szItemName);
+		else
+			m_lOutputData.Add("NULL");
+		//Chest Armor
+		if(member.m_idChestSlot != null)
+			m_lOutputData.Add(member.m_idChestSlot.m_szItemName);
+		else
+			m_lOutputData.Add("NULL");
+		//Glove Armor
+		if(member.m_idGloveSlot != null)
+			m_lOutputData.Add(member.m_idGloveSlot.m_szItemName);
+		else
+			m_lOutputData.Add("NULL");
+		//Belt Armor
+		if(member.m_idBeltSlot != null)
+			m_lOutputData.Add(member.m_idBeltSlot.m_szItemName);
+		else
+			m_lOutputData.Add("NULL");
+		//Leg Armor
+		if(member.m_idLegSlot != null)
+			m_lOutputData.Add(member.m_idLegSlot.m_szItemName);
+		else
+			m_lOutputData.Add("NULL");
+		//Trinket1
+		if(member.m_idTrinket1 != null)
+			m_lOutputData.Add(member.m_idTrinket1.m_szItemName);
+		else
+			m_lOutputData.Add("NULL");
+		//Trinket2
+		if(member.m_idTrinket2 != null)
+			m_lOutputData.Add(member.m_idTrinket2.m_szItemName);
+		else
+			m_lOutputData.Add("NULL");
+
+		//amount of spells the character knows
+		m_lOutputData.Add(member.m_lSpellsKnown.Count.ToString());
+		foreach(string s in member.m_lSpellsKnown)
+		{
+			m_lOutputData.Add(s);
+		}
 	}
 }

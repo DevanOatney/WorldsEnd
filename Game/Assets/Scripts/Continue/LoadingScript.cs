@@ -44,6 +44,7 @@ public class LoadingScript : MonoBehaviour
 		if(File.Exists(m_szFileName + iter.ToString() + ".txt") == false)
 			return null;
 		ContinueHighlightInputScript.SaveDataInformation saveData = new ContinueHighlightInputScript.SaveDataInformation();
+		saveData.m_szName = "Callan";
 
 		string szLine = "";
 		sr = new StreamReader(m_szFileName + iter.ToString() + ".txt");
@@ -71,106 +72,23 @@ public class LoadingScript : MonoBehaviour
 		}
 		//Amount of gold the player has
 		saveData.m_nGold = int.Parse(sr.ReadLine().Trim());
-		
+
+
+
 		//Amount of characters in the party
 		szLine = sr.ReadLine().Trim();
 		int partyCount = int.Parse(szLine);
 		for(int i = 0; i < partyCount; ++i)
 		{
-			//name of the character
-			szLine = sr.ReadLine();
-			saveData.m_szName = szLine.Trim();
+			ReadInCharacter(sr, null);
+		}
 
-			//Race of character
-			szLine = sr.ReadLine().Trim();
-
-			//Class type
-			szLine = sr.ReadLine().Trim();
-
-			//bio
-			szLine = sr.ReadLine().Trim();
-			
-			//Max HP
-			szLine = sr.ReadLine().Trim();
-			
-			//Cur HP
-			szLine = sr.ReadLine().Trim();
-
-			//MaxMP
-			szLine = sr.ReadLine().Trim();
-
-			//Cur MP
-			szLine = sr.ReadLine().Trim();
-			
-			//STR
-			szLine = sr.ReadLine().Trim();
-			
-			//DEF
-			szLine = sr.ReadLine().Trim();
-			
-			//SPD
-			szLine = sr.ReadLine().Trim();
-
-			//EVA
-			szLine = sr.ReadLine().Trim();
-
-			//HIT
-			szLine = sr.ReadLine().Trim();
-
-			//Level
-			szLine = sr.ReadLine();
-			int LVL = int.Parse(szLine.Trim());
-			saveData.m_nLevel = LVL;
-			
-			//Current exp
-			szLine = sr.ReadLine().Trim();
-
-			//Weapon Name
-			szLine = sr.ReadLine().Trim();
-
-			//Weapon Level
-			szLine = sr.ReadLine().Trim();
-
-			//Weapon Damage Mod
-			szLine = sr.ReadLine().Trim();
-
-			//Weapon Mod name
-			szLine = sr.ReadLine().Trim();
-
-			//Helm
-			szLine = sr.ReadLine().Trim();
-
-			//Shoulder
-			szLine = sr.ReadLine().Trim();
-
-			//Chest 
-			szLine = sr.ReadLine().Trim();
-
-			//Gloves
-			szLine = sr.ReadLine().Trim();
-
-			//Belt
-			szLine = sr.ReadLine().Trim();
-
-			//Legs
-			szLine = sr.ReadLine().Trim();
-
-			//Trinket 1
-			szLine = sr.ReadLine().Trim();
-
-			//Trinket 2
-			szLine = sr.ReadLine().Trim();
-
-			//Amount of spells this character knows
-			szLine = sr.ReadLine().Trim();
-			int spellCount = int.Parse(szLine);
-			for(int j = 0; j < spellCount; ++j)
-			{
-				//Read the spell name
-				sr.ReadLine().Trim();
-			}
-			
-			
+		//Amount of characters in the roster
+		szLine = sr.ReadLine().Trim();
+		int rosterCount = int.Parse(szLine);
+		for(int i = 0; i < rosterCount; ++i)
+		{
+			ReadInCharacter(sr, null);
 		}
 
 		//amount of status effects effecting character
@@ -286,165 +204,18 @@ public class LoadingScript : MonoBehaviour
 		int partyCount = int.Parse(szLine);
 		for(int i = 0; i < partyCount; ++i)
 		{
-
 			//"Resources/Units/Ally/Name/Name.prefab
-			DCScript.CharacterData character = new DCScript.CharacterData();
-			//name of the character
-			szLine = sr.ReadLine().Trim();
-			character.m_szCharacterName = szLine.Trim();
-
-			//Race
-			szLine = sr.ReadLine().Trim();
-			character.m_szCharacterRace = szLine.Trim();
-
-			//Class
-			szLine = sr.ReadLine().Trim();
-			character.m_szCharacterClassType = szLine.Trim();
-
-			//Bio
-			szLine = sr.ReadLine().Trim();
-			character.m_szCharacterBio = szLine.Trim();
-
-			//Max HP
-			szLine = sr.ReadLine().Trim();
-			int MaxHP = int.Parse(szLine);
-			character.m_nMaxHP = MaxHP;
-		
-			//Cur HP
-			szLine = sr.ReadLine().Trim();
-			int CurHP = int.Parse(szLine);
-			character.m_nCurHP = CurHP;
-
-			//Max MP
-			szLine = sr.ReadLine().Trim();
-			int MaxMP = int.Parse(szLine);
-			character.m_nMaxMP = MaxMP;
-
-			//Cur MP
-			szLine = sr.ReadLine().Trim();
-			int CurMP = int.Parse(szLine);
-			character.m_nCurMP = int.Parse(szLine);
-		
-			//STR
-			szLine = sr.ReadLine().Trim();
-			int STR = int.Parse(szLine);
-			character.m_nSTR = STR;
-		
-			//DEF
-			szLine = sr.ReadLine().Trim();
-			int DEF = int.Parse(szLine);
-			character.m_nDEF = DEF;
-		
-			//SPD
-			szLine = sr.ReadLine().Trim();
-			int SPD = int.Parse(szLine);
-			character.m_nSPD = SPD;
-
-			//EVA
-			szLine = sr.ReadLine().Trim();
-			int EVA = int.Parse(szLine);
-			character.m_nEVA = EVA;
-
-			//HIT
-			szLine = sr.ReadLine().Trim();
-			int HIT = int.Parse(szLine);
-			character.m_nHIT = HIT;
-		
-			//Level
-			szLine = sr.ReadLine().Trim();
-			int LVL = int.Parse(szLine);
-			character.m_nLevel = LVL;
-		
-			//Current exp
-			szLine = sr.ReadLine().Trim();
-			int exp = int.Parse(szLine);
-			character.m_nCurrentEXP = exp;
-
-			//Weapon Name
-			szLine = sr.ReadLine();
-			character.m_szWeaponName = szLine.Trim();
-
-			//Weapon Level
-			character.m_nWeaponLevel = int.Parse(sr.ReadLine().Trim());
-
-			//Weapon Damage Mod
-			character.m_nWeaponDamageModifier = int.Parse(sr.ReadLine().Trim());
-
-			//Weapon Mod Name
-			character.m_szWeaponModifierName = sr.ReadLine().Trim();
-
-			//Helm name
-			szLine = sr.ReadLine();
-			if(szLine.Trim() != "NULL")
-			{
-				ItemLibrary.ArmorData helm = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-				character.m_idHelmSlot = helm;
-			}
-			//Shoulder name
-			szLine = sr.ReadLine();
-			if(szLine.Trim() != "NULL")
-			{
-				ItemLibrary.ArmorData shoulder = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-				character.m_idShoulderSlot = shoulder;
-			}
-			//Armor name
-			szLine = sr.ReadLine();
-			if(szLine.Trim() != "NULL")
-			{
-				ItemLibrary.ArmorData armor = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-				character.m_idChestSlot = armor;
-			}
-
-			//Glove name
-			szLine = sr.ReadLine();
-			if(szLine.Trim() != "NULL")
-			{
-				ItemLibrary.ArmorData glove = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-				character.m_idGloveSlot = glove;
-			}
-			//Belt name
-			szLine = sr.ReadLine();
-			if(szLine.Trim() != "NULL")
-			{
-				ItemLibrary.ArmorData belt = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-				character.m_idBeltSlot = belt;
-			}
-			//leg name
-			szLine = sr.ReadLine();
-			if(szLine.Trim() != "NULL")
-			{
-				ItemLibrary.ArmorData leg = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-				character.m_idLegSlot = leg;
-			}
-			//Trinket 1 name
-			szLine = sr.ReadLine();
-			if(szLine.Trim() != "NULL")
-			{
-				ItemLibrary.ItemData trinket1 = NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-				character.m_idTrinket1 = trinket1;
-			}
-
-			//Trinket 2 name
-			szLine = sr.ReadLine();
-			if(szLine.Trim() != "NULL")
-			{
-				ItemLibrary.ItemData trinket2 = NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-				character.m_idTrinket2 = trinket2;
-			}
-
-
-			//Amount of spells this character knows
-			szLine = sr.ReadLine();
-			int spellCount = int.Parse(szLine);
-			List<string> characterSpells = new List<string>();
-			for(int j = 0; j < spellCount; ++j)
-			{
-				//Read the spell name
-				characterSpells.Add(sr.ReadLine());
-			}
-			character.m_lSpellsKnown = characterSpells;
+			DCScript.CharacterData character = ReadInCharacter(sr, NewData);
 			NewData.AddPartyMember(character);
-		
+		}
+
+		//Amount of characters in the Roster
+		szLine = sr.ReadLine().Trim();
+		int rosterCount = int.Parse(szLine);
+		for(int i = 0; i < rosterCount; ++i)
+		{
+			DCScript.CharacterData character = ReadInCharacter(sr, NewData);
+			NewData.SetRosteredCharacterData(character);
 		}
 
 		//Amount of effects the character has
@@ -516,5 +287,170 @@ public class LoadingScript : MonoBehaviour
 		
 		//Finished writing out, close
 		sr.Close();
+	}
+
+	DCScript.CharacterData ReadInCharacter(StreamReader sr, DCScript NewData)
+	{
+		DCScript.CharacterData character = new DCScript.CharacterData();
+		string szLine = "";
+		//name of the character
+		szLine = sr.ReadLine().Trim();
+		character.m_szCharacterName = szLine.Trim();
+
+		//Race
+		szLine = sr.ReadLine().Trim();
+		character.m_szCharacterRace = szLine.Trim();
+
+		//Class
+		szLine = sr.ReadLine().Trim();
+		character.m_szCharacterClassType = szLine.Trim();
+
+		//Bio
+		szLine = sr.ReadLine().Trim();
+		character.m_szCharacterBio = szLine.Trim();
+
+		//Max HP
+		szLine = sr.ReadLine().Trim();
+		int MaxHP = int.Parse(szLine);
+		character.m_nMaxHP = MaxHP;
+
+		//Cur HP
+		szLine = sr.ReadLine().Trim();
+		int CurHP = int.Parse(szLine);
+		character.m_nCurHP = CurHP;
+
+		//Max MP
+		szLine = sr.ReadLine().Trim();
+		int MaxMP = int.Parse(szLine);
+		character.m_nMaxMP = MaxMP;
+
+		//Cur MP
+		szLine = sr.ReadLine().Trim();
+		int CurMP = int.Parse(szLine);
+		character.m_nCurMP = int.Parse(szLine);
+
+		//STR
+		szLine = sr.ReadLine().Trim();
+		int STR = int.Parse(szLine);
+		character.m_nSTR = STR;
+
+		//DEF
+		szLine = sr.ReadLine().Trim();
+		int DEF = int.Parse(szLine);
+		character.m_nDEF = DEF;
+
+		//SPD
+		szLine = sr.ReadLine().Trim();
+		int SPD = int.Parse(szLine);
+		character.m_nSPD = SPD;
+
+		//EVA
+		szLine = sr.ReadLine().Trim();
+		int EVA = int.Parse(szLine);
+		character.m_nEVA = EVA;
+
+		//HIT
+		szLine = sr.ReadLine().Trim();
+		int HIT = int.Parse(szLine);
+		character.m_nHIT = HIT;
+
+		//Level
+		szLine = sr.ReadLine().Trim();
+		int LVL = int.Parse(szLine);
+		character.m_nLevel = LVL;
+
+		//Current exp
+		szLine = sr.ReadLine().Trim();
+		int exp = int.Parse(szLine);
+		character.m_nCurrentEXP = exp;
+
+		//Weapon Name
+		szLine = sr.ReadLine();
+		character.m_szWeaponName = szLine.Trim();
+
+		//Weapon Level
+		character.m_nWeaponLevel = int.Parse(sr.ReadLine().Trim());
+
+		//Weapon Damage Mod
+		character.m_nWeaponDamageModifier = int.Parse(sr.ReadLine().Trim());
+
+		//Weapon Mod Name
+		character.m_szWeaponModifierName = sr.ReadLine().Trim();
+
+		//Helm name
+		szLine = sr.ReadLine();
+		if(szLine.Trim() != "NULL" && NewData != null)
+		{
+			ItemLibrary.ArmorData helm = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
+			character.m_idHelmSlot = helm;
+		}
+		//Shoulder name
+		szLine = sr.ReadLine();
+		if(szLine.Trim() != "NULL" && NewData != null)
+		{
+			ItemLibrary.ArmorData shoulder = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
+			character.m_idShoulderSlot = shoulder;
+		}
+		//Armor name
+		szLine = sr.ReadLine();
+		if(szLine.Trim() != "NULL" && NewData != null)
+		{
+			ItemLibrary.ArmorData armor = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
+			character.m_idChestSlot = armor;
+		}
+
+		//Glove name
+		szLine = sr.ReadLine();
+		if(szLine.Trim() != "NULL" && NewData != null)
+		{
+			ItemLibrary.ArmorData glove = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
+			character.m_idGloveSlot = glove;
+		}
+		//Belt name
+		szLine = sr.ReadLine();
+		if(szLine.Trim() != "NULL" && NewData != null)
+		{
+			ItemLibrary.ArmorData belt = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
+			character.m_idBeltSlot = belt;
+		}
+		//leg name
+		szLine = sr.ReadLine();
+		if(szLine.Trim() != "NULL" && NewData != null)
+		{
+			ItemLibrary.ArmorData leg = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
+			character.m_idLegSlot = leg;
+		}
+		//Trinket 1 name
+		szLine = sr.ReadLine();
+		if(szLine.Trim() != "NULL" && NewData != null)
+		{
+			ItemLibrary.ItemData trinket1 = NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
+			character.m_idTrinket1 = trinket1;
+		}
+
+		//Trinket 2 name
+		szLine = sr.ReadLine();
+		if(szLine.Trim() != "NULL" && NewData != null)
+		{
+			ItemLibrary.ItemData trinket2 = NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
+			character.m_idTrinket2 = trinket2;
+		}
+
+
+		//Amount of spells this character knows
+		szLine = sr.ReadLine();
+		int spellCount = int.Parse(szLine);
+		List<string> characterSpells = new List<string>();
+		for(int j = 0; j < spellCount; ++j)
+		{
+			//Read the spell name
+			characterSpells.Add(sr.ReadLine());
+		}
+		character.m_lSpellsKnown = characterSpells;
+
+
+
+
+		return character;
 	}
 }

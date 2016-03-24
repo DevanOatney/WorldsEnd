@@ -63,6 +63,9 @@ public class MenuScreenScript : MonoBehaviour
 	{
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		m_lParty = dc.GetParty();
+		Debug.Log(m_lParty.Count);
+		foreach(DCScript.CharacterData character in m_lParty)
+			Debug.Log(character.m_szCharacterName);
 		foreach(Transform child in transform)
 		{
 			child.gameObject.SetActive(false);
@@ -375,13 +378,16 @@ public class MenuScreenScript : MonoBehaviour
 				foreach(GameObject character in previousCharacters)
 					Destroy(character);
 				//TODO : Change this so that it goes of an entire roster, and not just the party
-				foreach(DCScript.CharacterData character in m_lParty)
+				foreach(DCScript.CharacterData character in dc.GetRoster())
 				{
-					GameObject characterInList = Instantiate(m_goCharacterPrefab);
-					characterInList.transform.FindChild("CharacterName").GetComponent<Text>().text = character.m_szCharacterName;
-					characterInList.transform.FindChild("CharacterLVL").GetComponent<Text>().text = character.m_nLevel.ToString();
-					characterInList.transform.SetParent(m_goCharacterRoot.transform);
-					characterInList.transform.localScale = new Vector3(1, 1, 1);
+					if(character.m_bHasBeenRecruited == true)
+					{
+						GameObject characterInList = Instantiate(m_goCharacterPrefab);
+						characterInList.transform.FindChild("CharacterName").GetComponent<Text>().text = character.m_szCharacterName;
+						characterInList.transform.FindChild("CharacterLVL").GetComponent<Text>().text = character.m_nLevel.ToString();
+						characterInList.transform.SetParent(m_goCharacterRoot.transform);
+						characterInList.transform.localScale = new Vector3(1, 1, 1);
+					}
 				}
 				
 			}
@@ -1106,7 +1112,7 @@ public class MenuScreenScript : MonoBehaviour
 	}
 	void AdjustRosterScreen()
 	{
-		foreach(DCScript.CharacterData character in m_lParty)
+		foreach(DCScript.CharacterData character in dc.GetParty())
 		{
 			m_goRosterCells[character.m_nFormationIter].GetComponent<RosterScreenCellScript>().InstantiateCharacter(character);
 		}

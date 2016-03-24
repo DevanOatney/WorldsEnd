@@ -172,14 +172,94 @@ public class DCScript : MonoBehaviour
 		public string m_szCharacterBio;
 		public int m_nFormationIter = 5;
 
+		//if this unit is currently in the party
+		public bool m_bIsInParty = false;
+		//if this unit has been recruited to the roster
+		public bool m_bHasBeenRecruited = false;
+
+		public void UpdateCharacterData(CharacterData newData)
+		{
+			m_szCharacterName = newData.m_szCharacterName;
+			m_nMaxHP = newData.m_nMaxHP;
+			m_nCurHP = newData.m_nCurHP;
+			m_nMaxMP = newData.m_nMaxMP;
+			m_nCurMP = newData.m_nCurMP;
+			m_nSTR = newData.m_nSTR;
+			m_nDEF = newData.m_nDEF;
+			m_nSPD = newData.m_nSPD;
+			m_nEVA = newData.m_nEVA;
+			m_nHIT = newData.m_nHIT;
+			m_nLevel = newData.m_nLevel;
+			m_nCurrentEXP = newData.m_nCurrentEXP;
+
+			m_szWeaponName = newData.m_szWeaponName;
+			m_nWeaponDamageModifier = newData.m_nWeaponDamageModifier;
+			m_nWeaponLevel = newData.m_nWeaponLevel;
+			m_szWeaponModifierName = newData.m_szWeaponModifierName;
+
+			m_idChestSlot = newData.m_idChestSlot;
+			m_idLegSlot = newData.m_idLegSlot;
+			m_idBeltSlot = newData.m_idBeltSlot;
+			m_idShoulderSlot = newData.m_idShoulderSlot;
+			m_idHelmSlot = newData.m_idHelmSlot;
+			m_idGloveSlot = newData.m_idGloveSlot;
+
+			m_idTrinket1 = newData.m_idTrinket1;
+			m_idTrinket2 = newData.m_idTrinket2;
+
+			m_lSpellsKnown = newData.m_lSpellsKnown;
+
+			m_szCharacterRace = newData.m_szCharacterRace;
+			m_szCharacterClassType = newData.m_szCharacterClassType;
+			m_szCharacterBio = newData.m_szCharacterBio;
+			m_nFormationIter = newData.m_nFormationIter;
+
+
+			m_bIsInParty = newData.m_bIsInParty;
+			m_bHasBeenRecruited = newData.m_bHasBeenRecruited;
+		}
 	}
 
 	//List of characters in party
 	List<CharacterData> m_lPartyMembers = new List<CharacterData>();
-	public List<CharacterData> GetParty() {return m_lPartyMembers;}
-	public void SetParty(List<CharacterData> p) {m_lPartyMembers = p;}
+	//List of character in the roster
+	List<CharacterData> m_lRoster = new List<CharacterData>();
+	//Return the character data of each unit in the party
+	public List<CharacterData> GetParty() 
+	{
+		return m_lPartyMembers;
+	}
+	public List<CharacterData> GetRoster()
+	{
+		return m_lRoster;
+	}
+	//So this call is also updating character stats, so iterate through each character and update their stats on the roster
+	public void SetParty(List<CharacterData> p) 
+	{
+		m_lPartyMembers.Clear();
+		foreach(CharacterData character in p)
+		{
+			m_lPartyMembers.Add(character);
+			foreach(CharacterData rosterCharacter in m_lRoster)
+			{
+				
+				if(character.m_szCharacterName == rosterCharacter.m_szCharacterName)
+				{
+					rosterCharacter.UpdateCharacterData(character);
+					rosterCharacter.m_bIsInParty = true;
+				}
+				else
+					rosterCharacter.m_bIsInParty = false;
+			}
+		}
+		Debug.Log("Count is " + m_lPartyMembers.Count);
+	}
+
 	public void AddPartyMember(CharacterData character) 
 	{
+		//update the characters stats in the roster (or add it to the roster if it's the first time.
+		SetRosteredCharacterData(character);
+
 		List<int> lAvailableSpots = new List<int>();
 		for(int i = 0; i < 6; ++i){lAvailableSpots.Add(i);}
 		int nLowestSpot = 6;
@@ -194,9 +274,30 @@ public class DCScript : MonoBehaviour
 				nLowestSpot = n;
 		}
 		character.m_nFormationIter = nLowestSpot;
+		character.m_bIsInParty = true;
+		character.m_bHasBeenRecruited = true;
+		foreach(CharacterData c in m_lPartyMembers)
+		{
+			if(c.m_szCharacterName == character.m_szCharacterName)
+			{
+				c.UpdateCharacterData(character);
+				return;
+			}
+		}
 		m_lPartyMembers.Add(character);
 	}
-	public void RemovePartyMember(CharacterData character) {m_lPartyMembers.Remove(character);}
+
+	public void AddPartyMember(string szCharacterName)
+	{
+		AddPartyMember(GetRosteredCharacterData(szCharacterName));
+	}
+
+	public void RemovePartyMember(CharacterData character) 
+	{
+		character.m_bIsInParty = false;
+		GetRosteredCharacterData(character.m_szCharacterName).UpdateCharacterData(character);
+		m_lPartyMembers.Remove(character);
+	}
 	public CharacterData GetCharacter(string szName)
 	{
 		foreach(CharacterData c in m_lPartyMembers)
@@ -206,6 +307,32 @@ public class DCScript : MonoBehaviour
 		}
 		return null;
 	}
+
+
+
+	public CharacterData GetRosteredCharacterData(string characterName)
+	{
+		foreach(CharacterData cd in m_lRoster)
+		{
+			if(cd.m_szCharacterName == characterName)
+				return cd;
+		}
+		return null;
+	}
+	public void SetRosteredCharacterData(DCScript.CharacterData character)
+	{
+		foreach(CharacterData cd in m_lRoster)
+		{
+			if(cd.m_szCharacterName == character.m_szCharacterName)
+			{
+				cd.UpdateCharacterData(character);
+				return;
+			}
+		}
+		Debug.Log("Wasn't able to find character, adding it to the list");
+		m_lRoster.Add(character);
+	}
+
 	//iter to which background to load during battle (DOES NOT NEED TO BE SAVED/LOADED)
 	int m_nBattleFieldBackgroundIter = 0;
 	public int GetBattleFieldBackgroundIter() {return m_nBattleFieldBackgroundIter;}
@@ -284,6 +411,17 @@ public class DCScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		if(Input.GetKeyDown(KeyCode.A))
+		{
+			foreach(CharacterData character in m_lRoster)
+			{
+				Debug.Log(character.m_szCharacterName + " is in roster");
+			}
+			foreach(CharacterData character in m_lPartyMembers)
+			{
+				Debug.Log(character.m_szCharacterName + " is in party");
+			}
+		}
 	}
 
 	void LoadStatProgressions()

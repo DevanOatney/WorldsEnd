@@ -77,7 +77,8 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 
 	public void OnDrop (PointerEventData eventData)
 	{
-		DCScript.CharacterData character = GameObject.Find("PersistantData").GetComponent<DCScript>().GetCharacter(CharacterInRosterScript.m_szCharacterBeingDragged);
+		DCScript dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
+		DCScript.CharacterData character = dc.GetCharacter(CharacterInRosterScript.m_szCharacterBeingDragged);
 		CharacterInRosterScript.m_szCharacterBeingDragged = "";
 		if(character != null)
 		{
@@ -85,6 +86,14 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 			if(m_szPanelOfDraggedCharacter == "")
 			{
 				//in here means that the character was not dragged from another cell, and was instead from the list on the left instead.
+				foreach(DCScript.CharacterData c in dc.GetParty())
+				{
+					//if the character is already in the party (shouldn't happen.. but check anyway) don't do anything
+					if(c.m_szCharacterName == character.m_szCharacterName)
+					{
+						return;
+					}
+				}
 				InstantiateCharacter(character);
 			}
 			else if(name != m_szPanelOfDraggedCharacter)
@@ -137,7 +146,6 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 				//character was dropped outside of a valid panel, if it's not the main character, remove from party.  If it is the main character, just put him back where he was
 				if(m_cCharacter.m_szCharacterName == "Callan")
 				{
-					Debug.Log("hit");
 					m_goDraggedObject.GetComponent<RectTransform>().SetParent(GetComponent<RectTransform>());
 					m_goDraggedObject.GetComponent<RectTransform>().rotation = Quaternion.identity;
 					Vector3 characterPosition = m_vCharacterStartPos;
