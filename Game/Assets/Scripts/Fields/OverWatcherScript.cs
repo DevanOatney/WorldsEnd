@@ -71,6 +71,7 @@ public class OverWatcherScript : MonoBehaviour
 			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
 			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
 			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
+			GameObject.Find("PersistantData").GetComponent<DCScript>().AddPartyMember("Briol");
 		}
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		if(CAudioHelper.Instance == null)

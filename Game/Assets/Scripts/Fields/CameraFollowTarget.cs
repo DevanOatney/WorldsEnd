@@ -14,6 +14,8 @@ public class CameraFollowTarget : MonoBehaviour {
 	void Start () 
 	{
 		GetComponent<AudioSource>().volume = GameObject.Find("PersistantData").GetComponent<DCScript>().m_fMusicVolume;
+		if(m_goTarget == null)
+			m_goTarget = GameObject.Find("Player");
 		Vector3 pos = m_goTarget.transform.position;
 		pos.z = transform.position.z;
 		transform.position = pos;

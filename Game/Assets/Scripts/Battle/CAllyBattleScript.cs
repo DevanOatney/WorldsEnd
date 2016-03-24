@@ -1519,7 +1519,7 @@ public class CAllyBattleScript : UnitScript
 					}
 					break;
 				}
-				m_goItemBeingUsed = Instantiate(Resources.Load("Spell Effects" + "/" + _Spell.m_szSpellName)) as GameObject;
+				m_goItemBeingUsed = Instantiate(Resources.Load("Animation Effects/Spell Effects" + "/" + _Spell.m_szSpellName)) as GameObject;
 				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_szSpellName = _Spell.m_szSpellName;
 				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_nElementType = _Spell.m_nElementType;
 				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_nTargetType = _Spell.m_nTargetType;
