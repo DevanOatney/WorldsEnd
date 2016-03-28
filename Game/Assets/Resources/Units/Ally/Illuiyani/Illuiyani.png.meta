@@ -1,0 +1,2299 @@
+fileFormatVersion: 2
+guid: 09995de6ad825b54483332f3253627b0
+timeCreated: 1459190469
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Illuiyani_0
+    21300002: Illuiyani_1
+    21300004: Illuiyani_2
+    21300006: Illuiyani_3
+    21300008: Illuiyani_4
+    21300010: Illuiyani_5
+    21300012: Illuiyani_6
+    21300014: Illuiyani_7
+    21300016: Illuiyani_8
+    21300018: Illuiyani_9
+    21300020: Illuiyani_10
+    21300022: Illuiyani_11
+    21300024: Illuiyani_12
+    21300026: Illuiyani_13
+    21300028: Illuiyani_14
+    21300030: Illuiyani_15
+    21300032: Illuiyani_16
+    21300034: Illuiyani_17
+    21300036: Illuiyani_18
+    21300038: Illuiyani_19
+    21300040: Illuiyani_20
+    21300042: Illuiyani_21
+    21300044: Illuiyani_22
+    21300046: Illuiyani_23
+    21300048: Illuiyani_24
+    21300050: Illuiyani_25
+    21300052: Illuiyani_26
+    21300054: Illuiyani_27
+    21300056: Illuiyani_28
+    21300058: Illuiyani_29
+    21300060: Illuiyani_30
+    21300062: Illuiyani_31
+    21300064: Illuiyani_32
+    21300066: Illuiyani_33
+    21300068: Illuiyani_34
+    21300070: Illuiyani_35
+    21300072: Illuiyani_36
+    21300074: Illuiyani_37
+    21300076: Illuiyani_38
+    21300078: Illuiyani_39
+    21300080: Illuiyani_40
+    21300082: Illuiyani_41
+    21300084: Illuiyani_42
+    21300086: Illuiyani_43
+    21300088: Illuiyani_44
+    21300090: Illuiyani_45
+    21300092: Illuiyani_46
+    21300094: Illuiyani_47
+    21300096: Illuiyani_48
+    21300098: Illuiyani_49
+    21300100: Illuiyani_50
+    21300102: Illuiyani_51
+    21300104: Illuiyani_52
+    21300106: Illuiyani_53
+    21300108: Illuiyani_54
+    21300110: Illuiyani_55
+    21300112: Illuiyani_56
+    21300114: Illuiyani_57
+    21300116: Illuiyani_58
+    21300118: Illuiyani_59
+    21300120: Illuiyani_60
+    21300122: Illuiyani_61
+    21300124: Illuiyani_62
+    21300126: Illuiyani_63
+    21300128: Illuiyani_64
+    21300130: Illuiyani_65
+    21300132: Illuiyani_66
+    21300134: Illuiyani_67
+    21300136: Illuiyani_68
+    21300138: Illuiyani_69
+    21300140: Illuiyani_70
+    21300142: Illuiyani_71
+    21300144: Illuiyani_72
+    21300146: Illuiyani_73
+    21300148: Illuiyani_74
+    21300150: Illuiyani_75
+    21300152: Illuiyani_76
+    21300154: Illuiyani_77
+    21300156: Illuiyani_78
+    21300158: Illuiyani_79
+    21300160: Illuiyani_80
+    21300162: Illuiyani_81
+    21300164: Illuiyani_82
+    21300166: Illuiyani_83
+    21300168: Illuiyani_84
+    21300170: Illuiyani_85
+    21300172: Illuiyani_86
+    21300174: Illuiyani_87
+    21300176: Illuiyani_88
+    21300178: Illuiyani_89
+    21300180: Illuiyani_90
+    21300182: Illuiyani_91
+    21300184: Illuiyani_92
+    21300186: Illuiyani_93
+    21300188: Illuiyani_94
+    21300190: Illuiyani_95
+    21300192: Illuiyani_96
+    21300194: Illuiyani_97
+    21300196: Illuiyani_98
+    21300198: Illuiyani_99
+    21300200: Illuiyani_100
+    21300202: Illuiyani_101
+    21300204: Illuiyani_102
+    21300206: Illuiyani_103
+    21300208: Illuiyani_104
+    21300210: Illuiyani_105
+    21300212: Illuiyani_106
+    21300214: Illuiyani_107
+    21300216: Illuiyani_108
+    21300218: Illuiyani_109
+    21300220: Illuiyani_110
+    21300222: Illuiyani_111
+    21300224: Illuiyani_112
+    21300226: Illuiyani_113
+    21300228: Illuiyani_114
+    21300230: Illuiyani_115
+    21300232: Illuiyani_116
+    21300234: Illuiyani_117
+    21300236: Illuiyani_118
+    21300238: Illuiyani_119
+    21300240: Illuiyani_120
+    21300242: Illuiyani_121
+    21300244: Illuiyani_122
+    21300246: Illuiyani_123
+    21300248: Illuiyani_124
+    21300250: Illuiyani_125
+    21300252: Illuiyani_126
+    21300254: Illuiyani_127
+    21300256: Illuiyani_128
+    21300258: Illuiyani_129
+    21300260: Illuiyani_130
+    21300262: Illuiyani_131
+    21300264: Illuiyani_132
+    21300266: Illuiyani_133
+    21300268: Illuiyani_134
+    21300270: Illuiyani_135
+    21300272: Illuiyani_136
+    21300274: Illuiyani_137
+    21300276: Illuiyani_138
+    21300278: Illuiyani_139
+    21300280: Illuiyani_140
+    21300282: Illuiyani_141
+    21300284: Illuiyani_142
+    21300286: Illuiyani_143
+    21300288: Illuiyani_144
+    21300290: Illuiyani_145
+    21300292: Illuiyani_146
+    21300294: Illuiyani_147
+    21300296: Illuiyani_148
+    21300298: Illuiyani_149
+    21300300: Illuiyani_150
+    21300302: Illuiyani_151
+    21300304: Illuiyani_152
+    21300306: Illuiyani_153
+    21300308: Illuiyani_154
+    21300310: Illuiyani_155
+    21300312: Illuiyani_156
+    21300314: Illuiyani_157
+    21300316: Illuiyani_158
+    21300318: Illuiyani_159
+    21300320: Illuiyani_160
+    21300322: Illuiyani_161
+    21300324: Illuiyani_162
+    21300326: Illuiyani_163
+    21300328: Illuiyani_164
+    21300330: Illuiyani_165
+    21300332: Illuiyani_166
+    21300334: Illuiyani_167
+    21300336: Illuiyani_168
+    21300338: Illuiyani_169
+    21300340: Illuiyani_170
+    21300342: Illuiyani_171
+    21300344: Illuiyani_172
+    21300346: Illuiyani_173
+    21300348: Illuiyani_174
+    21300350: Illuiyani_175
+    21300352: Illuiyani_176
+    21300354: Illuiyani_177
+    21300356: Illuiyani_178
+    21300358: Illuiyani_179
+    21300360: Illuiyani_180
+    21300362: Illuiyani_181
+    21300364: Illuiyani_182
+    21300366: Illuiyani_183
+    21300368: Illuiyani_184
+    21300370: Illuiyani_185
+    21300372: Illuiyani_186
+    21300374: Illuiyani_187
+    21300376: Illuiyani_188
+    21300378: Illuiyani_189
+    21300380: Illuiyani_190
+    21300382: Illuiyani_191
+    21300384: Illuiyani_192
+    21300386: Illuiyani_193
+    21300388: Illuiyani_194
+    21300390: Illuiyani_195
+    21300392: Illuiyani_196
+    21300394: Illuiyani_197
+    21300396: Illuiyani_198
+    21300398: Illuiyani_199
+    21300400: Illuiyani_200
+    21300402: Illuiyani_201
+    21300404: Illuiyani_202
+    21300406: Illuiyani_203
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Illuiyani_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 2048
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 2048
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_2
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 2048
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 2048
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_4
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 2048
+        width: 45
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_5
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 2048
+        width: 45
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_6
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 2048
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_7
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1984
+        width: 20
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_8
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1984
+        width: 20
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_9
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1984
+        width: 20
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_10
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1984
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_11
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1984
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_12
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1984
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_13
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 1984
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_14
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1920
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1920
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_16
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1920
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_17
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 1920
+        width: 33
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_18
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 1920
+        width: 45
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_19
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 1920
+        width: 45
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_20
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1920
+        width: 33
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_21
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 1856
+        width: 20
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_22
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1856
+        width: 20
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_23
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1856
+        width: 21
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_24
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1856
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_25
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 1856
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_26
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 1856
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_27
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1856
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_28
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1791
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_29
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1791
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_30
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1790
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_31
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1790
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_32
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1790
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_33
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1790
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_34
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 1790
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_35
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1790
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_36
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1728
+        width: 20
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_37
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1728
+        width: 24
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_38
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1728
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_39
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 1728
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_40
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 1728
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_41
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1728
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_42
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1728
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_43
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 1728
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_44
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1664
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_45
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1664
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_46
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1665
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_47
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1665
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_48
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1665
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_49
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1665
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_50
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1665
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_51
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 1665
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_52
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 1600
+        width: 20
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_53
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 1600
+        width: 24
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_54
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1600
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_55
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1600
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_56
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 1600
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_57
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 1600
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_58
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 1600
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_59
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1600
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_60
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1537
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_61
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1537
+        width: 29
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_62
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1536
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_63
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1534
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_64
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1536
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_65
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1537
+        width: 29
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_66
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1536
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_67
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 1534
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_68
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1536
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_69
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1473
+        width: 21
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_70
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 1473
+        width: 21
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_71
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1474
+        width: 20
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_72
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 1474
+        width: 22
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_73
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1473
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_74
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1473
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_75
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 1473
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_76
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 1473
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_77
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 1473
+        width: 21
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_78
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1409
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_79
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1409
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_80
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1408
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_81
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1408
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_82
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1408
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_83
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1409
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_84
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1408
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_85
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 1408
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_86
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1408
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_87
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 1345
+        width: 20
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_88
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1345
+        width: 21
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_89
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1346
+        width: 20
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_90
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1346
+        width: 22
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_91
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1345
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_92
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1345
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_93
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1345
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_94
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1345
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_95
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 1345
+        width: 21
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_96
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1281
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_97
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1281
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_98
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1281
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_99
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1281
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_100
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1281
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_101
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1281
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_102
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1217
+        width: 20
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_103
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1217
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_104
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1217
+        width: 23
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_105
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 1217
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_106
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 1217
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_107
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1217
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_108
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1153
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_109
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1162
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_110
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1153
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_111
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1153
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_112
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1153
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_113
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1153
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_114
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1153
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_115
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 1089
+        width: 20
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_116
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 1089
+        width: 25
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_117
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1089
+        width: 23
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_118
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1089
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_119
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1089
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_120
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1089
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_121
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1024
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_122
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1024
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_123
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1023
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_124
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1023
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_125
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1023
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_126
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1023
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_127
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1023
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_128
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 1023
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_129
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1023
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_130
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 1023
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_131
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 1023
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_132
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 1023
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_133
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 1023
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_134
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 960
+        width: 20
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_135
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 960
+        width: 24
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_136
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 960
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_137
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 960
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_138
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 960
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_139
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 960
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_140
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 960
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_141
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 960
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_142
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 960
+        width: 39
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_143
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 960
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_144
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 960
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_145
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 960
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_146
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 960
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_147
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 896
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_148
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 895
+        width: 27
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_149
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 897
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_150
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 896
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_151
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 896
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_152
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 896
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_153
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 896
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_154
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 896
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_155
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 896
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_156
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 896
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_157
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 896
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_158
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 896
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_159
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 896
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_160
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 832
+        width: 20
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_161
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 832
+        width: 24
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_162
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 832
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_163
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 832
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_164
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 832
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_165
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 832
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_166
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 832
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_167
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 832
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_168
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 832
+        width: 39
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_169
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 832
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_170
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 832
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_171
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 832
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_172
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 832
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_173
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 767
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_174
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 768
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_175
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 768
+        width: 27
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_176
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 769
+        width: 28
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_177
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 770
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_178
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 767
+        width: 35
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_179
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 640
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_180
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 640
+        width: 44
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_181
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 640
+        width: 41
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_182
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 640
+        width: 56
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_183
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 640
+        width: 83
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_184
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 640
+        width: 75
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_185
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 449
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_186
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 449
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_187
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 449
+        width: 40
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_188
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 449
+        width: 46
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_189
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 449
+        width: 103
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_190
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 449
+        width: 69
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_191
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 257
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_192
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 266
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_193
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 257
+        width: 47
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_194
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 257
+        width: 42
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_195
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 257
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_196
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 237
+        width: 83
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_197
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 239
+        width: 74
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_198
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 65
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_199
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 65
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_200
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 65
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_201
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 65
+        width: 46
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_202
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 65
+        width: 103
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Illuiyani_203
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 65
+        width: 68
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
