@@ -71,7 +71,6 @@
      <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\Tonemapping.js" />
      <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\Triangles.js" />
      <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\Vignetting.js" />
-     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\ShowFps.js" />
      <None Include="Assets\Tiled2Unity\Imported\Solomonia_house8of8.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
