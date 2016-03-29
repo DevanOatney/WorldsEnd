@@ -63,9 +63,6 @@ public class MenuScreenScript : MonoBehaviour
 	{
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		m_lParty = dc.GetParty();
-		Debug.Log(m_lParty.Count);
-		foreach(DCScript.CharacterData character in m_lParty)
-			Debug.Log(character.m_szCharacterName);
 		foreach(Transform child in transform)
 		{
 			child.gameObject.SetActive(false);

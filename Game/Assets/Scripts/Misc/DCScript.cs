@@ -4,13 +4,24 @@ using System.Collections.Generic;
 
 public class DCScript : MonoBehaviour 
 {
+	[HideInInspector]
 	public float m_fMasterVolume = 0.5f;
+	[HideInInspector]
 	public float m_fMusicVolume = 0.5f;
+	[HideInInspector]
 	public float m_fSFXVolume = 0.5f;
+	[HideInInspector]
 	public float m_fVoiceVolume = 0.5f;
+	[HideInInspector]
 	public float m_fBrightness = 0.0f;
+	[HideInInspector]
 	public bool m_bToUseBattleAnimations = true;
+	[HideInInspector]
 	public int m_nTextSpeed = 2;
+	//List of characters in party
+	List<CharacterData> m_lPartyMembers = new List<CharacterData>();
+	//List of character in the roster
+	List<CharacterData> m_lRoster = new List<CharacterData>();
 
 	//flag field that is toggled depending on what the players actions are in the game
 	//["Name"] - 1 if activated 								  : Place Created
@@ -43,11 +54,13 @@ public class DCScript : MonoBehaviour
 
 
 	//amount of cash that the player has
+	[HideInInspector]
 	public int m_nGold;
-
+	[HideInInspector]
 	public int m_nMusicIter;
 
 	//The amount of time that the player has played for.
+	[HideInInspector]
 	public float m_fTimePlayed = 0.0f;
 
 	//the library of items (holds data for every item in the game, and also the inventory for the player)
@@ -220,10 +233,7 @@ public class DCScript : MonoBehaviour
 		}
 	}
 
-	//List of characters in party
-	List<CharacterData> m_lPartyMembers = new List<CharacterData>();
-	//List of character in the roster
-	List<CharacterData> m_lRoster = new List<CharacterData>();
+
 	//Return the character data of each unit in the party
 	public List<CharacterData> GetParty() 
 	{
@@ -245,11 +255,16 @@ public class DCScript : MonoBehaviour
 				
 				if(character.m_szCharacterName == rosterCharacter.m_szCharacterName)
 				{
+					Debug.Log(rosterCharacter.m_szCharacterName + " to true");
 					rosterCharacter.UpdateCharacterData(character);
 					rosterCharacter.m_bIsInParty = true;
+					break;
 				}
 				else
+				{
+					Debug.Log(rosterCharacter.m_szCharacterName + " to false");
 					rosterCharacter.m_bIsInParty = false;
+				}
 			}
 		}
 		Debug.Log("Count is " + m_lPartyMembers.Count);
@@ -257,9 +272,6 @@ public class DCScript : MonoBehaviour
 
 	public void AddPartyMember(CharacterData character) 
 	{
-		//update the characters stats in the roster (or add it to the roster if it's the first time.
-		SetRosteredCharacterData(character);
-
 		List<int> lAvailableSpots = new List<int>();
 		for(int i = 0; i < 6; ++i){lAvailableSpots.Add(i);}
 		int nLowestSpot = 6;
@@ -285,19 +297,24 @@ public class DCScript : MonoBehaviour
 			}
 		}
 		m_lPartyMembers.Add(character);
+		SetRosteredCharacterData(character);
+		UpdateRostersPartiedCharacters();
 	}
-
+	//add a character from the roster into the party
 	public void AddPartyMember(string szCharacterName)
 	{
-		AddPartyMember(GetRosteredCharacterData(szCharacterName));
+		DCScript.CharacterData character = GetRosteredCharacterData(szCharacterName);
+		AddPartyMember(character);
 	}
-
+	//remove a character from the party
 	public void RemovePartyMember(CharacterData character) 
 	{
+		Debug.Log("Remove Party Member");
 		character.m_bIsInParty = false;
 		GetRosteredCharacterData(character.m_szCharacterName).UpdateCharacterData(character);
 		m_lPartyMembers.Remove(character);
 	}
+	//returns the character if they're in the party.
 	public CharacterData GetCharacter(string szName)
 	{
 		foreach(CharacterData c in m_lPartyMembers)
@@ -307,18 +324,19 @@ public class DCScript : MonoBehaviour
 		}
 		return null;
 	}
-
-
-
+	//returns a character if they're in the roster
 	public CharacterData GetRosteredCharacterData(string characterName)
 	{
 		foreach(CharacterData cd in m_lRoster)
 		{
 			if(cd.m_szCharacterName == characterName)
+			{
 				return cd;
+			}
 		}
 		return null;
 	}
+	//Updates the data of a character in the roster
 	public void SetRosteredCharacterData(DCScript.CharacterData character)
 	{
 		foreach(CharacterData cd in m_lRoster)
@@ -329,8 +347,28 @@ public class DCScript : MonoBehaviour
 				return;
 			}
 		}
-		Debug.Log("Wasn't able to find character, adding it to the list");
 		m_lRoster.Add(character);
+	}
+
+	//Sets any character that is in the party 
+	public void UpdateRostersPartiedCharacters()
+	{
+		foreach(DCScript.CharacterData rosterCharacter in m_lRoster)
+		{
+			foreach(DCScript.CharacterData character in m_lPartyMembers)
+			{
+				if(character.m_szCharacterName == rosterCharacter.m_szCharacterName)
+				{
+					rosterCharacter.UpdateCharacterData(character);
+					rosterCharacter.m_bIsInParty = true;
+					break;
+				}
+				else
+				{
+					rosterCharacter.m_bIsInParty = false;
+				}
+			}
+		}
 	}
 
 	//iter to which background to load during battle (DOES NOT NEED TO BE SAVED/LOADED)
@@ -407,20 +445,24 @@ public class DCScript : MonoBehaviour
 			yield return new WaitForSeconds(1);
 		}
 	}
-	
+
+	public void TEMP_CheckCharacters()
+	{
+		foreach(CharacterData character in m_lRoster)
+		{
+			Debug.Log(character.m_szCharacterName + " is in roster "+ character.m_bHasBeenRecruited);
+		}
+		foreach(CharacterData character in m_lPartyMembers)
+		{
+			Debug.Log(character.m_szCharacterName + " is in party " + character.m_bIsInParty);
+		}
+	}
 	// Update is called once per frame
 	void Update () 
 	{
 		if(Input.GetKeyDown(KeyCode.A))
 		{
-			foreach(CharacterData character in m_lRoster)
-			{
-				Debug.Log(character.m_szCharacterName + " is in roster");
-			}
-			foreach(CharacterData character in m_lPartyMembers)
-			{
-				Debug.Log(character.m_szCharacterName + " is in party");
-			}
+			AddPartyMember("Briol");
 		}
 	}
 

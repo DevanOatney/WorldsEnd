@@ -63,17 +63,14 @@ public class OverWatcherScript : MonoBehaviour
 		GameObject pdata = GameObject.Find("PersistantData");
 		if(pdata == null)
 		{
+			
 			//This is a debug play then.   Create a data canister, and put the main character in the party
 			pdata = Instantiate(Resources.Load("Misc/PersistantData", typeof(GameObject))) as GameObject;
 			pdata.name = pdata.name.Replace("(Clone)", "");
-			GameObject.Find("PersistantData").GetComponent<DCScript>().GetParty().Clear();
-			GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
-			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
-			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
-			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
-			GameObject.Find("PersistantData").GetComponent<DCScript>().AddPartyMember("Briol");
+			dc = pdata.GetComponent<DCScript>();
 		}
-		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
+		else
+			dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		if(CAudioHelper.Instance == null)
 		{
 			GameObject audioPlayer = (GameObject)Instantiate(m_goAudioPlayer);
@@ -83,6 +80,7 @@ public class OverWatcherScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		dc.TEMP_CheckCharacters();
 		m_goPlayer = GameObject.Find("Player");
 
 		//check to see if the last scene was a battle, if it was the position data of where the player should go is in the datacanister. Also check if this was the last scene (loading game)
@@ -155,7 +153,6 @@ public class OverWatcherScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-
 		//Check to see if there should be an encounter happening
 		if(m_bEncounterToHappen == true)
 		{
