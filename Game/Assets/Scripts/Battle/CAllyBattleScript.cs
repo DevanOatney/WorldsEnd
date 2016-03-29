@@ -37,7 +37,7 @@ public class CAllyBattleScript : UnitScript
 	bool m_bAmIDefending = false;
 
 	//hooks to components/gameobjects
-	Animator m_aAnim;				
+				
 	public GameObject m_goFadingText; //for displaying damage taken (or any other fading text to float above this unit.
 	DCScript m_dcPersistantData;
 
@@ -1139,6 +1139,12 @@ public class CAllyBattleScript : UnitScript
 	}
 	public void UpdatePositionOnField()
 	{
+		if(m_aAnim == null)
+		{
+			m_aAnim = GetComponent<Animator>();
+			if(m_aAnim == null)
+				m_aAnim = GetComponentInChildren<Animator>();
+		}
 		string szgoName = "Ally_StartPos" + FieldPosition.ToString();
 		GameObject go = GameObject.Find(szgoName);
 		m_vInitialPos = new Vector3();
@@ -1156,13 +1162,13 @@ public class CAllyBattleScript : UnitScript
 		case 1:
 			{
 				//Middle right
-				gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
+				m_aAnim.gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
 			}
 			break;
 		case 2:
 			{
 				//Bottom right
-				gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
+				m_aAnim.gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
 			}
 			break;
 		case 3:
@@ -1173,13 +1179,13 @@ public class CAllyBattleScript : UnitScript
 		case 4:
 			{
 				//Middle Left
-				gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
+				m_aAnim.gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
 			}
 			break;
 		case 5:
 			{
 				//Bottom left
-				gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
+				m_aAnim.gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
 			}
 			break;
 		}
@@ -1264,8 +1270,8 @@ public class CAllyBattleScript : UnitScript
 			m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
 		}
 	}
-
-	void AttackAnimationEnd(int unitType) 
+		
+	public override void AttackAnimationEnd() 
 	{
 		if(m_nUnitType == (int)UnitTypes.ALLY_MELEE)
 		{
@@ -1323,7 +1329,7 @@ public class CAllyBattleScript : UnitScript
 		m_aAnim.SetBool("m_bIsAttacking", false);
 	}
 
-	void DamagedAnimationOver()
+	public override void DamagedAnimationOver()
 	{
 		m_aAnim.SetBool("m_bIsDamaged", false);
 	}

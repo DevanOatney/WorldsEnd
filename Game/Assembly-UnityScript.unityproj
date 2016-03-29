@@ -91,6 +91,7 @@
      <None Include="Assets\2d Art Pack\readme.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />
      <None Include="Assets\Tiled2Unity\Shaders\Tiled_Diffuse.shader" />
+     <None Include="Assets\Resources\Units\Ally\Illuiyani\StartingStats.txt" />
      <None Include="Assets\Tiled2Unity\Imported\untitled.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Resources\Units\Ally\Briol\StartingStats.txt" />

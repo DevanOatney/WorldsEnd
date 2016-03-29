@@ -42,7 +42,7 @@ public class BaseSpellBattleScript : MonoBehaviour
 
 	public virtual void DoneAnimating()
 	{
-		m_goOwner.GetComponent<Animator>().SetBool("m_bIsCasting", false);
+		m_goOwner.GetComponent<UnitScript>().m_aAnim.SetBool("m_bIsCasting", false);
 		m_goOwner.GetComponent<UnitScript>().AdjustMP(m_nMPCost * -1);
 		m_goOwner.GetComponent<UnitScript>().m_nState = (int)CAllyBattleScript.ALLY_STATES.STATUS_EFFECTS;
 		Destroy(gameObject);

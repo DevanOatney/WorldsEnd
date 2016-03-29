@@ -391,7 +391,7 @@ public class PercentBeserkEnemyScript : UnitScript {
 	{
 		AttackAnimationEnd();
 	}
-	void AttackAnimationEnd()
+	public override void AttackAnimationEnd()
 	{
 		GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
 		foreach(GameObject tar in posTargs)

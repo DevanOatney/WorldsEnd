@@ -15,7 +15,7 @@ public class AnimatedEnemyScript : MonoBehaviour {
 
 	void EndParentAttack()
 	{
-		transform.parent.GetComponent<UnitScript>().AttackAnimationEnded();
+		transform.parent.GetComponent<UnitScript>().AttackAnimationEnd();
 	}
 	void IDied()
 	{

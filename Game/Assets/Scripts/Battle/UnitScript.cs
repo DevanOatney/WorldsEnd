@@ -91,6 +91,7 @@ public class UnitScript : MonoBehaviour
 
 
 	protected TurnWatcherScript m_twTurnWatcher;
+	public Animator m_aAnim;	
 	//List of status effects that could be effecting the player/units   Poison, Confusion, Paralyze, Stone (examples)
 	public List<GameObject> m_lStatusEffects = new List<GameObject>();
 
@@ -232,7 +233,7 @@ public class UnitScript : MonoBehaviour
 		m_bFirstPass = true;
 	}
 
-	public void AttackAnimationEnded()
+	public virtual void AttackAnimationEnd()
 	{
 		switch(m_nUnitType)
 		{
@@ -257,6 +258,10 @@ public class UnitScript : MonoBehaviour
 		}
 			break;
 		}
+	}
+
+	public virtual void DamagedAnimationOver()
+	{
 	}
 
 	public void IDied()

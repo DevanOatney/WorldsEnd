@@ -23,7 +23,7 @@ public class ThunderScript  : BaseSpellBattleScript
 				newThunderEffect.transform.position = pos;
 				Destroy(newThunderEffect, 1.4f);
 			}
-			m_goOwner.GetComponent<Animator>().SetBool("m_bIsCasting", true);
+			m_goOwner.GetComponent<UnitScript>().m_aAnim.SetBool("m_bIsCasting", true);
 			//in x amount of time, the player's turn is over and it's time to destroy this object
 			Invoke("DoneAnimating", 1.5f);
 			//turn off the flags for the item/inventory rendering

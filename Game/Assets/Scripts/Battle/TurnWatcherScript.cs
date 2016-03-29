@@ -75,11 +75,14 @@ public class TurnWatcherScript : MonoBehaviour
 			//This is a debug play then.   Create a data canister, and put the main character in the party
 			pdata = Instantiate(Resources.Load("Misc/PersistantData", typeof(GameObject))) as GameObject;
 			pdata.name = pdata.name.Replace("(Clone)", "");
-			GameObject.Find("PersistantData").GetComponent<DCScript>().GetParty().Clear();
+			ds = pdata.GetComponent<DCScript>();
+			ds.GetParty().Clear();
 			GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
 			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
+			ds.AddPartyMember("Callan");
 			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
 			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
+			ds.AddPartyMember("Briol");
 			List<EncounterGroupLoaderScript.cEnemyData> lEnemies = new List<EncounterGroupLoaderScript.cEnemyData>();
 			EncounterGroupLoaderScript.cEnemyData enemy = new EncounterGroupLoaderScript.cEnemyData();
 			enemy.m_szEnemyName = "Boar";
@@ -90,16 +93,6 @@ public class TurnWatcherScript : MonoBehaviour
 			enemy.m_nFormationIter = 0;
 			lEnemies.Add(enemy);
 			pdata.GetComponent<DCScript>().SetEnemyNames(lEnemies);
-			ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
-			List<DCScript.CharacterData> party = ds.GetParty();
-			foreach(DCScript.CharacterData ally in party)
-			{
-				if(ally.m_szCharacterName == "Briol")
-					ally.m_nFormationIter = 3;
-				else
-					ally.m_nFormationIter = 0;
-			}
-			ds.SetParty(party);
 		}
 		else
 			ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
