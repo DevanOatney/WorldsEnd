@@ -260,6 +260,10 @@ public class UnitScript : MonoBehaviour
 		}
 	}
 
+	public virtual void CastingAnimationEnd()
+	{
+	}
+
 	public virtual void DamagedAnimationOver()
 	{
 	}

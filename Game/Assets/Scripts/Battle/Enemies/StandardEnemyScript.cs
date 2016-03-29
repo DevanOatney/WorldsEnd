@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class StandardEnemyScript : UnitScript 
 {
 	public enum ENEMY_STATES {eIDLE, eCHARGE, eRETURN, eATTACK, eDAMAGED, eSTATUS_EFFECT, eDEAD};
-	Animator m_aAnim;
 	//for fading text
 	public GameObject m_goFadingText;
 	//Enemy Stats

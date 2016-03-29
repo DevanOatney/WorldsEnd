@@ -24,6 +24,7 @@ public class CAllyBattleScript : UnitScript
 		SPELL_PICKED_AOEDMG,
 		SPELL_PICKED_SINGLEHEAL,
 		SPELL_PICKED_AOEHEAL,
+		CHARGING_SPELL,  //player is charging up to cast the spell, wait for the charging animation, then move to CASTING_SPELL state
 		CASTING_SPELL,   //player has chosen a spell and a target, play animation, resolve spell effect, move to STATUS_EFFECT
 		SWITCHING,		 //Unit switches with either unit infront or behind (depending on formation) afterward move to STATUS_EFFECT
 		SWITCHING_NOTMYTURN,     //State for switching when it's not your turn, this is to allow non-turn units to be able to animate/move but not go to STATUS_EFFECT afterward.
@@ -309,8 +310,8 @@ public class CAllyBattleScript : UnitScript
 				if(Input.GetKeyDown(KeyCode.Return))
 				{
 					//turn off the flags for the item/inventory rendering
-					m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
-					m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
+					m_aAnim.SetBool("m_bIsCasting", true);
 					ClearTargetReticles();
 				}
 			}
@@ -319,8 +320,8 @@ public class CAllyBattleScript : UnitScript
 			{
 				if(Input.GetKeyDown(KeyCode.Return))
 				{
-					m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
-					m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
+					m_aAnim.SetBool("m_bIsCasting", true);
 					ClearTargetReticles();
 				}
 				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
@@ -337,8 +338,8 @@ public class CAllyBattleScript : UnitScript
 				if(Input.GetKeyDown(KeyCode.Return))
 				{
 					//turn off the flags for the item/inventory rendering
-					m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
-					m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
+					m_aAnim.SetBool("m_bIsCasting", true);
 					ClearTargetReticles();
 				}
 			}
@@ -347,8 +348,8 @@ public class CAllyBattleScript : UnitScript
 			{
 				if(Input.GetKeyDown(KeyCode.Return))
 				{
-					m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
-					m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+					m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
+					m_aAnim.SetBool("m_bIsCasting", true);
 					ClearTargetReticles();
 				}
 				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
@@ -360,6 +361,10 @@ public class CAllyBattleScript : UnitScript
 			}
 			break;
 		case (int)ALLY_STATES.CASTING_SPELL:  
+			{
+			}
+			break;
+		case (int)ALLY_STATES.CHARGING_SPELL:
 			{
 			}
 			break;
@@ -1231,14 +1236,14 @@ public class CAllyBattleScript : UnitScript
 		}
 		else if(m_nState == (int)ALLY_STATES.SPELL_PICKED_SINGLEDMG)
 		{
-			m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
-			m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+			m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
+			m_aAnim.SetBool("m_bIsCasting", true);
 			ClearTargetReticles();
 		}
 		else if(m_nState == (int)ALLY_STATES.SPELL_PICKED_AOEDMG)
 		{
-			m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
-			m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+			m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
+			m_aAnim.SetBool("m_bIsCasting", true);
 			ClearTargetReticles();
 		}
 	}
@@ -1260,14 +1265,14 @@ public class CAllyBattleScript : UnitScript
 		else if(m_nState == (int)ALLY_STATES.SPELL_PICKED_SINGLEHEAL)
 		{
 			ClearTargetReticles();
-			m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
-			m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+			m_aAnim.SetBool("m_bIsCasting", true);
+			m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
 		}
 		else if(m_nState == (int)ALLY_STATES.SPELL_PICKED_AOEHEAL)
 		{
 			ClearTargetReticles();
-			m_nState = (int)CAllyBattleScript.ALLY_STATES.CASTING_SPELL;
-			m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+			m_aAnim.SetBool("m_bIsCasting", true);
+			m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
 		}
 	}
 		
@@ -1327,6 +1332,16 @@ public class CAllyBattleScript : UnitScript
 			Invoke("ChangeStateToStatusEffect", 2.0f);
 		}
 		m_aAnim.SetBool("m_bIsAttacking", false);
+	}
+
+	public override void CastingAnimationEnd()
+	{
+		if(m_nState == (int)ALLY_STATES.CHARGING_SPELL)
+		{
+			m_nState = (int)ALLY_STATES.CASTING_SPELL;
+			m_aAnim.SetBool("m_bIsCasting", false);
+			m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+		}
 	}
 
 	public override void DamagedAnimationOver()

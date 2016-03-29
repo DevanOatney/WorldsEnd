@@ -28,7 +28,6 @@ public class KindRainScript : BaseSpellBattleScript
 					break;
 				}
 			}
-			m_goOwner.GetComponent<UnitScript>().m_aAnim.SetBool("m_bIsCasting", true);
 			//in x amount of time, the player's turn is over and it's time to destroy this object
 			Invoke("DoneAnimating", 1.5f);
 

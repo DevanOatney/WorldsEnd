@@ -13,4 +13,9 @@ public class AnimatedAllyBattleScript : MonoBehaviour
 	{
 		transform.parent.gameObject.GetComponent<CAllyBattleScript>().DamagedAnimationOver();
 	}
+
+	void CastingAnimationEnd()
+	{
+		transform.parent.gameObject.GetComponent<CAllyBattleScript>().CastingAnimationEnd();
+	}
 }

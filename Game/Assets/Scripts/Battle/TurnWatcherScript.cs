@@ -77,12 +77,15 @@ public class TurnWatcherScript : MonoBehaviour
 			pdata.name = pdata.name.Replace("(Clone)", "");
 			ds = pdata.GetComponent<DCScript>();
 			ds.GetParty().Clear();
-			GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
-			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
-			ds.AddPartyMember("Callan");
+			//GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
+			//Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
+			//ds.AddPartyMember("Callan");
 			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
 			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
 			ds.AddPartyMember("Briol");
+			//GameObject Illuiyani = Resources.Load<GameObject>("Units/Ally/Illuiyani/Illuiyani");
+			//Illuiyani.GetComponent<CAllyBattleScript>().SetUnitStats();
+			//ds.AddPartyMember("Illuiyani");
 			List<EncounterGroupLoaderScript.cEnemyData> lEnemies = new List<EncounterGroupLoaderScript.cEnemyData>();
 			EncounterGroupLoaderScript.cEnemyData enemy = new EncounterGroupLoaderScript.cEnemyData();
 			enemy.m_szEnemyName = "Boar";

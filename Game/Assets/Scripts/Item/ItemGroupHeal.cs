@@ -41,7 +41,7 @@ public class ItemGroupHeal : BaseItemScript
 	void DoneAnimating()
 	{
 		//end the animation
-		m_pOwner.GetComponent<Animator>().SetBool("m_bIsCasting", false);
+		m_pOwner.GetComponent<UnitScript>().m_aAnim.SetBool("m_bIsCasting", false);
 		//Do the effect
 		GameObject[] allies = GameObject.FindGameObjectsWithTag("Ally");
 		foreach(GameObject ally in allies)
