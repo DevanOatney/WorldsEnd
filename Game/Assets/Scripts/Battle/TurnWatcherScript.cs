@@ -47,6 +47,20 @@ public class TurnWatcherScript : MonoBehaviour
 	//The levels that the characters will be at the end of the experience tally
 	Dictionary<string, int> m_lNextLevel = new Dictionary<string, int>();
 
+	//List of the items that will be able to drop at the end of battle
+	List<StandardEnemyScript.DroppedItem> m_lItemsThatCanDrop = new List<StandardEnemyScript.DroppedItem>();
+
+	//List for how many items are won at the end of the fight.
+	List<ItemChances> m_dnItemCountChances = new List<ItemChances>();
+	class ItemChances
+	{
+		public ItemChances(int amnt, int chnc) {m_nAmountOfItems = amnt;m_nChance = chnc; }
+		public int m_nAmountOfItems;
+		public int m_nChance;
+	}
+	//List of the items that were won
+	List<ItemLibrary.CharactersItems> m_lItemsWon = new List<ItemLibrary.CharactersItems>();
+
 	//speed of the counter showing the characters current exp
 	int m_fExpTickSpeed = 1;
 	float m_fExpBucket = 0.01f;
@@ -65,6 +79,11 @@ public class TurnWatcherScript : MonoBehaviour
 
 	void Awake()
 	{
+		m_dnItemCountChances.Add(new ItemChances(0, 40));
+		m_dnItemCountChances.Add(new ItemChances(1, 30));
+		m_dnItemCountChances.Add(new ItemChances(2, 15));
+		m_dnItemCountChances.Add(new ItemChances(3, 10));
+		m_dnItemCountChances.Add(new ItemChances(4, 5));
 		GameObject pdata = GameObject.Find("PersistantData");
 		m_goActionSelector = GameObject.Find("Actions");
 		m_goActionSelector.SetActive(false);
@@ -77,12 +96,12 @@ public class TurnWatcherScript : MonoBehaviour
 			pdata.name = pdata.name.Replace("(Clone)", "");
 			ds = pdata.GetComponent<DCScript>();
 			ds.GetParty().Clear();
-			//GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
-			//Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
-			//ds.AddPartyMember("Callan");
-			//GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
-			//Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
-			//ds.AddPartyMember("Briol");
+			GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
+			Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
+			ds.AddPartyMember("Callan");
+			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
+			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
+			ds.AddPartyMember("Briol");
 			GameObject Illuiyani = Resources.Load<GameObject>("Units/Ally/Illuiyani/Illuiyani");
 			Illuiyani.GetComponent<CAllyBattleScript>().SetUnitStats();
 			ds.AddPartyMember("Illuiyani");
@@ -381,7 +400,20 @@ public class TurnWatcherScript : MonoBehaviour
 			{
 				m_bOneShotAfterVictory = true;
 				GameObject.Find("Party").GetComponent<Animator>().Play("PartyRoster_SlideIn");
-				GameObject.Find("Items Won").GetComponent<Animator>().Play("ItemsWon_SlideIn");
+				GameObject ItemsWon = GameObject.Find("Items Won");
+				ItemsWon.GetComponent<Animator>().Play("ItemsWon_SlideIn");
+				if(m_lItemsWon.Count > 0)
+				{
+					int _nItemCount = 1;
+					Transform itemsWonPanel = ItemsWon.transform.FindChild("Panel");
+					foreach(ItemLibrary.CharactersItems ciItem in m_lItemsWon)
+					{
+						Transform itemObject = itemsWonPanel.FindChild("Item"+_nItemCount.ToString());
+						itemObject.FindChild("ItemName").GetComponent<Text>().text = ciItem.m_szItemName;
+						itemObject.FindChild("ItemCount").GetComponent<Text>().text = ciItem.m_nItemCount.ToString();
+						++_nItemCount;
+					}
+				}
 
 				foreach(GameObject Ally in Allies)
 				{
@@ -475,8 +507,7 @@ public class TurnWatcherScript : MonoBehaviour
 	}
 	public void RemoveMeFromList(GameObject go, float deathDuration)
 	{
-		//add the 
-		m_lExperienceToAward.Add(go.GetComponent<UnitScript>().GetUnitLevel());
+		
 		//quickly grab the index of the object about to be removed
 		int whereOnList = m_goUnits.IndexOf(go);
 		//remove the unit
@@ -492,11 +523,19 @@ public class TurnWatcherScript : MonoBehaviour
 		//TODO: perhaps set up a scenario where if a specific enemy/ally is defeated the fight ends
 		if(go.GetComponent<UnitScript>().m_nUnitType > (int)UnitScript.UnitTypes.NPC)
 		{
+			//add the enemies level to the list of levels that have been defeated.
+			m_lExperienceToAward.Add(go.GetComponent<UnitScript>().GetUnitLevel());
+			//add any items this enemy can drop to the list of items that can drop
+			foreach(StandardEnemyScript.DroppedItem item in go.GetComponent<StandardEnemyScript>().m_lItemsThatCanDrop)
+			{
+				m_lItemsThatCanDrop.Add(item);
+			}
 			//removing an enemy
 			m_nEnemyCount--;
 
 			if(m_nEnemyCount <= 0)
 			{
+				RollForItems();
 				m_bIsBattleOver  = true;
 				m_goActionSelector.SetActive(false);
 				Win();
@@ -539,6 +578,62 @@ public class TurnWatcherScript : MonoBehaviour
 		string previousField = ds.GetPreviousFieldName();
 		ds.SetPreviousFieldName(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(previousField);
+	}
+
+	void RollForItems()
+	{
+		List<StandardEnemyScript.DroppedItem> itemsWon = new List<StandardEnemyScript.DroppedItem>();
+		int roll = Random.Range(0, 100);
+		int _nItemsWon = 0;
+		foreach(ItemChances chance in m_dnItemCountChances)
+		{
+			if(roll <= chance.m_nChance)
+			{
+				_nItemsWon = chance.m_nAmountOfItems;
+				break;
+			}
+			else
+			{
+				roll -= chance.m_nChance;
+			}
+		}
+		for(int i = 0; i < _nItemsWon; ++i)
+		{
+			//100% for each unit that was defeated.
+			int totalChance = m_lExperienceToAward.Count * 100;
+			roll = Random.Range(1, totalChance);
+			
+			foreach(StandardEnemyScript.DroppedItem item in m_lItemsThatCanDrop)
+			{
+				if(roll <= item.m_nChance)
+				{
+					//found the item that was won
+					itemsWon.Add(item);
+					break;
+				}
+				else
+					roll -= item.m_nChance;
+			}
+
+		}
+		foreach(StandardEnemyScript.DroppedItem item in itemsWon)
+		{
+			if(item.m_szItemName == "")
+			{
+				//nothing was won
+				Debug.Log("Won nothing");
+			}
+			else
+			{
+				ItemLibrary.ItemData idItem = ds.m_lItemLibrary.GetItemFromDictionary(item.m_szItemName);
+				ItemLibrary.CharactersItems newItem = new ItemLibrary.CharactersItems();
+				newItem.m_szItemName = idItem.m_szItemName;
+				newItem.m_nItemType = idItem.m_nItemType;
+				newItem.m_nItemCount = item.m_nAmount;
+				ds.m_lItemLibrary.AddItem(newItem);
+				m_lItemsWon.Add(newItem);
+			}
+		}
 	}
 
 	void Win()

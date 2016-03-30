@@ -19,6 +19,14 @@ public class StandardEnemyScript : UnitScript
 	float m_fShadowTimerBucket = 0.1f;
 	public Vector3 m_vTargetPosition = new Vector3();
 
+	public List<DroppedItem> m_lItemsThatCanDrop;
+	public class DroppedItem
+	{
+		public string m_szItemName;
+		public int m_nAmount;
+		public int m_nChance;
+	}
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -206,7 +214,16 @@ public class StandardEnemyScript : UnitScript
 		foreach(string stat in stats)
 		{
 			string[] piece = stat.Split(':');
-			_lStats.Add(piece[1].Trim());
+			if(piece.Length > 2)
+			{
+				//This is not a standard stat, just add the whole thing for later
+				_lStats.Add(stat);
+			}
+			//error catch for if there's an empty line.
+			else if(piece.Length <= 1)
+				continue;
+			else
+				_lStats.Add(piece[1].Trim());
 		}
 		//Max HP
 		SetMaxHP(int.Parse(_lStats[0].Trim()));
@@ -223,6 +240,28 @@ public class StandardEnemyScript : UnitScript
 		SetEVA(int.Parse(_lStats[5].Trim()));
 		//Lvl
 		SetUnitLevel(int.Parse(_lStats[6].Trim()));
+		int itemCount = int.Parse(_lStats[7].Trim());
+		m_lItemsThatCanDrop = new List<DroppedItem>();
+		int totalChance = 0;
+		for(int i = 8; i-8 < itemCount; ++i)
+		{
+			string[] itemPieces = _lStats[i].Split(',');
+			DroppedItem item = new DroppedItem();
+			item.m_szItemName = itemPieces[0].Trim().Split(':')[1].Trim();
+			item.m_nAmount = int.Parse(itemPieces[1].Trim().Split(':')[1].Trim());
+			item.m_nChance = int.Parse(itemPieces[2].Trim().Split(':')[1].Trim());
+			totalChance += item.m_nChance;
+			m_lItemsThatCanDrop.Add(item);
+		}
+		if(totalChance < 100)
+		{
+			//there's space, add in an empty null space for nothing to drop
+			DroppedItem item = new DroppedItem();
+			item.m_szItemName = "";
+			item.m_nAmount = 0;
+			item.m_nChance = 100 - totalChance;
+			m_lItemsThatCanDrop.Add(item);
+		}
 	}
 	new public void AdjustHP(int dmg)
 	{

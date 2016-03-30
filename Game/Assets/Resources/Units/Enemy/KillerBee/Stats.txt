@@ -5,3 +5,5 @@ SPD:4
 HIT:9
 EVA:2
 UNIT LEVEL:15
+How many items can drop : 1
+name:Vampyric Amulet,amnt:1,chance:100

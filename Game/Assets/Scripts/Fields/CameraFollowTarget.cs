@@ -41,7 +41,6 @@ public class CameraFollowTarget : MonoBehaviour {
 			Vector3 delta = m_goTarget.transform.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z)); 
 			if(delta.magnitude > 2.0f)
 			{
-				Debug.Log("hit");
 				transform.position = transform.position + delta;
 			}
 			else
