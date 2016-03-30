@@ -80,12 +80,12 @@ public class TurnWatcherScript : MonoBehaviour
 			//GameObject Callan = Resources.Load<GameObject>("Units/Ally/Callan/Callan");
 			//Callan.GetComponent<CAllyBattleScript>().SetUnitStats();
 			//ds.AddPartyMember("Callan");
-			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
-			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
-			ds.AddPartyMember("Briol");
-			//GameObject Illuiyani = Resources.Load<GameObject>("Units/Ally/Illuiyani/Illuiyani");
-			//Illuiyani.GetComponent<CAllyBattleScript>().SetUnitStats();
-			//ds.AddPartyMember("Illuiyani");
+			//GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
+			//Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
+			//ds.AddPartyMember("Briol");
+			GameObject Illuiyani = Resources.Load<GameObject>("Units/Ally/Illuiyani/Illuiyani");
+			Illuiyani.GetComponent<CAllyBattleScript>().SetUnitStats();
+			ds.AddPartyMember("Illuiyani");
 			List<EncounterGroupLoaderScript.cEnemyData> lEnemies = new List<EncounterGroupLoaderScript.cEnemyData>();
 			EncounterGroupLoaderScript.cEnemyData enemy = new EncounterGroupLoaderScript.cEnemyData();
 			enemy.m_szEnemyName = "Boar";

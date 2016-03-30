@@ -164,7 +164,7 @@ public class CAllyBattleScript : UnitScript
 					{
 						toTarget.Normalize();
 						transform.position += toTarget * m_fMovementSpeed * Time.deltaTime;
-						if(m_fShadowTimer >= m_fShadowTimerBucket)
+						if(m_fShadowTimer >= m_fShadowTimerBucket && m_goShadowClone != null)
 						{
 							GameObject newShadow = Instantiate(m_goShadowClone, transform.position, Quaternion.identity) as GameObject;
 							newShadow.GetComponent<SpriteRenderer>().sprite = m_aAnim.gameObject.GetComponent<SpriteRenderer>().sprite;
