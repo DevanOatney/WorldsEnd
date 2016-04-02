@@ -188,6 +188,8 @@ public class MessageHandler : MonoBehaviour
 						line += ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).Line[textIter];
 						textIter++;
 					}
+					else
+						GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
 					timer = 0.0f;
 				}
 				Texture2D tBust;

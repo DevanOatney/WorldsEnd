@@ -5,8 +5,8 @@ using System.Text.RegularExpressions;
 public class MorseCodePlayer : MonoBehaviour {
 	public AudioClip dotSound;
 	public AudioClip dashSound;
-	public float spaceDelay;
-	public float letterDelay;
+	float spaceDelay = 0.1f;
+	float letterDelay = 0.05f;
 
 	DCScript m_dcPersistantData;
 	
