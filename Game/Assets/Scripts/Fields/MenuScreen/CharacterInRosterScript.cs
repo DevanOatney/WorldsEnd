@@ -41,9 +41,14 @@ public class CharacterInRosterScript : MonoBehaviour, IBeginDragHandler, IDragHa
 	public void OnDrag (PointerEventData eventData)
 	{
 		Vector3 newPos = Input.mousePosition;
-		newPos.x = newPos.x - (Screen.width * 0.5f);
-		newPos.y = newPos.y - (Screen.height * 0.5f);
-		m_goNewDraggedObject.GetComponent<RectTransform>().anchoredPosition = newPos;
+		newPos = Camera.main.ScreenToViewportPoint(newPos);
+		newPos.x *= Screen.width;
+		newPos.y *= Screen.height;
+		//newPos.x = /*newPos.x -*/ (Screen.width * 0.5f);
+		//newPos.y = /*newPos.y - */(Screen.height * 0.5f);
+		Debug.Log(newPos);
+		m_goNewDraggedObject.GetComponent<RectTransform>().position = newPos;
+		//m_goNewDraggedObject.GetComponent<RectTransform>().anchoredPosition = newPos;
 	}
 
 	#endregion

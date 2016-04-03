@@ -55,9 +55,13 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 		if(m_goDraggedObject != null)
 		{
 			Vector3 newPos = Input.mousePosition;
-			newPos.x = newPos.x - (Screen.width * 0.5f) - (m_goDraggedObject.GetComponent<RectTransform>().sizeDelta.x * 1.5f);
-			newPos.y = newPos.y - (Screen.height * 0.5f) + (m_goDraggedObject.GetComponent<RectTransform>().sizeDelta.y * 0.5f);
-			m_goDraggedObject.GetComponent<RectTransform>().localPosition = newPos;
+			newPos = Camera.main.ScreenToViewportPoint(newPos);
+			newPos.x *= Screen.width - (m_goDraggedObject.GetComponent<RectTransform>().sizeDelta.x * 0.5f);
+			newPos.y *= Screen.height + (m_goDraggedObject.GetComponent<RectTransform>().sizeDelta.y * 0.5f);
+			m_goDraggedObject.GetComponent<RectTransform>().position = newPos;
+			//newPos.x = newPos.x - (Screen.width * 0.5f) - (m_goDraggedObject.GetComponent<RectTransform>().sizeDelta.x * 1.5f);
+			//newPos.y = newPos.y - (Screen.height * 0.5f) + (m_goDraggedObject.GetComponent<RectTransform>().sizeDelta.y * 0.5f);
+			//m_goDraggedObject.GetComponent<RectTransform>().localPosition = newPos;
 		}
 	}
 
