@@ -152,13 +152,15 @@ public class NPCScript : MonoBehaviour
 		#endregion
 		else if(m_bMoveTowardLocation == true)
 		{
-            
-            if (m_vWaypoints.Length > 0)
-            {
-                //doing pathfinding
-                m_vTargetLocation = m_vWaypoints[m_nWaypointIndex];
-
-            }
+			if(m_vWaypoints != null)
+			{
+            	if (m_vWaypoints.Length > 0)
+            	{
+            	    //doing pathfinding
+            	    m_vTargetLocation = m_vWaypoints[m_nWaypointIndex];
+				
+            	}
+			}
             Vector3 npcPos = transform.position;
             Vector3 toTarget = m_vTargetLocation - npcPos;
 
@@ -201,21 +203,23 @@ public class NPCScript : MonoBehaviour
 			else
 			{
                 //reached target location
-
-                if (m_vWaypoints.Length > 0)
-                {
-                    //we're doing waypoints, so check to see if there's another location to go, if so, go there.
-                    if (m_nWaypointIndex < m_vWaypoints.Length-1)
-                    {
-						ResetAnimFlagsExcept(-1);
-                        m_nWaypointIndex++;
-                    }
-                    else
-                    {
-                        //reached the end of the waypoints (maybe later adjust for looping paths?)
-                        StopMovement();
-                    }
-                }
+				if(m_vWaypoints != null)
+				{
+              	 	if (m_vWaypoints.Length > 0)
+                	{
+                	    //we're doing waypoints, so check to see if there's another location to go, if so, go there.
+                	    if (m_nWaypointIndex < m_vWaypoints.Length-1)
+                	    {
+							ResetAnimFlagsExcept(-1);
+                	        m_nWaypointIndex++;
+                	    }
+                	    else
+                	    {
+                	        //reached the end of the waypoints (maybe later adjust for looping paths?)
+                	        StopMovement();
+                	    }
+                	}
+				}
                 else
                 {
                     //doing some non-waypoint movement (/shrug) stop movement now that destination is reached

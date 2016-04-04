@@ -57,7 +57,10 @@ public class InonEventHandler : BaseEventSystemScript
 		else if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == false && 
 		        ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == true)
 		{
-			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
+			GameObject player = GameObject.Find("Player");
+			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+			player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 0);
+			player.GetComponent<FieldPlayerMovementScript>().BindInput();
 			//have completed the ritual battle, but haven't completed the full ritual yet, begin the final bits of dialogue for the ritual
 			GameObject.Find("Mattach").GetComponentInChildren<MessageHandler>().BeginDialogue("B1");
 			ds.m_dStoryFlagField.Remove("Inon_RitualBattleComplete");
@@ -73,6 +76,7 @@ public class InonEventHandler : BaseEventSystemScript
 		}
 		else if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == true)
 		{
+			//The player has finished all of the intro events in Inon.
 			foreach(GameObject wpnt in Phase1_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 			foreach(GameObject wpnt in Phase2_waypoints)
@@ -664,7 +668,8 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "RetrieveTusks":
 		{
-			GameObject.Find("Briol").GetComponent<BriolInonRitualScript>().MoveDownward();
+			GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveToGameobject(Phase4_waypoints[0],false);
+			//GameObject.Find("Briol").GetComponent<BriolInonRitualScript>().MoveDownward();
 		}
 			break;
 		case "BriolArriveAtRitual":
