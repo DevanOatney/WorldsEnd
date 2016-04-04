@@ -55,7 +55,8 @@ public class NPCScript : MonoBehaviour
 	public string m_szDialoguePath = "";
 
 	public float m_fWalkingSpeed = 2.0f;
-    bool m_bShouldRun = false;
+	public float m_fRunningSpeed = 4.0f;
+	bool m_bShouldRun = false;
 
 	//Should the characters moving logic be active? (Must have m_bActive set to true for this to effect the NPC)
 	public bool m_bIsMoving = false;
@@ -132,7 +133,10 @@ public class NPCScript : MonoBehaviour
 					m_aAnim.SetBool("m_bMoveDown", true);
 				toPlayer.x = 0.0f;
 				toPlayer.Normalize();
-				toPlayer.y *= m_fWalkingSpeed;
+				if(m_bShouldRun == true)
+					toPlayer.y *= m_fRunningSpeed;
+				else
+					toPlayer.y *= m_fWalkingSpeed;
 				gameObject.GetComponent<Rigidbody2D>().velocity = toPlayer;
 			}
 			else
@@ -157,7 +161,7 @@ public class NPCScript : MonoBehaviour
             }
             Vector3 npcPos = transform.position;
             Vector3 toTarget = m_vTargetLocation - npcPos;
-			
+
 			if(toTarget.x > 0.1f || toTarget.x < -0.1f)
 			{
 				ResetAnimFlagsExcept(-1);
@@ -170,7 +174,10 @@ public class NPCScript : MonoBehaviour
 				}
 				toTarget.y = 0.0f;
 				toTarget.Normalize();
-				toTarget.x *= m_fWalkingSpeed;
+				if(m_bShouldRun == true)
+					toTarget.x *= m_fRunningSpeed;
+				else
+					toTarget.x *= m_fWalkingSpeed;
 				gameObject.GetComponent<Rigidbody2D>().velocity = toTarget;
 			}
 			else if(toTarget.y > 0.1f || toTarget.y  < -0.1f)
@@ -185,7 +192,10 @@ public class NPCScript : MonoBehaviour
 				}
 				toTarget.x = 0.0f;
 				toTarget.Normalize();
-				toTarget.y *= m_fWalkingSpeed;
+				if(m_bShouldRun == true)
+					toTarget.y *= m_fRunningSpeed;
+				else
+					toTarget.y *= m_fWalkingSpeed;
 				gameObject.GetComponent<Rigidbody2D>().velocity = toTarget;
 			}
 			else

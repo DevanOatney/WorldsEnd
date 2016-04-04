@@ -327,7 +327,7 @@ public class LoadingScript : MonoBehaviour
 		//Cur MP
 		szLine = sr.ReadLine().Trim();
 		int CurMP = int.Parse(szLine);
-		character.m_nCurMP = int.Parse(szLine);
+		character.m_nCurMP = CurMP;
 
 		//STR
 		szLine = sr.ReadLine().Trim();

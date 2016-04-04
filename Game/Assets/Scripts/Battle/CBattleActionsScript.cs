@@ -11,8 +11,7 @@ public class CBattleActionsScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		foreach(Transform child in transform)
-			++m_nMaxActions;
+		m_nMaxActions = transform.childCount;
 		AdjustActionSelector();
 	}
 	

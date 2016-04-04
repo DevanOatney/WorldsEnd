@@ -646,9 +646,7 @@ public class TurnWatcherScript : MonoBehaviour
 		foreach(DCScript.CharacterData ally in party)
 		{
 			GameObject foundAlly = GameObject.Find(ally.m_szCharacterName);
-			
-			//Catch the previous amount of xp the character had incase they level
-			int prevExp = foundAlly.GetComponent<CAllyBattleScript>().m_nCurrentExperience;
+
 			//Award experience (their script will check if it levels and return a bool .. maybe I want to do some level up effect?  Not sure..
 			int nextExp = 0;
 			int nextLvl = 0;

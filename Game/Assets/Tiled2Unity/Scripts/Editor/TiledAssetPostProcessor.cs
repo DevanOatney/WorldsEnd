@@ -94,13 +94,13 @@ namespace Tiled2Unity
 
             // Keep normals otherwise Unity will complain about needing them.
             // Normals may not be a bad idea anyhow
-            modelImporter.normalImportMode = ModelImporterTangentSpaceMode.Import;
+			modelImporter.importNormals = ModelImporterNormals.Import;// modelImporter.normalImportMode =ModelImporterTangentSpaceMode.Import;
 
             // Don't need animations or tangents.
             modelImporter.generateAnimations = ModelImporterGenerateAnimations.None;
             modelImporter.animationType = ModelImporterAnimationType.None;
-            modelImporter.tangentImportMode = ModelImporterTangentSpaceMode.None;
-
+			//modelImporter.tangentImportMode = ModelImporterTangentSpaceMode.None;
+			modelImporter.importTangents = ModelImporterTangents.None;
             // Do not need mesh colliders on import.
             modelImporter.addCollider = false;
 
@@ -121,11 +121,7 @@ namespace Tiled2Unity
 
                 // Also, no shadows
                 mr.receiveShadows = false;
-#if UNITY_5_0
                 mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-#else
-                mr.castShadows = false;
-#endif
             }
         }
 
