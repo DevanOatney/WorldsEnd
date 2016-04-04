@@ -227,7 +227,7 @@ public class MessageHandler : MonoBehaviour
 			return;
 		}
 		EnableUIObject(m_goDialogueBox);
-		EnableUIObject(m_goDialogueNameplate1);
+		DisableUIObject(m_goDialogueNameplate1);
 		DisableUIObject(m_goDialoguePortrait);
 		DisableUIObject(m_goDialogueNameplate2);
 		line = "";
@@ -235,7 +235,7 @@ public class MessageHandler : MonoBehaviour
 		{
 			line += ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).choices[i].Line + '\n';
 		}
-		m_goDialogueBox.GetComponent<Text>().text = line;
+		m_goDialogueBox.GetComponentInChildren<Text>().text = line;
 	}
 
 	// Update is called once per frame
