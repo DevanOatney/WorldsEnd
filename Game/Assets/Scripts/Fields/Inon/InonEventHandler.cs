@@ -669,24 +669,35 @@ public class InonEventHandler : BaseEventSystemScript
 		case "RetrieveTusks":
 		{
 			GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveToGameobject(Phase4_waypoints[0],false);
-			//GameObject.Find("Briol").GetComponent<BriolInonRitualScript>().MoveDownward();
 		}
 			break;
 		case "BriolArriveAtRitual":
 		{
+			//This event is for Briol having arrived next to the boar during the first ritual event to retrieve the boar tusk.
 			foreach(GameObject wpnt in Phase4_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 			m_goDeadBoar.GetComponent<SpriteRenderer>().sprite = m_t2dDeadBoarWithoutTusk;
-			GameObject.Find("Mattach").GetComponentInChildren<MessageHandler>().BeginDialogue("D0");
+			GameObject.Find("UI_Alerts").GetComponent<UIAlertWindowScript>().ActivateWindow(UIAlertWindowScript.MESSAGEID.eITEMREWARD, "1 Boar Tusk", gameObject);
+			
 		}
 			break;
-		case "RitualEnd":
+		case "RITUALEVENT_ObtainedBoarTusk":
 		{
+			//Player has acquired the boar tusk, now have Briol move into the player to join the team.
 			ds.m_dStoryFlagField.Add("Inon_CeremonyComplete", 1);
 			m_goDeadBoar.SetActive(false);
 			GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveIntoPlayer();
 			GameObject.Find("Briol").GetComponent<BoxCollider2D>().enabled = false;
-			Invoke("ReleasePlayer", 2.0f);
+			Invoke("RecruitBriol", 2.0f);
+		}
+			break;
+		case "RitualEnd":
+		{
+			
+			ds.m_dStoryFlagField["Inon_CeremonyComplete"] = 2;
+			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseAllBinds();
+			
+
 		}
 			break;
 		default:
@@ -694,9 +705,27 @@ public class InonEventHandler : BaseEventSystemScript
 		}
 	}
 
-	void ReleasePlayer()
+	void MessageWindowDeactivated()
 	{
-		GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+		int result = 0;
+		if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result))
+		{
+			if(result == 1)
+			{
+				//Briol has now moved into the player and they've seen the window for her having been recruited.
+				GameObject.Find("Mattach").GetComponentInChildren<MessageHandler>().BeginDialogue("D0");
+			}
+		}
+		else
+		{
+			//Player has not done any of the event yet, so this is for just after he acquires the boar tusk
+			HandleEvent("RITUALEVENT_ObtainedBoarTusk");
+		}
+	}
+
+	void RecruitBriol()
+	{
+		GameObject.Find("UI_Alerts").GetComponent<UIAlertWindowScript>().ActivateWindow(UIAlertWindowScript.MESSAGEID.eRECRUITED, "Briol", gameObject);
 	}
 
 	void BeginDialogue(int iter)

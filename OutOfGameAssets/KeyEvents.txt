@@ -1,0 +1,7 @@
+To the best of our ability let's locate each key event, detail when it happens, and if the key id means anything- detail them.
+
+Inon_CeremonyComplete : Obtained after completing the Boar battle and returning to the Inon scene.
+IDs-
+1:Briol has walked down, torn off the boar tusk, and the player has pressed confirm after the item reward window popped up.
+2:Briol has walked into callan, and the player has pressed confirm after being notified of Briol being recruited.
+3:The final bit of dialogue of the event has played out, and this event is now entirely complete.
