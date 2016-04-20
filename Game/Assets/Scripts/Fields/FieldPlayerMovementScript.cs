@@ -122,8 +122,8 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	//amount of things restricting player input
 	int m_nBinders = 0;
 	public void BindInput() {m_nBinders++; m_bAllowInput = false;}
-	public void ReleaseBind() {m_nBinders--;  if(m_nBinders <= 0) {m_nBinders = 0; m_bAllowInput = true;}}
-	public void ReleaseAllBinds() {m_nBinders = 0; m_bAllowInput = false;}
+	public void ReleaseBind() {Debug.Log(m_nBinders);m_nBinders--;  if(m_nBinders <= 0) {m_nBinders = 0; m_bAllowInput = true;}}
+	public void ReleaseAllBinds() {Debug.Log(m_nBinders);m_nBinders = 0; m_bAllowInput = false;}
 	//public void SetAllowInput(bool flag) {m_bAllowInput = flag;}
 	public bool GetAllowInput() {return m_bAllowInput;}
 

@@ -19,12 +19,6 @@ public class InterractingBoxScript : MonoBehaviour
 	}
 	
 
-	void OnDestroy()
-	{
-		if(m_goOwner)
-			m_goOwner.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-	}
-
 	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Treasure" || c.tag == "Interractable" || c.tag == "Merchant")

@@ -32,16 +32,16 @@ public class SavePointOrbScript : MonoBehaviour
 			if(Input.GetKeyUp(KeyCode.DownArrow))
 			{
 				GetComponent<AudioSource>().PlayOneShot(m_acSaveSelectMovement, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
-				--m_nSelectedIndex;
-				if(m_nSelectedIndex < 0)
-					m_nSelectedIndex = 2;
+				++m_nSelectedIndex;
+				if(m_nSelectedIndex >= 3)
+					m_nSelectedIndex = 0;
 			}
 			else if(Input.GetKeyUp(KeyCode.UpArrow))
 			{
 				GetComponent<AudioSource>().PlayOneShot(m_acSaveSelectMovement, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
-				++m_nSelectedIndex;
-				if(m_nSelectedIndex >= 3)
-					m_nSelectedIndex = 0;
+				--m_nSelectedIndex;
+				if(m_nSelectedIndex < 0)
+					m_nSelectedIndex = 2;
 			}
 			else if(Input.GetKey(KeyCode.Return))
 			{
