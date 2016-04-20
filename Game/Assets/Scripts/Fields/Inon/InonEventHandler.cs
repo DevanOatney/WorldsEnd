@@ -584,7 +584,7 @@ public class InonEventHandler : BaseEventSystemScript
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
 			if(player)
 			{
-				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+					player.GetComponent<FieldPlayerMovementScript>().ReleaseAllBinds();
 			}
 		}
 			break;
