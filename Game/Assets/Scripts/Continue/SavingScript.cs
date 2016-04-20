@@ -3,13 +3,66 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System;
+using System.Runtime.Serialization.Formatters.Binary;
 
 
 public class SavingScript : MonoBehaviour 
 {
+	[Serializable]
+	public class cOutputData
+	{
+		public float m_fMasterVol, m_fMusicVol, m_fSFXVol, m_fVoiceVol, m_fBrightness;
+		public bool m_bToUseBattleAnimations;
+		public int m_nTextSpeed;
+		public List<string> m_lFlagKeys = new List<string>();
+		public List<int> m_lFlagValues = new List<int>();
+		public int m_nGold;
+		public List<DCScript.CharacterData> m_lParty;
+		public List<DCScript.CharacterData> m_lRoster;
+		public List<DCScript.StatusEffect> m_lStatusEffects;
+		public List<ItemLibrary.CharactersItems> m_lInventory;
+		public string m_szSceneName;
+		public vVector3 m_vStartingPosition;
+		public int m_nFacingDir;
+	}
+	[Serializable]
+	public class vVector3
+	{
+		public float _fX, _fY, _fZ;
+	}
+	cOutputData WriteOutData()
+	{
+		cOutputData newData = new cOutputData();
+		GameObject Canister = GameObject.Find("PersistantData");
+		DCScript dcs = Canister.GetComponent<DCScript>();
 
+		newData.m_fMasterVol = dcs.m_fMasterVolume;
+		newData.m_fMusicVol = dcs.m_fMusicVolume;
+		newData.m_fSFXVol = dcs.m_fSFXVolume;
+		newData.m_fVoiceVol = dcs.m_fVoiceVolume;
+		newData.m_fBrightness = dcs.m_fBrightness;
+		newData.m_bToUseBattleAnimations = dcs.m_bToUseBattleAnimations;
+		newData.m_nTextSpeed = dcs.m_nTextSpeed;
+		foreach(KeyValuePair<string, int> entry in dcs.m_dStoryFlagField)
+		{
+			newData.m_lFlagKeys.Add(entry.Key);
+			newData.m_lFlagValues.Add(entry.Value);
+		}
+		newData.m_nGold = dcs.m_nGold;
+		newData.m_lParty = dcs.GetParty();
+		newData.m_lRoster = dcs.GetRoster();
+		newData.m_lStatusEffects = dcs.GetStatusEffects();
+		newData.m_lInventory = dcs.m_lItemLibrary.m_lInventory;
+		newData.m_szSceneName = SceneManager.GetActiveScene().name;
+		newData.m_vStartingPosition = new vVector3();
+		newData.m_vStartingPosition._fX = dcs.GetPreviousPosition().x;
+		newData.m_vStartingPosition._fY = dcs.GetPreviousPosition().y;
+		newData.m_vStartingPosition._fZ = dcs.GetPreviousPosition().z;
+		newData.m_nFacingDir = dcs.GetPreviousFacingDirection();
+
+		return newData;
+	}
 
 	List<string> m_lOutputData = new List<string>();
 
@@ -25,187 +78,10 @@ public class SavingScript : MonoBehaviour
 	//iter is for 1 of the 3 save files that can be written
 	public void Save(int iter)
 	{
-		m_lOutputData.Clear();
-		//Get the scrip that has the data
-		GameObject Canister = GameObject.Find("PersistantData");
-		DCScript dcs = Canister.GetComponent<DCScript>();
-		//User settings
-		m_lOutputData.Add(dcs.m_fMasterVolume.ToString());
-		m_lOutputData.Add(dcs.m_fMusicVolume.ToString());
-		m_lOutputData.Add(dcs.m_fSFXVolume.ToString());
-		m_lOutputData.Add(dcs.m_fVoiceVolume.ToString());
-		m_lOutputData.Add(dcs.m_fBrightness.ToString());
-		m_lOutputData.Add(dcs.m_bToUseBattleAnimations.ToString());
-		m_lOutputData.Add(dcs.m_nTextSpeed.ToString());
-
-		//The flags
-		//Write out the amount of pairs in the flag field
-		m_lOutputData.Add(dcs.m_dStoryFlagField.Count.ToString());
-		foreach(KeyValuePair<string, int> kvp in dcs.m_dStoryFlagField)
-		{
-			m_lOutputData.Add(kvp.Key);
-			m_lOutputData.Add(kvp.Value.ToString());
-		}
-
-		//The amount of gold the player has
-		m_lOutputData.Add(dcs.m_nGold.ToString());
-
-		//The amount of characters in party
-		List<DCScript.CharacterData> party = dcs.GetParty();
-		m_lOutputData.Add(party.Count.ToString());
-		foreach(DCScript.CharacterData member in party)
-		{
-			WriteOutCharacter(member);
-		}
-
-		//Amount of characters in roster
-		List<DCScript.CharacterData> roster = dcs.GetRoster();
-		foreach(DCScript.CharacterData member in roster)
-		{
-			WriteOutCharacter(member);
-		}
-
-		//amount of status effects the party has
-		m_lOutputData.Add(dcs.GetStatusEffects().Count.ToString());
-		foreach(DCScript.StatusEffect se in dcs.GetStatusEffects())
-		{
-			//name of the status effect
-			m_lOutputData.Add(se.m_szEffectName);
-			//what type of effect is this?
-			m_lOutputData.Add(se.m_nEffectType.ToString());
-			//How many ticks are left in this effect?
-			m_lOutputData.Add(se.m_nAmountOfTicks.ToString());
-			//HP mod of effect
-			m_lOutputData.Add(se.m_nHPMod.ToString());
-			//MP mod of effect
-			m_lOutputData.Add(se.m_nMPMod.ToString());
-			//POW mod of effect
-			m_lOutputData.Add(se.m_nPOWMod.ToString());
-			//DEF mod of effect
-			m_lOutputData.Add(se.m_nDEFMod.ToString());
-			//SPD mod of effect
-			m_lOutputData.Add(se.m_nSPDMod.ToString());
-			//HIT mod of effect
-			m_lOutputData.Add(se.m_nHITMod.ToString());
-			//EVA mod of effect
-			m_lOutputData.Add(se.m_nEVAMod.ToString());
-			//the amount of units effected
-			m_lOutputData.Add(se.m_lEffectedMembers.Count.ToString());
-			foreach(string s in se.m_lEffectedMembers)
-				m_lOutputData.Add(s);
-		}
-
-		//Amount of items in inventory
-		m_lOutputData.Add(dcs.m_lItemLibrary.m_lInventory.Count.ToString());
-		//Characters inventory
-		foreach(ItemLibrary.CharactersItems item in dcs.m_lItemLibrary.m_lInventory)
-		{
-			m_lOutputData.Add (item.m_szItemName);
-			m_lOutputData.Add(item.m_nItemCount.ToString());
-			m_lOutputData.Add(item.m_nItemType.ToString());
-		}
-		//The scene to load
-		//sw.WriteLine(Application.loadedLevelName);
-		m_lOutputData.Add(SceneManager.GetActiveScene().name);
-		//The position of the player on that field
-		//sw.WriteLine(dcs.GetPreviousPosition());
-		m_lOutputData.Add(dcs.GetPreviousPosition().ToString());
-		//The Direction in which the player was facing during save
-		//sw.WriteLine(dcs.GetPreviousFacingDirection());
-		m_lOutputData.Add(dcs.GetPreviousFacingDirection().ToString());
-		string output = "";
-		for(int i=0; i<m_lOutputData.Count; ++i)
-		{
-			output += m_lOutputData[i]+'\n';
-		}
-		System.IO.File.Delete(Application.dataPath + "/Resources/Save Files/" + iter.ToString() + ".txt");
-		System.IO.File.WriteAllText(Application.dataPath + "/Resources/Save Files/" + iter.ToString() + ".txt", output);
-
-	}
-
-	void WriteOutCharacter(DCScript.CharacterData member)
-	{
-		//name
-		m_lOutputData.Add(member.m_szCharacterName);
-		//race
-		m_lOutputData.Add(member.m_szCharacterRace);
-		//class
-		m_lOutputData.Add(member.m_szCharacterClassType);
-		//bio
-		m_lOutputData.Add(member.m_szCharacterBio);
-		//max hp
-		m_lOutputData.Add(member.m_nMaxHP.ToString());
-		//cur hp
-		m_lOutputData.Add(member.m_nCurHP.ToString());
-		//str
-		m_lOutputData.Add(member.m_nSTR.ToString());
-		//def
-		m_lOutputData.Add(member.m_nDEF.ToString());
-		//spd
-		m_lOutputData.Add(member.m_nSPD.ToString());
-		//eva
-		m_lOutputData.Add(member.m_nEVA.ToString());
-		//hit
-		m_lOutputData.Add(member.m_nHIT.ToString());
-		//Level
-		m_lOutputData.Add(member.m_nLevel.ToString());
-		//Current Experience
-		m_lOutputData.Add(member.m_nCurrentEXP.ToString());
-		//Weapon Name
-		m_lOutputData.Add(member.m_szWeaponName);
-		//Weapon Level
-		m_lOutputData.Add(member.m_nWeaponLevel.ToString());
-		//Weapon Damage Mod
-		m_lOutputData.Add(member.m_nWeaponDamageModifier.ToString());
-		//Weapon Modifier Name
-		m_lOutputData.Add(member.m_szWeaponModifierName);
-
-		//Helm Armor
-		if(member.m_idHelmSlot != null)
-			m_lOutputData.Add(member.m_idShoulderSlot.m_szItemName);
-		else
-			m_lOutputData.Add("NULL");
-		//Shoulder Armor
-		if(member.m_idShoulderSlot != null)
-			m_lOutputData.Add(member.m_idShoulderSlot.m_szItemName);
-		else
-			m_lOutputData.Add("NULL");
-		//Chest Armor
-		if(member.m_idChestSlot != null)
-			m_lOutputData.Add(member.m_idChestSlot.m_szItemName);
-		else
-			m_lOutputData.Add("NULL");
-		//Glove Armor
-		if(member.m_idGloveSlot != null)
-			m_lOutputData.Add(member.m_idGloveSlot.m_szItemName);
-		else
-			m_lOutputData.Add("NULL");
-		//Belt Armor
-		if(member.m_idBeltSlot != null)
-			m_lOutputData.Add(member.m_idBeltSlot.m_szItemName);
-		else
-			m_lOutputData.Add("NULL");
-		//Leg Armor
-		if(member.m_idLegSlot != null)
-			m_lOutputData.Add(member.m_idLegSlot.m_szItemName);
-		else
-			m_lOutputData.Add("NULL");
-		//Trinket1
-		if(member.m_idTrinket1 != null)
-			m_lOutputData.Add(member.m_idTrinket1.m_szItemName);
-		else
-			m_lOutputData.Add("NULL");
-		//Trinket2
-		if(member.m_idTrinket2 != null)
-			m_lOutputData.Add(member.m_idTrinket2.m_szItemName);
-		else
-			m_lOutputData.Add("NULL");
-
-		//amount of spells the character knows
-		m_lOutputData.Add(member.m_lSpellsKnown.Count.ToString());
-		foreach(string s in member.m_lSpellsKnown)
-		{
-			m_lOutputData.Add(s);
-		}
+		cOutputData newData = WriteOutData();
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream _fFile = File.Create(Application.dataPath + "/Resources/Save Files/" + iter.ToString() + ".dat");
+		bf.Serialize(_fFile, newData);
+		_fFile.Close();
 	}
 }

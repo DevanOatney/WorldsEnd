@@ -80,7 +80,6 @@ public class OverWatcherScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		dc.TEMP_CheckCharacters();
 		m_goPlayer = GameObject.Find("Player");
 
 		//check to see if the last scene was a battle, if it was the position data of where the player should go is in the datacanister. Also check if this was the last scene (loading game)

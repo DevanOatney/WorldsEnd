@@ -72,7 +72,7 @@ public class DCScript : MonoBehaviour
 	//the library of all of the status effects that exist in the game
 	public StatusEffectLibrary m_lStatusEffectLibrary = new StatusEffectLibrary();
 
-
+	[System.Serializable]
 	public class StatusEffect
 	{
 		public string m_szEffectName;
@@ -158,6 +158,7 @@ public class DCScript : MonoBehaviour
 		return -1;
 	}
 
+	[System.Serializable]
 	public class CharacterData
 	{
 		public string m_szCharacterName;
@@ -243,6 +244,8 @@ public class DCScript : MonoBehaviour
 	{
 		return m_lRoster;
 	}
+
+	public void SetRoster(List<CharacterData> c) {m_lRoster = c;}
 	//So this call is also updating character stats, so iterate through each character and update their stats on the roster
 	public void SetParty(List<CharacterData> p) 
 	{
@@ -446,17 +449,6 @@ public class DCScript : MonoBehaviour
 		}
 	}
 
-	public void TEMP_CheckCharacters()
-	{
-		foreach(CharacterData character in m_lRoster)
-		{
-			Debug.Log(character.m_szCharacterName + " is in roster "+ character.m_bHasBeenRecruited);
-		}
-		foreach(CharacterData character in m_lPartyMembers)
-		{
-			Debug.Log(character.m_szCharacterName + " is in party " + character.m_bIsInParty);
-		}
-	}
 	// Update is called once per frame
 	void Update () 
 	{

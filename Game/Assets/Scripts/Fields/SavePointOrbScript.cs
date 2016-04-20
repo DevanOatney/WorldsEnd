@@ -20,12 +20,47 @@ public class SavePointOrbScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-	
+		if(m_bDisplaySaveScreen == true)
+		{
+			if(Input.GetKeyUp(KeyCode.Escape))
+			{
+				m_bDisplaySaveScreen = false;
+				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+				Input.ResetInputAxes();
+			}
+
+			if(Input.GetKeyUp(KeyCode.DownArrow))
+			{
+				GetComponent<AudioSource>().PlayOneShot(m_acSaveSelectMovement, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
+				--m_nSelectedIndex;
+				if(m_nSelectedIndex < 0)
+					m_nSelectedIndex = 2;
+			}
+			else if(Input.GetKeyUp(KeyCode.UpArrow))
+			{
+				GetComponent<AudioSource>().PlayOneShot(m_acSaveSelectMovement, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
+				++m_nSelectedIndex;
+				if(m_nSelectedIndex >= 3)
+					m_nSelectedIndex = 0;
+			}
+			else if(Input.GetKey(KeyCode.Return))
+			{
+				FieldPlayerMovementScript go = GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>();
+				DCScript dcs = GameObject.Find("PersistantData").GetComponent<DCScript>();
+
+				dcs.SetPreviousPosition(go.transform.position);
+				dcs.SetPreviousFacingDirection(go.m_nFacingDir);
+				GetComponent<SavingScript>().Save(m_nSelectedIndex+1);
+				m_bDisplaySaveScreen = false;
+				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+				GetComponent<AudioSource>().PlayOneShot(m_acSaveSucceed, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
+			}
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if(c.name == "Action Box(Clone)")
+		if(c.name == "Action Box(Clone)" && m_bDisplaySaveScreen == false)
 		{
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 			//turn on flag to render the saving screen
@@ -53,39 +88,7 @@ public class SavePointOrbScript : MonoBehaviour
 		{
 			//turn off field player movement
 
-			if(Input.GetKeyUp(KeyCode.Escape))
-			{
-				m_bDisplaySaveScreen = false;
-				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-				Input.ResetInputAxes();
-			}
-			
-			if(Input.GetKeyUp(KeyCode.DownArrow))
-			{
-				GetComponent<AudioSource>().PlayOneShot(m_acSaveSelectMovement, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
-				--m_nSelectedIndex;
-				if(m_nSelectedIndex < 0)
-					m_nSelectedIndex = 2;
-			}
-			else if(Input.GetKeyUp(KeyCode.UpArrow))
-			{
-				GetComponent<AudioSource>().PlayOneShot(m_acSaveSelectMovement, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
-				++m_nSelectedIndex;
-				if(m_nSelectedIndex >= 3)
-					m_nSelectedIndex = 0;
-			}
-			else if(Input.GetKey(KeyCode.Return))
-			{
-				FieldPlayerMovementScript go = GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>();
-				DCScript dcs = GameObject.Find("PersistantData").GetComponent<DCScript>();
 
-				dcs.SetPreviousPosition(go.transform.position);
-				dcs.SetPreviousFacingDirection(go.m_nFacingDir);
-				GetComponent<SavingScript>().Save(m_nSelectedIndex+1);
-				m_bDisplaySaveScreen = false;
-				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-				GetComponent<AudioSource>().PlayOneShot(m_acSaveSucceed, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
-			}
 
 			Vector2 size = new Vector2(300, 200);
 			Rect boxRect = new Rect(Screen.width * 0.5f - size.x * 0.5f, Screen.height * 0.5f - size.y * 0.5f, size.x, size.y);

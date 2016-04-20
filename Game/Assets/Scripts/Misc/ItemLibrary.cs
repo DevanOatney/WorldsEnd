@@ -15,7 +15,7 @@ public class ItemLibrary
 	public Dictionary<string, ItemLibrary.ItemData> m_dItemDictionary = new Dictionary<string, ItemData>();
 	//List of all items currently in inventory
 	public List<CharactersItems> m_lInventory = new List<CharactersItems>();
-
+	[System.Serializable]
 	public class ItemData
 	{
 		public string m_szItemName;
@@ -35,6 +35,7 @@ public class ItemLibrary
 	}
 
 	//Struct for Items, adding in an integer for the amount that the player has
+	[System.Serializable]
 	public class CharactersItems
 	{
 		public string m_szItemName;
@@ -184,7 +185,7 @@ public class ItemLibrary
 			}
 		}
 	}
-
+	[System.Serializable]
 	public class ArmorData : ItemData
 	{
 		//m_nModifier effects the reduction of damage, this is for like if it heals or damages units or increases/decreases other stats

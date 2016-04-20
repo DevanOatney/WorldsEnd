@@ -3,8 +3,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System;
+using System.Runtime.Serialization.Formatters.Binary;
+
+
 public class LoadingScript : MonoBehaviour 
 {
 	string m_szFileName;
@@ -28,7 +30,7 @@ public class LoadingScript : MonoBehaviour
 	{
 		try
 		{
-			sr = new StreamReader(m_szFileName + iter.ToString() + ".txt");
+			sr = new StreamReader(m_szFileName + iter.ToString() + ".dat");
 			sr.Close();
 			return true;
 		}
@@ -41,416 +43,60 @@ public class LoadingScript : MonoBehaviour
 
 	public ContinueHighlightInputScript.SaveDataInformation GetSaveData(int iter)
 	{
-		if(File.Exists(m_szFileName + iter.ToString() + ".txt") == false)
+		if(File.Exists(m_szFileName + iter.ToString() + ".dat") == false)
 			return null;
 		ContinueHighlightInputScript.SaveDataInformation saveData = new ContinueHighlightInputScript.SaveDataInformation();
 		saveData.m_szName = "Callan";
 
-		string szLine = "";
-		sr = new StreamReader(m_szFileName + iter.ToString() + ".txt");
-		szLine = sr.ReadLine().Trim();
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream _fFile = File.Open(m_szFileName + iter.ToString() + ".dat", FileMode.Open);
+		SavingScript.cOutputData fileData = (SavingScript.cOutputData)bf.Deserialize(_fFile);
+		_fFile.Close();
 
-		//Music Volume
-		szLine = sr.ReadLine().Trim();
-		//Sound Effect Volume
-		szLine = sr.ReadLine().Trim();
-		//Voice Volume
-		szLine = sr.ReadLine().Trim();
-		//Brightness
-		szLine = sr.ReadLine().Trim();
-		//Battle animation flag
-		szLine = sr.ReadLine().Trim();
-		//Text Speed
-		szLine = sr.ReadLine().Trim();
-		//The amount of flags in the flag field
-		szLine = sr.ReadLine().Trim();
-		int flagCount = int.Parse(szLine);
-		for(int i = 0; i < flagCount; ++i)
-		{
-			szLine = sr.ReadLine().Trim();
-			szLine = sr.ReadLine().Trim();
-		}
+
 		//Amount of gold the player has
-		saveData.m_nGold = int.Parse(sr.ReadLine().Trim());
+		saveData.m_nGold = fileData.m_nGold;
 
-
-
-		//Amount of characters in the party
-		szLine = sr.ReadLine().Trim();
-		int partyCount = int.Parse(szLine);
-		for(int i = 0; i < partyCount; ++i)
-		{
-			ReadInCharacter(sr, null);
-		}
-
-		//Amount of characters in the roster
-		szLine = sr.ReadLine().Trim();
-		int rosterCount = int.Parse(szLine);
-		for(int i = 0; i < rosterCount; ++i)
-		{
-			ReadInCharacter(sr, null);
-		}
-
-		//amount of status effects effecting character
-		szLine = sr.ReadLine().Trim();
-		int effectCount = int.Parse(szLine.Trim());
-		for(int j = 0; j < effectCount; ++j)
-		{
-			//name of effect
-			sr.ReadLine().Trim();
-			//effect type
-			sr.ReadLine().Trim();
-			//amount of ticks left on the effect
-			sr.ReadLine().Trim();
-			//hp mod
-			sr.ReadLine().Trim();
-			//mp mod
-			sr.ReadLine().Trim();
-			//pow mod
-			sr.ReadLine().Trim();
-			//def mod
-			sr.ReadLine().Trim();
-			//spd mod
-			sr.ReadLine().Trim();
-			//hit mod
-			sr.ReadLine().Trim();
-			//eva mod
-			sr.ReadLine().Trim();
-			//amount of units effected
-			int unitsEffected = int.Parse(sr.ReadLine().Trim());
-			for(int x = 0; x < unitsEffected; ++x)
-				sr.ReadLine().Trim();
-		}
-
-		
-		//Amount of items in inventory
-		szLine = sr.ReadLine().Trim();
-		int inventoryCount = int.Parse(szLine);
-		
-		//Inventory
-		for(int i = 0; i < inventoryCount; ++i)
-		{
-			szLine = sr.ReadLine().Trim();
-			szLine = sr.ReadLine().Trim();
-			szLine = sr.ReadLine().Trim();
-		}
-		
-		
-		//The scene to load
-		szLine = sr.ReadLine().Trim();
-		saveData.m_szFieldName = szLine;
-
-		sr.Close();
+		saveData.m_szFieldName = fileData.m_szSceneName;
 
 		return saveData;
 	}
 
-
 	//iter is for 1 of the 3 save files that can be written
 	public void Load(int iter)
 	{
-		if(File.Exists(m_szFileName + iter.ToString() + ".txt") == false)
+		if(File.Exists(m_szFileName + iter.ToString() + ".dat") == false)
 			return;
 		DCScript NewData = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		
-		sr = new StreamReader(m_szFileName + iter.ToString() + ".txt");
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream _fFile = File.Open(m_szFileName + iter.ToString() + ".dat", FileMode.Open);
+		SavingScript.cOutputData fileData = (SavingScript.cOutputData)bf.Deserialize(_fFile);
+		_fFile.Close();
 
-		string szLine;
-		//User settings
-		
-		//Master Volume
-		szLine = sr.ReadLine().Trim();
-		NewData.m_fMasterVolume = float.Parse(szLine);
-		NewData.SetMasterVolume();
-		//Music Volume
-		szLine = sr.ReadLine().Trim();
-		NewData.m_fMusicVolume = float.Parse(szLine);
-		//Sound Effect Volume
-		szLine = sr.ReadLine().Trim();
-		NewData.m_fSFXVolume = float.Parse(szLine);
-		//Voice Volume
-		szLine = sr.ReadLine().Trim();
-		NewData.m_fVoiceVolume = float.Parse(szLine);
-		//Brightness
-		szLine = sr.ReadLine().Trim();
-		NewData.m_fBrightness = float.Parse(szLine);
-		//Battle animation flag
-		szLine = sr.ReadLine().Trim();
-		NewData.m_bToUseBattleAnimations = bool.Parse(szLine);
-		//Text Speed
-		szLine = sr.ReadLine().Trim();
-		NewData.m_nTextSpeed = int.Parse(szLine);
-		//The amount of flags in the flag field
-		szLine = sr.ReadLine().Trim();
-		int flagCount = int.Parse(szLine);
-		Dictionary<string, int> dStoryFlagField = new Dictionary<string, int>();
-		for(int i = 0; i < flagCount; ++i)
-		{
-			string key;
-			int value;
-			szLine = sr.ReadLine().Trim();
-			key = szLine;
-			szLine = sr.ReadLine().Trim();
-			value = int.Parse(szLine);
-			dStoryFlagField.Add(key, value);
-		}
-		NewData.m_dStoryFlagField = dStoryFlagField;
 
-		//Amount of gold the player has.
-		NewData.m_nGold = int.Parse(sr.ReadLine().Trim());
-		
-		//Amount of characters in the party
-		szLine = sr.ReadLine().Trim();
-		int partyCount = int.Parse(szLine);
-		for(int i = 0; i < partyCount; ++i)
+		NewData.m_fMasterVolume = fileData.m_fMasterVol;
+		NewData.m_fMusicVolume = fileData.m_fMusicVol;
+		NewData.m_fSFXVolume = fileData.m_fSFXVol;
+		NewData.m_fVoiceVolume = fileData.m_fVoiceVol;
+		NewData.m_fBrightness = fileData.m_fBrightness;
+		NewData.m_bToUseBattleAnimations = fileData.m_bToUseBattleAnimations;
+		NewData.m_nTextSpeed = fileData.m_nTextSpeed;
+
+		for(int i = 0; i < fileData.m_lFlagKeys.Count; ++i)
 		{
-			//"Resources/Units/Ally/Name/Name.prefab
-			DCScript.CharacterData character = ReadInCharacter(sr, NewData);
-			NewData.AddPartyMember(character);
+			NewData.m_dStoryFlagField.Add(fileData.m_lFlagKeys[i], fileData.m_lFlagValues[i]);
 		}
 
-		//Amount of characters in the Roster
-		szLine = sr.ReadLine().Trim();
-		int rosterCount = int.Parse(szLine);
-		for(int i = 0; i < rosterCount; ++i)
-		{
-			DCScript.CharacterData character = ReadInCharacter(sr, NewData);
-			NewData.SetRosteredCharacterData(character);
-		}
-
-		//Amount of effects the character has
-		szLine = sr.ReadLine();
-		int effectCount = int.Parse(szLine.Trim());
-		Debug.Log(effectCount);
-		List<DCScript.StatusEffect> lStatusEffects = new List<DCScript.StatusEffect>();
-		for(int j = 0; j < effectCount; ++j)
-		{
-			DCScript.StatusEffect se = new DCScript.StatusEffect();
-			se.m_szEffectName = sr.ReadLine().Trim();
-			se.m_nEffectType = int.Parse(sr.ReadLine().Trim());
-			se.m_nAmountOfTicks = int.Parse(sr.ReadLine().Trim());
-			se.m_nHPMod = int.Parse(sr.ReadLine().Trim());
-			se.m_nMPMod = int.Parse(sr.ReadLine().Trim());
-			se.m_nPOWMod = int.Parse(sr.ReadLine().Trim());
-			se.m_nDEFMod = int.Parse(sr.ReadLine().Trim());
-			se.m_nSPDMod = int.Parse(sr.ReadLine().Trim());
-			se.m_nHITMod = int.Parse(sr.ReadLine().Trim());
-			se.m_nEVAMod = int.Parse(sr.ReadLine().Trim());
-			int unitCount = int.Parse(sr.ReadLine().Trim());
-			List<string> lEffectUnits = new List<string>();
-			for(int x = 0; x < unitCount; ++x)
-			{
-				lEffectUnits.Add(sr.ReadLine().Trim());
-			}
-			
-			
-			lStatusEffects.Add(se);
-		}
-		NewData.SetStatusEffects(lStatusEffects);
-		
-		//Amount of items in inventory
-		szLine = sr.ReadLine();
-		int inventoryCount = int.Parse(szLine);
-		
-		//Inventory
-		List<ItemLibrary.CharactersItems> lInventory = new List<ItemLibrary.CharactersItems>();
-		for(int i = 0; i < inventoryCount; ++i)
-		{
-			ItemLibrary.CharactersItems item = new ItemLibrary.CharactersItems();
-			szLine = sr.ReadLine();
-			item.m_szItemName = szLine.Trim();
-			szLine = sr.ReadLine();
-			item.m_nItemCount = int.Parse(szLine.Trim());
-			szLine = sr.ReadLine();
-			item.m_nItemType = int.Parse(szLine.Trim());
-			lInventory.Add(item);
-		}
-		NewData.m_lItemLibrary.m_lInventory = lInventory;
-		
-		
-		//The scene to load
-		szLine = sr.ReadLine();
-		NewData.SetPreviousFieldName(szLine);
-		
-		//The position on that scene of the player
-		szLine = sr.ReadLine();
-
-		szLine = szLine.Substring(1, szLine.Length - 2);
-		string[] szAxis = szLine.Split(',');
-		Vector3 pos = new Vector3(float.Parse(szAxis[0]), float.Parse(szAxis[1]), float.Parse(szAxis[2]));
-		NewData.SetPreviousPosition(pos);
-		
-		//The direction to face the player
-		szLine = sr.ReadLine();
-		NewData.SetPreviousFacingDirection(int.Parse(szLine));
-		
-		
-		//Finished writing out, close
-		sr.Close();
+		NewData.m_nGold = fileData.m_nGold;
+		NewData.SetRoster(fileData.m_lRoster);
+		NewData.SetParty(fileData.m_lParty);
+		NewData.SetStatusEffects(fileData.m_lStatusEffects);
+		NewData.m_lItemLibrary.m_lInventory = fileData.m_lInventory;
+		NewData.SetPreviousFieldName(fileData.m_szSceneName);
+		Vector3 startingPos = new Vector3(fileData.m_vStartingPosition._fX, fileData.m_vStartingPosition._fY, fileData.m_vStartingPosition._fZ);
+		NewData.SetPreviousPosition(startingPos);
+		NewData.SetPreviousFacingDirection(fileData.m_nFacingDir);
 	}
 
-	DCScript.CharacterData ReadInCharacter(StreamReader sr, DCScript NewData)
-	{
-		DCScript.CharacterData character = new DCScript.CharacterData();
-		string szLine = "";
-		//name of the character
-		szLine = sr.ReadLine().Trim();
-		character.m_szCharacterName = szLine.Trim();
-
-		//Race
-		szLine = sr.ReadLine().Trim();
-		character.m_szCharacterRace = szLine.Trim();
-
-		//Class
-		szLine = sr.ReadLine().Trim();
-		character.m_szCharacterClassType = szLine.Trim();
-
-		//Bio
-		szLine = sr.ReadLine().Trim();
-		character.m_szCharacterBio = szLine.Trim();
-
-		//Max HP
-		szLine = sr.ReadLine().Trim();
-		int MaxHP = int.Parse(szLine);
-		character.m_nMaxHP = MaxHP;
-
-		//Cur HP
-		szLine = sr.ReadLine().Trim();
-		int CurHP = int.Parse(szLine);
-		character.m_nCurHP = CurHP;
-
-		//Max MP
-		szLine = sr.ReadLine().Trim();
-		int MaxMP = int.Parse(szLine);
-		character.m_nMaxMP = MaxMP;
-
-		//Cur MP
-		szLine = sr.ReadLine().Trim();
-		int CurMP = int.Parse(szLine);
-		character.m_nCurMP = CurMP;
-
-		//STR
-		szLine = sr.ReadLine().Trim();
-		int STR = int.Parse(szLine);
-		character.m_nSTR = STR;
-
-		//DEF
-		szLine = sr.ReadLine().Trim();
-		int DEF = int.Parse(szLine);
-		character.m_nDEF = DEF;
-
-		//SPD
-		szLine = sr.ReadLine().Trim();
-		int SPD = int.Parse(szLine);
-		character.m_nSPD = SPD;
-
-		//EVA
-		szLine = sr.ReadLine().Trim();
-		int EVA = int.Parse(szLine);
-		character.m_nEVA = EVA;
-
-		//HIT
-		szLine = sr.ReadLine().Trim();
-		int HIT = int.Parse(szLine);
-		character.m_nHIT = HIT;
-
-		//Level
-		szLine = sr.ReadLine().Trim();
-		int LVL = int.Parse(szLine);
-		character.m_nLevel = LVL;
-
-		//Current exp
-		szLine = sr.ReadLine().Trim();
-		int exp = int.Parse(szLine);
-		character.m_nCurrentEXP = exp;
-
-		//Weapon Name
-		szLine = sr.ReadLine();
-		character.m_szWeaponName = szLine.Trim();
-
-		//Weapon Level
-		character.m_nWeaponLevel = int.Parse(sr.ReadLine().Trim());
-
-		//Weapon Damage Mod
-		character.m_nWeaponDamageModifier = int.Parse(sr.ReadLine().Trim());
-
-		//Weapon Mod Name
-		character.m_szWeaponModifierName = sr.ReadLine().Trim();
-
-		//Helm name
-		szLine = sr.ReadLine();
-		if(szLine.Trim() != "NULL" && NewData != null)
-		{
-			ItemLibrary.ArmorData helm = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-			character.m_idHelmSlot = helm;
-		}
-		//Shoulder name
-		szLine = sr.ReadLine();
-		if(szLine.Trim() != "NULL" && NewData != null)
-		{
-			ItemLibrary.ArmorData shoulder = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-			character.m_idShoulderSlot = shoulder;
-		}
-		//Armor name
-		szLine = sr.ReadLine();
-		if(szLine.Trim() != "NULL" && NewData != null)
-		{
-			ItemLibrary.ArmorData armor = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-			character.m_idChestSlot = armor;
-		}
-
-		//Glove name
-		szLine = sr.ReadLine();
-		if(szLine.Trim() != "NULL" && NewData != null)
-		{
-			ItemLibrary.ArmorData glove = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-			character.m_idGloveSlot = glove;
-		}
-		//Belt name
-		szLine = sr.ReadLine();
-		if(szLine.Trim() != "NULL" && NewData != null)
-		{
-			ItemLibrary.ArmorData belt = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-			character.m_idBeltSlot = belt;
-		}
-		//leg name
-		szLine = sr.ReadLine();
-		if(szLine.Trim() != "NULL" && NewData != null)
-		{
-			ItemLibrary.ArmorData leg = (ItemLibrary.ArmorData)NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-			character.m_idLegSlot = leg;
-		}
-		//Trinket 1 name
-		szLine = sr.ReadLine();
-		if(szLine.Trim() != "NULL" && NewData != null)
-		{
-			ItemLibrary.ItemData trinket1 = NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-			character.m_idTrinket1 = trinket1;
-		}
-
-		//Trinket 2 name
-		szLine = sr.ReadLine();
-		if(szLine.Trim() != "NULL" && NewData != null)
-		{
-			ItemLibrary.ItemData trinket2 = NewData.m_lItemLibrary.GetItemFromDictionary(szLine.Trim());
-			character.m_idTrinket2 = trinket2;
-		}
-
-
-		//Amount of spells this character knows
-		szLine = sr.ReadLine();
-		int spellCount = int.Parse(szLine);
-		List<string> characterSpells = new List<string>();
-		for(int j = 0; j < spellCount; ++j)
-		{
-			//Read the spell name
-			characterSpells.Add(sr.ReadLine());
-		}
-		character.m_lSpellsKnown = characterSpells;
-
-
-
-
-		return character;
-	}
 }
