@@ -64,7 +64,6 @@ public class SavingScript : MonoBehaviour
 		return newData;
 	}
 
-	List<string> m_lOutputData = new List<string>();
 
 	// Use this for initialization
 	void Start () 

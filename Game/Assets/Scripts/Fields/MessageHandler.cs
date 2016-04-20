@@ -28,6 +28,8 @@ public class MessageHandler : MonoBehaviour
 	GameObject m_goDialoguePortrait;
 	GameObject m_goDialogueNameplate1;
 	GameObject m_goDialogueNameplate2;
+	GameObject m_goDialogueHighlighter;
+
 
 	/****************************************************************/                                           
 	// Use this for initialization
@@ -57,6 +59,7 @@ public class MessageHandler : MonoBehaviour
 			m_goDialoguePortrait = m_goDialogueCanvas.transform.FindChild("DialoguePortrait").gameObject;
 			m_goDialogueNameplate1 = m_goDialogueCanvas.transform.FindChild("Nameplate1").gameObject;
 			m_goDialogueNameplate2 = m_goDialogueCanvas.transform.FindChild("Nameplate2").gameObject;
+			m_goDialogueHighlighter = m_goDialogueBox.transform.FindChild("Highlighter").gameObject;
 		}
 		else
 		{
@@ -79,6 +82,11 @@ public class MessageHandler : MonoBehaviour
 		if(img != null)
 		{
 			img.enabled = false;
+		}
+		Image[] imgField = _uiObj.GetComponentsInChildren<Image>();
+		foreach(Image _img in imgField)
+		{
+			_img.enabled = false;
 		}
 		Text[] txtField = _uiObj.GetComponentsInChildren<Text>();
 		foreach(Text txt in txtField)
@@ -180,8 +188,11 @@ public class MessageHandler : MonoBehaviour
 			m_goDialogueNameplate1.GetComponentInChildren<Text>().text = szName;
 			DisableUIObject(m_goDialogueNameplate2);
 		}
-		m_goDialogueBox.GetComponentInChildren<Text>().text = line;
-
+		m_goDialogueBox.transform.FindChild("Text").GetComponent<Text>().text = line;
+		m_goDialogueBox.transform.FindChild("Text1").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.FindChild("Text2").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.FindChild("Text3").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.FindChild("Text4").GetComponent<Text>().text = "";
 	}
 
 
@@ -191,20 +202,24 @@ public class MessageHandler : MonoBehaviour
 		{
 			if(bufferedInputTimer >= bufferedInputBucket)
 			{
-				selectedIndex++;
+				selectedIndex = selectedIndex + 1;
 				if(selectedIndex >= ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).NumberOfChoices)
 					selectedIndex = 0;
 				bufferedInputTimer = 0.0f;
+				m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.FindChild("Text" + (selectedIndex+1).ToString()).localPosition;
 			}
 		}
 		else if(Input.GetKey(KeyCode.UpArrow))
 		{
 			if(bufferedInputTimer >= bufferedInputBucket)
 			{
-				selectedIndex--;
+				selectedIndex = selectedIndex - 1;
 				if(selectedIndex < 0)
+				{
 					selectedIndex = ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).NumberOfChoices-1;
+				}
 				bufferedInputTimer = 0.0f;
+				m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.FindChild("Text" + (selectedIndex+1).ToString()).localPosition;
 			}
 		}
 		else if(Input.GetKeyDown(KeyCode.Return))
@@ -227,15 +242,19 @@ public class MessageHandler : MonoBehaviour
 			return;
 		}
 		EnableUIObject(m_goDialogueBox);
+		m_goDialogueHighlighter.GetComponent<Image>().enabled = true;
+		m_goDialogueBox.transform.FindChild("Text").GetComponent<Text>().text = "";
 		DisableUIObject(m_goDialogueNameplate1);
 		DisableUIObject(m_goDialoguePortrait);
 		DisableUIObject(m_goDialogueNameplate2);
 		line = "";
-		for(int i = 0; i < ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).NumberOfChoices; ++ i)
+		for(int i = 1; i < 5; ++ i)
 		{
-			line += ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).choices[i].Line + '\n';
+			if((i-1) < ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).NumberOfChoices)
+				m_goDialogueBox.transform.FindChild("Text"+i.ToString()).GetComponent<Text>().text = ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).choices[i-1].Line;
+			else
+				m_goDialogueBox.transform.FindChild("Text"+i.ToString()).GetComponent<Text>().text = "";
 		}
-		m_goDialogueBox.GetComponentInChildren<Text>().text = line;
 	}
 
 	// Update is called once per frame

@@ -98,7 +98,7 @@ public class DialogueScriptLoaderScript : MonoBehaviour
 					newDlg.BustID = 0;
 				newDlg.NumberOfChoices = int.Parse(piece[3].Trim());
 				newDlg.choices = new List<Choice>();
-				for(int i = 4; i -1 < newDlg.NumberOfChoices + 4; i += 2)
+				for(int i = 4; i-2 < newDlg.NumberOfChoices + 4; i += 2)
 				{
 					Choice c = new Choice();
 					c.Line = piece[i].Trim();
