@@ -157,11 +157,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Cytheria":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("Cytheria");
 			if(messageSystem)
 			{
@@ -202,11 +197,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Delaria":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("Delaria");
 			if(messageSystem)
 			{
@@ -233,11 +223,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Timmy":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("Timmy");
 			if(messageSystem)
 			{
@@ -263,11 +248,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Matthew":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("Matthew");
 			if(messageSystem)
 			{
@@ -284,11 +264,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Marcus":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("Marcus");
 			if(messageSystem)
 			{
@@ -314,11 +289,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Briar":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("Briar");
 			if(messageSystem)
 			{
@@ -345,11 +315,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "OldTuck":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("Old Tuck");
 			if(messageSystem)
 			{
@@ -366,11 +331,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Cassandra":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("Cassandra");
 			if(messageSystem)
 			{
@@ -394,11 +354,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Lydia":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("Lydia");
 			if(messageSystem)
 			{
@@ -472,11 +427,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Bartholomew":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("Bartholomew");
 			if(messageSystem)
 			{
@@ -503,11 +453,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Constantinople":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("Constantinople");
 			if(messageSystem)
 			{
@@ -524,11 +469,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "NPC_Dancer":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("NPC_Dancer");
 			if(messageSystem)
 			{
@@ -538,11 +478,6 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "Inon_Merchant1":
 		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-						if(player)
-			{
-				player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			}
 			GameObject messageSystem = GameObject.Find("NPC_Merchant1");
 			if(messageSystem)
 			{
