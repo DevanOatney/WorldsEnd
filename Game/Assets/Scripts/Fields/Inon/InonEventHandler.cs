@@ -467,6 +467,24 @@ public class InonEventHandler : BaseEventSystemScript
 			}
 		}
 			break;
+		case "Mattach":
+			{
+				GameObject messageSystem = GameObject.Find("Mattach");
+				if(messageSystem)
+				{
+
+					int mattachResult = -1;
+					if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out mattachResult) == false)
+					{
+						
+					}
+					else
+					{
+						messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("E1");
+					}
+				}
+			}
+			break;
 		case "NPC_Dancer":
 		{
 			GameObject messageSystem = GameObject.Find("NPC_Dancer");
@@ -621,6 +639,7 @@ public class InonEventHandler : BaseEventSystemScript
 			//Player has acquired the boar tusk, now have Briol move into the player to join the team.
 			ds.m_dStoryFlagField.Add("Inon_CeremonyComplete", 1);
 			m_goDeadBoar.SetActive(false);
+			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 			GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveIntoPlayer();
 			GameObject.Find("Briol").GetComponent<BoxCollider2D>().enabled = false;
 			Invoke("RecruitBriol", 2.0f);
