@@ -44,11 +44,13 @@ public class CBattleActionsScript : MonoBehaviour
 				//this is the one selected
 				child.FindChild("Collider").GetComponent<ActionPanelScript>().m_bIsHighlighted = true;
 				child.FindChild("HoverImage").GetComponent<Image>().enabled = true;
+				child.FindChild("Text").GetComponent<Text>().enabled = true;
 			}
 			else
 			{
 				child.FindChild("Collider").GetComponent<ActionPanelScript>().m_bIsHighlighted = false;
 				child.FindChild("HoverImage").GetComponent<Image>().enabled = false;
+				child.FindChild("Text").GetComponent<Text>().enabled = false;
 			}
 			++_nCounter;
 		}
