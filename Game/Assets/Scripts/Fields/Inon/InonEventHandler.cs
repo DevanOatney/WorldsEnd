@@ -19,11 +19,16 @@ public class InonEventHandler : BaseEventSystemScript
 
 	bool m_bUpDir = false, m_bDownDir = false, m_bLeftDir = false, m_bRightDir = false;
 
+
+	//Name of background music to play during this scene
+	string m_szBackgroundMusicName = "Inon_BGM";
+
 	// Use this for initialization
 	void Start () 
 	{
 		ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
-
+		GameObject _goAudioHelper = GameObject.Find("AudioHelper");
+		_goAudioHelper.GetComponent<CAudioHelper>().vPlayMusic(_goAudioHelper.GetComponent<CAudioHelper>().eFromName(m_szBackgroundMusicName),true, true);
 		int result;
 		if(ds.m_dStoryFlagField.TryGetValue("Intro_in_Inon", out result) == false)
 		{

@@ -73,7 +73,10 @@ public class DialogueScriptLoaderScript : MonoBehaviour
 				newDlg.TextID = piece[0].Trim();
 				newDlg.SpecialCaseFlag = spcCase;
 				newDlg.CharacterName = piece[2].Trim();
-				newDlg.DialogueFilePath = piece[3].Trim();
+				if(piece[3].Trim().Length > 0)
+					newDlg.DialogueFilePath = piece[3].Trim();
+				else
+					newDlg.DialogueFilePath = "";	
 				newDlg.Line = piece[4].Trim();
 				if(piece[5].Length > 0)
 					newDlg.BustID = int.Parse(piece[5]);

@@ -10,9 +10,12 @@ public class ToAEventHandler : BaseEventSystemScript
 	public GameObject m_goBoarBoss;
 	DCScript ds;
 	public List<GameObject[]> m_lEvents;
+	string m_szToABGM = "TempleOfAzyre_BGM";
 	// Use this for initialization
 	void Start()
 	{
+		GameObject _goAudioHelper = GameObject.Find("AudioHelper");
+		_goAudioHelper.GetComponent<CAudioHelper>().vPlayMusic(_goAudioHelper.GetComponent<CAudioHelper>().eFromName(m_szToABGM),true, true);
 		ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		SetWaypoints();
 

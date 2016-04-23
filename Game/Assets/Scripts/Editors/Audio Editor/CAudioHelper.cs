@@ -23,6 +23,10 @@ public class CAudioHelper : MonoBehaviour
 
     public enum EMusic
     {
+		Inon_BGM,
+		InonForest_BGM,
+		TempleOfAzyre_BGM,
+		WorldMap_BGM,
         Max,
         Nil = -1
     };
@@ -46,7 +50,6 @@ public class CAudioHelper : MonoBehaviour
         {
             ms_instance = this;
             vSetUpMasterInstance();
-            DontDestroyOnLoad(this);
         }
         else
         {
@@ -94,6 +97,16 @@ public class CAudioHelper : MonoBehaviour
 		}
 
 		return t_i;
+	}
+
+	public EMusic eFromName(string p_szName)
+	{
+		EMusic _returnEnum = EMusic.Max;
+		if (System.Enum.IsDefined(typeof(EMusic), p_szName))
+		{
+			_returnEnum = (EMusic)System.Enum.Parse(typeof(EMusic), p_szName);
+		}
+		return _returnEnum;
 	}
 
     public void vEnsureListSizes( )

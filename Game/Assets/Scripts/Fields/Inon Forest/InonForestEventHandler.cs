@@ -9,9 +9,12 @@ public class InonForestEventHandler : BaseEventSystemScript
 	public GameObject m_goBossBoar;
 	public GameObject[] Phase1_waypoints;
 	public GameObject[] Mushrooms;
+	string m_szInonForestBGM = "InonForest_BGM";
 	// Use this for initialization
 	void Start () 
 	{
+		GameObject _goAudioHelper = GameObject.Find("AudioHelper");
+		_goAudioHelper.GetComponent<CAudioHelper>().vPlayMusic(_goAudioHelper.GetComponent<CAudioHelper>().eFromName(m_szInonForestBGM),true, true);
 		ds = GameObject.Find ("PersistantData").GetComponent<DCScript> ();
 		int result;
 		if(ds.m_dStoryFlagField.TryGetValue("ToAEvent", out result))
