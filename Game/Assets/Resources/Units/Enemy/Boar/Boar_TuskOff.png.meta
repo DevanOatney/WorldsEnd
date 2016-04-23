@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: 053930ca2e0712c4cb65c85aac953233
-timeCreated: 1459809377
+timeCreated: 1461449880
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Boar_TuskOff_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +39,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +50,25 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Boar_TuskOff_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 100
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25, y: 23}
+        - {x: -22, y: 23}
+        - {x: -49, y: 12}
+        - {x: -49, y: -23}
+        - {x: 47, y: -23}
+        - {x: 47, y: -5}
+        - {x: 46, y: 0}
     outline: []
   spritePackingTag: 
   userData: 

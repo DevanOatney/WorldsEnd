@@ -9,10 +9,10 @@ public class IntroSceneScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		if(CAudioHelper.Instance == null)
+		//if(CAudioHelper.Instance == null)
 		{
-			GameObject audioPlayer = (GameObject)Instantiate(m_goAudioPlayer);
-			DontDestroyOnLoad(audioPlayer);
+			//GameObject audioPlayer = (GameObject)Instantiate(m_goAudioPlayer);
+			//DontDestroyOnLoad(audioPlayer);
 		}
 	}
 	
