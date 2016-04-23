@@ -10,10 +10,10 @@ public class PortraitContainerScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		for(int i = 1; i < m_lBriolPortraits.Count+1; ++i)
-			m_dPortraits.Add("Briol"+i.ToString(), m_lBriolPortraits[i-1]);
-		for(int i = 1; i < m_lCallanPortraits.Count+1; ++i)
-			m_dPortraits.Add("Callan"+i.ToString(), m_lCallanPortraits[i-1]);	             
+		for(int i = 0; i < m_lBriolPortraits.Count; ++i)
+			m_dPortraits.Add("Briol"+i.ToString(), m_lBriolPortraits[i]);
+		for(int i = 0; i < m_lCallanPortraits.Count; ++i)
+			m_dPortraits.Add("Callan"+i.ToString(), m_lCallanPortraits[i]);	             
 	}
 	
 	// Update is called once per frame
