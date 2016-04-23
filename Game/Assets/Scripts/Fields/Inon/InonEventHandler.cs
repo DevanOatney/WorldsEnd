@@ -7,10 +7,11 @@ public class InonEventHandler : BaseEventSystemScript
 {
 	DCScript ds;
 	
-	public GameObject[] Phase1_waypoints;
-	public GameObject[] Phase2_waypoints;
-	public GameObject[] Phase3_waypoints;
-	public GameObject[] Phase4_waypoints;
+	public GameObject[] Phase1_waypoints;//waypoints to keep the player stuck in his room
+	public GameObject[] Phase2_waypoints;//waypoint to keep the player from going to the ritual until they go talk to the guy in the guild hall and the blacksmith
+	public GameObject[] Phase3_waypoints;//waypoints inside of the ritual event
+	public GameObject[] Phase4_waypoints;//waypoints inside ritual after player returns from fight
+	public GameObject[] Phase5_waypoints;//waypoints still in town even after the ritual
 	public GameObject m_goBoar;
 	public GameObject m_goDeadBoar;
 	public Sprite m_t2dDeadBoarWithoutTusk;
