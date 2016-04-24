@@ -8,6 +8,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 	DCScript ds;
 	public GameObject m_goBossBoar;
 	public GameObject[] Phase1_waypoints;
+	public GameObject[] Phase2_waypoints;
 	public GameObject[] Mushrooms;
 	string m_szInonForestBGM = "InonForest_BGM";
 	// Use this for initialization
@@ -22,6 +23,14 @@ public class InonForestEventHandler : BaseEventSystemScript
 			//hasn't been to the temple yet
 			m_goBossBoar.SetActive(true);
 			m_goBossBoar.GetComponent<Animator>().Play("BoarBoss_IdleLeft");
+		}
+		else if(result == 5)
+		{
+			//Player has finished the Temple of Azyre initial events and can now leave to the world map from the north of the forest
+			foreach(GameObject wypnt in Phase2_waypoints)
+			{
+				wypnt.SetActive(false);
+			}
 		}
 		if (ds.m_dStoryFlagField.TryGetValue ("BoarBossPart1Finished", out result)) 
 		{
@@ -75,9 +84,30 @@ public class InonForestEventHandler : BaseEventSystemScript
 			m_goBossBoar.SetActive(true);
 			m_goBossBoar.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("BoarMove"),true);
 			m_goBossBoar.GetComponent<Animator>().SetBool("m_bIsMoving", true);
+			
 			GameObject.Find("to Temple").GetComponent<BoxCollider2D>().enabled = true;
 		}	
 		break;
+		case "EndDialogue":
+			{
+				//turn off all dialogues happening, release bind on input.. umn.. i think that's it?
+				GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject>();
+				foreach(GameObject g in gObjs)
+				{
+					if(g.GetComponentInChildren<MessageHandler>() != null)
+					{
+						if(g.GetComponent<NPCScript>() != null)
+							g.GetComponent<NPCScript>().m_bIsBeingInterractedWith = false;
+						g.GetComponentInChildren<MessageHandler>().m_bShouldDisplayDialogue = false;
+					}
+				}
+				GameObject player = GameObject.FindGameObjectWithTag("Player");
+				if(player)
+				{
+					player.GetComponent<FieldPlayerMovementScript>().ReleaseAllBinds();
+				}
+			}
+			break;
 		}
 	}
 
@@ -199,6 +229,24 @@ public class InonForestEventHandler : BaseEventSystemScript
 				GameObject.Find("YWaypoint").GetComponent<BoxCollider2D>().enabled = true;
 			}
 		}
+			break;
+			//prevents the player from leaving InonForest 
+		case "ToWorldMapCheck":
+			{
+				GameObject src = GameObject.Find("Player");
+				src.GetComponent<FieldPlayerMovementScript>().BindInput();
+				src.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("ToWorldMapBackup"), false);
+				GameObject.Find("ToWorldMapBackup").GetComponent<BoxCollider2D>().enabled = true;
+			}
+			break;
+			//catches the player after they try to leave the forest, says some dialogue, then returns control to the player
+		case "ToWorldMapBackup":
+			{
+				GameObject src = GameObject.Find("Player");
+				src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
+				src.GetComponentInChildren<MessageHandler>().BeginDialogue("A7");
+				GameObject.Find("ToWorldMapBackup").GetComponent<BoxCollider2D>().enabled = false;
+			}
 			break;
 		default:
 			break;

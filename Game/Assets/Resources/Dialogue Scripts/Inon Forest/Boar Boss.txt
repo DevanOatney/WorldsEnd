@@ -4,3 +4,5 @@ A3|1|Callan||Alright, let's go.|1|A4
 A4|3|BoarBossEndDialogue
 A5|1|Briol||Quick Callan! We can't let it get away!|1|A6
 A6|3|BoarChaseEndDialogue
+A7|1|Callan||Let's go hunt down that boar first.|1|A8
+A8|3|EndDialogue
