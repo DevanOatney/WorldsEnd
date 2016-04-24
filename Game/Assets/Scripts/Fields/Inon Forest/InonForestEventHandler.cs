@@ -27,6 +27,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 		{
 			if(result == 1)
 			{
+				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 				ds.m_dStoryFlagField.Remove("BoarBossPart1Finished");
 				ds.m_dStoryFlagField.Add("BoarBossPart1Finished", 2);
 				HandleEvent("BoarChase");
@@ -36,7 +37,8 @@ public class InonForestEventHandler : BaseEventSystemScript
 				m_goBossBoar.SetActive(false);
 			}
 			foreach (GameObject go in Phase1_waypoints)
-				go.SetActive (false);
+				if(go)
+					go.SetActive (false);
 
 		}
 		if(ds.m_dStoryFlagField.TryGetValue("Inon_Lydia", out result))
@@ -71,11 +73,8 @@ public class InonForestEventHandler : BaseEventSystemScript
 		case "BoarChase":
 		{
 			m_goBossBoar.SetActive(true);
-			m_goBossBoar.GetComponent<NPCScript>().m_bActive = true;
-			m_goBossBoar.GetComponent<NPCScript>().m_bIsMoving = true;
-			m_goBossBoar.GetComponent<NPCScript>().m_nFacingDir = 2;
+			m_goBossBoar.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("BoarMove"),true);
 			m_goBossBoar.GetComponent<Animator>().SetBool("m_bIsMoving", true);
-			m_goBossBoar.GetComponent<Animator>().Play("BoarBoss_ChargeRight");
 			GameObject.Find("to Temple").GetComponent<BoxCollider2D>().enabled = true;
 		}	
 		break;
@@ -124,12 +123,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 			goBoar.SetActive(false);
 			GameObject src = GameObject.Find("Player");
 			FieldPlayerMovementScript fpmScript = src.GetComponent<FieldPlayerMovementScript>();
-			fpmScript.BindInput();
-			fpmScript.SetState((int)FieldPlayerMovementScript.States.eWALKRIGHT);
-			fpmScript.GetAnimator().SetBool("m_bMoveRight", true);
-			fpmScript.GetAnimator().SetBool("m_bRunButtonIsPressed", true);
-			fpmScript.GetAnimator().SetInteger("m_nFacingDir", 2);
-			fpmScript.SetIsRunning(true);
+			fpmScript.DHF_PlayerMoveToGameObject(GameObject.Find("BoarMove"),false);
 		}
 			break;
 		case "BoarChaseEndDialogue":

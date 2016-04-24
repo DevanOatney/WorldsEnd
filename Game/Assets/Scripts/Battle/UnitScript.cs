@@ -191,7 +191,7 @@ public class UnitScript : MonoBehaviour
 		m_nTempEva = m_nEva;
 	}
 
-	public void Missed()
+	public virtual void Missed()
 	{
 		if(GetCurHP() > 0)
 		{

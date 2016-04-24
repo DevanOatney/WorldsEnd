@@ -249,6 +249,7 @@ public class DCScript : MonoBehaviour
 	//So this call is also updating character stats, so iterate through each character and update their stats on the roster
 	public void SetParty(List<CharacterData> p) 
 	{
+		Debug.Log("New party count " + p.Count);
 		m_lPartyMembers.Clear();
 		foreach(CharacterData character in p)
 		{

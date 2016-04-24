@@ -337,7 +337,7 @@ public class StandardEnemyScript : UnitScript
 		m_vTargetPosition = GameObject.Find("Enemy_StartPos" + FieldPosition).transform.position;
 	}
 
-	new public void Missed()
+	override public void Missed()
 	{
 		GameObject newText = Instantiate(m_goFadingText);
 		newText.GetComponent<GUI_FadeText>().SetColor(true);
