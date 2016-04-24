@@ -17,7 +17,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 		_goAudioHelper.GetComponent<CAudioHelper>().vPlayMusic(_goAudioHelper.GetComponent<CAudioHelper>().eFromName(m_szInonForestBGM),true, true);
 		ds = GameObject.Find ("PersistantData").GetComponent<DCScript> ();
 		int result;
-		if(ds.m_dStoryFlagField.TryGetValue("ToAEvent", out result))
+		if(ds.m_dStoryFlagField.TryGetValue("ToAEvent", out result) == false)
 		{
 			//hasn't been to the temple yet
 			m_goBossBoar.SetActive(true);
@@ -113,17 +113,9 @@ public class InonForestEventHandler : BaseEventSystemScript
 		{
 		case "BriolWaypoint":
 		{
-			GameObject briol = GameObject.Find("Briol");
-			NPCScript bNpc = briol.GetComponent<NPCScript>();
-			bNpc.m_bIsMoving = false;
-			bNpc.m_bActive = false;
-			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eRIGHT;
-			bNpc.ResetAnimFlagsExcept(-1);
-			bNpc.m_aAnim.SetInteger("m_nFacingDir", (int)NPCScript.FACINGDIR.eRIGHT);
 			GameObject.Find("BriolWaypoint").GetComponent<BoxCollider2D>().enabled = false;
-
 			GameObject player = GameObject.Find("Player");
-			player.GetComponent<MessageHandler>().BeginDialogue("A1");
+			player.GetComponentInChildren<MessageHandler>().BeginDialogue("A1");
 		}
 			break;
 		case "BoarMove":
@@ -167,11 +159,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 			briol.GetComponent<SpriteRenderer>().enabled = true;
 			briol.GetComponent<BoxCollider2D>().enabled = true;
 			NPCScript bNpc = briol.GetComponent<NPCScript>();
-			bNpc.m_bIsComingOutOfPlayer = true;
-			bNpc.m_bIsMoving = true;
-			bNpc.m_bActive = true;
-			bNpc.m_nFacingDir = (int)NPCScript.FACINGDIR.eUP;
-			bNpc.ResetAnimFlagsExcept(bNpc.m_nFacingDir);
+			bNpc.DHF_NPCMoveToGameobject(GameObject.Find("BriolWaypoint"),false, 2);
 
 
 			GameObject.Find("YWaypoint").GetComponent<BoxCollider2D>().enabled = false;

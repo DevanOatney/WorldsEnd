@@ -11,12 +11,12 @@ public class StandardEnemyScript : UnitScript
 	public TextAsset m_taStats;
 	float m_fMovementSpeed = 8.0f;
 	//delay to make it look like some sort of calculation is happening when it's the enemies turn (lol)
-	float m_fDelayBucket = 2.0f;
-	float m_fDelayTimer = 0.0f;
+	protected float m_fDelayBucket = 2.0f;
+	protected float m_fDelayTimer = 0.0f;
 	//Stuff for the shadow clones that spawn during movement... maybe special attacks if I have time?
 	public GameObject m_goShadowClone;
-	float m_fShadowTimer = 0.0f;
-	float m_fShadowTimerBucket = 0.1f;
+	protected float m_fShadowTimer = 0.0f;
+	protected float m_fShadowTimerBucket = 0.1f;
 	public Vector3 m_vTargetPosition = new Vector3();
 
 	public List<DroppedItem> m_lItemsThatCanDrop;
@@ -29,6 +29,11 @@ public class StandardEnemyScript : UnitScript
 
 	// Use this for initialization
 	void Start () 
+	{
+		Initialize();
+	}
+
+	protected void Initialize()
 	{
 		SetUnitStats();
 		m_vInitialPos = new Vector3();
@@ -46,7 +51,7 @@ public class StandardEnemyScript : UnitScript
 		HandleStates();
 	}
 
-	void HandleStates()
+	protected void HandleStates()
 	{
 		switch(m_nState)
 		{
@@ -67,6 +72,8 @@ public class StandardEnemyScript : UnitScript
 								GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
 								foreach(GameObject tar in posTargs)
 								{
+									if(tar.name.Contains("(Clone)"))
+										continue;
 									if(tar.GetComponent<UnitScript>().GetCurHP() < lowestHP && tar.GetComponent<UnitScript>().GetCurHP() > 0)
 									{
 										WeakestTarget = tar;
@@ -79,6 +86,8 @@ public class StandardEnemyScript : UnitScript
 									m_aAnim.SetBool("m_bIsMoving", true);
 									m_fDelayTimer = 0.0f;
 									m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
+									GameObject targetPosition = GameObject.Find("Near_Ally" + m_nTargetPositionOnField);
+									m_vTargetPosition = targetPosition.transform.position;
 								}
 							}
 							break;
@@ -207,7 +216,7 @@ public class StandardEnemyScript : UnitScript
 		}
 	}
 
-	void SetUnitStats()
+	protected void SetUnitStats()
 	{
 		string[] stats = m_taStats.text.Split('\n');
 		List<string> _lStats = new List<string>();
@@ -263,7 +272,8 @@ public class StandardEnemyScript : UnitScript
 			m_lItemsThatCanDrop.Add(item);
 		}
 	}
-	new public void AdjustHP(int dmg)
+
+	override public void AdjustHP(int dmg)
 	{
 		GameObject newText = Instantiate(m_goFadingText);
 		if(dmg >= 0)
@@ -339,7 +349,7 @@ public class StandardEnemyScript : UnitScript
 		newText.transform.position = textPos;
 	}
 
-	new public void IDied()
+	override public void IDied()
 	{
 		GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>().RemoveMeFromList(gameObject, 0.0f);
 		Destroy(gameObject);

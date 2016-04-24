@@ -5,3 +5,4 @@ SPD:20
 HIT:15
 EVA:15
 LVL:10
+How many items can drop : 0

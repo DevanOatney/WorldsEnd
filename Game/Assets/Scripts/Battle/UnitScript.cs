@@ -168,7 +168,7 @@ public class UnitScript : MonoBehaviour
 				break;
 			case (int)UnitTypes.PERCENTENEMY:
 			{
-				gameObject.GetComponent<PercentBeserkEnemyScript>().AdjustHP(dmg);
+				gameObject.GetComponent<PercentStandardEnemyScript>().AdjustHP(dmg);
 			}
 				break;
 			}
@@ -214,7 +214,7 @@ public class UnitScript : MonoBehaviour
 				break;
 			case (int)UnitTypes.PERCENTENEMY:
 			{
-				gameObject.GetComponent<PercentBeserkEnemyScript>().Missed();
+				gameObject.GetComponent<PercentStandardEnemyScript>().Missed();
 			}
 				break;
 			}
@@ -254,7 +254,7 @@ public class UnitScript : MonoBehaviour
 			break;
 		case (int)UnitTypes.PERCENTENEMY:
 		{
-			gameObject.GetComponent<PercentBeserkEnemyScript>().EVENT_AttackAnimEnd();
+			gameObject.GetComponent<PercentStandardEnemyScript>().AttackAnimEnd();
 		}
 			break;
 		}
@@ -268,30 +268,8 @@ public class UnitScript : MonoBehaviour
 	{
 	}
 
-	public void IDied()
+	virtual public void IDied()
 	{
-		switch(m_nUnitType)
-		{
-		case (int)UnitTypes.ALLY_MELEE:
-			{
-
-			}
-			break;
-		case (int)UnitTypes.ALLY_RANGED:
-			{
-
-			}
-			break;
-		case (int)UnitTypes.BASICENEMY:
-			{
-				gameObject.GetComponent<StandardEnemyScript>().IDied();
-			}
-			break;
-		case (int)UnitTypes.PERCENTENEMY:
-			{
-			}
-			break;
-		}
 
 	}
 
