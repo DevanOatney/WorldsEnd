@@ -38,7 +38,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<FieldPlayerMovementScript>().BindInput();
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-			player.GetComponent<MessageHandler>().BeginDialogue("A0");
+			player.GetComponentInChildren<MessageHandler>().BeginDialogue("A0");
 			ds.m_dStoryFlagField.Add("ToAEvent", 0);
 			foreach(GameObject wpnt in Phase1_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
@@ -224,7 +224,7 @@ public class ToAEventHandler : BaseEventSystemScript
 				m_goBoar.SetActive (false);
 				GameObject briol = GameObject.Find ("Briol");
 				briol.GetComponent<SpriteRenderer> ().enabled = false;
-				briol.GetComponent<MessageHandler> ().BeginDialogue ("A7");
+				briol.GetComponentInChildren<MessageHandler> ().BeginDialogue ("A7");
 			}
 			break;
 		case "ReturnedFromBoarBossFight":
@@ -239,7 +239,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			briol.GetComponent<SpriteRenderer>().enabled = true;
 			briol.GetComponent<NPCScript>().ResetAnimFlagsExcept(-1);
 			briol.GetComponent<Animator>().SetInteger("m_nFacingDir", 1);
-			briol.GetComponent<MessageHandler>().BeginDialogue("C5");
+			briol.GetComponentInChildren<MessageHandler>().BeginDialogue("C5");
 
 		}
 			break;
@@ -274,13 +274,13 @@ public class ToAEventHandler : BaseEventSystemScript
 				GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject> ();
 				foreach (GameObject g in gObjs) 
 				{
-					if (g.GetComponent<MessageHandler> () != null) 
+					if (g.GetComponentInChildren<MessageHandler> () != null) 
 					{
 						if (g.GetComponent<NPCScript> () != null)
 						{
 							g.GetComponent<NPCScript> ().m_bIsBeingInterractedWith = false;
 						}
-						g.GetComponent<MessageHandler> ().m_bShouldDisplayDialogue = false;
+						g.GetComponentInChildren<MessageHandler> ().m_bShouldDisplayDialogue = false;
 					}
 				}
 				GameObject player = GameObject.FindGameObjectWithTag ("Player");
@@ -303,7 +303,7 @@ public class ToAEventHandler : BaseEventSystemScript
 		{
 			//Player has gotten to the bridge in the beginning.  Turn off the collider and have Briol begin to move to him
 			GameObject src = GameObject.Find("Player");
-			src.GetComponent<MessageHandler>().BeginDialogue("A6");
+			src.GetComponentInChildren<MessageHandler>().BeginDialogue("A6");
 			GameObject.Find("Interior").GetComponent<BoxCollider2D>().enabled = true;
 		}
 			break;
@@ -351,7 +351,7 @@ public class ToAEventHandler : BaseEventSystemScript
 		{
 			//Briol exclaims about there being a boar
 			GameObject Briol  = GameObject.Find("Briol");
-			Briol.GetComponent<MessageHandler>().BeginDialogue("B0");
+			Briol.GetComponentInChildren<MessageHandler>().BeginDialogue("B0");
 		}
 			break;
 		
@@ -381,7 +381,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			NPCScript bNpc = briol.GetComponent<NPCScript> ();
 			bNpc.m_bIsComingOutOfPlayer = true;
 			bNpc.DHF_NPCMoveToGameobject (GameObject.Find ("Briol_AwayFromPlayerAtEntrance"),false);
-			briol.GetComponent<MessageHandler> ().BeginDialogue ("A0");
+			briol.GetComponentInChildren<MessageHandler> ().BeginDialogue ("A0");
 			ds.m_dStoryFlagField.Remove("ToAEvent");
 			ds.m_dStoryFlagField.Add("ToAEvent", 1);
 		}
@@ -390,7 +390,7 @@ public class ToAEventHandler : BaseEventSystemScript
 		{
 			//Briol has moved to the location, begin dialogue
 			GameObject briol = GameObject.Find ("Briol");
-			briol.GetComponent<MessageHandler> ().BeginDialogue ("A0");
+			briol.GetComponentInChildren<MessageHandler> ().BeginDialogue ("A0");
 
 		}
 			break;
@@ -399,7 +399,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			//Boar has reached stairs, deactivate, set the camera target back to the player and play the last bit of dialogue for the scene
 			m_goBoar.SetActive(false);
 			Camera.main.GetComponent<CameraFollowTarget>().m_goNextTarget = GameObject.Find("Player");
-			GameObject.Find("Briol").GetComponent<MessageHandler>().BeginDialogue("B2");
+			GameObject.Find("Briol").GetComponentInChildren<MessageHandler>().BeginDialogue("B2");
 		}
 			break;
 		case "EncounterThePit":
@@ -435,7 +435,7 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "PitPoint_Callan":
 		{
 			//Callan has moved beside briol to look at the pit, begin dialogue
-			GameObject.Find("Briol").GetComponent<MessageHandler>().BeginDialogue("D0");
+			GameObject.Find("Briol").GetComponentInChildren<MessageHandler>().BeginDialogue("D0");
 		}
 			break;
 		case "EncounterBoarBoss_Start":
@@ -462,7 +462,7 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "BoarBossPoint_Briol":
 		{
 			//Briol has moved into initial position for encountering the boar boss, start the dialogue
-			GameObject.Find("Briol").GetComponent<MessageHandler>().BeginDialogue("C0");
+			GameObject.Find("Briol").GetComponentInChildren<MessageHandler>().BeginDialogue("C0");
 		}
 			break;
 		case "BoarBossChargePoint_Callan":
@@ -555,6 +555,6 @@ public class ToAEventHandler : BaseEventSystemScript
 	void StartChat()
 	{
 		GameObject player = GameObject.Find("Player");
-		player.GetComponent<MessageHandler>().BeginDialogue("B0");
+		player.GetComponentInChildren<MessageHandler>().BeginDialogue("B0");
 	}
 }

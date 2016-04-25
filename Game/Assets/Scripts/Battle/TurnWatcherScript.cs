@@ -199,6 +199,8 @@ public class TurnWatcherScript : MonoBehaviour
 
 	void UpdateCharacterPanel(CharacterPanelContainer _cpc, CAllyBattleScript _c)
 	{
+		if(_cpc == null || _c == null)
+			return;
 		_cpc.m_goCharacterName.GetComponent<Text>().text = _c.name;
 		_cpc.m_goCharacterLevel.FindChild("Text").GetComponent<Text>().text = _c.GetUnitLevel().ToString();
 		_cpc.m_goCharacterEXP.FindChild("Text").GetComponent<Text>().text = _c.m_nCurrentExperience.ToString();
@@ -535,6 +537,7 @@ public class TurnWatcherScript : MonoBehaviour
 
 			if(m_nEnemyCount <= 0)
 			{
+				DisableCharacterHealthPanels();
 				RollForItems();
 				m_bIsBattleOver  = true;
 				m_goActionSelector.SetActive(false);
@@ -546,12 +549,21 @@ public class TurnWatcherScript : MonoBehaviour
 			m_nAllyCount--;
 			if(m_nAllyCount <= 0)
 			{
+				DisableCharacterHealthPanels();
 				m_goActionSelector.SetActive(false);
 				Invoke("BeginFading", m_fFadeDuration);
 				Invoke("Lose", 3.0f + m_fFadeDuration);
 			}
 		}
 	}
+
+	void DisableCharacterHealthPanels()
+	{
+		GameObject[] panels = GameObject.FindGameObjectsWithTag("Finish");
+		foreach(GameObject go in panels)
+			go.SetActive(false);
+	}
+
 	public void AddMeToList(GameObject go)
 	{
 		//TODO  perhaps adjust incase the list needs alteration when someone joins the fight?
