@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class BaseSpellBattleScript : MonoBehaviour 
 {
-	public enum ELEMENTS{eWATER, eEARTH, eWIND, eFIRE, eLIGHTNING}
+	public enum ELEMENTS{eWATER, eEARTH, eWIND, eFIRE, eDARK, eLIGHT}
 	public string m_szSpellName;
 	public int m_nTargetType;//1 - single heal, 2- aoe heal, 3 - single dmg, 4 - aoe dmg
 	public int m_nElementType;

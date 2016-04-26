@@ -273,6 +273,10 @@ public class UnitScript : MonoBehaviour
 
 	}
 
+	public virtual void ChargingOver()
+	{
+	}
+
 	bool CheckIfHit()
 	{
 		GameObject[] posTargs = null;

@@ -85,6 +85,10 @@ public class CAllyBattleScript : UnitScript
 	[HideInInspector]
 	public GameObject m_goItemBeingUsed = null;
 
+	string m_szSpellToCast = "";
+	//increments when the unit cast ends and when the spell runic circle ends.   Spell effect doesn't happen until the counter gets to 2 so that both effects end before the spell goes off.
+	int m_nCastingCounter = 0;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -312,6 +316,7 @@ public class CAllyBattleScript : UnitScript
 					//turn off the flags for the item/inventory rendering
 					m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
 					m_aAnim.SetBool("m_bIsCasting", true);
+					StartChargingSpell();
 					ClearTargetReticles();
 				}
 			}
@@ -322,6 +327,7 @@ public class CAllyBattleScript : UnitScript
 				{
 					m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
 					m_aAnim.SetBool("m_bIsCasting", true);
+					StartChargingSpell();
 					ClearTargetReticles();
 				}
 				else if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
@@ -340,6 +346,7 @@ public class CAllyBattleScript : UnitScript
 					//turn off the flags for the item/inventory rendering
 					m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
 					m_aAnim.SetBool("m_bIsCasting", true);
+					StartChargingSpell();
 					ClearTargetReticles();
 				}
 			}
@@ -349,6 +356,7 @@ public class CAllyBattleScript : UnitScript
 				if(Input.GetKeyDown(KeyCode.Return))
 				{
 					m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
+					StartChargingSpell();
 					m_aAnim.SetBool("m_bIsCasting", true);
 					ClearTargetReticles();
 				}
@@ -1236,12 +1244,14 @@ public class CAllyBattleScript : UnitScript
 		}
 		else if(m_nState == (int)ALLY_STATES.SPELL_PICKED_SINGLEDMG)
 		{
+			StartChargingSpell();
 			m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
 			m_aAnim.SetBool("m_bIsCasting", true);
 			ClearTargetReticles();
 		}
 		else if(m_nState == (int)ALLY_STATES.SPELL_PICKED_AOEDMG)
 		{
+			StartChargingSpell();
 			m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
 			m_aAnim.SetBool("m_bIsCasting", true);
 			ClearTargetReticles();
@@ -1264,12 +1274,14 @@ public class CAllyBattleScript : UnitScript
 		}
 		else if(m_nState == (int)ALLY_STATES.SPELL_PICKED_SINGLEHEAL)
 		{
+			StartChargingSpell();
 			ClearTargetReticles();
 			m_aAnim.SetBool("m_bIsCasting", true);
 			m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
 		}
 		else if(m_nState == (int)ALLY_STATES.SPELL_PICKED_AOEHEAL)
 		{
+			StartChargingSpell();
 			ClearTargetReticles();
 			m_aAnim.SetBool("m_bIsCasting", true);
 			m_nState = (int)CAllyBattleScript.ALLY_STATES.CHARGING_SPELL;
@@ -1340,7 +1352,12 @@ public class CAllyBattleScript : UnitScript
 		{
 			m_nState = (int)ALLY_STATES.CASTING_SPELL;
 			m_aAnim.SetBool("m_bIsCasting", false);
-			m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+			m_nCastingCounter += 1;
+			if(m_nCastingCounter >= 2)
+			{
+				m_nCastingCounter = 0;
+				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
+			}
 		}
 	}
 
@@ -1504,9 +1521,11 @@ public class CAllyBattleScript : UnitScript
 
 	public void SpellToUseSelected(string _szSpellName)
 	{
+		m_szSpellToCast = _szSpellName;
+
 		if(m_nState == (int)ALLY_STATES.USEMAGIC_CHOSEN)
 		{
-			SpellLibrary.cSpellData _Spell =  m_dcPersistantData.m_lSpellLibrary.GetSpellFromLibrary(_szSpellName);
+			SpellLibrary.cSpellData _Spell =  m_dcPersistantData.m_lSpellLibrary.GetSpellFromLibrary(m_szSpellToCast);
 			if(_Spell != null)
 			{
 				switch(_Spell.m_nTargetType)
@@ -1557,6 +1576,78 @@ public class CAllyBattleScript : UnitScript
 				m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().Initialize(gameObject);
 
 			}
+		}
+	}
+
+	void StartChargingSpell()
+	{
+		SpellLibrary.cSpellData _Spell =  m_dcPersistantData.m_lSpellLibrary.GetSpellFromLibrary(m_szSpellToCast);
+		switch(_Spell.m_nElementType)
+		{
+		case 0:
+			{
+				//Water
+				Vector3 newPos = transform.position;
+				newPos.y -= m_aAnim.gameObject.GetComponent<SpriteRenderer>().bounds.size.y * 0.5f;
+				GameObject WaterRune = Instantiate(Resources.Load("Animation Effects/Spell Effects/CastEffects/Cast_Water") as GameObject, newPos, Quaternion.identity) as GameObject;
+				WaterRune.GetComponent<CastingScript>().m_goOwner = gameObject;
+			}
+			break;
+		case 1:
+			{
+				//Earth
+				Vector3 newPos = transform.position;
+				newPos.y -= m_aAnim.gameObject.GetComponent<SpriteRenderer>().bounds.size.y * 0.5f;
+				GameObject EarthRune = Instantiate(Resources.Load("Animation Effects/Spell Effects/CastEffects/Cast_Earth") as GameObject, newPos, Quaternion.identity) as GameObject;
+				EarthRune.GetComponent<CastingScript>().m_goOwner = gameObject;
+			}
+			break;
+		case 2:
+			{
+				//Wind
+				Vector3 newPos = transform.position;
+				newPos.y -= m_aAnim.gameObject.GetComponent<SpriteRenderer>().bounds.size.y * 0.5f;
+				GameObject WindRune = Instantiate(Resources.Load("Animation Effects/Spell Effects/CastEffects/Cast_Wind") as GameObject, newPos, Quaternion.identity) as GameObject;
+				WindRune.GetComponent<CastingScript>().m_goOwner = gameObject;
+			}
+			break;
+		case 3:
+			{
+				//Fire
+				Vector3 newPos = transform.position;
+				newPos.y -= m_aAnim.gameObject.GetComponent<SpriteRenderer>().bounds.size.y * 0.5f;
+				GameObject FireRune = Instantiate(Resources.Load("Animation Effects/Spell Effects/CastEffects/Cast_Fire") as GameObject, newPos, Quaternion.identity) as GameObject;
+				FireRune.GetComponent<CastingScript>().m_goOwner = gameObject;
+			}
+			break;
+		case 4:
+			{
+				//Dark
+				Vector3 newPos = transform.position;
+				newPos.y -= m_aAnim.gameObject.GetComponent<SpriteRenderer>().bounds.size.y * 0.5f;
+				GameObject DarkRune = Instantiate(Resources.Load("Animation Effects/Spell Effects/CastEffects/Cast_Dark") as GameObject, newPos, Quaternion.identity) as GameObject;
+				DarkRune.GetComponent<CastingScript>().m_goOwner = gameObject;
+			}
+			break;
+		case 5:
+			{
+				//Light
+				Vector3 newPos = transform.position;
+				newPos.y -= m_aAnim.gameObject.GetComponent<SpriteRenderer>().bounds.size.y * 0.5f;
+				GameObject LightRune = Instantiate(Resources.Load("Animation Effects/Spell Effects/CastEffects/Cast_Light") as GameObject, newPos, Quaternion.identity) as GameObject;
+				LightRune.GetComponent<CastingScript>().m_goOwner = gameObject;
+			}
+			break;
+		}
+	}
+
+	public override void ChargingOver()
+	{
+		m_nCastingCounter += 1;
+		if(m_nCastingCounter >= 2)
+		{
+			m_nCastingCounter = 0;
+			m_goItemBeingUsed.GetComponent<BaseSpellBattleScript>().m_bShouldActivate = true;
 		}
 	}
 
