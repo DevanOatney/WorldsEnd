@@ -92,7 +92,6 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	public List<GameObject> m_lStatusEffects = new List<GameObject>();
 	public void RemoveStatusEffect(string effectName)
 	{
-		Debug.Log("Does this get called?");
 		for (int i = m_lStatusEffects.Count - 1; i >= 0; i--)
 		{
 			if(m_lStatusEffects[i].name == effectName)

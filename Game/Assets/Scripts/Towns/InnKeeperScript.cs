@@ -25,7 +25,7 @@ public class InnKeeperScript : MonoBehaviour
 	{
 		GameObject.Find("PersistantData").GetComponent<DCScript>().RestoreParty();
 		Camera.main.SendMessage("fadeIn");
-		GameObject.Find("Event System").GetComponent<BaseEventSystemScript>().HandleEvent("EndDialogue");
+		GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent("EndDialogue");
 	}
 
 }
