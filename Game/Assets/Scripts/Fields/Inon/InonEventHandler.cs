@@ -46,6 +46,8 @@ public class InonEventHandler : BaseEventSystemScript
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			foreach(GameObject wpnt in Phase4_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
+			GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = true;
+			GameObject.Find("Mattach").GetComponent<SpriteRenderer>().enabled = true;
 			GameObject.Find("NoteFromFamily").GetComponent<BoxCollider2D>().enabled = false;
 		}
 		else if(ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == false)
@@ -59,15 +61,17 @@ public class InonEventHandler : BaseEventSystemScript
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			foreach(GameObject wpnt in Phase4_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
+			GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = true;
+			GameObject.Find("Mattach").GetComponent<SpriteRenderer>().enabled = true;
 		}
 		else if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == false && 
 		        ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == true)
 		{
+			//have completed the ritual battle, but haven't completed the full ritual yet, begin the final bits of dialogue for the ritual
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 			player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 0);
 			player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			//have completed the ritual battle, but haven't completed the full ritual yet, begin the final bits of dialogue for the ritual
 			GameObject.Find("Mattach").GetComponentInChildren<MessageHandler>().BeginDialogue("B1");
 			ds.m_dStoryFlagField.Remove("Inon_RitualBattleComplete");
 			foreach(GameObject wpnt in Phase1_waypoints)
@@ -78,6 +82,8 @@ public class InonEventHandler : BaseEventSystemScript
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 			foreach(GameObject wpnt in Phase4_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
+			GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = true;
+			GameObject.Find("Mattach").GetComponent<SpriteRenderer>().enabled = true;
 			m_goDeadBoar.SetActive(true);
 		}
 		else if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == true)
@@ -91,7 +97,8 @@ public class InonEventHandler : BaseEventSystemScript
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
 			foreach(GameObject wpnt in Phase4_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-
+			GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = false;
+			GameObject.Find("Mattach").GetComponent<SpriteRenderer>().enabled = true;
 		}
 		
 	}

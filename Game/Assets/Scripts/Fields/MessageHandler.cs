@@ -165,17 +165,18 @@ public class MessageHandler : MonoBehaviour
 				GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
 			timer = 0.0f;
 		}
-		Texture2D tBust;
+		Sprite tBust;
 		string szName = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).CharacterName;
 		int bustID = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).BustID;
 		if(GameObject.Find("Portraits Container").GetComponent<PortraitContainerScript>().m_dPortraits.TryGetValue(
 			szName+bustID.ToString() , out tBust))
 		{
 			//This dialogue has a portrait!! Draw things
+			Texture2D _t2dTexture = TextureFromSprite(tBust);
 			EnableUIObject(m_goDialoguePortrait);
-			m_goDialoguePortrait.GetComponent<Image>().sprite = Sprite.Create(tBust, 
-				new Rect(0, 0, tBust.width,
-					tBust.height), new Vector2(0.5f, 0.5f));
+			m_goDialoguePortrait.GetComponent<Image>().sprite = Sprite.Create(_t2dTexture, 
+				new Rect(0, 0, _t2dTexture.width,
+					_t2dTexture.height), new Vector2(0.5f, 0.5f));
 			DisableUIObject(m_goDialogueNameplate1);
 			EnableUIObject(m_goDialogueNameplate2);
 			m_goDialogueNameplate2.GetComponentInChildren<Text>().text = szName;
@@ -323,5 +324,23 @@ public class MessageHandler : MonoBehaviour
 		timer = 0.0f;
 		textIter = 0; 
 	}
+
+	Texture2D TextureFromSprite(Sprite sprite)
+	{
+		if(sprite.rect.width != sprite.texture.width)
+		{
+			Texture2D newText = new Texture2D((int)sprite.rect.width,(int)sprite.rect.height);
+			Color[] newColors = sprite.texture.GetPixels((int)sprite.textureRect.x,
+														 (int)sprite.textureRect.y,
+														 (int)sprite.textureRect.width,
+														 (int)sprite.textureRect.height);
+			newText.SetPixels(newColors);
+			newText.Apply();
+			return newText;
+		}
+		else
+			return sprite.texture;
+	}
+
 }
  

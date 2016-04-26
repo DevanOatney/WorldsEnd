@@ -16,6 +16,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 	{
 		GameObject _goAudioHelper = GameObject.Find("AudioHelper");
 		_goAudioHelper.GetComponent<CAudioHelper>().vPlayMusic(_goAudioHelper.GetComponent<CAudioHelper>().eFromName(m_szInonForestBGM),true, true);
+		GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = false;
 		ds = GameObject.Find ("PersistantData").GetComponent<DCScript> ();
 		int result;
 		if(ds.m_dStoryFlagField.TryGetValue("ToAEvent", out result) == false)
@@ -23,6 +24,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 			//hasn't been to the temple yet
 			m_goBossBoar.SetActive(true);
 			m_goBossBoar.GetComponent<Animator>().Play("BoarBoss_IdleLeft");
+
 		}
 		else if(result == 5)
 		{

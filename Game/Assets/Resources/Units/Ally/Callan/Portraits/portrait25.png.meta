@@ -1,0 +1,255 @@
+fileFormatVersion: 2
+guid: 78286c9d1d9ba664ba8f64841e8445a7
+timeCreated: 1461662482
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: portrait25_0
+    21300002: portrait25_1
+    21300004: portrait25_2
+    21300006: portrait25_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 1
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: portrait25_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 380
+        width: 300
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 127, y: -13}
+        - {x: 130, y: -13}
+        - {x: 137, y: -6}
+        - {x: 139, y: 6}
+        - {x: 120, y: 26}
+        - {x: 105, y: 36}
+        - {x: 111, y: 61}
+        - {x: 109, y: 99}
+        - {x: 93, y: 119}
+        - {x: 49, y: 169}
+        - {x: 24, y: 189}
+        - {x: 16, y: 190}
+        - {x: -41, y: 190}
+        - {x: -46, y: 188}
+        - {x: -84, y: 169}
+        - {x: -108, y: 141}
+        - {x: -122, y: 107}
+        - {x: -118, y: 45}
+        - {x: -114, y: 33}
+        - {x: -102, y: 4}
+        - {x: -123, y: -7}
+        - {x: -116, y: -14}
+        - {x: -110, y: -18}
+        - {x: -92, y: -41}
+        - {x: -113, y: -32}
+        - {x: -117, y: -38}
+        - {x: -115, y: -46}
+        - {x: -126, y: -83}
+        - {x: -137, y: -88}
+        - {x: -150, y: -107}
+        - {x: -150, y: -190}
+        - {x: 150, y: -190}
+        - {x: 150, y: -32}
+        - {x: 115, y: -9}
+      - - {x: 124, y: 36}
+        - {x: 120, y: 36}
+        - {x: 116, y: 33}
+        - {x: 116, y: 26}
+        - {x: 125, y: 23}
+        - {x: 134, y: 23}
+        - {x: 134, y: 32}
+        - {x: 130, y: 34}
+    - name: portrait25_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 300
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 127, y: -13}
+        - {x: 130, y: -13}
+        - {x: 137, y: -6}
+        - {x: 139, y: 6}
+        - {x: 120, y: 26}
+        - {x: 105, y: 36}
+        - {x: 91, y: 38}
+        - {x: 111, y: 61}
+        - {x: 109, y: 99}
+        - {x: 93, y: 119}
+        - {x: 49, y: 169}
+        - {x: 24, y: 189}
+        - {x: 16, y: 190}
+        - {x: -41, y: 190}
+        - {x: -46, y: 188}
+        - {x: -84, y: 169}
+        - {x: -108, y: 141}
+        - {x: -122, y: 107}
+        - {x: -118, y: 45}
+        - {x: -114, y: 33}
+        - {x: -102, y: 4}
+        - {x: -123, y: -7}
+        - {x: -116, y: -14}
+        - {x: -110, y: -18}
+        - {x: -92, y: -18}
+        - {x: -92, y: -41}
+        - {x: -113, y: -32}
+        - {x: -117, y: -38}
+        - {x: -115, y: -46}
+        - {x: -126, y: -83}
+        - {x: -137, y: -88}
+        - {x: -150, y: -107}
+        - {x: -150, y: -190}
+        - {x: 150, y: -190}
+        - {x: 150, y: -32}
+        - {x: 115, y: -9}
+    - name: portrait25_2
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 300
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 127, y: -13}
+        - {x: 130, y: -13}
+        - {x: 137, y: -6}
+        - {x: 139, y: 6}
+        - {x: 120, y: 26}
+        - {x: 105, y: 36}
+        - {x: 91, y: 38}
+        - {x: 111, y: 61}
+        - {x: 109, y: 99}
+        - {x: 93, y: 119}
+        - {x: 49, y: 169}
+        - {x: 24, y: 189}
+        - {x: 16, y: 190}
+        - {x: -41, y: 190}
+        - {x: -46, y: 188}
+        - {x: -84, y: 169}
+        - {x: -108, y: 141}
+        - {x: -122, y: 107}
+        - {x: -118, y: 45}
+        - {x: -114, y: 33}
+        - {x: -102, y: 4}
+        - {x: -123, y: -7}
+        - {x: -116, y: -14}
+        - {x: -110, y: -18}
+        - {x: -92, y: -18}
+        - {x: -92, y: -41}
+        - {x: -113, y: -32}
+        - {x: -117, y: -38}
+        - {x: -115, y: -46}
+        - {x: -126, y: -83}
+        - {x: -137, y: -88}
+        - {x: -150, y: -107}
+        - {x: -150, y: -190}
+        - {x: 150, y: -190}
+        - {x: 150, y: -32}
+        - {x: 115, y: -9}
+    - name: portrait25_3
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 300
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 127, y: -13}
+        - {x: 130, y: -13}
+        - {x: 137, y: -6}
+        - {x: 139, y: 6}
+        - {x: 120, y: 26}
+        - {x: 105, y: 36}
+        - {x: 91, y: 38}
+        - {x: 111, y: 61}
+        - {x: 109, y: 99}
+        - {x: 93, y: 119}
+        - {x: 49, y: 169}
+        - {x: 24, y: 189}
+        - {x: 16, y: 190}
+        - {x: -41, y: 190}
+        - {x: -46, y: 188}
+        - {x: -84, y: 169}
+        - {x: -108, y: 141}
+        - {x: -122, y: 107}
+        - {x: -118, y: 45}
+        - {x: -114, y: 33}
+        - {x: -102, y: 4}
+        - {x: -123, y: -7}
+        - {x: -116, y: -14}
+        - {x: -110, y: -18}
+        - {x: -92, y: -18}
+        - {x: -92, y: -41}
+        - {x: -113, y: -32}
+        - {x: -117, y: -38}
+        - {x: -115, y: -46}
+        - {x: -126, y: -83}
+        - {x: -137, y: -88}
+        - {x: -150, y: -107}
+        - {x: -150, y: -190}
+        - {x: 150, y: -190}
+        - {x: 150, y: -32}
+        - {x: 115, y: -9}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

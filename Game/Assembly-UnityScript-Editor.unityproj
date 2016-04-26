@@ -102,6 +102,7 @@
      <None Include="Assets\Resources\Dialogue Scripts\Inon\Bedrest.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
      <None Include="Assets\Tiled2Unity\Meshes\_ReadMe.txt" />
+     <None Include="Assets\Resources\Units\Enemy\Skeleton Knight\Stats.txt" />
      <None Include="Assets\Scripts\Fields\BlurShader - Simple.shader" />
      <None Include="Assets\Resources\Units\NPCs\Male\Timothy\Timothy_InonDialogue.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\VignetteShader.shader" />

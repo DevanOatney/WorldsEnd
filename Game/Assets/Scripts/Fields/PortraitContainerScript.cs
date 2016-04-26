@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public class PortraitContainerScript : MonoBehaviour 
 {
-	public Dictionary<string,Texture2D> m_dPortraits = new Dictionary<string, Texture2D>();
-	public List<Texture2D> m_lBriolPortraits;
-	public List<Texture2D> m_lCallanPortraits;
+	public Dictionary<string,Sprite> m_dPortraits = new Dictionary<string, Sprite>();
+	public List<Sprite> m_lBriolPortraits;
+	public List<Sprite> m_lCallanPortraits;
 	// Use this for initialization
 	void Start () 
 	{
@@ -17,7 +17,8 @@ public class PortraitContainerScript : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 	
 	}
 }

@@ -913,11 +913,12 @@ public class MenuScreenScript : MonoBehaviour
 				Transform cPort = panel.transform.FindChild("CharacterImage");
 				cPort.GetComponent<Image>().color = Color.white;
 				GameObject pCont = GameObject.Find("Portraits Container");
-				Texture2D texture;
+				Sprite texture;
 				if(pCont.GetComponent<PortraitContainerScript>().m_dPortraits.TryGetValue(character.m_szCharacterName + "1", out texture))
 				{
-					cPort.GetComponent<Image>().sprite = Sprite.Create(texture, 
-						new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+					Texture2D _t2dTexture = TextureFromSprite(texture);
+					cPort.GetComponent<Image>().sprite = Sprite.Create(_t2dTexture, 
+						new Rect(0, 0, _t2dTexture.width, _t2dTexture.height), new Vector2(0.5f, 0.5f));
 				}
 				else
 				{
@@ -984,11 +985,12 @@ public class MenuScreenScript : MonoBehaviour
 		fadedWhite.a = 0.3f;
 		characterBody.GetComponent<Image>().color = fadedWhite;
 		GameObject pCont = GameObject.Find("Portraits Container");
-		Texture2D texture;
-		if(pCont.GetComponent<PortraitContainerScript>().m_dPortraits.TryGetValue(character.m_szCharacterName + "1", out texture))
+		Sprite texture;
+		if(pCont.GetComponent<PortraitContainerScript>().m_dPortraits.TryGetValue(character.m_szCharacterName + "0", out texture))
 		{
-			characterBody.GetComponent<Image>().sprite = Sprite.Create(texture, 
-				new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+			Texture2D _t2dTexture = TextureFromSprite(texture);
+			characterBody.GetComponent<Image>().sprite = Sprite.Create(_t2dTexture, 
+				new Rect(0, 0, _t2dTexture.width, _t2dTexture.height), new Vector2(0.5f, 0.5f));
 		}
 		else
 		{
@@ -1242,6 +1244,21 @@ public class MenuScreenScript : MonoBehaviour
 			PopulatePartyMembers();
 		}
 	}
-
+	Texture2D TextureFromSprite(Sprite sprite)
+	{
+		if(sprite.rect.width != sprite.texture.width)
+		{
+			Texture2D newText = new Texture2D((int)sprite.rect.width,(int)sprite.rect.height);
+			Color[] newColors = sprite.texture.GetPixels((int)sprite.textureRect.x,
+				(int)sprite.textureRect.y,
+				(int)sprite.textureRect.width,
+				(int)sprite.textureRect.height);
+			newText.SetPixels(newColors);
+			newText.Apply();
+			return newText;
+		}
+		else
+			return sprite.texture;
+	}
 	#endregion
 }

@@ -1,0 +1,268 @@
+fileFormatVersion: 2
+guid: 3a698c4fae6a5ce4e851294c69bcbfaa
+timeCreated: 1461658430
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Dead_0
+    21300002: Dead_1
+    21300004: Dead_2
+    21300006: Dead_3
+    21300008: Dead_4
+    21300010: Dead_5
+    21300012: Dead_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Dead_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1342
+        width: 1333
+        height: 1342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 42, y: 203.86548}
+        - {x: -89, y: 203.86548}
+        - {x: -121, y: 93.86548}
+        - {x: -82, y: 99.86548}
+        - {x: -67, y: 101.86548}
+        - {x: -62, y: 103.86548}
+        - {x: -162, y: 33.86548}
+        - {x: -168, y: 27.865479}
+        - {x: -168, y: 22.865479}
+        - {x: -160, y: 9.8654785}
+        - {x: -150, y: 12.8654785}
+        - {x: -146, y: 15.8654785}
+        - {x: -76, y: -5.1345215}
+        - {x: -43, y: -155.13452}
+        - {x: -19, y: -164.13452}
+        - {x: 10, y: -164.13452}
+        - {x: 36, y: -153.13452}
+        - {x: 52, y: -164.13452}
+        - {x: 92, y: -164.13452}
+        - {x: 156, y: -132.13452}
+        - {x: 156, y: 44.86548}
+        - {x: 63, y: 197.86548}
+    - name: Dead_1
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 1342
+        width: 1333
+        height: 1342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 126.100006, y: -35.13452}
+        - {x: 101.100006, y: -44.13452}
+        - {x: 133.1, y: -33.13452}
+        - {x: 147.1, y: -37.13452}
+        - {x: 157.1, y: -45.13452}
+        - {x: 172.1, y: -42.13452}
+        - {x: 172.1, y: -21.134521}
+        - {x: 56.100006, y: 131.86548}
+        - {x: 41.100006, y: 149.86548}
+        - {x: -72.899994, y: 149.86548}
+        - {x: -107.899994, y: 136.86548}
+        - {x: -97.899994, y: 76.86548}
+        - {x: -81.899994, y: 67.86548}
+        - {x: -67.899994, y: 66.86548}
+        - {x: -57.899994, y: 71.86548}
+        - {x: -49.899994, y: 80.86548}
+        - {x: -46.899994, y: 79.86548}
+        - {x: -63.899994, y: 66.86548}
+        - {x: -115.899994, y: 45.86548}
+        - {x: -178.9, y: 20.865479}
+        - {x: -184.9, y: 11.8654785}
+        - {x: -184.9, y: 4.8654785}
+        - {x: -177.9, y: -3.1345215}
+        - {x: -164.9, y: -2.1345215}
+        - {x: -38.899994, y: -158.13452}
+        - {x: -8.899994, y: -167.13452}
+        - {x: -1.8999939, y: -167.13452}
+        - {x: 18.100006, y: -145.13452}
+        - {x: 27.100006, y: -119.13452}
+        - {x: 80.100006, y: -106.13452}
+        - {x: 81.100006, y: -104.13452}
+        - {x: 74.100006, y: -115.13452}
+        - {x: 67.100006, y: -123.13452}
+        - {x: 63.100006, y: -156.13452}
+        - {x: 65.100006, y: -167.13452}
+        - {x: 99.100006, y: -167.13452}
+        - {x: 166.1, y: -119.13452}
+        - {x: 151.1, y: -52.13452}
+        - {x: 143.1, y: -39.13452}
+        - {x: 139.1, y: -35.13452}
+    - name: Dead_2
+      rect:
+        serializedVersion: 2
+        x: 2666
+        y: 1342
+        width: 1333
+        height: 1342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2.2000122, y: 109.86548}
+        - {x: -74.79999, y: 109.86548}
+        - {x: -105.79999, y: 54.86548}
+        - {x: -95.79999, y: 44.86548}
+        - {x: -72.79999, y: 30.865479}
+        - {x: -58.799988, y: 33.86548}
+        - {x: -51.799988, y: 38.86548}
+        - {x: -49.799988, y: 35.86548}
+        - {x: -127.79999, y: 18.865479}
+        - {x: -185.79999, y: 8.8654785}
+        - {x: -193.79999, y: 3.8654785}
+        - {x: -193.79999, y: -7.1345215}
+        - {x: -186.79999, y: -15.1345215}
+        - {x: -37.799988, y: -164.13452}
+        - {x: -18.799988, y: -169.13452}
+        - {x: 105.20001, y: -169.13452}
+        - {x: 167.20001, y: -129.13452}
+        - {x: 182.20001, y: -62.13452}
+        - {x: 182.20001, y: -19.134521}
+        - {x: 16.200012, y: 107.86548}
+    - name: Dead_3
+      rect:
+        serializedVersion: 2
+        x: 3999
+        y: 1342
+        width: 1333
+        height: 1342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 191.29993, y: -25.134521}
+        - {x: -12.700073, y: 68.86548}
+        - {x: -69.70007, y: 68.86548}
+        - {x: -181.70007, y: 20.865479}
+        - {x: -192.70007, y: 0.8654785}
+        - {x: -192.70007, y: -18.134521}
+        - {x: -183.70007, y: -26.134521}
+        - {x: -85.70007, y: -59.13452}
+        - {x: -47.700073, y: -169.13452}
+        - {x: -44.700073, y: -172.13452}
+        - {x: 114.29993, y: -172.13452}
+        - {x: 188.29993, y: -131.13452}
+        - {x: 139.29993, y: -103.13452}
+        - {x: 152.29993, y: -79.13452}
+        - {x: 191.29993, y: -54.13452}
+    - name: Dead_4
+      rect:
+        serializedVersion: 2
+        x: 5332
+        y: 1342
+        width: 1333
+        height: 1342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 78.400024, y: -11.1345215}
+        - {x: 30.400024, y: 25.865479}
+        - {x: -57.599976, y: 25.865479}
+        - {x: -182.59998, y: -8.1345215}
+        - {x: -182.59998, y: -32.13452}
+        - {x: -72.599976, y: -100.13452}
+        - {x: -42.599976, y: -166.13452}
+        - {x: -18.599976, y: -174.13452}
+        - {x: 122.400024, y: -174.13452}
+        - {x: 194.40002, y: -78.13452}
+        - {x: 194.40002, y: -32.13452}
+        - {x: 185.40002, y: -28.134521}
+    - name: Dead_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1333
+        height: 1342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 186, y: -21.5}
+        - {x: -161, y: -21.5}
+        - {x: -166, y: -33.5}
+        - {x: -166, y: -40.5}
+        - {x: -48, y: -175.5}
+        - {x: -35, y: -177.5}
+        - {x: 135, y: -177.5}
+        - {x: 158, y: -117.5}
+        - {x: 194, y: -71.5}
+        - {x: 194, y: -22.5}
+    - name: Dead_6
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 0
+        width: 1333
+        height: 1342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -135.9, y: -35.5}
+        - {x: -139.9, y: -45.5}
+        - {x: -139.9, y: -57.5}
+        - {x: -61.899994, y: -181.5}
+        - {x: -53.899994, y: -184.5}
+        - {x: 166.1, y: -184.5}
+        - {x: 190.1, y: -139.5}
+        - {x: 190.1, y: -35.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
