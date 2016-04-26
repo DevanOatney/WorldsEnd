@@ -560,6 +560,7 @@ public class TurnWatcherScript : MonoBehaviour
 	void DisableCharacterHealthPanels()
 	{
 		GameObject[] panels = GameObject.FindGameObjectsWithTag("Finish");
+		panels[0].transform.parent.gameObject.SetActive(false);
 		foreach(GameObject go in panels)
 			go.SetActive(false);
 	}

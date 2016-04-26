@@ -18,7 +18,7 @@ public class CharacterUIPanelScript : MonoBehaviour
 	public int m_nFormationIter;
 
 	float m_fUpdateTimer = 3.0f;
-	float m_fUpdateDelayBucket = 2.0f;
+	float m_fUpdateDelayBucket = 0.3f;
 
 	GameObject m_goTurnWatcher;
 	// Use this for initialization
@@ -50,6 +50,11 @@ public class CharacterUIPanelScript : MonoBehaviour
 				if(unit.GetComponent<UnitScript>().FieldPosition == m_nFormationIter && unit.GetComponent<UnitScript>().m_nUnitType <= (int)UnitScript.UnitTypes.NPC)
 				{
 					_bFoundUnit = true;
+					gameObject.GetComponent<Image>().enabled = true;
+					if(unit.GetComponent<UnitScript>().m_bIsMyTurn == true)
+						gameObject.GetComponent<Image>().color = Color.yellow;
+					else
+						gameObject.GetComponent<Image>().color = Color.grey;
 					m_goCharacterName.GetComponent<Text>().text = unit.name;
 					m_goCurrentHP.GetComponent<Text>().text = unit.GetComponent<UnitScript>().GetCurHP().ToString();
 					m_goMaxHP.GetComponent<Text>().text = unit.GetComponent<UnitScript>().GetMaxHP().ToString();
@@ -65,6 +70,7 @@ public class CharacterUIPanelScript : MonoBehaviour
 			}
 			if(_bFoundUnit == false)
 			{
+				gameObject.GetComponent<Image>().enabled = false;
 				m_goCharacterName.GetComponent<Text>().text = "";
 				m_goCurrentHP.GetComponent<Text>().text = "";
 				m_goMaxHP.GetComponent<Text>().text = "";
