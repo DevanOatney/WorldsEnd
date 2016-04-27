@@ -205,8 +205,9 @@ public class TurnWatcherScript : MonoBehaviour
 		_cpc.m_goCharacterLevel.FindChild("Text").GetComponent<Text>().text = _c.GetUnitLevel().ToString();
 		_cpc.m_goCharacterEXP.FindChild("Text").GetComponent<Text>().text = _c.m_nCurrentExperience.ToString();
 		_cpc.m_goCharacterMaxHP.GetComponent<Text>().text = _c.GetMaxHP().ToString();
-		_cpc.m_goCharacterPortrait.GetComponent<Image>().sprite = Sprite.Create(_c.m_tLargeBust,
-			new Rect(0, 0, _c.m_tLargeBust.width, _c.m_tLargeBust.height),
+		Texture2D sprText = _c.TextureFromSprite(_c.m_tLargeBust);
+		_cpc.m_goCharacterPortrait.GetComponent<Image>().sprite = Sprite.Create(sprText,
+			new Rect(0, 0, sprText.width, sprText.height),
 			new Vector2(0.5f, 0.5f));
 
 

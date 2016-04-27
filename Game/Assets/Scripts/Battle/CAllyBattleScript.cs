@@ -43,7 +43,7 @@ public class CAllyBattleScript : UnitScript
 	DCScript m_dcPersistantData;
 
 	public GameObject m_goShadowClone; //for shadow trails of this unit
-	public Texture2D m_tLargeBust;     //the portrait of this character  (to be displayed during victory screen)
+	public Sprite m_tLargeBust;     //the portrait of this character  (to be displayed during victory screen)
 	public Texture2D m_t2dSelector;    //texture to display selector when choosing an action/spell/item
 	public TextAsset m_taStartingStats;//The starting stats of this character when they are recruited.
 
@@ -1734,5 +1734,22 @@ public class CAllyBattleScript : UnitScript
 
 			}
 		}
+	}
+
+	public Texture2D TextureFromSprite(Sprite sprite)
+	{
+		if(sprite.rect.width != sprite.texture.width)
+		{
+			Texture2D newText = new Texture2D((int)sprite.rect.width,(int)sprite.rect.height);
+			Color[] newColors = sprite.texture.GetPixels((int)sprite.textureRect.x,
+				(int)sprite.textureRect.y,
+				(int)sprite.textureRect.width,
+				(int)sprite.textureRect.height);
+			newText.SetPixels(newColors);
+			newText.Apply();
+			return newText;
+		}
+		else
+			return sprite.texture;
 	}
 }

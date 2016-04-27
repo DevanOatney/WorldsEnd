@@ -1,0 +1,234 @@
+fileFormatVersion: 2
+guid: 8263bb360dc44e9419232d034f1aedb4
+timeCreated: 1461718871
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: IlluiyaniPortraits_OL_0
+    21300002: IlluiyaniPortraits_OL_1
+    21300004: IlluiyaniPortraits_OL_2
+    21300006: IlluiyaniPortraits_OL_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 1
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: IlluiyaniPortraits_OL_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 380
+        width: 300
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 150, y: -122}
+        - {x: 150, y: -103}
+        - {x: 139, y: -91}
+        - {x: 111, y: -67}
+        - {x: 95, y: -34}
+        - {x: 79, y: -10}
+        - {x: 64, y: 8}
+        - {x: 79, y: 10}
+        - {x: 90, y: 8}
+        - {x: 97, y: 18}
+        - {x: 81, y: 31}
+        - {x: 87, y: 51}
+        - {x: 90, y: 80}
+        - {x: 61, y: 140}
+        - {x: 28, y: 170}
+        - {x: -7, y: 180}
+        - {x: -40, y: 180}
+        - {x: -68, y: 170}
+        - {x: -86, y: 155}
+        - {x: -92, y: 169}
+        - {x: -100, y: 175}
+        - {x: -116, y: 143}
+        - {x: -109, y: 126}
+        - {x: -121, y: 101}
+        - {x: -126, y: 72}
+        - {x: -127, y: 54}
+        - {x: -125, y: 19}
+        - {x: -148, y: -2}
+        - {x: -150, y: -7}
+        - {x: -150, y: -190}
+        - {x: 150, y: -190}
+        - {x: 150, y: -151}
+        - {x: 141, y: -139}
+    - name: IlluiyaniPortraits_OL_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 300
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 150, y: -121}
+        - {x: 150, y: -102}
+        - {x: 139, y: -90}
+        - {x: 111, y: -66}
+        - {x: 95, y: -33}
+        - {x: 79, y: -9}
+        - {x: 64, y: 9}
+        - {x: 90, y: 9}
+        - {x: 97, y: 19}
+        - {x: 81, y: 32}
+        - {x: 87, y: 52}
+        - {x: 90, y: 81}
+        - {x: 61, y: 141}
+        - {x: 28, y: 171}
+        - {x: -7, y: 181}
+        - {x: -40, y: 181}
+        - {x: -68, y: 171}
+        - {x: -86, y: 156}
+        - {x: -92, y: 170}
+        - {x: -100, y: 176}
+        - {x: -116, y: 144}
+        - {x: -109, y: 127}
+        - {x: -121, y: 102}
+        - {x: -126, y: 73}
+        - {x: -127, y: 55}
+        - {x: -125, y: 20}
+        - {x: -148, y: -1}
+        - {x: -150, y: -6}
+        - {x: -150, y: -190}
+        - {x: 150, y: -190}
+        - {x: 150, y: -152}
+        - {x: 142, y: -133}
+    - name: IlluiyaniPortraits_OL_2
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 300
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 150, y: -120}
+        - {x: 150, y: -101}
+        - {x: 139, y: -89}
+        - {x: 111, y: -65}
+        - {x: 95, y: -32}
+        - {x: 79, y: -8}
+        - {x: 64, y: 10}
+        - {x: 90, y: 10}
+        - {x: 97, y: 20}
+        - {x: 81, y: 33}
+        - {x: 87, y: 53}
+        - {x: 90, y: 82}
+        - {x: 61, y: 142}
+        - {x: 28, y: 172}
+        - {x: -7, y: 182}
+        - {x: -40, y: 182}
+        - {x: -68, y: 172}
+        - {x: -86, y: 157}
+        - {x: -92, y: 171}
+        - {x: -100, y: 177}
+        - {x: -116, y: 145}
+        - {x: -109, y: 128}
+        - {x: -121, y: 103}
+        - {x: -126, y: 74}
+        - {x: -127, y: 56}
+        - {x: -125, y: 21}
+        - {x: -148, y: 0}
+        - {x: -150, y: -5}
+        - {x: -150, y: -190}
+        - {x: 150, y: -190}
+        - {x: 150, y: -151}
+        - {x: 142, y: -132}
+    - name: IlluiyaniPortraits_OL_3
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 300
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 150, y: -120}
+        - {x: 150, y: -101}
+        - {x: 139, y: -89}
+        - {x: 111, y: -65}
+        - {x: 95, y: -32}
+        - {x: 79, y: -8}
+        - {x: 64, y: 10}
+        - {x: 90, y: 10}
+        - {x: 97, y: 20}
+        - {x: 81, y: 33}
+        - {x: 87, y: 53}
+        - {x: 90, y: 82}
+        - {x: 61, y: 142}
+        - {x: 28, y: 172}
+        - {x: -7, y: 182}
+        - {x: -40, y: 182}
+        - {x: -68, y: 172}
+        - {x: -86, y: 157}
+        - {x: -92, y: 171}
+        - {x: -100, y: 177}
+        - {x: -116, y: 145}
+        - {x: -109, y: 128}
+        - {x: -121, y: 103}
+        - {x: -126, y: 74}
+        - {x: -127, y: 56}
+        - {x: -125, y: 21}
+        - {x: -148, y: 0}
+        - {x: -150, y: -5}
+        - {x: -150, y: -190}
+        - {x: 150, y: -190}
+        - {x: 150, y: -151}
+        - {x: 142, y: -132}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

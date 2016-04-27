@@ -923,9 +923,9 @@ public class MenuScreenScript : MonoBehaviour
 				else
 				{
 					GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
-					cPort.GetComponent<Image>().sprite = Sprite.Create(unit.GetComponent<CAllyBattleScript>().m_tLargeBust, 
-						new Rect(0, 0, unit.GetComponent<CAllyBattleScript>().m_tLargeBust.width,
-						unit.GetComponent<CAllyBattleScript>().m_tLargeBust.height), new Vector2(0.5f, 0.5f));
+					Texture2D sprTex = unit.GetComponent<CAllyBattleScript>().TextureFromSprite(unit.GetComponent<CAllyBattleScript>().m_tLargeBust);
+					cPort.GetComponent<Image>().sprite = Sprite.Create(sprTex, 
+						new Rect(0, 0, sprTex.width, sprTex.height), new Vector2(0.5f, 0.5f));
 				}
 			}
 			else
@@ -995,9 +995,9 @@ public class MenuScreenScript : MonoBehaviour
 		else
 		{
 			GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
-			characterBody.GetComponent<Image>().sprite = Sprite.Create(unit.GetComponent<CAllyBattleScript>().m_tLargeBust, 
-				new Rect(0, 0, unit.GetComponent<CAllyBattleScript>().m_tLargeBust.width,
-					unit.GetComponent<CAllyBattleScript>().m_tLargeBust.height), new Vector2(0.5f, 0.5f));
+			Texture2D sprTex = unit.GetComponent<CAllyBattleScript>().TextureFromSprite(unit.GetComponent<CAllyBattleScript>().m_tLargeBust);
+			characterBody.GetComponent<Image>().sprite = Sprite.Create(sprTex, 
+				new Rect(0, 0, sprTex.width, sprTex.height), new Vector2(0.5f, 0.5f));
 		}
 
 		Transform weaponPanel = m_goStatus.transform.FindChild("WeaponPanel");
