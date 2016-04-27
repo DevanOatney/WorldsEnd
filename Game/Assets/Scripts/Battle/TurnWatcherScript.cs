@@ -50,6 +50,9 @@ public class TurnWatcherScript : MonoBehaviour
 	//List of the items that will be able to drop at the end of battle
 	List<StandardEnemyScript.DroppedItem> m_lItemsThatCanDrop = new List<StandardEnemyScript.DroppedItem>();
 
+	//Amount of gold that you'll get at the end of the fight
+	int m_nGoldDropped = 0;
+
 	//List for how many items are won at the end of the fight.
 	List<ItemChances> m_dnItemCountChances = new List<ItemChances>();
 	class ItemChances
@@ -404,6 +407,8 @@ public class TurnWatcherScript : MonoBehaviour
 				m_bOneShotAfterVictory = true;
 				GameObject.Find("Party").GetComponent<Animator>().Play("PartyRoster_SlideIn");
 				GameObject ItemsWon = GameObject.Find("Items Won");
+				GameObject GoldDropped = ItemsWon.transform.FindChild("GoldWon").gameObject;
+				GoldDropped.GetComponentInChildren<Text>().text = "Gold dropped: " + m_nGoldDropped.ToString();
 				ItemsWon.GetComponent<Animator>().Play("ItemsWon_SlideIn");
 				if(m_lItemsWon.Count > 0)
 				{
@@ -535,7 +540,7 @@ public class TurnWatcherScript : MonoBehaviour
 			}
 			//removing an enemy
 			m_nEnemyCount--;
-
+			m_nGoldDropped += go.GetComponent<StandardEnemyScript>().m_nGoldDropped;
 			if(m_nEnemyCount <= 0)
 			{
 				DisableCharacterHealthPanels();
@@ -655,7 +660,8 @@ public class TurnWatcherScript : MonoBehaviour
 		//Play victory fanfare
 		GetComponent<AudioSource>().Stop();
 		GetComponent<AudioSource>().PlayOneShot(m_acVictoryFanfare, 0.5f + ds.m_fSFXVolume);
-		//TODO: award experience to the allies on field.
+		//award experience to the allies on field.
+		ds.m_nGold += m_nGoldDropped;
 		List<DCScript.CharacterData> party = ds.GetParty();
 		foreach(DCScript.CharacterData ally in party)
 		{
@@ -670,23 +676,6 @@ public class TurnWatcherScript : MonoBehaviour
 			//add the total experience the character is going to gain to the list
 			m_lNewExperienceTotal.Add(ally.m_szCharacterName, nExp);
 
-			/*
-			ally.m_nMaxHP = foundAlly.GetComponent<CAllyBattleScript>().GetMaxHP();
-			ally.m_nSTR = foundAlly.GetComponent<CAllyBattleScript>().GetSTR();
-			ally.m_nDEF = foundAlly.GetComponent<CAllyBattleScript>().GetDEF();
-			ally.m_nSPD = foundAlly.GetComponent<CAllyBattleScript>().GetSPD();
-			ally.m_nLevel = foundAlly.GetComponent<CAllyBattleScript>().GetUnitLevel();
-			ally.m_nCurrentEXP = foundAlly.GetComponent<CAllyBattleScript>().m_nCurrentExperience;
-			ally.m_idHelmSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idHelmSlot;
-			ally.m_idShoulderSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idShoulderSlot;
-			ally.m_idChestSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idChestSlot;
-			ally.m_idGloveSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idGloveSlot;
-			ally.m_idBeltSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idBeltSlot;
-			ally.m_idLegSlot = foundAlly.GetComponent<CAllyBattleScript>().m_idLegSlot;
-			ally.m_idTrinket1 = foundAlly.GetComponent<CAllyBattleScript>().m_idTrinket1;
-			ally.m_idTrinket2 = foundAlly.GetComponent<CAllyBattleScript>().m_idTrinket2;
-			ally.m_lSpellsKnown = foundAlly.GetComponent<CAllyBattleScript>().m_lSpellList;
-			*/
 		}
 		//ds.SetParty(party);
 

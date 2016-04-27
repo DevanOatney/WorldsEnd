@@ -18,6 +18,7 @@ public class StandardEnemyScript : UnitScript
 	protected float m_fShadowTimer = 0.0f;
 	protected float m_fShadowTimerBucket = 0.1f;
 	public Vector3 m_vTargetPosition = new Vector3();
+	public int m_nGoldDropped = 0;
 
 	public List<DroppedItem> m_lItemsThatCanDrop;
 	public class DroppedItem
@@ -249,10 +250,12 @@ public class StandardEnemyScript : UnitScript
 		SetEVA(int.Parse(_lStats[5].Trim()));
 		//Lvl
 		SetUnitLevel(int.Parse(_lStats[6].Trim()));
-		int itemCount = int.Parse(_lStats[7].Trim());
+		//Gold dropped
+		m_nGoldDropped = int.Parse(_lStats[7].Trim());
+		int itemCount = int.Parse(_lStats[8].Trim());
 		m_lItemsThatCanDrop = new List<DroppedItem>();
 		int totalChance = 0;
-		for(int i = 8; i-8 < itemCount; ++i)
+		for(int i = 9; i-9 < itemCount; ++i)
 		{
 			string[] itemPieces = _lStats[i].Split(',');
 			DroppedItem item = new DroppedItem();

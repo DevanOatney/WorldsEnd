@@ -5,5 +5,6 @@ SPD:3
 HIT:6
 EVA:5
 LVL:20
+Gold Dropped : 5
 How many items can drop : 1
 name:Flask, amnt:1, chance:100
