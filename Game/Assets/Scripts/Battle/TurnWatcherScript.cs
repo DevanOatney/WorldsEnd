@@ -721,7 +721,7 @@ public class TurnWatcherScript : MonoBehaviour
 			ally.m_idTrinket2 = foundAlly.GetComponent<CAllyBattleScript>().m_idTrinket2;
 			ally.m_lSpellsKnown = foundAlly.GetComponent<CAllyBattleScript>().m_lSpellList;
 		}
-		ds.SetParty(party);
+		//ds.SetParty(party);
 	}
 	void Finish()
 	{

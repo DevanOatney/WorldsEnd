@@ -194,8 +194,7 @@ public class MessageHandler : MonoBehaviour
 			ancPos.y -= (m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta.y * 0.5f);
 			m_goDialogueNameplate2.GetComponent<RectTransform>().sizeDelta = new Vector2( szName.Length * 20.0f, m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta.y);
 			m_goDialogueNameplate2.GetComponent<RectTransform>().anchoredPosition = ancPos;
-			ancPos = m_goNameplate2TextOrigin.GetComponent<RectTransform>().anchoredPosition;
-			ancPos.x += (szName.Length * 20.0f * 0.7f);
+			ancPos = m_goNameplate2TextOrigin.GetComponent<RectTransform>().localPosition;
 			m_goDialogueNameplate2.GetComponentInChildren<Text>().gameObject.GetComponent<RectTransform>().anchoredPosition = ancPos;
 		}
 		else
@@ -209,9 +208,8 @@ public class MessageHandler : MonoBehaviour
 			ancPos.y -= (m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta.y * 0.5f);
 			m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta = new Vector2( szName.Length * 20.0f, m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta.y);
 			m_goDialogueNameplate1.GetComponent<RectTransform>().anchoredPosition = ancPos;
-			ancPos = m_goNameplate1TextOrigin.GetComponent<RectTransform>().anchoredPosition;
-			ancPos.x += (szName.Length * 20.0f * 0.2f);
-			m_goDialogueNameplate1.GetComponentInChildren<Text>().gameObject.GetComponent<RectTransform>().anchoredPosition = ancPos;
+			ancPos = m_goNameplate1TextOrigin.GetComponent<RectTransform>().localPosition;
+			m_goDialogueNameplate1.GetComponentInChildren<Text>().gameObject.GetComponent<RectTransform>().localPosition = ancPos;
 			DisableUIObject(m_goDialogueNameplate2);
 		}
 		m_goDialogueBox.transform.FindChild("Text").GetComponent<Text>().text = line;
