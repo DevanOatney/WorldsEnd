@@ -54,6 +54,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 		}
 		if(ds.m_dStoryFlagField.TryGetValue("Inon_Lydia", out result))
 		{
+			Debug.Log(result);
 			if(result == 11)
 			{
 				foreach(GameObject mushroom in Mushrooms)

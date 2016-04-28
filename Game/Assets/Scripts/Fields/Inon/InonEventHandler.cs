@@ -396,7 +396,7 @@ public class InonEventHandler : BaseEventSystemScript
 						else
 							messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("C0");
 					}
-					else if(lydRes == 3)
+					else if(lydRes == 10)
 					{
 						lydRes++;
 						ds.m_dStoryFlagField["Inon_Lydia"] = lydRes;
@@ -436,6 +436,8 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 			}
+			ds.m_nGold += 100;
+			GameObject.Find("UI_Alerts").GetComponent<UIAlertWindowScript>().ActivateWindow(UIAlertWindowScript.MESSAGEID.eITEMREWARD, "100 Spyr", null);
 		}
 			break;
 		case "Bartholomew":
