@@ -38,6 +38,8 @@ public class ItemLibrary
 	[System.Serializable]
 	public class CharactersItems
 	{
+		public CharactersItems() {m_szItemName = ""; m_nItemType = -1; m_nItemCount = -1;}
+		public CharactersItems(string _name, int _type, int _count) { m_szItemName = _name; m_nItemType = _type; m_nItemCount = _count;}
 		public string m_szItemName;
 		public int m_nItemType;
 		public int m_nItemCount;

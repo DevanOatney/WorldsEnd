@@ -126,6 +126,27 @@ public class CheatScript : MonoBehaviour
 										}
 									}
 										break;
+									case"additem":
+											{
+												//needs two commands, or it's invalid.
+												if(pieces.Length == 4)
+												{
+													//make sure this is a valid item.
+													ItemLibrary.ItemData item = dc.m_lItemLibrary.GetItemFromDictionary(pieces[2].Trim());
+													if(item != null)
+													{
+														int amount;
+														if(int.TryParse(pieces[3].Trim(), out amount))
+														{
+															ItemLibrary.CharactersItems characterItem = new ItemLibrary.CharactersItems(item.m_szItemName, item.m_nItemType, amount);
+															dc.m_lItemLibrary.AddItem(characterItem);
+															m_lChatLog.Add("Adding " + characterItem.m_nItemCount + " " + characterItem.m_szItemName + "  to inventory.");
+															m_bAbleToFindCommand = true;
+														}
+													}
+												}
+											}
+											break;
 									}
 								}
 									break;

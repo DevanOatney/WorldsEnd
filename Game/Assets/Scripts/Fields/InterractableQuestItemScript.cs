@@ -18,8 +18,7 @@ public class InterractableQuestItemScript : MonoBehaviour {
 		if(c.name == "Action Box(Clone)")
 		{
 			GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent(gameObject.name);
-			GetComponent<SpriteRenderer>().enabled = false;
-			GetComponent<BoxCollider2D>().enabled = false;
+			gameObject.SetActive(false);
 		}
 	}
 }
