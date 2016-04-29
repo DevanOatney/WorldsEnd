@@ -141,13 +141,15 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	void Start () 
 	{
 		//temp for testing poison status effect
-		DCScript.StatusEffect tse = GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffectLibrary.ConvertToDCStatusEffect("Poison");
-		if(tse != null)
+		if(m_lStatusEffects.Count < 1)
 		{
-			tse.m_lEffectedMembers.Add("Callan");
-			GameObject.Find("PersistantData").GetComponent<DCScript>().AddStatusEffect(tse);
+			DCScript.StatusEffect tse = GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffectLibrary.ConvertToDCStatusEffect("Poison");
+			if(tse != null)
+			{
+				tse.m_lEffectedMembers.Add(new DCScript.StatusEffect.cEffectedMember("Callan", 10));
+				GameObject.Find("PersistantData").GetComponent<DCScript>().AddStatusEffect(tse);
+			}
 		}
-
 
 		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects();
 		foreach(DCScript.StatusEffect se in effects)
@@ -165,7 +167,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 				{
 				case "Poison":
 				{
-					m_poison.GetComponent<PoisonEffectScript>().Initialize(gameObject, se.m_lEffectedMembers, se.m_nHPMod, se.m_nAmountOfTicks, 1.0f);
+					m_poison.GetComponent<PoisonEffectScript>().Initialize(gameObject, se.m_lEffectedMembers, se.m_nHPMod, 1.0f);
 					m_lStatusEffects.Add(m_poison);
 				}
 					break;
@@ -368,17 +370,16 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			#endregion
 
 			//Update any of the status effects. (use a new list, as some of the master list may get removed
-			for(int i = 0; i < m_lStatusEffects.Count; ++i)
+			for(int i = m_lStatusEffects.Count - 1; i >= 0; --i)
 			{
 				if(m_lStatusEffects[i].GetComponent<FieldBaseStatusEffectScript>().m_bToBeRemoved == true)
 				{
-					GameObject.Find("PersistantData").GetComponent<DCScript>().RemoveMeFromStatus(name, m_lStatusEffects[i].name);
 					m_lStatusEffects.RemoveAt(i);
-					i--;
 				}
 				else
 				{
-					m_lStatusEffects[i].GetComponent<FieldBaseStatusEffectScript>().m_dFunc();
+					if(m_bAllowInput == true)
+						m_lStatusEffects[i].GetComponent<FieldBaseStatusEffectScript>().m_dFunc();
 				}
 			}
 		}

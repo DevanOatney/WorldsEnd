@@ -113,7 +113,7 @@ public class UnitScript : MonoBehaviour
 		GameObject newEffect = m_twTurnWatcher.FindStatusEffect(se.m_szEffectName);
 		newEffect = Instantiate(newEffect);
 		newEffect.name = se.m_szEffectName;
-		newEffect.GetComponent<BattleBaseEffectScript>().Initialize(gameObject,se.m_nEffectType, se.m_nAmountOfTicks, se.m_nHPMod, se.m_nMPMod, se.m_nPOWMod, se.m_nDEFMod, se.m_nSPDMod, se.m_nHITMod, se.m_nEVAMod);
+		newEffect.GetComponent<BattleBaseEffectScript>().Initialize(gameObject,se.m_nEffectType, se.GetMember(name).m_nTicksLeft, se.m_nHPMod, se.m_nMPMod, se.m_nPOWMod, se.m_nDEFMod, se.m_nSPDMod, se.m_nHITMod, se.m_nEVAMod);
 		m_lStatusEffects.Add(newEffect);
 	}
 

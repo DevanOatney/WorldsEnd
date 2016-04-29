@@ -130,9 +130,9 @@ public class OverWatcherScript : MonoBehaviour
 			}
 			if(encGrps.Count > 0)
 			{
-				//temp for status effect test
-				int rndmGrp = Random.Range(0, encGrps.Count);
+				//adjust the status effect list.
 
+				int rndmGrp = Random.Range(0, encGrps.Count);
 				//Set the names of the list of enemies the player is about to fight
 				dc.SetEnemyNames(encGrps[rndmGrp]);
 				//Set the iter for which background to display during battle

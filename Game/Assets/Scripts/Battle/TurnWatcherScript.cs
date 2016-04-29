@@ -737,15 +737,18 @@ public class TurnWatcherScript : MonoBehaviour
 				{
 					//effect already exists in list
 					bool bAlreadyInList = false;
-					foreach(string name in ds.GetStatusEffects()[catchIter].m_lEffectedMembers)
+					foreach(DCScript.StatusEffect.cEffectedMember _member in ds.GetStatusEffects()[catchIter].m_lEffectedMembers)
 					{
-						if(name == Ally.name)
+						if(_member.m_szCharacterName == Ally.name)
+						{
+							_member.m_nTicksLeft = effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks;
 							bAlreadyInList = true;
+						}
 					}
 					if(bAlreadyInList == false)
 					{
 						//character is not on the list of effected characters
-						ds.GetStatusEffects()[catchIter].m_lEffectedMembers.Add(Ally.name);
+						ds.GetStatusEffects()[catchIter].m_lEffectedMembers.Add(new DCScript.StatusEffect.cEffectedMember(Ally.name, effect.GetComponent<BattleBaseEffectScript>().m_nAmountOfTicks));
 					}
 					effect.GetComponent<BattleBaseEffectScript>().RefreshEffect(ds.GetStatusEffects()[catchIter]);
 					ds.AddStatusEffect(effect.GetComponent<BattleBaseEffectScript>().ConvertToDCStatusEffect());
@@ -757,13 +760,12 @@ public class TurnWatcherScript : MonoBehaviour
 					BattleBaseEffectScript e = effect.GetComponent<BattleBaseEffectScript>();
 					se.m_szEffectName = e.name;
 					se.m_nEffectType = e.m_nEffectType;
-					se.m_nAmountOfTicks = e.m_nAmountOfTicks;
 					se.m_nPOWMod = e.m_nPOWMod;
 					se.m_nDEFMod = e.m_nDEFMod;
 					se.m_nSPDMod = e.m_nSPDMod;
 					se.m_nHITMod = e.m_nHITMod;
 					se.m_nEVAMod = e.m_nEVAMod;
-					se.m_lEffectedMembers.Add(Ally.name);
+					se.m_lEffectedMembers.Add(new DCScript.StatusEffect.cEffectedMember(Ally.name, e.m_nAmountOfTicks));
 					ds.AddStatusEffect(se);
 				}
 			}

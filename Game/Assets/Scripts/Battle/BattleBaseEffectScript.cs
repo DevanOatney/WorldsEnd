@@ -40,8 +40,6 @@ public class BattleBaseEffectScript : MonoBehaviour
 
 	public virtual bool RefreshEffect(DCScript.StatusEffect newEffect)
 	{
-		if(m_nAmountOfTicks < newEffect.m_nAmountOfTicks)
-			m_nAmountOfTicks = newEffect.m_nAmountOfTicks;
 		if(m_nHPMod < newEffect.m_nHPMod)
 			m_nHPMod = newEffect.m_nHPMod;
 		if(m_nMPMod < newEffect.m_nMPMod)
@@ -64,7 +62,6 @@ public class BattleBaseEffectScript : MonoBehaviour
 		DCScript.StatusEffect newEffect = new DCScript.StatusEffect();
 		newEffect.m_szEffectName = name;
 		newEffect.m_nEffectType = m_nEffectType;
-		newEffect.m_nAmountOfTicks = m_nAmountOfTicks;
 		newEffect.m_nHPMod = m_nHPMod;
 		newEffect.m_nMPMod = m_nMPMod;
 		newEffect.m_nPOWMod = m_nPOWMod;
@@ -72,8 +69,8 @@ public class BattleBaseEffectScript : MonoBehaviour
 		newEffect.m_nSPDMod = m_nSPDMod;
 		newEffect.m_nHITMod = m_nHITMod;
 		newEffect.m_nEVAMod = m_nEVAMod;
-		newEffect.m_lEffectedMembers = new List<string>();
-		newEffect.m_lEffectedMembers.Add(m_goOwner.name);
+		newEffect.m_lEffectedMembers = new List<DCScript.StatusEffect.cEffectedMember>();
+		newEffect.m_lEffectedMembers.Add(new DCScript.StatusEffect.cEffectedMember(m_goOwner.name, m_nAmountOfTicks));
 		return newEffect;
 	}
 

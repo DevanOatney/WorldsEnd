@@ -25,11 +25,10 @@ public class PoisonEffectScript : FieldBaseStatusEffectScript
 	{
 	}
 
-	public void Initialize(GameObject owner, List<string> szCharactersEffected, int damage, int tickAmount, float rateOfTick)
+	public void Initialize(GameObject owner, List<DCScript.StatusEffect.cEffectedMember> szCharactersEffected, int damage, float rateOfTick)
 	{
 		m_goOwner = owner;
 		m_nMod = damage;
-		m_nAmountOfTicks = tickAmount;
 		m_fRateOfTicks = rateOfTick;
 		m_lEffectedUnits = szCharactersEffected;
 		m_dFunc = Step;
@@ -39,7 +38,7 @@ public class PoisonEffectScript : FieldBaseStatusEffectScript
 	void Step()
 	{
 		tickTimer += Time.deltaTime;
-		if(tickTimer >= m_fRateOfTicks)
+		if(tickTimer >= m_fRateOfTicks && m_bToBeRemoved == false)
 		{
 			//reset timer
 			tickTimer = 0.0f;
@@ -57,30 +56,29 @@ public class PoisonEffectScript : FieldBaseStatusEffectScript
 			if(poisonClone)
 				Destroy(poisonClone, 1.0f);
 
-
-			//adjust the amount of times this effect can happen, as long as it's not infinite.
-			if(m_nAmountOfTicks > -1)
-			{
-				m_nAmountOfTicks--;
-				if(m_nAmountOfTicks <= 0)
-				{
-					m_bToBeRemoved = true;
-				}
-			
-			}
-
 			List<DCScript.CharacterData> characters = GameObject.Find("PersistantData").GetComponent<DCScript>().GetParty();
 			if(m_lEffectedUnits != null)
 			{
-				foreach(string c in m_lEffectedUnits)
+				foreach(DCScript.StatusEffect.cEffectedMember c in m_lEffectedUnits)
 				{
 					foreach(DCScript.CharacterData chara in characters)
 					{
-						if(chara.m_szCharacterName == c)
+						if(chara.m_szCharacterName == c.m_szCharacterName)
 						{
 							chara.m_nCurHP -= m_nMod;
 							if(chara.m_nCurHP <= 0)
 								chara.m_nCurHP = 1;
+							DCScript dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
+							DCScript.StatusEffect.cEffectedMember _member = dc.GetStatusEffect(name).GetMember(chara.m_szCharacterName);
+							int _ticksLeft = _member.m_nTicksLeft - 1;
+							_member.m_nTicksLeft = _ticksLeft;
+							if(_ticksLeft <= 0)
+							{
+								dc.GetStatusEffect(name).m_lEffectedMembers.Remove(_member);
+								dc.GetStatusEffects().Remove(dc.GetStatusEffect(name));
+								m_bToBeRemoved = true;
+								return;
+							}
 						}
 					}
 				}

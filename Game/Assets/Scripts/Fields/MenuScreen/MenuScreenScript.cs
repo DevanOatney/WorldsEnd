@@ -793,7 +793,7 @@ public class MenuScreenScript : MonoBehaviour
 						if(se.m_szEffectName == "Poison")
 						{
 							removeIter = counter;
-							if(se.m_lEffectedMembers.Remove(dc.GetParty()[characterIndex].m_szCharacterName) == true)
+							if(se.RemoveMember(dc.GetParty()[characterIndex].m_szCharacterName) == true)
 							{
 								//this unit WAS effected by the status
 								effectFound = true;

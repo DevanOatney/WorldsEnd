@@ -67,7 +67,6 @@ public class ScreenSwitchScript : MonoBehaviour
 			{
 				DCScript.StatusEffect se = new DCScript.StatusEffect();
 				se.m_szEffectName = status.name;
-				se.m_nAmountOfTicks = status.GetComponent<FieldBaseStatusEffectScript>().m_nAmountOfTicks;
 				se.m_nHPMod = status.GetComponent<FieldBaseStatusEffectScript>().m_nMod;
 				se.m_lEffectedMembers = status.GetComponent<FieldBaseStatusEffectScript>().m_lEffectedUnits;
 				dcs.AddStatusEffect(se);

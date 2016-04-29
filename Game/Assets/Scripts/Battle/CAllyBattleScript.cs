@@ -102,9 +102,9 @@ public class CAllyBattleScript : UnitScript
 		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects();
 		foreach(DCScript.StatusEffect se in effects)
 		{
-			foreach(string charName in se.m_lEffectedMembers)
+			foreach(DCScript.StatusEffect.cEffectedMember charName in se.m_lEffectedMembers)
 			{
-				if(charName == name)
+				if(charName.m_szCharacterName == name)
 				{
 					AddStatusEffect(se);
 				}
@@ -450,8 +450,6 @@ public class CAllyBattleScript : UnitScript
 				{
 					if(m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_bToBeRemoved == true)
 					{
-
-						m_dcPersistantData.RemoveMeFromStatus(name, i);
 						RemoveStatusEffect(m_lStatusEffects[i].name);
 						i--;
 					}

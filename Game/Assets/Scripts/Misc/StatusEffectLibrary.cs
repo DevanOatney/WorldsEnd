@@ -56,7 +56,7 @@ public class StatusEffectLibrary
 			{
 				newEffect.m_szEffectName = effect.m_szEffectName;
 				newEffect.m_nEffectType = effect.m_nEffectType;
-				newEffect.m_nAmountOfTicks = effect.m_nEffectCount;
+				newEffect.m_nStartingTickCount = effect.m_nEffectCount;
 				newEffect.m_nHPMod = effect.m_nHPMod;
 				newEffect.m_nMPMod = effect.m_nMPMod;
 				newEffect.m_nPOWMod = effect.m_nPOWMod;
