@@ -328,7 +328,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			//Encountering the boar that is going to run toward the stairs.
 			GameObject Player = GameObject.Find("Player");
 			Player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			Player.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("Callan_MoveTowardBoar"), false);
+			Player.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("Callan_MoveTowardBoar"), false, 2);
 			GameObject.Find("Callan_MoveTowardBoar").GetComponent<BoxCollider2D>().enabled = true;
 		}
 			break;
@@ -336,7 +336,6 @@ public class ToAEventHandler : BaseEventSystemScript
 		{
 			//Callan is now in position to encounter the boar before it runs downstairs, now move Briol.
 			GameObject Player = GameObject.Find("Player");
-			Player.GetComponent<FieldPlayerMovementScript>().DHF_StopMovingFaceDirection(2);
 
 			GameObject Briol  = GameObject.Find("Briol");
 			Briol.transform.position = Player.transform.position;
@@ -489,8 +488,12 @@ public class ToAEventHandler : BaseEventSystemScript
 			enemy.m_szEnemyName = "Boar";
 			enemy.m_nFormationIter = 3;
 			bossEncounter.Add(enemy);
+			enemy = new EncounterGroupLoaderScript.cEnemyData();
+			enemy.m_szEnemyName = "Boar";
 			enemy.m_nFormationIter = 4;
 			bossEncounter.Add(enemy);
+			enemy = new EncounterGroupLoaderScript.cEnemyData();
+			enemy.m_szEnemyName = "Boar";
 			enemy.m_nFormationIter = 5;
 			bossEncounter.Add(enemy);
 			//Set the names of the list of enemies the player is about to fight
