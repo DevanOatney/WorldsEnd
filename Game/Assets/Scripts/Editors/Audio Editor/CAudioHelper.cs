@@ -161,6 +161,11 @@ public class CAudioHelper : MonoBehaviour
 		}
 	}
 
+	public void vStopMusic()
+	{
+		m_aAudiosourceMusic[m_iActiveMusic].Stop();
+	}
+
     public void vPlayMusic (CAudioHelper.EMusic p_eMusic, bool p_fLoop, bool p_fImmediate)
     {
 		if (p_eMusic == m_eMusicActive)

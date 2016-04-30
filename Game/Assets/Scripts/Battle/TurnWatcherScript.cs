@@ -515,7 +515,13 @@ public class TurnWatcherScript : MonoBehaviour
 	}
 	public void RemoveMeFromList(GameObject go, float deathDuration)
 	{
-		
+		if(go.GetComponent<UnitScript>().m_bIsMyTurn == true)
+		{
+			m_nOrderIter++;
+			if(m_nOrderIter >= m_goUnits.Count)
+				m_nOrderIter = 0;
+			m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
+		}
 		//quickly grab the index of the object about to be removed
 		int whereOnList = m_goUnits.IndexOf(go);
 		//remove the unit
@@ -528,7 +534,6 @@ public class TurnWatcherScript : MonoBehaviour
 			}
 		}
 		//Adjust the amount of enemies/allies on the map to check for win/loss cases
-		//TODO: perhaps set up a scenario where if a specific enemy/ally is defeated the fight ends
 		if(go.GetComponent<UnitScript>().m_nUnitType > (int)UnitScript.UnitTypes.NPC)
 		{
 			//add the enemies level to the list of levels that have been defeated.

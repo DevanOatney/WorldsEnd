@@ -18,8 +18,10 @@ public class OverWatcherScript : MonoBehaviour
 	float m_fThreshold = 0.2f;
 	//The distance the player has gone since the last threshold tick
 	float m_fDistanceStep = 0.0f;
-	//The initial percent chance that an encounter will occur (0-100)
+	//The initial percent chance that an encounter will occur (0-m_nEncounterRange)
 	public float m_nEncounterChance = 10;
+	//Represents the highest roll made by the number generator to figure out if a battle happens, the higher the number, the lower the chance of encounter
+	public int m_nEncounterRange = 300;
 	//The modifier for incrementing the encounter chance
 	public float m_nEncounterTick = 1.2f;
 
@@ -187,7 +189,7 @@ public class OverWatcherScript : MonoBehaviour
 				if(m_fDistanceStep >= m_fThreshold)
 				{
 					m_fDistanceStep = 0.0f;
-					int randomChance = Random.Range(0, 100);
+					int randomChance = Random.Range(0, m_nEncounterRange);
 					//first check to see if Devan is a cheater and has turned off the chance to get into a fight
 					if(m_nEncounterChance != -1)
 					if(randomChance <= m_nEncounterChance)
@@ -198,11 +200,12 @@ public class OverWatcherScript : MonoBehaviour
 						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 						Input.ResetInputAxes();
 						m_nEncounterChance = 10;
+						GameObject.Find("AudioHelper").GetComponent<CAudioHelper>().vStopMusic();
 						GetComponent<AudioSource>().PlayOneShot(m_acFoundEncounter, 0.5f + dc.m_fSFXVolume);
 					}
 					else
 					{
-						m_nEncounterChance += m_nEncounterChance * m_nEncounterTick;;
+						m_nEncounterChance += (m_nEncounterChance * m_nEncounterTick);
 					}
 				}
 			}
