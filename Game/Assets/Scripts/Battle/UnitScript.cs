@@ -109,12 +109,26 @@ public class UnitScript : MonoBehaviour
 					
 			}
 		}
-		//If we've gotten this far, it means this character is not currently effected by this type of effect.  Add this effect to the list of effects currently effecting this character
-		GameObject newEffect = m_twTurnWatcher.FindStatusEffect(se.m_szEffectName);
-		newEffect = Instantiate(newEffect);
-		newEffect.name = se.m_szEffectName;
-		newEffect.GetComponent<BattleBaseEffectScript>().Initialize(gameObject,se.m_nEffectType, se.GetMember(name).m_nTicksLeft, se.m_nHPMod, se.m_nMPMod, se.m_nPOWMod, se.m_nDEFMod, se.m_nSPDMod, se.m_nHITMod, se.m_nEVAMod);
-		m_lStatusEffects.Add(newEffect);
+		if(se.GetMember(name) != null)
+		{
+			//this means that the status effect being added is being carried in and the unit has already taken ticks of this effect, so set the tick count to whatever they have left.
+			GameObject newEffect = m_twTurnWatcher.FindStatusEffect(se.m_szEffectName);
+			newEffect = Instantiate(newEffect);
+			newEffect.name = se.m_szEffectName;
+			newEffect.GetComponent<BattleBaseEffectScript>().Initialize(gameObject,se.m_nEffectType, se.GetMember(name).m_nTicksLeft, se.m_nHPMod, se.m_nMPMod, se.m_nPOWMod, se.m_nDEFMod, se.m_nSPDMod, se.m_nHITMod, se.m_nEVAMod);
+			m_lStatusEffects.Add(newEffect);
+		}
+		else
+		{
+			//If we've gotten this far, it means this character is not currently effected by this type of effect.  Add this effect to the list of effects currently effecting this character
+			GameObject newEffect = m_twTurnWatcher.FindStatusEffect(se.m_szEffectName);
+			newEffect = Instantiate(newEffect);
+			newEffect.name = se.m_szEffectName;
+			newEffect.GetComponent<BattleBaseEffectScript>().Initialize(gameObject,se.m_nEffectType, se.m_nStartingTickCount, se.m_nHPMod, se.m_nMPMod, se.m_nPOWMod, se.m_nDEFMod, se.m_nSPDMod, se.m_nHITMod, se.m_nEVAMod);
+			m_lStatusEffects.Add(newEffect);
+		}
+
+
 	}
 
 	public void RemoveStatusEffect(string effectName)
