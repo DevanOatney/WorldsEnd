@@ -26,7 +26,6 @@ public class IntroMenuHighlightInput : MonoBehaviour
 		{
 			GetComponent<AudioSource>().volume = 0.5f + GO.GetComponent<DCScript>().m_fMusicVolume;
 		}
-		Camera.main.GetComponent<Light>().intensity += GO.GetComponent<DCScript>().m_fBrightness;
 	}
 	// Use this for initialization
 	void Start () 

@@ -15,6 +15,7 @@ public class ItemLibrary
 	public Dictionary<string, ItemLibrary.ItemData> m_dItemDictionary = new Dictionary<string, ItemData>();
 	//List of all items currently in inventory
 	public List<CharactersItems> m_lInventory = new List<CharactersItems>();
+
 	[System.Serializable]
 	public class ItemData
 	{
@@ -32,6 +33,26 @@ public class ItemLibrary
 
 		public int m_nBaseValue;
 		public string m_szDescription;
+	}
+
+	public List<CraftingItemData> m_lCraftableItems = new List<CraftingItemData>();
+	[System.Serializable]
+	public class CraftingItemData
+	{
+		public string m_szItemName;
+		//flag for if this recipe is unlocked, if it is.. well.. it is and the player can craft it
+		public bool m_bIsUnlocked = true;
+		//turn on if you don't want this to be a level restricted crafting recipe but instead something that's unlocked by something else.
+		public bool m_bSpecialCaseUnlock = false;
+		//Only necessary if you want this recipe unlocked purely by crafting level.  Let's have -1 be the identifier for if this is special (incase we want to display crafting level req for other things.
+		public int m_nCraftingLevelRequired;
+		public class cRequiredItem
+		{
+			public cRequiredItem(string _name, int _count) {m_szItemName = _name; m_nItemCount = _count;}
+			public string m_szItemName;
+			public int m_nItemCount;
+		}
+		public List<cRequiredItem> m_lRequiredItems = new List<cRequiredItem>();
 	}
 
 	//Struct for Items, adding in an integer for the amount that the player has

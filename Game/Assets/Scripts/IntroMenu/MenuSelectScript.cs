@@ -1,31 +1,34 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class MenuSelectScript : MonoBehaviour 
+public class MenuSelectScript : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
-	public int m_nIndex = 3;
 
-	// Use this for initialization
-	void Start () 
+	public int m_nIndex;
+
+	#region IPointerEnterHandler implementation
+
+	public void OnPointerEnter (PointerEventData eventData)
 	{
-		//Apparently textmeshes are blurrier now.. using this hack to make my text less blurry in ratio to an orthographic camera
-		float pixelRatio = (Camera.main.orthographicSize * 2.0f) / Camera.main.pixelHeight;
-		gameObject.GetComponent<TextMesh>().transform.localScale = new Vector3(pixelRatio * 10.0f, pixelRatio * 10.0f, pixelRatio * 0.1f);
+		GameObject.Find("Highlighter").GetComponent<IntroMenuHighlightInput>().SetHighlightedIndex(m_nIndex);
+		GameObject.Find("Highlighter").GetComponent<IntroMenuHighlightInput>().ChangeHighlightedPosition();
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-	
-	}
-	
-	void OnMouseDown()
+
+	#endregion
+
+	#region IPointerClickHandler implementation
+
+	public void OnPointerClick (PointerEventData eventData)
 	{
 		GameObject.Find("Highlighter").GetComponent<IntroMenuHighlightInput>().MouseSelection(m_nIndex);
 		GameObject.Find("Highlighter").GetComponent<IntroMenuHighlightInput>().SetHighlightedIndex(m_nIndex);
 		GameObject.Find("Highlighter").GetComponent<IntroMenuHighlightInput>().ChangeHighlightedPosition();
 	}
+
+	#endregion
+
 
 	void Enter()
 	{

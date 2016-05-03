@@ -1,0 +1,2 @@
+Item Name : CraftedItem1, LvlReq: 1, Special Case: 0, Requires:Flask:2
+Item Name : CraftedItem2, LvlReq: 2, Special Case: 0,Requires:Shrubbery:1

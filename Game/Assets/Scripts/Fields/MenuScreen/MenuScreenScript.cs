@@ -50,6 +50,8 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goEquipment;
 	public GameObject m_goCharacterRoot;
 	public GameObject m_goCharacterPrefab;
+	public GameObject m_goItemCraftedRoot;
+	public GameObject m_goItemCraftedPrefab;
 	public GameObject m_goItemPrefab;
 	public GameObject m_goItemSelected = null;
 	//Currently not in use
@@ -612,8 +614,7 @@ public class MenuScreenScript : MonoBehaviour
 		}
 	}
 	#endregion
-
-
+	#region RosterMenu
 	void RosterTabMenuInput()
 	{
 		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButton(1))
@@ -628,7 +629,16 @@ public class MenuScreenScript : MonoBehaviour
 			m_nMenuState = (int)MENU_STATES.ePARTYTAB;
 		}
 	}
+	#endregion
 
+	#region ItemMenu
+	public void ItemTabHighlighted(int nIndex)
+	{
+		if(m_nMenuState != (int)MENU_STATES.eITEMTAB)
+			return;
+		m_nSubTabMenuSelectionIndex = nIndex;
+	}
+	#endregion
 
 	void EquipmentScreen(DCScript.CharacterData character)
 	{
