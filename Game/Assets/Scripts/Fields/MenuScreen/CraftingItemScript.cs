@@ -10,12 +10,18 @@ public class CraftingItemScript : MonoBehaviour, IPointerClickHandler
 	// Use this for initialization
 	void Start () 
 	{
-		m_goCraftingRequirementsContainer = GameObject.Find("ItemCraftingRequirements");
+		m_goCraftingRequirementsContainer = GameObject.Find("CraftingItemHighlighter");
 	}
 	public void Initialize(ItemLibrary.CraftingItemData _item)
 	{
 		m_ilItemData = _item;
 		GetComponentInChildren<Text>().text = m_ilItemData.m_szItemName;
+		GameObject _highlighter = transform.parent.parent.FindChild("CraftingItemHighlighter").gameObject;
+		if(_highlighter.GetComponent<CraftingItemHighlighterScript>().m_goHighlightedObject == null)
+		{
+			//This is the first item in the list.
+			SetHighlighter();
+		}
 	}
 	
 	// Update is called once per frame
@@ -23,19 +29,16 @@ public class CraftingItemScript : MonoBehaviour, IPointerClickHandler
 	
 	}
 
+	void SetHighlighter()
+	{
+		transform.parent.parent.FindChild("CraftingItemHighlighter").GetComponent<CraftingItemHighlighterScript>().SetHighlightedObject(gameObject);
+	}
+
 	#region IPointerClickHandler implementation
 
 	public void OnPointerClick (PointerEventData eventData)
 	{
-		transform.parent.parent.FindChild("CraftingItemHighlighter").GetComponent<CraftingItemHighlighterScript>().SetHighlightedObject(gameObject);
-		Text[] _tReqs = m_goCraftingRequirementsContainer.GetComponentsInChildren<Text>();
-		for(int i = 0; i < _tReqs.Length; ++i)
-		{
-			if( i < m_ilItemData.m_lRequiredItems.Count)
-				_tReqs[i].text = m_ilItemData.m_lRequiredItems[i].m_szItemName + "  x" + m_ilItemData.m_lRequiredItems[i].m_nItemCount.ToString();
-			else
-				_tReqs[i].text = "";
-		}
+		SetHighlighter();
 	}
 
 	#endregion
