@@ -10,9 +10,11 @@ public class CraftingItemScript : MonoBehaviour, IPointerClickHandler
 	// Use this for initialization
 	void Start () 
 	{
+		m_goCraftingRequirementsContainer = GameObject.Find("ItemCraftingRequirements");
 	}
 	public void Initialize(ItemLibrary.CraftingItemData _item)
 	{
+		m_ilItemData = _item;
 		GetComponentInChildren<Text>().text = m_ilItemData.m_szItemName;
 	}
 	

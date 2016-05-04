@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MenuScreenScript : MonoBehaviour 
 {
 
-	public enum MENU_STATES{eINNACTIVE, eTOPTAB_SELECTION, ePARTYTAB, eSTATUS_SUBTAB, eVIEWSTATUSSCREEN, eFORMATION_SUBTAB, eROSTER_SUBTAB, eITEMTAB, eMAGICTAB, eSKILLSTAB, eLOGTAB, eSYSTEMTAB}
+	public enum MENU_STATES{eINNACTIVE, eTOPTAB_SELECTION, ePARTYTAB, eSTATUS_SUBTAB, eVIEWSTATUSSCREEN, eFORMATION_SUBTAB, eROSTER_SUBTAB, eITEMTAB, eCRAFTING_SUBTAB, eMAGICTAB, eSKILLSTAB, eLOGTAB, eSYSTEMTAB}
 	public int m_nMenuState = (int)MENU_STATES.eINNACTIVE;
 	//iter for which tab on the top of the menu is selected
 	[HideInInspector]
@@ -26,6 +26,8 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject[] m_goTopTabs;
 	//Hooks to the Party Sub Tab Options
 	public GameObject[] m_goPartySubTabs;
+	//Hooks to the Item Sub Tab Options
+	public GameObject[] m_goItemSubTabs;
 	//Hooks to the character panels
 	public GameObject[] m_goCharacterPanels;
 	//Hooks to the Cells of the roster screen (for formation purposes)
@@ -50,6 +52,7 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goEquipment;
 	public GameObject m_goCharacterRoot;
 	public GameObject m_goCharacterPrefab;
+	public GameObject m_goCraftingPanel;
 	public GameObject m_goItemCraftedRoot;
 	public GameObject m_goItemCraftedPrefab;
 	public GameObject m_goItemPrefab;
@@ -117,6 +120,7 @@ public class MenuScreenScript : MonoBehaviour
 
 			}
 			break;
+		
 		case (int)MENU_STATES.eSTATUS_SUBTAB:
 			{
 				AdjustPartyPanels();
@@ -165,9 +169,23 @@ public class MenuScreenScript : MonoBehaviour
 					RosterTabMenuInput();
 			}
 			break;
+		case (int)MENU_STATES.eITEMTAB:
+			{
+				//arrow keys and mouse can select one of the sub tab options in menu, escape returns to top tab selection
+				AdjustItemTab();
+				if(m_bWaiting == false)
+					ItemTabMenu_Input();
+			}
+			break;
+		case (int)MENU_STATES.eCRAFTING_SUBTAB:
+			{
+				if(m_bWaiting == false)
+					CraftingTabInput();
+			}
+			break;
 		}
 	}
-
+		
 	#region TopMenu
 	void TopTabMenu_Input()
 	{
@@ -277,6 +295,9 @@ public class MenuScreenScript : MonoBehaviour
 		}
 	}
 	#endregion
+
+
+
 	#region PartyMenu
 	void PartyTabMenu_Input()
 	{
@@ -632,14 +653,88 @@ public class MenuScreenScript : MonoBehaviour
 	#endregion
 
 	#region ItemMenu
+	void ItemTabMenu_Input()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+		{
+			m_nSubTabMenuSelectionIndex = 0;
+			m_nMenuState = (int)MENU_STATES.eTOPTAB_SELECTION;
+			foreach(GameObject go in m_goItemSubTabs)
+				Image_Brighten(go);
+		}
+		else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Return))
+		{
+			
+			ItemTabMenuSelected(m_nSubTabMenuSelectionIndex);
+		}
+		else if(Input.GetKeyDown(KeyCode.UpArrow))
+		{
+			m_nSubTabMenuSelectionIndex = m_nSubTabMenuSelectionIndex - 1;
+			if(m_nSubTabMenuSelectionIndex < 0)
+			{
+				m_nSubTabMenuSelectionIndex = 0;
+				m_nMenuState = (int)MENU_STATES.eTOPTAB_SELECTION;
+				foreach(GameObject go in m_goPartySubTabs)
+					Image_Brighten(go);
+			}
+		}
+		else if(Input.GetKeyDown(KeyCode.DownArrow))
+		{
+			m_nSubTabMenuSelectionIndex += 1;
+			if(m_nSubTabMenuSelectionIndex > 0)
+				m_nSubTabMenuSelectionIndex = 0;
+		}
+	}
+	public void ItemTabMenuSelected(int _nIndex)
+	{
+		if(m_nMenuState != (int) MENU_STATES.eITEMTAB)
+			return;
+		switch(m_nSubTabMenuSelectionIndex)
+		{
+		//Crafting(for now)
+		case 0:
+			{
+				AdjustCraftingScreen();
+				DisplayCraftingPanels(true);
+				m_nMenuState = (int) MENU_STATES.eCRAFTING_SUBTAB;
+			}
+			break;
+		}
+	}
 	public void ItemTabHighlighted(int nIndex)
 	{
 		if(m_nMenuState != (int)MENU_STATES.eITEMTAB)
 			return;
 		m_nSubTabMenuSelectionIndex = nIndex;
 	}
+	void AdjustItemTab()
+	{
+		int counter = 0;
+		foreach(GameObject go in m_goItemSubTabs)
+		{
+			if(counter == m_nSubTabMenuSelectionIndex)
+			{
+				Image_Darken(go);
+			}
+			else
+			{
+				Image_Brighten(go);
+			}
+			counter++;
+		}
+	}
 	#endregion
 
+	#region CraftingMenu
+	void CraftingTabInput()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+		{
+			m_nMenuState = (int)MENU_STATES.eITEMTAB;
+			DisplayCraftingPanels(false);
+		}
+	}
+	#endregion
 	void EquipmentScreen(DCScript.CharacterData character)
 	{
 	}
@@ -1126,6 +1221,21 @@ public class MenuScreenScript : MonoBehaviour
 			m_goRosterCells[character.m_nFormationIter].GetComponent<RosterScreenCellScript>().InstantiateCharacter(character);
 		}
 	}
+	void AdjustCraftingScreen()
+	{
+		List<ItemLibrary.CraftingItemData> _lCraftables = dc.m_lItemLibrary.m_lCraftableItems;
+		CraftingItemScript[] oldCraftables = m_goItemCraftedRoot.GetComponentsInChildren<CraftingItemScript>();
+		foreach(CraftingItemScript go in oldCraftables)
+			Destroy(go.gameObject);
+		foreach(ItemLibrary.CraftingItemData _item in _lCraftables)
+		{
+			GameObject craftedItem = Instantiate(m_goItemCraftedPrefab) as GameObject;
+			craftedItem.GetComponent<RectTransform>().SetParent(m_goItemCraftedRoot.GetComponent<RectTransform>());
+			craftedItem.GetComponent<RectTransform>().rotation = Quaternion.identity;
+			craftedItem.GetComponent<CraftingItemScript>().Initialize(_item);
+
+		}
+	}
 	void ClearRosterScreen()
 	{
 		foreach(GameObject go in m_goRosterCells)
@@ -1236,6 +1346,10 @@ public class MenuScreenScript : MonoBehaviour
 	public void Image_Darken(GameObject image)
 	{
 		image.GetComponent<Image>().color = new Color(0.3f, 0.3f, 0.3f);
+	}
+	public void DisplayCraftingPanels(bool bFlag)
+	{
+		m_goCraftingPanel.SetActive(bFlag);
 	}
 	public void DisplayCharacterPanels(bool bFlag)
 	{
