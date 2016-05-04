@@ -28,8 +28,21 @@ public class OILScript : MonoBehaviour
 				if(goMO.Length > 0)
 					lMovingObjs.AddRange(goMO);
 			}
-			lMovingObjs.Sort(delegate(GameObject x, GameObject y) {
-				return x.transform.position.y.CompareTo(y.transform.position.y);});
+			lMovingObjs.Sort(delegate(GameObject x, GameObject y) 
+			{
+					if(x.GetComponent<Collider2D>() != null && y.GetComponent<Collider2D>() != null)
+					{
+						Vector3 pos = x.transform.position;
+						pos.y += x.GetComponent<Collider2D>().bounds.size.y * 0.5f;
+						Vector3 pos2 = y.transform.position;
+						pos2.y += y.GetComponent<Collider2D>().bounds.size.y * 0.5f;
+						return pos.y.CompareTo(pos2.y);
+					}
+					else 
+					{
+						return x.transform.position.y.CompareTo(y.transform.position.y);
+					}
+			});
 
 			int c = 49;
 			foreach(GameObject g in lMovingObjs)
