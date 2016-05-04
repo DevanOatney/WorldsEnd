@@ -29,15 +29,21 @@ public class InonEventHandler : BaseEventSystemScript
 		ds = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		GameObject _goAudioHelper = GameObject.Find("AudioHelper");
 		_goAudioHelper.GetComponent<CAudioHelper>().vPlayMusic(_goAudioHelper.GetComponent<CAudioHelper>().eFromName(m_szBackgroundMusicName),true, true);
+
+		UpdateWaypoints();
+	}
+
+	void UpdateWaypoints()
+	{
 		int result;
-		if(ds.m_dStoryFlagField.TryGetValue("Intro_in_Inon", out result) == false)
+		if(ds.m_dStoryFlagField.TryGetValue("Inon_KeyEvents", out result) == false)
 		{
 			//This is the introduction, play it yo!
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<FieldPlayerMovementScript>().BindInput();
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 			player.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
-			ds.m_dStoryFlagField.Add("Intro_in_Inon", 1);
+			ds.m_dStoryFlagField.Add("Inon_KeyEvents", 0);
 			foreach(GameObject wpnt in Phase1_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			foreach(GameObject wpnt in Phase2_waypoints)
@@ -45,64 +51,81 @@ public class InonEventHandler : BaseEventSystemScript
 			foreach(GameObject wpnt in Phase3_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			foreach(GameObject wpnt in Phase4_waypoints)
+				wpnt.GetComponent<BoxCollider2D>().enabled = true;
+			foreach(GameObject wpnt in Phase5_waypoints)
 				wpnt.GetComponent<BoxCollider2D>().enabled = true;
 			GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = true;
 			GameObject.Find("Mattach").GetComponent<SpriteRenderer>().enabled = true;
 			GameObject.Find("NoteFromFamily").GetComponent<BoxCollider2D>().enabled = false;
 		}
-		else if(ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == false)
+		else
 		{
-			//Haven't started the ritual yet.
-			foreach(GameObject wpnt in Phase1_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-			GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = true;
-			GameObject.Find("Mattach").GetComponent<SpriteRenderer>().enabled = true;
+			switch (result)
+			{
+			//0: Player has started the game, but hasn't yet even talked to the guy in the guild hall.
+			case 0:
+				{
+					//Haven't started the ritual yet.
+					foreach(GameObject wpnt in Phase1_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = false;
+					foreach(GameObject wpnt in Phase2_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = true;
+					foreach(GameObject wpnt in Phase3_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = true;
+					foreach(GameObject wpnt in Phase4_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = true;
+					foreach(GameObject wpnt in Phase5_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = true;
+					GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = true;
+					GameObject.Find("Mattach").GetComponent<SpriteRenderer>().enabled = true;
+				}
+				break;
+				//1: Player has talked to the guy in the guild hall, but not the blacksmith
+				//2: Player has talked to the guy in the guild hall, the blacksmith, but not met with his dad/sister
+				//3: Player has met with the dad and sister, but not completed the ritual yet.
+			case 3:
+				{
+					GameObject player = GameObject.Find("Player");
+					player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
+					player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 0);
+					player.GetComponent<FieldPlayerMovementScript>().BindInput();
+					GameObject.Find("Mattach").GetComponentInChildren<MessageHandler>().BeginDialogue("B1");
+					ds.m_dStoryFlagField.Remove("Inon_RitualBattleComplete");
+					foreach(GameObject wpnt in Phase1_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = false;
+					foreach(GameObject wpnt in Phase2_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = false;
+					foreach(GameObject wpnt in Phase3_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = false;
+					foreach(GameObject wpnt in Phase4_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = true;
+					foreach(GameObject wpnt in Phase5_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = true;
+					GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = true;
+					GameObject.Find("Mattach").GetComponent<SpriteRenderer>().enabled = true;
+					m_goDeadBoar.SetActive(true);
+				}
+				break;
+				//4: Player has completed the initial ritual event and is free to leave town.
+			case 4:
+				{
+					//The player has finished all of the intro events in Inon.
+					foreach(GameObject wpnt in Phase1_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = false;
+					foreach(GameObject wpnt in Phase2_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = false;
+					foreach(GameObject wpnt in Phase3_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = false;
+					foreach(GameObject wpnt in Phase4_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = false;
+					GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = false;
+					GameObject.Find("Mattach").GetComponent<SpriteRenderer>().enabled = true;
+				}
+				break;
+			}
 		}
-		else if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == false && 
-		        ds.m_dStoryFlagField.TryGetValue("Inon_RitualBattleComplete", out result) == true)
-		{
-			//have completed the ritual battle, but haven't completed the full ritual yet, begin the final bits of dialogue for the ritual
-			GameObject player = GameObject.Find("Player");
-			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-			player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 0);
-			player.GetComponent<FieldPlayerMovementScript>().BindInput();
-			GameObject.Find("Mattach").GetComponentInChildren<MessageHandler>().BeginDialogue("B1");
-			ds.m_dStoryFlagField.Remove("Inon_RitualBattleComplete");
-			foreach(GameObject wpnt in Phase1_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = true;
-			GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = true;
-			GameObject.Find("Mattach").GetComponent<SpriteRenderer>().enabled = true;
-			m_goDeadBoar.SetActive(true);
-		}
-		else if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result) == true)
-		{
-			//The player has finished all of the intro events in Inon.
-			foreach(GameObject wpnt in Phase1_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase2_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase3_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			foreach(GameObject wpnt in Phase4_waypoints)
-				wpnt.GetComponent<BoxCollider2D>().enabled = false;
-			GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = false;
-			GameObject.Find("Mattach").GetComponent<SpriteRenderer>().enabled = true;
-		}
-		
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -306,15 +329,34 @@ public class InonEventHandler : BaseEventSystemScript
 			if(messageSystem)
 			{
 				int briRes = -1;
-				if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out briRes))
-					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("C0");
-				else if(ds.m_dStoryFlagField.TryGetValue("Inon_Bartholomew", out briRes) == false)
-					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
-				else
-					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("B0");
+				if(ds.m_dStoryFlagField.TryGetValue("Inon_KeyEvents", out briRes))
+				{
+						switch(briRes)
+						{
+						//0: Player has started the game, but hasn't yet even talked to the guy in the guild hall.
+						case 0:
+							{
+								messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
+							}
+							break;
+						//1: Player has talked to the guy in the guild hall, but not the blacksmith
+						case 1:
+							{
+								messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("B0");
+							}
+							break;
+						//2: Player has talked to the guy in the guild hall, the blacksmith, but not met with his dad/sister
+						default:
+							{
+								messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("C0");
+							}
+							break;
+						}
+				}
 			}
 		}
 			break;
+		//This is after talking to the blacksmith and getting directions to where your father/sister are for the ritual
 		case "Briar_EndDialogue":
 		{
 			GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -322,8 +364,8 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 			}
-			foreach(GameObject go in Phase2_waypoints)
-				go.GetComponent<BoxCollider2D>().enabled = false;
+			ds.m_dStoryFlagField["Inon_KeyEvents"] = 2;
+			UpdateWaypoints();
 		}
 			break;
 		case "OldTuck":
@@ -447,11 +489,16 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				
 				int bartRes = -1;
-				if(ds.m_dStoryFlagField.TryGetValue("Inon_Bartholomew", out bartRes) == false)
-					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
-				else
+				if(ds.m_dStoryFlagField.TryGetValue("Inon_KeyEvents", out bartRes))
 				{
-					messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("A4");
+					if(bartRes == 0)
+					{
+						messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
+					}
+					else
+					{
+						messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("A4");
+					}
 				}
 			}
 		}
@@ -463,7 +510,7 @@ public class InonEventHandler : BaseEventSystemScript
 			{
 				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 			}
-			ds.m_dStoryFlagField.Add("Inon_Bartholomew", 1);
+			ds.m_dStoryFlagField["Inon_KeyEvents"] = 1;
 		}
 			break;
 		case "Constantinople":
@@ -489,7 +536,7 @@ public class InonEventHandler : BaseEventSystemScript
 				{
 
 					int mattachResult = -1;
-					if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out mattachResult) == false)
+					if(ds.m_dStoryFlagField.TryGetValue("Inon_KeyEvents", out mattachResult) == false)
 					{
 						
 					}
@@ -629,7 +676,7 @@ public class InonEventHandler : BaseEventSystemScript
 		case "StartBoarBattle":
 		{
 			//battles stuff
-			ds.m_dStoryFlagField.Add("Inon_RitualBattleComplete", 1);
+			ds.m_dStoryFlagField["Inon_KeyEvents"] = 3;
 			ds.m_dStoryFlagField.Add("Battle_ReadMessage", 1);
 			StartBossBattle();
 		}
@@ -652,7 +699,6 @@ public class InonEventHandler : BaseEventSystemScript
 		case "RITUALEVENT_ObtainedBoarTusk":
 		{
 			//Player has acquired the boar tusk, now have Briol move into the player to join the team.
-			ds.m_dStoryFlagField.Add("Inon_CeremonyComplete", 1);
 			m_goDeadBoar.SetActive(false);
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 			GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveIntoPlayer();
@@ -662,11 +708,9 @@ public class InonEventHandler : BaseEventSystemScript
 			break;
 		case "RitualEnd":
 		{
-			
-			ds.m_dStoryFlagField["Inon_CeremonyComplete"] = 2;
+			ds.m_dStoryFlagField["Inon_KeyEvents"] = 4;
+			UpdateWaypoints();
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseAllBinds();
-			
-
 		}
 			break;
 		default:

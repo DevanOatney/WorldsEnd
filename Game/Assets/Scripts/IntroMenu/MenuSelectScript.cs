@@ -12,8 +12,12 @@ public class MenuSelectScript : MonoBehaviour, IPointerEnterHandler, IPointerCli
 
 	public void OnPointerEnter (PointerEventData eventData)
 	{
-		GameObject.Find("Highlighter").GetComponent<IntroMenuHighlightInput>().SetHighlightedIndex(m_nIndex);
-		GameObject.Find("Highlighter").GetComponent<IntroMenuHighlightInput>().ChangeHighlightedPosition();
+		GameObject _highlighter = GameObject.Find("Highlighter");
+		if(_highlighter.GetComponent<IntroMenuHighlightInput>().m_bAllowInput == true)
+		{
+			_highlighter.GetComponent<IntroMenuHighlightInput>().SetHighlightedIndex(m_nIndex);
+			_highlighter.GetComponent<IntroMenuHighlightInput>().ChangeHighlightedPosition();
+		}
 	}
 
 	#endregion
@@ -22,15 +26,19 @@ public class MenuSelectScript : MonoBehaviour, IPointerEnterHandler, IPointerCli
 
 	public void OnPointerClick (PointerEventData eventData)
 	{
-		GameObject.Find("Highlighter").GetComponent<IntroMenuHighlightInput>().MouseSelection(m_nIndex);
-		GameObject.Find("Highlighter").GetComponent<IntroMenuHighlightInput>().SetHighlightedIndex(m_nIndex);
-		GameObject.Find("Highlighter").GetComponent<IntroMenuHighlightInput>().ChangeHighlightedPosition();
+		GameObject _highlighter = GameObject.Find("Highlighter");
+		if(_highlighter.GetComponent<IntroMenuHighlightInput>().m_bAllowInput == true)
+		{
+			_highlighter.GetComponent<IntroMenuHighlightInput>().MouseSelection(m_nIndex);
+			_highlighter.GetComponent<IntroMenuHighlightInput>().SetHighlightedIndex(m_nIndex);
+			_highlighter.GetComponent<IntroMenuHighlightInput>().ChangeHighlightedPosition();
+		}
 	}
 
 	#endregion
 
 
-	void Enter()
+	public void Enter()
 	{
 		switch(m_nIndex)
 		{

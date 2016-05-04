@@ -14,14 +14,14 @@ public class NPCScript : MonoBehaviour
 		m_bMoveTowardLocation = true;
         m_bShouldRun = _shouldIRun;
 		m_vTargetLocation = _target.transform.position;
-		m_vTargetLocation.y += _target.GetComponent<BoxCollider2D>().size.y * 0.5f;
+		m_vTargetLocation.y += _target.GetComponent<Collider2D>().bounds.size.y * 0.5f;
 	}
 	public void DHF_NPCMoveToGameobject(GameObject _target, bool _shouldIRun, int _nextFacingDir)
 	{
 		m_bMoveTowardLocation = true;
         m_bShouldRun = _shouldIRun;
 		m_vTargetLocation = _target.transform.position;
-		m_vTargetLocation.y += _target.GetComponent<BoxCollider2D>().size.y * 0.5f;
+		m_vTargetLocation.y += _target.GetComponent<Collider2D>().bounds.size.y * 0.5f;
 		m_nNextFacingDir = _nextFacingDir;
 	}
 	public void DHF_NPCPathfindToGameobject(GameObject _target, bool _shouldIRun, int _nextFacingDir, bool _allowDiagonal)
@@ -144,7 +144,7 @@ public class NPCScript : MonoBehaviour
 				m_bReturnToPlayer = false;
 				GetComponent<BoxCollider2D>().enabled = true;
 				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				gameObject.GetComponent<BoxCollider2D>().enabled = false;
+				gameObject.GetComponent<Collider2D>().enabled = false;
 				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 				Camera.main.GetComponent<CameraFollowTarget>().m_goNextTarget = GameObject.Find("Player");
 			}

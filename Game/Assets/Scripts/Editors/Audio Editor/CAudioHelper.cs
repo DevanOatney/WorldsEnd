@@ -135,7 +135,7 @@ public class CAudioHelper : MonoBehaviour
 			return;
 		}
 
-		m_audiosourceSFX[m_iSFXPlayerCur].PlayOneShot( m_listaudioclipSFXs[(int)p_eSound], m_listSFXVolume[(int)p_eSound] );
+		m_audiosourceSFX[m_iSFXPlayerCur].PlayOneShot( m_listaudioclipSFXs[(int)p_eSound], m_listSFXVolume[(int)p_eSound] + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
 		if (++m_iSFXCycleCur >= m_cSFXCycle)
 		{
 			m_iSFXCycleCur = 0;
@@ -178,7 +178,7 @@ public class CAudioHelper : MonoBehaviour
 		if (p_fImmediate)
 		{
 			m_aAudiosourceMusic[m_iActiveMusic].clip = m_listaudioclipMusic[(int)p_eMusic];
-			m_aAudiosourceMusic[m_iActiveMusic].volume = 1.0f;
+			m_aAudiosourceMusic[m_iActiveMusic].volume = GameObject.Find("PersistantData").GetComponent<DCScript>().m_fMusicVolume;
 			m_aAudiosourceMusic[m_iActiveMusic].Play( );
 			m_aAudiosourceMusic[m_iActiveMusic].loop = p_fLoop;
 			return;

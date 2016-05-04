@@ -18,7 +18,7 @@ public class IntroMenuHighlightInput : MonoBehaviour
 	public AnimationClip m_acHighlightDraw;
 	float m_fDrawLength;
 	float m_fDrawTimer = 0.0f;
-	bool m_bAllowInput = true;
+	public bool m_bAllowInput = true;
 	void Awake()
 	{
 		GameObject GO = GameObject.Find("PersistantData");
@@ -102,7 +102,7 @@ public class IntroMenuHighlightInput : MonoBehaviour
 	
 	void ChangeScreen()
 	{
-		m_gGameObjects[m_nHighlightedIndex].SendMessage("Enter");
+		m_gGameObjects[m_nHighlightedIndex].GetComponent<MenuSelectScript>().Enter();
 	}
 	
 	public void MouseSelection(int index)

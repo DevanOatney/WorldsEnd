@@ -11,9 +11,9 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		BindInput();
 		m_bIsMovingToLocation = true;
 		m_vTargetLocation = (Vector2)_TargetLocation.transform.position;
-		if(_TargetLocation.GetComponent<BoxCollider2D>() != null)
+		if(_TargetLocation.GetComponent<Collider2D>() != null)
 		{
-			m_vTargetLocation.y += _TargetLocation.GetComponent<BoxCollider2D>().size.y * 0.5f;
+			m_vTargetLocation.y += _TargetLocation.GetComponent<Collider2D>().bounds.size.y * 0.5f;
 		}
 		m_bIsRunning = false;
 		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
@@ -24,9 +24,9 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		BindInput();
 		m_bIsMovingToLocation = true;
 		m_vTargetLocation = (Vector2)_TargetLocation.transform.position;
-		if(_TargetLocation.GetComponent<BoxCollider2D>() != null)
+		if(_TargetLocation.GetComponent<Collider2D>() != null)
 		{
-			m_vTargetLocation.y += _TargetLocation.GetComponent<BoxCollider2D>().size.y * 0.5f;
+			m_vTargetLocation.y += _TargetLocation.GetComponent<Collider2D>().bounds.size.y * 0.5f;
 		}
 		m_bIsRunning = _bShouldIRun;
 		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
@@ -37,9 +37,9 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		BindInput();
 		m_bIsMovingToLocation = true;
 		m_vTargetLocation = (Vector2)_TargetLocation.transform.position;
-		if(_TargetLocation.GetComponent<BoxCollider2D>() != null)
+		if(_TargetLocation.GetComponent<Collider2D>() != null)
 		{
-			m_vTargetLocation.y += _TargetLocation.GetComponent<BoxCollider2D>().size.y * 0.5f;
+			m_vTargetLocation.y += _TargetLocation.GetComponent<Collider2D>().bounds.size.y * 0.5f;
 		}
 		m_bIsRunning = _bShouldIRun;
 		m_nNextFacingDir = _nextFacingDirection;
@@ -208,7 +208,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		if(m_bPromptShouldRender == true)
 		{
 			Vector3 pos = transform.position;
-			pos.y += GetComponent<BoxCollider2D>().bounds.size.y * 1.3f;
+			pos.y += GetComponent<Collider2D>().bounds.size.y * 1.3f;
 			m_goPrompter.transform.position = pos;
 			m_fTextBlinkTimer += Time.deltaTime;
 			if(m_fTextBlinkTimer >= m_fTextBlinkBucket)
@@ -358,14 +358,14 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			//transform.position = newPos;
 			//if we can move and do stuff, handle predictor code
 
-			newPos.x += MoveVec.x * GetComponent<BoxCollider2D>().bounds.size.x * 0.5f;
+			newPos.x += MoveVec.x * GetComponent<Collider2D>().bounds.size.x * 0.5f;
 
 			if(MoveVec.y > 0)
-				newPos.y += MoveVec.y * GetComponent<BoxCollider2D>().bounds.size.y * 0.5f;
+				newPos.y += MoveVec.y * GetComponent<Collider2D>().bounds.size.y * 0.5f;
 			else if(MoveVec.y < 0)
-				newPos.y += MoveVec.y * GetComponent<BoxCollider2D>().bounds.size.y * 1.5f;
+				newPos.y += MoveVec.y * GetComponent<Collider2D>().bounds.size.y * 1.5f;
 			else
-				newPos.y = transform.position.y - GetComponent<BoxCollider2D>().bounds.size.y ;
+				newPos.y = transform.position.y - GetComponent<Collider2D>().bounds.size.y ;
 			m_goPredictor.transform.position = newPos;
 			#endregion
 
