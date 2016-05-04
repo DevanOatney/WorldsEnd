@@ -12,16 +12,10 @@ public class ExitButtonScript : MonoBehaviour
 	private bool m_bToUseBattleAnimations = true;
 	public bool m_bSwitching = false;
 	public int m_nTextSpeed = 2;
-	Vector3 pos;
 	public GUISkin skin;
 	public AudioClip m_aSelectMenu;
 	void Start()
 	{
-		pos = transform.position;
-		pos = Camera.main.WorldToScreenPoint(pos);
-		pos.y = Screen.height - pos.y;
-		
-		
 		GameObject GO = GameObject.Find("PersistantData");
 		if(GO != null)
 		{
@@ -35,10 +29,7 @@ public class ExitButtonScript : MonoBehaviour
 			m_nTextSpeed = script.m_nTextSpeed;
 		}
 	}
-    void OnGUI() 
-	{
-        
-    }
+
 	void ChangeScreen()
 	{
 		GameObject GO = GameObject.Find("PersistantData");
@@ -57,7 +48,7 @@ public class ExitButtonScript : MonoBehaviour
         SceneManager.LoadScene("IntroMenu_Scene");
 	}
 
-	void OnMouseDown()
+	public void ExitSelected()
 	{
 		GameObject GO = GameObject.Find("PersistantData");
 		if(GO != null)

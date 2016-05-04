@@ -2,29 +2,17 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class SaveButtonScript : MonoBehaviour {
+public class SaveButtonScript : MonoBehaviour 
+{
 
-	Vector3 pos;
-	public GUISkin skin;
 	public AudioClip m_aSelectMenu;
 	public GameObject exitButton;
-	void Start()
-	{
-		pos = transform.position; 
-		pos = Camera.main.WorldToScreenPoint(pos);
-		pos.y = Screen.height - pos.y;
-		
-	}
-    void OnGUI() 
-	{
-        
-    }
 	void ChangeScreen()
 	{
         SceneManager.LoadScene("IntroMenu_Scene");
 	}
 
-	void OnMouseDown()
+	public void SaveSelected()
 	{
 		if(exitButton.GetComponent<ExitButtonScript>().m_bSwitching == false)
 		{

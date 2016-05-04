@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class StatusEffectLibrary 
 {
 	public List<cStatusEffectData> m_lStatusEffectData = new List<cStatusEffectData>();
-
 	public class cStatusEffectData
 	{
 		public string m_szEffectName;

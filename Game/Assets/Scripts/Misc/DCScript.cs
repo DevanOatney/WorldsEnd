@@ -86,6 +86,7 @@ public class DCScript : MonoBehaviour
 		public int m_nHITMod;
 		public int m_nEVAMod;
 		public List<cEffectedMember> m_lEffectedMembers = new List<cEffectedMember>();
+		[System.Serializable]
 		public class cEffectedMember
 		{
 			public cEffectedMember(string _name, int _ticksLeft) {m_szCharacterName = _name;m_nTicksLeft = _ticksLeft;}
