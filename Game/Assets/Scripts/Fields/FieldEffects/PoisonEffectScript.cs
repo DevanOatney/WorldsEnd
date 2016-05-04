@@ -54,7 +54,7 @@ public class PoisonEffectScript : FieldBaseStatusEffectScript
 			GameObject poisonClone = Instantiate(m_goPoisonClone, pos, Quaternion.identity) as GameObject;
 			poisonClone.GetComponent<PoisonCloneScript>().m_gOwner = m_goOwner;
 			if(poisonClone)
-				Destroy(poisonClone, 1.0f);
+				Destroy(poisonClone, 2.0f);
 
 			List<DCScript.CharacterData> characters = GameObject.Find("PersistantData").GetComponent<DCScript>().GetParty();
 			if(m_lEffectedUnits != null)

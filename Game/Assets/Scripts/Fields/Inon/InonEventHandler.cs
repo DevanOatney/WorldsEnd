@@ -82,6 +82,22 @@ public class InonEventHandler : BaseEventSystemScript
 				break;
 				//1: Player has talked to the guy in the guild hall, but not the blacksmith
 				//2: Player has talked to the guy in the guild hall, the blacksmith, but not met with his dad/sister
+			case 2:
+				{
+					foreach(GameObject wpnt in Phase1_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = false;
+					foreach(GameObject wpnt in Phase2_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = false;
+					foreach(GameObject wpnt in Phase3_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = true;
+					foreach(GameObject wpnt in Phase4_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = true;
+					foreach(GameObject wpnt in Phase5_waypoints)
+						wpnt.GetComponent<BoxCollider2D>().enabled = true;
+					GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = true;
+					GameObject.Find("Mattach").GetComponent<SpriteRenderer>().enabled = true;
+				}
+				break;
 				//3: Player has met with the dad and sister, but not completed the ritual yet.
 			case 3:
 				{
@@ -699,16 +715,17 @@ public class InonEventHandler : BaseEventSystemScript
 		case "RITUALEVENT_ObtainedBoarTusk":
 		{
 			//Player has acquired the boar tusk, now have Briol move into the player to join the team.
+			ds.m_dStoryFlagField["Inon_KeyEvents"] = 4;
 			m_goDeadBoar.SetActive(false);
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 			GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveIntoPlayer();
-			GameObject.Find("Briol").GetComponent<BoxCollider2D>().enabled = false;
+			GameObject.Find("Briol").GetComponent<Collider2D>().enabled = false;
 			Invoke("RecruitBriol", 2.0f);
 		}
 			break;
 		case "RitualEnd":
 		{
-			ds.m_dStoryFlagField["Inon_KeyEvents"] = 4;
+
 			UpdateWaypoints();
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseAllBinds();
 		}
@@ -721,23 +738,23 @@ public class InonEventHandler : BaseEventSystemScript
 	void MessageWindowDeactivated()
 	{
 		int result = 0;
-		if(ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out result))
+		if(ds.m_dStoryFlagField.TryGetValue("Inon_KeyEvents", out result))
 		{
-			if(result == 1)
+			if(result == 3)
+			{
+				HandleEvent("RITUALEVENT_ObtainedBoarTusk");
+			}
+			else if(result == 4)
 			{
 				//Briol has now moved into the player and they've seen the window for her having been recruited.
 				GameObject.Find("Mattach").GetComponentInChildren<MessageHandler>().BeginDialogue("D0");
 			}
 		}
-		else
-		{
-			//Player has not done any of the event yet, so this is for just after he acquires the boar tusk
-			HandleEvent("RITUALEVENT_ObtainedBoarTusk");
-		}
 	}
 
 	void RecruitBriol()
 	{
+		ds.AddPartyMember("Briol");
 		GameObject.Find("UI_Alerts").GetComponent<UIAlertWindowScript>().ActivateWindow(UIAlertWindowScript.MESSAGEID.eRECRUITED, "Briol", gameObject);
 	}
 
@@ -812,6 +829,7 @@ public class InonEventHandler : BaseEventSystemScript
 				player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 				player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
 				GameObject.Find("StepBackRitual").GetComponent<BoxCollider2D>().enabled = false;
+				GameObject.Find("TowardRitualCheck").GetComponent<BoxCollider2D>().enabled = true;
 			}
 		}
 			break;

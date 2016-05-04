@@ -108,7 +108,7 @@ public class NPCScript : MonoBehaviour
 		#region Return To Player
 		if(m_bReturnToPlayer == true)
 		{
-			GetComponent<BoxCollider2D>().enabled = false;
+			GetComponent<Collider2D>().enabled = false;
 			Vector2 playerPos = GameObject.Find("Player").transform.position;
 			Vector2 npcPos = transform.position;
 			Vector2 toPlayer = playerPos - npcPos;
@@ -142,7 +142,7 @@ public class NPCScript : MonoBehaviour
 			else
 			{
 				m_bReturnToPlayer = false;
-				GetComponent<BoxCollider2D>().enabled = true;
+				GetComponent<Collider2D>().enabled = true;
 				gameObject.GetComponent<SpriteRenderer>().enabled = false;
 				gameObject.GetComponent<Collider2D>().enabled = false;
 				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();

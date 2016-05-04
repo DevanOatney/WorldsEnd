@@ -1032,6 +1032,28 @@ public class MenuScreenScript : MonoBehaviour
 					cPort.GetComponent<Image>().sprite = Sprite.Create(sprTex, 
 						new Rect(0, 0, sprTex.width, sprTex.height), new Vector2(0.5f, 0.5f));
 				}
+				//Check to see if this unit is afflicted with poison, if it is, show the icon for it.
+				DCScript.StatusEffect _sePoison = dc.GetStatusEffect("Poison");
+				bool _isEffected = false;
+				if(_sePoison != null)
+				{
+					foreach(DCScript.StatusEffect.cEffectedMember _member in _sePoison.m_lEffectedMembers)
+					{
+						if(_member.m_szCharacterName == character.m_szCharacterName)
+						{
+							//This character is effected with poison, display the icon.
+							_isEffected = true;
+							Transform cPoison = panel.transform.FindChild("Poison_Icon");
+							cPoison.GetComponent<Image>().enabled = true;
+						}
+					}
+				}
+				if(_isEffected == false)
+				{
+					Transform cPoison = panel.transform.FindChild("Poison_Icon");
+					cPoison.GetComponent<Image>().enabled = false;
+				}
+
 			}
 			else
 			{
@@ -1049,6 +1071,8 @@ public class MenuScreenScript : MonoBehaviour
 				Transform cPort = panel.transform.FindChild("CharacterImage");
 				cPort.GetComponent<Image>().sprite = null;
 				cPort.GetComponent<Image>().color = Color.clear;
+				Transform cPoison = panel.transform.FindChild("Poison_Icon");
+				cPoison.GetComponent<Image>().enabled = false;
 			}
 			counter++;
 		}

@@ -50,7 +50,8 @@ public class OILScript : MonoBehaviour
 				if(g.GetComponent<SpriteRenderer>() != null)
 				{
 					g.GetComponent<SpriteRenderer>().sortingOrder = c;
-
+					if(g.name == "Poison Effect(Clone)")
+						g.GetComponent<SpriteRenderer>().sortingOrder = c + 1;
 					c--;
 				}
 			}
