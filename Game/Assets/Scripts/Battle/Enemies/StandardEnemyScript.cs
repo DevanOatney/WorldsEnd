@@ -11,7 +11,7 @@ public class StandardEnemyScript : UnitScript
 	public TextAsset m_taStats;
 	float m_fMovementSpeed = 8.0f;
 	//delay to make it look like some sort of calculation is happening when it's the enemies turn (lol)
-	protected float m_fDelayBucket = 2.0f;
+	protected float m_fDelayBucket = 1.0f;
 	protected float m_fDelayTimer = 0.0f;
 	//Stuff for the shadow clones that spawn during movement... maybe special attacks if I have time?
 	public GameObject m_goShadowClone;

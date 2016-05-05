@@ -1314,7 +1314,82 @@ public class MenuScreenScript : MonoBehaviour
 		}
 		return null;
 	}
+	//Used for call from PointerOnEnter override in the tab script
+	public void TabHighlighted(MenuScreenScript.MENU_STATES _state)
+	{
+		switch(_state)
+		{
+		case MENU_STATES.ePARTYTAB:
+			{
+				TopTabHighlighted(0);
+			}
+			break;
+		case MENU_STATES.eSTATUS_SUBTAB:
+			{
+				PartyTabHighlighted(0);
+			}
+			break;
+		case MENU_STATES.eFORMATION_SUBTAB:
+			{
+				PartyTabHighlighted(1);
+			}
+			break;
+		case MENU_STATES.eROSTER_SUBTAB:
+			{
+				PartyTabHighlighted(2);
+			}
+			break;
+		case MENU_STATES.eITEMTAB:
+			{
+				TopTabHighlighted(1);
+			}
+			break;
+		case MENU_STATES.eCRAFTING_SUBTAB:
+			{
+				ItemTabHighlighted(0);
+			}
+			break;
 
+		}
+	}
+	//Used for call from PointerOnClick override in the tab script
+	public void TabSelected(MenuScreenScript.MENU_STATES _state)
+	{
+		switch(_state)
+		{
+		case MENU_STATES.ePARTYTAB:
+			{
+				TopTabSelectionSelected(0);
+			}
+			break;
+		case MENU_STATES.eSTATUS_SUBTAB:
+			{
+				PartyTabSelectionSelected(0);
+			}
+			break;
+		case MENU_STATES.eFORMATION_SUBTAB:
+			{
+				PartyTabSelectionSelected(1);
+			}
+			break;
+		case MENU_STATES.eROSTER_SUBTAB:
+			{
+				PartyTabSelectionSelected(2);
+			}
+			break;
+		case MENU_STATES.eITEMTAB:
+			{
+				TopTabHighlighted(1);
+			}
+			break;
+		case MENU_STATES.eCRAFTING_SUBTAB:
+			{
+				ItemTabMenuSelected(0);
+			}
+			break;
+
+		}
+	}
 	public int ConvertPanelIterToFormationNumber(int nPanelIndex)
 	{
 		//convert the index of panel selected, to the formation of that party member.
