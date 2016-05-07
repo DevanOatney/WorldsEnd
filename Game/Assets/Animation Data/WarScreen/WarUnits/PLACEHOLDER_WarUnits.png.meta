@@ -1,0 +1,5113 @@
+fileFormatVersion: 2
+guid: 4a1a50108b8b413479b23ab391d7c4c5
+timeCreated: 1462617101
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PLACEHOLDER_WarUnits_0
+    21300002: PLACEHOLDER_WarUnits_1
+    21300004: PLACEHOLDER_WarUnits_2
+    21300006: PLACEHOLDER_WarUnits_3
+    21300008: PLACEHOLDER_WarUnits_4
+    21300010: PLACEHOLDER_WarUnits_5
+    21300012: PLACEHOLDER_WarUnits_6
+    21300014: PLACEHOLDER_WarUnits_7
+    21300016: PLACEHOLDER_WarUnits_8
+    21300018: PLACEHOLDER_WarUnits_9
+    21300020: PLACEHOLDER_WarUnits_10
+    21300022: PLACEHOLDER_WarUnits_11
+    21300024: PLACEHOLDER_WarUnits_12
+    21300026: PLACEHOLDER_WarUnits_13
+    21300028: PLACEHOLDER_WarUnits_14
+    21300030: PLACEHOLDER_WarUnits_15
+    21300032: PLACEHOLDER_WarUnits_16
+    21300034: PLACEHOLDER_WarUnits_17
+    21300036: PLACEHOLDER_WarUnits_18
+    21300038: PLACEHOLDER_WarUnits_19
+    21300040: PLACEHOLDER_WarUnits_20
+    21300042: PLACEHOLDER_WarUnits_21
+    21300044: PLACEHOLDER_WarUnits_22
+    21300046: PLACEHOLDER_WarUnits_23
+    21300048: PLACEHOLDER_WarUnits_24
+    21300050: PLACEHOLDER_WarUnits_25
+    21300052: PLACEHOLDER_WarUnits_26
+    21300054: PLACEHOLDER_WarUnits_27
+    21300056: PLACEHOLDER_WarUnits_28
+    21300058: PLACEHOLDER_WarUnits_29
+    21300060: PLACEHOLDER_WarUnits_30
+    21300062: PLACEHOLDER_WarUnits_31
+    21300064: PLACEHOLDER_WarUnits_32
+    21300066: PLACEHOLDER_WarUnits_33
+    21300068: PLACEHOLDER_WarUnits_34
+    21300070: PLACEHOLDER_WarUnits_35
+    21300072: PLACEHOLDER_WarUnits_36
+    21300074: PLACEHOLDER_WarUnits_37
+    21300076: PLACEHOLDER_WarUnits_38
+    21300078: PLACEHOLDER_WarUnits_39
+    21300080: PLACEHOLDER_WarUnits_40
+    21300082: PLACEHOLDER_WarUnits_41
+    21300084: PLACEHOLDER_WarUnits_42
+    21300086: PLACEHOLDER_WarUnits_43
+    21300088: PLACEHOLDER_WarUnits_44
+    21300090: PLACEHOLDER_WarUnits_45
+    21300092: PLACEHOLDER_WarUnits_46
+    21300094: PLACEHOLDER_WarUnits_47
+    21300096: PLACEHOLDER_WarUnits_48
+    21300098: PLACEHOLDER_WarUnits_49
+    21300100: PLACEHOLDER_WarUnits_50
+    21300102: PLACEHOLDER_WarUnits_51
+    21300104: PLACEHOLDER_WarUnits_52
+    21300106: PLACEHOLDER_WarUnits_53
+    21300108: PLACEHOLDER_WarUnits_54
+    21300110: PLACEHOLDER_WarUnits_55
+    21300112: PLACEHOLDER_WarUnits_56
+    21300114: PLACEHOLDER_WarUnits_57
+    21300116: PLACEHOLDER_WarUnits_58
+    21300118: PLACEHOLDER_WarUnits_59
+    21300120: PLACEHOLDER_WarUnits_60
+    21300122: PLACEHOLDER_WarUnits_61
+    21300124: PLACEHOLDER_WarUnits_62
+    21300126: PLACEHOLDER_WarUnits_63
+    21300128: PLACEHOLDER_WarUnits_64
+    21300130: PLACEHOLDER_WarUnits_65
+    21300132: PLACEHOLDER_WarUnits_66
+    21300134: PLACEHOLDER_WarUnits_67
+    21300136: PLACEHOLDER_WarUnits_68
+    21300138: PLACEHOLDER_WarUnits_69
+    21300140: PLACEHOLDER_WarUnits_70
+    21300142: PLACEHOLDER_WarUnits_71
+    21300144: PLACEHOLDER_WarUnits_72
+    21300146: PLACEHOLDER_WarUnits_73
+    21300148: PLACEHOLDER_WarUnits_74
+    21300150: PLACEHOLDER_WarUnits_75
+    21300152: PLACEHOLDER_WarUnits_76
+    21300154: PLACEHOLDER_WarUnits_77
+    21300156: PLACEHOLDER_WarUnits_78
+    21300158: PLACEHOLDER_WarUnits_79
+    21300160: PLACEHOLDER_WarUnits_80
+    21300162: PLACEHOLDER_WarUnits_81
+    21300164: PLACEHOLDER_WarUnits_82
+    21300166: PLACEHOLDER_WarUnits_83
+    21300168: PLACEHOLDER_WarUnits_84
+    21300170: PLACEHOLDER_WarUnits_85
+    21300172: PLACEHOLDER_WarUnits_86
+    21300174: PLACEHOLDER_WarUnits_87
+    21300176: PLACEHOLDER_WarUnits_88
+    21300178: PLACEHOLDER_WarUnits_89
+    21300180: PLACEHOLDER_WarUnits_90
+    21300182: PLACEHOLDER_WarUnits_91
+    21300184: PLACEHOLDER_WarUnits_92
+    21300186: PLACEHOLDER_WarUnits_93
+    21300188: PLACEHOLDER_WarUnits_94
+    21300190: PLACEHOLDER_WarUnits_95
+    21300192: PLACEHOLDER_WarUnits_96
+    21300194: PLACEHOLDER_WarUnits_97
+    21300196: PLACEHOLDER_WarUnits_98
+    21300198: PLACEHOLDER_WarUnits_99
+    21300200: PLACEHOLDER_WarUnits_100
+    21300202: PLACEHOLDER_WarUnits_101
+    21300204: PLACEHOLDER_WarUnits_102
+    21300206: PLACEHOLDER_WarUnits_103
+    21300208: PLACEHOLDER_WarUnits_104
+    21300210: PLACEHOLDER_WarUnits_105
+    21300212: PLACEHOLDER_WarUnits_106
+    21300214: PLACEHOLDER_WarUnits_107
+    21300216: PLACEHOLDER_WarUnits_108
+    21300218: PLACEHOLDER_WarUnits_109
+    21300220: PLACEHOLDER_WarUnits_110
+    21300222: PLACEHOLDER_WarUnits_111
+    21300224: PLACEHOLDER_WarUnits_112
+    21300226: PLACEHOLDER_WarUnits_113
+    21300228: PLACEHOLDER_WarUnits_114
+    21300230: PLACEHOLDER_WarUnits_115
+    21300232: PLACEHOLDER_WarUnits_116
+    21300234: PLACEHOLDER_WarUnits_117
+    21300236: PLACEHOLDER_WarUnits_118
+    21300238: PLACEHOLDER_WarUnits_119
+    21300240: PLACEHOLDER_WarUnits_120
+    21300242: PLACEHOLDER_WarUnits_121
+    21300244: PLACEHOLDER_WarUnits_122
+    21300246: PLACEHOLDER_WarUnits_123
+    21300248: PLACEHOLDER_WarUnits_124
+    21300250: PLACEHOLDER_WarUnits_125
+    21300252: PLACEHOLDER_WarUnits_126
+    21300254: PLACEHOLDER_WarUnits_127
+    21300256: PLACEHOLDER_WarUnits_128
+    21300258: PLACEHOLDER_WarUnits_129
+    21300260: PLACEHOLDER_WarUnits_130
+    21300262: PLACEHOLDER_WarUnits_131
+    21300264: PLACEHOLDER_WarUnits_132
+    21300266: PLACEHOLDER_WarUnits_133
+    21300268: PLACEHOLDER_WarUnits_134
+    21300270: PLACEHOLDER_WarUnits_135
+    21300272: PLACEHOLDER_WarUnits_136
+    21300274: PLACEHOLDER_WarUnits_137
+    21300276: PLACEHOLDER_WarUnits_138
+    21300278: PLACEHOLDER_WarUnits_139
+    21300280: PLACEHOLDER_WarUnits_140
+    21300282: PLACEHOLDER_WarUnits_141
+    21300284: PLACEHOLDER_WarUnits_142
+    21300286: PLACEHOLDER_WarUnits_143
+    21300288: PLACEHOLDER_WarUnits_144
+    21300290: PLACEHOLDER_WarUnits_145
+    21300292: PLACEHOLDER_WarUnits_146
+    21300294: PLACEHOLDER_WarUnits_147
+    21300296: PLACEHOLDER_WarUnits_148
+    21300298: PLACEHOLDER_WarUnits_149
+    21300300: PLACEHOLDER_WarUnits_150
+    21300302: PLACEHOLDER_WarUnits_151
+    21300304: PLACEHOLDER_WarUnits_152
+    21300306: PLACEHOLDER_WarUnits_153
+    21300308: PLACEHOLDER_WarUnits_154
+    21300310: PLACEHOLDER_WarUnits_155
+    21300312: PLACEHOLDER_WarUnits_156
+    21300314: PLACEHOLDER_WarUnits_157
+    21300316: PLACEHOLDER_WarUnits_158
+    21300318: PLACEHOLDER_WarUnits_159
+    21300320: PLACEHOLDER_WarUnits_160
+    21300322: PLACEHOLDER_WarUnits_161
+    21300324: PLACEHOLDER_WarUnits_162
+    21300326: PLACEHOLDER_WarUnits_163
+    21300328: PLACEHOLDER_WarUnits_164
+    21300330: PLACEHOLDER_WarUnits_165
+    21300332: PLACEHOLDER_WarUnits_166
+    21300334: PLACEHOLDER_WarUnits_167
+    21300336: PLACEHOLDER_WarUnits_168
+    21300338: PLACEHOLDER_WarUnits_169
+    21300340: PLACEHOLDER_WarUnits_170
+    21300342: PLACEHOLDER_WarUnits_171
+    21300344: PLACEHOLDER_WarUnits_172
+    21300346: PLACEHOLDER_WarUnits_173
+    21300348: PLACEHOLDER_WarUnits_174
+    21300350: PLACEHOLDER_WarUnits_175
+    21300352: PLACEHOLDER_WarUnits_176
+    21300354: PLACEHOLDER_WarUnits_177
+    21300356: PLACEHOLDER_WarUnits_178
+    21300358: PLACEHOLDER_WarUnits_179
+    21300360: PLACEHOLDER_WarUnits_180
+    21300362: PLACEHOLDER_WarUnits_181
+    21300364: PLACEHOLDER_WarUnits_182
+    21300366: PLACEHOLDER_WarUnits_183
+    21300368: PLACEHOLDER_WarUnits_184
+    21300370: PLACEHOLDER_WarUnits_185
+    21300372: PLACEHOLDER_WarUnits_186
+    21300374: PLACEHOLDER_WarUnits_187
+    21300376: PLACEHOLDER_WarUnits_188
+    21300378: PLACEHOLDER_WarUnits_189
+    21300380: PLACEHOLDER_WarUnits_190
+    21300382: PLACEHOLDER_WarUnits_191
+    21300384: PLACEHOLDER_WarUnits_192
+    21300386: PLACEHOLDER_WarUnits_193
+    21300388: PLACEHOLDER_WarUnits_194
+    21300390: PLACEHOLDER_WarUnits_195
+    21300392: PLACEHOLDER_WarUnits_196
+    21300394: PLACEHOLDER_WarUnits_197
+    21300396: PLACEHOLDER_WarUnits_198
+    21300398: PLACEHOLDER_WarUnits_199
+    21300400: PLACEHOLDER_WarUnits_200
+    21300402: PLACEHOLDER_WarUnits_201
+    21300404: PLACEHOLDER_WarUnits_202
+    21300406: PLACEHOLDER_WarUnits_203
+    21300408: PLACEHOLDER_WarUnits_204
+    21300410: PLACEHOLDER_WarUnits_205
+    21300412: PLACEHOLDER_WarUnits_206
+    21300414: PLACEHOLDER_WarUnits_207
+    21300416: PLACEHOLDER_WarUnits_208
+    21300418: PLACEHOLDER_WarUnits_209
+    21300420: PLACEHOLDER_WarUnits_210
+    21300422: PLACEHOLDER_WarUnits_211
+    21300424: PLACEHOLDER_WarUnits_212
+    21300426: PLACEHOLDER_WarUnits_213
+    21300428: PLACEHOLDER_WarUnits_214
+    21300430: PLACEHOLDER_WarUnits_215
+    21300432: PLACEHOLDER_WarUnits_216
+    21300434: PLACEHOLDER_WarUnits_217
+    21300436: PLACEHOLDER_WarUnits_218
+    21300438: PLACEHOLDER_WarUnits_219
+    21300440: PLACEHOLDER_WarUnits_220
+    21300442: PLACEHOLDER_WarUnits_221
+    21300444: PLACEHOLDER_WarUnits_222
+    21300446: PLACEHOLDER_WarUnits_223
+    21300448: PLACEHOLDER_WarUnits_224
+    21300450: PLACEHOLDER_WarUnits_225
+    21300452: PLACEHOLDER_WarUnits_226
+    21300454: PLACEHOLDER_WarUnits_227
+    21300456: PLACEHOLDER_WarUnits_228
+    21300458: PLACEHOLDER_WarUnits_229
+    21300460: PLACEHOLDER_WarUnits_230
+    21300462: PLACEHOLDER_WarUnits_231
+    21300464: PLACEHOLDER_WarUnits_232
+    21300466: PLACEHOLDER_WarUnits_233
+    21300468: PLACEHOLDER_WarUnits_234
+    21300470: PLACEHOLDER_WarUnits_235
+    21300472: PLACEHOLDER_WarUnits_236
+    21300474: PLACEHOLDER_WarUnits_237
+    21300476: PLACEHOLDER_WarUnits_238
+    21300478: PLACEHOLDER_WarUnits_239
+    21300480: PLACEHOLDER_WarUnits_240
+    21300482: PLACEHOLDER_WarUnits_241
+    21300484: PLACEHOLDER_WarUnits_242
+    21300486: PLACEHOLDER_WarUnits_243
+    21300488: PLACEHOLDER_WarUnits_244
+    21300490: PLACEHOLDER_WarUnits_245
+    21300492: PLACEHOLDER_WarUnits_246
+    21300494: PLACEHOLDER_WarUnits_247
+    21300496: PLACEHOLDER_WarUnits_248
+    21300498: PLACEHOLDER_WarUnits_249
+    21300500: PLACEHOLDER_WarUnits_250
+    21300502: PLACEHOLDER_WarUnits_251
+    21300504: PLACEHOLDER_WarUnits_252
+    21300506: PLACEHOLDER_WarUnits_253
+    21300508: PLACEHOLDER_WarUnits_254
+    21300510: PLACEHOLDER_WarUnits_255
+    21300512: PLACEHOLDER_WarUnits_256
+    21300514: PLACEHOLDER_WarUnits_257
+    21300516: PLACEHOLDER_WarUnits_258
+    21300518: PLACEHOLDER_WarUnits_259
+    21300520: PLACEHOLDER_WarUnits_260
+    21300522: PLACEHOLDER_WarUnits_261
+    21300524: PLACEHOLDER_WarUnits_262
+    21300526: PLACEHOLDER_WarUnits_263
+    21300528: PLACEHOLDER_WarUnits_264
+    21300530: PLACEHOLDER_WarUnits_265
+    21300532: PLACEHOLDER_WarUnits_266
+    21300534: PLACEHOLDER_WarUnits_267
+    21300536: PLACEHOLDER_WarUnits_268
+    21300538: PLACEHOLDER_WarUnits_269
+    21300540: PLACEHOLDER_WarUnits_270
+    21300542: PLACEHOLDER_WarUnits_271
+    21300544: PLACEHOLDER_WarUnits_272
+    21300546: PLACEHOLDER_WarUnits_273
+    21300548: PLACEHOLDER_WarUnits_274
+    21300550: PLACEHOLDER_WarUnits_275
+    21300552: PLACEHOLDER_WarUnits_276
+    21300554: PLACEHOLDER_WarUnits_277
+    21300556: PLACEHOLDER_WarUnits_278
+    21300558: PLACEHOLDER_WarUnits_279
+    21300560: PLACEHOLDER_WarUnits_280
+    21300562: PLACEHOLDER_WarUnits_281
+    21300564: PLACEHOLDER_WarUnits_282
+    21300566: PLACEHOLDER_WarUnits_283
+    21300568: PLACEHOLDER_WarUnits_284
+    21300570: PLACEHOLDER_WarUnits_285
+    21300572: PLACEHOLDER_WarUnits_286
+    21300574: PLACEHOLDER_WarUnits_287
+    21300576: PLACEHOLDER_WarUnits_288
+    21300578: PLACEHOLDER_WarUnits_289
+    21300580: PLACEHOLDER_WarUnits_290
+    21300582: PLACEHOLDER_WarUnits_291
+    21300584: PLACEHOLDER_WarUnits_292
+    21300586: PLACEHOLDER_WarUnits_293
+    21300588: PLACEHOLDER_WarUnits_294
+    21300590: PLACEHOLDER_WarUnits_295
+    21300592: PLACEHOLDER_WarUnits_296
+    21300594: PLACEHOLDER_WarUnits_297
+    21300596: PLACEHOLDER_WarUnits_298
+    21300598: PLACEHOLDER_WarUnits_299
+    21300600: PLACEHOLDER_WarUnits_300
+    21300602: PLACEHOLDER_WarUnits_301
+    21300604: PLACEHOLDER_WarUnits_302
+    21300606: PLACEHOLDER_WarUnits_303
+    21300608: PLACEHOLDER_WarUnits_304
+    21300610: PLACEHOLDER_WarUnits_305
+    21300612: PLACEHOLDER_WarUnits_306
+    21300614: PLACEHOLDER_WarUnits_307
+    21300616: PLACEHOLDER_WarUnits_308
+    21300618: PLACEHOLDER_WarUnits_309
+    21300620: PLACEHOLDER_WarUnits_310
+    21300622: PLACEHOLDER_WarUnits_311
+    21300624: PLACEHOLDER_WarUnits_312
+    21300626: PLACEHOLDER_WarUnits_313
+    21300628: PLACEHOLDER_WarUnits_314
+    21300630: PLACEHOLDER_WarUnits_315
+    21300632: PLACEHOLDER_WarUnits_316
+    21300634: PLACEHOLDER_WarUnits_317
+    21300636: PLACEHOLDER_WarUnits_318
+    21300638: PLACEHOLDER_WarUnits_319
+    21300640: PLACEHOLDER_WarUnits_320
+    21300642: PLACEHOLDER_WarUnits_321
+    21300644: PLACEHOLDER_WarUnits_322
+    21300646: PLACEHOLDER_WarUnits_323
+    21300648: PLACEHOLDER_WarUnits_324
+    21300650: PLACEHOLDER_WarUnits_325
+    21300652: PLACEHOLDER_WarUnits_326
+    21300654: PLACEHOLDER_WarUnits_327
+    21300656: PLACEHOLDER_WarUnits_328
+    21300658: PLACEHOLDER_WarUnits_329
+    21300660: PLACEHOLDER_WarUnits_330
+    21300662: PLACEHOLDER_WarUnits_331
+    21300664: PLACEHOLDER_WarUnits_332
+    21300666: PLACEHOLDER_WarUnits_333
+    21300668: PLACEHOLDER_WarUnits_334
+    21300670: PLACEHOLDER_WarUnits_335
+    21300672: PLACEHOLDER_WarUnits_336
+    21300674: PLACEHOLDER_WarUnits_337
+    21300676: PLACEHOLDER_WarUnits_338
+    21300678: PLACEHOLDER_WarUnits_339
+    21300680: PLACEHOLDER_WarUnits_340
+    21300682: PLACEHOLDER_WarUnits_341
+    21300684: PLACEHOLDER_WarUnits_342
+    21300686: PLACEHOLDER_WarUnits_343
+    21300688: PLACEHOLDER_WarUnits_344
+    21300690: PLACEHOLDER_WarUnits_345
+    21300692: PLACEHOLDER_WarUnits_346
+    21300694: PLACEHOLDER_WarUnits_347
+    21300696: PLACEHOLDER_WarUnits_348
+    21300698: PLACEHOLDER_WarUnits_349
+    21300700: PLACEHOLDER_WarUnits_350
+    21300702: PLACEHOLDER_WarUnits_351
+    21300704: PLACEHOLDER_WarUnits_352
+    21300706: PLACEHOLDER_WarUnits_353
+    21300708: PLACEHOLDER_WarUnits_354
+    21300710: PLACEHOLDER_WarUnits_355
+    21300712: PLACEHOLDER_WarUnits_356
+    21300714: PLACEHOLDER_WarUnits_357
+    21300716: PLACEHOLDER_WarUnits_358
+    21300718: PLACEHOLDER_WarUnits_359
+    21300720: PLACEHOLDER_WarUnits_360
+    21300722: PLACEHOLDER_WarUnits_361
+    21300724: PLACEHOLDER_WarUnits_362
+    21300726: PLACEHOLDER_WarUnits_363
+    21300728: PLACEHOLDER_WarUnits_364
+    21300730: PLACEHOLDER_WarUnits_365
+    21300732: PLACEHOLDER_WarUnits_366
+    21300734: PLACEHOLDER_WarUnits_367
+    21300736: PLACEHOLDER_WarUnits_368
+    21300738: PLACEHOLDER_WarUnits_369
+    21300740: PLACEHOLDER_WarUnits_370
+    21300742: PLACEHOLDER_WarUnits_371
+    21300744: PLACEHOLDER_WarUnits_372
+    21300746: PLACEHOLDER_WarUnits_373
+    21300748: PLACEHOLDER_WarUnits_374
+    21300750: PLACEHOLDER_WarUnits_375
+    21300752: PLACEHOLDER_WarUnits_376
+    21300754: PLACEHOLDER_WarUnits_377
+    21300756: PLACEHOLDER_WarUnits_378
+    21300758: PLACEHOLDER_WarUnits_379
+    21300760: PLACEHOLDER_WarUnits_380
+    21300762: PLACEHOLDER_WarUnits_381
+    21300764: PLACEHOLDER_WarUnits_382
+    21300766: PLACEHOLDER_WarUnits_383
+    21300768: PLACEHOLDER_WarUnits_384
+    21300770: PLACEHOLDER_WarUnits_385
+    21300772: PLACEHOLDER_WarUnits_386
+    21300774: PLACEHOLDER_WarUnits_387
+    21300776: PLACEHOLDER_WarUnits_388
+    21300778: PLACEHOLDER_WarUnits_389
+    21300780: PLACEHOLDER_WarUnits_390
+    21300782: PLACEHOLDER_WarUnits_391
+    21300784: PLACEHOLDER_WarUnits_392
+    21300786: PLACEHOLDER_WarUnits_393
+    21300788: PLACEHOLDER_WarUnits_394
+    21300790: PLACEHOLDER_WarUnits_395
+    21300792: PLACEHOLDER_WarUnits_396
+    21300794: PLACEHOLDER_WarUnits_397
+    21300796: PLACEHOLDER_WarUnits_398
+    21300798: PLACEHOLDER_WarUnits_399
+    21300800: PLACEHOLDER_WarUnits_400
+    21300802: PLACEHOLDER_WarUnits_401
+    21300804: PLACEHOLDER_WarUnits_402
+    21300806: PLACEHOLDER_WarUnits_403
+    21300808: PLACEHOLDER_WarUnits_404
+    21300810: PLACEHOLDER_WarUnits_405
+    21300812: PLACEHOLDER_WarUnits_406
+    21300814: PLACEHOLDER_WarUnits_407
+    21300816: PLACEHOLDER_WarUnits_408
+    21300818: PLACEHOLDER_WarUnits_409
+    21300820: PLACEHOLDER_WarUnits_410
+    21300822: PLACEHOLDER_WarUnits_411
+    21300824: PLACEHOLDER_WarUnits_412
+    21300826: PLACEHOLDER_WarUnits_413
+    21300828: PLACEHOLDER_WarUnits_414
+    21300830: PLACEHOLDER_WarUnits_415
+    21300832: PLACEHOLDER_WarUnits_416
+    21300834: PLACEHOLDER_WarUnits_417
+    21300836: PLACEHOLDER_WarUnits_418
+    21300838: PLACEHOLDER_WarUnits_419
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: PLACEHOLDER_WarUnits_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 658
+        width: 17
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 658
+        width: 15
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 658
+        width: 17
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_3
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 659
+        width: 15
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_4
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 660
+        width: 15
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_5
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 660
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_6
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 660
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_7
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 660
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_8
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 652
+        width: 14
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_9
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 652
+        width: 14
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_10
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 652
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_11
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 653
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_12
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 648
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_13
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 648
+        width: 12
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_14
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 666
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_15
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 651
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_16
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 651
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_17
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 651
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_18
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 651
+        width: 12
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_19
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 669
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_20
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 652
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_21
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 652
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_22
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 652
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_23
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 652
+        width: 12
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_24
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 670
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_25
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 654
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_26
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 648
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_27
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 648
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_28
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 652
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_29
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 655
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_30
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 656
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_31
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 631
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_32
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 631
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_33
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 631
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_34
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 632
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_35
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 633
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_36
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 636
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_37
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 636
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_38
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 636
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_39
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 620
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_40
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 620
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_41
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 620
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_42
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 620
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_43
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 619
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_44
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 620
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_45
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 618
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_46
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 622
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_47
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 623
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_48
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 619
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_49
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 623
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_50
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 624
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_51
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 607
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_52
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 607
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_53
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 607
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_54
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 608
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_55
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 609
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_56
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 612
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_57
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 612
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_58
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 612
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_59
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 621
+        width: 24
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_60
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 615
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_61
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 616
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_62
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 620
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_63
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 619
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_64
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 618
+        width: 23
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_65
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 623
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_66
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 620
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_67
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 619
+        width: 23
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_68
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 624
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_69
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 615
+        width: 23
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_70
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 583
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_71
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 583
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_72
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 583
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_73
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 583
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_74
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 584
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_75
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 584
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_76
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 584
+        width: 11
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_77
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 584
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_78
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 588
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_79
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 588
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_80
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 588
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_81
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 589
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_82
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 589
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_83
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 584
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_84
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 584
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_85
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 587
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_86
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 587
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_87
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 588
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_88
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 588
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_89
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 554
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_90
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 554
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_91
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 554
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_92
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 554
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_93
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 555
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_94
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 557
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_95
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 557
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_96
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 557
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_97
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 544
+        width: 11
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_98
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 544
+        width: 12
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_99
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 544
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_100
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 541
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_101
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 542
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_102
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 542
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_103
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 542
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_104
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 542
+        width: 21
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_105
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 538
+        width: 11
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_106
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 538
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_107
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 538
+        width: 11
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_108
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 537
+        width: 80
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_109
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 538
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_110
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 537
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_111
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 537
+        width: 35
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_112
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 530
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_113
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 530
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_114
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 530
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_115
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 530
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_116
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 532
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_117
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 531
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_118
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 531
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_119
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 531
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_120
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 539
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_121
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 512
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_122
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 512
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_123
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 512
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_124
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 512
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_125
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 531
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_126
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 510
+        width: 37
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_127
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 510
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_128
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 510
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_129
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 510
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_130
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 514
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_131
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 514
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_132
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 514
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_133
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 514
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_134
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 505
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_135
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 505
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_136
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 506
+        width: 40
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_137
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 505
+        width: 37
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_138
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 505
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_139
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 506
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_140
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 506
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_141
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 506
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_142
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 507
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_143
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 507
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_144
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 507
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_145
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 523
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_146
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 506
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_147
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 515
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_148
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 479
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_149
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 479
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_150
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 479
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_151
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 479
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_152
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 480
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_153
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 469
+        width: 9
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_154
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 470
+        width: 9
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_155
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 471
+        width: 9
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_156
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 480
+        width: 22
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_157
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 480
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_158
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 480
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_159
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 480
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_160
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 480
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_161
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 484
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_162
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 493
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_163
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 491
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_164
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 490
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_165
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 490
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_166
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 490
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_167
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 473
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_168
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 473
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_169
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 473
+        width: 40
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_170
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 451
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_171
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 448
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_172
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 448
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_173
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 466
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_174
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 466
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_175
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 466
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_176
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 466
+        width: 12
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_177
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 470
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_178
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 469
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_179
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 468
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_180
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 468
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_181
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 451
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_182
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 451
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_183
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 451
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_184
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 450
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_185
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 444
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_186
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 446
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_187
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 448
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_188
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 433
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_189
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 437
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_190
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 437
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_191
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 442
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_192
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 443
+        width: 23
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_193
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 442
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_194
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 441
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_195
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 441
+        width: 37
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_196
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 440
+        width: 38
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_197
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 423
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_198
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 423
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_199
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 423
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_200
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 423
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_201
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 424
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_202
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 434
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_203
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 433
+        width: 24
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_204
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 438
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_205
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 420
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_206
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 420
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_207
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 408
+        width: 21
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_208
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 408
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_209
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 408
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_210
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 408
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_211
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 409
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_212
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 402
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_213
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 402
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_214
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 388
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_215
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 388
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_216
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 388
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_217
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 388
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_218
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 388
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_219
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 396
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_220
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 396
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_221
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 376
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_222
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 376
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_223
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 376
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_224
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 370
+        width: 12
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_225
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 370
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_226
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 372
+        width: 11
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_227
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 372
+        width: 12
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_228
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 387
+        width: 39
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_229
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 388
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_230
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 387
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_231
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 387
+        width: 35
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_232
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 369
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_233
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 375
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_234
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 375
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_235
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 376
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_236
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 370
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_237
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 380
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_238
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 372
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_239
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 355
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_240
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 355
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_241
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 356
+        width: 40
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_242
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 355
+        width: 37
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_243
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 355
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_244
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 360
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_245
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 360
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_246
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 360
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_247
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 360
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_248
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 360
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_249
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 372
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_250
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 364
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_251
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 330
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_252
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 334
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_253
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 334
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_254
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 352
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_255
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 338
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_256
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 338
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_257
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 338
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_258
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 338
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_259
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 356
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_260
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 340
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_261
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 340
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_262
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 340
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_263
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 340
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_264
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 329
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_265
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 329
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_266
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 347
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_267
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 347
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_268
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 334
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_269
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 334
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_270
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 323
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_271
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 323
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_272
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 323
+        width: 40
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_273
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 329
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_274
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 329
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_275
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 329
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_276
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 338
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_277
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 303
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_278
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 303
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_279
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 303
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_280
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 303
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_281
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 303
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_282
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 310
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_283
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 310
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_284
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 310
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_285
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 310
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_286
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 310
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_287
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 301
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_288
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 302
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_289
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 301
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_290
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 306
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_291
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 306
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_292
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 306
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_293
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 306
+        width: 22
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_294
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 306
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_295
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 306
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_296
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 306
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_297
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 306
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_298
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 308
+        width: 22
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_299
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 308
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_300
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 308
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_301
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 308
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_302
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 308
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_303
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 291
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_304
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 270
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_305
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 270
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_306
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 274
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_307
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 274
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_308
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 274
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_309
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 276
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_310
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 276
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_311
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 276
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_312
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 291
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_313
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 291
+        width: 37
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_314
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 290
+        width: 38
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_315
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 272
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_316
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 272
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_317
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 272
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_318
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 272
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_319
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 272
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_320
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 277
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_321
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 275
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_322
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 274
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_323
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 273
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_324
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 273
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_325
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 283
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_326
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 275
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_327
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 257
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_328
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 257
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_329
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 267
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_330
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 245
+        width: 80
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_331
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 246
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_332
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 245
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_333
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 245
+        width: 35
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_334
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 243
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_335
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 243
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_336
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 243
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_337
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 243
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_338
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 243
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_339
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 257
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_340
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 257
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_341
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 257
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_342
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 235
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_343
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 235
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_344
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 235
+        width: 21
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_345
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 236
+        width: 21
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_346
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 236
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_347
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 236
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_348
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 237
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_349
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 237
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_350
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 237
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_351
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 213
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_352
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 213
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_353
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 213
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_354
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 213
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_355
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 213
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_356
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 240
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_357
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 227
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_358
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 227
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_359
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 240
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_360
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 225
+        width: 13
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_361
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 225
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_362
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 234
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_363
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 203
+        width: 37
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_364
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 235
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_365
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 203
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_366
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 203
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_367
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 204
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_368
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 204
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_369
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 204
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_370
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 236
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_371
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 237
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_372
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 205
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_373
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 205
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_374
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 205
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_375
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 237
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_376
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 238
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_377
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 213
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_378
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 213
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_379
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 214
+        width: 40
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_380
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 213
+        width: 37
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_381
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 213
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_382
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 189
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_383
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 189
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_384
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 189
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_385
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 189
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_386
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 189
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_387
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 203
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_388
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 204
+        width: 23
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_389
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 205
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_390
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 181
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_391
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 181
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_392
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 181
+        width: 40
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_393
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 130
+        width: 128
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: 19}
+        - {x: -64, y: -19}
+        - {x: 64, y: -19}
+        - {x: 64, y: 19}
+    - name: PLACEHOLDER_WarUnits_394
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 158
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_395
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 154
+        width: 92
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_396
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 149
+        width: 80
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_397
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 150
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_398
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 149
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_399
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 149
+        width: 35
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_400
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 149
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_401
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 149
+        width: 37
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_402
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 148
+        width: 38
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_403
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 134
+        width: 35
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_404
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 138
+        width: 43
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_405
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 117
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_406
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 117
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_407
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 118
+        width: 40
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_408
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 117
+        width: 37
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_409
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 117
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_410
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 76
+        width: 128
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: 21}
+        - {x: -64, y: -21}
+        - {x: 64, y: -21}
+        - {x: 64, y: 21}
+    - name: PLACEHOLDER_WarUnits_411
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 76
+        width: 128
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: 21.5}
+        - {x: -64, y: -21.5}
+        - {x: 64, y: -21.5}
+        - {x: 64, y: 21.5}
+    - name: PLACEHOLDER_WarUnits_412
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 85
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_413
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 85
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_414
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 85
+        width: 40
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_415
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 14
+        width: 239
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -119.5, y: 27}
+        - {x: -119.5, y: -27}
+        - {x: 119.5, y: -27}
+        - {x: 119.5, y: 27}
+    - name: PLACEHOLDER_WarUnits_416
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 53
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_417
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 53
+        width: 37
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_418
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 52
+        width: 38
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PLACEHOLDER_WarUnits_419
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 387
+        width: 41
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
