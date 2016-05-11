@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class PathfindingScript : MonoBehaviour 
 {
 	
-	CGrid grid;
+	public CGrid grid;
     CPathRequestManager m_prmRequestManager;
 	bool m_bAllowDiagonal = false;
 	
@@ -97,14 +97,14 @@ public class PathfindingScript : MonoBehaviour
     {
         List<Vector3> _lWaypoints = new List<Vector3>();
         Vector2 _vOldDir = Vector2.zero;
-        for (int i = 1; i < p_lPath.Count; ++i)
+        for (int i = 0; i < p_lPath.Count; ++i)
         {
-            Vector2 _vNewDir = new Vector2(p_lPath[i].gridX - p_lPath[i - 1].gridX, p_lPath[i].gridY - p_lPath[i - 1].gridY);
-            if (_vOldDir != _vNewDir)
+           // Vector2 _vNewDir = new Vector2(p_lPath[i].gridX - p_lPath[i - 1].gridX, p_lPath[i].gridY - p_lPath[i - 1].gridY);
+            //if (_vOldDir != _vNewDir)
             {
                 _lWaypoints.Add(p_lPath[i].worldPosition);
             }
-            _vOldDir = _vNewDir;
+           // _vOldDir = _vNewDir;
         }
         return _lWaypoints.ToArray();
     }

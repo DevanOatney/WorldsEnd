@@ -7,10 +7,11 @@ public class CPathRequestManager : MonoBehaviour
 {
     Queue<PathRequest> m_qPathRequestQ = new Queue<PathRequest>();
     PathRequest m_CurrentPathRequest;
-    static CPathRequestManager m_Instance;
+    public static CPathRequestManager m_Instance;
 
-    PathfindingScript m_psPathfinding;
+    public PathfindingScript m_psPathfinding;
     bool m_bIsProcessingPath;
+	bool m_bAllowDiagnols;
 
     void Awake()
     {
