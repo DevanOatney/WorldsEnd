@@ -11,7 +11,6 @@ public class CPathRequestManager : MonoBehaviour
 
     public PathfindingScript m_psPathfinding;
     bool m_bIsProcessingPath;
-	bool m_bAllowDiagnols;
 
     void Awake()
     {

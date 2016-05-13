@@ -8,7 +8,6 @@ public class DialogueScriptLoaderScript : MonoBehaviour
 {
 	public enum DLGType {NORMAL=1, HERO, EVENT}
 	public TextAsset m_szFile;
-	private StreamReader sr1;
 	public class Choice
 	{
 		public string Line = null;

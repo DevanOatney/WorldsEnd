@@ -22,16 +22,13 @@ public class TRPG_UnitScript : MonoBehaviour
 	//iter for traversing the best path, once it's found.
 	int m_nPathIter = 0;
 	//The data needed for battles
-	FightSceneControllerScript.cWarUnit m_wuUnitData;
+    [HideInInspector]
+	public FightSceneControllerScript.cWarUnit m_wuUnitData;
 	//Hook to the prefab for the base unit animation for this group of units
 	public GameObject m_goBaseUnitPrefab;
 	float m_fMovementTimer = 0.0f;
 	float m_fMovementBucket = 1.0f;
 
-
-
-	//TEMP TO TEST MOVEMENT
-	public GameObject TEMP_MovementLocation;
 
 	class cDesiredLocation
 	{
@@ -39,10 +36,14 @@ public class TRPG_UnitScript : MonoBehaviour
 		public Vector3 m_vDesiredLoc;
 		public int m_nPriority;
 	}
+    void Awake()
+    {
+        m_wuUnitData = new FightSceneControllerScript.cWarUnit(null, m_goBaseUnitPrefab, 1.0f, 10, 4, 4, 4, 5);
+    }
 	// Use this for initialization
 	void Start () 
 	{
-		m_wuUnitData = new FightSceneControllerScript.cWarUnit(null, m_goBaseUnitPrefab, 1.0f, 10, 4, 4, 4);
+		
 	}
 
 
@@ -50,11 +51,6 @@ public class TRPG_UnitScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Input.GetKeyDown(KeyCode.B))
-		{
-			m_bIsMyTurn = true;
-			AddLocationToMoveTo(TEMP_MovementLocation.transform.localPosition, 1);
-		}
 		if(m_bIsMyTurn == true)
 		{
 			if(m_bPathFound == true)
@@ -82,6 +78,11 @@ public class TRPG_UnitScript : MonoBehaviour
 			}
 		}
 	}
+
+    public void MoveToLocation(Vector3 _location)
+    {
+        AddLocationToMoveTo(_location, 2);
+    }
 
 	void AddLocationToMoveTo(Vector3 _location, int _priority)
 	{
@@ -139,6 +140,11 @@ public class TRPG_UnitScript : MonoBehaviour
 			ProcessReturnedPaths();
 		}
 	}
+
+    public CNode GetIndexForUnit()
+    {
+        return CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(transform.position);
+    }
 
 	public void DeathAnimationEnd()
 	{

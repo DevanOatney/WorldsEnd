@@ -34,6 +34,9 @@ public class DCScript : MonoBehaviour
 	public List<EncounterGroupLoaderScript.cEnemyData> GetEnemyNames() {return m_lEnemies;}
 	public void SetEnemyNames(List<EncounterGroupLoaderScript.cEnemyData> e) {m_lEnemies = e;}
 
+    //For war battle encounter
+    public string m_szWarBattleDataPath;
+
 	//The name of the scene that the player was on before the encounter started.  Needs to be set at the field just before the battle is started.
 	//Also using this for loading/saving to be the current scene that the player is in when they save.
 	string m_szPreviousField;

@@ -107,7 +107,40 @@ public class CGrid : MonoBehaviour
 		int y = Mathf.RoundToInt((gridSizeY-1) * percentY);
 		return grid[x,y];
 	}
-	
+
+    public CNode GetNodeFromIndex(Vector2 _vIndex)
+    {
+        return grid[(int)_vIndex.x, (int)_vIndex.y];
+    }
+
+    public List<CNode> GetNeighborNodes(Vector3 _worldPos, int _nRange)
+    {
+        List<CNode> _neighborNodes = new List<CNode>();
+        CNode _baseNode = NodeFromWorldPoint(_worldPos);
+        if (_baseNode == null)
+            return null;
+        for (int x = -1*_nRange; x <= _nRange; x++)
+        {
+            for (int y = -1 * _nRange; y <= _nRange; y++)
+            {
+                if (x == 0 && y == 0)
+                    continue;
+                if (Mathf.Abs(x) + Mathf.Abs(y) > _nRange)
+                    continue;
+                int checkX = _baseNode.gridX + x;
+                int checkY = _baseNode.gridY + y;
+
+                if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY)
+                {
+                    if(_neighborNodes.Contains(grid[checkX, checkY]) == false)
+                        _neighborNodes.Add(grid[checkX, checkY]);
+                }
+            }
+        }
+        return _neighborNodes;
+    }
+
+    public 
 
 	void OnDrawGizmos() 
 	{
