@@ -17,8 +17,6 @@ public class TRPG_UnitScript : MonoBehaviour
     public bool m_bHasActedThisTurn = false;
 	//Once the path requests are sent to be processed, the unit will hang until this flag is toggled to true
 	bool m_bPathFound = false;
-	//flag for when the unit arrives at their destination
-	bool m_bArrivedAtDestination = false;
 	//Integral count of how many paths have returned from the request manager, succesful or not, to know when each location has finished processing.
 	int m_nCountOfPathsFound = 0;
 	//iter for traversing the best path, once it's found.
@@ -29,7 +27,7 @@ public class TRPG_UnitScript : MonoBehaviour
 	//Hook to the prefab for the base unit animation for this group of units
 	public GameObject m_goBaseUnitPrefab;
 	float m_fMovementTimer = 0.0f;
-	float m_fMovementBucket = 1.0f;
+	float m_fMovementBucket = 0.5f;
 
 
 	class cDesiredLocation
@@ -70,10 +68,8 @@ public class TRPG_UnitScript : MonoBehaviour
 					if(m_nPathIter >= m_vDesiredPath.Length)
 					{
 						//reached destination.
-						m_bPathFound = false;
-						m_bArrivedAtDestination = true;
-						//TEMP TO TEST MOVEMENT
-						EndTurn();
+                        MovementFinished();
+                        GameObject.Find("WarBattleWatcher").GetComponent<WarBattleWatcherScript>().MovementFinished(gameObject);
 					}
 					m_fMovementTimer = 0.0f;
 				}
@@ -159,16 +155,20 @@ public class TRPG_UnitScript : MonoBehaviour
 		EndTurn();
 	}
 
+    void MovementFinished()
+    {
+        m_nCountOfPathsFound = 0;
+        m_nPathIter = 0;
+        m_bIsMyTurn = false;
+        m_bPathFound = false;
+        m_lvPathsFound.Clear();
+        m_lDesiredLocationsThisTurn.Clear();
+        m_vDesiredPath = null;
+    }
+
 	public void EndTurn()
 	{
-		m_nCountOfPathsFound = 0;
-		m_nPathIter = 0;
-		m_bIsMyTurn = false;
-		m_bPathFound = false;
-		m_bArrivedAtDestination = false;
-		m_lvPathsFound.Clear();
-		m_lDesiredLocationsThisTurn.Clear();
-		m_vDesiredPath = null;
+        //m_bHasActedThisTurn = true;
 	}
 
 

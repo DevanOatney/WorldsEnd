@@ -43,8 +43,9 @@ public class ActionWindowScript : MonoBehaviour
                     case 0:
                         {
                             //Attack
-                            FightSceneControllerScript.cWarUnit _temp = m_goUnitData.GetComponent<TRPG_UnitScript>().m_wuUnitData;
                             m_goWatcher.GetComponent<WarBattleWatcherScript>().ShowHighlightedSquares(m_goUnitData, m_goUnitData.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nAttackRange, Color.red);
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().AttackChoiceSelected();
+                            gameObject.SetActive(false);
                         }
                         break;
                     case 1:
@@ -55,6 +56,8 @@ public class ActionWindowScript : MonoBehaviour
                     case 2:
                         {
                             //Wait
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().EndMyTurn(m_goUnitData);
+                            gameObject.SetActive(false);
                         }
                         break;
                 }

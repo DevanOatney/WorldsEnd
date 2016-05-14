@@ -42,15 +42,10 @@ public class FightSceneControllerScript : MonoBehaviour
 	bool m_bHasArrivedAtEnd = false;
 	int m_nUnitsArrivedCounter = 0;
 
-	/// TEMP STUFF TO TEST
-	public GameObject TEMP_goUnit;
+    float m_fTimerTillFightStartsBucket = 2.0f;
+    float m_fTimerTillFightStarts = 2.2f;
 
-	void TEMP_BuildTestBattle()
-	{
-		cWarUnit leftUnit = new cWarUnit(null, TEMP_goUnit, 1.0f, 10, 4, 4, 4,2, 3);
-		cWarUnit rightUnit = new cWarUnit(null, TEMP_goUnit, 1.0f, 15, 8, 4, 4,2, 4);
-		SetupBattleScene(leftUnit, rightUnit);
-	}
+    public GameObject m_goWatcher;
 
 
 	// Use this for initialization
@@ -61,17 +56,19 @@ public class FightSceneControllerScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Input.GetKeyDown(KeyCode.Space))
-			TEMP_BuildTestBattle();
+        if (m_fTimerTillFightStarts < m_fTimerTillFightStartsBucket)
+        {
+            m_fTimerTillFightStarts += Time.deltaTime;
+            if (m_fTimerTillFightStarts >= m_fTimerTillFightStartsBucket)
+            {
+                foreach (GameObject _unit in m_lLeftUnits)
+                    _unit.GetComponent<WB_UnitScript>().TimeToMove();
+                foreach (GameObject _unit in m_lRightUnits)
+                    _unit.GetComponent<WB_UnitScript>().TimeToMove();
+            }
+        }
 		if(Input.GetKeyDown(KeyCode.Escape))
 			End();
-		if(Input.GetKeyDown(KeyCode.A))
-		{
-			foreach(GameObject _unit in m_lLeftUnits)
-				_unit.GetComponent<WB_UnitScript>().TimeToMove();
-			foreach(GameObject _unit in m_lRightUnits)
-				_unit.GetComponent<WB_UnitScript>().TimeToMove();
-		}
 	}
 
 	void End()
@@ -91,12 +88,17 @@ public class FightSceneControllerScript : MonoBehaviour
 		m_bHasArrivedAtEnd = false;
 		m_bDamagePhaseEnded = false;
 		m_nUnitsArrivedCounter = 0;
+        foreach (GameObject _go in m_lLeftUnits)
+            Destroy(_go);
+        foreach (GameObject _go in m_lRightUnits)
+            Destroy(_go);
 		m_lLeftUnits.Clear();
 		m_lRightUnits.Clear();
 		m_cLeftWarUnit = _leftSide;
 		m_cRightWarUnit = _rightSide;
 		LoadInASide(1, _leftSide);
 		LoadInASide(-1, _rightSide);
+        m_fTimerTillFightStarts = 0.0f;
 	}
 
 	//-1 for if it's on the right, 1 for if it's on the left
@@ -283,9 +285,15 @@ public class FightSceneControllerScript : MonoBehaviour
 				m_nUnitsArrivedCounter = 0;
 				m_bHasArrivedAtEnd = true;
 			}
+            Invoke("TurnOffWindow", 1.0f);
 		}
 	}
 
+    void TurnOffWindow()
+    {
+        m_goWatcher.GetComponent<WarBattleWatcherScript>().BattleSceneEnded(m_cLeftWarUnit, m_cRightWarUnit);
+        gameObject.SetActive(false);
+    }
 	bool ShouldThisOneBeDead()
 	{
 		int _nCoinFlip = Random.Range(0, 2);
