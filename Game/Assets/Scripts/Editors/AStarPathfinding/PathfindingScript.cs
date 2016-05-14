@@ -32,7 +32,7 @@ public class PathfindingScript : MonoBehaviour
 
 		Vector3[] _vWaypoints = new Vector3[0];
         bool _bPathSuccess = false;
-        if (startNode.walkable && targetNode.walkable)
+        if ( targetNode.walkable)
         {
             while (openSet.Count > 0)
             {

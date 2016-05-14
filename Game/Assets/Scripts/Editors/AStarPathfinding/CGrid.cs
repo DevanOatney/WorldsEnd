@@ -108,9 +108,14 @@ public class CGrid : MonoBehaviour
 		return grid[x,y];
 	}
 
-    public CNode GetNodeFromIndex(Vector2 _vIndex)
+    //Apparently you can't return null, so if this value returns a -500 in the Z value, it means that the position was invalid.
+    public Vector3 WorldPointFromIndex(Vector2 _index)
     {
-        return grid[(int)_vIndex.x, (int)_vIndex.y];
+        if (_index.x >= gridSizeX || _index.y >= gridSizeY)
+            return new Vector3(0, 0, -500) ;
+        if (_index.x < 0 || _index.y < 0)
+            return new Vector3(0, 0, -500);
+        return grid[(int)_index.x, (int)_index.y].worldPosition;
     }
 
     public List<CNode> GetNeighborNodes(Vector3 _worldPos, int _nRange)
@@ -139,8 +144,6 @@ public class CGrid : MonoBehaviour
         }
         return _neighborNodes;
     }
-
-    public 
 
 	void OnDrawGizmos() 
 	{

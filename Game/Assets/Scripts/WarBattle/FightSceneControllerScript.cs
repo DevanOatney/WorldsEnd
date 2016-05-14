@@ -6,7 +6,7 @@ public class FightSceneControllerScript : MonoBehaviour
 {
 	public class cWarUnit
 	{
-		public cWarUnit(GameObject _ldr, GameObject _unit, float _percent, int totalCount, int _atp, int _def, int _lck, int _movement) 
+		public cWarUnit(GameObject _ldr, GameObject _unit, float _percent, int totalCount, int _atp, int _def, int _lck, int _atkRange, int _movement) 
 		{
 			m_goLeaderSprite = _ldr; 
 			m_goSprite = _unit; 
@@ -15,6 +15,7 @@ public class FightSceneControllerScript : MonoBehaviour
 			m_nAttackPower = _atp;
 			m_nDefensePower = _def;
 			m_nLuck = _lck;
+            m_nAttackRange = _atkRange;
             m_nMovementRange = _movement;
 		}
 		public GameObject m_goLeaderSprite;
@@ -24,6 +25,7 @@ public class FightSceneControllerScript : MonoBehaviour
 		public int m_nAttackPower;
 		public int m_nDefensePower;
 		public int m_nLuck;
+        public int m_nAttackRange;
         public int m_nMovementRange;
 	}
 
@@ -45,8 +47,8 @@ public class FightSceneControllerScript : MonoBehaviour
 
 	void TEMP_BuildTestBattle()
 	{
-		cWarUnit leftUnit = new cWarUnit(null, TEMP_goUnit, 1.0f, 10, 4, 4, 4, 3);
-		cWarUnit rightUnit = new cWarUnit(null, TEMP_goUnit, 1.0f, 15, 8, 4, 4, 4);
+		cWarUnit leftUnit = new cWarUnit(null, TEMP_goUnit, 1.0f, 10, 4, 4, 4,2, 3);
+		cWarUnit rightUnit = new cWarUnit(null, TEMP_goUnit, 1.0f, 15, 8, 4, 4,2, 4);
 		SetupBattleScene(leftUnit, rightUnit);
 	}
 

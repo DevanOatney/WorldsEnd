@@ -13,6 +13,8 @@ public class TRPG_UnitScript : MonoBehaviour
 	Vector3[] m_vDesiredPath;
 	//Flag for if it's this units turn or not
 	public bool m_bIsMyTurn = false;
+    //Flag for if this unit has acted this turn
+    public bool m_bHasActedThisTurn = false;
 	//Once the path requests are sent to be processed, the unit will hang until this flag is toggled to true
 	bool m_bPathFound = false;
 	//flag for when the unit arrives at their destination
@@ -38,7 +40,7 @@ public class TRPG_UnitScript : MonoBehaviour
 	}
     void Awake()
     {
-        m_wuUnitData = new FightSceneControllerScript.cWarUnit(null, m_goBaseUnitPrefab, 1.0f, 10, 4, 4, 4, 5);
+        m_wuUnitData = new FightSceneControllerScript.cWarUnit(null, m_goBaseUnitPrefab, 1.0f, 10, 4, 4, 4, 2, 5);
     }
 	// Use this for initialization
 	void Start () 

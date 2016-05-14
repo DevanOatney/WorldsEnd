@@ -7,8 +7,9 @@ public class ActionWindowScript : MonoBehaviour
     public int m_nChoiceIter = 0;
     public GameObject[] m_goChoices;
     public GameObject m_goHighlighter;
+    public GameObject m_goWatcher;
     bool m_bIsActive = false;
-    FightSceneControllerScript.cWarUnit m_wuUnitData;
+    GameObject m_goUnitData;
 
     // Use this for initialization
     void Start ()
@@ -35,11 +36,36 @@ public class ActionWindowScript : MonoBehaviour
                     m_nChoiceIter = m_goChoices.Length - 1;
                 m_goHighlighter.GetComponent<RectTransform>().localPosition = m_goChoices[m_nChoiceIter].GetComponent<RectTransform>().localPosition;
             }
+            else if (Input.GetKeyDown(KeyCode.Return))
+            {
+                switch (m_nChoiceIter)
+                {
+                    case 0:
+                        {
+                            //Attack
+                            FightSceneControllerScript.cWarUnit _temp = m_goUnitData.GetComponent<TRPG_UnitScript>().m_wuUnitData;
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().ShowHighlightedSquares(m_goUnitData, m_goUnitData.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nAttackRange, Color.red);
+                        }
+                        break;
+                    case 1:
+                        {
+                            //Magic
+                        }
+                        break;
+                    case 2:
+                        {
+                            //Wait
+                        }
+                        break;
+                }
+            
+            }
         }
 	}
 
-    public void ActivateWindow(FightSceneControllerScript.cWarUnit _cWarUnit)
+    public void ActivateWindow(GameObject _cWarUnit)
     {
+        m_goUnitData = _cWarUnit;
         m_bIsActive = true;
         gameObject.SetActive(true);
     }
