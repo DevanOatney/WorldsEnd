@@ -67,8 +67,6 @@ public class FightSceneControllerScript : MonoBehaviour
                     _unit.GetComponent<WB_UnitScript>().TimeToMove();
             }
         }
-		if(Input.GetKeyDown(KeyCode.Escape))
-			End();
 	}
 
 	void End()
@@ -119,7 +117,6 @@ public class FightSceneControllerScript : MonoBehaviour
 				//If the unit is down to it's last person and you do have a leader, only spawn the leader and call it good.
 			}
 		}
-		int _nDeadSoFar = 0;
 		for(int i = 0; i < _forceRemaining; ++i)
 		{
 			Vector3 _startPos = Vector3.zero;
@@ -130,30 +127,7 @@ public class FightSceneControllerScript : MonoBehaviour
 			    _char = Instantiate(_unit.m_goSprite) as GameObject;
 			_char.transform.SetParent(gameObject.transform);
 			_char.transform.localScale = Vector3.one * 2;
-			if(_forceRemaining + _nDeadSoFar < _unit.m_nTotalCount)
-			{
-				//So if we're in here, there's still a chance to spawn a dead unit.
-				int _nGap = _unit.m_nTotalCount - (_forceRemaining + _nDeadSoFar);
-				if(_nGap < i+2)
-				{
-					//So in here it means that by the next iteration, there won't be enough units left to initialize to represent all of the dead units, so it has to be dead.
-					_char.GetComponent<WB_UnitScript>().Initialize(gameObject, _side, true);
-				}
-				else
-				{
-					//We've still got time, so roll the dice!
-					bool rndm = ShouldThisOneBeDead();
-					if(rndm == true)
-					{
-						_nDeadSoFar += 1;
-						_char.GetComponent<WB_UnitScript>().Initialize(gameObject, _side, true);
-					}
-					else
-						_char.GetComponent<WB_UnitScript>().Initialize(gameObject, _side, false);
-				}
-			}
-			else
-				_char.GetComponent<WB_UnitScript>().Initialize(gameObject, _side, false);
+			_char.GetComponent<WB_UnitScript>().Initialize(gameObject, _side, false);
 		
 			if(_side == 1)
 			{

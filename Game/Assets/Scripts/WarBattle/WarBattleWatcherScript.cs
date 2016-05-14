@@ -128,6 +128,31 @@ public class WarBattleWatcherScript : MonoBehaviour
             }
 
         }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (m_nState == (int)War_States.eAttack || m_nState == (int)War_States.eMagic)
+            {
+                m_bAllowInput = false;
+                ClearHighlightedSquares();
+                m_goActionWindow.GetComponent<ActionWindowScript>().ActivateWindow(m_goSelectedUnit);
+            }
+            else if (m_nState != (int)War_States.eWaitForMovement && m_nState != (int)War_States.eEndingAction)
+            {
+                ActionCancelled();
+            }
+        }
+    }
+
+    public void ActionCancelled()
+    {
+        if (m_cPreviousUnitPosition != null)
+            m_goSelectedUnit.transform.position = m_cPreviousUnitPosition.worldPosition;
+        m_cPreviousUnitPosition = null;
+        m_goSelectedUnit = null;
+        ClearHighlightedSquares();
+        m_nState = (int)War_States.eMovement;
+        m_bAllowInput = true;
+        m_goActionWindow.SetActive(false);
     }
 
     void MovementConfirm()
@@ -158,6 +183,35 @@ public class WarBattleWatcherScript : MonoBehaviour
             {
                 CNode _unitNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelectedUnit.transform.position);
                 CNode _destination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelector.transform.position);
+                if (_unitNode == _destination)
+                {
+                    //early exit, the unit is trying to move to the same square it's already in, which is fine.
+                    m_cPreviousUnitPosition = _unitNode;
+                    ClearHighlightedSquares();
+                    m_nState = (int)War_States.eWaitForMovement;
+                    MovementFinished(m_goSelectedUnit);
+                    return;
+                }
+                //check to make sure that no other unit is in the position you're trying to move toward
+                foreach (GameObject _go in m_lAllies)
+                {
+                    CNode _node = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_go.transform.position);
+                    if (_node == _destination)
+                    {
+                        //this spot has a different unit on it, you can't move here.
+                        return;
+                    }
+                }
+                foreach (GameObject _go in m_lEnemies)
+                {
+                    CNode _node = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_go.transform.position);
+                    if (_node == _destination)
+                    {
+                        //this spot has a different unit on it, you can't move here.
+                        return;
+                    }
+                }
+                //check to make sure this distance is moveable by the unit
                 Vector2 _strtDest = new Vector2(_unitNode.gridX, _unitNode.gridY);
                 Vector2 _endDest = new Vector2(_destination.gridX, _destination.gridY);
                 float _distance = Mathf.Sqrt(Mathf.Pow((_endDest.x - _strtDest.x), 2) + Mathf.Pow((_endDest.y - _strtDest.y), 2));
@@ -247,7 +301,6 @@ public class WarBattleWatcherScript : MonoBehaviour
         foreach (CNode _neigh in _lNeighbors)
         {
             GameObject _movementHighlight = Instantiate(m_goHighlighter) as GameObject;
-            Vector3 _pos = _movementHighlight.transform.position;
             _movementHighlight.GetComponent<SpriteRenderer>().enabled = true;
             _movementHighlight.transform.position = _neigh.worldPosition;
             _movementHighlight.GetComponent<SpriteRenderer>().color = _col;

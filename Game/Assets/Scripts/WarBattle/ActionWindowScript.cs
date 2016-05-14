@@ -61,7 +61,11 @@ public class ActionWindowScript : MonoBehaviour
                         }
                         break;
                 }
-            
+
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                m_goWatcher.GetComponent<WarBattleWatcherScript>().ActionCancelled();
             }
         }
 	}
