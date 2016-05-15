@@ -9,7 +9,7 @@ public class WB_UnitScript : MonoBehaviour
 	bool m_bShouldAttack = false;
 	public bool m_bShouldMove = false;
 	//Stats
-	public float m_fMovementSpeed = 5.0f;
+	float m_fMovementSpeed = 100.0f;
 	//Add in a bit of an offset to where we stop, this is to make the fight happen quick and the retreat take a little longer.
 	float m_fStopOffset = 0.0f;
 	//-1 to move left, +1 to move right

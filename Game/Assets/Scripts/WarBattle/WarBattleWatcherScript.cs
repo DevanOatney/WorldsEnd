@@ -261,11 +261,18 @@ public class WarBattleWatcherScript : MonoBehaviour
         }
         if (_target != null)
         {
-            ClearHighlightedSquares();
-            m_bAllowInput = false;
-            m_nState = (int)War_States.eEndingAction;
-            m_goBattleScreen.SetActive(true);
-            m_goBattleScreen.GetComponent<FightSceneControllerScript>().SetupBattleScene(_target.GetComponent<TRPG_UnitScript>().m_wuUnitData, m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData);
+            CNode _targetNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_target.transform.position);
+            Vector2 _strtDest = new Vector2(_unitNode.gridX, _unitNode.gridY);
+            Vector2 _endDest = new Vector2(_targetNode.gridX, _targetNode.gridY);
+            float _distance = Mathf.Sqrt(Mathf.Pow((_endDest.x - _strtDest.x), 2) + Mathf.Pow((_endDest.y - _strtDest.y), 2));
+            if (_distance <= m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nAttackRange)
+            {
+                ClearHighlightedSquares();
+                m_bAllowInput = false;
+                m_nState = (int)War_States.eEndingAction;
+                m_goBattleScreen.SetActive(true);
+                m_goBattleScreen.GetComponent<FightSceneControllerScript>().SetupBattleScene(_target.GetComponent<TRPG_UnitScript>().m_wuUnitData, m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData);
+            }
         }
         
         
@@ -310,6 +317,7 @@ public class WarBattleWatcherScript : MonoBehaviour
 
     public void EndMyTurn(GameObject p_unit)
     {
+        m_goSelectedUnit.GetComponent<Animator>().SetBool("m_bHasActed", true);
         m_nState = (int)War_States.eMovement;
         m_goSelectedUnit = null;
         m_cPreviousUnitPosition = null;

@@ -258,8 +258,9 @@ public class FightSceneControllerScript : MonoBehaviour
 				}
 				m_nUnitsArrivedCounter = 0;
 				m_bHasArrivedAtEnd = true;
-			}
-            Invoke("TurnOffWindow", 1.0f);
+                Invoke("TurnOffWindow", 1.0f);
+            }
+            
 		}
 	}
 
