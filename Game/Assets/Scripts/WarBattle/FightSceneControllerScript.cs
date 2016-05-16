@@ -79,6 +79,7 @@ public class FightSceneControllerScript : MonoBehaviour
 		m_lRightUnits.Clear();
 		m_cLeftWarUnit = null;
 		m_cRightWarUnit = null;
+
 	}
 
 	public void SetupBattleScene(cWarUnit _leftSide, cWarUnit _rightSide)

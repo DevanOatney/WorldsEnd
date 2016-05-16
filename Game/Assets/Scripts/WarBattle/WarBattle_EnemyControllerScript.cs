@@ -5,20 +5,27 @@ using System.Collections.Generic;
 
 public class WarBattle_EnemyControllerScript : MonoBehaviour
 {
-    enum WB_AI_States { eInnactive, eStart, eCursorToMoveLocation, eMoveToLocation, eSelectAction, eCursorToAttack, eCursorToMagic }
+    public enum WB_AI_States { eInnactive, eStart, eCursorToMoveLocation, eMoveToLocation, eWaitToArrive, eSelectAction, eCursorToAttack, eCursorToMagic, eWaitForActionResolution }
     public enum WB_AI_Temper { eNormal, eCoward, eRunToLocation, eFocusFireTarget }
     //Hooks to things
     GameObject m_goWatcher;
+    GameObject m_goActionWindow;
+
     List<GameObject> m_lSameTeam;
     List<GameObject> m_lEnemyTeam;
     //This should only have things in it if this faction is an NPC
     List<GameObject> m_lAlliesOfTeam;
 
-    WB_AI_States m_eState = WB_AI_States.eInnactive;
+    public WB_AI_States m_eState = WB_AI_States.eInnactive;
     WB_AI_Temper m_eTemper = WB_AI_Temper.eNormal;
     CNode m_cDesiredDestination = null;
     cTargetWeights m_goDesiredTarget = null;
-    GameObject m_goCurrentUnitActing = null;
+    [HideInInspector]
+    public GameObject m_goCurrentUnitActing = null;
+
+    //The response floats are for slowing down the steps of the AI so that the player can see step by step what each unit is doing.
+    float m_fResponseTimer = 0.0f;
+    float m_fResponseBucket = 0.5f;
 
     class cTargetWeights
     {
@@ -38,9 +45,10 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
 	
 	}
 
-    public void Initialize(GameObject _watcher)
+    public void Initialize(GameObject _watcher, GameObject _actionWindow)
     {
         m_goWatcher = _watcher;
+        m_goActionWindow = _actionWindow;
         m_eState = WB_AI_States.eInnactive;
     }
 
@@ -51,14 +59,63 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
     /// <param name="_allies">    Units that this team will not attack</param>
     /// <param name="_enemies">  Units that this team will attack/run from, depending on temperament.</param>
     /// <param name="_eTemperamant"> Personallity(WarBattle_EnemyControllerScript.WB_AI_TEMPER.),  eNormal - attack closest/weakest unit, eCoward - run as far away from enemies as possible.</param>
-    public void StartFactionTurn(List<GameObject> _sameTeam, List<GameObject> _allies, List<GameObject> _enemies, WB_AI_Temper _eTemperamant)
+    public void StartFactionTurn(List<GameObject> _sameTeam, List<GameObject> _allies, List<GameObject> _enemies, WB_AI_Temper _eTemperamant = WB_AI_Temper.eNormal)
     {
         m_eState = WB_AI_States.eStart;
         m_eTemper = _eTemperamant;
         m_nUnitIter = 0;
         m_lSameTeam = _sameTeam;
         m_lEnemyTeam = _enemies;
-        m_lAlliesOfTeam = _allies;
+        if (_allies != null)
+            m_lAlliesOfTeam = _allies;
+        else
+            m_lAlliesOfTeam = new List<GameObject>();
+    }
+
+
+    public void UnitMovementFinished()
+    {
+        m_eState = WB_AI_States.eSelectAction;
+    }
+
+    //Called from the watcher when the battle scene animation ends
+    public void UnitActionEnded()
+    {
+        m_nUnitIter += 1;
+        if (m_nUnitIter >= m_lSameTeam.Count)
+            m_eState = WB_AI_States.eInnactive;
+        else
+        {
+            m_eState = WB_AI_States.eStart;
+        }
+    }
+
+    public void RemoveUnit(GameObject _unit)
+    {
+        for (int i = m_lAlliesOfTeam.Count - 1; i >= 0; i--)
+        {
+            if (_unit == m_lAlliesOfTeam[i])
+            {
+                m_lAlliesOfTeam.RemoveAt(i);
+                return;
+            }
+        }
+        for (int i = m_lEnemyTeam.Count - 1; i >= 0; i--)
+        {
+            if (_unit == m_lEnemyTeam[i])
+            {
+                m_lEnemyTeam.RemoveAt(i);
+                return;
+            }
+        }
+        for (int i = m_lSameTeam.Count - 1; i >= 0; i--)
+        {
+            if (_unit == m_lSameTeam[i])
+            {
+                m_lSameTeam.RemoveAt(i);
+                return;
+            }
+        }
     }
 
 	// Update is called once per frame
@@ -74,24 +131,124 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             case WB_AI_States.eStart:
                 {
                     //This is the start of the AI's turn. Need to iterate through each unit, giving them a desired location to move, and a desired action (that is valid)
+                    
                     m_goCurrentUnitActing = m_lSameTeam[m_nUnitIter];
+                    m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_bIsMyTurn = true;
+                    m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goSelector.transform.position = m_goCurrentUnitActing.transform.position;
                     CalculateAction();
+                    if (m_cDesiredDestination != null)
+                    {
+                        m_eState = WB_AI_States.eCursorToMoveLocation;
+                    }
                 }
                 break;
             case WB_AI_States.eCursorToMoveLocation:
                 {
+                    m_fResponseTimer += Time.deltaTime;
+                    if (m_fResponseTimer >= m_fResponseBucket)
+                    {
+
+                        CNode _selPos = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goSelector.transform.position);
+                        if (_selPos.gridX < m_cDesiredDestination.gridX)
+                        {
+                            //Move Right
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().MoveCursor(2);
+                        }
+                        else if (_selPos.gridX > m_cDesiredDestination.gridX)
+                        {
+                            //Move Left
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().MoveCursor(1);
+                        }
+                        else if (_selPos.gridY < m_cDesiredDestination.gridY)
+                        {
+                            //Move Up
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().MoveCursor(3);
+                        }
+                        else if (_selPos.gridY > m_cDesiredDestination.gridY)
+                        {
+                            //Move Down
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().MoveCursor(0);
+                        }
+                        else
+                        {
+                            //Cursor has reached it's target.
+                            m_eState = WB_AI_States.eMoveToLocation;
+                        }
+                        m_fResponseTimer = 0.0f;
+                    }
                 }
                 break;
             case WB_AI_States.eMoveToLocation:
                 {
+                    m_eState = WB_AI_States.eWaitToArrive;
+                    m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().MoveToLocation(m_cDesiredDestination.worldPosition);
                 }
                 break;
             case WB_AI_States.eSelectAction:
                 {
+                    m_fResponseTimer += Time.deltaTime;
+                    if (m_fResponseTimer >= m_fResponseBucket)
+                    {
+                        //Currently there isn't any magic, so we're never going to pick that one.
+                        int _cursorDestination = 0;
+                        if (m_goDesiredTarget == null)
+                            _cursorDestination = 2;
+                        int _currentCursorLoc = m_goActionWindow.GetComponent<ActionWindowScript>().m_nChoiceIter;
+                        if (_currentCursorLoc < _cursorDestination)
+                            m_goActionWindow.GetComponent<ActionWindowScript>().MoveDown();
+                        else if (_currentCursorLoc > _cursorDestination)
+                            m_goActionWindow.GetComponent<ActionWindowScript>().MoveUp();
+                        else
+                        {
+                            if (_cursorDestination == 0)
+                                m_eState = WB_AI_States.eCursorToAttack;
+                            else if (_cursorDestination == 1)
+                                m_eState = WB_AI_States.eCursorToMagic;
+                            else if (_cursorDestination == 2)
+                                m_eState = WB_AI_States.eWaitForActionResolution;
+                            m_goActionWindow.GetComponent<ActionWindowScript>().Confirm();
+                        }
+                        m_fResponseTimer = 0.0f;
+                        m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goSelector.transform.position = m_goCurrentUnitActing.transform.position;
+                    }
                 }
                 break;
             case WB_AI_States.eCursorToAttack:
                 {
+                    m_fResponseTimer += Time.deltaTime;
+                    if (m_fResponseTimer >= m_fResponseBucket)
+                    {
+                        CNode _selPos = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goSelector.transform.position);
+                        CNode _tgtPos = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goDesiredTarget._goTarget.transform.position);
+                        if (_selPos.gridX < _tgtPos.gridX)
+                        {
+                            //Move Right
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().MoveCursor(2);
+                        }
+                        else if (_selPos.gridX > _tgtPos.gridX)
+                        {
+                            //Move Left
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().MoveCursor(1);
+                        }
+                        else if (_selPos.gridY < _tgtPos.gridY)
+                        {
+                            //Move Up
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().MoveCursor(3);
+                        }
+                        else if (_selPos.gridY > _tgtPos.gridY)
+                        {
+                            //Move Down
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().MoveCursor(0);
+                        }
+                        else
+                        {
+                            //Cursor has reached it's target.
+                            m_eState = WB_AI_States.eWaitForActionResolution;
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goBattleScreen.SetActive(true);
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goBattleScreen.GetComponent<FightSceneControllerScript>().SetupBattleScene(m_goDesiredTarget._goTarget.GetComponent<TRPG_UnitScript>().m_wuUnitData, m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData);
+                        }
+                        m_fResponseTimer = 0.0f;
+                    }
                 }
                 break;
             case WB_AI_States.eCursorToMagic:

@@ -17,7 +17,7 @@ public class WarBattleWatcherScript : MonoBehaviour
     List<GameObject> m_lAllies = new List<GameObject>();
     List<GameObject> m_lEnemies = new List<GameObject>();
     Vector2 m_vSelectorGridPos = Vector2.zero;
-    bool m_bIsAllyTurn = true;
+    public bool m_bIsAllyTurn = true;
     bool m_bAllowInput = false;
     //Currently selected unit on the map
     GameObject m_goSelectedUnit = null;
@@ -48,7 +48,7 @@ public class WarBattleWatcherScript : MonoBehaviour
 	void Start ()
     {
         LoadInMap();
-        GetComponent<WarBattle_EnemyControllerScript>().Initialize(gameObject);
+        GetComponent<WarBattle_EnemyControllerScript>().Initialize(gameObject, m_goActionWindow);
         m_bAllowInput = true;
     }
 	
@@ -84,35 +84,70 @@ public class WarBattleWatcherScript : MonoBehaviour
     
     }
 
+    /// <summary>
+    /// Moves the highlighting cursor in a direction.
+    /// </summary>
+    /// <param name="_direction">0 : Down, 1: Left, 2: Right, 3: Up.</param>
+    public void MoveCursor(int _direction)
+    {
+        switch(_direction)
+        {
+            case 0:
+                {
+                    //Down
+                    CNode _base = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelector.transform.position);
+                    Vector3 newPos = CPathRequestManager.m_Instance.m_psPathfinding.grid.WorldPointFromIndex(new Vector2(_base.gridX, _base.gridY - 1));
+                    if (newPos.z != 500)
+                        m_goSelector.transform.position = newPos;
+                }
+                break;
+            case 1:
+                {
+                    //Left
+                    CNode _base = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelector.transform.position);
+                    Vector3 newPos = CPathRequestManager.m_Instance.m_psPathfinding.grid.WorldPointFromIndex(new Vector2(_base.gridX - 1 + m_vSelectorGridPos.x, _base.gridY));
+                    if (newPos.z != 500)
+                        m_goSelector.transform.position = newPos;
+                }
+                break;
+            case 2:
+                {
+                    //Right
+                    CNode _base = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelector.transform.position);
+                    Vector3 newPos = CPathRequestManager.m_Instance.m_psPathfinding.grid.WorldPointFromIndex(new Vector2(_base.gridX + 1, _base.gridY));
+                    if (newPos.z != 500)
+                        m_goSelector.transform.position = newPos;
+                }
+                break;
+            case 3:
+                {
+                    //Up
+                    CNode _base = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelector.transform.position);
+                    Vector3 newPos = CPathRequestManager.m_Instance.m_psPathfinding.grid.WorldPointFromIndex(new Vector2(_base.gridX, _base.gridY + 1));
+                    if (newPos.z != 500)
+                        m_goSelector.transform.position = newPos;
+                }
+                break;
+        }
+    }
+
     void BasicInputFunc()
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            CNode _base = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelector.transform.position);
-            Vector3 newPos = CPathRequestManager.m_Instance.m_psPathfinding.grid.WorldPointFromIndex(new Vector2(_base.gridX, _base.gridY - 1));
-            if (newPos.z != 500)
-                m_goSelector.transform.position = newPos;
+            MoveCursor(0);
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            CNode _base = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelector.transform.position);
-            Vector3 newPos = CPathRequestManager.m_Instance.m_psPathfinding.grid.WorldPointFromIndex(new Vector2(_base.gridX, _base.gridY + 1));
-            if (newPos.z != 500)
-                m_goSelector.transform.position = newPos;
+            MoveCursor(3);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            CNode _base = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelector.transform.position);
-            Vector3 newPos = CPathRequestManager.m_Instance.m_psPathfinding.grid.WorldPointFromIndex(new Vector2(_base.gridX + 1, _base.gridY));
-            if (newPos.z != 500)
-                m_goSelector.transform.position = newPos;
+            MoveCursor(2);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            CNode _base = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelector.transform.position);
-            Vector3 newPos = CPathRequestManager.m_Instance.m_psPathfinding.grid.WorldPointFromIndex(new Vector2(_base.gridX - 1 + m_vSelectorGridPos.x, _base.gridY));
-            if (newPos.z != 500)
-                m_goSelector.transform.position = newPos;
+            MoveCursor(1);
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -249,8 +284,11 @@ public class WarBattleWatcherScript : MonoBehaviour
      
     public void AttackChoiceSelected()
     {
-        m_nState = (int)War_States.eAttack;
-        m_bAllowInput = true;
+        if (m_bIsAllyTurn == true)
+        {
+            m_nState = (int)War_States.eAttack;
+            m_bAllowInput = true;
+        }
     }
     void AttackConfirm()
     {
@@ -307,7 +345,13 @@ public class WarBattleWatcherScript : MonoBehaviour
 
     public void MovementFinished(GameObject _unit)
     {
-        m_goActionWindow.GetComponent<ActionWindowScript>().ActivateWindow(m_goSelectedUnit);
+        if (m_bIsAllyTurn == true)
+            m_goActionWindow.GetComponent<ActionWindowScript>().ActivateWindow(m_goSelectedUnit);
+        else
+        {
+            GetComponent<WarBattle_EnemyControllerScript>().UnitMovementFinished();
+            m_goActionWindow.GetComponent<ActionWindowScript>().ActivateWindow(GetComponent<WarBattle_EnemyControllerScript>().m_goCurrentUnitActing);
+        }
     }
 
     public void ClearHighlightedSquares()
@@ -363,19 +407,33 @@ public class WarBattleWatcherScript : MonoBehaviour
                 _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = false;
                 _go.GetComponent<Animator>().SetBool("m_bHasActed", false);
             }
+            GetComponent<WarBattle_EnemyControllerScript>().StartFactionTurn(m_lEnemies, null, m_lAllies);
         }
     }
 
     public void EndUnitTurn(GameObject p_unit)
     {
-        m_goSelectedUnit.GetComponent<Animator>().SetBool("m_bHasActed", true);
-        m_nState = (int)War_States.eMovement;
-        m_goSelectedUnit = null;
-        m_cPreviousUnitPosition = null;
-        m_bAllowInput = true;
-
+        p_unit.GetComponent<Animator>().SetBool("m_bHasActed", true);
+        p_unit.GetComponent<TRPG_UnitScript>().EndTurn();
+        
         if (m_bIsAllyTurn == true)
         {
+            m_nState = (int)War_States.eMovement;
+            m_goSelectedUnit = null;
+            m_cPreviousUnitPosition = null;
+            m_bAllowInput = true;
+
+            if (p_unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_fPercentRemaining < 0.05f)
+            {
+                //This unit died, do stuff
+                for (int i = m_lAllies.Count - 1; i >= 0; i--)
+                {
+                    if (p_unit == m_lAllies[i])
+                        m_lAllies.RemoveAt(i);
+                }
+                GetComponent<WarBattle_EnemyControllerScript>().RemoveUnit(p_unit);
+            }
+            
             //check to see if all of the units on this team have acted, if they have, make sure to end their factions turn
             foreach (GameObject _go in m_lAllies)
             {
@@ -387,6 +445,16 @@ public class WarBattleWatcherScript : MonoBehaviour
         }
         else
         {
+            if (p_unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_fPercentRemaining < 0.05f)
+            {
+                //This unit died, do stuff
+                for (int i = m_lAllies.Count - 1; i >= 0; i--)
+                {
+                    if (p_unit == m_lAllies[i])
+                        m_lEnemies.RemoveAt(i);
+                }
+                GetComponent<WarBattle_EnemyControllerScript>().RemoveUnit(p_unit);
+            }
             //check to see if all of the units on this team have acted, if they have, make sure to end their factions turn
             foreach (GameObject _go in m_lEnemies)
             {
@@ -400,7 +468,10 @@ public class WarBattleWatcherScript : MonoBehaviour
 
     public void BattleSceneEnded(FightSceneControllerScript.cWarUnit _defender, FightSceneControllerScript.cWarUnit _attacker)
     {
-        EndUnitTurn(m_goSelectedUnit);
+        if (m_bIsAllyTurn)
+            EndUnitTurn(m_goSelectedUnit);
+        else
+            EndUnitTurn(GetComponent<WarBattle_EnemyControllerScript>().m_goCurrentUnitActing);
     }
 
     void LoadInMap()

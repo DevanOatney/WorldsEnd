@@ -136,8 +136,8 @@ public class CGrid : MonoBehaviour
                     continue;
                 if (bAllowDiagonal == false)
                 {
-                    if (Mathf.Abs(x) == Mathf.Abs(y))
-                        continue;
+                   // if (Mathf.Abs(x) == Mathf.Abs(y))
+                        //continue;
                 }
                 if (Mathf.Abs(x) + Mathf.Abs(y) > _nRange)
                     continue;

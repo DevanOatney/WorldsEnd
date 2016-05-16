@@ -168,7 +168,8 @@ public class TRPG_UnitScript : MonoBehaviour
 
 	public void EndTurn()
 	{
-        //m_bHasActedThisTurn = true;
+        m_bIsMyTurn = false;
+        m_bHasActedThisTurn = true;
 	}
 
 
