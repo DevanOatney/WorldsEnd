@@ -107,7 +107,6 @@ public class WB_UnitScript : MonoBehaviour
 		{
 			m_bStartDeath = true;
 			GetComponent<Animator>().SetBool("m_bDie", true);
-			int index = transform.GetSiblingIndex();
 			transform.SetSiblingIndex (0);
 		}
 	}

@@ -62,38 +62,12 @@ public class CGrid : MonoBehaviour
 					Vector3.up * (y * nodeDiameter + nodeRadius);
 				bool walkable = !(Physics2D.OverlapCircle(worldPoint, nodeRadius,unwalkableMask));
 				//bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius));
-				grid[x,y] = new CNode(walkable,worldPoint, x,y);
+				grid[x,y] = new CNode(walkable,worldPoint, x,y, 0);
 			}
 		}
 	}
 	
-	public List<CNode> GetNeighbours(CNode node, bool bAllowDiagonal) 
-	{
-		List<CNode> neighbours = new List<CNode>();
-		
-		for (int x = -1; x <= 1; x++) 
-		{
-			for (int y = -1; y <= 1; y++) 
-			{
-				if (x == 0 && y == 0)
-					continue;
-				if(bAllowDiagonal == false)
-				{
-					if(Mathf.Abs(x) == Mathf.Abs(y))
-						continue;
-				}
-				int checkX = node.gridX + x;
-				int checkY = node.gridY + y;
-				
-				if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY) 
-				{
-					neighbours.Add(grid[checkX,checkY]);
-				}
-			}
-		}
-		
-		return neighbours;
-	}
+	
 	
 	
 	public CNode NodeFromWorldPoint(Vector3 worldPosition) 
@@ -118,7 +92,37 @@ public class CGrid : MonoBehaviour
         return grid[(int)_index.x, (int)_index.y].worldPosition;
     }
 
-    public List<CNode> GetNeighborNodes(Vector3 _worldPos, int _nRange)
+
+    public List<CNode> GetNeighbours(CNode node, bool bAllowDiagonal)
+    {
+        List<CNode> neighbours = new List<CNode>();
+
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 1; y++)
+            {
+                if (x == 0 && y == 0)
+                    continue;
+                if (bAllowDiagonal == false)
+                {
+                    if (Mathf.Abs(x) == Mathf.Abs(y))
+                        continue;
+                }
+                int checkX = node.gridX + x;
+                int checkY = node.gridY + y;
+
+                if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY)
+                {
+                    if (grid[checkX, checkY].walkable == true)
+                        neighbours.Add(grid[checkX, checkY]);
+                }
+            }
+        }
+
+        return neighbours;
+    }
+    //so this one has a range modifier.. and will return nodes even if they're "Unwalkable"
+    public List<CNode> GetNeighbours(Vector3 _worldPos, int _nRange, bool bAllowDiagonal = false)
     {
         List<CNode> _neighborNodes = new List<CNode>();
         CNode _baseNode = NodeFromWorldPoint(_worldPos);
@@ -130,6 +134,11 @@ public class CGrid : MonoBehaviour
             {
                 if (x == 0 && y == 0)
                     continue;
+                if (bAllowDiagonal == false)
+                {
+                    if (Mathf.Abs(x) == Mathf.Abs(y))
+                        continue;
+                }
                 if (Mathf.Abs(x) + Mathf.Abs(y) > _nRange)
                     continue;
                 int checkX = _baseNode.gridX + x;
@@ -137,8 +146,10 @@ public class CGrid : MonoBehaviour
 
                 if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY)
                 {
-                    if(_neighborNodes.Contains(grid[checkX, checkY]) == false)
+                    if (_neighborNodes.Contains(grid[checkX, checkY]) == false)
+                    {
                         _neighborNodes.Add(grid[checkX, checkY]);
+                    }
                 }
             }
         }

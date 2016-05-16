@@ -21,6 +21,62 @@ public class PathfindingScript : MonoBehaviour
         StartCoroutine(FindPath(p_PathStart, p_PathEnd, m_bAllowDiagonal));
     }
 
+    public Vector3[] FindPathImmediate(Vector3 startPos, Vector3 targetPos, bool bAllowDiagonal = false)
+    {
+        CNode startNode = grid.NodeFromWorldPoint(startPos);
+        CNode targetNode = grid.NodeFromWorldPoint(targetPos);
+
+        CHeap<CNode> openSet = new CHeap<CNode>(grid.MapSize);
+        HashSet<CNode> closedSet = new HashSet<CNode>();
+        openSet.Add(startNode);
+
+        Vector3[] _vWaypoints = new Vector3[0];
+        bool _bPathSuccess = false;
+        if (targetNode.walkable)
+        {
+            while (openSet.Count > 0)
+            {
+                CNode currentNode = openSet.RemoveFirst();
+                closedSet.Add(currentNode);
+
+
+
+                if (currentNode == targetNode)
+                {
+                    _bPathSuccess = true;
+                    break;
+                }
+
+                foreach (CNode neighbour in grid.GetNeighbours(currentNode, bAllowDiagonal))
+                {
+                    if (!neighbour.walkable || closedSet.Contains(neighbour))
+                    {
+                        continue;
+                    }
+
+                    int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour);
+                    if (newMovementCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
+                    {
+                        neighbour.gCost = newMovementCostToNeighbour;
+                        neighbour.hCost = GetDistance(neighbour, targetNode);
+                        neighbour.parent = currentNode;
+
+                        if (!openSet.Contains(neighbour))
+                            openSet.Add(neighbour);
+                        else
+                            openSet.UpdateItem(neighbour);
+                    }
+                }
+            }
+        }
+        if (_bPathSuccess == true)
+        {
+            _vWaypoints = RetracePath(startNode, targetNode);
+            return _vWaypoints;
+        }
+        return null;
+    }
+
 	public IEnumerator FindPath(Vector3 startPos, Vector3 targetPos, bool bAllowDiagonal) 
 	{
 		CNode startNode = grid.NodeFromWorldPoint(startPos);

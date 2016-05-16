@@ -25,6 +25,11 @@ public class CPathRequestManager : MonoBehaviour
         m_Instance.TryProcessNextPath();
     }
 
+    public static Vector3[] RequestImmediatePath(Vector3 p_PathStart, Vector3 p_PathEnd, bool bAllowDiagonal = false)
+    {
+        return m_Instance.m_psPathfinding.FindPathImmediate(p_PathStart, p_PathEnd, bAllowDiagonal);
+    }
+
     void TryProcessNextPath()
     {
         if (!m_bIsProcessingPath && m_qPathRequestQ.Count > 0)

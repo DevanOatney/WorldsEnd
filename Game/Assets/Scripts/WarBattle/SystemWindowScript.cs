@@ -1,20 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ActionWindowScript : MonoBehaviour
+public class SystemWindowScript : MonoBehaviour
 {
-    [HideInInspector]
-    public int m_nChoiceIter = 0;
     public GameObject[] m_goChoices;
     public GameObject m_goHighlighter;
     public GameObject m_goWatcher;
+    int m_nChoiceIter = 0;
     bool m_bIsActive = false;
-    GameObject m_goUnitData;
-
-    // Use this for initialization
-    void Start ()
+	// Use this for initialization
+	void Start ()
     {
-        m_goHighlighter.GetComponent<RectTransform>().localPosition = m_goChoices[m_nChoiceIter].GetComponent<RectTransform>().localPosition;
+	
 	}
 	
 	// Update is called once per frame
@@ -42,38 +39,36 @@ public class ActionWindowScript : MonoBehaviour
                 {
                     case 0:
                         {
-                            //Attack
-                            m_goWatcher.GetComponent<WarBattleWatcherScript>().ShowHighlightedSquares(m_goUnitData, m_goUnitData.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nAttackRange, Color.red);
-                            m_goWatcher.GetComponent<WarBattleWatcherScript>().AttackChoiceSelected();
+                            //End Turn
+                            m_bIsActive = false;
                             gameObject.SetActive(false);
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().EndFactionTurn();
                         }
                         break;
                     case 1:
                         {
-                            //Magic
-                        }
-                        break;
-                    case 2:
-                        {
-                            //Wait
-                            m_goWatcher.GetComponent<WarBattleWatcherScript>().EndUnitTurn(m_goUnitData);
+                            //Back
+                            m_bIsActive = false;
                             gameObject.SetActive(false);
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().ActionCancelled();
                         }
                         break;
                 }
-
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
+                m_bIsActive = false;
+                gameObject.SetActive(false);
                 m_goWatcher.GetComponent<WarBattleWatcherScript>().ActionCancelled();
             }
+           
         }
 	}
 
-    public void ActivateWindow(GameObject _cWarUnit)
+    public void ActivateWindow()
     {
-        m_goUnitData = _cWarUnit;
         m_bIsActive = true;
         gameObject.SetActive(true);
+        m_goHighlighter.GetComponent<RectTransform>().localPosition = m_goChoices[m_nChoiceIter].GetComponent<RectTransform>().localPosition;
     }
 }

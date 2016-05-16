@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 public class WarBattleWatcherScript : MonoBehaviour
 {
-    enum War_States { eMovement, eWaitForMovement, eAttack, eMagic, eEndingAction}
+    enum War_States { eMovement, eWaitForMovement, eAttack, eMagic, eSystem, eEndingAction}
     //hooks to gameobjects
     public GameObject m_goBattleScreen;
     public GameObject m_goActionWindow;
+    public GameObject m_goSystemWindow;
     public GameObject m_goHighlighter;
     public GameObject m_goSelector;
     //game object for the map and starting positional data
@@ -47,6 +48,7 @@ public class WarBattleWatcherScript : MonoBehaviour
 	void Start ()
     {
         LoadInMap();
+        GetComponent<WarBattle_EnemyControllerScript>().Initialize(gameObject);
         m_bAllowInput = true;
     }
 	
@@ -138,7 +140,15 @@ public class WarBattleWatcherScript : MonoBehaviour
             }
             else if (m_nState != (int)War_States.eWaitForMovement && m_nState != (int)War_States.eEndingAction)
             {
-                ActionCancelled();
+                if (m_goSelectedUnit != null)
+                    ActionCancelled();
+                else
+                {
+                    //This means the player is pressing escape while not having even selected a unit yet, display the system window
+                    m_nState = (int)War_States.eSystem;
+                    m_goSystemWindow.GetComponent<SystemWindowScript>().ActivateWindow();
+                    m_bAllowInput = false;
+                }
             }
         }
     }
@@ -153,6 +163,7 @@ public class WarBattleWatcherScript : MonoBehaviour
         m_nState = (int)War_States.eMovement;
         m_bAllowInput = true;
         m_goActionWindow.SetActive(false);
+        m_goSystemWindow.SetActive(false);
     }
 
     void MovementConfirm()
@@ -171,9 +182,17 @@ public class WarBattleWatcherScript : MonoBehaviour
                         ShowHighlightedSquares(_go, _go.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange, Color.yellow);
                         _go.GetComponent<TRPG_UnitScript>().m_bIsMyTurn = true;
                         m_goSelectedUnit = _go;
+                        
                     }
                     break;
                 }
+            }
+            if (m_goSelectedUnit == null)
+            {
+                //This means that the player is selecting a spot that has no unit in it, open up the system menu.
+                m_nState = (int)War_States.eSystem;
+                m_bAllowInput = false;
+                m_goSystemWindow.GetComponent<SystemWindowScript>().ActivateWindow();
             }
         }
         else
@@ -227,6 +246,7 @@ public class WarBattleWatcherScript : MonoBehaviour
 
         }
     }
+     
     public void AttackChoiceSelected()
     {
         m_nState = (int)War_States.eAttack;
@@ -304,7 +324,7 @@ public class WarBattleWatcherScript : MonoBehaviour
         _col.a = 0.2f;
         ClearHighlightedSquares();
         //m_goSelector.transform.position = p_unit.transform.position;
-        List<CNode> _lNeighbors = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighborNodes(p_unit.transform.position, _rng);
+        List<CNode> _lNeighbors = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(p_unit.transform.position, _rng);
         foreach (CNode _neigh in _lNeighbors)
         {
             GameObject _movementHighlight = Instantiate(m_goHighlighter) as GameObject;
@@ -315,18 +335,72 @@ public class WarBattleWatcherScript : MonoBehaviour
         }
     }
 
-    public void EndMyTurn(GameObject p_unit)
+    public void EndFactionTurn()
+    {
+        m_bIsAllyTurn = !m_bIsAllyTurn;
+        if (m_bIsAllyTurn == true)
+        {
+            foreach (GameObject _go in m_lAllies)
+            {
+                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = false;
+                _go.GetComponent<Animator>().SetBool("m_bHasActed", false);
+            }
+            foreach (GameObject _go in m_lEnemies)
+            {
+                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
+                _go.GetComponent<Animator>().SetBool("m_bHasActed", true);
+            }
+        }
+        else
+        {
+            foreach (GameObject _go in m_lAllies)
+            {
+                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
+                _go.GetComponent<Animator>().SetBool("m_bHasActed", true);
+            }
+            foreach (GameObject _go in m_lEnemies)
+            {
+                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = false;
+                _go.GetComponent<Animator>().SetBool("m_bHasActed", false);
+            }
+        }
+    }
+
+    public void EndUnitTurn(GameObject p_unit)
     {
         m_goSelectedUnit.GetComponent<Animator>().SetBool("m_bHasActed", true);
         m_nState = (int)War_States.eMovement;
         m_goSelectedUnit = null;
         m_cPreviousUnitPosition = null;
         m_bAllowInput = true;
+
+        if (m_bIsAllyTurn == true)
+        {
+            //check to see if all of the units on this team have acted, if they have, make sure to end their factions turn
+            foreach (GameObject _go in m_lAllies)
+            {
+                if (_go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn == false)
+                    return;
+            }
+            //if we're here this means that every unit in this party has acted, time to end this factions turn
+            EndFactionTurn();
+        }
+        else
+        {
+            //check to see if all of the units on this team have acted, if they have, make sure to end their factions turn
+            foreach (GameObject _go in m_lEnemies)
+            {
+                if (_go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn == false)
+                    return;
+            }
+            //if we're here this means that every unit in this party has acted, time to end this factions turn
+            EndFactionTurn();
+        }
     }
 
     public void BattleSceneEnded(FightSceneControllerScript.cWarUnit _defender, FightSceneControllerScript.cWarUnit _attacker)
     {
-        EndMyTurn(m_goSelectedUnit);
+        EndUnitTurn(m_goSelectedUnit);
     }
 
     void LoadInMap()
