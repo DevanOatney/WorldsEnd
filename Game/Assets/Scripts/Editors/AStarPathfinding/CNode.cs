@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+[System.Serializable]
 public class CNode : IHeapItem<CNode>{
 	
 	public bool walkable;

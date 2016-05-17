@@ -138,6 +138,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                     CalculateAction();
                     if (m_cDesiredDestination != null)
                     {
+                        m_goWatcher.GetComponent<WarBattleWatcherScript>().ShowHighlightedSquares(m_goCurrentUnitActing, m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange, Color.yellow);
                         m_eState = WB_AI_States.eCursorToMoveLocation;
                     }
                 }
@@ -172,6 +173,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                         else
                         {
                             //Cursor has reached it's target.
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().ClearHighlightedSquares();
                             m_eState = WB_AI_States.eMoveToLocation;
                         }
                         m_fResponseTimer = 0.0f;
@@ -244,8 +246,16 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                         {
                             //Cursor has reached it's target.
                             m_eState = WB_AI_States.eWaitForActionResolution;
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().ClearHighlightedSquares();
                             m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goBattleScreen.SetActive(true);
-                            m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goBattleScreen.GetComponent<FightSceneControllerScript>().SetupBattleScene(m_goDesiredTarget._goTarget.GetComponent<TRPG_UnitScript>().m_wuUnitData, m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData);
+                            CNode _startNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goCurrentUnitActing.transform.position);
+                            
+                            int _distanceToAttack = (int)Mathf.Sqrt(Mathf.Pow((_startNode.gridX - _tgtPos.gridX), 2) + Mathf.Pow((_startNode.gridY - _tgtPos.gridY), 2));
+                            if(m_goCurrentUnitActing.tag == "Enemy")
+                                m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goBattleScreen.GetComponent<FightSceneControllerScript>().SetupBattleScene(m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData, m_goDesiredTarget._goTarget.GetComponent<TRPG_UnitScript>().m_wuUnitData, _distanceToAttack);
+                            else
+                                m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goBattleScreen.GetComponent<FightSceneControllerScript>().SetupBattleScene(m_goDesiredTarget._goTarget.GetComponent<TRPG_UnitScript>().m_wuUnitData, m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData, _distanceToAttack);
+
                         }
                         m_fResponseTimer = 0.0f;
                     }
@@ -262,6 +272,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
     {
         //Some early declarations that will be needed for anything
         CNode _unitNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goCurrentUnitActing.transform.position);
+        FightSceneControllerScript.cWarUnit _thisUnitData = m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData;
         List<CNode> _lSameTeamNodes = new List<CNode>();
         foreach (GameObject _go in m_lSameTeam)
             _lSameTeamNodes.Add(CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_go.transform.position));
@@ -270,15 +281,17 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             _lAllyTeamNodes.Add(CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_go.transform.position));
         List<CNode> _lOtherTeamNodes = new List<CNode>();
         foreach (GameObject _go in m_lEnemyTeam)
-            _lSameTeamNodes.Add(CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_go.transform.position));
+            _lOtherTeamNodes.Add(CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_go.transform.position));
 
         //first, let's do an early exit check, if this unit is completely surrounded and unable to move, see if there's a unit in range to attack, if not, don't try to move, don't try to act, just end your turn
         List<CNode> _neighbors = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(_unitNode.worldPosition, 1);
+        //List<CNode> _withinAttackRange = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(_unitNode.worldPosition, _thisUnitData.m_nAttackRange);
         bool _bCanIMove = false;
         //Just incase we have to index into one of these lists.
         int _nIterCounter = 0;
         foreach (CNode _node in _neighbors)
         {
+            _nIterCounter = 0;
             //true if we found a unit in this node.
             bool _bMatchFound = false;
             foreach (CNode _checkNode in _lSameTeamNodes)
@@ -332,21 +345,26 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             _bCanIMove = true;
         }
 
-        //For now at least, if there is a unit that was in range of this initial attack, go for it.
-        if (m_goDesiredTarget != null)
-        {
-            m_cDesiredDestination = _unitNode;
-            return;
-        }
+
         //If there wasn't something to attack, check if we can even move, if we can't move, set the desired location to where the unit is, and call it good.
         if (_bCanIMove == false)
         {
+            //For now at least, if there is a unit that was in range of this initial attack, go for it.
+            if (m_goDesiredTarget != null)
+            {
+                m_cDesiredDestination = _unitNode;
+                return;
+            }
             m_goDesiredTarget = null;
             m_cDesiredDestination = _unitNode;
             return;
         }
+        else
+        {
+            //reset the desired target as it will be accessed later.
+            m_goDesiredTarget = null;
+        }
         //So, at this point, there isn't a unit right next to us, but we can move.. grab every node that is in range of this units influence (It's movement range + it's attack range)
-        FightSceneControllerScript.cWarUnit _thisUnitData = m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData;
         List<CNode> _lNodesInInfluence = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(_unitNode.worldPosition, _thisUnitData.m_nMovementRange + _thisUnitData.m_nAttackRange);
         List<GameObject> _lTargetsInRange = new List<GameObject>();
 
@@ -365,6 +383,8 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
 
 
         List<CNode> _movementRangeNodes = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(_unitNode.worldPosition, _thisUnitData.m_nMovementRange);
+        //Add in it's own square so that it can choose not to move at all
+        _movementRangeNodes.Add(_unitNode);
         if (_lTargetsInRange.Count > 0)
         {
             //We were able to find a unit to attack within range of our current unit. Let's see if there is an available spot to move in range of attacking that unit (at max range of our unit), that is within our movement range.           
@@ -384,6 +404,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
         if (m_goDesiredTarget != null)
         {
             //we found our most desired target, that is also in range! :D 
+            
             m_cDesiredDestination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goDesiredTarget._vPrefferedPath[m_goDesiredTarget._vPrefferedPath.Length - 1]);
             return;
         }
@@ -431,27 +452,50 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
         }
 
         //so now that we've found all of the valid paths to this target find the path with the lowest movement cost and set that as this units preferred path.
-        int _lowestPathCost = int.MaxValue;
+        int _closestValidDistance = int.MinValue;
         Vector3[] _vBestPath = null;
-        foreach (Vector3[] _path in _lPaths)
+        for(int x = _lPaths.Count - 1; x >= 0; --x)
         {
             int _movementCost = 0;
-            for (int i = 0; i < _path.Length; ++i)
+            for (int i = 0; i < _lPaths[x].Length; ++i)
             {
-                CNode _pathNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_path[i]);
-                _movementCost = 1 + _pathNode.movementPenalty;
+                CNode _pathNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_lPaths[x][i]);
+                _movementCost += 1 + _pathNode.movementPenalty;
                 if (_thisUnitData.m_nMovementRange < _movementCost)
                 {
+                    _lPaths.RemoveAt(x);
                     break;
                 }
             }
             if (_thisUnitData.m_nMovementRange >= _movementCost)
             {
-                if (_movementCost < _lowestPathCost)
+                CNode _targetNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(p_unit.transform.position);
+                int _distFromTarget = (int)Mathf.Sqrt(Mathf.Pow((_lPaths[x][_lPaths[x].Length -1].x - _targetNode.worldPosition.x), 2) + Mathf.Pow((_lPaths[x][_lPaths[x].Length - 1].y - _targetNode.worldPosition.y), 2));
+                //check the distance, with a priority toward spots that are the furthest away but still in range;
+                if (_distFromTarget <= _thisUnitData.m_nAttackRange && _distFromTarget >= _closestValidDistance)
                 {
-                    //we've got a new winner, so far.
-                    _lowestPathCost = _movementCost;
-                    _vBestPath = _path;
+                    //if this is our first path, immediately make it the "best path" so far to avoid checking a null variable.
+                    if (_vBestPath == null)
+                    {
+                        _closestValidDistance = _distFromTarget;
+                        _vBestPath = _lPaths[x];
+                    }
+                    else if (_distFromTarget == _closestValidDistance)
+                    { 
+                        //So, this is at least on par so far with the best path we've found, now check which of the paths is the shorest, and that will be our "Best path"
+                        if (_lPaths[x].Length < _vBestPath.Length)
+                        {
+                            //we've got a new winner, so far.
+                            _closestValidDistance = _distFromTarget;
+                            _vBestPath = _lPaths[x];
+                        }
+                    }
+                    else
+                    {
+                        //If we're in here, this means that we've found a new optimal range, so make this the new baseline.
+                        _closestValidDistance = _distFromTarget;
+                        _vBestPath = _lPaths[x];
+                    }
                 }
             }
         }

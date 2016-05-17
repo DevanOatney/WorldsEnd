@@ -10,14 +10,22 @@ public class AutoStretchSprite : MonoBehaviour {
 	public bool ExecuteOnUpdate = true;
 	float m_fUpdateTimer = 0.0f;
 	float m_fUpdateBucket = 0.3f;
+    GameObject m_goPathfinder;
 
-	void Start () {
+	void Start ()
+    {
 		Resize(KeepAspectRatio);
 	}
 
 	void FixedUpdate () 
 	{
-		if (ExecuteOnUpdate)
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("X : " + GetComponent<SpriteRenderer>().sprite.bounds.size.x * transform.localScale.x);
+            Debug.Log("Y : " + GetComponent<SpriteRenderer>().sprite.bounds.size.y * transform.localScale.y);
+
+        }
+        if (ExecuteOnUpdate)
 		{
 			m_fUpdateTimer += Time.deltaTime;
 			if(m_fUpdateTimer >= m_fUpdateBucket)
@@ -34,8 +42,9 @@ public class AutoStretchSprite : MonoBehaviour {
 	/// <param name="keepAspect">bool : if true, the image aspect ratio will be retained</param>
 	void Resize(bool keepAspect = false)
 	{
+
 		SpriteRenderer sr = GetComponent<SpriteRenderer>();
-		transform.localScale = new Vector3(1, 1, 1);
+		//transform.localScale = new Vector3(1, 1, 1);
 
 		// example of a 640x480 sprite
 		float width = sr.sprite.bounds.size.x; // 4.80f
@@ -70,7 +79,15 @@ public class AutoStretchSprite : MonoBehaviour {
 			imgScale.y = worldScreenHeight / height;
 		}
 
-		// apply change
-		transform.localScale = imgScale;
+        // apply change
+        //Something in the ratio has changed.
+        if (transform.localScale != imgScale)
+        {
+            transform.localScale = imgScale;
+            if (m_goPathfinder == null)
+                m_goPathfinder = GameObject.Find("Pathfinder");
+            m_goPathfinder.GetComponent<CGrid>().GridResized(gameObject);
+        }
+		
 	}
 }

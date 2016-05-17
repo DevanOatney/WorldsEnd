@@ -28,6 +28,7 @@ public class TRPG_UnitScript : MonoBehaviour
 	public GameObject m_goBaseUnitPrefab;
 	float m_fMovementTimer = 0.0f;
 	float m_fMovementBucket = 0.5f;
+    public CNode m_cPositionOnGrid;
 
 
 	class cDesiredLocation
@@ -38,12 +39,13 @@ public class TRPG_UnitScript : MonoBehaviour
 	}
     void Awake()
     {
-        m_wuUnitData = new FightSceneControllerScript.cWarUnit(null, m_goBaseUnitPrefab, 1.0f, 10, 4, 4, 4, 2, 5);
+        m_wuUnitData = new FightSceneControllerScript.cWarUnit(null, m_goBaseUnitPrefab, 1.0f, 10, 4, 4, 4, 1, 5);
+        m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(transform.position);
     }
 	// Use this for initialization
 	void Start () 
 	{
-		
+        
 	}
 
 
@@ -51,6 +53,17 @@ public class TRPG_UnitScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+        float _fWidth = CPathRequestManager.m_Instance.m_psPathfinding.grid.m_fNodeWidth;
+        float _fHeight = CPathRequestManager.m_Instance.m_psPathfinding.grid.m_fNodeHeight;
+        if (_fWidth != transform.localScale.x || _fHeight != transform.localScale.y)
+        {
+            //the map has been resized since we last checked.
+            Vector3 _newScale = new Vector3(_fWidth, _fHeight, 1.0f);
+            transform.localScale = _newScale;
+            transform.position = m_cPositionOnGrid.worldPosition;
+        }
+
+
 		if(m_bIsMyTurn == true)
 		{
 			if(m_bPathFound == true)
@@ -59,10 +72,8 @@ public class TRPG_UnitScript : MonoBehaviour
 				if(m_fMovementTimer >= m_fMovementBucket)
 				{
 					Vector3 _nextPos = m_vDesiredPath[m_nPathIter];
-					float _nodeRadius = CPathRequestManager.m_Instance.m_psPathfinding.grid.nodeRadius;
-					_nextPos.x = _nextPos.x + (_nodeRadius*0.5f) - (GetComponent<Collider2D>().bounds.size.x * 0.5f);
-					_nextPos.y = _nextPos.y - (_nodeRadius*0.5f) + (GetComponent<Collider2D>().bounds.size.y * 0.5f);
-					transform.position = _nextPos;
+                    m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_nextPos);
+					transform.position = m_cPositionOnGrid.worldPosition;
 
 					m_nPathIter += 1;
 					if(m_nPathIter >= m_vDesiredPath.Length)
@@ -77,6 +88,18 @@ public class TRPG_UnitScript : MonoBehaviour
 		}
 	}
 
+    public void MapResized()
+    {
+        float _fWidth = CPathRequestManager.m_Instance.m_psPathfinding.grid.m_fNodeWidth;
+        float _fHeight = CPathRequestManager.m_Instance.m_psPathfinding.grid.m_fNodeHeight;
+        if (_fWidth != transform.localScale.x || _fHeight != transform.localScale.y)
+        {
+            //the map has been resized since we last checked.
+            Vector3 _newScale = new Vector3(_fWidth, _fHeight, 1.0f);
+            transform.localScale = _newScale;
+            transform.position = m_cPositionOnGrid.worldPosition;
+        }
+    }
     public void MoveToLocation(Vector3 _location)
     {
         AddLocationToMoveTo(_location, 2);
@@ -122,11 +145,12 @@ public class TRPG_UnitScript : MonoBehaviour
 
 	void PathReturned(Vector3[] _vPath, bool _bFoundPath)
 	{
-		m_nCountOfPathsFound += 1;
+		
 		if(_bFoundPath == true)
 		{
 			//was able to find a path to the desired destination.
 			m_lvPathsFound.Add(_vPath);
+            m_nCountOfPathsFound += 1;
 		}
 		else
 		{

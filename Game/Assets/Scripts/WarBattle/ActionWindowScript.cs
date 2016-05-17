@@ -22,7 +22,6 @@ public class ActionWindowScript : MonoBehaviour
 
     public void MoveDown()
     {
-        Debug.Log("Down");
         m_nChoiceIter += 1;
         if (m_nChoiceIter >= m_goChoices.Length)
             m_nChoiceIter = 0;
@@ -30,7 +29,6 @@ public class ActionWindowScript : MonoBehaviour
     }
     public void MoveUp()
     {
-        Debug.Log("UP");
         m_nChoiceIter -= 1;
         if (m_nChoiceIter < 0)
             m_nChoiceIter = m_goChoices.Length - 1;
@@ -38,7 +36,6 @@ public class ActionWindowScript : MonoBehaviour
     }
     public void Confirm()
     {
-        Debug.Log("Confirm");
         switch (m_nChoiceIter)
         {
             case 0:

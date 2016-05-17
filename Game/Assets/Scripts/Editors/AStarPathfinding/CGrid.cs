@@ -10,6 +10,8 @@ public class CGrid : MonoBehaviour
 	public float nodeRadius;
     public bool m_bShowGrid;
 	CNode[,] grid;
+    public float m_fNodeWidth = 1.0f;
+    public float m_fNodeHeight = 1.0f;
 	float nodeDiameter;
 	int gridSizeX, gridSizeY;
 
@@ -31,6 +33,17 @@ public class CGrid : MonoBehaviour
 		CreateGrid();
 	}
 
+    public void GridResized(GameObject _goBackground)
+    {
+        float xSize = _goBackground.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
+        float ySize = _goBackground.GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+        gridWorldSize.x = Mathf.RoundToInt(_goBackground.GetComponent<SpriteRenderer>().sprite.bounds.size.x * _goBackground.transform.localScale.x);
+        gridWorldSize.y = Mathf.RoundToInt(_goBackground.GetComponent<SpriteRenderer>().sprite.bounds.size.y * _goBackground.transform.localScale.y);
+        m_fNodeWidth = gridWorldSize.x / gridSizeX;
+        m_fNodeHeight = gridWorldSize.y / gridSizeY;
+        GameObject.Find("WarBattleWatcher").GetComponent<WarBattleWatcherScript>().MapResized();
+        UpdateGrid();
+    }
 	void Update()
 	{
 		if(m_fUpdateTimer >= m_fUpdateBuffer)
@@ -58,9 +71,11 @@ public class CGrid : MonoBehaviour
 		{
 			for (int y = 0; y < gridSizeY; y ++) 
 			{
-				Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + 
-					Vector3.up * (y * nodeDiameter + nodeRadius);
-				bool walkable = !(Physics2D.OverlapCircle(worldPoint, nodeRadius,unwalkableMask));
+				//Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + 
+					//Vector3.up * (y * nodeDiameter + nodeRadius);
+                Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * m_fNodeWidth + (m_fNodeWidth * 0.5f)) +
+                    Vector3.up * (y * m_fNodeHeight + (m_fNodeHeight * 0.5f));
+                bool walkable = !(Physics2D.OverlapCircle(worldPoint, nodeRadius,unwalkableMask));
 				//bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius));
 				grid[x,y] = new CNode(walkable,worldPoint, x,y, 0);
 			}
@@ -165,7 +180,8 @@ public class CGrid : MonoBehaviour
 			{
 				Gizmos.color = (n.walkable)?Color.white:Color.red;
 				Gizmos.color = new Color(Gizmos.color.r, Gizmos.color.g, Gizmos.color.b, 0.35f);
-				Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - 0.1f));
+                Gizmos.DrawCube(n.worldPosition, new Vector3(m_fNodeWidth - 0.1f, m_fNodeHeight - 0.1f, 0.1f));
+                //Gizmos.DrawCube(n.worldPosition, Vector3.one *(nodeDiameter - 0.1f));
 			}
 		}
 	}

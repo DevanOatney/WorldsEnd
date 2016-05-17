@@ -29,7 +29,7 @@ public class FightSceneControllerScript : MonoBehaviour
         public int m_nMovementRange;
 	}
 
-	public GameObject m_goLeftSide, m_goRightSide, m_goLowerBound, m_goLeftAttack, m_goRightAttack;
+	public GameObject m_goLeftSide, m_goRightSide, m_goLowerBound, m_goLeftAttack, m_goRightAttack, m_goLeftStart, m_goRightStart;
 	List<GameObject> m_lLeftUnits = new List<GameObject>();
 	List<GameObject> m_lRightUnits = new List<GameObject>();
 	cWarUnit m_cLeftWarUnit, m_cRightWarUnit;
@@ -46,6 +46,7 @@ public class FightSceneControllerScript : MonoBehaviour
     float m_fTimerTillFightStarts = 2.2f;
 
     public GameObject m_goWatcher;
+    int m_nRangeRequired = 0;
 
 
 	// Use this for initialization
@@ -61,10 +62,16 @@ public class FightSceneControllerScript : MonoBehaviour
             m_fTimerTillFightStarts += Time.deltaTime;
             if (m_fTimerTillFightStarts >= m_fTimerTillFightStartsBucket)
             {
-                foreach (GameObject _unit in m_lLeftUnits)
-                    _unit.GetComponent<WB_UnitScript>().TimeToMove();
-                foreach (GameObject _unit in m_lRightUnits)
-                    _unit.GetComponent<WB_UnitScript>().TimeToMove();
+                if (m_cLeftWarUnit.m_nAttackRange >= m_nRangeRequired)
+                {
+                    foreach (GameObject _unit in m_lLeftUnits)
+                        _unit.GetComponent<WB_UnitScript>().TimeToMove();
+                }
+                if (m_cRightWarUnit.m_nAttackRange >= m_nRangeRequired)
+                {
+                    foreach (GameObject _unit in m_lRightUnits)
+                        _unit.GetComponent<WB_UnitScript>().TimeToMove();
+                }
             }
         }
 	}
@@ -82,7 +89,7 @@ public class FightSceneControllerScript : MonoBehaviour
 
 	}
 
-	public void SetupBattleScene(cWarUnit _leftSide, cWarUnit _rightSide)
+	public void SetupBattleScene(cWarUnit _leftSide, cWarUnit _rightSide, int _rngRequired)
 	{
 		m_bHasArrivedAtEnd = false;
 		m_bDamagePhaseEnded = false;
@@ -91,6 +98,7 @@ public class FightSceneControllerScript : MonoBehaviour
             Destroy(_go);
         foreach (GameObject _go in m_lRightUnits)
             Destroy(_go);
+        m_nRangeRequired = _rngRequired;
 		m_lLeftUnits.Clear();
 		m_lRightUnits.Clear();
 		m_cLeftWarUnit = _leftSide;
@@ -132,7 +140,7 @@ public class FightSceneControllerScript : MonoBehaviour
 		
 			if(_side == 1)
 			{
-				_startPos = m_goLeftSide.transform.localPosition;
+				_startPos = m_goLeftStart.transform.localPosition;
 				_char.transform.localPosition = AdjustPositionOfUnit(_startPos, ref _fXOffset, ref _fYOffset, _side);
 
 				Vector3 _scale = _char.transform.localScale;
@@ -142,7 +150,7 @@ public class FightSceneControllerScript : MonoBehaviour
 			}
 			else
 			{
-				_startPos = m_goRightSide.transform.localPosition;
+				_startPos = m_goRightStart.transform.localPosition;
 				_char.transform.localPosition = AdjustPositionOfUnit(_startPos, ref _fXOffset, ref _fYOffset, _side);
 				m_lRightUnits.Add(_char);
 			}

@@ -16,6 +16,7 @@ public class WarBattleWatcherScript : MonoBehaviour
     DCScript dc;
     List<GameObject> m_lAllies = new List<GameObject>();
     List<GameObject> m_lEnemies = new List<GameObject>();
+    List<GameObject> m_lGuests = new List<GameObject>();
     Vector2 m_vSelectorGridPos = Vector2.zero;
     public bool m_bIsAllyTurn = true;
     bool m_bAllowInput = false;
@@ -188,10 +189,24 @@ public class WarBattleWatcherScript : MonoBehaviour
         }
     }
 
+    public void MapResized()
+    {
+        //This means that they're messing around with the window size, iterate through all the units and adjust their positions/scales.
+        foreach (GameObject _go in m_lAllies)
+            _go.GetComponent<TRPG_UnitScript>().MapResized();
+        foreach (GameObject _go in m_lEnemies)
+            _go.GetComponent<TRPG_UnitScript>().MapResized();
+        foreach (GameObject _go in m_lGuests)
+            _go.GetComponent<TRPG_UnitScript>().MapResized();
+    }
+
     public void ActionCancelled()
     {
         if (m_cPreviousUnitPosition != null)
+        {
             m_goSelectedUnit.transform.position = m_cPreviousUnitPosition.worldPosition;
+            m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_cPositionOnGrid = m_cPreviousUnitPosition;
+        }
         m_cPreviousUnitPosition = null;
         m_goSelectedUnit = null;
         ClearHighlightedSquares();
@@ -319,8 +334,9 @@ public class WarBattleWatcherScript : MonoBehaviour
         }
         if (_target != null)
         {
+            CNode _node = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelectedUnit.transform.position);
             CNode _targetNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_target.transform.position);
-            Vector2 _strtDest = new Vector2(_unitNode.gridX, _unitNode.gridY);
+            Vector2 _strtDest = new Vector2(_node.gridX, _node.gridY);
             Vector2 _endDest = new Vector2(_targetNode.gridX, _targetNode.gridY);
             float _distance = Mathf.Sqrt(Mathf.Pow((_endDest.x - _strtDest.x), 2) + Mathf.Pow((_endDest.y - _strtDest.y), 2));
             if (_distance <= m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nAttackRange)
@@ -329,7 +345,7 @@ public class WarBattleWatcherScript : MonoBehaviour
                 m_bAllowInput = false;
                 m_nState = (int)War_States.eEndingAction;
                 m_goBattleScreen.SetActive(true);
-                m_goBattleScreen.GetComponent<FightSceneControllerScript>().SetupBattleScene(_target.GetComponent<TRPG_UnitScript>().m_wuUnitData, m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData);
+                m_goBattleScreen.GetComponent<FightSceneControllerScript>().SetupBattleScene(_target.GetComponent<TRPG_UnitScript>().m_wuUnitData, m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData, (int)_distance);
             }
         }
         
@@ -387,12 +403,12 @@ public class WarBattleWatcherScript : MonoBehaviour
             foreach (GameObject _go in m_lAllies)
             {
                 _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = false;
-                _go.GetComponent<Animator>().SetBool("m_bHasActed", false);
+                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", false);
             }
             foreach (GameObject _go in m_lEnemies)
             {
                 _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
-                _go.GetComponent<Animator>().SetBool("m_bHasActed", true);
+                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
             }
         }
         else
@@ -400,12 +416,12 @@ public class WarBattleWatcherScript : MonoBehaviour
             foreach (GameObject _go in m_lAllies)
             {
                 _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
-                _go.GetComponent<Animator>().SetBool("m_bHasActed", true);
+                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
             }
             foreach (GameObject _go in m_lEnemies)
             {
                 _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = false;
-                _go.GetComponent<Animator>().SetBool("m_bHasActed", false);
+                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", false);
             }
             GetComponent<WarBattle_EnemyControllerScript>().StartFactionTurn(m_lEnemies, null, m_lAllies);
         }
@@ -413,7 +429,7 @@ public class WarBattleWatcherScript : MonoBehaviour
 
     public void EndUnitTurn(GameObject p_unit)
     {
-        p_unit.GetComponent<Animator>().SetBool("m_bHasActed", true);
+        p_unit.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
         p_unit.GetComponent<TRPG_UnitScript>().EndTurn();
         
         if (m_bIsAllyTurn == true)
@@ -481,15 +497,25 @@ public class WarBattleWatcherScript : MonoBehaviour
         {
             GameObject _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + child.name));
             _unit.transform.position = child.position;
+            _unit.GetComponent<TRPG_UnitScript>().m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_unit.transform.position);
             if (child.tag == "Enemy")
             {
                 _unit.tag = "Enemy";
+                Vector3 _localScale = _unit.GetComponentInChildren<Animator>().transform.localScale;
+                _localScale.x *= -1;
+                _unit.GetComponentInChildren<Animator>().transform.localScale = _localScale;
+               
                 m_lEnemies.Add(_unit);
             }
             else if (child.tag == "Ally")
             {
                 _unit.tag = "Ally";
                 m_lAllies.Add(_unit);
+            }
+            else if (child.tag == "Guest")
+            {
+                _unit.tag = "Guest";
+                m_lGuests.Add(_unit);
             }
         }
     }

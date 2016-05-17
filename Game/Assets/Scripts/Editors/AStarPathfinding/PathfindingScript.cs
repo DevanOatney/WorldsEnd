@@ -26,6 +26,15 @@ public class PathfindingScript : MonoBehaviour
         CNode startNode = grid.NodeFromWorldPoint(startPos);
         CNode targetNode = grid.NodeFromWorldPoint(targetPos);
 
+        //Early exit, if the start node and the target node are the same, just return a "path" that is just that single node.
+        if (startNode == targetNode)
+        {
+            List<Vector3> _lQuickPath = new List<Vector3>();
+            _lQuickPath.Add(startNode.worldPosition);
+            return _lQuickPath.ToArray();
+
+        }
+
         CHeap<CNode> openSet = new CHeap<CNode>(grid.MapSize);
         HashSet<CNode> closedSet = new HashSet<CNode>();
         openSet.Add(startNode);
@@ -49,7 +58,7 @@ public class PathfindingScript : MonoBehaviour
 
                 foreach (CNode neighbour in grid.GetNeighbours(currentNode, bAllowDiagonal))
                 {
-                    if (!neighbour.walkable || closedSet.Contains(neighbour))
+                    if ((!neighbour.walkable || closedSet.Contains(neighbour)) && neighbour != startNode)
                     {
                         continue;
                     }
@@ -81,8 +90,16 @@ public class PathfindingScript : MonoBehaviour
 	{
 		CNode startNode = grid.NodeFromWorldPoint(startPos);
 		CNode targetNode = grid.NodeFromWorldPoint(targetPos);
-		
-		CHeap<CNode> openSet = new CHeap<CNode>(grid.MapSize);
+
+        //Early exit, if the start node and the target node are the same, just return a "path" that is just that single node.
+        if (startNode == targetNode)
+        {
+            List<Vector3> _lQuickPath = new List<Vector3>();
+            _lQuickPath.Add(startNode.worldPosition);
+            m_prmRequestManager.FinishedProcessingPath(_lQuickPath.ToArray(), true);
+        }
+
+        CHeap<CNode> openSet = new CHeap<CNode>(grid.MapSize);
 		HashSet<CNode> closedSet = new HashSet<CNode>();
 		openSet.Add(startNode);
 
