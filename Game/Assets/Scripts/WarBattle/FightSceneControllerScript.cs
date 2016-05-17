@@ -6,10 +6,12 @@ public class FightSceneControllerScript : MonoBehaviour
 {
 	public class cWarUnit
 	{
-		public cWarUnit(GameObject _ldr, GameObject _unit, float _percent, int totalCount, int _atp, int _def, int _lck, int _atkRange, int _movement) 
+		public cWarUnit(GameObject _ldr, GameObject _unit, string _szTeamName, float _percent, int totalCount, int _atp, int _def, int _lck, int _atkRange, int _movement) 
 		{
+
 			m_goLeaderSprite = _ldr; 
-			m_goSprite = _unit; 
+			m_goSprite = _unit;
+            m_szTeamName = _szTeamName;
 			m_fPercentRemaining = _percent; 
 			m_nTotalCount = totalCount;
 			m_nAttackPower = _atp;
@@ -18,6 +20,7 @@ public class FightSceneControllerScript : MonoBehaviour
             m_nAttackRange = _atkRange;
             m_nMovementRange = _movement;
 		}
+        public string m_szTeamName;
 		public GameObject m_goLeaderSprite;
 		public GameObject m_goSprite;
 		public float m_fPercentRemaining;

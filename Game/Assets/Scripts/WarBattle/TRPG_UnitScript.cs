@@ -24,8 +24,10 @@ public class TRPG_UnitScript : MonoBehaviour
 	//The data needed for battles
     [HideInInspector]
 	public FightSceneControllerScript.cWarUnit m_wuUnitData;
-	//Hook to the prefab for the base unit animation for this group of units
-	public GameObject m_goBaseUnitPrefab;
+    //Hook to the prefab for the base unit animation for this group of units
+    public GameObject m_goBaseUnitPrefab;
+    //Hook to the death animation (not sure if units will have differents kinds.. but could be.
+    public GameObject m_goDeathAnim;
 	float m_fMovementTimer = 0.0f;
 	float m_fMovementBucket = 0.5f;
     public CNode m_cPositionOnGrid;
@@ -39,7 +41,7 @@ public class TRPG_UnitScript : MonoBehaviour
 	}
     void Awake()
     {
-        m_wuUnitData = new FightSceneControllerScript.cWarUnit(null, m_goBaseUnitPrefab, 1.0f, 10, 4, 4, 4, 1, 5);
+        m_wuUnitData = new FightSceneControllerScript.cWarUnit(null, m_goBaseUnitPrefab,"", 1.0f, 10, 4, 4, 4, 1, 5);
         m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(transform.position);
     }
 	// Use this for initialization
@@ -174,10 +176,13 @@ public class TRPG_UnitScript : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	public void KillUnit()
-	{
-		EndTurn();
-	}
+    public void KillUnit()
+    {
+        m_goDeathAnim = Instantiate(m_goDeathAnim) as GameObject;
+        m_goDeathAnim.transform.localScale = transform.localScale;
+        m_goDeathAnim.transform.position = transform.position;
+        m_goDeathAnim.GetComponentInChildren<WB_Field_UnitDeathScript>().Init(gameObject);
+    }
 
     void MovementFinished()
     {

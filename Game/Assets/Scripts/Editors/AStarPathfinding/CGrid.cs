@@ -35,8 +35,6 @@ public class CGrid : MonoBehaviour
 
     public void GridResized(GameObject _goBackground)
     {
-        float xSize = _goBackground.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
-        float ySize = _goBackground.GetComponent<SpriteRenderer>().sprite.bounds.size.y;
         gridWorldSize.x = Mathf.RoundToInt(_goBackground.GetComponent<SpriteRenderer>().sprite.bounds.size.x * _goBackground.transform.localScale.x);
         gridWorldSize.y = Mathf.RoundToInt(_goBackground.GetComponent<SpriteRenderer>().sprite.bounds.size.y * _goBackground.transform.localScale.y);
         m_fNodeWidth = gridWorldSize.x / gridSizeX;

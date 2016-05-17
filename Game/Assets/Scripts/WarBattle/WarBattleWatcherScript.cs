@@ -9,6 +9,7 @@ public class WarBattleWatcherScript : MonoBehaviour
     public GameObject m_goBattleScreen;
     public GameObject m_goActionWindow;
     public GameObject m_goSystemWindow;
+    public GameObject m_goBattleOverWindow;
     public GameObject m_goHighlighter;
     public GameObject m_goSelector;
     //game object for the map and starting positional data
@@ -431,24 +432,53 @@ public class WarBattleWatcherScript : MonoBehaviour
     {
         p_unit.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
         p_unit.GetComponent<TRPG_UnitScript>().EndTurn();
-        
+        // Let's check if anything died...
+        for (int i = m_lAllies.Count - 1; i >= 0; i--)
+        {
+            if (m_lAllies[i].GetComponent<TRPG_UnitScript>().m_wuUnitData.m_fPercentRemaining < 0.05f)
+            {
+                GameObject _goCatchUnit = m_lAllies[i];
+                GetComponent<WarBattle_EnemyControllerScript>().RemoveUnit(_goCatchUnit);
+                _goCatchUnit.GetComponent<TRPG_UnitScript>().KillUnit();
+            }
+            if (m_lAllies.Count <= 0)
+            {
+                m_bAllowInput = false;
+                Lose();
+                return;
+            }
+        }
+        for (int i = m_lEnemies.Count - 1; i >= 0; i--)
+        {
+            if (m_lEnemies[i].GetComponent<TRPG_UnitScript>().m_wuUnitData.m_fPercentRemaining < 0.05f)
+            {
+                GameObject _goCatchUnit = m_lEnemies[i];
+                GetComponent<WarBattle_EnemyControllerScript>().RemoveUnit(_goCatchUnit);
+                _goCatchUnit.GetComponent<TRPG_UnitScript>().KillUnit();
+            }
+            if (m_lEnemies.Count <= 0)
+            {
+                m_bAllowInput = false;
+                Win();
+                return;
+            }
+        }
+        for (int i = m_lGuests.Count - 1; i >= 0; i--)
+        {
+            if (m_lGuests[i].GetComponent<TRPG_UnitScript>().m_wuUnitData.m_fPercentRemaining < 0.05f)
+            {
+                GameObject _goCatchUnit = m_lGuests[i];
+                GetComponent<WarBattle_EnemyControllerScript>().RemoveUnit(_goCatchUnit);
+                _goCatchUnit.GetComponent<TRPG_UnitScript>().KillUnit();
+            }
+        }
+
         if (m_bIsAllyTurn == true)
         {
             m_nState = (int)War_States.eMovement;
             m_goSelectedUnit = null;
             m_cPreviousUnitPosition = null;
             m_bAllowInput = true;
-
-            if (p_unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_fPercentRemaining < 0.05f)
-            {
-                //This unit died, do stuff
-                for (int i = m_lAllies.Count - 1; i >= 0; i--)
-                {
-                    if (p_unit == m_lAllies[i])
-                        m_lAllies.RemoveAt(i);
-                }
-                GetComponent<WarBattle_EnemyControllerScript>().RemoveUnit(p_unit);
-            }
             
             //check to see if all of the units on this team have acted, if they have, make sure to end their factions turn
             foreach (GameObject _go in m_lAllies)
@@ -461,16 +491,6 @@ public class WarBattleWatcherScript : MonoBehaviour
         }
         else
         {
-            if (p_unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_fPercentRemaining < 0.05f)
-            {
-                //This unit died, do stuff
-                for (int i = m_lAllies.Count - 1; i >= 0; i--)
-                {
-                    if (p_unit == m_lAllies[i])
-                        m_lEnemies.RemoveAt(i);
-                }
-                GetComponent<WarBattle_EnemyControllerScript>().RemoveUnit(p_unit);
-            }
             //check to see if all of the units on this team have acted, if they have, make sure to end their factions turn
             foreach (GameObject _go in m_lEnemies)
             {
@@ -501,6 +521,7 @@ public class WarBattleWatcherScript : MonoBehaviour
             if (child.tag == "Enemy")
             {
                 _unit.tag = "Enemy";
+                _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_szTeamName = "Baddie";
                 Vector3 _localScale = _unit.GetComponentInChildren<Animator>().transform.localScale;
                 _localScale.x *= -1;
                 _unit.GetComponentInChildren<Animator>().transform.localScale = _localScale;
@@ -510,6 +531,8 @@ public class WarBattleWatcherScript : MonoBehaviour
             else if (child.tag == "Ally")
             {
                 _unit.tag = "Ally";
+                _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_szTeamName = "Hero";
+                _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nDefensePower = 1;
                 m_lAllies.Add(_unit);
             }
             else if (child.tag == "Guest")
@@ -518,5 +541,15 @@ public class WarBattleWatcherScript : MonoBehaviour
                 m_lGuests.Add(_unit);
             }
         }
+    }
+
+    void Win()
+    {
+        m_goBattleOverWindow.GetComponent<BattleOverScript>().ActivateEndWindow("You have won!");
+    }
+
+    void Lose()
+    {
+        m_goBattleOverWindow.GetComponent<BattleOverScript>().ActivateEndWindow("You have lost!");
     }
 }
