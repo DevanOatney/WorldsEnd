@@ -31,7 +31,7 @@ public class TRPG_UnitScript : MonoBehaviour
 	float m_fMovementTimer = 0.0f;
 	float m_fMovementBucket = 0.5f;
     public CNode m_cPositionOnGrid;
-
+    public GameObject[] m_goDamagedIcons;
 
 	class cDesiredLocation
 	{
@@ -50,7 +50,48 @@ public class TRPG_UnitScript : MonoBehaviour
         
 	}
 
-
+    public void CheckHP()
+    {
+        Debug.Log(m_wuUnitData.m_szTeamName + " - " + m_wuUnitData.m_fPercentRemaining);
+        if (m_wuUnitData.m_fPercentRemaining > 0.8f)
+        {
+            //above 80% hp remaning for this group, don't do anything.
+            return;
+        }
+        if (m_wuUnitData.m_fPercentRemaining > 0.5f)
+        {
+            //group between 51-80%
+            if (m_goDamagedIcons[0].activeSelf == false)
+            {
+                //hasn't shown the damaged effect yet
+                m_goDamagedIcons[0].SetActive(true);
+                m_goDamagedIcons[0].GetComponentInChildren<Animator>().SetTrigger("m_tStartInflict");
+            }
+            return;
+        }
+        if (m_wuUnitData.m_fPercentRemaining > 0.3f)
+        {
+            //group between 31-50%
+            if (m_goDamagedIcons[1].activeSelf == false)
+            {
+                //hasn't shown the damaged effect yet
+                m_goDamagedIcons[1].SetActive(true);
+                m_goDamagedIcons[1].GetComponentInChildren<Animator>().SetTrigger("m_tStartInflict");
+            }
+            return;
+        }
+        if (m_wuUnitData.m_fPercentRemaining > 0.1f)
+        {
+            //group between 11-30%
+            if (m_goDamagedIcons[2].activeSelf == false)
+            {
+                //hasn't shown damage effect yet
+                m_goDamagedIcons[2].SetActive(true);
+                m_goDamagedIcons[2].GetComponentInChildren<Animator>().SetTrigger("m_tStartInflict");
+            }
+            return;
+        }
+    }
 
 	// Update is called once per frame
 	void Update () 

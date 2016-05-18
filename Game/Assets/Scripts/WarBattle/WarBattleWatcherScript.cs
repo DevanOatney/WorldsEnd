@@ -441,6 +441,8 @@ public class WarBattleWatcherScript : MonoBehaviour
                 GetComponent<WarBattle_EnemyControllerScript>().RemoveUnit(_goCatchUnit);
                 _goCatchUnit.GetComponent<TRPG_UnitScript>().KillUnit();
             }
+            else
+                m_lAllies[i].GetComponent<TRPG_UnitScript>().CheckHP();
             if (m_lAllies.Count <= 0)
             {
                 m_bAllowInput = false;
@@ -456,6 +458,8 @@ public class WarBattleWatcherScript : MonoBehaviour
                 GetComponent<WarBattle_EnemyControllerScript>().RemoveUnit(_goCatchUnit);
                 _goCatchUnit.GetComponent<TRPG_UnitScript>().KillUnit();
             }
+            else
+                m_lEnemies[i].GetComponent<TRPG_UnitScript>().CheckHP();
             if (m_lEnemies.Count <= 0)
             {
                 m_bAllowInput = false;
@@ -471,6 +475,8 @@ public class WarBattleWatcherScript : MonoBehaviour
                 GetComponent<WarBattle_EnemyControllerScript>().RemoveUnit(_goCatchUnit);
                 _goCatchUnit.GetComponent<TRPG_UnitScript>().KillUnit();
             }
+            else
+                m_lGuests[i].GetComponent<TRPG_UnitScript>().CheckHP();
         }
 
         if (m_bIsAllyTurn == true)
