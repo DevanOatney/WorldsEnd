@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BattleOverScript : MonoBehaviour
@@ -8,15 +8,32 @@ public class BattleOverScript : MonoBehaviour
 
     float m_fMovementSpeed = 60.0f;
     bool m_bStopSliding = false;
-	// Use this for initialization
-	void Start () {
-	
-	}
+    bool m_bBattleWon = false;
+    DCScript ds;
 
-    public void ActivateEndWindow(string _szMessage)
+    void Awake()
+    {
+        
+    }
+
+	// Use this for initialization
+	void Start ()
+    {
+        GameObject pdata = GameObject.Find("PersistantData");
+        if (pdata == null)
+        {
+            pdata = Instantiate(Resources.Load("Misc/PersistantData", typeof(GameObject))) as GameObject;
+            pdata.name = pdata.name.Replace("(Clone)", "");
+        }
+
+        ds = pdata.GetComponent<DCScript>();
+    }
+
+    public void ActivateEndWindow(string _szMessage, bool _bBattleWon)
     {
         GetComponentInChildren<Text>().text = _szMessage;
         gameObject.SetActive(true);
+        m_bBattleWon = _bBattleWon;
     }
 
 	// Update is called once per frame
@@ -32,6 +49,16 @@ public class BattleOverScript : MonoBehaviour
             else
             {
                 //TODO:End the scene.
+                if (m_bBattleWon == true)
+                {
+                    string previousField = ds.GetPreviousFieldName();
+                    ds.SetPreviousFieldName(SceneManager.GetActiveScene().name);
+                    SceneManager.LoadScene(previousField);
+                }
+                else
+                {
+                    SceneManager.LoadScene("GameOver_Scene");
+                }
             }
         }
         if (m_bStopSliding == false)

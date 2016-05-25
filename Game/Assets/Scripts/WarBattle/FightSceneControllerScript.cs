@@ -141,7 +141,15 @@ public class FightSceneControllerScript : MonoBehaviour
             {
                 m_fLeftSideDeathTimer = 0.0f;
                 if (KillRandomUnit(m_lLeftUnits) == false)
+                {
                     m_fLeftSideDeathDuration = m_fTotalArrowDuration * 5;
+                }
+                else
+                {
+                    m_nLeftSideDeathCount -= 1;
+                    if(m_nLeftSideDeathCount <= 0)
+                        m_fLeftSideDeathDuration = m_fTotalArrowDuration * 5;
+                }
             }
             else
                 m_fLeftSideDeathTimer += Time.deltaTime;
@@ -151,7 +159,15 @@ public class FightSceneControllerScript : MonoBehaviour
                 m_fRightSideDeathTimer = 0.0f;
                 //if we weren't able to kill the unit, set the duration high so we stop iterating through this
                 if (KillRandomUnit(m_lRightUnits) == false)
+                {
                     m_fRightSideDeathDuration = m_fTotalArrowDuration * 5;
+                }
+                else
+                {
+                    m_nRightSideDeathCount -= 1;
+                    if (m_nRightSideDeathCount <= 0)
+                        m_fRightSideDeathDuration = m_fTotalArrowDuration * 5;
+                }
             }
             else
                 m_fRightSideDeathTimer += Time.deltaTime;

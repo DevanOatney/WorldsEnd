@@ -558,11 +558,11 @@ public class WarBattleWatcherScript : MonoBehaviour
 
     void Win()
     {
-        m_goBattleOverWindow.GetComponent<BattleOverScript>().ActivateEndWindow("You have won!");
+        m_goBattleOverWindow.GetComponent<BattleOverScript>().ActivateEndWindow("You have won!", true);
     }
 
     void Lose()
     {
-        m_goBattleOverWindow.GetComponent<BattleOverScript>().ActivateEndWindow("You have lost!");
+        m_goBattleOverWindow.GetComponent<BattleOverScript>().ActivateEndWindow("You have lost!", false);
     }
 }

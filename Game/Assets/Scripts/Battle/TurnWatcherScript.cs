@@ -775,7 +775,6 @@ public class TurnWatcherScript : MonoBehaviour
 				}
 			}
 		}
-		//TODO: chance to win items based on enemies defeated/set items that are won during that specific battle
 		string previousField = ds.GetPreviousFieldName();
 		ds.SetPreviousFieldName(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(previousField);
