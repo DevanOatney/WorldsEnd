@@ -413,7 +413,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
         List<cTargetWeights> _lTargets = new List<cTargetWeights>();
         foreach (GameObject _enemy in m_lEnemyTeam)
         {
-            cTargetWeights _newTarget = CalculateBestPath(_enemy, _movementRangeNodes);
+            cTargetWeights _newTarget = CalculatePathsToTarget_OutOfRange(_enemy);
             if (_newTarget != null)
                 _lTargets.Add(_newTarget);
         }
@@ -421,6 +421,28 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             m_goDesiredTarget = CheckNewTarget(_target);
         if (m_goDesiredTarget != null)
         {
+            //We now need to trim down the path, incase it is too long (as at this point we're not caring about movement range)
+            List<Vector3> _vaTrimmedPath = new List<Vector3>();
+            for (int i = 0; i < m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange; ++i)
+            {
+                if (m_goDesiredTarget._vPrefferedPath.Length <= i)
+                {
+                    //We've reached the end of the desired path, before running out of movement space... so this really shouldn't happen, but I'm putting it here just incase
+                    break;
+                }
+                if (m_goDesiredTarget._vPrefferedPath[i] != null)
+                {
+                    _vaTrimmedPath.Add(m_goDesiredTarget._vPrefferedPath[i]);
+                    if (i + 1 >= m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
+                    {
+                        //we're at the end of the movement range, make this trimmed thing the path and call it good.
+                        m_goDesiredTarget = null;
+                        m_cDesiredDestination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_vaTrimmedPath[_vaTrimmedPath.Count - 1]);
+                        return;
+                    }
+                }
+            }
+
             //This should be the catch all, this will return the most optimal unit to move to, even outside of the units movement range.
             m_cDesiredDestination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goDesiredTarget._vPrefferedPath[m_goDesiredTarget._vPrefferedPath.Length - 1]);
         }
@@ -429,6 +451,50 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             //I... don't know what to say if we get here, I'm thinking if we ever land in here it was either an error, or there are no units this unit can find... 
             Debug.Log("No Action Calculated...");
         }
+    }
+
+    //So this is used at the end if the current unit acting can't do anything else, at this point, just return the shortest, valid, path to this unit.
+    cTargetWeights CalculatePathsToTarget_OutOfRange(GameObject p_unit)
+    {
+        FightSceneControllerScript.cWarUnit _thisUnitData = m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData;
+        CNode _unitNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goCurrentUnitActing.transform.position);
+        List<CNode> _targetNeighborNodes = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(p_unit.transform.position, _thisUnitData.m_nAttackRange);
+        List<Vector3[]> _lPaths = new List<Vector3[]>();
+        foreach (CNode _targetsNode in _targetNeighborNodes)
+        {
+            if (_targetsNode.walkable == true)
+            {
+                //There is at least one valid location around this target.
+                _lPaths.Add(CPathRequestManager.m_Instance.m_psPathfinding.FindPathImmediate(_unitNode.worldPosition, _targetsNode.worldPosition));
+            }
+        }
+        //so now that we've found all of the valid paths to this target find the path with the lowest movement cost and set that as this units preferred path.
+        int _closestValidDistance = int.MaxValue;
+        Vector3[] _vBestPath = null;
+        for (int x = _lPaths.Count - 1; x >= 0; --x)
+        {
+            int _movementCost = 0;
+            for (int i = 0; i < _lPaths[x].Length; ++i)
+            {
+                CNode _pathNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_lPaths[x][i]);
+                _movementCost += 1 + _pathNode.movementPenalty;
+            }
+            //So by here we have the total cost it would take to move to this position.  Check to see if it's less than any of the other paths.
+            if (_movementCost <= _closestValidDistance)
+            {
+                //We have a new best!
+                _vBestPath = _lPaths[x];
+                _closestValidDistance = _movementCost;
+            }
+        }
+        if (_vBestPath != null)
+        {
+            cTargetWeights _newTarget = new cTargetWeights();
+            _newTarget._goTarget = p_unit;
+            _newTarget._vPrefferedPath = _vBestPath;
+            return _newTarget;
+        }
+        return null;
     }
 
     cTargetWeights CalculateBestPath(GameObject p_unit, List<CNode> _movementRangeNodes)

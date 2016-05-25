@@ -17,6 +17,8 @@ public class TRPG_UnitScript : MonoBehaviour
     public bool m_bHasActedThisTurn = false;
 	//Once the path requests are sent to be processed, the unit will hang until this flag is toggled to true
 	bool m_bPathFound = false;
+    //Flag for if the unit has reached it's destination, this is so that theres that delay to show the player where the unit arrives before moving on to the next phase.
+    bool m_bReachedDestination = false;
 	//Integral count of how many paths have returned from the request manager, succesful or not, to know when each location has finished processing.
 	int m_nCountOfPathsFound = 0;
 	//iter for traversing the best path, once it's found.
@@ -52,7 +54,6 @@ public class TRPG_UnitScript : MonoBehaviour
 
     public void CheckHP()
     {
-        Debug.Log(m_wuUnitData.m_szTeamName + " - " + m_wuUnitData.m_fPercentRemaining);
         if (m_wuUnitData.m_fPercentRemaining > 0.8f)
         {
             //above 80% hp remaning for this group, don't do anything.
@@ -114,6 +115,12 @@ public class TRPG_UnitScript : MonoBehaviour
 				m_fMovementTimer += Time.deltaTime;
 				if(m_fMovementTimer >= m_fMovementBucket)
 				{
+                    if (m_bReachedDestination == true)
+                    {
+                        MovementFinished();
+                        GameObject.Find("WarBattleWatcher").GetComponent<WarBattleWatcherScript>().MovementFinished(gameObject);
+                        return;
+                    }
 					Vector3 _nextPos = m_vDesiredPath[m_nPathIter];
                     m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_nextPos);
 					transform.position = m_cPositionOnGrid.worldPosition;
@@ -121,9 +128,8 @@ public class TRPG_UnitScript : MonoBehaviour
 					m_nPathIter += 1;
 					if(m_nPathIter >= m_vDesiredPath.Length)
 					{
-						//reached destination.
-                        MovementFinished();
-                        GameObject.Find("WarBattleWatcher").GetComponent<WarBattleWatcherScript>().MovementFinished(gameObject);
+                        //reached destination.
+                        m_bReachedDestination = true;
 					}
 					m_fMovementTimer = 0.0f;
 				}
@@ -191,8 +197,9 @@ public class TRPG_UnitScript : MonoBehaviour
 		
 		if(_bFoundPath == true)
 		{
-			//was able to find a path to the desired destination.
-			m_lvPathsFound.Add(_vPath);
+            //was able to find a path to the desired destination.
+            m_bReachedDestination = false;
+            m_lvPathsFound.Add(_vPath);
             m_nCountOfPathsFound += 1;
 		}
 		else

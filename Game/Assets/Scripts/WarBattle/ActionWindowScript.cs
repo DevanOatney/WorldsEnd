@@ -59,6 +59,7 @@ public class ActionWindowScript : MonoBehaviour
                 }
                 break;
         }
+        m_nChoiceIter = 0;
     }
 
 	// Update is called once per frame
@@ -93,6 +94,7 @@ public class ActionWindowScript : MonoBehaviour
             m_bAllowInput = true;
         m_goUnitData = _cWarUnit;
         m_bIsActive = true;
+        m_goHighlighter.GetComponent<RectTransform>().localPosition = m_goChoices[m_nChoiceIter].GetComponent<RectTransform>().localPosition;
         gameObject.SetActive(true);
     }
 }

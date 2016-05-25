@@ -284,8 +284,8 @@ public class WarBattleWatcherScript : MonoBehaviour
                 //check to make sure this distance is moveable by the unit
                 Vector2 _strtDest = new Vector2(_unitNode.gridX, _unitNode.gridY);
                 Vector2 _endDest = new Vector2(_destination.gridX, _destination.gridY);
-                float _distance = Mathf.Sqrt(Mathf.Pow((_endDest.x - _strtDest.x), 2) + Mathf.Pow((_endDest.y - _strtDest.y), 2));
-                if (_distance <= m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
+                Vector3[] _vaPath = CPathRequestManager.m_Instance.m_psPathfinding.FindPathImmediate(_unitNode.worldPosition, _destination.worldPosition);
+                if (_vaPath.Length <= m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
                 {
                     m_bAllowInput = false;
                     m_cPreviousUnitPosition = _unitNode;
@@ -339,7 +339,7 @@ public class WarBattleWatcherScript : MonoBehaviour
             CNode _targetNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_target.transform.position);
             Vector2 _strtDest = new Vector2(_node.gridX, _node.gridY);
             Vector2 _endDest = new Vector2(_targetNode.gridX, _targetNode.gridY);
-            float _distance = Mathf.Sqrt(Mathf.Pow((_endDest.x - _strtDest.x), 2) + Mathf.Pow((_endDest.y - _strtDest.y), 2));
+            float _distance = Mathf.CeilToInt(Mathf.Sqrt(Mathf.Pow((_endDest.x - _strtDest.x), 2) + Mathf.Pow((_endDest.y - _strtDest.y), 2)));
             if (_distance <= m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nAttackRange)
             {
                 ClearHighlightedSquares();
@@ -479,13 +479,20 @@ public class WarBattleWatcherScript : MonoBehaviour
                 m_lGuests[i].GetComponent<TRPG_UnitScript>().CheckHP();
         }
 
+        Invoke("DelayStartNextUnitTurn", 0.75f);
+
+    }
+
+    //Creating this minor delay so that if something is animating it gives it time before player gets distracted with other thing... kind of a hack, but... I think it should be fine for now
+    void DelayStartNextUnitTurn()
+    {
         if (m_bIsAllyTurn == true)
         {
             m_nState = (int)War_States.eMovement;
             m_goSelectedUnit = null;
             m_cPreviousUnitPosition = null;
             m_bAllowInput = true;
-            
+
             //check to see if all of the units on this team have acted, if they have, make sure to end their factions turn
             foreach (GameObject _go in m_lAllies)
             {
@@ -531,14 +538,14 @@ public class WarBattleWatcherScript : MonoBehaviour
                 Vector3 _localScale = _unit.GetComponentInChildren<Animator>().transform.localScale;
                 _localScale.x *= -1;
                 _unit.GetComponentInChildren<Animator>().transform.localScale = _localScale;
-               
+
                 m_lEnemies.Add(_unit);
             }
             else if (child.tag == "Ally")
             {
                 _unit.tag = "Ally";
                 _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_szTeamName = "Hero";
-                _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nDefensePower = 1;
+                _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nAttackRange = 2;
                 m_lAllies.Add(_unit);
             }
             else if (child.tag == "Guest")

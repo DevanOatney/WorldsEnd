@@ -7,6 +7,7 @@ public class WB_UnitScript : MonoBehaviour
 	bool m_bStartDeath = false;
 	bool m_bHasDied = false;
 	bool m_bShouldAttack = false;
+    public bool m_bIsShootingArrow = false;
 	public bool m_bShouldMove = false;
 	//Stats
 	float m_fMovementSpeed = 100.0f;
@@ -16,6 +17,7 @@ public class WB_UnitScript : MonoBehaviour
 	int m_nDirection = -1;
 	//Hooks
 	public GameObject m_goDeathFlash;
+    public GameObject m_goArrow;
 	GameObject m_goController;
 	GameObject m_goLeftBound, m_goRightBound, m_goLeftAttack, m_goRightAttack;
 
@@ -95,10 +97,19 @@ public class WB_UnitScript : MonoBehaviour
 			m_bShouldMove = true;
 	}
 
-	public void TimeToAttack()
+	public void TimeToAttack(bool _isShootingArrow = false)
 	{
-		if(m_bHasDied == false)
-			GetComponent<Animator>().SetBool("m_bAttack", true);
+        if (m_bHasDied == false)
+        {
+            if (_isShootingArrow == false)
+                GetComponent<Animator>().SetBool("m_bAttack", true);
+            else
+            {
+                //In here it means this unit should pull out their bow and shoot an arrow
+                m_bIsShootingArrow = true;
+                GetComponent<Animator>().SetTrigger("m_tShoot");
+            }
+        }
 	}
 
 	public void TimeToDie()
@@ -122,4 +133,24 @@ public class WB_UnitScript : MonoBehaviour
 			return true;
 		return false;
 	}
+
+    public void FireArrow()
+    {
+        m_bIsShootingArrow = false;
+
+        if (m_nDirection == 1)
+        {
+            GameObject _arrow = Instantiate(m_goArrow, Vector3.zero, Quaternion.Euler(new Vector3(0, 0, 180))) as GameObject;
+            _arrow.transform.SetParent(gameObject.transform.parent);
+            _arrow.transform.localPosition = gameObject.transform.localPosition;
+            _arrow.GetComponentInChildren<Animator>().SetTrigger("m_tToRight");
+        }
+        else
+        {
+            GameObject _arrow = Instantiate(m_goArrow, Vector3.zero, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+            _arrow.transform.SetParent(gameObject.transform.parent);
+            _arrow.transform.localPosition = gameObject.transform.localPosition;
+        }
+
+    }
 }
