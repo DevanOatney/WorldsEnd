@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class WarBattleWatcherScript : MonoBehaviour
 {
-    enum War_States { eMovement, eWaitForMovement, eAttack, eMagic, eSystem, eEndingAction}
+    enum War_States { eMovement, eWaitForMovement, eAttack, eMagic, eSystem, eEndingAction }
     //hooks to gameobjects
     public GameObject m_goBattleScreen;
     public GameObject m_goActionWindow;
@@ -46,22 +46,22 @@ public class WarBattleWatcherScript : MonoBehaviour
         else
             dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
     }
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         LoadInMap();
         GetComponent<WarBattle_EnemyControllerScript>().Initialize(gameObject, m_goActionWindow);
         m_bAllowInput = true;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         if (m_bIsAllyTurn == true && m_bAllowInput == true)
         {
             HandleInput();
         }
-	}
+    }
 
     void HandleInput()
     {
@@ -83,7 +83,7 @@ public class WarBattleWatcherScript : MonoBehaviour
                 }
                 break;
         }
-    
+
     }
 
     /// <summary>
@@ -92,7 +92,7 @@ public class WarBattleWatcherScript : MonoBehaviour
     /// <param name="_direction">0 : Down, 1: Left, 2: Right, 3: Up.</param>
     public void MoveCursor(int _direction)
     {
-        switch(_direction)
+        switch (_direction)
         {
             case 0:
                 {
@@ -233,7 +233,7 @@ public class WarBattleWatcherScript : MonoBehaviour
                         ShowHighlightedSquares(_go, _go.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange, Color.yellow);
                         _go.GetComponent<TRPG_UnitScript>().m_bIsMyTurn = true;
                         m_goSelectedUnit = _go;
-                        
+
                     }
                     break;
                 }
@@ -297,7 +297,7 @@ public class WarBattleWatcherScript : MonoBehaviour
 
         }
     }
-     
+
     public void AttackChoiceSelected()
     {
         if (m_bIsAllyTurn == true)
@@ -349,8 +349,8 @@ public class WarBattleWatcherScript : MonoBehaviour
                 m_goBattleScreen.GetComponent<FightSceneControllerScript>().SetupBattleScene(_target.GetComponent<TRPG_UnitScript>().m_wuUnitData, m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData, (int)_distance);
             }
         }
-        
-        
+
+
     }
     public void MagicChoiceSelected()
     {
@@ -526,34 +526,92 @@ public class WarBattleWatcherScript : MonoBehaviour
     void LoadInMap()
     {
         m_goMapData = Instantiate(Resources.Load<GameObject>("WarBattleData/" + dc.m_szWarBattleDataPath));
+        GameObject _goCatchHelperObjectToDestroy = null;
+        GameObject _goCatchAllyContainerToDestroy = null;
         foreach (Transform child in m_goMapData.transform)
         {
-            GameObject _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + child.name));
+            if (child.name == "Designer_Helper")
+            {
+                _goCatchHelperObjectToDestroy = child.gameObject;
+                continue;
+            }
+            GameObject _unit;
+            //Is this an ally start position? (Allies are placed in specified positions determined by an order determined out of battle by the player, so this is handled differently than enemies/guests
+            if (child.tag == "Ally")
+            {
+                _goCatchAllyContainerToDestroy = child.gameObject;
+                List<FightSceneControllerScript.cWarUnit> _lAllyUnits = dc.GetWarUnits();
+
+                if (_lAllyUnits.Count <= 0)
+                {
+                    //This is a debug battle, put in some debug ally units n'stuff(?)
+                    Transform _debugAllyContainer = _goCatchHelperObjectToDestroy.transform.FindChild("DebugAllies");
+                    Transform[] _debugAllies = _debugAllyContainer.GetComponentsInChildren<Transform>();
+                    //set this to 1 instead of zero because the container above will contain itself, so skip over it.
+                    int _nIter = 1;
+                    foreach (Transform _allyChild in child.transform)
+                    {
+                        if (_nIter >= _debugAllies.Length)
+                        {
+                            //We've reached the last of the units, break out yo.
+                            break;
+                        }
+                        _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + _debugAllies[_nIter].name));
+                        _unit.transform.position = _allyChild.position;
+                        _unit.GetComponent<TRPG_UnitScript>().m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_unit.transform.position);
+                        _unit.tag = "Ally";
+                        m_lAllies.Add(_unit);
+                        ++_nIter;
+                    }
+                }
+                else
+                {
+                    //This is a for realsies battle, load up each unit into it's numerical location.
+                    int _nIter = 0;
+                    foreach (Transform _allyChild in child.transform)
+                    {
+                        if (_nIter >= _lAllyUnits.Count)
+                        {
+                            //We've reached the last of the units, break out yo.
+                            break;
+                        }
+                        _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + _lAllyUnits[_nIter].m_szTeamName));
+                        _unit.transform.position = child.position;
+                        _unit.GetComponent<TRPG_UnitScript>().m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_unit.transform.position);
+                        _unit.tag = "Ally";
+                        _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData = _lAllyUnits[_nIter];
+                        m_lAllies.Add(_unit);
+                        ++_nIter;
+                    }
+                }
+
+                continue;
+            }
+            _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + child.name));
             _unit.transform.position = child.position;
             _unit.GetComponent<TRPG_UnitScript>().m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_unit.transform.position);
+            //Is this an enemy?
             if (child.tag == "Enemy")
             {
                 _unit.tag = "Enemy";
-                _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_szTeamName = "Baddie";
                 Vector3 _localScale = _unit.GetComponentInChildren<Animator>().transform.localScale;
                 _localScale.x *= -1;
                 _unit.GetComponentInChildren<Animator>().transform.localScale = _localScale;
 
                 m_lEnemies.Add(_unit);
             }
-            else if (child.tag == "Ally")
-            {
-                _unit.tag = "Ally";
-                _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_szTeamName = "Hero";
-                _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nAttackRange = 2;
-                m_lAllies.Add(_unit);
-            }
+            //Is this an enemy?
             else if (child.tag == "Guest")
             {
                 _unit.tag = "Guest";
                 m_lGuests.Add(_unit);
             }
+            Destroy(child.gameObject);
         }
+        if (_goCatchHelperObjectToDestroy != null)
+            Destroy(_goCatchHelperObjectToDestroy);
+        if (_goCatchAllyContainerToDestroy != null)
+            Destroy(_goCatchAllyContainerToDestroy);
     }
 
     void Win()

@@ -22,7 +22,9 @@ public class DCScript : MonoBehaviour
 	List<CharacterData> m_lPartyMembers = new List<CharacterData>();
 	//List of character in the roster
 	List<CharacterData> m_lRoster = new List<CharacterData>();
-
+    //List of Generals in army
+    List<FightSceneControllerScript.cWarUnit> m_lAllyUnits = new List<FightSceneControllerScript.cWarUnit>();
+    
 	//flag field that is toggled depending on what the players actions are in the game
 	//["Name"] - 1 if activated 								  : Place Created
 	public Dictionary<string, int> m_dStoryFlagField = new Dictionary<string, int>();
@@ -261,7 +263,12 @@ public class DCScript : MonoBehaviour
 	{
 		return m_lRoster;
 	}
+    public List<FightSceneControllerScript.cWarUnit> GetWarUnits()
+    {
+        return m_lAllyUnits;
+    }
 
+    public void SetWarUnits(List<FightSceneControllerScript.cWarUnit> a) { m_lAllyUnits = a; }
 	public void SetRoster(List<CharacterData> c) {m_lRoster = c;}
 	//So this call is also updating character stats, so iterate through each character and update their stats on the roster
 	public void SetParty(List<CharacterData> p) 

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4a1a50108b8b413479b23ab391d7c4c5
-timeCreated: 1462617101
+timeCreated: 1464343718
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -3707,9 +3707,9 @@ TextureImporter:
     - name: PLACEHOLDER_WarUnits_294
       rect:
         serializedVersion: 2
-        x: 402
+        x: 410
         y: 306
-        width: 24
+        width: 16
         height: 27
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -3762,9 +3762,9 @@ TextureImporter:
     - name: PLACEHOLDER_WarUnits_299
       rect:
         serializedVersion: 2
-        x: 548
+        x: 556
         y: 308
-        width: 24
+        width: 16
         height: 27
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

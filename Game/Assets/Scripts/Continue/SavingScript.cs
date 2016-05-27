@@ -20,6 +20,7 @@ public class SavingScript : MonoBehaviour
 		public int m_nGold;
 		public List<DCScript.CharacterData> m_lParty;
 		public List<DCScript.CharacterData> m_lRoster;
+        public List<FightSceneControllerScript.cWarUnit> m_lAllyUnits;
 		public List<DCScript.StatusEffect> m_lStatusEffects;
 		public List<ItemLibrary.CharactersItems> m_lInventory;
 		public string m_szSceneName;
@@ -52,6 +53,7 @@ public class SavingScript : MonoBehaviour
 		newData.m_nGold = dcs.m_nGold;
 		newData.m_lParty = dcs.GetParty();
 		newData.m_lRoster = dcs.GetRoster();
+        newData.m_lAllyUnits = dcs.GetWarUnits();
 		newData.m_lStatusEffects = dcs.GetStatusEffects();
 		newData.m_lInventory = dcs.m_lItemLibrary.m_lInventory;
 		newData.m_szSceneName = SceneManager.GetActiveScene().name;

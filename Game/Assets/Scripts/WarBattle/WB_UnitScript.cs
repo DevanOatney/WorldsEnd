@@ -7,6 +7,7 @@ public class WB_UnitScript : MonoBehaviour
 	bool m_bStartDeath = false;
 	bool m_bHasDied = false;
 	bool m_bShouldAttack = false;
+    bool m_bHasReachedDestination = false;
     public bool m_bIsShootingArrow = false;
 	public bool m_bShouldMove = false;
 	//Stats
@@ -63,21 +64,23 @@ public class WB_UnitScript : MonoBehaviour
 			m_bShouldAttack = false;
 			GetComponent<Animator>().SetBool("m_bAttack", false);
 		}
-		//Check if we should move, if we should, do it until we get to the end location
-		if(AmIDead() == false && m_bShouldMove == true)
+        //Check if we should move, if we should, do it until we get to the end location
+        if (AmIDead() == false && m_bShouldMove == true )
 		{
-			if(m_nDirection == -1)
+            if (m_nDirection == -1)
 			{
-				if(transform.localPosition.x + m_fStopOffset <= m_goLeftBound.transform.localPosition.x)
+				if(transform.localPosition.x + m_fStopOffset <= m_goLeftBound.transform.localPosition.x && m_bHasReachedDestination == false)
 				{
-					m_goController.GetComponent<FightSceneControllerScript>().UnitReachedDestination();
+                    m_bHasReachedDestination = true;
+                    m_goController.GetComponent<FightSceneControllerScript>().UnitReachedDestination();
 				}
 			}
 			else
 			{
-				if(transform.localPosition.x - m_fStopOffset  >= m_goRightBound.transform.localPosition.x)
+				if(transform.localPosition.x - m_fStopOffset  >= m_goRightBound.transform.localPosition.x && m_bHasReachedDestination == false)
 				{
-					m_goController.GetComponent<FightSceneControllerScript>().UnitReachedDestination();
+                    m_bHasReachedDestination = true;
+                    m_goController.GetComponent<FightSceneControllerScript>().UnitReachedDestination();
 				}
 			}
 			Vector3 vecDir = new Vector3(m_nDirection*m_fMovementSpeed*Time.deltaTime, 0, 0);
@@ -93,8 +96,11 @@ public class WB_UnitScript : MonoBehaviour
 
 	public void TimeToMove()
 	{
-		if(m_bHasDied == false)
-			m_bShouldMove = true;
+        if (m_bHasDied == false)
+        {
+            m_bHasReachedDestination = false;
+            m_bShouldMove = true;
+        }
 	}
 
 	public void TimeToAttack(bool _isShootingArrow = false)
@@ -116,7 +122,8 @@ public class WB_UnitScript : MonoBehaviour
 	{
 		if(AmIDead() == false)
 		{
-			m_bStartDeath = true;
+            m_goController.GetComponent<FightSceneControllerScript>().UnitReachedDestination();
+            m_bStartDeath = true;
 			GetComponent<Animator>().SetBool("m_bDie", true);
 			transform.SetSiblingIndex (0);
 		}

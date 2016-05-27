@@ -23,11 +23,8 @@ public class TRPG_UnitScript : MonoBehaviour
 	int m_nCountOfPathsFound = 0;
 	//iter for traversing the best path, once it's found.
 	int m_nPathIter = 0;
-	//The data needed for battles
-    [HideInInspector]
-	public FightSceneControllerScript.cWarUnit m_wuUnitData;
-    //Hook to the prefab for the base unit animation for this group of units
-    public GameObject m_goBaseUnitPrefab;
+    //The data needed for battles
+    public FightSceneControllerScript.cWarUnit m_wuUnitData;
     //Hook to the death animation (not sure if units will have differents kinds.. but could be.
     public GameObject m_goDeathAnim;
 	float m_fMovementTimer = 0.0f;
@@ -43,7 +40,6 @@ public class TRPG_UnitScript : MonoBehaviour
 	}
     void Awake()
     {
-        m_wuUnitData = new FightSceneControllerScript.cWarUnit(null, m_goBaseUnitPrefab,"", 1.0f, 10, 4, 4, 4, 1, 5);
         m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(transform.position);
     }
 	// Use this for initialization

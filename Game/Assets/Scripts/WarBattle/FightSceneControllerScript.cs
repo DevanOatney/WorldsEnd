@@ -6,7 +6,7 @@ public class FightSceneControllerScript : MonoBehaviour
 {
     enum Battle_States { eMeleeFight, eBowFight}
     Battle_States m_bsBattleState = Battle_States.eMeleeFight;
-
+    [System.Serializable]
 	public class cWarUnit
 	{
 		public cWarUnit(GameObject _ldr, GameObject _unit, string _szTeamName, float _percent, int totalCount, int _atp, int _def, int _lck, int _atkRange, int _movement) 
@@ -26,8 +26,8 @@ public class FightSceneControllerScript : MonoBehaviour
         public string m_szTeamName;
 		public GameObject m_goLeaderSprite;
 		public GameObject m_goSprite;
-		public float m_fPercentRemaining;
-		public int m_nTotalCount;
+		public float m_fPercentRemaining = 1.0f;
+		public int m_nTotalCount = 10;
 		public int m_nAttackPower;
 		public int m_nDefensePower;
 		public int m_nLuck;
@@ -416,7 +416,7 @@ public class FightSceneControllerScript : MonoBehaviour
 	}
 	public void UnitReachedDestination()
 	{
-		if(m_bHasArrivedAtEnd == false)
+		if(m_bHasArrivedAtEnd == false && m_bsBattleState == Battle_States.eMeleeFight)
 		{
 			m_nUnitsArrivedCounter += 1;
 			if(m_nUnitsArrivedCounter >= m_lLeftUnits.Count + m_lRightUnits.Count)
@@ -487,9 +487,9 @@ public class FightSceneControllerScript : MonoBehaviour
 			_fXOffset += m_fUnitXOffset + Random.Range(0, m_fXRangeOffset+1);
 		}
 		if(_side == -1)
-			_startPos.x -= _fXOffset + Random.Range(0.0f, m_fXRangeOffset+1);
-		else
 			_startPos.x += _fXOffset + Random.Range(0.0f, m_fXRangeOffset+1);
+		else
+			_startPos.x -= _fXOffset + Random.Range(0.0f, m_fXRangeOffset+1);
 		_startPos.y -= _fYOffset + Random.Range(0.0f, m_fYRangeOffset+1);
 		return _startPos;
 	}

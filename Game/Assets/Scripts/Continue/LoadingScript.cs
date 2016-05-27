@@ -91,6 +91,7 @@ public class LoadingScript : MonoBehaviour
 		NewData.m_nGold = fileData.m_nGold;
 		NewData.SetRoster(fileData.m_lRoster);
 		NewData.SetParty(fileData.m_lParty);
+        NewData.SetWarUnits(fileData.m_lAllyUnits);
 		NewData.SetStatusEffects(fileData.m_lStatusEffects);
 		NewData.m_lItemLibrary.m_lInventory = fileData.m_lInventory;
 		NewData.SetPreviousFieldName(fileData.m_szSceneName);
