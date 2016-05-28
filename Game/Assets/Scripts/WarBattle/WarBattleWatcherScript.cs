@@ -401,6 +401,8 @@ public class WarBattleWatcherScript : MonoBehaviour
         m_bIsAllyTurn = !m_bIsAllyTurn;
         if (m_bIsAllyTurn == true)
         {
+            m_bAllowInput = true;
+            m_nState = (int)War_States.eMovement;
             foreach (GameObject _go in m_lAllies)
             {
                 _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = false;
@@ -411,6 +413,7 @@ public class WarBattleWatcherScript : MonoBehaviour
                 _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
                 _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
             }
+            
         }
         else
         {
@@ -508,7 +511,10 @@ public class WarBattleWatcherScript : MonoBehaviour
             foreach (GameObject _go in m_lEnemies)
             {
                 if (_go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn == false)
+                {
+                    GetComponent<WarBattle_EnemyControllerScript>().UnitActionEnded();
                     return;
+                }
             }
             //if we're here this means that every unit in this party has acted, time to end this factions turn
             EndFactionTurn();

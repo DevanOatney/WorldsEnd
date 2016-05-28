@@ -25,7 +25,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
 
     //The response floats are for slowing down the steps of the AI so that the player can see step by step what each unit is doing.
     float m_fResponseTimer = 0.0f;
-    float m_fResponseBucket = 0.5f;
+    float m_fResponseBucket = 0.25f;
 
     class cTargetWeights
     {
