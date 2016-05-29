@@ -269,51 +269,67 @@ public class FightSceneControllerScript : MonoBehaviour
 	{
 		float _fXOffset = 0.0f, _fYOffset = 0.0f;
 		int _forceRemaining = (int)(_unit.m_nTotalCount * _unit.m_fPercentRemaining);
+        //Kept at -1 if no leader should spawn.
+        int _nLeaderSpawnIter = -1;
+
+        if (_unit.m_goLeaderSprite != null)
+        {
+            //There is a leader in this group, so we should probably spawn that somewheres.
+            _nLeaderSpawnIter = Random.Range(0, _forceRemaining);
+        }
 		if(_forceRemaining == 0)
 			_forceRemaining = 1;
-		if(_forceRemaining == 1)
-		{
-			if(_unit.m_goLeaderSprite == null)
-			{
-				//if this unit group doesn't have a leader and is down to their last unit, only spawn 1 basic unit.
-			}
-			else
-			{
-				//If the unit is down to it's last person and you do have a leader, only spawn the leader and call it good.
-			}
-		}
 		for(int i = 0; i < _forceRemaining; ++i)
 		{
 			Vector3 _startPos = Vector3.zero;
-			GameObject _char = null;
-			if(i+1 == _forceRemaining && _unit.m_goLeaderSprite != null)
-				_char = Instantiate(_unit.m_goLeaderSprite) as GameObject;
-			else
-			    _char = Instantiate(_unit.m_goSprite) as GameObject;
-			_char.transform.SetParent(gameObject.transform);
-			_char.transform.localScale = Vector3.one * 2;
-			_char.GetComponent<WB_UnitScript>().Initialize(gameObject, _side, false);
-		
-			if(_side == 1)
-			{
-				_startPos = m_goLeftStart.transform.localPosition;
-				_char.transform.localPosition = AdjustPositionOfUnit(_startPos, ref _fXOffset, ref _fYOffset, _side);
-
-				Vector3 _scale = _char.transform.localScale;
-				_scale.x *= -1;
-				_char.transform.localScale = _scale;
-				m_lLeftUnits.Add(_char);
-			}
-			else
-			{
-				_startPos = m_goRightStart.transform.localPosition;
-				_char.transform.localPosition = AdjustPositionOfUnit(_startPos, ref _fXOffset, ref _fYOffset, _side);
-				m_lRightUnits.Add(_char);
-			}
+            if (i + 1 == _forceRemaining && _unit.m_goLeaderSprite != null)
+            {
+                //If there is only one unit remaining in this group, and we have a leader, let's have the leader be the last dude alive.
+                SpawnUnit(_unit.m_goLeaderSprite, ref _fXOffset, ref _fYOffset, _side);
+            }
+            else
+            {
+                if (i == _nLeaderSpawnIter)
+                {
+                    //If there's a leader to spawn, and we're at that random iter, spawn the leader
+                    SpawnUnit(_unit.m_goLeaderSprite, ref _fXOffset, ref _fYOffset, _side);
+                }
+                else
+                    SpawnUnit(_unit.m_goSprite, ref _fXOffset, ref _fYOffset, _side);
+            }
 			_fYOffset += m_fUnitYOffset;
 		}
 
 	}
+
+    void SpawnUnit(GameObject _unit, ref float _fXOffset, ref float _fYOffset, int _side)
+    {
+        Vector3 _startPos = Vector3.zero;
+        GameObject _char = null;
+        _char = Instantiate(_unit) as GameObject;
+        _char.transform.SetParent(gameObject.transform);
+        _char.transform.localScale = Vector3.one * 2;
+        _char.GetComponent<WB_UnitScript>().Initialize(gameObject, _side, false);
+
+        if (_side == 1)
+        {
+            _startPos = m_goLeftStart.transform.localPosition;
+            _char.transform.localPosition = AdjustPositionOfUnit(_startPos, ref _fXOffset, ref _fYOffset, _side);
+
+            Vector3 _scale = _char.transform.localScale;
+            _scale.x *= -1;
+            _char.transform.localScale = _scale;
+            m_lLeftUnits.Add(_char);
+        }
+        else
+        {
+            _startPos = m_goRightStart.transform.localPosition;
+            _char.transform.localPosition = AdjustPositionOfUnit(_startPos, ref _fXOffset, ref _fYOffset, _side);
+            m_lRightUnits.Add(_char);
+        }
+        
+    }
+
 
 	public void StartAttackingPhase()
 	{

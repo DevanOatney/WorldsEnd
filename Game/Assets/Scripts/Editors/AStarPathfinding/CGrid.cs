@@ -2,34 +2,51 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class CGrid : MonoBehaviour 
+public class CGrid : MonoBehaviour
 {
-	
-	public LayerMask unwalkableMask;
-	public Vector2 gridWorldSize;
-	public float nodeRadius;
+
+    public LayerMask unwalkableMask;
+    public Vector2 gridWorldSize;
+    public float nodeRadius;
     public bool m_bShowGrid;
-	CNode[,] grid;
+    CNode[,] grid;
     public float m_fNodeWidth = 1.0f;
     public float m_fNodeHeight = 1.0f;
-	float nodeDiameter;
-	int gridSizeX, gridSizeY;
+    float nodeDiameter;
+    int gridSizeX, gridSizeY;
+    public TerrainType[] m_ttWalkableRegions;
+    LayerMask m_lmRegions;
+    Dictionary<int, int> m_dRegionDictionary = new Dictionary<int, int>();
 
 
-	//optimzation, variables to buffer updating the collision data 
-	float m_fUpdateBuffer = 0.25f;
-	float m_fUpdateTimer = 0.0f;
+    //optimzation, variables to buffer updating the collision data 
+    float m_fUpdateBuffer = 0.25f;
+    float m_fUpdateTimer = 0.0f;
 
     public int MapSize
     {
         get { return gridSizeX * gridSizeY; }
     }
 
+    [System.Serializable]
+    public class TerrainType
+    {
+        public LayerMask m_lmMask;
+        public int m_nMovementPenalty;
+    }
+
+
+
 	void Awake() 
 	{
 		nodeDiameter = nodeRadius*2;
 		gridSizeX = Mathf.RoundToInt((gridWorldSize.x)/nodeDiameter);
 		gridSizeY = Mathf.RoundToInt((gridWorldSize.y)/nodeDiameter);
+        foreach (TerrainType region in m_ttWalkableRegions)
+        {
+            m_lmRegions |= region.m_lmMask.value;
+            m_dRegionDictionary.Add((int)Mathf.Log(region.m_lmMask.value, 2), region.m_nMovementPenalty);
+        }
 		CreateGrid();
 	}
 
@@ -74,8 +91,23 @@ public class CGrid : MonoBehaviour
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * m_fNodeWidth + (m_fNodeWidth * 0.5f)) +
                     Vector3.up * (y * m_fNodeHeight + (m_fNodeHeight * 0.5f));
                 bool walkable = !(Physics2D.OverlapCircle(worldPoint, nodeRadius,unwalkableMask));
-				//bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius));
-				grid[x,y] = new CNode(walkable,worldPoint, x,y, 0);
+                //bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius));
+                int _nMovementPenalty = 0;
+                if (walkable == true)
+                {
+                    //Raycast out, see what the movement penalty is for this puppy!
+                    Ray _Ray = new Ray(worldPoint + Vector3.back * 50, Vector3.forward);
+                    RaycastHit _Hit;
+                    if (Physics.Raycast(_Ray, out _Hit, 100.0f, m_lmRegions))
+                    {
+                        m_dRegionDictionary.TryGetValue(_Hit.collider.gameObject.layer, out _nMovementPenalty);
+                    }
+                    else
+                        _nMovementPenalty = 0;
+
+                }
+
+				grid[x,y] = new CNode(walkable,worldPoint, x,y, _nMovementPenalty);
 			}
 		}
 	}
@@ -176,7 +208,18 @@ public class CGrid : MonoBehaviour
 		{
 			foreach (CNode n in grid) 
 			{
-				Gizmos.color = (n.walkable)?Color.white:Color.red;
+                if (n.walkable == false)
+                    Gizmos.color = Color.red;
+                else
+                {
+                    if (n.movementPenalty <= 0)
+                        Gizmos.color = Color.white;
+                    else if (n.movementPenalty <= 1)
+                        Gizmos.color = Color.green;
+                    else
+                        Gizmos.color = Color.yellow;
+                }
+                
 				Gizmos.color = new Color(Gizmos.color.r, Gizmos.color.g, Gizmos.color.b, 0.35f);
                 Gizmos.DrawCube(n.worldPosition, new Vector3(m_fNodeWidth - 0.1f, m_fNodeHeight - 0.1f, 0.1f));
                 //Gizmos.DrawCube(n.worldPosition, Vector3.one *(nodeDiameter - 0.1f));

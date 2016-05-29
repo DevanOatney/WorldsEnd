@@ -138,7 +138,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                     CalculateAction();
                     if (m_cDesiredDestination != null)
                     {
-                        m_goWatcher.GetComponent<WarBattleWatcherScript>().ShowHighlightedSquares(m_goCurrentUnitActing, m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange, Color.yellow);
+                        m_goWatcher.GetComponent<WarBattleWatcherScript>().ShowHighlightedSquares(m_goCurrentUnitActing, m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange, Color.yellow, false);
                         m_eState = WB_AI_States.eCursorToMoveLocation;
                     }
                 }
@@ -364,7 +364,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             //reset the desired target as it will be accessed later.
             m_goDesiredTarget = null;
         }
-        //So, at this point, there isn't a unit right next to us, but we can move.. grab every node that is in range of this units influence (It's movement range + it's attack range)
+        //So, at this point, there isn't a unit right next to us, but we can move.. grab every node that is in range of this units influence (It's movement range + it's attack range)(does not account for movement cost)
         List<CNode> _lNodesInInfluence = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(_unitNode.worldPosition, _thisUnitData.m_nMovementRange + _thisUnitData.m_nAttackRange);
         List<GameObject> _lTargetsInRange = new List<GameObject>();
 
@@ -383,6 +383,30 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
 
 
         List<CNode> _movementRangeNodes = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(_unitNode.worldPosition, _thisUnitData.m_nMovementRange);
+        //So previous we didn't account for the movement cost of each node.. so iterate through, and remove any of these nodes that are actually out of range.
+        for (int i = _movementRangeNodes.Count - 1; i >= 0; --i)
+        {
+            Vector3[] _vaPath = CPathRequestManager.m_Instance.m_psPathfinding.FindPathImmediate(_unitNode.worldPosition, _movementRangeNodes[i].worldPosition);
+            int _nCost = 0;
+            if (_vaPath == null)
+            {
+                //Early exit, not in range.
+                _movementRangeNodes.RemoveAt(i);
+                continue;
+            }
+            foreach (Vector3 _pos in _vaPath)
+            {
+                CNode _tNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_pos);
+                _nCost += 1 +_tNode.movementPenalty;
+                if (m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange < _nCost)
+                {
+                    //This isn't actually within movement range, kill it.
+                    _movementRangeNodes.RemoveAt(i);
+                    break;
+                }
+            }
+            
+        }
         //Add in it's own square so that it can choose not to move at all
         _movementRangeNodes.Add(_unitNode);
         if (_lTargetsInRange.Count > 0)
@@ -423,6 +447,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
         {
             //We now need to trim down the path, incase it is too long (as at this point we're not caring about movement range)
             List<Vector3> _vaTrimmedPath = new List<Vector3>();
+            int _nCost = 0;
             for (int i = 0; i < m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange; ++i)
             {
                 if (m_goDesiredTarget._vPrefferedPath.Length <= i)
@@ -432,8 +457,13 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                 }
                 if (m_goDesiredTarget._vPrefferedPath[i] != null)
                 {
-                    _vaTrimmedPath.Add(m_goDesiredTarget._vPrefferedPath[i]);
-                    if (i + 1 >= m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
+                    CNode _tNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goDesiredTarget._vPrefferedPath[i]);
+                    _nCost += 1 + _tNode.movementPenalty;
+                    if (_nCost <= m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
+                    {
+                        _vaTrimmedPath.Add(m_goDesiredTarget._vPrefferedPath[i]);
+                    }
+                    else
                     {
                         //we're at the end of the movement range, make this trimmed thing the path and call it good.
                         m_goDesiredTarget = null;
@@ -444,7 +474,10 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             }
 
             //This should be the catch all, this will return the most optimal unit to move to, even outside of the units movement range.
-            m_cDesiredDestination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goDesiredTarget._vPrefferedPath[m_goDesiredTarget._vPrefferedPath.Length - 1]);
+            //m_cDesiredDestination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goDesiredTarget._vPrefferedPath[m_goDesiredTarget._vPrefferedPath.Length - 1]);
+            m_goDesiredTarget = null;
+            m_cDesiredDestination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_vaTrimmedPath[_vaTrimmedPath.Count - 1]);
+            return;
         }
         else
         {
@@ -510,9 +543,24 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             {
                 if (_targetsNode == _ourNode)
                 {
-                    //There is at least one valid location around this target.
-                    _lPaths.Add(CPathRequestManager.m_Instance.m_psPathfinding.FindPathImmediate(_unitNode.worldPosition, _ourNode.worldPosition));
-                    break;
+                    
+                    Vector3[] _vaPath = CPathRequestManager.m_Instance.m_psPathfinding.FindPathImmediate(_unitNode.worldPosition, _ourNode.worldPosition);
+                    if (_vaPath != null)
+                    {
+                        int _nCost = 0;
+                        foreach (Vector3 _pos in _vaPath)
+                        {
+                            CNode _tNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_pos);
+                            _nCost += 1 + _tNode.movementPenalty;
+                        }
+                        if (_vaPath.Length + _nCost > m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
+                        {
+                            //There is at least one valid location around this target.
+                            _lPaths.Add(_vaPath);
+                        }
+
+                        break;
+                    }
                 }
             }
         }

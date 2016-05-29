@@ -230,7 +230,7 @@ public class WarBattleWatcherScript : MonoBehaviour
                     //Is this unit an ally?
                     if (_go.tag == "Ally")
                     {
-                        ShowHighlightedSquares(_go, _go.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange, Color.yellow);
+                        ShowHighlightedSquares(_go, _go.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange, Color.yellow, false);
                         _go.GetComponent<TRPG_UnitScript>().m_bIsMyTurn = true;
                         m_goSelectedUnit = _go;
 
@@ -262,6 +262,12 @@ public class WarBattleWatcherScript : MonoBehaviour
                     MovementFinished(m_goSelectedUnit);
                     return;
                 }
+                if (_destination.walkable == false)
+                {
+                    //early exit, if this node can't even be moved to, ignore it.
+                    return;
+                }
+
                 //check to make sure that no other unit is in the position you're trying to move toward
                 foreach (GameObject _go in m_lAllies)
                 {
@@ -285,7 +291,15 @@ public class WarBattleWatcherScript : MonoBehaviour
                 Vector2 _strtDest = new Vector2(_unitNode.gridX, _unitNode.gridY);
                 Vector2 _endDest = new Vector2(_destination.gridX, _destination.gridY);
                 Vector3[] _vaPath = CPathRequestManager.m_Instance.m_psPathfinding.FindPathImmediate(_unitNode.worldPosition, _destination.worldPosition);
-                if (_vaPath.Length <= m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
+                if (_vaPath == null)
+                    return;
+                int _nCost = 0;
+                foreach (Vector3 _pos in _vaPath)
+                {
+                    CNode _tNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_pos);
+                    _nCost += _tNode.movementPenalty;
+                }
+                if (_vaPath.Length + _nCost <= m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
                 {
                     m_bAllowInput = false;
                     m_cPreviousUnitPosition = _unitNode;
@@ -380,14 +394,39 @@ public class WarBattleWatcherScript : MonoBehaviour
         m_lHighlightedSquares.Clear();
     }
 
-    public void ShowHighlightedSquares(GameObject p_unit, int _rng, Color _col)
+    public void ShowHighlightedSquares(GameObject p_unit, int _rng, Color _col, bool _bShowUnwalkableNodes)
     {
         _col.a = 0.2f;
         ClearHighlightedSquares();
-        //m_goSelector.transform.position = p_unit.transform.position;
         List<CNode> _lNeighbors = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(p_unit.transform.position, _rng);
         foreach (CNode _neigh in _lNeighbors)
         {
+            if (_bShowUnwalkableNodes == false)
+            {
+                if (_neigh.walkable == false)
+                {
+                    //Early exit, if we're not showing unwalkable nodes, and this node is unwalkable, don't show it.
+                    continue;
+                }
+                Vector3[] _vaPathToTarget = CPathRequestManager.m_Instance.m_psPathfinding.FindPathImmediate(p_unit.transform.position, _neigh.worldPosition);
+                if (_vaPathToTarget == null)
+                {
+                    //For some reason it's returning null path in some circumstances (meaning it couldn't find a path)  not sure if this is a bug that needs to be fixed, but let's just error check for now.
+                    continue;
+                }
+                int _nCost = 0;
+                foreach (Vector3 _pos in _vaPathToTarget)
+                {
+                    CNode _tNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_pos);
+                    _nCost += _tNode.movementPenalty;
+                }
+                if (_vaPathToTarget.Length + _nCost > p_unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
+                {
+                    //"Early" exit, if we're not showing unwalkable nodes we're assuming this is for movement, and if this node it not within the actual movement range, don't show it.
+                    continue;
+                }
+            }
+
             GameObject _movementHighlight = Instantiate(m_goHighlighter) as GameObject;
             _movementHighlight.GetComponent<SpriteRenderer>().enabled = true;
             _movementHighlight.transform.position = _neigh.worldPosition;
@@ -541,6 +580,8 @@ public class WarBattleWatcherScript : MonoBehaviour
                 _goCatchHelperObjectToDestroy = child.gameObject;
                 continue;
             }
+            if (child.name == "TerrainCosts")
+                continue;
             GameObject _unit;
             //Is this an ally start position? (Allies are placed in specified positions determined by an order determined out of battle by the player, so this is handled differently than enemies/guests
             if (child.tag == "Ally")
