@@ -2,51 +2,51 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class FightSceneControllerScript : MonoBehaviour 
+public class FightSceneControllerScript : MonoBehaviour
 {
-    enum Battle_States { eMeleeFight, eBowFight}
+    enum Battle_States { eMeleeFight, eBowFight }
     Battle_States m_bsBattleState = Battle_States.eMeleeFight;
     [System.Serializable]
-	public class cWarUnit
-	{
-		public cWarUnit(GameObject _ldr, GameObject _unit, string _szTeamName, float _percent, int totalCount, int _atp, int _def, int _lck, int _atkRange, int _movement) 
-		{
+    public class cWarUnit
+    {
+        public cWarUnit(GameObject _ldr, GameObject _unit, string _szTeamName, float _percent, int totalCount, int _atp, int _def, int _lck, int _atkRange, int _movement)
+        {
 
-			m_goLeaderSprite = _ldr; 
-			m_goSprite = _unit;
+            m_goLeaderSprite = _ldr;
+            m_goSprite = _unit;
             m_szTeamName = _szTeamName;
-			m_fPercentRemaining = _percent; 
-			m_nTotalCount = totalCount;
-			m_nAttackPower = _atp;
-			m_nDefensePower = _def;
-			m_nLuck = _lck;
+            m_fPercentRemaining = _percent;
+            m_nTotalCount = totalCount;
+            m_nAttackPower = _atp;
+            m_nDefensePower = _def;
+            m_nLuck = _lck;
             m_nAttackRange = _atkRange;
             m_nMovementRange = _movement;
-		}
+        }
         public string m_szTeamName;
-		public GameObject m_goLeaderSprite;
-		public GameObject m_goSprite;
-		public float m_fPercentRemaining = 1.0f;
-		public int m_nTotalCount = 10;
-		public int m_nAttackPower;
-		public int m_nDefensePower;
-		public int m_nLuck;
+        public GameObject m_goLeaderSprite;
+        public GameObject m_goSprite;
+        public float m_fPercentRemaining = 1.0f;
+        public int m_nTotalCount = 10;
+        public int m_nAttackPower;
+        public int m_nDefensePower;
+        public int m_nLuck;
         public int m_nAttackRange;
         public int m_nMovementRange;
-	}
+    }
 
-	public GameObject m_goLeftSide, m_goRightSide, m_goLowerBound, m_goLeftAttack, m_goRightAttack, m_goLeftStart, m_goRightStart;
-	List<GameObject> m_lLeftUnits = new List<GameObject>();
-	List<GameObject> m_lRightUnits = new List<GameObject>();
-	cWarUnit m_cLeftWarUnit, m_cRightWarUnit;
-	float m_fUnitYOffset = 25.0f;
-	float m_fYRangeOffset = 15.0f;
-	float m_fUnitXOffset = 25.0f;
-	float m_fXRangeOffset = 15.0f;
+    public GameObject m_goLeftSide, m_goRightSide, m_goLowerBound, m_goLeftAttack, m_goRightAttack, m_goLeftStart, m_goRightStart;
+    List<GameObject> m_lLeftUnits = new List<GameObject>();
+    List<GameObject> m_lRightUnits = new List<GameObject>();
+    cWarUnit m_cLeftWarUnit, m_cRightWarUnit;
+    float m_fUnitYOffset = 25.0f;
+    float m_fYRangeOffset = 15.0f;
+    float m_fUnitXOffset = 25.0f;
+    float m_fXRangeOffset = 15.0f;
 
-	bool m_bDamagePhaseEnded = false;
-	bool m_bHasArrivedAtEnd = false;
-	int m_nUnitsArrivedCounter = 0;
+    bool m_bDamagePhaseEnded = false;
+    bool m_bHasArrivedAtEnd = false;
+    int m_nUnitsArrivedCounter = 0;
 
     float m_fTimerTillFightStartsBucket = 2.0f;
     float m_fTimerTillFightStarts = 2.2f;
@@ -75,42 +75,42 @@ public class FightSceneControllerScript : MonoBehaviour
     int m_nLeftSideDeathCount = 0;
     int m_nRightSideDeathCount = 0;
 
-	// Use this for initialization
-	void Start () 
-	{
-	}
-		
-	// Update is called once per frame
-	void Update () 
-	{
+    // Use this for initialization
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (m_fTimerTillFightStarts < m_fTimerTillFightStartsBucket)
         {
             m_fTimerTillFightStarts += Time.deltaTime;
             if (m_fTimerTillFightStarts >= m_fTimerTillFightStartsBucket)
             {
-               
-                    if (m_bsBattleState == Battle_States.eMeleeFight)
-                    {
-                        MeleeUpdate();
-                    }
-                    else if (m_bsBattleState == Battle_States.eBowFight)
-                    {
-                        CalculateDeathsForRangedFight();
-                    }
+
+                if (m_bsBattleState == Battle_States.eMeleeFight)
+                {
+                    MeleeUpdate();
+                }
+                else if (m_bsBattleState == Battle_States.eBowFight)
+                {
+                    CalculateDeathsForRangedFight();
+                }
             }
         }
         if (m_bRangedBegun == true && m_bsBattleState == Battle_States.eBowFight)
             RangedUpdate();
-	}
+    }
 
     //The name of this function is slightly misleading as it only gets called once.
     void MeleeUpdate()
     {
-        
-            foreach (GameObject _unit in m_lLeftUnits)
-                _unit.GetComponent<WB_UnitScript>().TimeToMove();
-            foreach (GameObject _unit in m_lRightUnits)
-                _unit.GetComponent<WB_UnitScript>().TimeToMove();
+
+        foreach (GameObject _unit in m_lLeftUnits)
+            _unit.GetComponent<WB_UnitScript>().TimeToMove();
+        foreach (GameObject _unit in m_lRightUnits)
+            _unit.GetComponent<WB_UnitScript>().TimeToMove();
     }
 
     void RangedUpdate()
@@ -147,7 +147,7 @@ public class FightSceneControllerScript : MonoBehaviour
                 else
                 {
                     m_nLeftSideDeathCount -= 1;
-                    if(m_nLeftSideDeathCount <= 0)
+                    if (m_nLeftSideDeathCount <= 0)
                         m_fLeftSideDeathDuration = m_fTotalArrowDuration * 5;
                 }
             }
@@ -188,7 +188,7 @@ public class FightSceneControllerScript : MonoBehaviour
             m_nLeftSideDmg = DamageUnitReceives(m_cLeftWarUnit, m_cRightWarUnit);
             if (m_nLeftSideDmg <= 0)
             {
-                m_fLeftSideDeathDuration = m_fTotalArrowDuration*5;
+                m_fLeftSideDeathDuration = m_fTotalArrowDuration * 5;
                 //Let's give it a chance to kill 1 random unit at 1 random time throughout the scene, don't adjust the hp or anything, just do it for funsies so that there's more variety and fights are less stale.
                 int rndmChance = Random.Range(0, 11);
                 if (rndmChance < 3)
@@ -215,7 +215,7 @@ public class FightSceneControllerScript : MonoBehaviour
             m_nRightSideDmg = DamageUnitReceives(m_cRightWarUnit, m_cLeftWarUnit);
             if (m_nRightSideDmg <= 0)
             {
-                m_fRightSideDeathDuration = m_fTotalArrowDuration*5;
+                m_fRightSideDeathDuration = m_fTotalArrowDuration * 5;
                 //Let's give it a chance to kill 1 random unit at 1 random time throughout the scene, don't adjust the hp or anything, just do it for funsies so that there's more variety and fights are less stale.
                 int rndmChance = Random.Range(0, 11);
                 if (rndmChance < 3)
@@ -238,16 +238,16 @@ public class FightSceneControllerScript : MonoBehaviour
         }
     }
 
-	void End()
-	{
+    void End()
+    {
         Invoke("TurnOffWindow", 1.0f);
     }
 
-	public void SetupBattleScene(cWarUnit _leftSide, cWarUnit _rightSide, int _rngRequired)
-	{
-		m_bHasArrivedAtEnd = false;
-		m_bDamagePhaseEnded = false;
-		m_nUnitsArrivedCounter = 0;
+    public void SetupBattleScene(cWarUnit _leftSide, cWarUnit _rightSide, int _rngRequired)
+    {
+        m_bHasArrivedAtEnd = false;
+        m_bDamagePhaseEnded = false;
+        m_nUnitsArrivedCounter = 0;
         foreach (GameObject _go in m_lLeftUnits)
             Destroy(_go);
         foreach (GameObject _go in m_lRightUnits)
@@ -255,22 +255,22 @@ public class FightSceneControllerScript : MonoBehaviour
         m_nRangeRequired = _rngRequired;
         if (m_nRangeRequired > 1)
             m_bsBattleState = Battle_States.eBowFight;
-		m_lLeftUnits.Clear();
-		m_lRightUnits.Clear();
-		m_cLeftWarUnit = _leftSide;
-		m_cRightWarUnit = _rightSide;
-		LoadInASide(1, _leftSide);
-		LoadInASide(-1, _rightSide);
+        m_lLeftUnits.Clear();
+        m_lRightUnits.Clear();
+        m_cLeftWarUnit = _leftSide;
+        m_cRightWarUnit = _rightSide;
+        LoadInASide(1, _leftSide);
+        LoadInASide(-1, _rightSide);
         m_fTimerTillFightStarts = 0.0f;
         m_fArrowTimer = 0.0f;
 
-	}
+    }
 
-	//-1 for if it's on the right, 1 for if it's on the left
-	void LoadInASide(int _side, cWarUnit _unit)
-	{
-		float _fXOffset = 0.0f, _fYOffset = 0.0f;
-		int _forceRemaining = (int)(_unit.m_nTotalCount * _unit.m_fPercentRemaining);
+    //-1 for if it's on the right, 1 for if it's on the left
+    void LoadInASide(int _side, cWarUnit _unit)
+    {
+        float _fXOffset = 0.0f, _fYOffset = 0.0f;
+        int _forceRemaining = (int)(_unit.m_nTotalCount * _unit.m_fPercentRemaining);
         //Kept at -1 if no leader should spawn.
         int _nLeaderSpawnIter = -1;
 
@@ -279,29 +279,21 @@ public class FightSceneControllerScript : MonoBehaviour
             //There is a leader in this group, so we should probably spawn that somewheres.
             _nLeaderSpawnIter = Random.Range(0, _forceRemaining);
         }
-		if(_forceRemaining == 0)
-			_forceRemaining = 1;
-		for(int i = 0; i < _forceRemaining; ++i)
-		{
-            if (i + 1 == _forceRemaining && _unit.m_goLeaderSprite != null)
+        if (_forceRemaining == 0)
+            _forceRemaining = 1;
+        for (int i = 0; i < _forceRemaining; ++i)
+        {
+            if (i == _nLeaderSpawnIter)
             {
-                //If there is only one unit remaining in this group, and we have a leader, let's have the leader be the last dude alive.
+                //If there's a leader to spawn, and we're at that random iter, spawn the leader
                 SpawnUnit(_unit.m_goLeaderSprite, ref _fXOffset, ref _fYOffset, _side);
             }
             else
-            {
-                if (i == _nLeaderSpawnIter)
-                {
-                    //If there's a leader to spawn, and we're at that random iter, spawn the leader
-                    SpawnUnit(_unit.m_goLeaderSprite, ref _fXOffset, ref _fYOffset, _side);
-                }
-                else
-                    SpawnUnit(_unit.m_goSprite, ref _fXOffset, ref _fYOffset, _side);
-            }
-			_fYOffset += m_fUnitYOffset;
-		}
+                SpawnUnit(_unit.m_goSprite, ref _fXOffset, ref _fYOffset, _side);
+            _fYOffset += m_fUnitYOffset;
+        }
 
-	}
+    }
 
     void SpawnUnit(GameObject _unit, ref float _fXOffset, ref float _fYOffset, int _side)
     {
@@ -328,19 +320,19 @@ public class FightSceneControllerScript : MonoBehaviour
             _char.transform.localPosition = AdjustPositionOfUnit(_startPos, ref _fXOffset, ref _fYOffset, _side);
             m_lRightUnits.Add(_char);
         }
-        
+
     }
 
 
-	public void StartAttackingPhase()
-	{
-		if(m_bDamagePhaseEnded == false)
-		{
-			//first, set this flag to true so that it only gets called once.
-			m_bDamagePhaseEnded = true;
+    public void StartAttackingPhase()
+    {
+        if (m_bDamagePhaseEnded == false)
+        {
+            //first, set this flag to true so that it only gets called once.
+            m_bDamagePhaseEnded = true;
 
-			//check if the left side took any damage
-			int dmgRec = DamageUnitReceives(m_cLeftWarUnit, m_cRightWarUnit);
+            //check if the left side took any damage
+            int dmgRec = DamageUnitReceives(m_cLeftWarUnit, m_cRightWarUnit);
             if (dmgRec > 0)
             {
                 float dmgMod = ((float)dmgRec * 0.33f);
@@ -384,41 +376,41 @@ public class FightSceneControllerScript : MonoBehaviour
                     KillRandomUnit(m_lLeftUnits);
                 }
             }
-			//check if the right side took any dmg
-			dmgRec = DamageUnitReceives(m_cRightWarUnit, m_cLeftWarUnit);
-			if(dmgRec > 0)
-			{
-				float dmgMod = ((float)dmgRec * 0.33f);
-				m_cRightWarUnit.m_fPercentRemaining -= dmgMod;
-				//if the percent left is below a certain percentage, let's call this good enough and just kill the entire unit
-				if(m_cRightWarUnit.m_fPercentRemaining <= 0.05f)
-				{
-					m_cRightWarUnit.m_fPercentRemaining = 0.0f;
-					foreach(GameObject _unit in m_lRightUnits)
-					{
-						if(_unit.GetComponent<WB_UnitScript>().AmIDead() == false)
-						{
-							_unit.GetComponent<WB_UnitScript>().TimeToDie();
-						}
-					}
-				}
-				else
-				{
-					int _nNewCount = (int)(m_cRightWarUnit.m_nTotalCount * m_cRightWarUnit.m_fPercentRemaining);
-					int _nCounter = _nNewCount;
-					foreach(GameObject _unit in m_lRightUnits)
-					{
-						if(_unit.GetComponent<WB_UnitScript>().AmIDead() == false)
-						{
-							_nCounter -= 1;
-							_unit.GetComponent<WB_UnitScript>().TimeToDie();
-							if(_nCounter <= 0)
-								break;
-						}
-					}
-				}
+            //check if the right side took any dmg
+            dmgRec = DamageUnitReceives(m_cRightWarUnit, m_cLeftWarUnit);
+            if (dmgRec > 0)
+            {
+                float dmgMod = ((float)dmgRec * 0.33f);
+                m_cRightWarUnit.m_fPercentRemaining -= dmgMod;
+                //if the percent left is below a certain percentage, let's call this good enough and just kill the entire unit
+                if (m_cRightWarUnit.m_fPercentRemaining <= 0.05f)
+                {
+                    m_cRightWarUnit.m_fPercentRemaining = 0.0f;
+                    foreach (GameObject _unit in m_lRightUnits)
+                    {
+                        if (_unit.GetComponent<WB_UnitScript>().AmIDead() == false)
+                        {
+                            _unit.GetComponent<WB_UnitScript>().TimeToDie();
+                        }
+                    }
+                }
+                else
+                {
+                    int _nNewCount = (int)(m_cRightWarUnit.m_nTotalCount * m_cRightWarUnit.m_fPercentRemaining);
+                    int _nCounter = _nNewCount;
+                    foreach (GameObject _unit in m_lRightUnits)
+                    {
+                        if (_unit.GetComponent<WB_UnitScript>().AmIDead() == false)
+                        {
+                            _nCounter -= 1;
+                            _unit.GetComponent<WB_UnitScript>().TimeToDie();
+                            if (_nCounter <= 0)
+                                break;
+                        }
+                    }
+                }
 
-			}
+            }
             else
             {
                 //Let's give it a chance to kill 1 random unit at 1 random time throughout the scene, don't adjust the hp or anything, just do it for funsies so that there's more variety and fights are less stale.
@@ -430,39 +422,39 @@ public class FightSceneControllerScript : MonoBehaviour
                 }
             }
         }
-	}
-	public void UnitReachedDestination()
-	{
-		if(m_bHasArrivedAtEnd == false && m_bsBattleState == Battle_States.eMeleeFight)
-		{
-			m_nUnitsArrivedCounter += 1;
-			if(m_nUnitsArrivedCounter >= m_lLeftUnits.Count + m_lRightUnits.Count)
-			{
-				foreach(GameObject _unit in m_lLeftUnits)
-				{
-					if(_unit.GetComponent<WB_UnitScript>().AmIDead() == false)
-					{
-						_unit.GetComponent<WB_UnitScript>().m_bShouldMove = false;
-						Vector3 _scale = _unit.transform.localScale;
-						_scale.x *= -1;
-						_unit.transform.localScale = _scale;
-					}
-				}
-				foreach(GameObject _unit in m_lRightUnits)
-				{
-					if(_unit.GetComponent<WB_UnitScript>().AmIDead() == false)
-					{
-						_unit.GetComponent<WB_UnitScript>().m_bShouldMove = false;
-						Vector3 _scale = _unit.transform.localScale;
-						_scale.x *= -1;
-						_unit.transform.localScale = _scale;
-					}
-				}
+    }
+    public void UnitReachedDestination()
+    {
+        if (m_bHasArrivedAtEnd == false && m_bsBattleState == Battle_States.eMeleeFight)
+        {
+            m_nUnitsArrivedCounter += 1;
+            if (m_nUnitsArrivedCounter >= m_lLeftUnits.Count + m_lRightUnits.Count)
+            {
+                foreach (GameObject _unit in m_lLeftUnits)
+                {
+                    if (_unit.GetComponent<WB_UnitScript>().AmIDead() == false)
+                    {
+                        _unit.GetComponent<WB_UnitScript>().m_bShouldMove = false;
+                        Vector3 _scale = _unit.transform.localScale;
+                        _scale.x *= -1;
+                        _unit.transform.localScale = _scale;
+                    }
+                }
+                foreach (GameObject _unit in m_lRightUnits)
+                {
+                    if (_unit.GetComponent<WB_UnitScript>().AmIDead() == false)
+                    {
+                        _unit.GetComponent<WB_UnitScript>().m_bShouldMove = false;
+                        Vector3 _scale = _unit.transform.localScale;
+                        _scale.x *= -1;
+                        _unit.transform.localScale = _scale;
+                    }
+                }
                 End();
             }
-            
-		}
-	}
+
+        }
+    }
 
     void TurnOffWindow()
     {
@@ -488,40 +480,40 @@ public class FightSceneControllerScript : MonoBehaviour
         m_goWatcher.GetComponent<WarBattleWatcherScript>().BattleSceneEnded(m_cLeftWarUnit, m_cRightWarUnit);
         gameObject.SetActive(false);
     }
-	bool ShouldThisOneBeDead()
-	{
-		int _nCoinFlip = Random.Range(0, 2);
-		if(_nCoinFlip == 0)
-			return false;
-		return true;
-	}
-	Vector3 AdjustPositionOfUnit(Vector3 _startPos, ref float _fXOffset, ref float _fYOffset, int _side)
-	{
-		
-		if(_startPos.y - _fYOffset <= m_goLowerBound.transform.localPosition.y)
-		{
-			_fYOffset = 0.0f;
-			_fXOffset += m_fUnitXOffset + Random.Range(0, m_fXRangeOffset+1);
-		}
-		if(_side == -1)
-			_startPos.x += _fXOffset + Random.Range(0.0f, m_fXRangeOffset+1);
-		else
-			_startPos.x -= _fXOffset + Random.Range(0.0f, m_fXRangeOffset+1);
-		_startPos.y -= _fYOffset + Random.Range(0.0f, m_fYRangeOffset+1);
-		return _startPos;
-	}
+    bool ShouldThisOneBeDead()
+    {
+        int _nCoinFlip = Random.Range(0, 2);
+        if (_nCoinFlip == 0)
+            return false;
+        return true;
+    }
+    Vector3 AdjustPositionOfUnit(Vector3 _startPos, ref float _fXOffset, ref float _fYOffset, int _side)
+    {
 
-	//returns int for how much damage this group should receive.  0 = 0.0f loss. 1 = 0.3f loss, 2 = 0.6f loss, 3 = 1.0f loss
-	int DamageUnitReceives(cWarUnit _defending, cWarUnit _attacking)
-	{
-		//Chance of damaging enemies in mass combat: IF ((Attack Power + 4) - Enemy DEF) > Random Number (0-19), then damage.
-		if(((_attacking.m_nAttackPower + 4) - _defending.m_nDefensePower) > Random.Range(0, 20))
-		{
-			//Dealt damage, check crit/multiple hits
-			return 1;
-		}
-		return 0;
-	}
+        if (_startPos.y - _fYOffset <= m_goLowerBound.transform.localPosition.y)
+        {
+            _fYOffset = 0.0f;
+            _fXOffset += m_fUnitXOffset + Random.Range(0, m_fXRangeOffset + 1);
+        }
+        if (_side == -1)
+            _startPos.x += _fXOffset + Random.Range(0.0f, m_fXRangeOffset + 1);
+        else
+            _startPos.x -= _fXOffset + Random.Range(0.0f, m_fXRangeOffset + 1);
+        _startPos.y -= _fYOffset + Random.Range(0.0f, m_fYRangeOffset + 1);
+        return _startPos;
+    }
+
+    //returns int for how much damage this group should receive.  0 = 0.0f loss. 1 = 0.3f loss, 2 = 0.6f loss, 3 = 1.0f loss
+    int DamageUnitReceives(cWarUnit _defending, cWarUnit _attacking)
+    {
+        //Chance of damaging enemies in mass combat: IF ((Attack Power + 4) - Enemy DEF) > Random Number (0-19), then damage.
+        if (((_attacking.m_nAttackPower + 4) - _defending.m_nDefensePower) > Random.Range(0, 20))
+        {
+            //Dealt damage, check crit/multiple hits
+            return 1;
+        }
+        return 0;
+    }
 
     //Kills a random unit from this list, returns false if every unit in this list is already dead.
     bool KillRandomUnit(List<GameObject> _lUnits)

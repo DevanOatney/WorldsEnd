@@ -147,6 +147,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                     m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goCompanyUIWindowRoot.SetActive(true);
                     m_goWatcher.GetComponent<WarBattleWatcherScript>().SelectorChangedPos();
                     CalculateAction();
+                    m_eState = WB_AI_States.eWaitForActionResolution;
                     Invoke("PauseForThought", 1.5f);
                 }
                 break;
@@ -505,7 +506,9 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             if (_targetsNode.walkable == true)
             {
                 //There is at least one valid location around this target.
-                _lPaths.Add(CPathRequestManager.m_Instance.m_psPathfinding.FindPathImmediate(_unitNode.worldPosition, _targetsNode.worldPosition));
+                Vector3[] _p = CPathRequestManager.m_Instance.m_psPathfinding.FindPathImmediate(_unitNode.worldPosition, _targetsNode.worldPosition);
+                if(_p != null)
+                    _lPaths.Add(_p);
             }
         }
         //so now that we've found all of the valid paths to this target find the path with the lowest movement cost and set that as this units preferred path.

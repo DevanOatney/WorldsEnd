@@ -191,7 +191,7 @@ public class TRPG_UnitScript : MonoBehaviour
 	void PathReturned(Vector3[] _vPath, bool _bFoundPath)
 	{
 		
-		if(_bFoundPath == true)
+		if(_bFoundPath == true && _vPath != null)
 		{
             //was able to find a path to the desired destination.
             m_bReachedDestination = false;

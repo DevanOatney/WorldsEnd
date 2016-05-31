@@ -32,6 +32,7 @@ public class WarBattleWatcherScript : MonoBehaviour
     //The previous location that the unit that is currently was moving was at, so that if they hit cancel in the action window it will move them back to their previous position like nothing happened
     CNode m_cPreviousUnitPosition = null;
     int m_nState = 0;
+    string m_szBackgroundMusic = "Inon_BGM";
 
     void Awake()
     {
@@ -56,6 +57,7 @@ public class WarBattleWatcherScript : MonoBehaviour
         LoadInMap();
         GetComponent<WarBattle_EnemyControllerScript>().Initialize(gameObject, m_goActionWindow);
         m_bAllowInput = true;
+        CAudioHelper.Instance.vPlayMusic(CAudioHelper.Instance.eFromName(m_szBackgroundMusic), true, true);
     }
 
     // Update is called once per frame
