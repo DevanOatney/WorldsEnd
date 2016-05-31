@@ -128,7 +128,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
     {
         if (m_cDesiredDestination != null)
         {
-            m_goWatcher.GetComponent<WarBattleWatcherScript>().ShowHighlightedSquares(m_goCurrentUnitActing, m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange, Color.yellow, false);
+            m_goWatcher.GetComponent<WarBattleWatcherScript>().ShowHighlightedSquares(m_goCurrentUnitActing, m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nMovementRange, Color.yellow, false);
             m_eState = WB_AI_States.eCursorToMoveLocation;
         }
     }
@@ -373,7 +373,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             m_goDesiredTarget = null;
         }
         //So, at this point, there isn't a unit right next to us, but we can move.. grab every node that is in range of this units influence (It's movement range + it's attack range)(does not account for movement cost)
-        List<CNode> _lNodesInInfluence = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(_unitNode.worldPosition, _thisUnitData.m_nMovementRange + _thisUnitData.m_nAttackRange);
+        List<CNode> _lNodesInInfluence = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(_unitNode.worldPosition, _thisUnitData.m_cUnitData.m_nMovementRange + _thisUnitData.m_cUnitData.m_nAttackRange);
         List<GameObject> _lTargetsInRange = new List<GameObject>();
 
         foreach (CNode _node in _lNodesInInfluence)
@@ -390,7 +390,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
         }
 
 
-        List<CNode> _movementRangeNodes = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(_unitNode.worldPosition, _thisUnitData.m_nMovementRange);
+        List<CNode> _movementRangeNodes = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(_unitNode.worldPosition, _thisUnitData.m_cUnitData.m_nMovementRange);
         //So previous we didn't account for the movement cost of each node.. so iterate through, and remove any of these nodes that are actually out of range.
         for (int i = _movementRangeNodes.Count - 1; i >= 0; --i)
         {
@@ -406,7 +406,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             {
                 CNode _tNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_pos);
                 _nCost += 1 +_tNode.movementPenalty;
-                if (m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange < _nCost)
+                if (m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nMovementRange < _nCost)
                 {
                     //This isn't actually within movement range, kill it.
                     _movementRangeNodes.RemoveAt(i);
@@ -456,7 +456,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             //We now need to trim down the path, incase it is too long (as at this point we're not caring about movement range)
             List<Vector3> _vaTrimmedPath = new List<Vector3>();
             int _nCost = 0;
-            for (int i = 0; i < m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange; ++i)
+            for (int i = 0; i < m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nMovementRange; ++i)
             {
                 if (m_goDesiredTarget._vPrefferedPath.Length <= i)
                 {
@@ -467,7 +467,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                 {
                     CNode _tNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goDesiredTarget._vPrefferedPath[i]);
                     _nCost += 1 + _tNode.movementPenalty;
-                    if (_nCost <= m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
+                    if (_nCost <= m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nMovementRange)
                     {
                         _vaTrimmedPath.Add(m_goDesiredTarget._vPrefferedPath[i]);
                     }
@@ -499,7 +499,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
     {
         FightSceneControllerScript.cWarUnit _thisUnitData = m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData;
         CNode _unitNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goCurrentUnitActing.transform.position);
-        List<CNode> _targetNeighborNodes = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(p_unit.transform.position, _thisUnitData.m_nAttackRange);
+        List<CNode> _targetNeighborNodes = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(p_unit.transform.position, _thisUnitData.m_cUnitData.m_nAttackRange);
         List<Vector3[]> _lPaths = new List<Vector3[]>();
         foreach (CNode _targetsNode in _targetNeighborNodes)
         {
@@ -544,7 +544,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
     {
         FightSceneControllerScript.cWarUnit _thisUnitData = m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData;
         CNode _unitNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goCurrentUnitActing.transform.position);
-        List<CNode> _targetNeighborNodes = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(p_unit.transform.position, _thisUnitData.m_nAttackRange);
+        List<CNode> _targetNeighborNodes = CPathRequestManager.m_Instance.m_psPathfinding.grid.GetNeighbours(p_unit.transform.position, _thisUnitData.m_cUnitData.m_nAttackRange);
 
         List<Vector3[]> _lPaths = new List<Vector3[]>();
         foreach (CNode _targetsNode in _targetNeighborNodes)
@@ -563,7 +563,7 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                             CNode _tNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_pos);
                             _nCost += 1 + _tNode.movementPenalty;
                         }
-                        if (_vaPath.Length + _nCost > m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
+                        if (_vaPath.Length + _nCost > m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nMovementRange)
                         {
                             //There is at least one valid location around this target.
                             _lPaths.Add(_vaPath);
@@ -585,18 +585,18 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             {
                 CNode _pathNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_lPaths[x][i]);
                 _movementCost += 1 + _pathNode.movementPenalty;
-                if (_thisUnitData.m_nMovementRange < _movementCost)
+                if (_thisUnitData.m_cUnitData.m_nMovementRange < _movementCost)
                 {
                     _lPaths.RemoveAt(x);
                     break;
                 }
             }
-            if (_thisUnitData.m_nMovementRange >= _movementCost)
+            if (_thisUnitData.m_cUnitData.m_nMovementRange >= _movementCost)
             {
                 CNode _targetNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(p_unit.transform.position);
                 int _distFromTarget = (int)Mathf.Sqrt(Mathf.Pow((_lPaths[x][_lPaths[x].Length -1].x - _targetNode.worldPosition.x), 2) + Mathf.Pow((_lPaths[x][_lPaths[x].Length - 1].y - _targetNode.worldPosition.y), 2));
                 //check the distance, with a priority toward spots that are the furthest away but still in range;
-                if (_distFromTarget <= _thisUnitData.m_nAttackRange && _distFromTarget >= _closestValidDistance)
+                if (_distFromTarget <= _thisUnitData.m_cUnitData.m_nAttackRange && _distFromTarget >= _closestValidDistance)
                 {
                     //if this is our first path, immediately make it the "best path" so far to avoid checking a null variable.
                     if (_vBestPath == null)
@@ -639,9 +639,9 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
     cTargetWeights CheckNewTarget(cTargetWeights _newTarget)
     {
         FightSceneControllerScript.cWarUnit _unitStats = m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData;
-        int _unitStatScore = _unitStats.m_nAttackPower + _unitStats.m_nDefensePower;
+        int _unitStatScore = _unitStats.m_cUnitData.m_nAttackPower + _unitStats.m_cUnitData.m_nDefensePower;
         FightSceneControllerScript.cWarUnit _targetStats = _newTarget._goTarget.GetComponent<TRPG_UnitScript>().m_wuUnitData;
-        int _targetStatScore = _targetStats.m_nAttackPower + _targetStats.m_nDefensePower;
+        int _targetStatScore = _targetStats.m_cUnitData.m_nAttackPower + _targetStats.m_cUnitData.m_nDefensePower;
         _newTarget._nStatDifference = _unitStatScore - _targetStatScore;
 
         //Check if this unit even has to move on a path

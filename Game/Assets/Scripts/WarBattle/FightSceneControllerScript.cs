@@ -7,32 +7,44 @@ public class FightSceneControllerScript : MonoBehaviour
     enum Battle_States { eMeleeFight, eBowFight }
     Battle_States m_bsBattleState = Battle_States.eMeleeFight;
     [System.Serializable]
-    public class cWarUnit
+    public class cWarUnitData
     {
-        public cWarUnit(GameObject _ldr, GameObject _unit, string _szTeamName, float _percent, int totalCount, int _atp, int _def, int _lck, int _atkRange, int _movement)
-        {
-
-            m_goLeaderSprite = _ldr;
-            m_goSprite = _unit;
-            m_szTeamName = _szTeamName;
-            m_fPercentRemaining = _percent;
-            m_nTotalCount = totalCount;
-            m_nAttackPower = _atp;
-            m_nDefensePower = _def;
-            m_nLuck = _lck;
-            m_nAttackRange = _atkRange;
-            m_nMovementRange = _movement;
-        }
-        public string m_szTeamName;
-        public GameObject m_goLeaderSprite;
-        public GameObject m_goSprite;
-        public float m_fPercentRemaining = 1.0f;
-        public int m_nTotalCount = 10;
+        
+        
         public int m_nAttackPower;
         public int m_nDefensePower;
         public int m_nLuck;
         public int m_nAttackRange;
         public int m_nMovementRange;
+    }
+
+    [System.Serializable]
+    public class cWarUnit
+    {
+        
+        public cWarUnitData m_cUnitData = new cWarUnitData();
+        public void Initialize()
+        {
+            if(m_szLeaderName != "")
+                m_goLeaderSprite = Resources.Load<GameObject>("Units/NPCs/WarUnits/" + m_szLeaderName);
+            m_goSprite = Resources.Load<GameObject>("Units/NPCs/WarUnits/" + m_szBaseUnitName);
+        }
+        //Name of the team, this will be displayed to the user
+        public string m_szTeamName;
+        //Name of the leader, this is to access that leader's war battle game object (so data path)
+        public string m_szLeaderName;
+        //Data path to the base unit that fights in the war battle
+        public string m_szBaseUnitName;
+        //Data path to the base unit for the TRPG
+        public string m_szTRPGDataPath;
+        [System.NonSerialized]
+        public GameObject m_goLeaderSprite;
+        [System.NonSerialized]
+        public GameObject m_goSprite;
+        [System.NonSerialized]
+        public float m_fPercentRemaining = 1.0f;
+        public int m_nTotalCount = 10;
+        
     }
 
     public GameObject m_goLeftSide, m_goRightSide, m_goLowerBound, m_goLeftAttack, m_goRightAttack, m_goLeftStart, m_goRightStart;
@@ -122,14 +134,14 @@ public class FightSceneControllerScript : MonoBehaviour
 
             //Let's see if the random roll let's a left side unit shoot an arrow.
             int _nRoll = Random.Range(0, 101);
-            if (_nRoll <= m_fShootArrowChance && m_cLeftWarUnit.m_nAttackRange >= m_nRangeRequired)
+            if (_nRoll <= m_fShootArrowChance && m_cLeftWarUnit.m_cUnitData.m_nAttackRange >= m_nRangeRequired)
             {
                 //We're good to fire an arrow! loop through and find a unit that isn't firing and tell it to fire!
                 RandomUnitFireArrow(m_lLeftUnits);
             }
             //Now let's give the right side a chance to shoot.
             _nRoll = Random.Range(0, 101);
-            if (_nRoll <= m_fShootArrowChance && m_cRightWarUnit.m_nAttackRange >= m_nRangeRequired)
+            if (_nRoll <= m_fShootArrowChance && m_cRightWarUnit.m_cUnitData.m_nAttackRange >= m_nRangeRequired)
             {
                 //We're good to fire an arrow! loop through and find a unit that isn't firing and tell it to fire!
                 RandomUnitFireArrow(m_lRightUnits);
@@ -183,7 +195,7 @@ public class FightSceneControllerScript : MonoBehaviour
     void CalculateDeathsForRangedFight()
     {
         m_bRangedBegun = true;
-        if (m_cRightWarUnit.m_nAttackRange >= m_nRangeRequired)
+        if (m_cRightWarUnit.m_cUnitData.m_nAttackRange >= m_nRangeRequired)
         {
             m_nLeftSideDmg = DamageUnitReceives(m_cLeftWarUnit, m_cRightWarUnit);
             if (m_nLeftSideDmg <= 0)
@@ -210,7 +222,7 @@ public class FightSceneControllerScript : MonoBehaviour
             }
 
         }
-        if (m_cLeftWarUnit.m_nAttackRange >= m_nRangeRequired)
+        if (m_cLeftWarUnit.m_cUnitData.m_nAttackRange >= m_nRangeRequired)
         {
             m_nRightSideDmg = DamageUnitReceives(m_cRightWarUnit, m_cLeftWarUnit);
             if (m_nRightSideDmg <= 0)
@@ -507,7 +519,7 @@ public class FightSceneControllerScript : MonoBehaviour
     int DamageUnitReceives(cWarUnit _defending, cWarUnit _attacking)
     {
         //Chance of damaging enemies in mass combat: IF ((Attack Power + 4) - Enemy DEF) > Random Number (0-19), then damage.
-        if (((_attacking.m_nAttackPower + 4) - _defending.m_nDefensePower) > Random.Range(0, 20))
+        if (((_attacking.m_cUnitData.m_nAttackPower + 4) - _defending.m_cUnitData.m_nDefensePower) > Random.Range(0, 20))
         {
             //Dealt damage, check crit/multiple hits
             return 1;

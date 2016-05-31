@@ -246,7 +246,9 @@ public class WarBattleWatcherScript : MonoBehaviour
                     //Is this unit an ally?
                     if (_go.tag == "Ally")
                     {
-                        ShowHighlightedSquares(_go, _go.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange, Color.yellow, false);
+                        FightSceneControllerScript.cWarUnit temp = _go.GetComponent<TRPG_UnitScript>().m_wuUnitData;
+
+                        ShowHighlightedSquares(_go, _go.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nMovementRange, Color.yellow, false);
                         _go.GetComponent<TRPG_UnitScript>().m_bIsMyTurn = true;
                         m_goSelectedUnit = _go;
 
@@ -313,7 +315,7 @@ public class WarBattleWatcherScript : MonoBehaviour
                     CNode _tNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_pos);
                     _nCost += _tNode.movementPenalty;
                 }
-                if (_vaPath.Length + _nCost <= m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
+                if (_vaPath.Length + _nCost <= m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nMovementRange)
                 {
                     m_bAllowInput = false;
                     m_cPreviousUnitPosition = _unitNode;
@@ -429,10 +431,10 @@ public class WarBattleWatcherScript : MonoBehaviour
         _CompanyUI.transform.FindChild("CompanyName").GetComponent<Text>().text = _unit.m_szTeamName;
 
         //Attack power!
-        _CompanyUI.transform.FindChild("CompanyATK").GetComponent<Text>().text = "ATK: " + _unit.m_nAttackPower.ToString();
+        _CompanyUI.transform.FindChild("CompanyATK").GetComponent<Text>().text = "ATK: " + _unit.m_cUnitData.m_nAttackPower.ToString();
 
         //Defense score
-        _CompanyUI.transform.FindChild("CompanyDEF").GetComponent<Text>().text = "DEF: " + _unit.m_nDefensePower.ToString();
+        _CompanyUI.transform.FindChild("CompanyDEF").GetComponent<Text>().text = "DEF: " + _unit.m_cUnitData.m_nDefensePower.ToString();
     }
 
 
@@ -470,7 +472,7 @@ public class WarBattleWatcherScript : MonoBehaviour
             Vector2 _strtDest = new Vector2(_node.gridX, _node.gridY);
             Vector2 _endDest = new Vector2(_targetNode.gridX, _targetNode.gridY);
             float _distance = Mathf.CeilToInt(Mathf.Sqrt(Mathf.Pow((_endDest.x - _strtDest.x), 2) + Mathf.Pow((_endDest.y - _strtDest.y), 2)));
-            if (_distance <= m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nAttackRange)
+            if (_distance <= m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nAttackRange)
             {
                 ClearHighlightedSquares();
                 m_bAllowInput = false;
@@ -537,7 +539,7 @@ public class WarBattleWatcherScript : MonoBehaviour
                     CNode _tNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_pos);
                     _nCost += _tNode.movementPenalty;
                 }
-                if (_vaPathToTarget.Length + _nCost > p_unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange)
+                if (_vaPathToTarget.Length + _nCost > p_unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nMovementRange)
                 {
                     //"Early" exit, if we're not showing unwalkable nodes we're assuming this is for movement, and if this node it not within the actual movement range, don't show it.
                     continue;
@@ -785,6 +787,8 @@ public class WarBattleWatcherScript : MonoBehaviour
                             break;
                         }
                         _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + _debugAllies[_nIter].name));
+                        TRPG_UnitScript _temp = _unit.GetComponent<TRPG_UnitScript>();
+                        _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.Initialize();
                         _unit.transform.position = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_allyChild.position).worldPosition;
                         _unit.GetComponent<TRPG_UnitScript>().m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_unit.transform.position);
                         _unit.tag = "Ally";
@@ -803,11 +807,15 @@ public class WarBattleWatcherScript : MonoBehaviour
                             //We've reached the last of the units, break out yo.
                             break;
                         }
-                        _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + _lAllyUnits[_nIter].m_szTeamName));
-                        _unit.transform.position = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(child.position).worldPosition;
+                        if(_lAllyUnits[_nIter].m_szLeaderName != "")
+                            _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + _lAllyUnits[_nIter].m_szTeamName));
+                        else
+                            _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + _lAllyUnits[_nIter].m_szTRPGDataPath));
+                        _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData = _lAllyUnits[_nIter];
+                        _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.Initialize();
+                        _unit.transform.position = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_allyChild.position).worldPosition;
                         _unit.GetComponent<TRPG_UnitScript>().m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_unit.transform.position);
                         _unit.tag = "Ally";
-                        _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData = _lAllyUnits[_nIter];
                         m_lAllies.Add(_unit);
                         ++_nIter;
                     }
@@ -817,6 +825,7 @@ public class WarBattleWatcherScript : MonoBehaviour
             }
             _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + child.name));
             _unit.transform.position = child.position;
+            _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.Initialize();
             _unit.GetComponent<TRPG_UnitScript>().m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_unit.transform.position);
             //Is this an enemy?
             if (child.tag == "Enemy")

@@ -41,7 +41,7 @@ public class ActionWindowScript : MonoBehaviour
             case 0:
                 {
                     //Attack
-                    m_goWatcher.GetComponent<WarBattleWatcherScript>().ShowHighlightedSquares(m_goUnitData, m_goUnitData.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nAttackRange, Color.red, true);
+                    m_goWatcher.GetComponent<WarBattleWatcherScript>().ShowHighlightedSquares(m_goUnitData, m_goUnitData.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nAttackRange, Color.red, true);
                     m_goWatcher.GetComponent<WarBattleWatcherScript>().AttackChoiceSelected();
                     gameObject.SetActive(false);
                 }
