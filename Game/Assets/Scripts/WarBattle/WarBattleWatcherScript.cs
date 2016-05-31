@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class WarBattleWatcherScript : MonoBehaviour
 {
-    enum War_States { eMovement, eWaitForMovement, eAttack, eMagic, eSystem, eEndingAction }
+    enum War_States { eMovement, eWaitForMovement, eAttack, eMagic, eSystem, eEndingAction, eTurnOrderWindow}
+    public enum Turn_Order { AllyTurn, EnemyTurn, GuestTurn}
     //hooks to gameobjects
     public GameObject m_goBattleScreen;
     public GameObject m_goActionWindow;
@@ -12,6 +14,8 @@ public class WarBattleWatcherScript : MonoBehaviour
     public GameObject m_goBattleOverWindow;
     public GameObject m_goHighlighter;
     public GameObject m_goSelector;
+    public GameObject m_goCompanyUIWindowRoot;
+    public GameObject m_goTurnOrderWindow;
     //game object for the map and starting positional data
     GameObject m_goMapData;
     DCScript dc;
@@ -19,7 +23,7 @@ public class WarBattleWatcherScript : MonoBehaviour
     List<GameObject> m_lEnemies = new List<GameObject>();
     List<GameObject> m_lGuests = new List<GameObject>();
     Vector2 m_vSelectorGridPos = Vector2.zero;
-    public bool m_bIsAllyTurn = true;
+    public Turn_Order m_bIsAllyTurn = Turn_Order.AllyTurn;
     bool m_bAllowInput = false;
     //Currently selected unit on the map
     GameObject m_goSelectedUnit = null;
@@ -57,7 +61,16 @@ public class WarBattleWatcherScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_bIsAllyTurn == true && m_bAllowInput == true)
+        if (m_nState == (int)War_States.eTurnOrderWindow)
+        {
+            if (Input.anyKeyDown == true)
+            {
+                m_goTurnOrderWindow.SetActive(false);
+                m_nState = (int)War_States.eMovement;
+                StartFactionTurn();
+            }
+        }
+        else if (m_bIsAllyTurn == Turn_Order.AllyTurn && m_bAllowInput == true)
         {
             HandleInput();
         }
@@ -131,6 +144,7 @@ public class WarBattleWatcherScript : MonoBehaviour
                 }
                 break;
         }
+        SelectorChangedPos();
     }
 
     void BasicInputFunc()
@@ -288,8 +302,6 @@ public class WarBattleWatcherScript : MonoBehaviour
                     }
                 }
                 //check to make sure this distance is moveable by the unit
-                Vector2 _strtDest = new Vector2(_unitNode.gridX, _unitNode.gridY);
-                Vector2 _endDest = new Vector2(_destination.gridX, _destination.gridY);
                 Vector3[] _vaPath = CPathRequestManager.m_Instance.m_psPathfinding.FindPathImmediate(_unitNode.worldPosition, _destination.worldPosition);
                 if (_vaPath == null)
                     return;
@@ -314,12 +326,114 @@ public class WarBattleWatcherScript : MonoBehaviour
 
     public void AttackChoiceSelected()
     {
-        if (m_bIsAllyTurn == true)
+        if (m_bIsAllyTurn == Turn_Order.AllyTurn)
         {
             m_nState = (int)War_States.eAttack;
             m_bAllowInput = true;
         }
     }
+
+    public void SelectorChangedPos()
+    {
+        CNode _selNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelector.transform.position);
+        foreach (GameObject _go in m_lAllies)
+        {
+            //Is this object on the same grid position as the selector?
+            if (_selNode == _go.GetComponent<TRPG_UnitScript>().GetIndexForUnit())
+            {
+                m_goCompanyUIWindowRoot.SetActive(true);
+                AdjustCompanyUI(_go.GetComponent<TRPG_UnitScript>().m_wuUnitData, _selNode.worldPosition);
+                return;
+            }
+        }
+        foreach (GameObject _go in m_lEnemies)
+        {
+            //Is this object on the same grid position as the selector?
+            if (_selNode == _go.GetComponent<TRPG_UnitScript>().GetIndexForUnit())
+            {
+                m_goCompanyUIWindowRoot.SetActive(true);
+                AdjustCompanyUI(_go.GetComponent<TRPG_UnitScript>().m_wuUnitData, _selNode.worldPosition);
+                return;
+            }
+        }
+        foreach (GameObject _go in m_lGuests)
+        {
+            //Is this object on the same grid position as the selector?
+            if (_selNode == _go.GetComponent<TRPG_UnitScript>().GetIndexForUnit())
+            {
+                m_goCompanyUIWindowRoot.SetActive(true);
+                AdjustCompanyUI(_go.GetComponent<TRPG_UnitScript>().m_wuUnitData, _selNode.worldPosition);
+                return;
+            }
+        }
+        m_goCompanyUIWindowRoot.SetActive(false);
+    }
+
+    void AdjustCompanyUI(FightSceneControllerScript.cWarUnit _unit, Vector3 _pos)
+    {
+        if (_unit == null)
+        {
+            return;
+        }
+        GameObject _CompanyUI = m_goCompanyUIWindowRoot.transform.FindChild("CompanyUI").gameObject;
+        //First let's figure out the position of this unit in screen space to determine where best the Company UI window should be located.
+        RectTransform _theCanvas = GameObject.Find("Canvas").GetComponent<RectTransform>();
+        Vector2 _viewportPos = Camera.main.WorldToViewportPoint(_pos);
+        Vector2 _objScreenPos = new Vector2(
+            ((_viewportPos.x * _theCanvas.sizeDelta.x) - (_theCanvas.sizeDelta.x * 0.5f)),
+            ((_viewportPos.y * _theCanvas.sizeDelta.y) - (_theCanvas.sizeDelta.y * 0.5f)));
+        if (_objScreenPos.x < 0)
+        {
+            //Object is on the left side.
+            if (_objScreenPos.y >= 0)
+            {
+                //Object is on the upper left quadrant.
+                _CompanyUI.transform.position = m_goCompanyUIWindowRoot.transform.FindChild("Pos_4").transform.position;
+            }
+            else if (_objScreenPos.y < 0)
+            {
+                //Object is on the lower left quadrant.
+                _CompanyUI.transform.position = m_goCompanyUIWindowRoot.transform.FindChild("Pos_2").transform.position;
+            }
+        }
+        else if (_objScreenPos.x >= 0)
+        {
+            //Object is on the right side.
+            if (_objScreenPos.y >= 0)
+            {
+                //Object is on the upper right quadrant.
+                _CompanyUI.transform.position = m_goCompanyUIWindowRoot.transform.FindChild("Pos_3").transform.position;
+            }
+            else if (_objScreenPos.y < 0)
+            {
+                // Object is on the lower right quadrant
+                _CompanyUI.transform.position = m_goCompanyUIWindowRoot.transform.FindChild("Pos_1").transform.position;
+            }
+        }
+
+        //Let's see if this group has a leader, if it does, show their portrait, if not show a portrait for whichever army you're fighting (need to get that second option worked out)
+        if (_unit.m_goLeaderSprite != null)
+        {
+            //This one has a leader, portrait it up!
+            _CompanyUI.transform.FindChild("LeaderPortrait").gameObject.SetActive(true);
+        }
+        else
+        {
+            //This company has no leader  TODO: render a faction/battle standard portrait instead.
+            _CompanyUI.transform.FindChild("LeaderPortrait").gameObject.SetActive(false);
+        }
+
+        //All right, team name!
+        _CompanyUI.transform.FindChild("CompanyName").GetComponent<Text>().text = _unit.m_szTeamName;
+
+        //Attack power!
+        _CompanyUI.transform.FindChild("CompanyATK").GetComponent<Text>().text = "ATK: " + _unit.m_nAttackPower.ToString();
+
+        //Defense score
+        _CompanyUI.transform.FindChild("CompanyDEF").GetComponent<Text>().text = "DEF: " + _unit.m_nDefensePower.ToString();
+    }
+
+
     void AttackConfirm()
     {
         //Let's first find out if this is a valid selection of a unit to attack...
@@ -330,7 +444,7 @@ public class WarBattleWatcherScript : MonoBehaviour
             foreach (GameObject _go in m_lEnemies)
             {
                 //Is this object on the same grid position as the selector?
-                if (_unitNode.worldPosition == _go.GetComponent<TRPG_UnitScript>().GetIndexForUnit().worldPosition)
+                if (_unitNode == _go.GetComponent<TRPG_UnitScript>().GetIndexForUnit())
                 {
                     _target = _go;
                 }
@@ -341,7 +455,7 @@ public class WarBattleWatcherScript : MonoBehaviour
             foreach (GameObject _go in m_lAllies)
             {
                 //Is this object on the same grid position as the selector?
-                if (_unitNode.worldPosition == _go.GetComponent<TRPG_UnitScript>().GetIndexForUnit().worldPosition)
+                if (_unitNode == _go.GetComponent<TRPG_UnitScript>().GetIndexForUnit())
                 {
                     _target = _go;
                 }
@@ -360,6 +474,7 @@ public class WarBattleWatcherScript : MonoBehaviour
                 m_bAllowInput = false;
                 m_nState = (int)War_States.eEndingAction;
                 m_goBattleScreen.SetActive(true);
+                m_goCompanyUIWindowRoot.SetActive(false);
                 m_goBattleScreen.GetComponent<FightSceneControllerScript>().SetupBattleScene(_target.GetComponent<TRPG_UnitScript>().m_wuUnitData, m_goSelectedUnit.GetComponent<TRPG_UnitScript>().m_wuUnitData, (int)_distance);
             }
         }
@@ -376,7 +491,7 @@ public class WarBattleWatcherScript : MonoBehaviour
 
     public void MovementFinished(GameObject _unit)
     {
-        if (m_bIsAllyTurn == true)
+        if (m_bIsAllyTurn == Turn_Order.AllyTurn)
             m_goActionWindow.GetComponent<ActionWindowScript>().ActivateWindow(m_goSelectedUnit);
         else
         {
@@ -437,8 +552,26 @@ public class WarBattleWatcherScript : MonoBehaviour
 
     public void EndFactionTurn()
     {
-        m_bIsAllyTurn = !m_bIsAllyTurn;
-        if (m_bIsAllyTurn == true)
+        m_bIsAllyTurn += 1;
+        if (m_bIsAllyTurn > Turn_Order.GuestTurn)
+            m_bIsAllyTurn = Turn_Order.AllyTurn;
+
+        //Before starting the next factions turn, throw up the window to say who's turn it is.
+        m_nState = (int)War_States.eTurnOrderWindow;
+        m_goTurnOrderWindow.SetActive(true);
+        string _szMessage = "";
+        if (m_bIsAllyTurn == Turn_Order.AllyTurn)
+            _szMessage = "Ally\nTurn";
+        else if (m_bIsAllyTurn == Turn_Order.EnemyTurn)
+            _szMessage = "Enemy\nTurn";
+        else if (m_bIsAllyTurn == Turn_Order.GuestTurn)
+            _szMessage = "Guest\nTurn";
+        m_goTurnOrderWindow.GetComponentInChildren<Text>().text = _szMessage;
+    }
+
+    void StartFactionTurn()
+    {
+        if (m_bIsAllyTurn == Turn_Order.AllyTurn)
         {
             m_bAllowInput = true;
             m_nState = (int)War_States.eMovement;
@@ -452,9 +585,14 @@ public class WarBattleWatcherScript : MonoBehaviour
                 _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
                 _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
             }
-            
+            foreach (GameObject _go in m_lGuests)
+            {
+                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
+                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
+            }
+
         }
-        else
+        else if (m_bIsAllyTurn == Turn_Order.EnemyTurn)
         {
             foreach (GameObject _go in m_lAllies)
             {
@@ -466,7 +604,34 @@ public class WarBattleWatcherScript : MonoBehaviour
                 _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = false;
                 _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", false);
             }
-            GetComponent<WarBattle_EnemyControllerScript>().StartFactionTurn(m_lEnemies, null, m_lAllies);
+            foreach (GameObject _go in m_lGuests)
+            {
+                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
+                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
+            }
+            List<GameObject> _targets = new List<GameObject>();
+            _targets.AddRange(m_lAllies);
+            _targets.AddRange(m_lGuests);
+            GetComponent<WarBattle_EnemyControllerScript>().StartFactionTurn(m_lEnemies, null, _targets);
+        }
+        else if (m_bIsAllyTurn == Turn_Order.GuestTurn)
+        {
+            foreach (GameObject _go in m_lAllies)
+            {
+                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
+                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
+            }
+            foreach (GameObject _go in m_lEnemies)
+            {
+                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
+                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
+            }
+            foreach (GameObject _go in m_lGuests)
+            {
+                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = false;
+                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", false);
+            }
+            GetComponent<WarBattle_EnemyControllerScript>().StartFactionTurn(m_lGuests, m_lAllies, m_lEnemies);
         }
     }
 
@@ -528,7 +693,7 @@ public class WarBattleWatcherScript : MonoBehaviour
     //Creating this minor delay so that if something is animating it gives it time before player gets distracted with other thing... kind of a hack, but... I think it should be fine for now
     void DelayStartNextUnitTurn()
     {
-        if (m_bIsAllyTurn == true)
+        if (m_bIsAllyTurn == Turn_Order.AllyTurn)
         {
             m_nState = (int)War_States.eMovement;
             m_goSelectedUnit = null;
@@ -544,10 +709,24 @@ public class WarBattleWatcherScript : MonoBehaviour
             //if we're here this means that every unit in this party has acted, time to end this factions turn
             EndFactionTurn();
         }
-        else
+        else if (m_bIsAllyTurn == Turn_Order.EnemyTurn)
         {
             //check to see if all of the units on this team have acted, if they have, make sure to end their factions turn
             foreach (GameObject _go in m_lEnemies)
+            {
+                if (_go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn == false)
+                {
+                    GetComponent<WarBattle_EnemyControllerScript>().UnitActionEnded();
+                    return;
+                }
+            }
+            //if we're here this means that every unit in this party has acted, time to end this factions turn
+            EndFactionTurn();
+        }
+        else if (m_bIsAllyTurn == Turn_Order.GuestTurn)
+        {
+            //check to see if all of the units on this team have acted, if they have, make sure to end their factions turn
+            foreach (GameObject _go in m_lGuests)
             {
                 if (_go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn == false)
                 {
@@ -562,7 +741,7 @@ public class WarBattleWatcherScript : MonoBehaviour
 
     public void BattleSceneEnded(FightSceneControllerScript.cWarUnit _defender, FightSceneControllerScript.cWarUnit _attacker)
     {
-        if (m_bIsAllyTurn)
+        if (m_bIsAllyTurn == Turn_Order.AllyTurn)
             EndUnitTurn(m_goSelectedUnit);
         else
             EndUnitTurn(GetComponent<WarBattle_EnemyControllerScript>().m_goCurrentUnitActing);
@@ -604,7 +783,7 @@ public class WarBattleWatcherScript : MonoBehaviour
                             break;
                         }
                         _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + _debugAllies[_nIter].name));
-                        _unit.transform.position = _allyChild.position;
+                        _unit.transform.position = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_allyChild.position).worldPosition;
                         _unit.GetComponent<TRPG_UnitScript>().m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_unit.transform.position);
                         _unit.tag = "Ally";
                         m_lAllies.Add(_unit);
@@ -623,7 +802,7 @@ public class WarBattleWatcherScript : MonoBehaviour
                             break;
                         }
                         _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + _lAllyUnits[_nIter].m_szTeamName));
-                        _unit.transform.position = child.position;
+                        _unit.transform.position = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(child.position).worldPosition;
                         _unit.GetComponent<TRPG_UnitScript>().m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_unit.transform.position);
                         _unit.tag = "Ally";
                         _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData = _lAllyUnits[_nIter];
@@ -641,6 +820,7 @@ public class WarBattleWatcherScript : MonoBehaviour
             if (child.tag == "Enemy")
             {
                 _unit.tag = "Enemy";
+                _unit.transform.position = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(child.position).worldPosition;
                 Vector3 _localScale = _unit.GetComponentInChildren<Animator>().transform.localScale;
                 _localScale.x *= -1;
                 _unit.GetComponentInChildren<Animator>().transform.localScale = _localScale;
@@ -651,6 +831,7 @@ public class WarBattleWatcherScript : MonoBehaviour
             else if (child.tag == "Guest")
             {
                 _unit.tag = "Guest";
+                _unit.transform.position = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(child.position).worldPosition;
                 m_lGuests.Add(_unit);
             }
             Destroy(child.gameObject);

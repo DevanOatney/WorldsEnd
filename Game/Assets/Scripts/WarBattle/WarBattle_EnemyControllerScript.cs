@@ -124,6 +124,15 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
         HandleState();
 	}
 
+    void PauseForThought()
+    {
+        if (m_cDesiredDestination != null)
+        {
+            m_goWatcher.GetComponent<WarBattleWatcherScript>().ShowHighlightedSquares(m_goCurrentUnitActing, m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange, Color.yellow, false);
+            m_eState = WB_AI_States.eCursorToMoveLocation;
+        }
+    }
+
     void HandleState()
     {
         switch (m_eState)
@@ -135,12 +144,10 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                     m_goCurrentUnitActing = m_lSameTeam[m_nUnitIter];
                     m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_bIsMyTurn = true;
                     m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goSelector.transform.position = m_goCurrentUnitActing.transform.position;
+                    m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goCompanyUIWindowRoot.SetActive(true);
+                    m_goWatcher.GetComponent<WarBattleWatcherScript>().SelectorChangedPos();
                     CalculateAction();
-                    if (m_cDesiredDestination != null)
-                    {
-                        m_goWatcher.GetComponent<WarBattleWatcherScript>().ShowHighlightedSquares(m_goCurrentUnitActing, m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_nMovementRange, Color.yellow, false);
-                        m_eState = WB_AI_States.eCursorToMoveLocation;
-                    }
+                    Invoke("PauseForThought", 1.5f);
                 }
                 break;
             case WB_AI_States.eCursorToMoveLocation:
@@ -249,8 +256,8 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                             m_goWatcher.GetComponent<WarBattleWatcherScript>().ClearHighlightedSquares();
                             m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goBattleScreen.SetActive(true);
                             CNode _startNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goCurrentUnitActing.transform.position);
-                            
-                            int _distanceToAttack = (int)Mathf.Sqrt(Mathf.Pow((_startNode.gridX - _tgtPos.gridX), 2) + Mathf.Pow((_startNode.gridY - _tgtPos.gridY), 2));
+                            m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goCompanyUIWindowRoot.SetActive(false);
+                            int _distanceToAttack = Mathf.CeilToInt(Mathf.Sqrt(Mathf.Pow((_startNode.gridX - _tgtPos.gridX), 2) + Mathf.Pow((_startNode.gridY - _tgtPos.gridY), 2)));
                             if(m_goCurrentUnitActing.tag == "Enemy")
                                 m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goBattleScreen.GetComponent<FightSceneControllerScript>().SetupBattleScene(m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData, m_goDesiredTarget._goTarget.GetComponent<TRPG_UnitScript>().m_wuUnitData, _distanceToAttack);
                             else

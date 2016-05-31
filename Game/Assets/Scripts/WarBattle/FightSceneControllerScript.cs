@@ -175,7 +175,7 @@ public class FightSceneControllerScript : MonoBehaviour
         else
         {
             m_bRangedBegun = false;
-            End();
+            Invoke("End", 1.0f);
         }
     }
 
@@ -205,8 +205,8 @@ public class FightSceneControllerScript : MonoBehaviour
                 m_cLeftWarUnit.m_fPercentRemaining -= dmgMod;
                 //So this int represents how many units need to die in this scene to make it look right (it's okay if this number is slightly low/high)
                 int _nNewUnitCnt = (int)(m_cLeftWarUnit.m_nTotalCount * m_cLeftWarUnit.m_fPercentRemaining);
-                int _dyingUnitCount = _nPrevUnitCnt - _nNewUnitCnt;
-                m_fLeftSideDeathDuration = m_fTotalArrowDuration / _dyingUnitCount;
+                m_nLeftSideDeathCount = _nPrevUnitCnt - _nNewUnitCnt;
+                m_fLeftSideDeathDuration = m_fTotalArrowDuration / m_nLeftSideDeathCount;
             }
 
         }
@@ -232,8 +232,8 @@ public class FightSceneControllerScript : MonoBehaviour
                 m_cRightWarUnit.m_fPercentRemaining -= dmgMod;
                 //So this int represents how many units need to die in this scene to make it look right (it's okay if this number is slightly low/high)
                 int _nNewUnitCnt = (int)(m_cRightWarUnit.m_nTotalCount * m_cRightWarUnit.m_fPercentRemaining);
-                int _dyingUnitCount = _nPrevUnitCnt - _nNewUnitCnt;
-                m_fRightSideDeathDuration = m_fTotalArrowDuration / _dyingUnitCount;
+                m_nRightSideDeathCount = _nPrevUnitCnt - _nNewUnitCnt;
+                m_fRightSideDeathDuration = m_fTotalArrowDuration / m_nRightSideDeathCount;
             }
         }
     }
@@ -262,6 +262,8 @@ public class FightSceneControllerScript : MonoBehaviour
 		LoadInASide(1, _leftSide);
 		LoadInASide(-1, _rightSide);
         m_fTimerTillFightStarts = 0.0f;
+        m_fArrowTimer = 0.0f;
+
 	}
 
 	//-1 for if it's on the right, 1 for if it's on the left
@@ -281,7 +283,6 @@ public class FightSceneControllerScript : MonoBehaviour
 			_forceRemaining = 1;
 		for(int i = 0; i < _forceRemaining; ++i)
 		{
-			Vector3 _startPos = Vector3.zero;
             if (i + 1 == _forceRemaining && _unit.m_goLeaderSprite != null)
             {
                 //If there is only one unit remaining in this group, and we have a leader, let's have the leader be the last dude alive.

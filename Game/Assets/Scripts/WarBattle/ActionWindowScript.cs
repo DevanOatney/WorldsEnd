@@ -88,7 +88,7 @@ public class ActionWindowScript : MonoBehaviour
 
     public void ActivateWindow(GameObject _cWarUnit)
     {
-        if (m_goWatcher.GetComponent<WarBattleWatcherScript>().m_bIsAllyTurn == false)
+        if (m_goWatcher.GetComponent<WarBattleWatcherScript>().m_bIsAllyTurn != WarBattleWatcherScript.Turn_Order.AllyTurn)
             m_bAllowInput = false;
         else
             m_bAllowInput = true;
