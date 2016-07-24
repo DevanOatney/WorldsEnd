@@ -246,7 +246,6 @@ public class WarBattleWatcherScript : MonoBehaviour
                     //Is this unit an ally?
                     if (_go.tag == "Ally")
                     {
-                        FightSceneControllerScript.cWarUnit temp = _go.GetComponent<TRPG_UnitScript>().m_wuUnitData;
 
                         ShowHighlightedSquares(_go, _go.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nMovementRange, Color.yellow, false);
                         _go.GetComponent<TRPG_UnitScript>().m_bIsMyTurn = true;
@@ -787,7 +786,6 @@ public class WarBattleWatcherScript : MonoBehaviour
                             break;
                         }
                         _unit = Instantiate(Resources.Load<GameObject>("Units/WarUnits/" + _debugAllies[_nIter].name));
-                        TRPG_UnitScript _temp = _unit.GetComponent<TRPG_UnitScript>();
                         _unit.GetComponent<TRPG_UnitScript>().m_wuUnitData.Initialize();
                         _unit.transform.position = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_allyChild.position).worldPosition;
                         _unit.GetComponent<TRPG_UnitScript>().m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_unit.transform.position);

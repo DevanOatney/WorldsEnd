@@ -57,6 +57,12 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goItemCraftedPrefab;
 	public GameObject m_goItemPrefab;
 	public GameObject m_goItemSelected = null;
+
+    //Sound byte for when you traverse the menu selections
+    public AudioClip m_acMenuTraversal;
+    //Sound byte for when you select a menu option
+    public AudioClip m_acMenuSelection;
+
 	//Currently not in use
 	int m_nCharacterSelectedIndexForItemUse = 0;
 	//If a unit is selected for a formation swap
@@ -217,13 +223,15 @@ public class MenuScreenScript : MonoBehaviour
 	{
 		if(m_nMenuState != (int)MENU_STATES.eTOPTAB_SELECTION)
 			return;
+        GetComponent<AudioSource>().PlayOneShot(m_acMenuTraversal);
 		m_nTopTabMenuSelectionIndex = nIndex;
 	}
 	public void TopTabSelectionSelected(int nIndex)
 	{
 		if(m_nMenuState != (int)MENU_STATES.eTOPTAB_SELECTION)
 			return;
-		m_nTopTabMenuSelectionIndex = nIndex;
+        GetComponent<AudioSource>().PlayOneShot(m_acMenuSelection);
+        m_nTopTabMenuSelectionIndex = nIndex;
 		switch(m_nTopTabMenuSelectionIndex)
 		{
 		case 0:
@@ -311,12 +319,11 @@ public class MenuScreenScript : MonoBehaviour
 		}
 		else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Return))
 		{
-			
-			PartyTabSelectionSelected(m_nSubTabMenuSelectionIndex);
+            PartyTabSelectionSelected(m_nSubTabMenuSelectionIndex);
 		}
 		else if(Input.GetKeyDown(KeyCode.UpArrow))
 		{
-			m_nSubTabMenuSelectionIndex = m_nSubTabMenuSelectionIndex - 1;
+            m_nSubTabMenuSelectionIndex = m_nSubTabMenuSelectionIndex - 1;
 			if(m_nSubTabMenuSelectionIndex < 0)
 			{
 				m_nSubTabMenuSelectionIndex = 0;
@@ -325,13 +332,15 @@ public class MenuScreenScript : MonoBehaviour
 				foreach(GameObject go in m_goPartySubTabs)
 					Image_Brighten(go);
 			}
+            PartyTabHighlighted(m_nSubTabMenuSelectionIndex);
 		}
 		else if(Input.GetKeyDown(KeyCode.DownArrow))
 		{
-			m_nSubTabMenuSelectionIndex += 1;
+            m_nSubTabMenuSelectionIndex += 1;
 			if(m_nSubTabMenuSelectionIndex > 2)
 				m_nSubTabMenuSelectionIndex = 2;
-		}
+            PartyTabHighlighted(m_nSubTabMenuSelectionIndex);
+        }
 	}
 	void AdjustPartyTabSelection()
 	{
@@ -353,13 +362,15 @@ public class MenuScreenScript : MonoBehaviour
 	{
 		if(m_nMenuState != (int)MENU_STATES.ePARTYTAB)
 			return;
-		m_nSubTabMenuSelectionIndex = nIndex;
+        GetComponent<AudioSource>().PlayOneShot(m_acMenuTraversal);
+        m_nSubTabMenuSelectionIndex = nIndex;
 	}
 	public void PartyTabSelectionSelected(int nIndex)
 	{
 		if(m_nMenuState != (int)MENU_STATES.ePARTYTAB)
 			return;
-		m_nSubTabMenuSelectionIndex = nIndex;
+        GetComponent<AudioSource>().PlayOneShot(m_acMenuSelection);
+        m_nSubTabMenuSelectionIndex = nIndex;
 		switch(m_nSubTabMenuSelectionIndex)
 		{
 		case 0:
@@ -1379,7 +1390,8 @@ public class MenuScreenScript : MonoBehaviour
 			break;
 		case MENU_STATES.eITEMTAB:
 			{
-				TopTabHighlighted(1);
+				//TopTabHighlighted(1);
+                TopTabSelectionSelected(1);
 			}
 			break;
 		case MENU_STATES.eCRAFTING_SUBTAB:

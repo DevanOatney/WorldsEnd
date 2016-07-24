@@ -169,7 +169,7 @@ public class PathfindingScript : MonoBehaviour
     Vector3[] SimplifyPath(List<CNode> p_lPath)
     {
         List<Vector3> _lWaypoints = new List<Vector3>();
-        Vector2 _vOldDir = Vector2.zero;
+        //Vector2 _vOldDir = Vector2.zero;
         for (int i = 0; i < p_lPath.Count; ++i)
         {
            // Vector2 _vNewDir = new Vector2(p_lPath[i].gridX - p_lPath[i - 1].gridX, p_lPath[i].gridY - p_lPath[i - 1].gridY);
