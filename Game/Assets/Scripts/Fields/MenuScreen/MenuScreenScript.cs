@@ -223,7 +223,9 @@ public class MenuScreenScript : MonoBehaviour
 	{
 		if(m_nMenuState != (int)MENU_STATES.eTOPTAB_SELECTION)
 			return;
-        GetComponent<AudioSource>().PlayOneShot(m_acMenuTraversal);
+        //If the selector has been changed, play a sound
+        if(m_nTopTabMenuSelectionIndex != nIndex)
+            GetComponent<AudioSource>().PlayOneShot(m_acMenuTraversal);
 		m_nTopTabMenuSelectionIndex = nIndex;
 	}
 	public void TopTabSelectionSelected(int nIndex)
@@ -362,7 +364,9 @@ public class MenuScreenScript : MonoBehaviour
 	{
 		if(m_nMenuState != (int)MENU_STATES.ePARTYTAB)
 			return;
-        GetComponent<AudioSource>().PlayOneShot(m_acMenuTraversal);
+        //If we're changing the highlighted option
+        if(m_nSubTabMenuSelectionIndex != nIndex)
+            GetComponent<AudioSource>().PlayOneShot(m_acMenuTraversal);
         m_nSubTabMenuSelectionIndex = nIndex;
 	}
 	public void PartyTabSelectionSelected(int nIndex)
