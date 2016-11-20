@@ -1,0 +1,1 @@
+So in this folder, create a folder that is YOUR name, then inside of that folder put in both an image of yourself, and a short bio for the website
