@@ -1,5 +1,0 @@
-Item Name,Item Type,Cost
-
-
-Ex:
-Leather Armor,Chest Armor,100
