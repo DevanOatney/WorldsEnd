@@ -147,7 +147,7 @@ public class MenuScreenScript : MonoBehaviour
 						AdjustStatusScreen(RetrieveCharacter(m_nCharacterPanelSelectionIndex));
 					}
 					//mmk, if the user hits back...
-					if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetMouseButtonDown(1))
+					if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
 					{
 						m_bWaiting = true;
 						m_bFirstTimeFlag = true;
@@ -202,21 +202,9 @@ public class MenuScreenScript : MonoBehaviour
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 			Camera.main.GetComponent<GreyScaleScript>().SendMessage("EndGreyScale");
 		}
-		else if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Return))
+		else if(Input.GetKeyDown(KeyCode.Return))
 		{
 			TopTabSelectionSelected(m_nTopTabMenuSelectionIndex);
-		}
-		else if(Input.GetKeyDown(KeyCode.LeftArrow))
-		{
-			m_nTopTabMenuSelectionIndex = m_nTopTabMenuSelectionIndex - 1;
-			if(m_nTopTabMenuSelectionIndex < 0)
-				m_nTopTabMenuSelectionIndex = 5;
-		}
-		else if(Input.GetKeyDown(KeyCode.RightArrow))
-		{
-			m_nTopTabMenuSelectionIndex += 1;
-			if(m_nTopTabMenuSelectionIndex > 5)
-				m_nTopTabMenuSelectionIndex = 0;
 		}
 	}
 	public void TopTabHighlighted(int nIndex)
@@ -319,30 +307,10 @@ public class MenuScreenScript : MonoBehaviour
 			foreach(GameObject go in m_goPartySubTabs)
 				Image_Brighten(go);
 		}
-		else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Return))
+		else if(Input.GetKeyDown(KeyCode.Return))
 		{
             PartyTabSelectionSelected(m_nSubTabMenuSelectionIndex);
 		}
-		else if(Input.GetKeyDown(KeyCode.UpArrow))
-		{
-            m_nSubTabMenuSelectionIndex = m_nSubTabMenuSelectionIndex - 1;
-			if(m_nSubTabMenuSelectionIndex < 0)
-			{
-				m_nSubTabMenuSelectionIndex = 0;
-				m_nMenuState = (int)MENU_STATES.eTOPTAB_SELECTION;
-				DisplayCharacterPanels(false);
-				foreach(GameObject go in m_goPartySubTabs)
-					Image_Brighten(go);
-			}
-            PartyTabHighlighted(m_nSubTabMenuSelectionIndex);
-		}
-		else if(Input.GetKeyDown(KeyCode.DownArrow))
-		{
-            m_nSubTabMenuSelectionIndex += 1;
-			if(m_nSubTabMenuSelectionIndex > 2)
-				m_nSubTabMenuSelectionIndex = 2;
-            PartyTabHighlighted(m_nSubTabMenuSelectionIndex);
-        }
 	}
 	void AdjustPartyTabSelection()
 	{
@@ -449,41 +417,6 @@ public class MenuScreenScript : MonoBehaviour
 		else if(Input.GetKeyDown(KeyCode.Return))
 		{
 			CharacterSelected(m_nCharacterPanelSelectionIndex);
-		}
-		else if(Input.GetKeyDown(KeyCode.LeftArrow))
-		{
-			//For this you need to check if this panel actually has an active character first, else, move to the next, if there are no more to the left, go back to the previous selection.
-			if(RecursivePanelShiftLeft(m_nCharacterPanelSelectionIndex - 1) == true)
-			{
-				//was able to shift left
-			}
-			else
-			{
-				//wasn't able to shift left
-				m_bWaiting = true;
-				m_bFirstTimeFlag = true;
-				m_nMenuState = (int)MENU_STATES.ePARTYTAB;
-				m_nCharacterPanelSelectionIndex = 0;
-				foreach(GameObject panel in m_goCharacterPanels)
-					Image_Brighten(panel);
-				foreach(GameObject go in m_goCharacterPanels)
-				{
-					m_nNumberOfPanelsToWaitFor++;
-					go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
-				}
-			}
-		}
-		else if(Input.GetKeyDown(KeyCode.RightArrow))
-		{
-			//For this you need to check if this panel actually has an active character first, else, move to the next, if there are no more to the right, don't do anything.
-			if(RecursivePanelShiftRight(m_nCharacterPanelSelectionIndex + 1) == true)
-			{
-				//was able to shift right
-			}
-			else
-			{
-				//wasn't able to shift right
-			}
 		}
 	}
 
@@ -620,34 +553,6 @@ public class MenuScreenScript : MonoBehaviour
 		{
 			CharacterSelected(m_nCharacterPanelSelectionIndex);
 		}
-		else if(Input.GetKeyDown(KeyCode.LeftArrow))
-		{
-			--m_nCharacterPanelSelectionIndex;
-			if(m_nCharacterPanelSelectionIndex < 0)
-			{
-				m_nCharacterPanelSelectionIndex = 0;
-				m_nMenuState = (int)MENU_STATES.ePARTYTAB;
-				m_bWaiting = true;
-				m_bFirstTimeFlag = true;
-				m_nCharacterSelectedForFormationSwap = -1;
-				foreach(GameObject go in m_goCharacterPanels)
-				{
-					foreach(GameObject panel in m_goCharacterPanels)
-					{
-						Image_Brighten(panel);
-
-					}
-					m_nNumberOfPanelsToWaitFor++;
-					go.GetComponent<CharacterPanelScript>().ReturnToPosition(gameObject);
-				}
-			}
-		}
-		else if(Input.GetKeyDown(KeyCode.RightArrow))
-		{
-			++m_nCharacterPanelSelectionIndex;
-			if(m_nCharacterPanelSelectionIndex > 6)
-				m_nCharacterPanelSelectionIndex = 6;
-		}
 	}
 	#endregion
 	#region RosterMenu
@@ -677,28 +582,12 @@ public class MenuScreenScript : MonoBehaviour
 			foreach(GameObject go in m_goItemSubTabs)
 				Image_Brighten(go);
 		}
-		else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Return))
+		else if(Input.GetKeyDown(KeyCode.Return))
 		{
 			
 			ItemTabMenuSelected(m_nSubTabMenuSelectionIndex);
 		}
-		else if(Input.GetKeyDown(KeyCode.UpArrow))
-		{
-			m_nSubTabMenuSelectionIndex = m_nSubTabMenuSelectionIndex - 1;
-			if(m_nSubTabMenuSelectionIndex < 0)
-			{
-				m_nSubTabMenuSelectionIndex = 0;
-				m_nMenuState = (int)MENU_STATES.eTOPTAB_SELECTION;
-				foreach(GameObject go in m_goPartySubTabs)
-					Image_Brighten(go);
-			}
-		}
-		else if(Input.GetKeyDown(KeyCode.DownArrow))
-		{
-			m_nSubTabMenuSelectionIndex += 1;
-			if(m_nSubTabMenuSelectionIndex > 0)
-				m_nSubTabMenuSelectionIndex = 0;
-		}
+
 	}
 	public void ItemTabMenuSelected(int _nIndex)
 	{
@@ -1362,6 +1251,11 @@ public class MenuScreenScript : MonoBehaviour
 		case MENU_STATES.eCRAFTING_SUBTAB:
 			{
 				ItemTabHighlighted(0);
+			}
+			break;
+		case MENU_STATES.eINVENTORY_SUBTAB:
+			{
+				ItemTabHighlighted (1);
 			}
 			break;
 

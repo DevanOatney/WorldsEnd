@@ -112,8 +112,8 @@ namespace UnityStandardAssets.CrossPlatformInput
 
             if (controlStyle == ControlStyle.Swipe)
             {
-                m_Center = m_PreviousTouchPos;
-                m_PreviousTouchPos = Input.touches[m_Id].position;
+                //m_Center = m_PreviousTouchPos;
+               // m_PreviousTouchPos = Input.touches[m_Id].position;
             }
             Vector2 pointerDelta = new Vector2(Input.touches[m_Id].position.x - m_Center.x , Input.touches[m_Id].position.y - m_Center.y).normalized;
             pointerDelta.x *= Xsensitivity;
