@@ -55,6 +55,8 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goCraftingPanel;
 	public GameObject m_goItemCraftedRoot;
 	public GameObject m_goItemCraftedPrefab;
+	public GameObject m_goInventoryRoot;
+	public GameObject m_goInventoryItemPrefab;
 	public GameObject m_goItemPrefab;
 	public GameObject m_goItemSelected = null;
 
@@ -63,12 +65,14 @@ public class MenuScreenScript : MonoBehaviour
     //Sound byte for when you select a menu option
     public AudioClip m_acMenuSelection;
 
-	//Currently not in use
-	int m_nCharacterSelectedIndexForItemUse = 0;
 	//If a unit is selected for a formation swap
 	int m_nCharacterSelectedForFormationSwap = -1;
 	//Number of panels the script is waitng for to slide (used in the status screen and the formation screen.
 	int m_nNumberOfPanelsToWaitFor = 0;
+
+	//used for the inventory screen  : 0 - ALL, 1 - Equipment, 2 - Consumables, 3 - Key Items
+	int m_nIterForItemType = 0;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -591,8 +595,6 @@ public class MenuScreenScript : MonoBehaviour
 	}
 	public void ItemTabMenuSelected(int _nIndex)
 	{
-		if(m_nMenuState != (int) MENU_STATES.eITEMTAB)
-			return;
 		switch(m_nSubTabMenuSelectionIndex)
 		{
 		//Crafting(for now)
@@ -603,12 +605,21 @@ public class MenuScreenScript : MonoBehaviour
 				m_nMenuState = (int) MENU_STATES.eCRAFTING_SUBTAB;
 			}
 			break;
+			//Inventory
+		case 1:
+			{
+				AdjustInventoryList ();
+				DisplayInventoryPanels (true);
+				m_nMenuState = (int)MENU_STATES.eINVENTORY_SUBTAB;
+
+			}
+			break;
 		}
 	}
 	public void ItemTabHighlighted(int nIndex)
 	{
-		if(m_nMenuState != (int)MENU_STATES.eITEMTAB)
-			return;
+		//if(m_nMenuState != (int)MENU_STATES.eITEMTAB)
+			//return;
 		m_nSubTabMenuSelectionIndex = nIndex;
 	}
 	void AdjustItemTab()
@@ -639,6 +650,18 @@ public class MenuScreenScript : MonoBehaviour
 		}
 	}
 	#endregion
+
+	#region InventoryMenu
+	void InventoryTabInput()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+		{
+			m_nMenuState = (int)MENU_STATES.eITEMTAB;
+			DisplayCraftingPanels(false);
+		}
+	}
+
+	#endregion
 	void EquipmentScreen(DCScript.CharacterData character)
 	{
 	}
@@ -655,224 +678,7 @@ public class MenuScreenScript : MonoBehaviour
 	{
 	}
 
-	#region Inventory Functions
-	public void PopulateInventory(int type)
-	{
-		Transform contents = gameObject.transform.FindChild("Inventory").transform.FindChild("Inventory Space").FindChild("Inventory Contents").transform;
-		foreach(Transform child in contents)
-		{
-			Destroy(child.gameObject);
-		}
-		List<ItemLibrary.CharactersItems> m_lInv = dc.m_lItemLibrary.GetItemsOfType(type);
-		int i = 0;
-		float xOffset = -240.0f; float xAdj = 240.0f;
-		float yOffset = 380.0f; float yAdj = -40.0f;
-		foreach(ItemLibrary.CharactersItems item in m_lInv)
-		{
-			GameObject pMem = Instantiate(m_goItemPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-			RectTransform myRect = pMem.GetComponent<RectTransform>();
-			myRect.SetParent(contents);
-			myRect.anchoredPosition = new Vector3(xOffset, yOffset, 0);
-			pMem.transform.FindChild("Item Name").GetComponent<Text>().text = item.m_szItemName;
-			pMem.transform.FindChild("Item Count").GetComponent<Text>().text = item.m_nItemCount.ToString();
 
-			if(i == 2)
-			{
-				xOffset = -240.0f;
-				yOffset += yAdj;
-				i = 0;
-			}
-			else
-			{
-				xOffset += xAdj;
-				i++;
-			}
-		}
-	}
-	public void InventoryItemSelected(GameObject pItem)
-	{
-		Transform tChoice = transform.FindChild("Inventory").FindChild("Item Choice");
-		if(tChoice.gameObject.activeSelf == false)
-		{
-			m_goItemSelected = pItem;
-			ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(pItem.transform.FindChild("Item Name").GetComponent<Text>().text);
-			
-			tChoice.gameObject.SetActive(true);
-			if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL)
-			{
-				//Single heal item, draw one selector and allow the player to move up/down.
-				tChoice.FindChild("Use").GetComponent<Image>().color = Color.white;
-				
-			}
-			else if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
-			{
-				//Group heal, draw selector over all units, heal if player presses confirm.
-				tChoice.FindChild("Use").GetComponent<Image>().color = Color.white;
-			}
-			else
-			{
-				//Just show discard option, grey out use option.
-				tChoice.FindChild("Use").GetComponent<Image>().color = Color.grey;
-			}
-		}
-  	}
-	//"Use" has been chosen
-	public void ItemChoice_USE()
-	{
-		ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
-		if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL ||
-		   item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
-		{
-			transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
-			transform.FindChild("Inventory").FindChild("Character Selector").gameObject.SetActive(true);
-		}
-  	}
-	//"Discard" has been selected
-	public void ItemChoice_DISCARD()
-	{
-		ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
-		transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
-		m_goCharacterSelector.SetActive(false);
-		dc.m_lItemLibrary.RemoveItem(item);
-  	}
-	//"Cancel" has been selected
-	public void ItemChoice_CANCEL()
-	{
-		m_goItemSelected = null;
-		transform.FindChild("Inventory").FindChild("Item Choice").gameObject.SetActive(false);
-  	}
-	//A character has been chosen to use an item on
-	public void UseItemOnSelectedCharacter(int characterIndex)
-	{
-		//m_gPartyMembers[characterIndex];
-		ItemLibrary.CharactersItems item = dc.m_lItemLibrary.GetItemFromInventory(m_goItemSelected.transform.FindChild("Item Name").GetComponent<Text>().text);
-		ItemLibrary.ItemData dcItemData = dc.m_lItemLibrary.GetItemFromDictionary(item.m_szItemName);
-		m_nCharacterSelectedIndexForItemUse = characterIndex;
-		switch(dcItemData.m_szDescription)
-		{
-			case "Cures Poison.":
-			{
-				//check to see if it's healing all targets or just one.
-				if(dcItemData.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
-				{
-					//check to see if anyone is effected by poison
-					int removeIter = -1;
-					int counter = 0;
-					foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
-					{
-						if(se.m_szEffectName == "Poison")
-						{
-							removeIter = counter;
-							se.m_lEffectedMembers.Clear();
-						}
-						counter++;
-					}
-					if(removeIter != -1)
-					{
-						//some people were effected by poison, decrement the item count by one, remove the status effect.
-						
-						//is this the last of this item?
-						if(item.m_nItemCount == 1)
-						{
-							m_goCharacterSelector.SetActive(false);
-							dc.m_lItemLibrary.RemoveItem(item);
-						}
-						//this isn't the last item? just remove one of it then.
-						else
-							dc.m_lItemLibrary.RemoveItem(item);
-						              //remove the status effect from the party
-						dc.GetStatusEffects().RemoveAt(removeIter);
-						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect("Poison");
-					}
-					else
-					{
-						//no unit was effected by this status, do nothing
-					}
-					
-				}
-				else
-				{
-					//only trying to remove poison from a single target
-					//check to see if anyone is effected by poison
-					int removeIter = -1;
-					int counter = 0;
-					bool effectFound = false;
-					foreach(DCScript.StatusEffect se in dc.GetStatusEffects())
-					{
-						if(se.m_szEffectName == "Poison")
-						{
-							removeIter = counter;
-							if(se.RemoveMember(dc.GetParty()[characterIndex].m_szCharacterName) == true)
-							{
-								//this unit WAS effected by the status
-								effectFound = true;
-							}
-						}
-						counter++;
-					}
-					if(removeIter != -1 && effectFound == true)
-					{
-						//is this the last of this item?
-						if(item.m_nItemCount == 1)
-						{
-							m_goCharacterSelector.SetActive(false);
-							dc.m_lItemLibrary.RemoveItem(item);
-						}
-						//this isn't the last item? just remove one of it then.
-						else
-							dc.m_lItemLibrary.RemoveItem(item);
-						//if there are no more effect members, remove the status effect from the party.
-						if(dc.GetStatusEffects()[removeIter].m_lEffectedMembers.Count == 0)
-						{
-							dc.GetStatusEffects().RemoveAt(removeIter);
-							GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().RemoveStatusEffect("Poison");
-						}
-					}
-					
-				}
-				
-			}
-				break;
-			case "Cures Stone.":
-			{
-			}
-				break;
-			case "Cures Paralyze":
-			{
-			}
-				break;
-			case "Cures Ailments.":
-			{
-			}
-				break;
-			default:
-			{
-				//check to see if it's healing all targets or just one.
-				if(dcItemData.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL)
-				{
-
-					//play the heal animation for each portrait
-					for(int i =0 ; i < m_lParty.Count; ++i)
-					{
-						GameObject pMem = m_goCharacterSelector.transform.FindChild("Scaled_PartyMember" +(i+1).ToString()).gameObject;
-						pMem.transform.FindChild("Animated Effect").GetComponent<Image>().enabled = true;
-						pMem.transform.FindChild("Animated Effect").GetComponent<Animator>().Play("HealPortrait");
-					}
-				}
-				else
-				{
-					//heal whichever unit is selected
-					GameObject pMem = m_goCharacterSelector.transform.FindChild("Scaled_PartyMember" +(characterIndex+1).ToString()).gameObject;
-					pMem.transform.FindChild("Animated Effect").GetComponent<Image>().enabled = true;
-					pMem.transform.FindChild("Animated Effect").GetComponent<Animator>().Play("HealPortrait");
-				}
-				
-			}
-				break;
-		}
-
-	}
-	#endregion
 
 	#region Status Screen Functions
 
@@ -1164,6 +970,78 @@ public class MenuScreenScript : MonoBehaviour
 
 		}
 	}
+
+	void AdjustInventoryList ()
+	{
+		ClearInventoryScreen ();
+		List<ItemLibrary.CharactersItems> _items = null;
+		switch (m_nIterForItemType) {
+		case 0:
+			{
+				//All
+				_items = dc.m_lItemLibrary.GetItemsOfType (-1);
+			}
+			break;
+		case 1:
+			{
+				//Equipment
+				_items = dc.m_lItemLibrary.GetItemsOfType (1);
+				_items.AddRange(dc.m_lItemLibrary.GetItemsOfType(2));
+			}
+			break;
+		case 2:
+			{
+				//Consumables
+				_items = dc.m_lItemLibrary.GetItemsOfType (0);
+			}
+			break;
+		case 3:
+			{
+				//Junk
+				_items = dc.m_lItemLibrary.GetItemsOfType (3);
+			}
+			break;
+		case 4:
+			{
+				//Key Items
+				_items = dc.m_lItemLibrary.GetItemsOfType (4);
+			}
+			break;
+		}
+		foreach (ItemLibrary.CharactersItems item in _items) {
+			GameObject invItem = Instantiate (m_goInventoryItemPrefab) as GameObject;
+			invItem.GetComponent<RectTransform> ().SetParent (m_goInventoryRoot.GetComponent<RectTransform> ());
+			invItem.GetComponent<RectTransform> ().rotation = Quaternion.identity;
+			invItem.transform.FindChild ("ItemName").GetComponentInChildren<Text> ().text = item.m_szItemName;
+			int nItemType = item.m_nItemType;
+			string szType = "";
+			//1-4 : useable item, 5 : weapon, 6: armor, 7: junk, 8- Key Items
+			if (nItemType <= 4)
+				szType = "Consumable";
+			else
+			if (nItemType >= 4 && nItemType <= 10)
+				szType = "Equipment";
+			else
+			if (nItemType == 11)
+				szType = "Junk";
+			else
+			if (nItemType == 12)
+				szType = "Key Item";
+			invItem.transform.FindChild ("ItemType").GetComponentInChildren<Text> ().text = szType;
+			invItem.transform.FindChild ("ItemCount").GetComponentInChildren<Text> ().text = "x" + item.m_nItemCount.ToString ();
+
+		}
+
+	}
+
+	void ClearInventoryScreen()
+	{
+		foreach (Transform child in m_goInventoryRoot.transform) {
+			Destroy (child.gameObject);
+		}
+
+	}
+
 	void ClearRosterScreen()
 	{
 		foreach(GameObject go in m_goRosterCells)
@@ -1258,6 +1136,11 @@ public class MenuScreenScript : MonoBehaviour
 				ItemTabHighlighted (1);
 			}
 			break;
+		case MENU_STATES.eEQUIPMENT_SUBTAB:
+			{
+				ItemTabHighlighted (2);
+			}
+			break;
 
 		}
 	}
@@ -1295,6 +1178,16 @@ public class MenuScreenScript : MonoBehaviour
 		case MENU_STATES.eCRAFTING_SUBTAB:
 			{
 				ItemTabMenuSelected(0);
+			}
+			break;
+		case MENU_STATES.eINVENTORY_SUBTAB:
+			{
+				ItemTabMenuSelected (1);
+			}
+			break;
+		case MENU_STATES.eEQUIPMENT_SUBTAB:
+			{
+				ItemTabMenuSelected (2);
 			}
 			break;
 
@@ -1359,6 +1252,10 @@ public class MenuScreenScript : MonoBehaviour
 	public void DisplayCraftingPanels(bool bFlag)
 	{
 		m_goCraftingPanel.SetActive(bFlag);
+	}
+	public void DisplayInventoryPanels(bool bFlag)
+	{
+		m_goInventory.SetActive (bFlag);
 	}
 	public void DisplayCharacterPanels(bool bFlag)
 	{

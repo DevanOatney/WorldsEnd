@@ -20,8 +20,8 @@ public class ItemLibrary
 	public class ItemData
 	{
 		public string m_szItemName;
-		// 0 - useable item, 1- Armor, 2- Trinkets, 3- Junk
-		//1-4 : useable item, 5 : weapon, 6: armor, 7: junk
+		// 0 - useable item, 1- Armor, 2- Trinkets, 3- Junk, 4- Key Items
+		//1-4 : useable item, 5: armor, 6: junk, 7- Key Items
 		public int m_nItemType;
 		public int m_nHPMod;
 		public int m_nMPMod;
@@ -67,16 +67,21 @@ public class ItemLibrary
 	}
 
 
-	//returns list of items of a specific type
+	//returns list of items of a specific type, -1 returns all
 	public List<CharactersItems> GetItemsOfType(int type)
 	{
 		List<CharactersItems> inv = new List<CharactersItems>();
 		foreach(CharactersItems item in m_lInventory)
 		{
-			// 0 - useable item, 1- Armor, 2- Trinkets, 3- Junk
-			//1-4 : useable item, 5 : weapon, 6: armor, 7: junk
+			// 0 - useable item, 1- Armor, 2- Trinkets, 3- Junk, 4 - Key Items
+			//1-4 : useable item, 5: armor, 6: junk, 7: Key Item
 			switch(type)
 			{
+			case -1:
+				{
+					inv.Add (item);
+				}
+				break;
 			case 0:
 				{
 					if(item.m_nItemType >= (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL && item.m_nItemType <= (int)BaseItemScript.ITEM_TYPES.eGROUP_DAMAGE)
@@ -99,6 +104,12 @@ public class ItemLibrary
 				{
 					if(item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eJUNK)
 						inv.Add(item);
+				}
+				break;
+			case 4:
+				{
+					if (item.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eKEYITEM)
+						inv.Add (item);
 				}
 				break;
 			}
