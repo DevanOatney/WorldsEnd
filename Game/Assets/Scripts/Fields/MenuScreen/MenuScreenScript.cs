@@ -193,6 +193,16 @@ public class MenuScreenScript : MonoBehaviour
 					CraftingTabInput();
 			}
 			break;
+		case (int)MENU_STATES.eINVENTORY_SUBTAB:
+			{
+				if (m_bWaiting == false) {
+					if (Input.GetKeyDown (KeyCode.Escape) || Input.GetMouseButtonDown (1)) {
+						m_goInventory.SetActive (false);
+						m_nMenuState = (int)MENU_STATES.eITEMTAB;
+					}
+				}
+			}
+			break;
 		}
 	}
 		
@@ -661,6 +671,12 @@ public class MenuScreenScript : MonoBehaviour
 		}
 	}
 
+	public void FilterInventory(int _nType)
+	{
+		m_nIterForItemType = _nType;
+		ClearInventoryScreen ();
+		AdjustInventoryList ();
+	}
 	#endregion
 	void EquipmentScreen(DCScript.CharacterData character)
 	{
