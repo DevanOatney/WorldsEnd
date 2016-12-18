@@ -44,7 +44,7 @@ public class MenuScreenScript : MonoBehaviour
 	bool m_bFirstTimeFlag = false;
 	List<DCScript.CharacterData> m_lParty;
 
-	DCScript dc;
+	public DCScript dc;
 
 	public GameObject m_goCharacterSelector;
 
@@ -1061,8 +1061,15 @@ public class MenuScreenScript : MonoBehaviour
 			GameObject _unit = m_goUnitInventoryCells [_iter];
 		 	GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
 		 	Texture2D sprTex = unit.GetComponent<CAllyBattleScript>().TextureFromSprite(unit.GetComponent<CAllyBattleScript>().m_tLargeBust);
-			_unit.transform.FindChild("Background").FindChild("Icon").GetComponent<Image>().sprite = Sprite.Create(sprTex, 
+			Transform _root = _unit.transform.FindChild ("Background");
+			_root.FindChild("Icon").GetComponent<Image>().sprite = Sprite.Create(sprTex, 
 						new Rect(0, 0, sprTex.width, sprTex.height), new Vector2(0.5f, 0.5f));
+			Color _col = _root.FindChild("Icon").GetComponent<Image> ().color;
+			_col.a = 0.5f;
+			_root.FindChild("Icon").GetComponent<Image> ().color = _col;
+			_root.FindChild ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
+			_root.FindChild ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
+			_root.FindChild ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
 		}
 	}
 

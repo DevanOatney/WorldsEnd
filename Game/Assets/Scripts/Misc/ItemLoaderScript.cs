@@ -31,6 +31,7 @@ public class ItemLoaderScript : MonoBehaviour
 			m_ciItemHeld.m_szItemName = kvp.Key;
 			m_ciItemHeld.m_nItemCount = 1;
 			m_ciItemHeld.m_nItemType = kvp.Value.m_nItemType;
+			m_ciItemHeld.m_szItemDesc = kvp.Value.m_szDescription;
 			dcs.m_lItemLibrary.AddItem(m_ciItemHeld);
 		}
 	}

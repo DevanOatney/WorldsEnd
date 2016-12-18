@@ -64,6 +64,66 @@ public class ItemLibrary
 		public string m_szItemName;
 		public int m_nItemType;
 		public int m_nItemCount;
+		public string m_szItemDesc;
+
+		public string GetItemTypeName()
+		{
+			switch (m_nItemType) {
+			case (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL:
+				{
+					return "Single Heal";
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL:
+				{
+					return "Group Heal";
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eSINGLE_DAMAGE:
+				{
+					return "Single Damage";
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eGROUP_DAMAGE:
+				{
+					return "Group Damage";
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eBELTARMOR:
+				{
+					return "Belt Armor";
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eHELMARMOR:
+				{
+					return "Helmet Armor";
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eGLOVEARMOR:
+				{
+					return "Glove Armor";
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eCHESTARMOR:
+				{
+					return "Chest Amor";
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eJUNK:
+				{
+					return "Junk";
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eKEYITEM:
+				{
+					return "Key Item";
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eLEGARMOR:
+				{
+					return "Leg Armor";
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eSHOULDERARMOR:
+				{
+					return "Shoulder Armor";
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eTRINKET:
+				{
+					return "Trinket";
+				}
+			}
+			return "";
+		}
 	}
 
 
