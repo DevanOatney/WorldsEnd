@@ -32,6 +32,8 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject[] m_goCharacterPanels;
 	//Hooks to the Cells of the roster screen (for formation purposes)
 	public GameObject[] m_goRosterCells;
+	//Hooks to the units for the inventory screen for what to use items on.
+	public GameObject[] m_goUnitInventoryCells;
 	//Hook to the top tabs of the character panels
 	public GameObject m_goTopCharacterTabs;
 	//Hook to the spider graph
@@ -203,6 +205,7 @@ public class MenuScreenScript : MonoBehaviour
 					if (Input.GetKeyDown (KeyCode.Escape) || Input.GetMouseButtonDown (1)) 
 					{
 						if (m_goUnitSelectWindow.activeSelf == true) {
+							m_goItemSelectWindow.SetActive (true);
 							m_goUnitSelectWindow.SetActive (false);
 							return;
 						}
@@ -1046,6 +1049,31 @@ public class MenuScreenScript : MonoBehaviour
 		}
 
 	}
+
+	public void UpdateUnitsOnInventory()
+	{
+		foreach (GameObject go in m_goUnitInventoryCells)
+			go.SetActive (false);
+		foreach (DCScript.CharacterData character in dc.GetParty()) 
+		{
+			int _iter = ConvertPanelIterToFormationNumber(character.m_nFormationIter);
+			m_goUnitInventoryCells [_iter].SetActive (true);
+			GameObject _unit = m_goUnitInventoryCells [_iter];
+		 	GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
+		 	Texture2D sprTex = unit.GetComponent<CAllyBattleScript>().TextureFromSprite(unit.GetComponent<CAllyBattleScript>().m_tLargeBust);
+			_unit.transform.FindChild("Background").FindChild("Icon").GetComponent<Image>().sprite = Sprite.Create(sprTex, 
+						new Rect(0, 0, sprTex.width, sprTex.height), new Vector2(0.5f, 0.5f));
+		}
+	}
+
+	public void DiscardItem()
+	{
+		m_goItemSelectWindow.SetActive (false);
+		dc.m_lItemLibrary.RemoveItemAll (m_iSelectedItem);
+		ClearInventoryScreen ();
+		AdjustInventoryList ();
+	}
+
 
 	void ClearInventoryScreen()
 	{

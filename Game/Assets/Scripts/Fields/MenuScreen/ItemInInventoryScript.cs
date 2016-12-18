@@ -16,6 +16,12 @@ public class ItemInInventoryScript : MonoBehaviour, IPointerClickHandler {
 	// Update is called once per frame
 	void Update () {
 	
+		if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.activeSelf == true || m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goUnitSelectWindow.activeSelf == true) {
+			GetComponent<Button> ().interactable = false;
+		}
+		else
+			GetComponent<Button> ().interactable = true;
+
 	}
 
 	public void Initialize(ItemLibrary.CharactersItems _iItem, GameObject _goFIELDUI)
@@ -45,13 +51,17 @@ public class ItemInInventoryScript : MonoBehaviour, IPointerClickHandler {
 
 	public void OnPointerClick (PointerEventData eventData)
 	{
-		m_goFIELDUI.GetComponent<MenuScreenScript>().m_goItemSelectWindow.SetActive (true);
-		m_goFIELDUI.GetComponent<MenuScreenScript> ().m_iSelectedItem = m_iItem;
-		Vector3 newPos = Input.mousePosition;
-		newPos = Camera.main.ScreenToViewportPoint(newPos);
-		newPos.x *= Screen.width;
-		newPos.y *= Screen.height;
-		m_goFIELDUI.GetComponent<MenuScreenScript>().m_goItemSelectWindow.GetComponent<RectTransform> ().position = newPos;
+		if (eventData.button == PointerEventData.InputButton.Left) {
+			if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.activeSelf == false && m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goUnitSelectWindow.activeSelf == false) {
+				m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.SetActive (true);
+				m_goFIELDUI.GetComponent<MenuScreenScript> ().m_iSelectedItem = m_iItem;
+				Vector3 newPos = Input.mousePosition;
+				newPos = Camera.main.ScreenToViewportPoint (newPos);
+				newPos.x *= Screen.width;
+				newPos.y *= Screen.height;
+				m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.GetComponent<RectTransform> ().position = newPos;
+			}
+		}
 	}
 
 	#endregion
