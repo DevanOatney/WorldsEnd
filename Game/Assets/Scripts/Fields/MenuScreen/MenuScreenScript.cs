@@ -59,6 +59,8 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goInventoryItemPrefab;
 	public GameObject m_goItemPrefab;
 	public GameObject m_goItemSelected = null;
+	public GameObject m_goItemSelectWindow;
+	public GameObject m_goUnitSelectWindow;
 
     //Sound byte for when you traverse the menu selections
     public AudioClip m_acMenuTraversal;
@@ -72,6 +74,8 @@ public class MenuScreenScript : MonoBehaviour
 
 	//used for the inventory screen  : 0 - ALL, 1 - Equipment, 2 - Consumables, 3 - Key Items
 	int m_nIterForItemType = 0;
+	[HideInInspector]
+	public ItemLibrary.CharactersItems m_iSelectedItem;
 
 	// Use this for initialization
 	void Start () 
@@ -196,7 +200,16 @@ public class MenuScreenScript : MonoBehaviour
 		case (int)MENU_STATES.eINVENTORY_SUBTAB:
 			{
 				if (m_bWaiting == false) {
-					if (Input.GetKeyDown (KeyCode.Escape) || Input.GetMouseButtonDown (1)) {
+					if (Input.GetKeyDown (KeyCode.Escape) || Input.GetMouseButtonDown (1)) 
+					{
+						if (m_goUnitSelectWindow.activeSelf == true) {
+							m_goUnitSelectWindow.SetActive (false);
+							return;
+						}
+						if (m_goItemSelectWindow.activeSelf == true) {
+							m_goItemSelectWindow.SetActive (false);
+							return;
+						}
 						m_goInventory.SetActive (false);
 						m_nMenuState = (int)MENU_STATES.eITEMTAB;
 					}
@@ -1028,23 +1041,7 @@ public class MenuScreenScript : MonoBehaviour
 			GameObject invItem = Instantiate (m_goInventoryItemPrefab) as GameObject;
 			invItem.GetComponent<RectTransform> ().SetParent (m_goInventoryRoot.GetComponent<RectTransform> ());
 			invItem.GetComponent<RectTransform> ().rotation = Quaternion.identity;
-			invItem.transform.FindChild ("ItemName").GetComponentInChildren<Text> ().text = item.m_szItemName;
-			int nItemType = item.m_nItemType;
-			string szType = "";
-			//1-4 : useable item, 5 : weapon, 6: armor, 7: junk, 8- Key Items
-			if (nItemType <= 4)
-				szType = "Consumable";
-			else
-			if (nItemType >= 4 && nItemType <= 10)
-				szType = "Equipment";
-			else
-			if (nItemType == 11)
-				szType = "Junk";
-			else
-			if (nItemType == 12)
-				szType = "Key Item";
-			invItem.transform.FindChild ("ItemType").GetComponentInChildren<Text> ().text = szType;
-			invItem.transform.FindChild ("ItemCount").GetComponentInChildren<Text> ().text = "x" + item.m_nItemCount.ToString ();
+			invItem.GetComponent<ItemInInventoryScript> ().Initialize (item, gameObject);
 
 		}
 

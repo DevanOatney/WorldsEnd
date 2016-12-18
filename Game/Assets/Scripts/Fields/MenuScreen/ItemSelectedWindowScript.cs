@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ItemInInventoryScript : MonoBehaviour {
+public class ItemSelectedWindowScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
