@@ -531,9 +531,9 @@ public class MenuScreenScript : MonoBehaviour
 							DCScript.CharacterData firstChar = RetrieveCharacter(m_nCharacterPanelSelectionIndex);
 							DCScript.CharacterData secChar = RetrieveCharacter(m_nCharacterSelectedForFormationSwap);
 							if(firstChar != null)
-								firstChar.m_nFormationIter = ConvertPanelIterToFormationNumber(m_nCharacterSelectedForFormationSwap);
+								firstChar.m_nFormationIter = ConvertFormationNumberToPanelIter(m_nCharacterSelectedForFormationSwap);
 							if(secChar != null)
-								secChar.m_nFormationIter = ConvertPanelIterToFormationNumber(m_nCharacterPanelSelectionIndex);
+								secChar.m_nFormationIter = ConvertFormationNumberToPanelIter(m_nCharacterPanelSelectionIndex);
 							//finally, reset the formation swap iter since the swap has been made
 							m_nCharacterSelectedForFormationSwap = -1;
 						}
@@ -696,31 +696,82 @@ public class MenuScreenScript : MonoBehaviour
 
 	public void UseItemOnCharacter(int _nFormationIter)
 	{
+		bool m_bResultFound = false;
+		//First let's check if this item can cure status effects...
+
+		if (m_iSelectedItem.m_szItemDesc.Contains ("Cures")) {
+			//Okay.. so we can cure a status effect.. which one can we cure?
+			foreach (StatusEffectLibrary.cStatusEffectData _se in dc.m_lStatusEffectLibrary.m_lStatusEffectData) {
+
+				if (m_iSelectedItem.m_szItemDesc.Contains (_se.m_szEffectName)) {
+					//Okay, we found the status effect that this item cures.  Next, let's see if this is a single target, or aoe target cure.
+					if (m_iSelectedItem.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL) {
+						//So this is an aoe cure, check to see if anyone in the party is afflicted by this status effect, if not, play the error noise and do nothing else.
+						if (dc.GetStatusEffect (_se.m_szEffectName) != null) {
+							//Atleast one person is effect by the ailment, remove the status effect from the list.
+							dc.RemoveStatusEffect(_se.m_szEffectName);
+							m_bResultFound = true;
+						}
+						else {
+							//No one is effected by this ailment, play the error noise, and do nothing else.
+							GetComponent<AudioSource>().PlayOneShot(m_acMenuSelection);
+						}
+					}
+					else if (m_iSelectedItem.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL) {
+						//So this is a single target cure, check to see if the targeted unit is afflicted by this status effect, if not, play the error noise and do nothing else.
+						int _iter = ConvertPanelIterToFormationNumber(_nFormationIter - 1);
+						foreach (DCScript.CharacterData character in dc.GetParty()) {
+							if (character.m_nFormationIter == _iter) {
+								//mmk, found the character... now is it effected by the status effect?
+								DCScript.StatusEffect _statusEff = dc.GetStatusEffect(_se.m_szEffectName);
+								if (_statusEff != null) {
+									foreach (DCScript.StatusEffect.cEffectedMember _mem in _statusEff.m_lEffectedMembers) {
+										if (character.m_szCharacterName == _mem.m_szCharacterName) {
+											//We have found the character we want, and they ARE effected by this effect, time to cure some ailment!!
+											m_bResultFound = true;
+											_statusEff.RemoveMember (character.m_szCharacterName);
+											break;
+										}
+									}
+								}
+								if (m_bResultFound == false) {
+									//This character is not afflicted by the status effect, play the error sound and do nothing else
+									GetComponent<AudioSource>().PlayOneShot(m_acMenuSelection);
+								}
+								break;
+							}
+						}
+					}
+				}
+			}
+
+
 		
+			if (m_bResultFound == true) {
+				//We've used the item, reduce the counter/remove the item.. if we've run out of that item to use go back to the inventory screen, else do nothing else (except for updating the item list)
+				if (m_iSelectedItem.m_nItemCount == 1) {
+					dc.m_lItemLibrary.RemoveItemAll (m_iSelectedItem);
+					ClearInventoryScreen ();
+					AdjustInventoryList ();
+					m_goUnitSelectWindow.SetActive (false);
+					m_goItemSelectWindow.SetActive (false);
+				}
+				else {
+					dc.m_lItemLibrary.RemoveItem (m_iSelectedItem, 1);
+					ClearInventoryScreen ();
+					AdjustInventoryList ();
+				}
+			}
+		}
+
+
+
+
 	}
 
 	#endregion
-	void EquipmentScreen(DCScript.CharacterData character)
-	{
-	}
-
-	void InventoryScreen(DCScript.CharacterData character)
-	{
-	}
-
-	void StatusScreen(DCScript.CharacterData character)
-	{
-	}
-
-	void SaveGame(DCScript.CharacterData character)
-	{
-	}
 
 
-
-	#region Status Screen Functions
-
-	#endregion
 
 
 
@@ -1062,7 +1113,7 @@ public class MenuScreenScript : MonoBehaviour
 			go.SetActive (false);
 		foreach (DCScript.CharacterData character in dc.GetParty()) 
 		{
-			int _iter = ConvertPanelIterToFormationNumber(character.m_nFormationIter);
+			int _iter = ConvertFormationNumberToPanelIter(character.m_nFormationIter);
 			m_goUnitInventoryCells [_iter].SetActive (true);
 			GameObject _unit = m_goUnitInventoryCells [_iter];
 		 	GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
@@ -1132,7 +1183,7 @@ public class MenuScreenScript : MonoBehaviour
 	}
 	DCScript.CharacterData RetrieveCharacter(int nPanelIndex)
 	{
-		int nFormationOfCharacter = ConvertPanelIterToFormationNumber(nPanelIndex);
+		int nFormationOfCharacter = ConvertFormationNumberToPanelIter(nPanelIndex);
 
 		if(nFormationOfCharacter != -1)
 		{
@@ -1248,12 +1299,48 @@ public class MenuScreenScript : MonoBehaviour
 		}
 	}
 
+	int ConvertPanelIterToFormationNumber(int nPanelIter)
+	{
+		switch (nPanelIter) {
+		case 0:
+			{
+				//Top Left
+				return 3;
+			}
+		case 1:
+			{
+				//Mid Left
+				return 4;
+			}
+		case 2:
+			{
+				//Bot Left
+				return 5;
+			}
+		case 3:
+			{
+				//Top Right
+				return 0;
+			}
+		case 4:
+			{
+				//Mid Right
+				return 1;
+			}
+		case 5:
+			{
+				//Bot Right
+				return 2;
+			}
+		}
+		//error catch
+		return -1;
+	}
 
-
-	int ConvertPanelIterToFormationNumber(int nPanelIndex)
+	int ConvertFormationNumberToPanelIter(int nFormationIter)
 	{
 		//convert the index of panel selected, to the formation of that party member.
-		switch(nPanelIndex)
+		switch(nFormationIter)
 		{
 		case 0:
 			{
