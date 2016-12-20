@@ -693,6 +693,12 @@ public class MenuScreenScript : MonoBehaviour
 		ClearInventoryScreen ();
 		AdjustInventoryList ();
 	}
+
+	public void UseItemOnCharacter(int _nFormationIter)
+	{
+		
+	}
+
 	#endregion
 	void EquipmentScreen(DCScript.CharacterData character)
 	{
@@ -1241,7 +1247,10 @@ public class MenuScreenScript : MonoBehaviour
 
 		}
 	}
-	public int ConvertPanelIterToFormationNumber(int nPanelIndex)
+
+
+
+	int ConvertPanelIterToFormationNumber(int nPanelIndex)
 	{
 		//convert the index of panel selected, to the formation of that party member.
 		switch(nPanelIndex)
