@@ -697,9 +697,23 @@ public class MenuScreenScript : MonoBehaviour
 	public void UseItemOnCharacter(int _nFormationIter)
 	{
 		bool m_bResultFound = false;
+		int _iter = ConvertPanelIterToFormationNumber(_nFormationIter - 1);
 		//First let's check if this item can cure status effects...
 
 		if (m_iSelectedItem.m_szItemDesc.Contains ("Cures")) {
+			//Okay so we cure a status effect, let's check the early exit for if it cures ALL status effects.
+			if (m_iSelectedItem.m_szItemDesc.Contains ("all")) {
+				//All right, is there ANY status effects currently active?
+				if (dc.GetStatusEffects ().Count > 0) {
+					//Yep, cure all of the status effects
+					m_bResultFound = true;
+					dc.GetStatusEffects ().Clear ();
+				}
+				else {
+					//Nope, do nothing and play the error sound.
+					GetComponent<AudioSource>().PlayOneShot(m_acMenuSelection);
+				}
+			}
 			//Okay.. so we can cure a status effect.. which one can we cure?
 			foreach (StatusEffectLibrary.cStatusEffectData _se in dc.m_lStatusEffectLibrary.m_lStatusEffectData) {
 
@@ -719,7 +733,7 @@ public class MenuScreenScript : MonoBehaviour
 					}
 					else if (m_iSelectedItem.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL) {
 						//So this is a single target cure, check to see if the targeted unit is afflicted by this status effect, if not, play the error noise and do nothing else.
-						int _iter = ConvertPanelIterToFormationNumber(_nFormationIter - 1);
+
 						foreach (DCScript.CharacterData character in dc.GetParty()) {
 							if (character.m_nFormationIter == _iter) {
 								//mmk, found the character... now is it effected by the status effect?
@@ -744,29 +758,93 @@ public class MenuScreenScript : MonoBehaviour
 					}
 				}
 			}
+			}
 
+		m_bResultFound = m_bResultFound | CheckConsumableHeal (_iter);
+		if (m_bResultFound == true) {
+			//We've used the item, reduce the counter/remove the item.. if we've run out of that item to use go back to the inventory screen, else do nothing else (except for updating the item list)
+			if (m_iSelectedItem.m_nItemCount == 1) {
+				dc.m_lItemLibrary.RemoveItemAll (m_iSelectedItem);
+				ClearInventoryScreen ();
+				AdjustInventoryList ();
+				m_goUnitSelectWindow.SetActive (false);
+				m_goItemSelectWindow.SetActive (false);
+			}
+			else {
+				dc.m_lItemLibrary.RemoveItem (m_iSelectedItem, 1);
+				ClearInventoryScreen ();
+				AdjustInventoryList ();
+			}
+		}
+	}
 
-		
-			if (m_bResultFound == true) {
-				//We've used the item, reduce the counter/remove the item.. if we've run out of that item to use go back to the inventory screen, else do nothing else (except for updating the item list)
-				if (m_iSelectedItem.m_nItemCount == 1) {
-					dc.m_lItemLibrary.RemoveItemAll (m_iSelectedItem);
-					ClearInventoryScreen ();
-					AdjustInventoryList ();
-					m_goUnitSelectWindow.SetActive (false);
-					m_goItemSelectWindow.SetActive (false);
+	//Returns true if was able to heal successfully, false if it was not.
+	//Parameter : -1 if it's to heal everyone.
+	bool CheckConsumableHeal(int _formationIter)
+	{
+		ItemLibrary.ItemData _theItem = dc.m_lItemLibrary.GetItemFromDictionary(m_iSelectedItem.m_szItemName);
+		if (_formationIter == -1) {
+			//So this is a "group heal" so see if ANY of the group could benefit from this, if ANY can, then use the item.
+			foreach (DCScript.CharacterData _character in dc.GetParty()) {
+				if (_theItem.m_nHPMod > 0) {
+					if (_character.m_nCurHP < _character.m_nMaxHP) {
+						//USE THE ITEM
+						UseItemOnAllCharacters();
+						return true;
+					}
+
 				}
-				else {
-					dc.m_lItemLibrary.RemoveItem (m_iSelectedItem, 1);
-					ClearInventoryScreen ();
-					AdjustInventoryList ();
+				if (_theItem.m_nMPMod > 0) {
+					if (_character.m_nCurMP < _character.m_nMaxMP) {
+						//USE THE ITEM
+						UseItemOnAllCharacters();
+						return true;
+					}
+				}
+			}
+		}
+		//If we've gotten this far, it's to heal a specific unit, check to see if this unit can benefit from the item.. if they can, use the item.
+		foreach (DCScript.CharacterData _character in dc.GetParty()) {
+			if (_formationIter == _character.m_nFormationIter) {
+				if (_theItem.m_nHPMod > 0) {
+					if (_character.m_nCurHP < _character.m_nMaxHP) {
+						//USE THE ITEM
+						UseItemOnSingleCharacter(_character);
+						return true;
+					}
+
+				}
+				if (_theItem.m_nMPMod > 0) {
+					if (_character.m_nCurMP < _character.m_nMaxMP) {
+						//USE THE ITEM
+						UseItemOnSingleCharacter(_character);
+						return true;
+					}
 				}
 			}
 		}
 
+		return false;
+	}
 
+	void UseItemOnSingleCharacter(DCScript.CharacterData _character)
+	{
+		ItemLibrary.ItemData _theItem = dc.m_lItemLibrary.GetItemFromDictionary(m_iSelectedItem.m_szItemName);
+		_character.m_nCurHP += _theItem.m_nHPMod;
+		_character.m_nCurHP = Mathf.Clamp (_character.m_nCurHP, 0, _character.m_nMaxHP);
+		_character.m_nCurMP += _theItem.m_nMPMod;
+		_character.m_nCurMP = Mathf.Clamp (_character.m_nCurMP, 0, _character.m_nMaxMP);
+	}
 
-
+	void UseItemOnAllCharacters()
+	{
+		ItemLibrary.ItemData _theItem = dc.m_lItemLibrary.GetItemFromDictionary(m_iSelectedItem.m_szItemName);
+		foreach (DCScript.CharacterData _character in dc.GetParty()) {
+			_character.m_nCurHP += _theItem.m_nHPMod;
+			_character.m_nCurHP = Mathf.Clamp (_character.m_nCurHP, 0, _character.m_nMaxHP);
+			_character.m_nCurMP += _theItem.m_nMPMod;
+			_character.m_nCurMP = Mathf.Clamp (_character.m_nCurMP, 0, _character.m_nMaxMP);
+		}
 	}
 
 	#endregion
