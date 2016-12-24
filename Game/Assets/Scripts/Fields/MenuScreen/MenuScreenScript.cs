@@ -34,6 +34,8 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject[] m_goRosterCells;
 	//Hooks to the units for the inventory screen for what to use items on.
 	public GameObject[] m_goUnitInventoryCells;
+	//Hooks to the units for the equipment screen
+	public GameObject[] m_goUnitEquipmentCells;
 	//Hook to the top tabs of the character panels
 	public GameObject m_goTopCharacterTabs;
 	//Hook to the spider graph
@@ -63,6 +65,7 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goItemSelected = null;
 	public GameObject m_goItemSelectWindow;
 	public GameObject m_goUnitSelectWindow;
+	public GameObject m_goEquipmentScreen;
 
     //Sound byte for when you traverse the menu selections
     public AudioClip m_acMenuTraversal;
@@ -214,6 +217,16 @@ public class MenuScreenScript : MonoBehaviour
 							return;
 						}
 						m_goInventory.SetActive (false);
+						m_nMenuState = (int)MENU_STATES.eITEMTAB;
+					}
+				}
+			}
+			break;
+		case (int)MENU_STATES.eEQUIPMENT_SUBTAB:
+			{
+				if (m_bWaiting == false) {
+					if (Input.GetKeyDown (KeyCode.Escape) || Input.GetMouseButtonDown (1)) {
+						m_goEquipmentScreen.SetActive (false);
 						m_nMenuState = (int)MENU_STATES.eITEMTAB;
 					}
 				}
@@ -640,6 +653,14 @@ public class MenuScreenScript : MonoBehaviour
 
 			}
 			break;
+			//EQUIPMENT
+		case 2:
+			{
+				m_nMenuState = (int)MENU_STATES.eEQUIPMENT_SUBTAB;
+				UpdateUnitsOnEquipment ();
+				DisplayEquipmentScreen ();
+			}
+			break;
 		}
 	}
 	public void ItemTabHighlighted(int nIndex)
@@ -850,7 +871,12 @@ public class MenuScreenScript : MonoBehaviour
 	#endregion
 
 
-
+	#region Equipment Screen
+	void DisplayEquipmentScreen()
+	{
+		m_goEquipmentScreen.SetActive (true);
+	}
+	#endregion
 
 
 	#region Random Helper Functions
@@ -1202,6 +1228,22 @@ public class MenuScreenScript : MonoBehaviour
 			Color _col = _root.FindChild("Icon").GetComponent<Image> ().color;
 			_col.a = 0.5f;
 			_root.FindChild("Icon").GetComponent<Image> ().color = _col;
+			_root.FindChild ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
+			_root.FindChild ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
+			_root.FindChild ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
+		}
+	}
+
+	public void UpdateUnitsOnEquipment()
+	{
+		foreach (GameObject go in m_goUnitInventoryCells)
+			go.SetActive (false);
+		foreach (DCScript.CharacterData character in dc.GetParty()) 
+		{
+			int _iter = ConvertFormationNumberToPanelIter(character.m_nFormationIter);
+			m_goUnitInventoryCells [_iter].SetActive (true);
+			GameObject _unit = m_goUnitInventoryCells [_iter];
+			Transform _root = _unit.transform.FindChild ("Background");
 			_root.FindChild ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
 			_root.FindChild ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
 			_root.FindChild ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
