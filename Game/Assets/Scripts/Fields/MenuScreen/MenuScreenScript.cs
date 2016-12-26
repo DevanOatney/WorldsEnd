@@ -81,6 +81,8 @@ public class MenuScreenScript : MonoBehaviour
 	int m_nIterForItemType = 0;
 	[HideInInspector]
 	public ItemLibrary.CharactersItems m_iSelectedItem;
+	[HideInInspector]
+	public bool m_bIsShowingCharacterInEquipmentScreen = false;
 
 	// Use this for initialization
 	void Start () 
@@ -226,8 +228,16 @@ public class MenuScreenScript : MonoBehaviour
 			{
 				if (m_bWaiting == false) {
 					if (Input.GetKeyDown (KeyCode.Escape) || Input.GetMouseButtonDown (1)) {
-						m_goEquipmentScreen.SetActive (false);
-						m_nMenuState = (int)MENU_STATES.eITEMTAB;
+						if (m_bIsShowingCharacterInEquipmentScreen == true) {
+							m_bIsShowingCharacterInEquipmentScreen = false;
+							AdjustEquipmentScreenCharacter (-1);
+
+						}
+						else {
+							DisplayEquipmentScreen (false);
+							m_nMenuState = (int)MENU_STATES.eITEMTAB;
+						}
+
 					}
 				}
 			}
@@ -658,7 +668,7 @@ public class MenuScreenScript : MonoBehaviour
 			{
 				m_nMenuState = (int)MENU_STATES.eEQUIPMENT_SUBTAB;
 				UpdateUnitsOnEquipment ();
-				DisplayEquipmentScreen ();
+				DisplayEquipmentScreen (true);
 			}
 			break;
 		}
@@ -872,9 +882,126 @@ public class MenuScreenScript : MonoBehaviour
 
 
 	#region Equipment Screen
-	void DisplayEquipmentScreen()
+	void DisplayEquipmentScreen(bool _flag)
 	{
-		m_goEquipmentScreen.SetActive (true);
+		m_goEquipmentScreen.SetActive (_flag);
+	}
+
+	public void AdjustEquipmentScreenCharacter(int _nCharacterIter)
+	{
+		if (_nCharacterIter == -1) {
+			m_goEquipmentScreen.transform.FindChild ("EquipmentPanel").gameObject.SetActive (false);
+			m_bIsShowingCharacterInEquipmentScreen = false;
+		}
+		else {
+			Transform _tEquipmentPanel = m_goEquipmentScreen.transform.FindChild ("EquipmentPanel");
+			_tEquipmentPanel.gameObject.SetActive (true);
+			int _formation = ConvertPanelIterToFormationNumber (_nCharacterIter) - 1;
+			foreach(DCScript.CharacterData _character in dc.GetParty())
+			{
+				if (_character.m_nFormationIter == _formation) {
+					_tEquipmentPanel.FindChild ("CharacterName").GetComponent<Text> ().text = _character.m_szCharacterName;
+					Transform _tSecondEqPan = _tEquipmentPanel.FindChild ("EquipmentPanel");
+					GameObject _gRadar = _tEquipmentPanel.FindChild ("Radar").gameObject;
+					//So we need to create a list of 0-1 floats that represent the stat fill radar chart.
+					List<float> lStatDistances = new List<float>();
+					List<int> lStats = new List<int>();
+					//SPD, DEF, HP, POW, HIT, MP, EVA (I think this is the order, more testing.
+					lStats.Add(_character.m_nSPD);
+					_gRadar.transform.FindChild("SPD").FindChild("Stat").GetComponent<Text>().text = _character.m_nSPD.ToString();
+					lStats.Add(_character.m_nEVA);
+					_gRadar.transform.FindChild("EVA").FindChild("Stat").GetComponent<Text>().text = _character.m_nEVA.ToString();
+					lStats.Add(_character.m_nMaxMP);
+					_gRadar.transform.FindChild("MP").FindChild("Stat").GetComponent<Text>().text = _character.m_nMaxMP.ToString();
+					lStats.Add(_character.m_nHIT);
+					_gRadar.transform.FindChild("HIT").FindChild("Stat").GetComponent<Text>().text = _character.m_nHIT.ToString();
+					lStats.Add(_character.m_nSTR);
+					_gRadar.transform.FindChild("POW").FindChild("Stat").GetComponent<Text>().text = _character.m_nSTR.ToString();
+					lStats.Add(_character.m_nMaxHP);
+					_gRadar.transform.FindChild("HP").FindChild("Stat").GetComponent<Text>().text = _character.m_nMaxHP.ToString();
+					lStats.Add(_character.m_nDEF);
+					_gRadar.transform.FindChild("DEF").FindChild("Stat").GetComponent<Text>().text = _character.m_nDEF.ToString();
+
+					int highestStat = 0;
+					foreach(int n in lStats)
+						if(highestStat < n)
+							highestStat = n;
+					foreach(int n in lStats)
+					{
+						float distance = (float)((float)n / (float)highestStat);
+						lStatDistances.Add(distance);
+					}
+					_gRadar.GetComponent<RadarGraphScript>().AdjustFill(lStatDistances);
+
+					//Now let's populate the equipment.
+					if(_character.m_idHelmSlot != null)
+					{
+						_tSecondEqPan.FindChild("Head").GetComponentInChildren<Text>().text = "Head Slot : " + _character.m_idHelmSlot.m_szItemName;
+					}
+					else
+					{
+						_tSecondEqPan.FindChild("Head").GetComponentInChildren<Text>().text = "Head Slot : None";
+					}
+					if(_character.m_idShoulderSlot != null)
+					{
+						_tSecondEqPan.FindChild("Shoulder").GetComponentInChildren<Text>().text = "Shoulder Slot : " + _character.m_idShoulderSlot.m_szItemName;
+					}
+					else
+					{
+						_tSecondEqPan.FindChild("Shoulder").GetComponentInChildren<Text>().text = "Shoulder Slot : None";
+					}
+					if(_character.m_idChestSlot != null)
+					{
+						_tSecondEqPan.FindChild("Chest").GetComponentInChildren<Text>().text = "Chest Slot : " + _character.m_idChestSlot.m_szItemName;
+					}
+					else
+					{
+						_tSecondEqPan.FindChild("Chest").GetComponentInChildren<Text>().text = "Chest Slot : None";
+					}
+					if(_character.m_idGloveSlot != null)
+					{
+						_tSecondEqPan.FindChild("Arms").GetComponentInChildren<Text>().text = "Glove Slot : " + _character.m_idGloveSlot.m_szItemName;
+					}
+					else
+					{
+						_tSecondEqPan.FindChild("Arms").GetComponentInChildren<Text>().text = "Glove Slot : None";
+					}
+					if(_character.m_idBeltSlot != null)
+					{
+						_tSecondEqPan.FindChild("Waist").GetComponentInChildren<Text>().text = "Belt Slot : " + _character.m_idBeltSlot.m_szItemName;
+					}
+					else
+					{
+						_tSecondEqPan.FindChild("Waist").GetComponentInChildren<Text>().text = "Waist Slot : None";
+					}
+					if(_character.m_idLegSlot != null)
+					{
+						_tSecondEqPan.FindChild("Legs").GetComponentInChildren<Text>().text = "Leg Slot : " + _character.m_idLegSlot.m_szItemName;
+					}
+					else
+					{
+						_tSecondEqPan.FindChild("Legs").GetComponentInChildren<Text>().text = "Leg Slot : None";
+					}
+					if(_character.m_idTrinket1 != null)
+					{
+						_tSecondEqPan.FindChild("Trinket1").GetComponentInChildren<Text>().text = "Trinket Slot : " + _character.m_idTrinket1.m_szItemName;
+					}
+					else
+					{
+						_tSecondEqPan.FindChild("Trinket1").GetComponentInChildren<Text>().text = "Trinket Slot : None";
+					}
+					if(_character.m_idTrinket2 != null)
+					{
+						_tSecondEqPan.FindChild("Trinket2").GetComponentInChildren<Text>().text = "Trinket Slot : " + _character.m_idTrinket2.m_szItemName;
+					}
+					else
+					{
+						_tSecondEqPan.FindChild("Trinket1").GetComponentInChildren<Text>().text = "Trinket Slot : None";
+					}
+				}
+			}
+			m_bIsShowingCharacterInEquipmentScreen = true;
+		}
 	}
 	#endregion
 
@@ -1236,13 +1363,13 @@ public class MenuScreenScript : MonoBehaviour
 
 	public void UpdateUnitsOnEquipment()
 	{
-		foreach (GameObject go in m_goUnitInventoryCells)
+		foreach (GameObject go in m_goUnitEquipmentCells)
 			go.SetActive (false);
 		foreach (DCScript.CharacterData character in dc.GetParty()) 
 		{
 			int _iter = ConvertFormationNumberToPanelIter(character.m_nFormationIter);
-			m_goUnitInventoryCells [_iter].SetActive (true);
-			GameObject _unit = m_goUnitInventoryCells [_iter];
+			m_goUnitEquipmentCells [_iter].SetActive (true);
+			GameObject _unit = m_goUnitEquipmentCells [_iter];
 			Transform _root = _unit.transform.FindChild ("Background");
 			_root.FindChild ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
 			_root.FindChild ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;

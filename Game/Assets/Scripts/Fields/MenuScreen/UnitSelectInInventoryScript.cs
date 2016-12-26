@@ -6,6 +6,7 @@ using System.Collections;
 public class UnitSelectInInventoryScript : MonoBehaviour, IPointerClickHandler {
 	public GameObject m_goFIELDUI;
 	public int m_nFormationIter;
+	public bool m_bIsEquipmentButtons = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -20,7 +21,14 @@ public class UnitSelectInInventoryScript : MonoBehaviour, IPointerClickHandler {
 
 	public void OnPointerClick (PointerEventData eventData)
 	{
-		m_goFIELDUI.GetComponent<MenuScreenScript> ().UseItemOnCharacter (m_nFormationIter);
+		if (m_bIsEquipmentButtons == false)
+			m_goFIELDUI.GetComponent<MenuScreenScript> ().UseItemOnCharacter (m_nFormationIter);
+		else
+		if (m_bIsEquipmentButtons == true) {
+			if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_bIsShowingCharacterInEquipmentScreen == false) {
+				m_goFIELDUI.GetComponent<MenuScreenScript> ().AdjustEquipmentScreenCharacter (m_nFormationIter);
+			}
+		}
 	}
 
 	#endregion
