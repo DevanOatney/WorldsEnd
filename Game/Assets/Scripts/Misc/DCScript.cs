@@ -210,6 +210,172 @@ public class DCScript : MonoBehaviour
 		//if this unit has been recruited to the roster
 		public bool m_bHasBeenRecruited = false;
 
+		//1 - HP, 2 - MP, 3 - POW, 4 - DEF, 5 - SPD, 6 - EVA, 7 - HIT
+		public int GetStatWithGearInfluencing(int _statIter)
+		{
+			switch (_statIter) {
+			case 1:
+				{
+					//HP
+					int _returnHP = m_nMaxHP;
+					if(m_idChestSlot != null)
+						_returnHP += m_idChestSlot.m_nHPMod;
+					if (m_idLegSlot != null)
+						_returnHP += m_idLegSlot.m_nHPMod;
+					if (m_idBeltSlot != null)
+						_returnHP += m_idBeltSlot.m_nHPMod;
+					if (m_idShoulderSlot != null)
+						_returnHP += m_idShoulderSlot.m_nHPMod;
+					if (m_idHelmSlot != null)
+						_returnHP += m_idHelmSlot.m_nHPMod;
+					if (m_idGloveSlot != null)
+						_returnHP += m_idGloveSlot.m_nHPMod;
+					if (m_idTrinket1 != null)
+						_returnHP += m_idTrinket1.m_nHPMod;
+					if (m_idTrinket2 != null)
+						_returnHP += m_idTrinket2.m_nHPMod;
+					return _returnHP;
+				}
+			case 2:
+				{
+					//MP
+					int _returnMP = m_nMaxMP;
+					if(m_idChestSlot != null)
+						_returnMP += m_idChestSlot.m_nMPMod;
+					if (m_idLegSlot != null)
+						_returnMP += m_idLegSlot.m_nMPMod;
+					if (m_idBeltSlot != null)
+						_returnMP += m_idBeltSlot.m_nMPMod;
+					if (m_idShoulderSlot != null)
+						_returnMP += m_idShoulderSlot.m_nMPMod;
+					if (m_idHelmSlot != null)
+						_returnMP += m_idHelmSlot.m_nMPMod;
+					if (m_idGloveSlot != null)
+						_returnMP += m_idGloveSlot.m_nMPMod;
+					if (m_idTrinket1 != null)
+						_returnMP += m_idTrinket1.m_nMPMod;
+					if (m_idTrinket2 != null)
+						_returnMP += m_idTrinket2.m_nMPMod;
+					return _returnMP;
+				}
+			case 3:
+				{
+					//POW
+					int _returnPOW = m_nSTR;
+					if(m_idChestSlot != null)
+						_returnPOW += m_idChestSlot.m_nPowMod;
+					if (m_idLegSlot != null)
+						_returnPOW += m_idLegSlot.m_nPowMod;
+					if (m_idBeltSlot != null)
+						_returnPOW += m_idBeltSlot.m_nPowMod;
+					if (m_idShoulderSlot != null)
+						_returnPOW += m_idShoulderSlot.m_nPowMod;
+					if (m_idHelmSlot != null)
+						_returnPOW += m_idHelmSlot.m_nPowMod;
+					if (m_idGloveSlot != null)
+						_returnPOW += m_idGloveSlot.m_nPowMod;
+					if (m_idTrinket1 != null)
+						_returnPOW += m_idTrinket1.m_nPowMod;
+					if (m_idTrinket2 != null)
+						_returnPOW += m_idTrinket2.m_nPowMod;
+					return _returnPOW;
+				}
+			case 4:
+				{
+					//DEF
+					int _returnDEF = m_nDEF;
+					if(m_idChestSlot != null)
+						_returnDEF += m_idChestSlot.m_nDefMod;
+					if (m_idLegSlot != null)
+						_returnDEF += m_idLegSlot.m_nDefMod;
+					if (m_idBeltSlot != null)
+						_returnDEF += m_idBeltSlot.m_nDefMod;
+					if (m_idShoulderSlot != null)
+						_returnDEF += m_idShoulderSlot.m_nDefMod;
+					if (m_idHelmSlot != null)
+						_returnDEF += m_idHelmSlot.m_nDefMod;
+					if (m_idGloveSlot != null)
+						_returnDEF += m_idGloveSlot.m_nDefMod;
+					if (m_idTrinket1 != null)
+						_returnDEF += m_idTrinket1.m_nDefMod;
+					if (m_idTrinket2 != null)
+						_returnDEF += m_idTrinket2.m_nDefMod;
+					return _returnDEF;
+				}
+			case 5:
+				{
+					//SPD
+					int _returnSPD = m_nSPD;
+					if(m_idChestSlot != null)
+						_returnSPD += m_idChestSlot.m_nSpdMod;
+					if (m_idLegSlot != null)
+						_returnSPD += m_idLegSlot.m_nSpdMod;
+					if (m_idBeltSlot != null)
+						_returnSPD += m_idBeltSlot.m_nSpdMod;
+					if (m_idShoulderSlot != null)
+						_returnSPD += m_idShoulderSlot.m_nSpdMod;
+					if (m_idHelmSlot != null)
+						_returnSPD += m_idHelmSlot.m_nSpdMod;
+					if (m_idGloveSlot != null)
+						_returnSPD += m_idGloveSlot.m_nSpdMod;
+					if (m_idTrinket1 != null)
+						_returnSPD += m_idTrinket1.m_nSpdMod;
+					if (m_idTrinket2 != null)
+						_returnSPD += m_idTrinket2.m_nSpdMod;
+					return _returnSPD;
+				}
+			case 6:
+				{
+					//EVA
+					int _returnEVA = m_nSPD;
+					if(m_idChestSlot != null)
+						_returnEVA += m_idChestSlot.m_nEvaMod;
+					if (m_idLegSlot != null)
+						_returnEVA += m_idLegSlot.m_nEvaMod;
+					if (m_idBeltSlot != null)
+						_returnEVA += m_idBeltSlot.m_nEvaMod;
+					if (m_idShoulderSlot != null)
+						_returnEVA += m_idShoulderSlot.m_nEvaMod;
+					if (m_idHelmSlot != null)
+						_returnEVA += m_idHelmSlot.m_nEvaMod;
+					if (m_idGloveSlot != null)
+						_returnEVA += m_idGloveSlot.m_nEvaMod;
+					if (m_idTrinket1 != null)
+						_returnEVA += m_idTrinket1.m_nEvaMod;
+					if (m_idTrinket2 != null)
+						_returnEVA += m_idTrinket2.m_nEvaMod;
+					return _returnEVA;
+				}
+			case 7:
+				{
+					//HIT
+					int _returnHIT = m_nHIT;
+					if(m_idChestSlot != null)
+						_returnHIT += m_idChestSlot.m_nHitMod;
+					if (m_idLegSlot != null)
+						_returnHIT += m_idLegSlot.m_nHitMod;
+					if (m_idBeltSlot != null)
+						_returnHIT += m_idBeltSlot.m_nHitMod;
+					if (m_idShoulderSlot != null)
+						_returnHIT += m_idShoulderSlot.m_nHitMod;
+					if (m_idHelmSlot != null)
+						_returnHIT += m_idHelmSlot.m_nHitMod;
+					if (m_idGloveSlot != null)
+						_returnHIT += m_idGloveSlot.m_nHitMod;
+					if (m_idTrinket1 != null)
+						_returnHIT += m_idTrinket1.m_nHitMod;
+					if (m_idTrinket2 != null)
+						_returnHIT += m_idTrinket2.m_nHitMod;
+					return _returnHIT;
+				}
+			default:
+				{
+					return -1;
+				}
+			}
+		}
+
+
 		public void UpdateCharacterData(CharacterData newData)
 		{
 			m_szCharacterName = newData.m_szCharacterName;
