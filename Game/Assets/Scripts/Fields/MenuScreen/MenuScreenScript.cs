@@ -66,6 +66,8 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goItemSelectWindow;
 	public GameObject m_goUnitSelectWindow;
 	public GameObject m_goEquipmentScreen;
+	public GameObject m_goEquipmentListRoot;
+	public GameObject m_goEquipmentListItemPrefab;
 
     //Sound byte for when you traverse the menu selections
     public AudioClip m_acMenuTraversal;
@@ -1001,6 +1003,74 @@ public class MenuScreenScript : MonoBehaviour
 				}
 			}
 			m_bIsShowingCharacterInEquipmentScreen = true;
+		}
+	}
+
+	public void EquipmentSlotSelected(int _slotIter)
+	{
+		List<ItemLibrary.CharactersItems> _lItemsOfType = new List<ItemLibrary.CharactersItems> ();
+		switch (_slotIter) {
+		case (int)EquipmentSlotScript.EquipmentSlotID.eHELM:
+			{
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType((int)BaseItemScript.ITEM_TYPES.eHELMARMOR);
+			}
+			break;
+		case (int)EquipmentSlotScript.EquipmentSlotID.eSHOULDER:
+			{
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eSHOULDERARMOR);
+			}
+			break;
+		case (int)EquipmentSlotScript.EquipmentSlotID.eCHEST:
+			{
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eCHESTARMOR);
+			}
+			break;
+		case (int)EquipmentSlotScript.EquipmentSlotID.eGLOVES:
+			{
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eGLOVEARMOR);
+			}
+			break;
+		case (int)EquipmentSlotScript.EquipmentSlotID.eWAIST:
+			{
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eBELTARMOR);
+			}
+			break;
+		case (int)EquipmentSlotScript.EquipmentSlotID.eLEG:
+			{
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eLEGARMOR);
+			}
+			break;
+		case (int)EquipmentSlotScript.EquipmentSlotID.eTRINKET1:
+			{
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eTRINKET);
+			}
+			break;
+		case (int)EquipmentSlotScript.EquipmentSlotID.eTRINKET2:
+			{
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eTRINKET);
+			}
+			break;
+		}
+
+		ClearEquipmentList ();
+		foreach (ItemLibrary.CharactersItems item in _lItemsOfType) 
+		{
+			GameObject invItem = Instantiate (m_goEquipmentListItemPrefab) as GameObject;
+			invItem.GetComponent<RectTransform> ().SetParent (m_goEquipmentListRoot.GetComponent<RectTransform> ());
+			invItem.GetComponent<RectTransform> ().rotation = Quaternion.identity;
+			ItemLibrary.ArmorData _armor = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary (item.m_szItemName);
+			invItem.GetComponent<ItemInEquipmentList> ().Initialize (_armor, gameObject);
+
+		}
+		m_goEquipmentListRoot.SetActive (true);
+
+	}
+
+
+	void ClearEquipmentList()
+	{
+		foreach (Transform child in m_goEquipmentListRoot.transform.FindChild("ViewPort").FindChild("Contents")) {
+			Destroy (child.gameObject);
 		}
 	}
 	#endregion
