@@ -25,7 +25,7 @@ public class UnitSelectInInventoryScript : MonoBehaviour, IPointerClickHandler {
 			m_goFIELDUI.GetComponent<MenuScreenScript> ().UseItemOnCharacter (m_nFormationIter);
 		else
 		if (m_bIsEquipmentButtons == true) {
-			if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_bIsShowingCharacterInEquipmentScreen == false) {
+				if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_nEquipmentScreenIter == 0) {
 				m_goFIELDUI.GetComponent<MenuScreenScript> ().AdjustEquipmentScreenCharacter (m_nFormationIter);
 			}
 		}

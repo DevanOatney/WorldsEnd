@@ -68,6 +68,7 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goEquipmentScreen;
 	public GameObject m_goEquipmentListRoot;
 	public GameObject m_goEquipmentListItemPrefab;
+	public GameObject m_goEquipmentItemDescModuleWindow;
 
     //Sound byte for when you traverse the menu selections
     public AudioClip m_acMenuTraversal;
@@ -83,8 +84,9 @@ public class MenuScreenScript : MonoBehaviour
 	int m_nIterForItemType = 0;
 	[HideInInspector]
 	public ItemLibrary.CharactersItems m_iSelectedItem;
+	//0 - No character has been selected yet.   1 - Character has been selected to view equipment.   2- Slot has been selected to change out an item
 	[HideInInspector]
-	public bool m_bIsShowingCharacterInEquipmentScreen = false;
+	public int m_nEquipmentScreenIter = 0;
 
 	// Use this for initialization
 	void Start () 
@@ -230,8 +232,15 @@ public class MenuScreenScript : MonoBehaviour
 			{
 				if (m_bWaiting == false) {
 					if (Input.GetKeyDown (KeyCode.Escape) || Input.GetMouseButtonDown (1)) {
-						if (m_bIsShowingCharacterInEquipmentScreen == true) {
-							m_bIsShowingCharacterInEquipmentScreen = false;
+						if (m_nEquipmentScreenIter == 2) {
+							//Deepest level, currently looking at a list of items for a specific slot.
+							m_goEquipmentItemDescModuleWindow.SetActive(false);
+							m_goEquipmentListRoot.SetActive (false);
+							m_nEquipmentScreenIter = 1;
+						}
+						else if (m_nEquipmentScreenIter == 1) {
+							//This means that a character screen is being shown on the equipment screen, but they haven't selected a slot yet.
+							m_nEquipmentScreenIter = 0;
 							AdjustEquipmentScreenCharacter (-1);
 
 						}
@@ -893,7 +902,7 @@ public class MenuScreenScript : MonoBehaviour
 	{
 		if (_nCharacterIter == -1) {
 			m_goEquipmentScreen.transform.FindChild ("EquipmentPanel").gameObject.SetActive (false);
-			m_bIsShowingCharacterInEquipmentScreen = false;
+			m_nEquipmentScreenIter = 0;
 		}
 		else {
 			Transform _tEquipmentPanel = m_goEquipmentScreen.transform.FindChild ("EquipmentPanel");
@@ -1002,52 +1011,53 @@ public class MenuScreenScript : MonoBehaviour
 					}
 				}
 			}
-			m_bIsShowingCharacterInEquipmentScreen = true;
+			m_nEquipmentScreenIter = 1;
 		}
 	}
 
 	public void EquipmentSlotSelected(int _slotIter)
 	{
+		m_nEquipmentScreenIter = 2;
 		List<ItemLibrary.CharactersItems> _lItemsOfType = new List<ItemLibrary.CharactersItems> ();
 		switch (_slotIter) {
 		case (int)EquipmentSlotScript.EquipmentSlotID.eHELM:
 			{
-				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType((int)BaseItemScript.ITEM_TYPES.eHELMARMOR);
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfSpecificType((int)BaseItemScript.ITEM_TYPES.eHELMARMOR);
 			}
 			break;
 		case (int)EquipmentSlotScript.EquipmentSlotID.eSHOULDER:
 			{
-				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eSHOULDERARMOR);
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfSpecificType ((int)BaseItemScript.ITEM_TYPES.eSHOULDERARMOR);
 			}
 			break;
 		case (int)EquipmentSlotScript.EquipmentSlotID.eCHEST:
 			{
-				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eCHESTARMOR);
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfSpecificType ((int)BaseItemScript.ITEM_TYPES.eCHESTARMOR);
 			}
 			break;
 		case (int)EquipmentSlotScript.EquipmentSlotID.eGLOVES:
 			{
-				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eGLOVEARMOR);
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfSpecificType ((int)BaseItemScript.ITEM_TYPES.eGLOVEARMOR);
 			}
 			break;
 		case (int)EquipmentSlotScript.EquipmentSlotID.eWAIST:
 			{
-				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eBELTARMOR);
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfSpecificType ((int)BaseItemScript.ITEM_TYPES.eBELTARMOR);
 			}
 			break;
 		case (int)EquipmentSlotScript.EquipmentSlotID.eLEG:
 			{
-				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eLEGARMOR);
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfSpecificType ((int)BaseItemScript.ITEM_TYPES.eLEGARMOR);
 			}
 			break;
 		case (int)EquipmentSlotScript.EquipmentSlotID.eTRINKET1:
 			{
-				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eTRINKET);
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfSpecificType ((int)BaseItemScript.ITEM_TYPES.eTRINKET);
 			}
 			break;
 		case (int)EquipmentSlotScript.EquipmentSlotID.eTRINKET2:
 			{
-				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfType ((int)BaseItemScript.ITEM_TYPES.eTRINKET);
+				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfSpecificType ((int)BaseItemScript.ITEM_TYPES.eTRINKET);
 			}
 			break;
 		}
@@ -1056,7 +1066,7 @@ public class MenuScreenScript : MonoBehaviour
 		foreach (ItemLibrary.CharactersItems item in _lItemsOfType) 
 		{
 			GameObject invItem = Instantiate (m_goEquipmentListItemPrefab) as GameObject;
-			invItem.GetComponent<RectTransform> ().SetParent (m_goEquipmentListRoot.GetComponent<RectTransform> ());
+			invItem.GetComponent<RectTransform> ().SetParent (m_goEquipmentListRoot.transform.FindChild("ViewPort").FindChild("Contents").gameObject.GetComponent<RectTransform> ());
 			invItem.GetComponent<RectTransform> ().rotation = Quaternion.identity;
 			ItemLibrary.ArmorData _armor = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary (item.m_szItemName);
 			invItem.GetComponent<ItemInEquipmentList> ().Initialize (_armor, gameObject);
@@ -1369,32 +1379,32 @@ public class MenuScreenScript : MonoBehaviour
 		case 0:
 			{
 				//All
-				_items = dc.m_lItemLibrary.GetItemsOfType (-1);
+				_items = dc.m_lItemLibrary.GetItemsOfBroadType (-1);
 			}
 			break;
 		case 1:
 			{
 				//Equipment
-				_items = dc.m_lItemLibrary.GetItemsOfType (1);
-				_items.AddRange(dc.m_lItemLibrary.GetItemsOfType(2));
+				_items = dc.m_lItemLibrary.GetItemsOfBroadType (1);
+				_items.AddRange(dc.m_lItemLibrary.GetItemsOfBroadType(2));
 			}
 			break;
 		case 2:
 			{
 				//Consumables
-				_items = dc.m_lItemLibrary.GetItemsOfType (0);
+				_items = dc.m_lItemLibrary.GetItemsOfBroadType (0);
 			}
 			break;
 		case 3:
 			{
 				//Junk
-				_items = dc.m_lItemLibrary.GetItemsOfType (3);
+				_items = dc.m_lItemLibrary.GetItemsOfBroadType (3);
 			}
 			break;
 		case 4:
 			{
 				//Key Items
-				_items = dc.m_lItemLibrary.GetItemsOfType (4);
+				_items = dc.m_lItemLibrary.GetItemsOfBroadType (4);
 			}
 			break;
 		}

@@ -116,7 +116,7 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 		case 0:
 			{
 				//Items - Grab all of the useable items and how many there are of them and set those values.
-				List<ItemLibrary.CharactersItems> lInventory = m_dcDataCanister.GetComponent<DCScript>().m_lItemLibrary.GetItemsOfType(0);
+				List<ItemLibrary.CharactersItems> lInventory = m_dcDataCanister.GetComponent<DCScript>().m_lItemLibrary.GetItemsOfBroadType(0);
 
 				foreach(ItemLibrary.CharactersItems item in lInventory)
 				{

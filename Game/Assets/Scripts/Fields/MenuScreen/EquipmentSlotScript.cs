@@ -21,7 +21,8 @@ public class EquipmentSlotScript : MonoBehaviour, IPointerClickHandler
 	#region IPointerClickHandler implementation
 	public void OnPointerClick (PointerEventData eventData)
 	{
-		m_goFIELDUI.GetComponent<MenuScreenScript> ().EquipmentSlotSelected ((int)m_eqSlotID);
+		if(m_goFIELDUI.GetComponent<MenuScreenScript>().m_nEquipmentScreenIter == 1)
+			m_goFIELDUI.GetComponent<MenuScreenScript> ().EquipmentSlotSelected ((int)m_eqSlotID);
 	}
 	#endregion
 

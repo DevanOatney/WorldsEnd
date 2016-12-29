@@ -126,9 +126,18 @@ public class ItemLibrary
 		}
 	}
 
+	public List<CharactersItems> GetItemsOfSpecificType(int _nType)
+	{
+		List<CharactersItems> inv = new List<CharactersItems>();
+		foreach (CharactersItems item in m_lInventory) {
+			if (item.m_nItemType == _nType)
+				inv.Add (item);
+		}
+		return inv;
+	}
 
 	//returns list of items of a specific type, -1 returns all
-	public List<CharactersItems> GetItemsOfType(int type)
+	public List<CharactersItems> GetItemsOfBroadType(int type)
 	{
 		List<CharactersItems> inv = new List<CharactersItems>();
 		foreach(CharactersItems item in m_lInventory)
