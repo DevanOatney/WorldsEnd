@@ -7,10 +7,12 @@ public class ItemInEquipmentList : MonoBehaviour, IPointerClickHandler, IPointer
 
 	ItemLibrary.ArmorData m_iArmorData;
 	GameObject m_goFieldUI;
+	int m_nTrinketSlotNum = -1;
 
-	public void Initialize(ItemLibrary.ArmorData _armor, GameObject _fieldUI)
+	public void Initialize(ItemLibrary.ArmorData _armor,int _trinketSlotNum, GameObject _fieldUI)
 	{
 		m_iArmorData = _armor;
+		m_nTrinketSlotNum = _trinketSlotNum;
 		m_goFieldUI = _fieldUI;
 		GetComponentInChildren<Text> ().text = m_iArmorData.m_szItemName;
 
@@ -35,7 +37,16 @@ public class ItemInEquipmentList : MonoBehaviour, IPointerClickHandler, IPointer
 
 	public void OnPointerClick (PointerEventData eventData)
 	{
-		throw new System.NotImplementedException ();
+		
+		ItemLibrary.ArmorData _oldArmor = m_goFieldUI.GetComponent<MenuScreenScript> ().m_cSelectedCharacter.EquipArmor (m_iArmorData, m_nTrinketSlotNum);
+		if (_oldArmor != null) {
+			GameObject.Find ("PersistantData").GetComponent<DCScript> ().m_lItemLibrary.RemoveItem (m_iArmorData.m_szItemName, 1);
+			GameObject.Find ("PersistantData").GetComponent<DCScript> ().m_lItemLibrary.AddItem (_oldArmor.m_szItemName);
+		}
+		m_goFieldUI.GetComponent<MenuScreenScript> ().UpdateEquipmentScreen (m_goFieldUI.GetComponent<MenuScreenScript> ().m_cSelectedCharacter);
+		m_goFieldUI.GetComponent<MenuScreenScript> ().m_goEquipmentListRoot.SetActive (false);
+		m_goFieldUI.GetComponent<MenuScreenScript> ().m_goEquipmentItemDescModuleWindow.SetActive (false);
+		m_goFieldUI.GetComponent<MenuScreenScript> ().m_nEquipmentScreenIter = 1;
 	}
 
 	#endregion

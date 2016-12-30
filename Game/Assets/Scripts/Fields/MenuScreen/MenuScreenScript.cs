@@ -87,6 +87,7 @@ public class MenuScreenScript : MonoBehaviour
 	//0 - No character has been selected yet.   1 - Character has been selected to view equipment.   2- Slot has been selected to change out an item
 	[HideInInspector]
 	public int m_nEquipmentScreenIter = 0;
+	public DCScript.CharacterData m_cSelectedCharacter;
 
 	// Use this for initialization
 	void Start () 
@@ -905,119 +906,127 @@ public class MenuScreenScript : MonoBehaviour
 			m_nEquipmentScreenIter = 0;
 		}
 		else {
-			Transform _tEquipmentPanel = m_goEquipmentScreen.transform.FindChild ("EquipmentPanel");
-			_tEquipmentPanel.gameObject.SetActive (true);
+			
 			int _formation = ConvertPanelIterToFormationNumber (_nCharacterIter) - 1;
 			foreach(DCScript.CharacterData _character in dc.GetParty())
 			{
 				if (_character.m_nFormationIter == _formation) {
-					_tEquipmentPanel.FindChild ("CharacterName").GetComponent<Text> ().text = _character.m_szCharacterName;
-					Transform _tSecondEqPan = _tEquipmentPanel.FindChild ("EquipmentPanel");
-					GameObject _gRadar = _tEquipmentPanel.FindChild ("Radar").gameObject;
-					//So we need to create a list of 0-1 floats that represent the stat fill radar chart.
-					List<float> lStatDistances = new List<float>();
-					List<int> lStats = new List<int>();
-					//SPD, DEF, HP, POW, HIT, MP, EVA (I think this is the order, more testing.
-					lStats.Add(_character.m_nSPD);
-					_gRadar.transform.FindChild("SPD").FindChild("Stat").GetComponent<Text>().text = _character.m_nSPD.ToString();
-					lStats.Add(_character.m_nEVA);
-					_gRadar.transform.FindChild("EVA").FindChild("Stat").GetComponent<Text>().text = _character.m_nEVA.ToString();
-					lStats.Add(_character.m_nMaxMP);
-					_gRadar.transform.FindChild("MP").FindChild("Stat").GetComponent<Text>().text = _character.m_nMaxMP.ToString();
-					lStats.Add(_character.m_nHIT);
-					_gRadar.transform.FindChild("HIT").FindChild("Stat").GetComponent<Text>().text = _character.m_nHIT.ToString();
-					lStats.Add(_character.m_nSTR);
-					_gRadar.transform.FindChild("POW").FindChild("Stat").GetComponent<Text>().text = _character.m_nSTR.ToString();
-					lStats.Add(_character.m_nMaxHP);
-					_gRadar.transform.FindChild("HP").FindChild("Stat").GetComponent<Text>().text = _character.m_nMaxHP.ToString();
-					lStats.Add(_character.m_nDEF);
-					_gRadar.transform.FindChild("DEF").FindChild("Stat").GetComponent<Text>().text = _character.m_nDEF.ToString();
-
-					int highestStat = 0;
-					foreach(int n in lStats)
-						if(highestStat < n)
-							highestStat = n;
-					foreach(int n in lStats)
-					{
-						float distance = (float)((float)n / (float)highestStat);
-						lStatDistances.Add(distance);
-					}
-					_gRadar.GetComponent<RadarGraphScript>().AdjustFill(lStatDistances);
-
-					//Now let's populate the equipment.
-					if(_character.m_idHelmSlot != null)
-					{
-						_tSecondEqPan.FindChild("Head").GetComponentInChildren<Text>().text = "Head Slot : " + _character.m_idHelmSlot.m_szItemName;
-					}
-					else
-					{
-						_tSecondEqPan.FindChild("Head").GetComponentInChildren<Text>().text = "Head Slot : None";
-					}
-					if(_character.m_idShoulderSlot != null)
-					{
-						_tSecondEqPan.FindChild("Shoulder").GetComponentInChildren<Text>().text = "Shoulder Slot : " + _character.m_idShoulderSlot.m_szItemName;
-					}
-					else
-					{
-						_tSecondEqPan.FindChild("Shoulder").GetComponentInChildren<Text>().text = "Shoulder Slot : None";
-					}
-					if(_character.m_idChestSlot != null)
-					{
-						_tSecondEqPan.FindChild("Chest").GetComponentInChildren<Text>().text = "Chest Slot : " + _character.m_idChestSlot.m_szItemName;
-					}
-					else
-					{
-						_tSecondEqPan.FindChild("Chest").GetComponentInChildren<Text>().text = "Chest Slot : None";
-					}
-					if(_character.m_idGloveSlot != null)
-					{
-						_tSecondEqPan.FindChild("Arms").GetComponentInChildren<Text>().text = "Glove Slot : " + _character.m_idGloveSlot.m_szItemName;
-					}
-					else
-					{
-						_tSecondEqPan.FindChild("Arms").GetComponentInChildren<Text>().text = "Glove Slot : None";
-					}
-					if(_character.m_idBeltSlot != null)
-					{
-						_tSecondEqPan.FindChild("Waist").GetComponentInChildren<Text>().text = "Belt Slot : " + _character.m_idBeltSlot.m_szItemName;
-					}
-					else
-					{
-						_tSecondEqPan.FindChild("Waist").GetComponentInChildren<Text>().text = "Waist Slot : None";
-					}
-					if(_character.m_idLegSlot != null)
-					{
-						_tSecondEqPan.FindChild("Legs").GetComponentInChildren<Text>().text = "Leg Slot : " + _character.m_idLegSlot.m_szItemName;
-					}
-					else
-					{
-						_tSecondEqPan.FindChild("Legs").GetComponentInChildren<Text>().text = "Leg Slot : None";
-					}
-					if(_character.m_idTrinket1 != null)
-					{
-						_tSecondEqPan.FindChild("Trinket1").GetComponentInChildren<Text>().text = "Trinket Slot : " + _character.m_idTrinket1.m_szItemName;
-					}
-					else
-					{
-						_tSecondEqPan.FindChild("Trinket1").GetComponentInChildren<Text>().text = "Trinket Slot : None";
-					}
-					if(_character.m_idTrinket2 != null)
-					{
-						_tSecondEqPan.FindChild("Trinket2").GetComponentInChildren<Text>().text = "Trinket Slot : " + _character.m_idTrinket2.m_szItemName;
-					}
-					else
-					{
-						_tSecondEqPan.FindChild("Trinket1").GetComponentInChildren<Text>().text = "Trinket Slot : None";
-					}
+					m_cSelectedCharacter = _character;
+					UpdateEquipmentScreen (_character);
 				}
 			}
 			m_nEquipmentScreenIter = 1;
 		}
 	}
 
+	public void UpdateEquipmentScreen(DCScript.CharacterData _character)
+	{
+		Transform _tEquipmentPanel = m_goEquipmentScreen.transform.FindChild ("EquipmentPanel");
+		_tEquipmentPanel.gameObject.SetActive (true);
+		_tEquipmentPanel.FindChild ("CharacterName").GetComponent<Text> ().text = _character.m_szCharacterName;
+		Transform _tSecondEqPan = _tEquipmentPanel.FindChild ("EquipmentPanel");
+		GameObject _gRadar = _tEquipmentPanel.FindChild ("Radar").gameObject;
+		//So we need to create a list of 0-1 floats that represent the stat fill radar chart.
+		List<float> lStatDistances = new List<float>();
+		List<int> lStats = new List<int>();
+		//SPD, DEF, HP, POW, HIT, MP, EVA (I think this is the order, more testing.
+		lStats.Add(_character.m_nSPD);
+		_gRadar.transform.FindChild("SPD").FindChild("Stat").GetComponent<Text>().text = _character.m_nSPD.ToString();
+		lStats.Add(_character.m_nEVA);
+		_gRadar.transform.FindChild("EVA").FindChild("Stat").GetComponent<Text>().text = _character.m_nEVA.ToString();
+		lStats.Add(_character.m_nMaxMP);
+		_gRadar.transform.FindChild("MP").FindChild("Stat").GetComponent<Text>().text = _character.m_nMaxMP.ToString();
+		lStats.Add(_character.m_nHIT);
+		_gRadar.transform.FindChild("HIT").FindChild("Stat").GetComponent<Text>().text = _character.m_nHIT.ToString();
+		lStats.Add(_character.m_nSTR);
+		_gRadar.transform.FindChild("POW").FindChild("Stat").GetComponent<Text>().text = _character.m_nSTR.ToString();
+		lStats.Add(_character.m_nMaxHP);
+		_gRadar.transform.FindChild("HP").FindChild("Stat").GetComponent<Text>().text = _character.m_nMaxHP.ToString();
+		lStats.Add(_character.m_nDEF);
+		_gRadar.transform.FindChild("DEF").FindChild("Stat").GetComponent<Text>().text = _character.m_nDEF.ToString();
+
+		int highestStat = 0;
+		foreach(int n in lStats)
+			if(highestStat < n)
+				highestStat = n;
+		foreach(int n in lStats)
+		{
+			float distance = (float)((float)n / (float)highestStat);
+			lStatDistances.Add(distance);
+		}
+		_gRadar.GetComponent<RadarGraphScript>().AdjustFill(lStatDistances);
+
+		//Now let's populate the equipment.
+		if(_character.m_idHelmSlot != null)
+		{
+			_tSecondEqPan.FindChild("Head").GetComponentInChildren<Text>().text = "Head Slot : " + _character.m_idHelmSlot.m_szItemName;
+		}
+		else
+		{
+			_tSecondEqPan.FindChild("Head").GetComponentInChildren<Text>().text = "Head Slot : None";
+		}
+		if(_character.m_idShoulderSlot != null)
+		{
+			_tSecondEqPan.FindChild("Shoulder").GetComponentInChildren<Text>().text = "Shoulder Slot : " + _character.m_idShoulderSlot.m_szItemName;
+		}
+		else
+		{
+			_tSecondEqPan.FindChild("Shoulder").GetComponentInChildren<Text>().text = "Shoulder Slot : None";
+		}
+		if(_character.m_idChestSlot != null)
+		{
+			_tSecondEqPan.FindChild("Chest").GetComponentInChildren<Text>().text = "Chest Slot : " + _character.m_idChestSlot.m_szItemName;
+		}
+		else
+		{
+			_tSecondEqPan.FindChild("Chest").GetComponentInChildren<Text>().text = "Chest Slot : None";
+		}
+		if(_character.m_idGloveSlot != null)
+		{
+			_tSecondEqPan.FindChild("Arms").GetComponentInChildren<Text>().text = "Glove Slot : " + _character.m_idGloveSlot.m_szItemName;
+		}
+		else
+		{
+			_tSecondEqPan.FindChild("Arms").GetComponentInChildren<Text>().text = "Glove Slot : None";
+		}
+		if(_character.m_idBeltSlot != null)
+		{
+			_tSecondEqPan.FindChild("Waist").GetComponentInChildren<Text>().text = "Belt Slot : " + _character.m_idBeltSlot.m_szItemName;
+		}
+		else
+		{
+			_tSecondEqPan.FindChild("Waist").GetComponentInChildren<Text>().text = "Waist Slot : None";
+		}
+		if(_character.m_idLegSlot != null)
+		{
+			_tSecondEqPan.FindChild("Legs").GetComponentInChildren<Text>().text = "Leg Slot : " + _character.m_idLegSlot.m_szItemName;
+		}
+		else
+		{
+			_tSecondEqPan.FindChild("Legs").GetComponentInChildren<Text>().text = "Leg Slot : None";
+		}
+		if(_character.m_idTrinket1 != null)
+		{
+			_tSecondEqPan.FindChild("Trinket1").GetComponentInChildren<Text>().text = "Trinket Slot : " + _character.m_idTrinket1.m_szItemName;
+		}
+		else
+		{
+			_tSecondEqPan.FindChild("Trinket1").GetComponentInChildren<Text>().text = "Trinket Slot : None";
+		}
+		if(_character.m_idTrinket2 != null)
+		{
+			_tSecondEqPan.FindChild("Trinket2").GetComponentInChildren<Text>().text = "Trinket Slot : " + _character.m_idTrinket2.m_szItemName;
+		}
+		else
+		{
+			_tSecondEqPan.FindChild("Trinket2").GetComponentInChildren<Text>().text = "Trinket Slot : None";
+		}
+	}
+
 	public void EquipmentSlotSelected(int _slotIter)
 	{
 		m_nEquipmentScreenIter = 2;
+		int _nIter = 1;
 		List<ItemLibrary.CharactersItems> _lItemsOfType = new List<ItemLibrary.CharactersItems> ();
 		switch (_slotIter) {
 		case (int)EquipmentSlotScript.EquipmentSlotID.eHELM:
@@ -1053,11 +1062,13 @@ public class MenuScreenScript : MonoBehaviour
 		case (int)EquipmentSlotScript.EquipmentSlotID.eTRINKET1:
 			{
 				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfSpecificType ((int)BaseItemScript.ITEM_TYPES.eTRINKET);
+				_nIter = 1;
 			}
 			break;
 		case (int)EquipmentSlotScript.EquipmentSlotID.eTRINKET2:
 			{
 				_lItemsOfType = dc.m_lItemLibrary.GetItemsOfSpecificType ((int)BaseItemScript.ITEM_TYPES.eTRINKET);
+				_nIter = 2;
 			}
 			break;
 		}
@@ -1069,7 +1080,7 @@ public class MenuScreenScript : MonoBehaviour
 			invItem.GetComponent<RectTransform> ().SetParent (m_goEquipmentListRoot.transform.FindChild("ViewPort").FindChild("Contents").gameObject.GetComponent<RectTransform> ());
 			invItem.GetComponent<RectTransform> ().rotation = Quaternion.identity;
 			ItemLibrary.ArmorData _armor = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary (item.m_szItemName);
-			invItem.GetComponent<ItemInEquipmentList> ().Initialize (_armor, gameObject);
+			invItem.GetComponent<ItemInEquipmentList> ().Initialize (_armor, _nIter, gameObject);
 
 		}
 		m_goEquipmentListRoot.SetActive (true);

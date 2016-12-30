@@ -188,15 +188,15 @@ public class DCScript : MonoBehaviour
 		public int m_nWeaponLevel;
 		public string m_szWeaponModifierName;
 
-		public ItemLibrary.ArmorData m_idChestSlot;
-		public ItemLibrary.ArmorData m_idLegSlot;
-		public ItemLibrary.ArmorData m_idBeltSlot;
-		public ItemLibrary.ArmorData m_idShoulderSlot;
-		public ItemLibrary.ArmorData m_idHelmSlot;
-		public ItemLibrary.ArmorData m_idGloveSlot;
+		public ItemLibrary.ArmorData m_idChestSlot = null;
+		public ItemLibrary.ArmorData m_idLegSlot = null;
+		public ItemLibrary.ArmorData m_idBeltSlot = null;
+		public ItemLibrary.ArmorData m_idShoulderSlot = null;
+		public ItemLibrary.ArmorData m_idHelmSlot = null;
+		public ItemLibrary.ArmorData m_idGloveSlot = null;
 
-		public ItemLibrary.ItemData m_idTrinket1;
-		public ItemLibrary.ItemData m_idTrinket2;
+		public ItemLibrary.ArmorData m_idTrinket1 = null;
+		public ItemLibrary.ArmorData m_idTrinket2 = null;
 
 		public List<string> m_lSpellsKnown;
 
@@ -209,6 +209,65 @@ public class DCScript : MonoBehaviour
 		public bool m_bIsInParty = false;
 		//if this unit has been recruited to the roster
 		public bool m_bHasBeenRecruited = false;
+
+		public ItemLibrary.ArmorData EquipArmor(ItemLibrary.ArmorData _iArmor, int _nTrinketSlotNum)
+		{
+			ItemLibrary.ArmorData _armor = null;
+			switch (_iArmor.m_nItemType) {
+			case (int)BaseItemScript.ITEM_TYPES.eCHESTARMOR:
+				{
+					if (m_idChestSlot == null)
+						Debug.Log ("hit");
+					_armor = m_idChestSlot;
+					m_idChestSlot = _iArmor;
+					return _armor;
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eLEGARMOR:
+				{
+					_armor = m_idLegSlot;
+					m_idLegSlot = _iArmor;
+					return _armor;
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eBELTARMOR:
+				{
+					_armor = m_idBeltSlot;
+					m_idBeltSlot = _iArmor;
+					return _armor;
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eSHOULDERARMOR:
+				{
+					_armor = m_idShoulderSlot;
+					m_idShoulderSlot = _iArmor;
+					return _armor;
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eHELMARMOR:
+				{
+					_armor = m_idHelmSlot;
+					m_idHelmSlot = _iArmor;
+					return _armor;
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eGLOVEARMOR:
+				{
+					_armor = m_idGloveSlot;
+					m_idGloveSlot = _iArmor;
+					return _armor;
+				}
+			case (int)BaseItemScript.ITEM_TYPES.eTRINKET:
+				{
+					if (_nTrinketSlotNum == 1) {
+						_armor = m_idTrinket1;
+						m_idTrinket1 = _iArmor;
+						return _armor;
+					}
+					else {
+						_armor = m_idTrinket2;
+						m_idTrinket2 = _iArmor;
+						return _armor;
+					}
+				}
+			}
+			return _armor;
+		}
 
 		//1 - HP, 2 - MP, 3 - POW, 4 - DEF, 5 - SPD, 6 - EVA, 7 - HIT
 		public int GetStatWithGearInfluencing(int _statIter)

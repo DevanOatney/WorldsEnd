@@ -75,9 +75,9 @@ public class CAllyBattleScript : UnitScript
 	[HideInInspector]
 	public ItemLibrary.ArmorData m_idLegSlot;
 	[HideInInspector]
-	public ItemLibrary.ItemData m_idTrinket1;
+	public ItemLibrary.ArmorData m_idTrinket1;
 	[HideInInspector]
-	public ItemLibrary.ItemData m_idTrinket2;
+	public ItemLibrary.ArmorData m_idTrinket2;
 
 	Transform m_tTargetPositionOnField = null;
 
@@ -1070,14 +1070,14 @@ public class CAllyBattleScript : UnitScript
 			//Trinket1
 			if(lines[20].Trim() != "NULL")
 			{
-				c.m_idTrinket1 = m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(lines[19].Trim());
+				c.m_idTrinket1 = (ItemLibrary.ArmorData)m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(lines[19].Trim());
 			}
 			else
 				c.m_idTrinket1 = null;
 			//Trinket2
 			if(lines[21].Trim() != "NULL")
 			{
-				c.m_idTrinket2 = m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(lines[20].Trim());
+				c.m_idTrinket2 = (ItemLibrary.ArmorData)m_dcPersistantData.m_lItemLibrary.GetItemFromDictionary(lines[20].Trim());
 			}
 			else
 				c.m_idTrinket2 = null;

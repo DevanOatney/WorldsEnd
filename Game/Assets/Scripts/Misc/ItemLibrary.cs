@@ -278,6 +278,21 @@ public class ItemLibrary
 		}
 	}
 
+	public void RemoveItem(string _szItemName, int _nCount)
+	{
+		foreach(CharactersItems i in m_lInventory.ToArray())
+		{
+			if(_szItemName == i.m_szItemName)
+			{
+				i.m_nItemCount -= _nCount;
+				if(i.m_nItemCount <= 0)
+				{
+					m_lInventory.Remove(i);
+				}
+			}
+		}
+	}
+
 	public void RemoveItemAll(CharactersItems item)
 	{
 		foreach(CharactersItems i in m_lInventory.ToArray())
