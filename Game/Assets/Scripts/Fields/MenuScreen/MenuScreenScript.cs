@@ -69,6 +69,7 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goEquipmentListRoot;
 	public GameObject m_goEquipmentListItemPrefab;
 	public GameObject m_goEquipmentItemDescModuleWindow;
+	public GameObject m_goMagicScreen;
 
     //Sound byte for when you traverse the menu selections
     public AudioClip m_acMenuTraversal;
@@ -307,6 +308,7 @@ public class MenuScreenScript : MonoBehaviour
 			{
 				//Magic
 				m_nMenuState = (int)MENU_STATES.eMAGICTAB;
+				DisplayMagicScreen ();
 			}
 			break;
 		case 3:
@@ -892,6 +894,36 @@ public class MenuScreenScript : MonoBehaviour
 
 	#endregion
 
+	#region Magic Screen
+	public void DisplayMagicScreen()
+	{
+		GameObject _container = m_goMagicScreen.transform.FindChild ("UnitSelectWindow").gameObject;
+		UnitSelectInInventoryScript[] _gosUnits = _container.GetComponentsInChildren<UnitSelectInInventoryScript> ();
+		foreach (UnitSelectInInventoryScript go in _gosUnits)
+			go.gameObject.SetActive (false);
+
+
+		foreach (DCScript.CharacterData character in dc.GetParty()) 
+		{
+			int _iter = ConvertFormationNumberToPanelIter(character.m_nFormationIter);
+			_gosUnits [_iter].gameObject.SetActive (true);
+			GameObject _unit = m_goUnitInventoryCells [_iter];
+			GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
+			Texture2D sprTex = unit.GetComponent<CAllyBattleScript>().TextureFromSprite(unit.GetComponent<CAllyBattleScript>().m_tLargeBust);
+			Transform _root = _unit.transform.FindChild ("Background");
+			_root.FindChild("Icon").GetComponent<Image>().sprite = Sprite.Create(sprTex, 
+				new Rect(0, 0, sprTex.width, sprTex.height), new Vector2(0.5f, 0.5f));
+			Color _col = _root.FindChild("Icon").GetComponent<Image> ().color;
+			_col.a = 0.5f;
+			_root.FindChild("Icon").GetComponent<Image> ().color = _col;
+			_root.FindChild ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
+			_root.FindChild ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
+			_root.FindChild ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
+		}
+
+		m_goMagicScreen.SetActive (true);
+	}
+	#endregion
 
 	#region Equipment Screen
 	void DisplayEquipmentScreen(bool _flag)
@@ -1584,6 +1616,11 @@ public class MenuScreenScript : MonoBehaviour
 				ItemTabHighlighted (2);
 			}
 			break;
+		case MENU_STATES.eMAGICTAB:
+			{
+				TopTabHighlighted (2);
+			}
+			break;
 
 		}
 	}
@@ -1614,7 +1651,6 @@ public class MenuScreenScript : MonoBehaviour
 			break;
 		case MENU_STATES.eITEMTAB:
 			{
-				//TopTabHighlighted(1);
                 TopTabSelectionSelected(1);
 			}
 			break;
@@ -1631,6 +1667,11 @@ public class MenuScreenScript : MonoBehaviour
 		case MENU_STATES.eEQUIPMENT_SUBTAB:
 			{
 				ItemTabMenuSelected (2);
+			}
+			break;
+		case MENU_STATES.eMAGICTAB:
+			{
+				TopTabSelectionSelected (2);
 			}
 			break;
 

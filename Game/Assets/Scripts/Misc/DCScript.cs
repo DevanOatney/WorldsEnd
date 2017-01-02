@@ -216,8 +216,6 @@ public class DCScript : MonoBehaviour
 			switch (_iArmor.m_nItemType) {
 			case (int)BaseItemScript.ITEM_TYPES.eCHESTARMOR:
 				{
-					if (m_idChestSlot == null)
-						Debug.Log ("hit");
 					_armor = m_idChestSlot;
 					m_idChestSlot = _iArmor;
 					return _armor;

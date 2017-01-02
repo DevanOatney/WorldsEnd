@@ -21,13 +21,17 @@ public class UnitSelectInInventoryScript : MonoBehaviour, IPointerClickHandler {
 
 	public void OnPointerClick (PointerEventData eventData)
 	{
-		if (m_bIsEquipmentButtons == false)
+		if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_nMenuState == (int)MenuScreenScript.MENU_STATES.eITEMTAB)
 			m_goFIELDUI.GetComponent<MenuScreenScript> ().UseItemOnCharacter (m_nFormationIter);
 		else
-		if (m_bIsEquipmentButtons == true) {
-				if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_nEquipmentScreenIter == 0) {
+		if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_nMenuState == (int)MenuScreenScript.MENU_STATES.eEQUIPMENT_SUBTAB) {
+			if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_nEquipmentScreenIter == 0) {
 				m_goFIELDUI.GetComponent<MenuScreenScript> ().AdjustEquipmentScreenCharacter (m_nFormationIter);
 			}
+		}
+		else
+		if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_nMenuState == (int)MenuScreenScript.MENU_STATES.eMAGICTAB) {
+					
 		}
 	}
 
