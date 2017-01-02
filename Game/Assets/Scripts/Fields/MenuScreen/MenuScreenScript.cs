@@ -36,6 +36,8 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject[] m_goUnitInventoryCells;
 	//Hooks to the units for the equipment screen
 	public GameObject[] m_goUnitEquipmentCells;
+	//Hooks to the units for the magic screen
+	public GameObject[] m_goUnitMagicCells;
 	//Hook to the top tabs of the character panels
 	public GameObject m_goTopCharacterTabs;
 	//Hook to the spider graph
@@ -898,30 +900,37 @@ public class MenuScreenScript : MonoBehaviour
 	public void DisplayMagicScreen()
 	{
 		GameObject _container = m_goMagicScreen.transform.FindChild ("UnitSelectWindow").gameObject;
-		UnitSelectInInventoryScript[] _gosUnits = _container.GetComponentsInChildren<UnitSelectInInventoryScript> ();
-		foreach (UnitSelectInInventoryScript go in _gosUnits)
-			go.gameObject.SetActive (false);
+		foreach (GameObject go in m_goUnitMagicCells)
+			go.SetActive (false);
 
 
 		foreach (DCScript.CharacterData character in dc.GetParty()) 
 		{
 			int _iter = ConvertFormationNumberToPanelIter(character.m_nFormationIter);
-			_gosUnits [_iter].gameObject.SetActive (true);
-			GameObject _unit = m_goUnitInventoryCells [_iter];
-			GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
-			Texture2D sprTex = unit.GetComponent<CAllyBattleScript>().TextureFromSprite(unit.GetComponent<CAllyBattleScript>().m_tLargeBust);
+			GameObject _unit = m_goUnitMagicCells [_iter];
+			_unit.SetActive (true);
 			Transform _root = _unit.transform.FindChild ("Background");
-			_root.FindChild("Icon").GetComponent<Image>().sprite = Sprite.Create(sprTex, 
-				new Rect(0, 0, sprTex.width, sprTex.height), new Vector2(0.5f, 0.5f));
-			Color _col = _root.FindChild("Icon").GetComponent<Image> ().color;
-			_col.a = 0.5f;
-			_root.FindChild("Icon").GetComponent<Image> ().color = _col;
 			_root.FindChild ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
 			_root.FindChild ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
 			_root.FindChild ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
 		}
 
 		m_goMagicScreen.SetActive (true);
+	}
+
+	public void DisplayMagicPanel(int _nFormation)
+	{
+		GameObject _magicPanel = m_goMagicScreen.transform.FindChild ("MagicPanel").gameObject;
+		_magicPanel.SetActive (true);
+		int _formation = ConvertPanelIterToFormationNumber (_nFormation) - 1;
+		foreach (DCScript.CharacterData character in dc.GetParty ()) {
+			if (character.m_nFormationIter == _formation) {
+				foreach (string _spell in character.m_lSpellsKnown)
+					Debug.Log (_spell);
+			}
+		}
+	
+
 	}
 	#endregion
 
@@ -1557,7 +1566,7 @@ public class MenuScreenScript : MonoBehaviour
 
 		if(nFormationOfCharacter != -1)
 		{
-			foreach(DCScript.CharacterData character in m_lParty)
+			foreach(DCScript.CharacterData character in dc.GetParty())
 			{
 				if(character.m_nFormationIter == nFormationOfCharacter) 
 				{
@@ -1619,6 +1628,21 @@ public class MenuScreenScript : MonoBehaviour
 		case MENU_STATES.eMAGICTAB:
 			{
 				TopTabHighlighted (2);
+			}
+			break;
+		case MENU_STATES.eSKILLSTAB:
+			{
+				TopTabHighlighted (3);
+			}
+			break;
+		case MENU_STATES.eLOGTAB:
+			{
+				TopTabHighlighted (4);
+			}
+			break;
+		case MENU_STATES.eSYSTEMTAB:
+			{
+				TopTabHighlighted (5);
 			}
 			break;
 

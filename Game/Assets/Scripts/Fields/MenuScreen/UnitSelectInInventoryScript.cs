@@ -31,7 +31,7 @@ public class UnitSelectInInventoryScript : MonoBehaviour, IPointerClickHandler {
 		}
 		else
 		if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_nMenuState == (int)MenuScreenScript.MENU_STATES.eMAGICTAB) {
-					
+			m_goFIELDUI.GetComponent<MenuScreenScript> ().DisplayMagicPanel (m_nFormationIter);
 		}
 	}
 
