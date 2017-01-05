@@ -72,6 +72,7 @@ public class MenuScreenScript : MonoBehaviour
 	public GameObject m_goEquipmentListItemPrefab;
 	public GameObject m_goEquipmentItemDescModuleWindow;
 	public GameObject m_goMagicScreen;
+	public GameObject m_goSpellInMagicListPrefab;
 
     //Sound byte for when you traverse the menu selections
     public AudioClip m_acMenuTraversal;
@@ -253,6 +254,21 @@ public class MenuScreenScript : MonoBehaviour
 							m_nMenuState = (int)MENU_STATES.eITEMTAB;
 						}
 
+					}
+				}
+			}
+			break;
+		case (int)MENU_STATES.eMAGICTAB:
+			{
+				if (m_bWaiting == false) {
+					if (Input.GetKeyDown (KeyCode.Escape) || Input.GetMouseButtonDown (1)) {
+						if (m_goMagicScreen.transform.FindChild ("MagicPanel").gameObject.activeSelf == true) {
+							m_goMagicScreen.transform.FindChild ("MagicPanel").gameObject.SetActive (false);
+						}
+						else {
+							m_nMenuState = (int)MENU_STATES.eTOPTAB_SELECTION;
+							m_goMagicScreen.SetActive (false);
+						}
 					}
 				}
 			}
@@ -897,6 +913,14 @@ public class MenuScreenScript : MonoBehaviour
 	#endregion
 
 	#region Magic Screen
+
+	void ClearSpellList()
+	{
+		Transform _root = m_goMagicScreen.transform.FindChild ("MagicPanel").FindChild ("SpellListContainer").FindChild ("ViewPort").FindChild ("Contents");
+		foreach (Transform child in _root) {
+			Destroy (child.gameObject);
+		}
+	}
 	public void DisplayMagicScreen()
 	{
 		GameObject _container = m_goMagicScreen.transform.FindChild ("UnitSelectWindow").gameObject;
@@ -920,13 +944,21 @@ public class MenuScreenScript : MonoBehaviour
 
 	public void DisplayMagicPanel(int _nFormation)
 	{
+		ClearSpellList ();
 		GameObject _magicPanel = m_goMagicScreen.transform.FindChild ("MagicPanel").gameObject;
 		_magicPanel.SetActive (true);
 		int _formation = ConvertPanelIterToFormationNumber (_nFormation) - 1;
 		foreach (DCScript.CharacterData character in dc.GetParty ()) {
 			if (character.m_nFormationIter == _formation) {
-				foreach (string _spell in character.m_lSpellsKnown)
-					Debug.Log (_spell);
+				foreach (string _spell in character.m_lSpellsKnown) {
+					GameObject _newSpell = Instantiate (m_goSpellInMagicListPrefab) as GameObject;
+					_newSpell.GetComponent<RectTransform> ().SetParent (m_goMagicScreen.transform.FindChild("MagicPanel").FindChild("SpellListContainer").FindChild("ViewPort").FindChild("Contents").gameObject.GetComponent<RectTransform> ());
+					_newSpell.GetComponent<RectTransform> ().rotation = Quaternion.identity;
+					_newSpell.GetComponentInChildren<Text> ().text = _spell;
+					SpellLibrary.cSpellData _theSpell = dc.m_lSpellLibrary.GetSpellFromLibrary (_spell);
+					GameObject _spellWindow = m_goMagicScreen.transform.FindChild ("MagicPanel").FindChild ("SpellWindow").gameObject;
+					_newSpell.GetComponent<SpellInSpellListScript> ().Initialize (_spellWindow, _theSpell);
+				}
 			}
 		}
 	
