@@ -119,7 +119,7 @@ public class MenuScreenScript : MonoBehaviour
 		case (int)MENU_STATES.eINNACTIVE:
 			{
 				//Escape opens up the menu
-				if(Input.GetKeyDown(KeyCode.Escape) && GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
+				if((Input.GetKeyDown(KeyCode.Escape) ||  Input.GetMouseButtonDown(1)) && GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
 				{
 					m_nTopTabMenuSelectionIndex = 0;
 					m_nMenuState = (int)MENU_STATES.eTOPTAB_SELECTION;

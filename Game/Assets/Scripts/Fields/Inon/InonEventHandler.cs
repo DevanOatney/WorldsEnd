@@ -459,7 +459,7 @@ public class InonEventHandler : BaseEventSystemScript
                         {
                             if (lydRes == 12)
                             {
-                                messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("D0");
+                                messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("E1");
                             }
                             else if (lydRes == 11)
                             {
@@ -467,7 +467,7 @@ public class InonEventHandler : BaseEventSystemScript
                                 ItemLibrary.CharactersItems mushroom = ds.m_lItemLibrary.GetItemFromInventory("Rare Mushroom");
                                 if (mushroom != null)
                                 {
-                                    if (mushroom.m_nItemCount <= 5)
+                                    if (mushroom.m_nItemCount >= 5)
                                     {
                                         //has gotten all of the items.
                                         ds.m_lItemLibrary.RemoveItemAll(mushroom);

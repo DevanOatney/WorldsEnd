@@ -261,6 +261,7 @@ public class MessageHandler : MonoBehaviour
 			timer = 0.0f;
 			textIter = 0;
 			selectedIndex = 0;
+			m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.FindChild("Text" + (selectedIndex+1).ToString()).localPosition;
 			GetComponent<AudioSource>().Stop();
 			DisableUI();
 			return;

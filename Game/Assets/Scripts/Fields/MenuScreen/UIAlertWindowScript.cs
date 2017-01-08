@@ -41,6 +41,7 @@ public class UIAlertWindowScript : MonoBehaviour
 					m_goRecruitmentWindow.SetActive(false);
 					if(m_goListeningObject != null)
 						m_goListeningObject.SendMessage("MessageWindowDeactivated", SendMessageOptions.RequireReceiver);
+					Input.ResetInputAxes();
 				}
 				else
 				{
