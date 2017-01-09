@@ -180,6 +180,7 @@
      <None Include="Assets\Resources\Units\Ally\Callan&apos;s Father\Mattach_InonDialogue.txt" />
      <None Include="Assets\Resources\Units\NPCs\Male\Merchant\Inon_Merchant1.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Solomonia_house1of8.tiled2unity.xml" />
+     <None Include="Assets\Resources\Units\Enemy\BunnyRoo\Stats.txt" />
      <None Include="Assets\Tiled2Unity\Materials\_ReadMe.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowCompose.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlurDX11.shader" />
