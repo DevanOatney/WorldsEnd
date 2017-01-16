@@ -17,7 +17,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		}
 		m_bIsRunning = false;
 		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
-		
+
 	}
 	public void DHF_PlayerMoveToGameObject(GameObject _TargetLocation, bool _bShouldIRun)
 	{
@@ -51,7 +51,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	{
 		m_bIsMovingToLocation = false;
 		m_vTargetLocation = Vector3.zero;
-		m_bIsRunning = false;
+		m_bIsRunning = true;
 		m_aAnim.SetBool("m_bRunButtonIsPressed", false);
 		m_nFacingDir = _facingDir;
 		m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
@@ -77,7 +77,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	//For helper functions of moving, if -1 it doesn't do anything, else it faces the player this way after moving to the location
 	int m_nNextFacingDir = -1;
 
-	bool m_bIsRunning = false;
+	bool m_bIsRunning = true;
 	public void SetIsRunning(bool flag) {m_bIsRunning = flag;}
 	public bool GetIsRunning() {return m_bIsRunning;}
 	float  m_fWalkingSpeed = 4.0f;
@@ -141,6 +141,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	void Start () 
 	{
 		//temp for testing poison status effect
+		/*
 		if(m_lStatusEffects.Count < 1)
 		{
 			DCScript.StatusEffect tse = GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffectLibrary.ConvertToDCStatusEffect("Poison");
@@ -150,6 +151,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 				GameObject.Find("PersistantData").GetComponent<DCScript>().AddStatusEffect(tse);
 			}
 		}
+		*/
 
 		List<DCScript.StatusEffect> effects = GameObject.Find("PersistantData").GetComponent<DCScript>().GetStatusEffects();
 		foreach(DCScript.StatusEffect se in effects)
@@ -233,10 +235,10 @@ public class FieldPlayerMovementScript : MonoBehaviour
 			if(m_bIsMovingToLocation == true)
 			{
 				Vector2 toTarget = m_vTargetLocation - transform.position;
-				if(toTarget.x > 0.1f || toTarget.x < -0.1f)
+				if(toTarget.x > 0.05f || toTarget.x < -0.05f)
 				{
 
-					if(toTarget.x > 0.1f)
+					if(toTarget.x > 0.05f)
 					{
 						m_nState = (int)States.eWALKRIGHT;
 					}
@@ -245,9 +247,9 @@ public class FieldPlayerMovementScript : MonoBehaviour
 						m_nState = (int)States.eWALKLEFT;
 					}
 				}
-				else if(toTarget.y > 0.1f || toTarget.y  < -0.1f)
+				else if(toTarget.y > 0.05f || toTarget.y  < -0.05f)
 				{
-					if(toTarget.y > 0.1f)
+					if(toTarget.y > 0.05f)
 					{
 						m_nState = (int)States.eWALKUP;
 					}
@@ -264,7 +266,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 						m_aAnim.SetInteger("m_nFacingDir", m_nNextFacingDir);
 						m_nNextFacingDir = -1;
 					}
-					m_bIsRunning = false;
+					m_bIsRunning = true;
 					m_bIsMovingToLocation = false;
 					m_bShouldMove = false;
 					m_vTargetLocation = Vector3.zero;
@@ -406,18 +408,18 @@ public class FieldPlayerMovementScript : MonoBehaviour
 
 		if(Input.GetKey(KeyCode.LeftShift))
 	    {
-			m_aAnim.SetBool("m_bRunButtonIsPressed", true);
-			m_bIsRunning = true;
+			m_aAnim.SetBool("m_bRunButtonIsPressed", false);
+			m_bIsRunning = false;
 		}
 		else if(Input.GetKey(KeyCode.RightShift))
 		{
-			m_aAnim.SetBool("m_bRunButtonIsPressed", true);
-			m_bIsRunning = true;
+			m_aAnim.SetBool("m_bRunButtonIsPressed", false);
+			m_bIsRunning = false;
 		}
 		else
 		{
-			m_aAnim.SetBool("m_bRunButtonIsPressed", false);
-			m_bIsRunning = false;
+			m_aAnim.SetBool("m_bRunButtonIsPressed", true);
+			m_bIsRunning = true;
 		}
 		if(lDirs.Count > 0)
 		{

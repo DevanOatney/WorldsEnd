@@ -90,4 +90,13 @@ public class PercentStandardEnemyScript : StandardEnemyScript
 
 	}
 
+	public void Dead()
+	{
+		IDied ();
+	}
+	override public void IDied()
+	{
+		GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>().RemoveMeFromList(gameObject, 0.0f);
+		Destroy(gameObject);
+	}
 }

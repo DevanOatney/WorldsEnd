@@ -81,6 +81,12 @@ public class SavingScript : MonoBehaviour
 	{
 		cOutputData newData = WriteOutData();
 		BinaryFormatter bf = new BinaryFormatter();
+		if(!Directory.Exists(Application.dataPath + "/Resources/Save Files"))
+		{    
+			//if it doesn't, create it
+			Directory.CreateDirectory(Application.dataPath + "/Resources/Save Files");
+
+		}
 		FileStream _fFile = File.Create(Application.dataPath + "/Resources/Save Files/" + iter.ToString() + ".dat");
 		bf.Serialize(_fFile, newData);
 		_fFile.Close();

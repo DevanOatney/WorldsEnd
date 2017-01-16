@@ -31,6 +31,8 @@ public class ProjectileScript : MonoBehaviour
 
 	void OnCollisionEnter(Collision c)
 	{
+		if (m_bHasHitTarget == true)
+			return;
 		if(c.gameObject.name == m_goTarget.name)
 		{
 			m_bHasHitTarget = true;

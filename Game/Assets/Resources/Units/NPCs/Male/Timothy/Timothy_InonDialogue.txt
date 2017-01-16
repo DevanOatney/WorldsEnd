@@ -1,4 +1,4 @@
-A1|1|Timothy|Sounds/Voice/Timmy/Line_1|Good afternoon. Today is the first step in your quest to fulfill tradition. Be safe out there.|1|A2
-A2|3|Timothy_EndDialogue
-A3|1|Timothy|Sounds/Voice/Timmy/Line_2|Be safe out there.|1|A4
+A1|1|Timothy|Sounds/Voice/Timmy/Line_1|Do you want to practice a war battle?|1|A2
+A2|2|1|2|Yes|A3|No|A4
+A3|3|MockWarBattle
 A4|3|EndDialogue

@@ -184,9 +184,8 @@ public class InonForestEventHandler : BaseEventSystemScript
 			GameObject briol = GameObject.Find("Briol");
 			briol.transform.position = player.transform.position;
 			briol.GetComponent<SpriteRenderer>().enabled = true;
-			briol.GetComponent<BoxCollider2D>().enabled = true;
 			NPCScript bNpc = briol.GetComponent<NPCScript>();
-			bNpc.DHF_NPCMoveToGameobject(GameObject.Find("BriolWaypoint"),false, 2);
+			bNpc.DHF_NPCMoveToGameobject(GameObject.Find("BriolWaypoint"),false, 2, true);
 
 
 			GameObject.Find("YWaypoint").GetComponent<BoxCollider2D>().enabled = false;

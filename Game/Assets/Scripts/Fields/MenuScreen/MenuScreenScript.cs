@@ -46,7 +46,6 @@ public class MenuScreenScript : MonoBehaviour
 	bool m_bWaiting = false;
 	//Flag for first time back after waiting for events
 	bool m_bFirstTimeFlag = false;
-	List<DCScript.CharacterData> m_lParty;
 
 	public DCScript dc;
 
@@ -97,7 +96,6 @@ public class MenuScreenScript : MonoBehaviour
 	void Start () 
 	{
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
-		m_lParty = dc.GetParty();
 		foreach(Transform child in transform)
 		{
 			child.gameObject.SetActive(false);
@@ -923,7 +921,6 @@ public class MenuScreenScript : MonoBehaviour
 	}
 	public void DisplayMagicScreen()
 	{
-		GameObject _container = m_goMagicScreen.transform.FindChild ("UnitSelectWindow").gameObject;
 		foreach (GameObject go in m_goUnitMagicCells)
 			go.SetActive (false);
 

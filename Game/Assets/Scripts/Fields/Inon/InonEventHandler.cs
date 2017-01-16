@@ -288,16 +288,6 @@ public class InonEventHandler : BaseEventSystemScript
                     }
                 }
                 break;
-            case "Timothy_EndDialogue":
-                {
-                    GameObject player = GameObject.FindGameObjectWithTag("Player");
-                    if (player)
-                    {
-                        player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-                    }
-                    ds.m_dStoryFlagField.Add("Inon_Timmy", 1);
-                }
-                break;
             case "Matthew":
                 {
                     GameObject messageSystem = GameObject.Find("Matthew");

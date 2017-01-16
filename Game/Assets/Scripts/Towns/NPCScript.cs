@@ -24,6 +24,17 @@ public class NPCScript : MonoBehaviour
 		m_vTargetLocation.y += _target.GetComponent<Collider2D>().bounds.size.y * 0.5f;
 		m_nNextFacingDir = _nextFacingDir;
 	}
+	public void DHF_NPCMoveToGameobject(GameObject _target, bool _shouldIRun, int _nextFacingDir, bool _comingFromPlayer = false)
+	{
+		m_bMoveTowardLocation = true;
+		m_bShouldRun = _shouldIRun;
+		m_vTargetLocation = _target.transform.position;
+		m_vTargetLocation.y += _target.GetComponent<Collider2D>().bounds.size.y * 0.5f;
+		m_nNextFacingDir = _nextFacingDir;
+		m_bIsComingOutOfPlayer = _comingFromPlayer;
+		if(m_bIsComingOutOfPlayer == true)
+			Invoke("DelayedCollisionActivation", 0.35f);
+	}
 	public void DHF_NPCPathfindToGameobject(GameObject _target, bool _shouldIRun, int _nextFacingDir, bool _allowDiagonal)
 	{
         m_bShouldRun = _shouldIRun;
@@ -112,10 +123,10 @@ public class NPCScript : MonoBehaviour
 			Vector2 playerPos = GameObject.Find("Player").transform.position;
 			Vector2 npcPos = transform.position;
 			Vector2 toPlayer = playerPos - npcPos;
-			if(toPlayer.x > 0.1f || toPlayer.x < -0.1f)
+			if(toPlayer.x > 0.05f || toPlayer.x < -0.05f)
 			{
 				ResetAnimFlagsExcept(-1);
-				if(toPlayer.x > 0.1f)
+				if(toPlayer.x > 0.05f)
 					m_aAnim.SetBool("m_bMoveRight", true);
 				else
 					m_aAnim.SetBool("m_bMoveLeft", true);
@@ -124,10 +135,10 @@ public class NPCScript : MonoBehaviour
 				toPlayer.x *= m_fWalkingSpeed;
 				gameObject.GetComponent<Rigidbody2D>().velocity = toPlayer;
 			}
-			else if(toPlayer.y > 0.1f || toPlayer.y  < -0.1f)
+			else if(toPlayer.y > 0.05f || toPlayer.y  < -0.05f)
 			{
 				ResetAnimFlagsExcept(-1);
-				if(toPlayer.y > 0.1f)
+				if(toPlayer.y > 0.05f)
 					m_aAnim.SetBool("m_bMoveUp", true);
 				else
 					m_aAnim.SetBool("m_bMoveDown", true);
@@ -164,12 +175,12 @@ public class NPCScript : MonoBehaviour
             Vector3 npcPos = transform.position;
             Vector3 toTarget = m_vTargetLocation - npcPos;
 
-			if(toTarget.x > 0.1f || toTarget.x < -0.1f)
+			if(toTarget.x > 0.05f || toTarget.x < -0.05f)
 			{
 				ResetAnimFlagsExcept(-1);
 				if(m_aAnim != null)
 				{
-					if(toTarget.x > 0.1f)
+					if(toTarget.x > 0.05f)
 						m_aAnim.SetBool("m_bMoveRight", true);
 					else
 						m_aAnim.SetBool("m_bMoveLeft", true);
@@ -182,12 +193,12 @@ public class NPCScript : MonoBehaviour
 					toTarget.x *= m_fWalkingSpeed;
 				gameObject.GetComponent<Rigidbody2D>().velocity = toTarget;
 			}
-			else if(toTarget.y > 0.1f || toTarget.y  < -0.1f)
+			else if(toTarget.y > 0.05f || toTarget.y  < -0.05f)
 			{
 				ResetAnimFlagsExcept(-1);
 				if(m_aAnim != null)
 				{
-					if(toTarget.y > 0.1f)
+					if(toTarget.y > 0.05f)
 						m_aAnim.SetBool("m_bMoveUp", true);
 					else
 						m_aAnim.SetBool("m_bMoveDown", true);
@@ -391,6 +402,11 @@ public class NPCScript : MonoBehaviour
 					Gizmos.DrawLine(m_vWaypoints[i-1], m_vWaypoints[i]);
 			}
 		}
+	}
+
+	void DelayedCollisionActivation()
+	{
+		GetComponent<BoxCollider2D> ().enabled = true;
 	}
 
 }

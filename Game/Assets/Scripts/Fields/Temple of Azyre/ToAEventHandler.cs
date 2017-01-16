@@ -340,9 +340,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject Briol  = GameObject.Find("Briol");
 			Briol.transform.position = Player.transform.position;
 			Briol.GetComponent<SpriteRenderer>().enabled = true;
-			Briol.GetComponent<NPCScript>().m_bIsComingOutOfPlayer = true;
-			Briol.GetComponent<BoxCollider2D>().enabled = true;
-			Briol.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("Briol_MoveTowardBoar"), false);
+			Briol.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("Briol_MoveTowardBoar"), false, 2, true);
 			GameObject.Find("Briol_MoveTowardBoar").GetComponent<BoxCollider2D>().enabled = true;
 		}
 			break;
@@ -416,16 +414,15 @@ public class ToAEventHandler : BaseEventSystemScript
 			player.GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
 			GameObject Briol = GameObject.Find("Briol");
 			Briol.transform.position = player.transform.position;
-			Briol.GetComponent<BoxCollider2D>().enabled = true;
 			NPCScript bscrpt = Briol.GetComponent<NPCScript>();
 			Briol.GetComponent<SpriteRenderer>().enabled = true;
-			bscrpt.m_bIsComingOutOfPlayer = true;
 			GameObject.Find("PitPoint_Briol").GetComponent<BoxCollider2D>().enabled = true;
-			bscrpt.DHF_NPCMoveToGameobject(GameObject.Find("PitPoint_Briol"), false);
+			bscrpt.DHF_NPCMoveToGameobject(GameObject.Find("PitPoint_Briol"), false, 3, true);
 		}
 			break;
 		case "PitPoint_Briol":
 		{
+				Debug.Log ("hit");
 			//Briol has moved to the edge of the pit, have the main character move up beside her.
 			GameObject.Find("PitPoint_Callan").GetComponent<BoxCollider2D>().enabled = true;
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find ("PitPoint_Callan"), false);
@@ -453,9 +450,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject.Find("BoarBossPoint_Briol").GetComponent<BoxCollider2D>().enabled = true;
 			Briol.transform.position = GameObject.Find("Player").transform.position;
 			Briol.GetComponent<SpriteRenderer>().enabled = true;
-			Briol.GetComponent<BoxCollider2D>().enabled = true;
-			Briol.GetComponent<NPCScript>().m_bIsComingOutOfPlayer = true;
-			Briol.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("BoarBossPoint_Briol"), false, 3);
+			Briol.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("BoarBossPoint_Briol"), false, 3, true);
 		}
 			break;
 		case "BoarBossPoint_Briol":
