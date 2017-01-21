@@ -16,14 +16,6 @@ public class NPCScript : MonoBehaviour
 		m_vTargetLocation = _target.transform.position;
 		m_vTargetLocation.y += _target.GetComponent<Collider2D>().bounds.size.y * 0.5f;
 	}
-	public void DHF_NPCMoveToGameobject(GameObject _target, bool _shouldIRun, int _nextFacingDir)
-	{
-		m_bMoveTowardLocation = true;
-        m_bShouldRun = _shouldIRun;
-		m_vTargetLocation = _target.transform.position;
-		m_vTargetLocation.y += _target.GetComponent<Collider2D>().bounds.size.y * 0.5f;
-		m_nNextFacingDir = _nextFacingDir;
-	}
 	public void DHF_NPCMoveToGameobject(GameObject _target, bool _shouldIRun, int _nextFacingDir, bool _comingFromPlayer = false)
 	{
 		m_bMoveTowardLocation = true;

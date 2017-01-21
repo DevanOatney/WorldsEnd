@@ -20,6 +20,8 @@ public class BackgroundScript : MonoBehaviour
 
 	public void SetBackground(int i)
 	{
+		if (i >= m_sBackgrounds.Length)
+			i = m_sBackgrounds.Length - 1;
 		m_sBackgrounds[i].SetActive(true);
 	}
 }

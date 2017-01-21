@@ -196,7 +196,6 @@
      <None Include="Assets\Resources\Units\NPCs\Female\Cassandra\Cassandra_InonDialogue.txt" />
      <None Include="Assets\Resources\Field\Towns\Inon\Item Merchant.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ConvertDepth.shader" />
-     <None Include="Assets\Resources\Dialogue Scripts\Temple of Azyre\Bed_Temple_of_Azyre.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionCurvesSimple.shader" />
      <None Include="Assets\Resources\Units\NPCs\Male\Marcus\Marcus_InonDialogue.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderYUV.shader" />

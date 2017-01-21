@@ -118,13 +118,9 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "Temple Bed":
 			{
 				//Callan has interacted with the bed, give him the option to rest.
-				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) {
-					player.GetComponent<FieldPlayerMovementScript> ().BindInput ();
-				}
-				GameObject messageSystem = GameObject.Find ("Temple Bed");
+				GameObject messageSystem = GameObject.Find ("CharacterTempleBed");
 				if (messageSystem) {
-					messageSystem.GetComponent<MessageHandler> ().BeginDialogue (0);
+					messageSystem.GetComponentInChildren<MessageHandler> ().BeginDialogue (0);
 				}
 			}
 			
