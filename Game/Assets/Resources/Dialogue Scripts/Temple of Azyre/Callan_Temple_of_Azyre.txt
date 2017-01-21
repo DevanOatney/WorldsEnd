@@ -12,7 +12,7 @@ B2|1|Callan||So...Where do we go from here?|1|B3
 B3|1|Briol||We're going to need someone to train the hunters we recruit. I heard of an old Knight that is looking to take on apprentices that would be a perfect opportunity for him.||B4
 B4|1|Callan||Oh, yeah. I heard of a retired hunter that is bored in retirement and looking to train new hunters in the old ways.|1|B5
 B5|1|Briol||So, who should we go see?|1|B6
-B6|2|1|2|Definately the Hunter! It was my idea and makes the most sense.|B7|You know, I think a strong knight's skill could be useful in hunting. Let's go there!|B15
+B6|2|1|2|Definately the Hunter! It was my idea and makes the most sense.|B7|You know, I think an experienced knight could be just what we need. Let's go there!|B15
 B7|1|Briol||Alright, let's go see this hunter of yours. Lead the way!|1|B8
 B8|1|Callan||What?!? I don't know where he's at!|1|B9
 B9|1|Briol||You're hopeless.  What would you do without me? I know of the hunter you are talking about. He lives to the South-East of here in a large lake town past the mountains.|1|B10
@@ -26,7 +26,7 @@ B16|1|Callan||I'll lead the way!||B17
 B17|1|Briol||But you don't know the way...||B18
 B18|1|Callan||I'll make it up as a go. That what good leaders do!||B19
 B19|1|Briol||I don't think that's right, but whatever. Lead the way.||B21
-B20|3|End Temple_Clean_Dialogue1
+B20|3|End_Temple_Clean_Dialogue1
 B21|3|End_Temple_Clean_Dialogue2
 C0|1|Callan||Who would worship in a place like this?||C1
 C1|1|Briol||It says 'Beneath these hollowed grounds blow the Gales of Azyre.'||C2

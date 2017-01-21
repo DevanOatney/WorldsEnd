@@ -264,6 +264,23 @@ public class ToAEventHandler : BaseEventSystemScript
 			Invoke("FadeBackIn", 1.0f);
 		}
 			break;
+
+		case "End_Temple_Clean_Dialogue1":
+			{
+				//The hunter has been chosen as the first recruit!
+				Debug.Log("hit");
+				ds.m_dStoryFlagField.Add("FirstRecruit", 0);
+				GameObject briol = GameObject.Find("Briol");
+				briol.GetComponent<NPCScript> ().DHF_NPCMoveIntoPlayer ();
+			}
+			break;
+		case "End_Temple_Clean_Dialogue2":
+			{
+				ds.m_dStoryFlagField.Add("FirstRecruit", 1);
+				GameObject briol = GameObject.Find("Briol");
+				briol.GetComponent<NPCScript> ().DHF_NPCMoveIntoPlayer ();
+			}
+			break;
 		case "EndDialogue":
 			{
 				//turn off all dialogues happening, release bind on input.. umn.. i think that's it?
@@ -418,7 +435,6 @@ public class ToAEventHandler : BaseEventSystemScript
 			break;
 		case "PitPoint_Briol":
 		{
-				Debug.Log ("hit");
 			//Briol has moved to the edge of the pit, have the main character move up beside her.
 			GameObject.Find("PitPoint_Callan").GetComponent<BoxCollider2D>().enabled = true;
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find ("PitPoint_Callan"), false);
