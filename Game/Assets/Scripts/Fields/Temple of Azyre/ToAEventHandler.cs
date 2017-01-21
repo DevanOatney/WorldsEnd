@@ -77,6 +77,7 @@ public class ToAEventHandler : BaseEventSystemScript
 				//The player has seen the pit
 				GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = true;
 				GameObject.Find("EncounterBoarBoss_Start").GetComponent<BoxCollider2D>().enabled = true;
+				m_goBoarBoss.SetActive (true);
 			}
 				break;
 			case 4:
@@ -91,6 +92,14 @@ public class ToAEventHandler : BaseEventSystemScript
 			case 5:
 			{
 				//Temple was cleared out and a choice was made over Knight/Ranger
+				GameObject rubble1 = GameObject.Find("Temple of Azyre int").transform.FindChild("rubble_04").gameObject;
+				rubble1.SetActive(false);
+				GameObject rubble2 = GameObject.Find("Temple of Azyre int2").transform.FindChild("rubble_04").gameObject;
+				rubble2.SetActive(false);
+				GameObject rubble3 = GameObject.Find("Temple of Azyre roof").transform.FindChild("rubble_04").gameObject;
+				rubble3.SetActive(false);
+				GameObject rubble4 = GameObject.Find("Temple of Azyre basment").transform.FindChild("rubble_03").gameObject;
+				rubble4.SetActive(false);
 				GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = false;
 			}
 				break;
@@ -155,6 +164,14 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "AfterBossBattle":
 			{
 				//messageSystem.GetComponent<MessageHandler> ().BeginDialogue ("C5");
+			}
+			break;
+		case "Lion Statue":
+			{
+				GameObject messageSystem = GameObject.Find ("Lion Statue");
+				if (messageSystem) {
+					messageSystem.GetComponentInChildren<MessageHandler> ().BeginDialogue (0);
+				}
 			}
 			break;
 		case "InnKeeper_Sleep":
@@ -229,12 +246,15 @@ public class ToAEventHandler : BaseEventSystemScript
 			GameObject player = GameObject.Find("Player");
 			GameObject briol = GameObject.Find("Briol");
 			player.GetComponent<FieldPlayerMovementScript>().BindInput();
+
 			player.transform.position = GameObject.Find("BoarBossChargePoint_Callan").transform.position;
 			briol.transform.position = GameObject.Find("BoarBossChargePoint_Briol").transform.position;
 			player.GetComponent<Animator>().SetInteger("m_nFacingDir", 2);
 			briol.GetComponent<SpriteRenderer>().enabled = true;
 			briol.GetComponent<NPCScript>().ResetAnimFlagsExcept(-1);
 			briol.GetComponent<Animator>().SetInteger("m_nFacingDir", 1);
+			m_goBoarBoss.SetActive (true);
+			m_goBoarBoss.GetComponentInChildren<Animator> ().Play ("BoarBoss_Dead");
 			briol.GetComponentInChildren<MessageHandler>().BeginDialogue("C5");
 
 		}
@@ -449,6 +469,7 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "EncounterBoarBoss_Start":
 		{
 			//Move the player into starting position for encountering the boar boss.
+			m_goBoarBoss.SetActive (true);
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<FieldPlayerMovementScript>().BindInput();
 			GameObject.Find("BoarBossPoint_Callan").GetComponent<BoxCollider2D>().enabled = true;

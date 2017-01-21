@@ -1,3 +1,8 @@
 A0|1|||Beneath these hollowed grounds blow the Gales of Azyre||A1
 A1|1|Callan||Hmmm...||A2
-A2|3|End_Dialogue
+A2|1|Callan||Who would worship in a place like this?||A3
+A3|1|Briol||It says 'Beneath these hollowed grounds blow the Gales of Azyre.'||A4
+A4|1|Callan||But...we're underground already. How are these Gales below us?||A5
+A5|1|Briol||It's metaphorical, half-wit. The Gales of Azyre are the spirits of wind that are part of Regilance.||A6
+A6|1|Callan||Oh. Ok.||A7
+A7|3|EndDialogue

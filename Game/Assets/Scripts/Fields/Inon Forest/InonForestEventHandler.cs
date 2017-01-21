@@ -18,54 +18,13 @@ public class InonForestEventHandler : BaseEventSystemScript
 		_goAudioHelper.GetComponent<CAudioHelper>().vPlayMusic(_goAudioHelper.GetComponent<CAudioHelper>().eFromName(m_szInonForestBGM),true, true);
 		GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = false;
 		ds = GameObject.Find ("PersistantData").GetComponent<DCScript> ();
-		int result;
-		if(ds.m_dStoryFlagField.TryGetValue("ToAEvent", out result) == false)
-		{
-			//hasn't been to the temple yet
-			m_goBossBoar.SetActive(true);
-			m_goBossBoar.GetComponent<Animator>().Play("BoarBoss_IdleLeft");
 
-		}
-		else if(result == 5)
-		{
-			//Player has finished the Temple of Azyre initial events and can now leave to the world map from the north of the forest
-			foreach(GameObject wypnt in Phase2_waypoints)
-			{
-				wypnt.SetActive(false);
-			}
-		}
-		if (ds.m_dStoryFlagField.TryGetValue ("BoarBossPart1Finished", out result)) 
-		{
-			if(result == 1)
-			{
-				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
-				ds.m_dStoryFlagField.Remove("BoarBossPart1Finished");
-				ds.m_dStoryFlagField.Add("BoarBossPart1Finished", 2);
-				HandleEvent("BoarChase");
-			}
-			else
-			{
-				m_goBossBoar.SetActive(false);
-			}
-			foreach (GameObject go in Phase1_waypoints)
-				if(go)
-					go.SetActive (false);
-
-		}
-		if(ds.m_dStoryFlagField.TryGetValue("Inon_Lydia", out result))
-		{
-			Debug.Log(result);
-			if(result == 11)
-			{
-				foreach(GameObject mushroom in Mushrooms)
-					mushroom.SetActive(true);
-			}
-		}
-
+		SetWaypoints ();
 	}
 
 	override public void HandleEvent(string eventID)
 	{
+		Debug.Log (eventID);
 		switch(eventID)
 		{
 		case "mushroom":
@@ -252,6 +211,55 @@ public class InonForestEventHandler : BaseEventSystemScript
 			break;
 		default:
 			break;
+		}
+	}
+
+	override public void SetWaypoints()
+	{
+		int result;
+		if(ds.m_dStoryFlagField.TryGetValue("ToAEvent", out result) == false)
+		{
+			//hasn't been to the temple yet
+			m_goBossBoar.SetActive(true);
+			m_goBossBoar.GetComponent<Animator>().Play("BoarBoss_IdleLeft");
+			foreach (GameObject wypnt in Phase1_waypoints)
+				wypnt.SetActive (true);
+
+		}
+		else if(result == 5)
+		{
+			//Player has finished the Temple of Azyre initial events and can now leave to the world map from the north of the forest
+			foreach(GameObject wypnt in Phase2_waypoints)
+			{
+				wypnt.SetActive(false);
+			}
+		}
+		if (ds.m_dStoryFlagField.TryGetValue ("BoarBossPart1Finished", out result)) 
+		{
+			if(result == 1)
+			{
+				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
+				ds.m_dStoryFlagField.Remove("BoarBossPart1Finished");
+				ds.m_dStoryFlagField.Add("BoarBossPart1Finished", 2);
+				HandleEvent("BoarChase");
+			}
+			else
+			{
+				m_goBossBoar.SetActive(false);
+			}
+			foreach (GameObject go in Phase1_waypoints)
+				if(go)
+					go.SetActive (false);
+
+		}
+		if(ds.m_dStoryFlagField.TryGetValue("Inon_Lydia", out result))
+		{
+			//If we're on the part of the side-quest with Lydia in Inon to collect Rare Mushrooms, set the mushrooms as active.
+			if(result == 11)
+			{
+				foreach(GameObject mushroom in Mushrooms)
+					mushroom.SetActive(true);
+			}
 		}
 	}
 }
