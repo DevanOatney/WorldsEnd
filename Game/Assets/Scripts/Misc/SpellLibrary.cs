@@ -14,7 +14,7 @@ public class SpellLibrary
 	public class cSpellData
 	{
 		public string m_szSpellName;
-		public int m_nElementType;
+		public int m_nElementType;//1- Earth, 2- Water, 3- Fire, 4- Wind
 		public int m_nMPCost;
 		public int m_nTargetType; //1- single heal, 2-all heal, 3- single dmg, 4- all dmg
 		public int m_nHPMod;
