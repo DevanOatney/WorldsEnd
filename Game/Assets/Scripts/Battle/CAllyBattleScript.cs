@@ -503,7 +503,7 @@ public class CAllyBattleScript : UnitScript
 					//switch is possible.
 					foreach(GameObject unit in m_twTurnWatcher.m_goUnits)
 					{
-						if(unit.GetComponent<UnitScript>().FieldPosition == nPosToSwitchTo && unit.GetComponent<UnitScript>().m_nUnitType <= (int)UnitScript.UnitTypes.NPC)
+						if(unit.GetComponent<UnitScript>().FieldPosition == nPosToSwitchTo && unit.GetComponent<UnitScript>().m_nUnitType <= UnitScript.UnitTypes.NPC)
 						{
 							int nOldPos = FieldPosition;
 							//set movement position to target position of new formation
@@ -1214,12 +1214,12 @@ public class CAllyBattleScript : UnitScript
 					ClearTargetReticles();
 					m_tTargetPositionOnField = GameObject.Find("Near_Enemy" + p_nTargetPosition).transform;
 
-					if(m_nUnitType == (int)UnitTypes.ALLY_MELEE)
+					if(m_nUnitType == UnitTypes.ALLY_MELEE)
 					{
 						m_nState = (int)ALLY_STATES.ATTACKING;
 						m_aAnim.SetBool("m_bIsMoving", true);
 					}
-					else if(m_nUnitType == (int)UnitTypes.ALLY_RANGED)
+					else if(m_nUnitType == UnitTypes.ALLY_RANGED)
 					{
 						m_nState = (int)ALLY_STATES.ATTACK_RETURNING;
 						m_aAnim.SetBool("m_bIsAttacking", true);
@@ -1318,7 +1318,7 @@ public class CAllyBattleScript : UnitScript
 				}
 			}
 		}
-		else if(m_nUnitType == (int)UnitTypes.ALLY_RANGED)
+		else if(m_nUnitType == UnitTypes.ALLY_RANGED)
 		{
 			
 			GameObject goArrow = Instantiate(Resources.Load<GameObject>("Animation Effects/Arrow")) as GameObject;

@@ -11,6 +11,7 @@ KillerBee:3,KillerBee:4,KillerBee:5
 Boar:3
 Boar:5
 Boar:3,Boar:5
+BunnyRoo : 4
 NIGHT
 Boar:3
 Boar:5
@@ -22,4 +23,3 @@ KillerBee:1
 KillerBee:3,KillerBee:4,KillerBee:5
 KillerBee:3,KillerBee:4,KillerBee:5
 KillerBee:0, KillerBee:1, KillerBee:2, KillerBee:3, KillerBee:4, KillerBee:5
-BunnyRoo : 4

@@ -65,7 +65,7 @@ public class StandardEnemyScript : UnitScript
 					{
 						switch(m_nUnitType)
 						{
-						case (int)UnitScript.UnitTypes.PERCENTENEMY:
+						case UnitScript.UnitTypes.PERCENTENEMY:
 							{
 								//Pick from the available enemy (the allies) targets, attack the one with the lowest HP
 								GameObject WeakestTarget = null;
@@ -92,7 +92,7 @@ public class StandardEnemyScript : UnitScript
 								}
 							}
 							break;
-						case (int)UnitScript.UnitTypes.BASICENEMY:
+						case UnitScript.UnitTypes.BASICENEMY:
 							{
 								//Pick from the available enemy (the allies) targets, attack the one with the lowest HP
 								GameObject WeakestTarget = null;

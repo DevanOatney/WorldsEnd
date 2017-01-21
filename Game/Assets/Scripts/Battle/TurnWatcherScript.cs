@@ -82,11 +82,11 @@ public class TurnWatcherScript : MonoBehaviour
 
 	void Awake()
 	{
-		m_dnItemCountChances.Add(new ItemChances(0, 40));
-		m_dnItemCountChances.Add(new ItemChances(1, 30));
-		m_dnItemCountChances.Add(new ItemChances(2, 15));
-		m_dnItemCountChances.Add(new ItemChances(3, 10));
-		m_dnItemCountChances.Add(new ItemChances(4, 5));
+		m_dnItemCountChances.Add(new ItemChances(0, 55));
+		m_dnItemCountChances.Add(new ItemChances(1, 25));
+		m_dnItemCountChances.Add(new ItemChances(2, 10));
+		m_dnItemCountChances.Add(new ItemChances(3, 8));
+		m_dnItemCountChances.Add(new ItemChances(4, 2));
 		GameObject pdata = GameObject.Find("PersistantData");
 		m_goActionSelector = GameObject.Find("Actions");
 		m_goActionSelector.SetActive(false);
@@ -485,7 +485,7 @@ public class TurnWatcherScript : MonoBehaviour
 		int aliveAllies = 0;
 		foreach(GameObject unit in m_goUnits)
 		{
-			if(unit.GetComponent<UnitScript>().m_nUnitType <= (int)UnitScript.UnitTypes.NPC)
+			if(unit.GetComponent<UnitScript>().m_nUnitType <= UnitScript.UnitTypes.NPC)
 			{
 				if(unit.GetComponent<UnitScript>().GetCurHP() > 0)
 				{
@@ -493,7 +493,7 @@ public class TurnWatcherScript : MonoBehaviour
 					continue;
 				}
 			}
-			if(unit.GetComponent<UnitScript>().m_nUnitType > (int)UnitScript.UnitTypes.NPC)
+			if(unit.GetComponent<UnitScript>().m_nUnitType > UnitScript.UnitTypes.NPC)
 			{
 				if(unit.GetComponent<UnitScript>().GetCurHP() > 0)
 				{
@@ -534,7 +534,7 @@ public class TurnWatcherScript : MonoBehaviour
 			}
 		}
 		//Adjust the amount of enemies/allies on the map to check for win/loss cases
-		if(go.GetComponent<UnitScript>().m_nUnitType > (int)UnitScript.UnitTypes.NPC)
+		if(go.GetComponent<UnitScript>().m_nUnitType > UnitScript.UnitTypes.NPC)
 		{
 			//add the enemies level to the list of levels that have been defeated.
 			m_lExperienceToAward.Add(go.GetComponent<UnitScript>().GetUnitLevel());
@@ -580,7 +580,7 @@ public class TurnWatcherScript : MonoBehaviour
 	{
 		//TODO  perhaps adjust incase the list needs alteration when someone joins the fight?
 		m_goUnits.Add(go);
-		if(go.GetComponent<UnitScript>().m_nUnitType > (int)UnitScript.UnitTypes.ALLY_RANGED)
+		if(go.GetComponent<UnitScript>().m_nUnitType > UnitScript.UnitTypes.ALLY_RANGED)
 		{
 			//adding an enemy
 			m_nEnemyCount++;
@@ -821,7 +821,7 @@ public class TurnWatcherScript : MonoBehaviour
 					{
 						if(unit.GetComponent<UnitScript>().m_bIsMyTurn == true)
 						{
-							if(unit.GetComponent<UnitScript>().m_nUnitType <= (int)UnitScript.UnitTypes.NPC)
+							if(unit.GetComponent<UnitScript>().m_nUnitType <= UnitScript.UnitTypes.NPC)
 								unit.GetComponent<CAllyBattleScript>().ChangeEnemyTarget(p_nIndex);
 							return;
 						}
@@ -844,7 +844,7 @@ public class TurnWatcherScript : MonoBehaviour
 					{
 						if(unit.GetComponent<UnitScript>().m_bIsMyTurn == true)
 						{
-							if(unit.GetComponent<UnitScript>().m_nUnitType <= (int)UnitScript.UnitTypes.NPC)
+							if(unit.GetComponent<UnitScript>().m_nUnitType <= UnitScript.UnitTypes.NPC)
 								unit.GetComponent<CAllyBattleScript>().EnemyToAttackSelected(p_nIndex);
 							return;
 						}

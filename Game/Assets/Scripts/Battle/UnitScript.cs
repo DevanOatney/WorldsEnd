@@ -9,7 +9,7 @@ public class UnitScript : MonoBehaviour
 	public bool m_bIsMyTurn = false;
 	public int m_nState;
 	//for knowing which script to call for TakeDamage
-	public int m_nUnitType;
+	public UnitTypes m_nUnitType;
 	//iter for which position on the field you're in 0-2
 	//0 : Center
 	//1 : Top
@@ -165,22 +165,22 @@ public class UnitScript : MonoBehaviour
 		{
 			switch(m_nUnitType)
 			{
-			case (int)UnitTypes.ALLY_MELEE:
+			case UnitTypes.ALLY_MELEE:
 			{
 				gameObject.GetComponent<CAllyBattleScript>().AdjustHP(dmg);
 			}
 				break;
-			case (int)UnitTypes.ALLY_RANGED:
+			case UnitTypes.ALLY_RANGED:
 			{
 				gameObject.GetComponent<CAllyBattleScript>().AdjustHP(dmg);
 			}
 				break;
-			case (int)UnitTypes.BASICENEMY:
+			case UnitTypes.BASICENEMY:
 			{
 				gameObject.GetComponent<StandardEnemyScript>().AdjustHP(dmg);
 			}
 				break;
-			case (int)UnitTypes.PERCENTENEMY:
+			case UnitTypes.PERCENTENEMY:
 			{
 				gameObject.GetComponent<PercentStandardEnemyScript>().AdjustHP(dmg);
 			}
@@ -211,22 +211,22 @@ public class UnitScript : MonoBehaviour
 		{
 			switch(m_nUnitType)
 			{
-			case (int)UnitTypes.ALLY_MELEE:
+			case UnitTypes.ALLY_MELEE:
 			{
 				gameObject.GetComponent<CAllyBattleScript>().Missed();
 			}
 				break;
-			case (int)UnitTypes.ALLY_RANGED:
+			case UnitTypes.ALLY_RANGED:
 			{
 				gameObject.GetComponent<CAllyBattleScript>().Missed();
 			}
 				break;
-			case (int)UnitTypes.BASICENEMY:
+			case UnitTypes.BASICENEMY:
 			{
 				gameObject.GetComponent<StandardEnemyScript>().Missed();
 			}
 				break;
-			case (int)UnitTypes.PERCENTENEMY:
+			case UnitTypes.PERCENTENEMY:
 			{
 				gameObject.GetComponent<PercentStandardEnemyScript>().Missed();
 			}
@@ -251,22 +251,22 @@ public class UnitScript : MonoBehaviour
 	{
 		switch(m_nUnitType)
 		{
-		case (int)UnitTypes.ALLY_MELEE:
+		case UnitTypes.ALLY_MELEE:
 		{
 
 		}
 			break;
-		case (int)UnitTypes.ALLY_RANGED:
+		case UnitTypes.ALLY_RANGED:
 		{
 
 		}
 			break;
-		case (int)UnitTypes.BASICENEMY:
+		case UnitTypes.BASICENEMY:
 		{
 			gameObject.GetComponent<StandardEnemyScript>().AttackAnimEnd();
 		}
 			break;
-		case (int)UnitTypes.PERCENTENEMY:
+		case UnitTypes.PERCENTENEMY:
 		{
 			gameObject.GetComponent<PercentStandardEnemyScript>().AttackAnimEnd();
 		}
@@ -296,22 +296,22 @@ public class UnitScript : MonoBehaviour
 		GameObject[] posTargs = null;
 		switch(m_nUnitType)
 		{
-		case (int)UnitTypes.ALLY_MELEE:
+		case UnitTypes.ALLY_MELEE:
 			{
 				posTargs = GameObject.FindGameObjectsWithTag("Ally");
 			}
 			break;
-		case (int)UnitTypes.ALLY_RANGED:
+		case UnitTypes.ALLY_RANGED:
 			{
 				posTargs = GameObject.FindGameObjectsWithTag("Ally");
 			}
 			break;
-		case (int)UnitTypes.BASICENEMY:
+		case UnitTypes.BASICENEMY:
 			{
 				posTargs = GameObject.FindGameObjectsWithTag("Enemy");
 			}
 			break;
-		case (int)UnitTypes.PERCENTENEMY:
+		case UnitTypes.PERCENTENEMY:
 			{
 				posTargs = GameObject.FindGameObjectsWithTag("Enemy");
 			}

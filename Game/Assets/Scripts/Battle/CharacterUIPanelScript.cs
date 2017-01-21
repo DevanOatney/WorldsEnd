@@ -47,7 +47,7 @@ public class CharacterUIPanelScript : MonoBehaviour
 			List<GameObject> party = m_goTurnWatcher.GetComponent<TurnWatcherScript>().m_goUnits;
 			foreach(GameObject unit in party)
 			{
-				if(unit.GetComponent<UnitScript>().FieldPosition == m_nFormationIter && unit.GetComponent<UnitScript>().m_nUnitType <= (int)UnitScript.UnitTypes.NPC)
+				if(unit.GetComponent<UnitScript>().FieldPosition == m_nFormationIter && unit.GetComponent<UnitScript>().m_nUnitType <= UnitScript.UnitTypes.NPC)
 				{
 					_bFoundUnit = true;
 					gameObject.GetComponent<Image>().enabled = true;
