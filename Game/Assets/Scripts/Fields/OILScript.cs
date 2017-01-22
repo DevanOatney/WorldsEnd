@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Tiled2Unity;
 
 public class OILScript : MonoBehaviour 
 {
@@ -47,11 +48,10 @@ public class OILScript : MonoBehaviour
 			int c = 49;
 			foreach(GameObject g in lMovingObjs)
 			{
-				if(g.GetComponent<SpriteRenderer>() != null)
-				{
-					g.GetComponent<SpriteRenderer>().sortingOrder = c;
-					if(g.name == "Poison Effect(Clone)")
-						g.GetComponent<SpriteRenderer>().sortingOrder = c + 1;
+				if (g.GetComponent<SpriteRenderer> () != null) {
+					g.GetComponent<SpriteRenderer> ().sortingOrder = c;
+					if (g.name == "Poison Effect(Clone)")
+						g.GetComponent<SpriteRenderer> ().sortingOrder = c + 1;
 					c--;
 				}
 			}
