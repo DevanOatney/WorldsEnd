@@ -1,4 +1,4 @@
-A1|1|Matthew||Would you like to try out a large scaled battle?|1|A2
+A1|1|Matthew||Would you like to try your hand at commanding a large scale battle?|1|A2
 A2|2|1|2|Let's do this thing!|A4|Not right now, later.|A3
 A3|3|EndDialogue
 A4|3|MockWarBattle

@@ -1,21 +1,21 @@
-A1|1|Callan|Sounds/Voice/Callan/Callan_Intro_line_1|...uugh...*ahem*...What time is it!?! Oh no! I'm going to be late for the ceremony. I wonder if Dad left a note or something.|1|A2
-A2|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_1|*Sigh*......After hours of watching you oversleep, your lazy ass is finally ready to move. You do know how to move, right? Whatever. That's why I'm here to guide you from a slug-licking plebian to an illustrious master of your destiny.|1|A3
+A1|1|Callan|Sounds/Voice/Callan/Callan_Intro_line_1|...uugh...What time is it!?! Oh no, I must have overslept! I'm going to be late for the ceremony.|1|A2
+A2|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_1|...After hours of watching you oversleep, your lazy ass is finally ready to move. You do know how to move, right? ... I sure have my work cut out for me.|1|A3
 A3|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_2|To move... Use the Up, Down, Left, and Right Arrows. Heh. Good luck figuring that out.|1|A4
 A4|1|Callan|Sounds/Voice/Callan/Callan_Intro_line_2|Use what-now? Can't I just use my legs?|1|A5
 A5|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_3|Forget about it. I wasn't talking to you.|1|A6
 A6|3|Callan_Movement
 B1|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_4|Oh, huh, I wasn't expecting you to be able learn to walk so quickly. It appears your youthful zealous and inability to understand just how weak you are might be your saving grace.|1|B2
 B2|1|Callan|Sounds/Voice/Callan/Callan_Intro_line_3|Wow, I'll take that as a compliment!|1|B3
-B3|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_5|Of course you would... Let's get on with the show. Your dad left you a note on the desk over there. Now that you've shown to me that you can perform menial tasks and follow simple directions, go ahead and take a look at it. To read the note, which I pray to Illuyani you know how to read, press the E key. This will allow you to interact with the world around you, for the most part.|1|B4
+B3|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_5|Of course you would... Let's get on with the show. Your dad left you a note on the desk over there.|1|B7
+B7|1|The Narrator||Now that you've shown to me that you can perform menial tasks and follow simple directions, go ahead and take a look at it. To read the note, press the E key. This will allow you to interact with the world around you, for the most part.|1|B4
 B4|1|Callan|Sounds/Voice/Callan/Callan_Intro_line_4|The what key?|1|B6
 B6|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_6|Damn it...||C7
-D1|1|Mattach|Sounds/Voice/Mattach/Mattach_Intro|Callan, your sister and I have gone out to run errands before the ceremony. I didn't want to wake you. When you're done sleeping the day away, come find us so we can get a move on.|1|B5
+D1|1|Mattach|Sounds/Voice/Mattach/Mattach_Intro|Callan, your sister and I have gone out to run errands before the ceremony. Come find us at the guild hall next to the house when you wake up.|1|B5
 B5|3|ReadNote
-C1|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_7|HA! Even you own father thinks of you a lazy bocaj!|1|C2
-C2|1|Callan|Sounds/Voice/Callan/Callan_Intro_line_5|You're a lazy bocaj! Besides, he was just thinking of my general wefare.|1|C3
+C1|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_7|HA! Even you own father thinks of you a lazy good-for-nothing!|1|C2
+C2|1|Callan|Sounds/Voice/Callan/Callan_Intro_line_5|Your face is a.. lazy.. good-for.. whatever, he was just thinking of my general wefare.|1|C3
 C3|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_8|Nonetheless, they totally ditched you.|1|C4
-C4|2|1|3|This is the first choice|C5|This is the second choice|C5|This is the third choice|C5
-C5|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_9|Sure, if rationalizing the pain of abandonment helps you sleep at night.|1|C6
-C6|2|1|2|I knew you would understand.|C7|You're a good friend for understanding.|C7
+C4|2|1|3|My family would never abandon me.|C5|Who needs family anyway?|C5|Shut your face before I shut it for you!|C5
+C5|1|The Narrator|Sounds/Voice/The Narrator/The_Narrator_Intro_Line_9|Sure, if rationalizing the pain of abandonment helps you sleep at night.|1|C7
 C7|3|EndDialogue
 F0|1|Callan||I can't leave until I meet with my father...|1|C7

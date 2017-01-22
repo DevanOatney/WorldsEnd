@@ -1,4 +1,5 @@
-A1|1|Timothy|Sounds/Voice/Timmy/Line_1|Do you want to practice a war battle?|1|A2
-A2|2|1|2|Yes|A3|No|A4
-A3|3|MockWarBattle
-A4|3|EndDialogue
+A1|1|Timothy|Sounds/Voice/Timmy/Line_1|Today's the day you head out and make a name for yourself, isn't it?|1|A2
+A2|2|1|2|Yeah.. I've been waiting for this day for years!|A3|I don't know why people would ever follow me...|A4
+A3|1|Timothy||Well goodluck, I'm sure you'll do great!|1|A5
+A4|1|Timothy||Don't worry, I know you'll find a way to bring people together just like your father did many years ago!|1|A5
+A5|3|EndDialogue

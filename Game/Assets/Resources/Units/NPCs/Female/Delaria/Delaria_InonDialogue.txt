@@ -1,4 +1,4 @@
-A1|1|Delaria||Ever since my mother passed, my father has trapped himself in the guild hall, searching for Illuyani. I wonder when he will come home...|1|A2
+A1|1|Delaria||Ever since my mother passed, my father has trapped himself in the guild hall, searching for the Goddess Illuyani. I wonder when he will come home...|1|A2
 A2|2|1|2|Hang in there. I understand what you're going through...|A3|I'm always here for you|A3
 A3|1|Delaria||Thanks Callan, you're really sweet. It's nice having you around.|1|A4
 A4|2|1|2|No problem.|A5|You're welcome, I'll come visit you soon.|A6
