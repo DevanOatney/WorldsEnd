@@ -35,7 +35,7 @@ public class ScreenSwitchScript : MonoBehaviour
 	{
 		if(m_bHasJustAppeared == false)
 		{
-			if(c.name == "Player")
+			if(c.name == "Player" && (m_goNextLocation != null || m_szSceneName != ""))
 			{
 				Camera.main.SendMessage("fadeOut");
 				Invoke("ChangePlaces", 3.0f);

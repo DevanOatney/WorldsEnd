@@ -65,6 +65,7 @@
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\2d Art Pack\!IMPORTANT.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader" />
+     <None Include="Assets\Tiled2Unity\Imported\Secret_Area_4.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
      <None Include="Assets\Tiled2Unity\Imported\Inon.tiled2unity.xml" />
@@ -77,12 +78,14 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrainDX11.shader" />
      <None Include="Assets\2d Art Pack\readme.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />
+     <None Include="Assets\Tiled2Unity\Imported\Secret_Area_1.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Shaders\Tiled_Diffuse.shader" />
      <None Include="Assets\Resources\Units\Ally\Illuiyani\StartingStats.txt" />
      <None Include="Assets\Tiled2Unity\Imported\untitled.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Resources\Units\Ally\Briol\StartingStats.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Guild Hall Interior.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\Secret_Area_2.tiled2unity.xml" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\Resources\Units\NPCs\Female\Dancer\Inon_BasePathing.txt" />
@@ -167,6 +170,7 @@
      <None Include="Assets\Tiled2Unity\Imported\Solomnia_Part1of7.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
      <None Include="Assets\Scripts\Credits\3D Text.shader" />
+     <None Include="Assets\Tiled2Unity\Imported\Secret_Area_Boss.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfField34.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
@@ -188,6 +192,7 @@
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderYUV.shader" />
      <None Include="Assets\Resources\Units\Enemy\Boar\Stats.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SSAOShader.shader" />
+     <None Include="Assets\Tiled2Unity\Imported\Secret_Area_3.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowEffectDownsample.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
