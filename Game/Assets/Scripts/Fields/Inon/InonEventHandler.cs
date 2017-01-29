@@ -152,15 +152,19 @@ public class InonEventHandler : BaseEventSystemScript
             GameObject player = GameObject.Find("Player");
             if (player.GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
             {
-                if (Input.GetKey(KeyCode.UpArrow) && m_bUpDir == false)
-                    m_bUpDir = true;
-                if (Input.GetKey(KeyCode.DownArrow) && m_bDownDir == false)
-                    m_bDownDir = true;
-                if (Input.GetKey(KeyCode.LeftArrow) && m_bLeftDir == false)
-                    m_bLeftDir = true;
-                if (Input.GetKey(KeyCode.RightArrow) && m_bRightDir == false)
-                    m_bRightDir = true;
-                if (m_bUpDir == true && m_bRightDir == true && m_bLeftDir == true && m_bDownDir == true)
+				if (Input.GetKey (KeyCode.UpArrow) && m_bUpDir == false) {
+					m_bUpDir = true;
+				}
+				else if (Input.GetKey (KeyCode.DownArrow) && m_bDownDir == false) {
+					m_bDownDir = true;
+				}
+				else if (Input.GetKey (KeyCode.LeftArrow) && m_bLeftDir == false) {
+					m_bLeftDir = true;
+				}
+				else if (Input.GetKey (KeyCode.RightArrow) && m_bRightDir == false) {
+					m_bRightDir = true;
+				}
+                else if(m_bUpDir == true && m_bRightDir == true && m_bLeftDir == true && m_bDownDir == true)
                 {
                     //player has moved in all of the directions
                     ds.m_dStoryFlagField.Add("Inon_HasMoved", 1);

@@ -122,7 +122,7 @@ public class MessageHandler : MonoBehaviour
 	{
 		EnableUIObject(m_goDialogueBox);
 
-		if(Input.GetKeyDown(KeyCode.Return))
+		if(Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
 		{
 			//if the current line is done
 			if(line.Length >= ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).Line.Length)
@@ -246,7 +246,7 @@ public class MessageHandler : MonoBehaviour
 				m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.FindChild("Text" + (selectedIndex+1).ToString()).localPosition;
 			}
 		}
-		else if(Input.GetKeyDown(KeyCode.Return))
+		else if(Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
 		{
 			string textID = ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).choices[selectedIndex].TextIDToGoTo;
 			for(int i = 0; i < dialogueEvents.Count; ++i)
