@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="89">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="96">
  <tileset firstgid="1" name="cave" tilewidth="32" tileheight="32">
   <image source="../Tilesets/cave.png" width="256" height="336"/>
  </tileset>
  <tileset firstgid="81" name="DoorComp1" tilewidth="32" tileheight="32">
-  <image source="../Tilesets/DoorComp1.png" width="192" height="192"/>
+  <image source="../Tilesets/DoorComp1.png" width="295" height="192"/>
  </tileset>
- <tileset firstgid="117" name="build_atlas" tilewidth="32" tileheight="32">
+ <tileset firstgid="135" name="build_atlas" tilewidth="32" tileheight="32">
   <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
   <terraintypes>
    <terrain name="floor" tile="-1"/>
@@ -21,37 +21,37 @@
   <tile id="484" terrain="0,0,0,0"/>
   <tile id="485" terrain=",0,,0"/>
  </tileset>
- <tileset firstgid="1141" name="DoorComp2" tilewidth="32" tileheight="32">
+ <tileset firstgid="1159" name="DoorComp2" tilewidth="32" tileheight="32">
   <image source="../Tilesets/DoorComp2.png" width="384" height="256"/>
  </tileset>
- <tileset firstgid="1237" name="DoorComp3" tilewidth="32" tileheight="32">
+ <tileset firstgid="1255" name="DoorComp3" tilewidth="32" tileheight="32">
   <image source="../Tilesets/DoorComp3.png" width="384" height="256"/>
  </tileset>
- <tileset firstgid="1333" name="house_inside" tilewidth="32" tileheight="32">
+ <tileset firstgid="1351" name="house_inside" tilewidth="32" tileheight="32">
   <image source="../Tilesets/house_inside.png" width="512" height="448"/>
  </tileset>
- <tileset firstgid="1557" name="InteriorComp3" tilewidth="32" tileheight="32">
+ <tileset firstgid="1575" name="InteriorComp3" tilewidth="32" tileheight="32">
   <image source="../Tilesets/InteriorComp3.png" width="384" height="256"/>
  </tileset>
- <tileset firstgid="1653" name="InteriorItemsComp" tilewidth="32" tileheight="32">
-  <image source="../Tilesets/InteriorItemsComp.png" width="512" height="512"/>
+ <tileset firstgid="1671" name="InteriorItemsComp" tilewidth="32" tileheight="32">
+  <image source="../Tilesets/InteriorItemsComp.png" width="725" height="512"/>
  </tileset>
- <tileset firstgid="1909" name="obj_misk_atlas" tilewidth="32" tileheight="32">
+ <tileset firstgid="2023" name="obj_misk_atlas" tilewidth="32" tileheight="32">
   <image source="../Tilesets/obj_misk_atlas.png" width="1024" height="1024"/>
  </tileset>
- <tileset firstgid="2933" name="ShelfComp" tilewidth="32" tileheight="32">
+ <tileset firstgid="3047" name="ShelfComp" tilewidth="32" tileheight="32">
   <image source="../Tilesets/ShelfComp.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="3189" name="Inq XP MT- Medieval Town1" tilewidth="32" tileheight="32">
+ <tileset firstgid="3303" name="Inq XP MT- Medieval Town1" tilewidth="32" tileheight="32">
   <image source="../Tilesets/Inq XP MT- Medieval Town1.png" width="256" height="4000"/>
   <tile id="499">
    <objectgroup draworder="index"/>
   </tile>
  </tileset>
- <tileset firstgid="4189" name="Inq XP MT- Medieval Town4" tilewidth="32" tileheight="32">
+ <tileset firstgid="4303" name="Inq XP MT- Medieval Town4" tilewidth="32" tileheight="32">
   <image source="../Tilesets/Inq XP MT- Medieval Town4.png" width="256" height="4259"/>
  </tileset>
- <tileset firstgid="5253" name="Inq XP MT- Medieval Town2" tilewidth="32" tileheight="32">
+ <tileset firstgid="5367" name="Inq XP MT- Medieval Town2" tilewidth="32" tileheight="32">
   <image source="../Tilesets/Inq XP MT- Medieval Town2.png" width="256" height="4172"/>
   <tile id="570">
    <objectgroup draworder="index">
@@ -59,24 +59,24 @@
    </objectgroup>
   </tile>
  </tileset>
- <tileset firstgid="6293" name="Inq XP MT- Medieval Town3" tilewidth="32" tileheight="32">
+ <tileset firstgid="6407" name="Inq XP MT- Medieval Town3" tilewidth="32" tileheight="32">
   <image source="../Tilesets/Inq XP MT- Medieval Town3.png" width="256" height="4415"/>
  </tileset>
- <tileset firstgid="7389" name="base_out_atlas" tilewidth="32" tileheight="32">
+ <tileset firstgid="7503" name="base_out_atlas" tilewidth="32" tileheight="32">
   <image source="../Tilesets/base_out_atlas.png" width="1024" height="1024"/>
  </tileset>
- <tileset firstgid="8413" name="build_atlas" tilewidth="32" tileheight="32">
+ <tileset firstgid="8527" name="build_atlas" tilewidth="32" tileheight="32">
   <image source="../Tilesets/build_atlas.png" width="1024" height="1024"/>
  </tileset>
- <tileset firstgid="9437" name="ChestComp" tilewidth="32" tileheight="32">
+ <tileset firstgid="9551" name="ChestComp" tilewidth="32" tileheight="32">
   <image source="../Tilesets/ChestComp.png" width="384" height="512"/>
  </tileset>
- <tileset firstgid="9629" name="Images" tilewidth="128" tileheight="96">
+ <tileset firstgid="9743" name="Images" tilewidth="128" tileheight="96">
   <tile id="0">
    <image width="128" height="96" source="../Icons 512x512/WaterFountain.png"/>
   </tile>
  </tileset>
- <tileset firstgid="9630" name="WaterFountain" tilewidth="32" tileheight="32">
+ <tileset firstgid="9744" name="WaterFountain" tilewidth="32" tileheight="32">
   <image source="../Icons 512x512/WaterFountain.png" width="128" height="96"/>
   <tile id="0">
    <animation>
@@ -115,30 +115,50 @@
    </animation>
   </tile>
  </tileset>
- <tileset firstgid="9642" name="Inq XP MT- Medieval Town4 see through" tilewidth="32" tileheight="32">
+ <tileset firstgid="9756" name="Inq XP MT- Medieval Town4 see through" tilewidth="32" tileheight="32">
   <image source="../Tilesets/Inq XP MT- Medieval Town4 see through.png" width="256" height="4259"/>
  </tileset>
- <tileset firstgid="10706" name="magecity_0" tilewidth="32" tileheight="32">
+ <tileset firstgid="10820" name="magecity_0" tilewidth="32" tileheight="32">
   <image source="../Tilesets/magecity_0.png" width="256" height="1450"/>
  </tileset>
- <tileset firstgid="11066" name="woodFloors" tilewidth="32" tileheight="32">
+ <tileset firstgid="11180" name="woodFloors" tilewidth="32" tileheight="32">
   <image source="../Tilesets/woodFloors.png" width="256" height="256"/>
  </tileset>
  <layer name="Ground" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt1zEOgjAUgOHG+aUXcBN1QM9DItdww0EHD66EEFywtCn0tfmHf+nwXr+lSRtrTEMUudtu6G6nxrOQ5ubHaK25W9TaqU7mS31PH0vujtFSgqMPh65w6AqHrkpx+Haojdkn6ljHdVSJwoHjt/O3i6NTBo5+/0v+t2RuSY6H+IejTEel0BFiKMnheneXdI3oSB0OXeHQFY51essQjrwdIT3FPxw4cODAkb/D9Zd0hQMHDhy5OD6ei994
+   eJzt1yEOwjAUgOEG3fQguxpnwTHAwHkmdg3cECDQsCzLMKNr063vNb/4TcV7/UyTNs6Yhihx+93Q3U2NZzHNzU/RWnO3qHVTnZ0v9z1DLNodo6UERx8OWeGQFQ5ZleII7VgZc8jUqUrrqDOFA8dvl29XT2cFjn7/y/5vydySHA8bHo4yHbVAR4yhJIfv3V3SLaEjdzhkhUNWONbpbYdw6HbE9LTh4cCBAwcO/Q7fX9IXDhw4cGhxfABwAjct
   </data>
  </layer>
  <layer name="Shadows" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt18ENwCAMBEEqQEr/zUapIRjMaaYAm334wRjAH888/YI1Ejq+Bh296ABWS7lHHb2kdAAAANBTyr9TRy8pHVAh5T507J15YqeOu3ZW0FE38wWUGQNl
+   eJzt10ERwCAMRUEUYLrGO9VQAuHProCEd8iBMYA/nnn6BWskdHwNOnrRAayWco86eknpAAAAoKeUf6eOXlI6oELKfejYO/PETh137aygo27mC2zdD90=
   </data>
  </layer>
  <layer name="Collision" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmD1P20Acxg8GMlSxVCSridgiRS3iC8BA05EFytqhLUwEFhCwhaVqxy79Ah1aiUxJefsWpW8foay82htMPKfY4jjd2T6//h14pEeOztb5/8tz5zu7U2VsC96Gy6q2xdhH1N8pOQvncKvlZ3F47dbAPsuO0FYmu8L/z1k+EcpDHCNv4BVLf60r1f2ZGIfPEsRxjXM3hOoWtVq94+BeDuGQ86Csh8Ahzvk9eB8+gA/hI6+dioYlD50eOWhpmDnaBPYYuvlcazBWb6jb5HWwTeD5pOOYRr0zDXWbKo+iFbSPUkk3roL0ZczsHnGUB8f7CmNLFbP7hPUl/zd5cKzjvhspcPDadX3lweHXoNK3JmPfm/pjVCV9j4rKodMuau029ceo4nl0nwwcJP+auHnolFYe4rj672Xfwvh75ZnrRBgTqvcoKnn4cgSOlsDhShzU8xjx6pbzGBWeD2lzZJHHU4FDzGM8Q460FGd+qDjewu8MvZQif5z5QfF7SRrzg4LizA/qefh6jboXPcuiyrGWwv6Kgori6KGPvkE/YddTyWNOsb9Ttem0Ke1ldd8HkzpMbUXNqra0xPP4hf5/w3/gv/A/uAf34R/wHrwPH8CH8FGEepLmYSonxriKsm8pIo8sOPLOQ8fxLOH7t2keSfemPsdX7LlmUfvLyuD3c49Dbo8q0zyy4qgHcGQxP7LimEzIEScPvmZYMb1tqTlqBPM4txm7gC/hK9iBXfvuvIrjRQF5hOkUNZ/Z+vMqjomc84iiY/v+8afEpOKYyjkPWR8Mv4WL83wetS549doCh9jOVfR6fqwZW6p1sBmwDhY1P8Jk+j5Icf3gugVV60qM
+   eJztmLtOwzAUhj3RAdouINqpJW2zwStwKS8BawsIwQsgQDDDA0B5A0BcZsQKCwMIJtKOtFvZYEQcq7FqWXauTnJS+KVfqdwoOV9/n8ZOP0tIF9wDp1VWjpAvqL+fchbK0RwBlgYwdG0zls/scCxNpnkwUZZvRHnwc+QJ/J5Tn9sUvvtBxsFYnDi2YHzbgTFJtbNDDuo3Fw4xD8z6Cxx8zxt5QirgKrgGNvODcSwalTxU+ufApVHmsBCsMVT9fGQQcmzIx8TnoIUgHxXHBdR7acjHZHkkLad1lEyqeeWk8zF/9wiiODgeMoQ8Zvzdx+1a4m8TB0cb7tvRwEFrV10rDg5Wg0yTJiFTpvroVWH3UV45VCpArUVTffQqmkdxYmAnsXOC5qGSrjz4eTVtz7sWHM9sUxW4+SjbR2HJg2mW42hxHHMCB/Y86oo8liPkiCKPFUUeqxFy6FKQ/pBxPINffPpVI3+Q/sD4vkRHf2BQkP7AngfTDdR9a1sUVo6OhvUVBiXFUYJrlH1cx+18LHncjXsbU+lDWMuq3g+GtZssSc2yMV2ieczDuncBvAheAtfBJXAZPAM2wBVwFVwDmy5raaqwefhVI8C88rJuSSKPKDjizkPFsRZy/+03j7BrU8ZxD/vtE6j9NDP4vGtziONe5TePqDg2HDii6I+oOPZDcgTJgz4zDgO6p+BYT1keVDKOvQTyCCsZx2bMeeiQjOMg5jzCiu/zK6j12q63wXHw41SY8xC14/AcxNoffveDWP+vfgFFT34s
   </data>
  </layer>
+ <objectgroup name="Rubble collision">
+  <object id="89" x="1323" y="1488">
+   <polyline points="0,0 17,7 21,34 16,41 9,46 8,60 -2,72 -8,53 -3,46 -9,41 -10,21 -5,8 1,1"/>
+  </object>
+  <object id="90" x="348" y="952">
+   <polyline points="0,0 21,-4 20,-7 32,-14 33,-30 23,-37 14,-43 8,-37 1,-38 -13,-38 -19,-22 -6,-16 -3,-6 -1,0"/>
+  </object>
+  <object id="91" x="1380" y="1096">
+   <polyline points="0,0 -1,23 26,27 29,8 20,-11 -1,-11"/>
+  </object>
+  <object id="92" x="1310" y="1378">
+   <polyline points="0,0 3,23 161,25 163,1"/>
+  </object>
+  <object id="93" x="1369" y="1418">
+   <polyline points="0,0 0,18 -51,20 -51,3 -1,1"/>
+  </object>
+  <object id="94" x="1416" y="1427">
+   <polyline points="0,0 0,9 16,14 19,-2 -6,-3"/>
+  </object>
+ </objectgroup>
  <objectgroup name="Collision">
   <object id="2" x="162.667" y="182.667">
    <polyline points="0,0 -1.33333,17.3333 -150.667,18.6667 -154.667,1412"/>
@@ -149,15 +169,9 @@
   <object id="4" x="1244" y="224">
    <polyline points="0,0 124,1.33333 133.333,226.667 198.667,226.667"/>
   </object>
-  <object id="5" x="1528" y="450.667">
-   <polyline points="61.3333,134.667 61.3333,173.333 60,796 -452,797.333 -453.333,1049.33 -441.333,1048 -442.667,966.667 -414.667,962.667 -413.333,997.333 -377.333,996 -377.333,962.667 -346.667,964 -341.333,926.667 -188,916 -181,952.333 -20.3333,950.333 -25.3333,926.667 57.3333,936 53.3333,1144 -442,1146 -441.333,1082.67 -458.667,1080 -458.667,1145.33"/>
+  <object id="5" x="1532" y="458.667">
+   <polyline points="61.3333,134.667 61.3333,173.333 60,796 -452,797.333 -453.333,1049.33 -441.333,1048 -442.667,966.667 -414.667,962.667 -413.333,997.333 -377.333,996 -377.333,962.667 -346.667,964 -341.333,926.667 -188,916 -164,916.333 -37.3333,917.333 -15.3333,918.667 60.3333,920 53.3333,1144 -442,1146 -441.333,1082.67 -458.667,1080 -458.667,1145.33"/>
   </object>
-  <object id="7" x="1352" y="1409.33" width="48" height="34.6667"/>
-  <object id="8" x="1349.33" y="1454.67" width="22.6667" height="18.6667"/>
-  <object id="9" x="1413.33" y="1460" width="21.3333" height="16"/>
-  <object id="10" x="1473.33" y="1453.33" width="29.3333" height="21.3333"/>
-  <object id="11" x="1412" y="1518.67" width="24" height="20"/>
-  <object id="12" x="1254.67" y="1392" width="84" height="16"/>
   <object id="13" x="604" y="649.333" width="256" height="164"/>
   <object id="14" x="1387" y="448" width="44" height="59.5"/>
   <object id="15" x="1545" y="449" width="44" height="59"/>
@@ -261,36 +275,51 @@
   </object>
   <object id="85" x="536" y="1040" width="78" height="52"/>
   <object id="86" x="920" y="1034" width="80" height="58"/>
-  <object id="88" x="1176" y="1476" width="45" height="28"/>
  </objectgroup>
+ <objectgroup name="Blacksmith 1 collision"/>
  <layer name="Wall" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmTlSwzAUht0AhYmpfCygAlo6qIEbcAegScgGw1awtWxDrsEOwzXya2xPZCMTS5EtyXnfzDfJKMpEz5Je5GfPI4jpYjuITNgI8vtOC78LpkdQjEXM1VIse78H9+FB3LZscC7XG2nzYNd6BeNcjW3DDuzCHuzDNUfWJB/HCTyFZ/AcXjgUxzg2axKHy/B7v2p15hV+z1St6n78Efw/uBgHYT+itUbIo5IvbSN7VnI5N9QlDpX7JdGepn1OJKjcf+Z9R/WcqAtd61rlfGUjLsZBuak8ZK+trtrU7nxkWf2r4qjhecf/1Jdk+pus+zUxppZEHOP6y5xL+BripHUAnfPByOZCUX2Qh9Wm7vziubWJvi2/+HhVyf6uqD7I53oWx4cgjhe0vcI3+O5HfT7hF/yuII4slxjTFbyGN/BWsCbYfNzDB/gIn/zRdT+EbdiBXdiDfQNxEIQpbDlfzWDvzio6Z8E5NWGSWqxNdYa6xLEVjJ4zy7pjURxVY+o8OgjTr89h+nNb8lVRBuHfNlee8fOI4iCIshgCjsq4zQ==
+   eJztmclOwzAQhnMEFJLQJSC2A9uVpaKvQcsqngR4OuAEXLnBGXgD7vxWGtVJHRq7iZd0PulTq9RVPXFm6kw8jyDmi+8gMeUjKB47L9xGpmdQjkes1dNI9n4h9LxFuBQmx54NruX7ctYi2Ll+wTxfR7Yw9zbswC6M4Zsj1yQfxzrmvQE34RbcdiiOaXw2JA6X4XNft1XWFT5ndKuajzeC/wcX4yDsR3StEfKo1EvbyO+VXK4NTYlD5X5JlNOU50SKyv1n0XdU94lVUdV1rbK/shEX46DaVB+y57aq3tSvn1jXeF2sIj/WJHLkv/Em+34h5hRJxDFtvMy+hO8hztoHqHI9GPlaKOoP8rDe1KFfvraGGBtpuK7zvyvqD/K1nsVxIYjjDMcGcAjP/WTMJbyC1wbycwfz3oV7cB8ehJNj2HocwWN4Anv++LyvwBZsww7swtjCOkMQdWHL/uoO9eVe0QcL9qkps/RibeozNCWOr2D8nFnWH4vi0I2p/Wg/zr6extnPbalXZenHk8dcecbPI4qDIOriDwfoERo=
   </data>
  </layer>
  <layer name="rubble" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmTtuAjEQhilJvXQkB+AgSQc3IF0k6OA6lClzgJSRoECCM+QqkbIrYWkYbM94PbbHkr9uWa09j3/ssZlMGo1GaXYL//st8X4s69n988Yzz8fs8TfKbgz0I/Tb3GB/bf7nwjX3XmEM3yPjFPt9LqCWOdrANYxzh8fYBI4vQUmN10Zo7dWiaxe+vaEkGtdASah9Eu/hHF77b94S6nGMTRBub7Ds51kVqqvQerDVf2ycUvDdpRl38DWnvz9duTVLcq0/E/mAc6XYY3LnLRVDbyPR3/jikeqcFoPEOStnHVE5cmk8Zx8QqiOjC18daT8P146Jr0s/ttxoOw8d+73g5NgPYvQj3Q9Ssbz0PlwZfYZv3bG9g/0gtWZJ7ZUw7qbOx+hmGKetATxqjVPtdwAcSuaG6lMl41/ST8oPbfsWl5AeDvfa68TnIENs3iXPUhp7Fg33cRps4BBjp/Z+wafDWu4TUty9NmTR+r+EAdqH9UTVP0dfz0/hNmnhd3r/PKwZB8e58G9q/10T8G7w8+ZHDXZDcE6+ukcdvlSmOZyDucP+f0SRRkg=
+   eJztmUtuAjEMhtkidTlLDkB3lcoCqZyhV+lJoMdpd+UGsKsEO3qRzkhEct0kdiZOYkv5NkBHk/jxO3HSxaLT6bTm9hh/fiWez+U0/P19iczzPfz/G2U3BvqR+m5tsL8+/2sRmvtHYQzPmXHKfb8WUMscbeAaxrnDY1wSx5egpcatkVp7VnQdIrY3tETjGigJtU/iPZzDx/jOZ0E9zrEJwu0NvsZ5jo3qKrUefPWfG6cSrAvZNPla09+nod2aJbnWb4mx4Fwl9pjaeSvF1NtI9DexeJQ6p+Ugcc6qWUdUjkIar9kHpOrI6SJWR9rPw9Zx8Q3px5cbbeeh59GeTcCmHP1I94NULF/G7zvGfLF1x/cM9oPUmiW1V8K4uzqfo5tpnL4G8LAaJ+t3ABxa5obqUyXj39JPyg9t+xaXlB4O99qnwucgR27eJc9SGnsWDfdxGmzgkGOn9n4hpkMr9wkl7l47smj9v4QD2of1RNU/R1+HZbpNWnhFtk9rxkPA5zcDfsK7weH+acFuCM7JynPf+W7MJ5yDfcD+X5jbca0=
   </data>
  </layer>
  <layer name="Above" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmbtOwzAUhg1IRdQoFZcmQgwIob4KAwMjr9CKjgywwYZ4AjZ4B0ZGFligBQlaBm4D5fIQwG/FUS6K21ya6pj6lz45TWzlfD2tFSl1i2mfBhyaGTx2sWYvZl3R51VJ49Gr+Mf7WHNgjf68qh7Po5mxL1QS9dDVRXisx6BbhEddw7qjMR60YjxoJc6joaHXOHhEnwdG/TlNVP+PDR6m6OS9n8pjm4cpOnnv95/3Kx1jPOJzUmPstKYe0+SQu4gE97LgsTeHcj+OuUt0LwvizaHcDy/RvSxuX6PcjzTRoR9JYvpBK0k8+j2/5Xm2G2bGqR86xHjQCmWPTSuM6poIZY9B2bLCUPfo995AJ48k0fl3FYzxoBXjMfyUZB1nNmMV2z+/LI+vq4zdgBZog1twB+bkdSoe4t3kLGo6Bw7g4Ad1rmH8xXgPHkAHdMEjKOPakk2rH8JjETVdgBWwAEryu57G+IS6n8ELeAVvYB7nV4l57KCOK9R0abujyJTD2CSYAO+ouwc+wCf4At9Vfz0Vj5Z0EGNbenDUXwYzTnjukR3+TKkfHekgxq49eH4wVDy8dy5ZHLz1lDzyrKfgkTfGg1aExx8KLaNe
+   eJztmTEOgjAUhrsaDMFFbuAddDEaFz2BR3H3Ug4Ojl5BI6ODbrq52QYaobZKqZD/Yb/kpfCkoV8evjTpIWTkOXKHpILHhc+5aubVnTdh47GMXtc3PuceNp83rUd6JBXrgoLqQdVFeGw0QQ3hcSC4bhXvgYX3wELncSTo9Q8e6n6g6XsbTP+PbVCMunF9n8njFBSjblzf1+Z+RRHvoScaMNYbmEcbHkEagnwvy1/LZ5Dr0emmofayfMhnkOshUXuZrq8h18MGCvUog68HFmU8Pu3fXPZ2v+Sf6kEB74EFsscuLIbpNwGyxzf2YTHQPT6dG1DyKAPl7yqP98DCe/ye1Zd1jPvvuRnPrbM8iofL2SRSPdricebrGMWMDeN0tAXFY5I5iHFq6YFUj3nmIMYFUQ955lLFQc5H8nCZj+DhivfAQng8ARZCtm0=
+  </data>
+ </layer>
+ <layer name="Blacksmith 1-1 " width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztz8sNgmAUBeG/Crox+FiguBCExLcI0n8NzsIKiIm5ZL5k9uekJEmSJEmSJEmSJEnSvOVZSkta0Zo22b8XTVOwe0s7Kmkf9MeB3RXVdKSG2oBfTmw+04WudKN7wB8dm1/U00BvGgP+eLD5+d29CLhf0m98AC8bDKA=
+  </data>
+ </layer>
+ <layer name="Blacksmith 2-1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztxyEBAAAIA7CnoA39a9HgGrG5JQAAAAAAAAAAwAc7/UB3P+oApw==
   </data>
  </layer>
  <layer name="Highest" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt1zEOgCAQRFEqGxMOZm1tq9H7qMew8IBiiYnYgLqT/5IpqGCgIOucHb3/+gR5pHpY6qjSI4UeAJBf5e9jXSvQwarzr9su97+HdSf+Jk0dx+p+Yx2ntLf3AwAAAFDGHGa+JWTNNPsNIjMkPfBkEpmF6fEvKj0AAICGA6A2Efw=
+   eJzt1zEOgCAMhWFGlQTu4OAZPZyzs6tG7yKODIIDqG3+L+kAISkvDKTGyLG6r29QRiqHpIxacqSQAwDKG919STcryCDV9df1Pt4bwnpR/iaTjUtqv93GVdvb/QAAAADU0YS5rw3V+fzZJzYlMyQ5kHMomYXJ8S9acgAAAB1OZGIhCw==
+  </data>
+ </layer>
+ <layer name="Blacksmith 2-2" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztz7ERABAUBcFXxa9SIBAonx4EjNmt4C4BAAAAAAAAAF7WK2l1u+Lc3A/jgw8A3rUAlxoCIQ==
   </data>
  </layer>
  <layer name="Top" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt2DsKwkAUBdC3gUxpL2Qj6gL8BfxNoxYKrlA7bbIAbf2V/nrtvBLFxoDPIpnEe+ASMrziPqYJCTzJBYs9Au7iHO6SrLUvskG2yA7Z+5/nrON7HND7iJyQM3KJ2cN1396H63gfbsnDfYxM9CzhWUYqz/exSa/TLyboW0PqSANpIoGJzrPk0beNdJAu0kNsBve4FkVuSB+9B8jQvM+IiIiIXqoZ+8aJ0+Iezph6IjPFfxbtfFLm6LRQ9NLOJ2WJTitFL+08EREREf2vsJB2AyIi0rgDgOM8OA==
+   eJzt1jsKAjEYBOBcwLT2wlbaaeMBtPVV+ur1eOoBfAV8pVELBe/iyCo2LvhbZJN1PhiWXVLMkGZNTmWCxQ7DLd7hFrcakVJNpIW0kU70+Zz1fEcXvXtIHxkgw4Qdvvv2PnzH+/BLFu7jouPnBM8pMnu+X3V6nX5xQ98FskRWyBoxOv4ekkffLbJD9sgBsQHuGBWUGiNH9D4hZ/3+RkRERPQyD+wfJ8mGO7xRxIaSYIf0vCtldKoIeknPu1JDp7qgl/Q8EREREf2vaj7tBkREJHEH3aMx6w==
   </data>
  </layer>
  <layer name="Over" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt11EKglAQheF5F1ua27BVVWDrqMDWUUEb8fgQvThE0rVp+j84L3If5oDi3HZlKbQveqyT9KRHLPT4nmZi5l/sMYUeQCzejuE9j/ruZ+/hidoDKOHd7yMqegAoKctuQI9YMvToarN9Xe48gKe599pNZbZVdspBOSon5a5clKtyqz4/r2duj8esvXJecF7PEnt7hv/EKEsPAAAA/IcBXKAdSg==
+   eJzt10EKglAUheG3AJESbB0a1DosaL9tw1bjaRBNvMiTtOv1/+BMwsH7oejZlymEfqLjFaSTDl/o+J/nyJm32DGGDsAX645hfe71ux+9w+K1A1hC7u/DKzoALCnK3YAOXyJ01Go4ZXTkPg/ga+577aFI6ahVWqO12ll7aJ120+7F789rmdvxOetFu654Xssa9/YI/xNvUToAAACwDwN4+yIS
   </data>
  </layer>
 </map>
