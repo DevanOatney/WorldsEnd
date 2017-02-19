@@ -119,6 +119,30 @@ public class StandardEnemyScript : UnitScript
 								}
 							}
 							break;
+						case UnitScript.UnitTypes.RANGEDENEMY:
+							{
+								//Pick from the available enemy (the allies) targets, attack the one with the lowest HP
+								GameObject WeakestTarget = null;
+								int lowestHP = int.MaxValue;
+								GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
+								foreach(GameObject tar in posTargs)
+								{
+									if(tar.name.Contains("(Clone)"))
+										continue;
+									if(tar.GetComponent<UnitScript>().GetCurHP() < lowestHP && tar.GetComponent<UnitScript>().GetCurHP() > 0)
+									{
+										WeakestTarget = tar;
+										lowestHP = WeakestTarget.GetComponent<UnitScript>().GetCurHP();
+									}
+								}
+								if(WeakestTarget != null)
+								{
+									m_nState = (int)ENEMY_STATES.eATTACK;
+									m_fDelayTimer = 0.0f;
+									m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
+								}
+							}
+							break;
 						}
 					}
 				}

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class UnitScript : MonoBehaviour 
 {
-	public enum UnitTypes{ALLY_MELEE, ALLY_RANGED, NPC, BASICENEMY, PERCENTENEMY};
+	public enum UnitTypes{ALLY_MELEE, ALLY_RANGED, NPC, BASICENEMY, PERCENTENEMY, RANGEDENEMY};
 	public bool m_bIsMyTurn = false;
 	public int m_nState;
 	//for knowing which script to call for TakeDamage

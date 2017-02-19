@@ -1,0 +1,660 @@
+fileFormatVersion: 2
+guid: ec4e98ff29da2b54bbb28175ce351a91
+timeCreated: 1486902734
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: slug_slinger_frame_sheet_0
+    21300002: slug_slinger_frame_sheet_1
+    21300004: slug_slinger_frame_sheet_2
+    21300006: slug_slinger_frame_sheet_3
+    21300008: slug_slinger_frame_sheet_4
+    21300010: slug_slinger_frame_sheet_5
+    21300012: slug_slinger_frame_sheet_6
+    21300014: slug_slinger_frame_sheet_7
+    21300016: slug_slinger_frame_sheet_8
+    21300018: slug_slinger_frame_sheet_9
+    21300020: slug_slinger_frame_sheet_10
+    21300022: slug_slinger_frame_sheet_11
+    21300024: slug_slinger_frame_sheet_12
+    21300026: slug_slinger_frame_sheet_13
+    21300028: slug_slinger_frame_sheet_14
+    21300030: slug_slinger_frame_sheet_15
+    21300032: slug_slinger_frame_sheet_16
+    21300034: slug_slinger_frame_sheet_17
+    21300036: slug_slinger_frame_sheet_18
+    21300038: slug_slinger_frame_sheet_19
+    21300040: slug_slinger_frame_sheet_20
+    21300042: slug_slinger_frame_sheet_21
+    21300044: slug_slinger_frame_sheet_22
+    21300046: slug_slinger_frame_sheet_23
+    21300048: slug_slinger_frame_sheet_24
+    21300050: slug_slinger_frame_sheet_25
+    21300052: slug_slinger_frame_sheet_26
+    21300054: slug_slinger_frame_sheet_27
+    21300056: slug_slinger_frame_sheet_28
+    21300058: slug_slinger_frame_sheet_29
+    21300060: slug_slinger_frame_sheet_30
+    21300062: slug_slinger_frame_sheet_31
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: slug_slinger_frame_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 605
+        width: 48
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 41.5}
+        - {x: -21, y: 36.5}
+        - {x: -24, y: 18.5}
+        - {x: -24, y: -41.5}
+        - {x: 24, y: -41.5}
+        - {x: 24, y: 32.5}
+        - {x: 17, y: 41.5}
+    - name: slug_slinger_frame_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 605
+        width: 53
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.5, y: 39.5}
+        - {x: -26.5, y: 19.5}
+        - {x: -26.5, y: -15.5}
+        - {x: -11.5, y: -39.5}
+        - {x: 19.5, y: -39.5}
+        - {x: 26.5, y: -35.5}
+        - {x: 26.5, y: 39.5}
+    - name: slug_slinger_frame_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 604
+        width: 51
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.5, y: 40.5}
+        - {x: -21.5, y: 40.5}
+        - {x: -25.5, y: 35.5}
+        - {x: -25.5, y: -18.5}
+        - {x: -12.5, y: -40.5}
+        - {x: 9.5, y: -40.5}
+        - {x: 25.5, y: -18.5}
+        - {x: 25.5, y: 29.5}
+    - name: slug_slinger_frame_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 605
+        width: 52
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 40}
+        - {x: -23, y: 37}
+        - {x: -26, y: 24}
+        - {x: -26, y: -39}
+        - {x: -24, y: -40}
+        - {x: 23, y: -40}
+        - {x: 26, y: -35}
+        - {x: 26, y: 29}
+        - {x: 10, y: 40}
+    - name: slug_slinger_frame_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 605
+        width: 51
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10.5, y: 42}
+        - {x: -15.5, y: 42}
+        - {x: -25.5, y: 29}
+        - {x: -25.5, y: -42}
+        - {x: 17.5, y: -42}
+        - {x: 25.5, y: -22}
+        - {x: 25.5, y: 27}
+        - {x: 24.5, y: 34}
+    - name: slug_slinger_frame_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 605
+        width: 53
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.5, y: 39.5}
+        - {x: -26.5, y: 18.5}
+        - {x: -26.5, y: -23.5}
+        - {x: -12.5, y: -39.5}
+        - {x: 24.5, y: -39.5}
+        - {x: 26.5, y: -38.5}
+        - {x: 26.5, y: 39.5}
+    - name: slug_slinger_frame_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 605
+        width: 50
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25, y: 41}
+        - {x: -25, y: -32}
+        - {x: -9, y: -41}
+        - {x: 12, y: -41}
+        - {x: 25, y: -9}
+        - {x: 25, y: 27}
+        - {x: 10, y: 41}
+    - name: slug_slinger_frame_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 605
+        width: 52
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: 40}
+        - {x: -26, y: -40}
+        - {x: 25, y: -40}
+        - {x: 26, y: -34}
+        - {x: 26, y: 31}
+        - {x: 10, y: 40}
+    - name: slug_slinger_frame_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 456
+        width: 50
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 42}
+        - {x: -25, y: 34}
+        - {x: -25, y: -20}
+        - {x: -12, y: -42}
+        - {x: 22, y: -42}
+        - {x: 25, y: -21}
+        - {x: 25, y: 40}
+        - {x: 21, y: 42}
+    - name: slug_slinger_frame_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 456
+        width: 51
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.5, y: 42.5}
+        - {x: -21.5, y: 32.5}
+        - {x: -25.5, y: 15.5}
+        - {x: -25.5, y: -22.5}
+        - {x: -18.5, y: -42.5}
+        - {x: 22.5, y: -42.5}
+        - {x: 25.5, y: -19.5}
+        - {x: 25.5, y: 34.5}
+        - {x: 6.5, y: 42.5}
+    - name: slug_slinger_frame_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 456
+        width: 52
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8, y: 43}
+        - {x: -15, y: 40}
+        - {x: -26, y: 12}
+        - {x: -26, y: -13}
+        - {x: -17, y: -43}
+        - {x: 25, y: -43}
+        - {x: 26, y: -30}
+        - {x: 26, y: 37}
+        - {x: 16, y: 43}
+    - name: slug_slinger_frame_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 456
+        width: 51
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.5, y: 42.5}
+        - {x: -21.5, y: 32.5}
+        - {x: -25.5, y: 15.5}
+        - {x: -25.5, y: -22.5}
+        - {x: -18.5, y: -42.5}
+        - {x: 22.5, y: -42.5}
+        - {x: 25.5, y: -19.5}
+        - {x: 25.5, y: 34.5}
+        - {x: 6.5, y: 42.5}
+    - name: slug_slinger_frame_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 456
+        width: 50
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 42}
+        - {x: -25, y: 34}
+        - {x: -25, y: -20}
+        - {x: -12, y: -42}
+        - {x: 22, y: -42}
+        - {x: 25, y: -21}
+        - {x: 25, y: 40}
+        - {x: 21, y: 42}
+    - name: slug_slinger_frame_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 456
+        width: 49
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 24.5, y: -6.5}
+        - {x: 24.5, y: 41.5}
+        - {x: -24.5, y: 41.5}
+        - {x: -24.5, y: -23.5}
+        - {x: -21.5, y: -41.5}
+        - {x: -1.5, y: -41.5}
+        - {x: -0.5, y: -40.5}
+        - {x: 1.5, y: -41.5}
+        - {x: 17.5, y: -41.5}
+    - name: slug_slinger_frame_sheet_14
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 307
+        width: 50
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 42}
+        - {x: -25, y: 34}
+        - {x: -25, y: -20}
+        - {x: -12, y: -42}
+        - {x: 22, y: -42}
+        - {x: 25, y: -21}
+        - {x: 25, y: 40}
+        - {x: 21, y: 42}
+    - name: slug_slinger_frame_sheet_15
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 307
+        width: 54
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 44}
+        - {x: -27, y: 32}
+        - {x: -27, y: -37}
+        - {x: -25, y: -44}
+        - {x: 24, y: -44}
+        - {x: 27, y: -24}
+        - {x: 27, y: 44}
+    - name: slug_slinger_frame_sheet_16
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 306
+        width: 59
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29.5, y: 44.5}
+        - {x: -29.5, y: -20.5}
+        - {x: -19.5, y: -44.5}
+        - {x: 13.5, y: -44.5}
+        - {x: 29.5, y: -0.5}
+        - {x: 29.5, y: 44.5}
+    - name: slug_slinger_frame_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 307
+        width: 76
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 20, y: 43.5}
+        - {x: -13, y: 43.5}
+        - {x: -38, y: 30.5}
+        - {x: -38, y: -4.5}
+        - {x: -26, y: -33.5}
+        - {x: -19, y: -43.5}
+        - {x: 17, y: -43.5}
+        - {x: 38, y: -24.5}
+        - {x: 38, y: 37.5}
+        - {x: 25, y: 35.5}
+    - name: slug_slinger_frame_sheet_18
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 375
+        width: 32
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: slug_slinger_frame_sheet_19
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 307
+        width: 63
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.5, y: 42}
+        - {x: -31.5, y: 16}
+        - {x: -28.5, y: -2}
+        - {x: -11.5, y: -42}
+        - {x: 31.5, y: -42}
+        - {x: 31.5, y: 42}
+    - name: slug_slinger_frame_sheet_20
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 158
+        width: 50
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 42}
+        - {x: -25, y: 34}
+        - {x: -25, y: -20}
+        - {x: -12, y: -42}
+        - {x: 22, y: -42}
+        - {x: 25, y: -21}
+        - {x: 25, y: 40}
+        - {x: 21, y: 42}
+    - name: slug_slinger_frame_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 158
+        width: 53
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 26.5, y: -24.5}
+        - {x: 26.5, y: 41.5}
+        - {x: -13.5, y: 41.5}
+        - {x: -19.5, y: 33.5}
+        - {x: -26.5, y: 22.5}
+        - {x: -26.5, y: -15.5}
+        - {x: -17.5, y: -41.5}
+        - {x: -2.5, y: -41.5}
+        - {x: -1.5, y: -40.5}
+        - {x: 0.5, y: -41.5}
+        - {x: 21.5, y: -41.5}
+    - name: slug_slinger_frame_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 158
+        width: 55
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25.5, y: -42}
+        - {x: 27.5, y: -20}
+        - {x: 27.5, y: 23}
+        - {x: 22.5, y: 42}
+        - {x: -27.5, y: 42}
+        - {x: -27.5, y: -12}
+        - {x: -5.5, y: -42}
+        - {x: 5.5, y: -42}
+        - {x: 6.5, y: -41}
+        - {x: 6.5, y: -37}
+        - {x: 11.5, y: -42}
+    - name: slug_slinger_frame_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 158
+        width: 50
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25, y: -18}
+        - {x: 25, y: 20}
+        - {x: 18, y: 42}
+        - {x: -25, y: 42}
+        - {x: -25, y: 2}
+        - {x: -21, y: -16}
+        - {x: -7, y: -42}
+        - {x: 3, y: -42}
+        - {x: 4, y: -41}
+        - {x: 6, y: -42}
+        - {x: 21, y: -42}
+    - name: slug_slinger_frame_sheet_24
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 158
+        width: 45
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13.5, y: 43}
+        - {x: -18.5, y: 43}
+        - {x: -21.5, y: 40}
+        - {x: -22.5, y: 30}
+        - {x: -22.5, y: -16}
+        - {x: -8.5, y: -43}
+        - {x: 20.5, y: -43}
+        - {x: 22.5, y: -21}
+        - {x: 22.5, y: 33}
+        - {x: 19.5, y: 42}
+    - name: slug_slinger_frame_sheet_25
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 9
+        width: 50
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 42}
+        - {x: -25, y: 34}
+        - {x: -25, y: -20}
+        - {x: -12, y: -42}
+        - {x: 22, y: -42}
+        - {x: 25, y: -21}
+        - {x: 25, y: 40}
+        - {x: 21, y: 42}
+    - name: slug_slinger_frame_sheet_26
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 9
+        width: 53
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.5, y: 43.5}
+        - {x: -10.5, y: 43.5}
+        - {x: -26.5, y: 20.5}
+        - {x: -26.5, y: -41.5}
+        - {x: -22.5, y: -43.5}
+        - {x: 14.5, y: -43.5}
+        - {x: 15.5, y: -41.5}
+        - {x: 26.5, y: -11.5}
+        - {x: 26.5, y: 32.5}
+    - name: slug_slinger_frame_sheet_27
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 9
+        width: 57
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5.5, y: 45}
+        - {x: -14.5, y: 40}
+        - {x: -28.5, y: 10}
+        - {x: -28.5, y: -42}
+        - {x: -17.5, y: -45}
+        - {x: 13.5, y: -45}
+        - {x: 28.5, y: -25}
+        - {x: 28.5, y: 30}
+        - {x: 12.5, y: 45}
+    - name: slug_slinger_frame_sheet_28
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 9
+        width: 86
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 39.5}
+        - {x: -37, y: 39.5}
+        - {x: -43, y: 32.5}
+        - {x: -43, y: -3.5}
+        - {x: -8, y: -39.5}
+        - {x: 43, y: -39.5}
+        - {x: 43, y: -17.5}
+        - {x: 22, y: 27.5}
+    - name: slug_slinger_frame_sheet_29
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 9
+        width: 109
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17.5, y: 22.5}
+        - {x: -29.5, y: 22.5}
+        - {x: -54.5, y: 7.5}
+        - {x: -54.5, y: -22.5}
+        - {x: 45.5, y: -22.5}
+        - {x: 54.5, y: -20.5}
+        - {x: 54.5, y: -8.5}
+        - {x: 53.5, y: -7.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
