@@ -110,12 +110,8 @@ public class TurnWatcherScript : MonoBehaviour
 			ds.AddPartyMember("Illuiyani");
 			List<EncounterGroupLoaderScript.cEnemyData> lEnemies = new List<EncounterGroupLoaderScript.cEnemyData>();
 			EncounterGroupLoaderScript.cEnemyData enemy = new EncounterGroupLoaderScript.cEnemyData();
-			enemy.m_szEnemyName = "Boar";
+			enemy.m_szEnemyName = "Slug Slinger";
 			enemy.m_nFormationIter = 3;
-			lEnemies.Add(enemy);
-			enemy = new EncounterGroupLoaderScript.cEnemyData();
-			enemy.m_szEnemyName = "KillerBee";
-			enemy.m_nFormationIter = 0;
 			lEnemies.Add(enemy);
 			pdata.GetComponent<DCScript>().SetEnemyNames(lEnemies);
 		}
@@ -813,6 +809,7 @@ public class TurnWatcherScript : MonoBehaviour
 		GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		foreach(GameObject e in _enemies)
 		{
+			Debug.Log (e.GetComponent<UnitScript> ().FieldPosition + " vs " + p_nIndex);
 			if(e.GetComponent<UnitScript>().FieldPosition == p_nIndex)
 			{
 				if(e.GetComponent<UnitScript>().GetCurHP() > 0)
@@ -836,6 +833,7 @@ public class TurnWatcherScript : MonoBehaviour
 		GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		foreach(GameObject e in _enemies)
 		{
+			Debug.Log (e.GetComponent<UnitScript> ().FieldPosition + " vs " + p_nIndex);
 			if(e.GetComponent<UnitScript>().FieldPosition == p_nIndex)
 			{
 				if(e.GetComponent<UnitScript>().GetCurHP() > 0)

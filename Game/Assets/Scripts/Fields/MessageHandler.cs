@@ -111,6 +111,12 @@ public class MessageHandler : MonoBehaviour
 		{
 			img.enabled = true;
 		}
+		Image[] imgField = _uiObj.GetComponentsInChildren<Image>();
+		foreach(Image _img in imgField)
+		{
+			if(_img.gameObject.name == "Background")
+				_img.enabled = true;
+		}
 		Text[] txtField = _uiObj.GetComponentsInChildren<Text>();
 		foreach(Text txt in txtField)
 		{
@@ -212,6 +218,9 @@ public class MessageHandler : MonoBehaviour
 			m_goDialogueNameplate1.GetComponentInChildren<Text>().gameObject.GetComponent<RectTransform>().localPosition = ancPos;
 			DisableUIObject(m_goDialogueNameplate2);
 		}
+		Color col = m_goDialogueBox.transform.FindChild ("Text").GetComponent<Text> ().color;
+		col.a = 255;
+		m_goDialogueBox.transform.FindChild ("Text").GetComponent<Text> ().color = col;
 		m_goDialogueBox.transform.FindChild("Text").GetComponent<Text>().text = line;
 		m_goDialogueBox.transform.FindChild("Text1").GetComponent<Text>().text = "";
 		m_goDialogueBox.transform.FindChild("Text2").GetComponent<Text>().text = "";

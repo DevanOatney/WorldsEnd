@@ -137,6 +137,7 @@ public class StandardEnemyScript : UnitScript
 								}
 								if(WeakestTarget != null)
 								{
+									m_aAnim.SetTrigger("m_bIsAttacking");
 									m_nState = (int)ENEMY_STATES.eATTACK;
 									m_fDelayTimer = 0.0f;
 									m_nTargetPositionOnField = WeakestTarget.GetComponent<UnitScript>().FieldPosition;
