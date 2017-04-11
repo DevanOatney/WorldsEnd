@@ -32,37 +32,33 @@ public class InterractingBoxScript : MonoBehaviour
 				}
 			}
 
-			if(m_goOwner.GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
-			{
+			if (m_goOwner.GetComponent<FieldPlayerMovementScript> ().GetAllowInput () == true) {
 				//Has found an interractable object nearby, and the player is allowed to interract with it currently.
-				m_goOwner.GetComponent<FieldPlayerMovementScript>().ActivatePrompter();
+				m_goOwner.GetComponent<FieldPlayerMovementScript> ().ActivatePrompter ();
+			} else {
+				m_goOwner.GetComponent<FieldPlayerMovementScript>().DeactivatePrompter();
 			}
 		}
 	}
 
 	void OnTriggerStay2D(Collider2D c)
 	{
-		if(c.tag == "Treasure" || c.tag == "Interractable" || c.tag == "Merchant")
-		{
-			if(c.tag == "Treasure")
-			{
-				if(c.gameObject.GetComponent<TreasureChestScript>().m_bIsOpened == true)
-				{
-					m_goOwner.GetComponent<FieldPlayerMovementScript>().DeactivatePrompter();
+		if (c.tag == "Treasure" || c.tag == "Interractable" || c.tag == "Merchant") {
+			if (c.tag == "Treasure") {
+				if (c.gameObject.GetComponent<TreasureChestScript> ().m_bIsOpened == true) {
+					m_goOwner.GetComponent<FieldPlayerMovementScript> ().DeactivatePrompter ();
 					return;
 				}
 			}
-			if(c.enabled == false)
-			{
-				m_goOwner.GetComponent<FieldPlayerMovementScript>().DeactivatePrompter();
+			if (c.enabled == false || c.GetComponent<Collider2D>().enabled == false) {
+				m_goOwner.GetComponent<FieldPlayerMovementScript> ().DeactivatePrompter ();
 				return;
 			}
-			if(m_goOwner.GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
-				{
+			if (m_goOwner.GetComponent<FieldPlayerMovementScript> ().GetAllowInput () == true) {
 				//Has found an interractable object nearby, and the player is allowed to interract with it currently.
-				m_goOwner.GetComponent<FieldPlayerMovementScript>().ActivatePrompter();
+				m_goOwner.GetComponent<FieldPlayerMovementScript> ().ActivatePrompter ();
 			}
-		}
+		} 
 	}
 	void OnTriggerExit2D(Collider2D c)
 	{

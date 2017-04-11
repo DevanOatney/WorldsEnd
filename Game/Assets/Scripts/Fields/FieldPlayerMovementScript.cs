@@ -202,6 +202,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 				GameObject box = Instantiate(m_goActionBox, m_goPredictor.transform.position, Quaternion.identity) as GameObject;
 				Destroy(box, 0.25f);
 				box.GetComponent<InterractingBoxScript>().SetOwner(gameObject);
+				DeactivatePrompter ();
 				//Handle results of the collision in that objects script
 			}
 		}
