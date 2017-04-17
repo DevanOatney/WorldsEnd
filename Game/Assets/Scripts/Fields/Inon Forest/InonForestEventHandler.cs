@@ -24,7 +24,6 @@ public class InonForestEventHandler : BaseEventSystemScript
 
 	override public void HandleEvent(string eventID)
 	{
-		Debug.Log (eventID);
 		switch(eventID)
 		{
 		case "mushroom":
