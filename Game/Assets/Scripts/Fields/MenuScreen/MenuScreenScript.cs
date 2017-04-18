@@ -674,6 +674,8 @@ public class MenuScreenScript : MonoBehaviour
 	}
 	public void ItemTabMenuSelected(int _nIndex)
 	{
+		if(m_nMenuState != (int)MENU_STATES.eITEMTAB)
+			return;
 		switch(m_nSubTabMenuSelectionIndex)
 		{
 		//Crafting(for now)
