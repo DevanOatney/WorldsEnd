@@ -95,6 +95,8 @@ public class UnitScript : MonoBehaviour
 	//List of status effects that could be effecting the player/units   Poison, Confusion, Paralyze, Stone (examples)
 	public List<GameObject> m_lStatusEffects = new List<GameObject>();
 
+
+
 	//effectName - name of effect, nTicks - how many rounds this lasts (-1 for permanent), nMod - any adjuster, like damage dealt, chance effect happens each round, etc.
 	public void AddStatusEffect(DCScript.StatusEffect se)
 	{

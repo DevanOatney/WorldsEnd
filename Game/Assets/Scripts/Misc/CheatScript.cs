@@ -20,6 +20,7 @@ public class CheatScript : MonoBehaviour
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		m_lCheatEntries.Add("event.");
 		m_lCheatEntries.Add("player.");
+		m_lCheatEntries.Add ("recruit.");
 		m_lCheatEntries.Add("nocombat");
 	}
 	
@@ -149,6 +150,25 @@ public class CheatScript : MonoBehaviour
 											break;
 									}
 								}
+									break;
+
+								case "recruit":
+									{
+										m_bAbleToFindCommand = true;
+										string _recruitName = pieces [1].Trim ();
+										GameObject newRecruit = Resources.Load<GameObject> ("Units/Ally/" + _recruitName + "/" + _recruitName);
+										if (newRecruit != null) {
+											DCScript.CharacterData _charData = GameObject.Find ("PersistantData").GetComponent<DCScript> ().GetRosteredCharacterData (_recruitName);
+											if (_charData != null && _charData.m_bHasBeenRecruited == false) {
+												dc.AddPartyMember(_recruitName);
+												m_lChatLog.Add (_recruitName + " has been recruited.");
+											}
+											else
+												m_lChatLog.Add (_recruitName + " has already been recruited.");
+										}
+										else
+											m_lChatLog.Add (_recruitName + " wasn't found as an available character to recruit.");
+									}
 									break;
 								case "nocombat":
 									{

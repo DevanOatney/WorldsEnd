@@ -554,6 +554,7 @@ public class DCScript : MonoBehaviour
 	//add a character from the roster into the party
 	public void AddPartyMember(string szCharacterName)
 	{
+		Debug.Log ("Adding party member");
 		DCScript.CharacterData character = GetRosteredCharacterData(szCharacterName);
 		AddPartyMember(character);
 	}

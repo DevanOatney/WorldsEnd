@@ -27,6 +27,8 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetKeyDown(KeyCode.P))
+			Debug.Break();
 	
 	}
 
@@ -63,6 +65,7 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 			//newPos.y = newPos.y - (Screen.height * 0.5f) + (m_goDraggedObject.GetComponent<RectTransform>().sizeDelta.y * 0.5f);
 			//m_goDraggedObject.GetComponent<RectTransform>().localPosition = newPos;
 		}
+
 	}
 
 	#endregion
@@ -81,8 +84,15 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 
 	public void OnDrop (PointerEventData eventData)
 	{
+		
 		DCScript dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
-		DCScript.CharacterData character = dc.GetCharacter(CharacterInRosterScript.m_szCharacterBeingDragged);
+
+		DCScript.CharacterData character;
+		string charName = CharacterInRosterScript.m_szCharacterBeingDragged;
+		if (dc.GetRosteredCharacterData (charName).m_bIsInParty == true)
+			character = dc.GetCharacter (CharacterInRosterScript.m_szCharacterBeingDragged);
+		else
+			character = dc.GetRosteredCharacterData (charName);
 		CharacterInRosterScript.m_szCharacterBeingDragged = "";
 		if(character != null)
 		{

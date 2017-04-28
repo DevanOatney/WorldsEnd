@@ -62,4 +62,5 @@ public class CharacterInRosterScript : MonoBehaviour, IBeginDragHandler, IDragHa
 	}
 
 	#endregion
+
 }

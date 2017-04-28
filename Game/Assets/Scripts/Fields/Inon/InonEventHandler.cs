@@ -821,6 +821,7 @@ public class InonEventHandler : BaseEventSystemScript
                         player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
                         player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
                         GameObject.Find("StepBackWaypoint").GetComponent<BoxCollider2D>().enabled = false;
+						GameObject.Find ("IntoHallwayCheck").GetComponent<BoxCollider2D> ().enabled = true;
                     }
                 }
                 break;

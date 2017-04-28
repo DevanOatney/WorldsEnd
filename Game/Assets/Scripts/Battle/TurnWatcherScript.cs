@@ -65,8 +65,8 @@ public class TurnWatcherScript : MonoBehaviour
 	List<ItemLibrary.CharactersItems> m_lItemsWon = new List<ItemLibrary.CharactersItems>();
 
 	//speed of the counter showing the characters current exp
-	int m_fExpTickSpeed = 1;
-	float m_fExpBucket = 0.01f;
+	int m_fExpTickSpeed = 3;
+	float m_fExpBucket = 0.001f;
 
 
 
@@ -829,6 +829,7 @@ public class TurnWatcherScript : MonoBehaviour
 
 	public void Enemy_TargetSelected(int p_nIndex)
 	{
+		Debug.Log ("hit");
 		GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		foreach(GameObject e in _enemies)
 		{

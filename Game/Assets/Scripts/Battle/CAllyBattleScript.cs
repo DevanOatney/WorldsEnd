@@ -174,9 +174,11 @@ public class CAllyBattleScript : UnitScript
 							newShadow.GetComponent<SpriteRenderer>().sprite = m_aAnim.gameObject.GetComponent<SpriteRenderer>().sprite;
 							Vector3 cloneTransform = m_aAnim.gameObject.transform.localScale;
 							newShadow.transform.localScale = cloneTransform;
-							Vector3 pos = transform.position;
 							//adjust so the clone is behind the unit
-							pos.z += 0.1f;
+							if(GetComponent<SpriteRenderer>() != null)
+								newShadow.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1;
+							else
+								newShadow.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder - 1;
 							Destroy(newShadow, m_fShadowTimerBucket*3);
 							m_fShadowTimer = 0.0f;
 						}
