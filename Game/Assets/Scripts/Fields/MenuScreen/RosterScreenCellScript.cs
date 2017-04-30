@@ -138,6 +138,7 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 		m_cCharacter = character;
 		if(m_cCharacter != null)
 		{
+			GameObject.Find ("PersistantData").GetComponent<DCScript> ().AddPartyMember (m_cCharacter.m_szCharacterName);
 			GameObject newCharacter = Instantiate(Resources.Load<GameObject>("Units/Ally/" + m_cCharacter.m_szCharacterName + "/" + m_cCharacter.m_szCharacterName + "_UIAnimated")) as GameObject;
 			newCharacter.name = m_cCharacter.m_szCharacterName + "_UIAnimated";
 			newCharacter.GetComponent<RectTransform>().SetParent(GetComponent<RectTransform>());
@@ -214,7 +215,6 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 		p_secondCell.GetComponent<RosterScreenCellScript>().RemoveCharacter();
 		if(secondChar != null)
 		{
-			
 			p_firstCell.GetComponent<RosterScreenCellScript>().InstantiateCharacter(secondChar);
 		}
 		if(firstChar != null)

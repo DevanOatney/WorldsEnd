@@ -20,14 +20,21 @@ public class CameraFollowTarget : MonoBehaviour {
 		pos.z = transform.position.z;
 		transform.position = pos;
 	}
-	
+
+	public void StartSwirlAndBlur()
+	{
+		m_bShouldSwirl = true;
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
 		if(m_bShouldSwirl == true)
 		{
+			//GetComponent<VEffects> ().bBlur = true;
 			Vector2 rad = GetComponent<Vortex>().radius;
 			GetComponent<Vortex>().radius = new Vector2(rad.x + 1*Time.deltaTime, rad.y + 1 * Time.deltaTime);
+			GetComponent<Vortex> ().angle = GetComponent<Vortex> ().angle + 100 * Time.deltaTime;
 		}
 		if(m_goTarget != null)
 		{

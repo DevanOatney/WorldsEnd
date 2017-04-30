@@ -554,14 +554,12 @@ public class DCScript : MonoBehaviour
 	//add a character from the roster into the party
 	public void AddPartyMember(string szCharacterName)
 	{
-		Debug.Log ("Adding party member");
 		DCScript.CharacterData character = GetRosteredCharacterData(szCharacterName);
 		AddPartyMember(character);
 	}
 	//remove a character from the party
 	public void RemovePartyMember(CharacterData character) 
 	{
-		Debug.Log("Remove Party Member");
 		character.m_bIsInParty = false;
 		GetRosteredCharacterData(character.m_szCharacterName).UpdateCharacterData(character);
 		m_lPartyMembers.Remove(character);

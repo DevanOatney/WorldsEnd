@@ -71,13 +71,6 @@ public class VEffects : MonoBehaviour {
 				swirlMat.SetFloat("_Radius", fRadius);
 				fAngle += Time.deltaTime;
 				swirlMat.SetFloat("_Angle", fAngle);
-	  
-//_Center_X("CenterX", Float) = 0.0
-//	    _Center_Y("CenterY", Float) = 0.0
-//	    _Radius("Radius", Float) = 300.0
-//	    _Angle("Angle", Float) = 40.0
-
-				//swirl shader stuffs
 			}
 		} 
 		else if(m_bShouldBlur == true)
@@ -93,17 +86,6 @@ public class VEffects : MonoBehaviour {
 
 
 
-
-		if (Input.GetKeyDown (KeyCode.B)) {
-						StartBlur ();
-				}
-		if (Input.GetKeyDown (KeyCode.I)) {
-						StartMenuBlur();
-				}
-				
-		if (Input.GetKeyDown (KeyCode.O)) {
-				StartSwirlAtPoint(Input.mousePosition.x, Input.mousePosition.y);
-		}
 	}
 
 	//Function to call when the blur starts

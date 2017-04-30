@@ -22,6 +22,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 		SetWaypoints ();
 	}
 
+
 	override public void HandleEvent(string eventID)
 	{
 		switch(eventID)
@@ -35,9 +36,8 @@ public class InonForestEventHandler : BaseEventSystemScript
 		case "BoarBossEndDialogue":
 			{
 				ds.m_dStoryFlagField.Add("BoarBossPart1Finished", 1);
-				Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
-				Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
-				StartBossBattle();
+				Camera.main.GetComponent<CameraFollowTarget> ().StartSwirlAndBlur ();
+				Invoke ("StartBossBattle", 1.0f);
 			}
 		break;
 		case "BoarChase":
