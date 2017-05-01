@@ -7,6 +7,7 @@ public class MessageHandler : MonoBehaviour
 {
 	public List<DialogueScriptLoaderScript.dlg> dialogueEvents;
 	public bool m_bShouldDisplayDialogue = false;
+
 	public int m_nCurrentDialogueIter = -1;
 
 	//Text stuff
@@ -18,6 +19,17 @@ public class MessageHandler : MonoBehaviour
 	//for hero dialogue
 	private int selectedIndex = 0;
 	public Texture2D selectedTexture;
+	//For temp dialogue
+	//Override bool for displaying dialogue that's not in an actual script (I'm thinking mainly for things like players trying to leave areas and having something show up that says "I can't go that way yet." )
+	bool m_bShouldDisplayTempDialogue = false;
+	//The full message that will be displayed
+	string m_szTempLine = "";
+	//Name of who is supposed to be saying whatever
+	string m_szTempName = "";
+	//Bust ID of whoever is saying whatever, set to -1 if you don't want a bust to be used.
+	int m_nTempBustID = -1;
+
+
 
 	float bufferedInputTimer = 0.0f;
 	float bufferedInputBucket = 0.2f;
@@ -291,6 +303,137 @@ public class MessageHandler : MonoBehaviour
 		}
 	}
 
+	void HandleTempDialogue()
+	{
+		EnableUIObject(m_goDialogueBox);
+
+		if(Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
+		{
+			//if the current line is done
+			if(line.Length >= m_szTempLine.Length)
+			{
+				//Since this is just a random dialogue event don't assume action, just reset the flags and give the player back the ability to move n'stuff
+				m_szTempLine = "";
+				m_szTempName = "";
+				m_bShouldDisplayTempDialogue = false;
+				m_bShouldDisplayDialogue = false;
+				m_nTempBustID = -1;
+				line = "";
+				timer = 0.0f;
+				textIter = 0; 
+				GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
+				DisableUI();
+				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+				return;
+			}
+			else
+			{
+				GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
+				line = m_szTempLine;
+				textIter = line.Length;
+			}
+		}
+
+		timer += Time.deltaTime;
+		//increment the text based on the players text speed
+		if(timer >= speed)
+		{
+			if(textIter == 0)
+			{
+				string filePath = m_szTempLine; 
+				if(filePath != "null" && filePath.Length > 1)
+				{
+
+					GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
+					GetComponent<MorseCodePlayer>().PlayMorseCodeMessage(m_szTempLine);
+				}
+			}
+			if(textIter < (m_szTempLine.Length))
+			{
+				line += m_szTempLine[textIter];
+				textIter++;
+			}
+			else
+				GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
+			timer = 0.0f;
+		}
+
+		if (m_nTempBustID != -1) {
+			Sprite tBust;
+			string szName = m_szTempName;
+			int bustID = m_nTempBustID;
+
+			if (GameObject.Find ("Portraits Container").GetComponent<PortraitContainerScript> ().m_dPortraits.TryGetValue (
+				   szName + bustID.ToString (), out tBust)) {
+				//This dialogue has a portrait!! Draw things
+				Texture2D _t2dTexture = TextureFromSprite (tBust);
+				EnableUIObject (m_goDialoguePortrait);
+				m_goDialoguePortrait.GetComponent<Image> ().sprite = Sprite.Create (_t2dTexture, 
+					new Rect (0, 0, _t2dTexture.width,
+						_t2dTexture.height), new Vector2 (0.5f, 0.5f));
+				DisableUIObject (m_goDialogueNameplate1);
+				if (m_szTempName != "") 
+				{
+					EnableUIObject (m_goDialogueNameplate2);
+					m_goDialogueNameplate2.GetComponentInChildren<Text> ().text = szName;
+					Vector3 ancPos = m_goNameplate2Origin.GetComponent<RectTransform> ().anchoredPosition;
+					ancPos.x += (szName.Length * 20.0f * 0.5f);
+					ancPos.y -= (m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta.y * 0.5f);
+					m_goDialogueNameplate2.GetComponent<RectTransform> ().sizeDelta = new Vector2 (szName.Length * 20.0f, m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta.y);
+					m_goDialogueNameplate2.GetComponent<RectTransform> ().anchoredPosition = ancPos;
+					ancPos = m_goNameplate2TextOrigin.GetComponent<RectTransform> ().localPosition;
+					m_goDialogueNameplate2.GetComponentInChildren<Text> ().gameObject.GetComponent<RectTransform> ().anchoredPosition = ancPos;
+				}
+
+
+			}
+			else {
+				//no bust, just have their name?
+				DisableUIObject (m_goDialoguePortrait);
+				DisableUIObject (m_goDialogueNameplate2);
+				if (m_szTempName != "") 
+				{
+					EnableUIObject (m_goDialogueNameplate1);
+					m_goDialogueNameplate1.GetComponentInChildren<Text> ().text = szName;
+					Vector3 ancPos = m_goNameplate1Origin.GetComponent<RectTransform> ().anchoredPosition;
+					ancPos.x += (szName.Length * 20.0f * 0.5f);
+					ancPos.y -= (m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta.y * 0.5f);
+					m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta = new Vector2 (szName.Length * 20.0f, m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta.y);
+					m_goDialogueNameplate1.GetComponent<RectTransform> ().anchoredPosition = ancPos;
+					ancPos = m_goNameplate1TextOrigin.GetComponent<RectTransform> ().localPosition;
+					m_goDialogueNameplate1.GetComponentInChildren<Text> ().gameObject.GetComponent<RectTransform> ().localPosition = ancPos;
+				}
+			}
+		}
+		else {
+			//no bust, just have their name?
+			DisableUIObject (m_goDialoguePortrait);
+			DisableUIObject (m_goDialogueNameplate2);
+			if (m_szTempName != "") 
+			{
+				EnableUIObject (m_goDialogueNameplate1);
+				m_goDialogueNameplate1.GetComponentInChildren<Text> ().text = m_szTempName;
+				Vector3 ancPos = m_goNameplate1Origin.GetComponent<RectTransform> ().anchoredPosition;
+				ancPos.x += (m_szTempName.Length * 20.0f * 0.5f);
+				ancPos.y -= (m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta.y * 0.5f);
+				m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta = new Vector2 (m_szTempName.Length * 20.0f, m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta.y);
+				m_goDialogueNameplate1.GetComponent<RectTransform> ().anchoredPosition = ancPos;
+				ancPos = m_goNameplate1TextOrigin.GetComponent<RectTransform> ().localPosition;
+				m_goDialogueNameplate1.GetComponentInChildren<Text> ().gameObject.GetComponent<RectTransform> ().localPosition = ancPos;
+			}
+		}
+
+
+		Color col = m_goDialogueBox.transform.FindChild ("Text").GetComponent<Text> ().color;
+		col.a = 255;
+		m_goDialogueBox.transform.FindChild ("Text").GetComponent<Text> ().color = col;
+		m_goDialogueBox.transform.FindChild("Text").GetComponent<Text>().text = line;
+		m_goDialogueBox.transform.FindChild("Text1").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.FindChild("Text2").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.FindChild("Text3").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.FindChild("Text4").GetComponent<Text>().text = "";
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -301,7 +444,10 @@ public class MessageHandler : MonoBehaviour
 		//if dialogue is running.
 		if(m_bShouldDisplayDialogue == true)
 		{
-			
+			if (m_bShouldDisplayTempDialogue == true) {
+				HandleTempDialogue ();
+				return;
+			}
 			switch(dialogueEvents[m_nCurrentDialogueIter].SpecialCaseFlag)
 			{
 				case (int)DialogueScriptLoaderScript.DLGType.NORMAL:
@@ -343,6 +489,17 @@ public class MessageHandler : MonoBehaviour
 			c++;
 		}
 	}
+				
+	public void BeginDialogue(string _message, string _name, int _bustID)
+	{
+		GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
+		m_bShouldDisplayDialogue = true;
+		m_bShouldDisplayTempDialogue = true;
+		m_szTempLine = _message;
+		m_szTempName = _name;
+		m_nTempBustID = _bustID;
+	}
+
 	public void ChangeDialogueEvent(string EventToGoTo)
 	{
 		for(int i = 0; i < dialogueEvents.Count; ++i)
