@@ -20,7 +20,6 @@ public class WaypointScript : MonoBehaviour
 		{
 			GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().WaypointTriggered(GetComponent<BoxCollider2D>());
 			GetComponent<BoxCollider2D>().enabled = false;
-			//gameObject.SetActive(false);
 		}
 	}
 

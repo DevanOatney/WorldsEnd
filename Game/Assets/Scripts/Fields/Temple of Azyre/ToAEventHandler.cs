@@ -410,8 +410,8 @@ public class ToAEventHandler : BaseEventSystemScript
 			briol.GetComponent<SpriteRenderer> ().enabled = true;
 			NPCScript bNpc = briol.GetComponent<NPCScript> ();
 			bNpc.m_bIsComingOutOfPlayer = true;
-			bNpc.DHF_NPCMoveToGameobject (GameObject.Find ("Briol_AwayFromPlayerAtEntrance"),false);
-			briol.GetComponentInChildren<MessageHandler> ().BeginDialogue ("A0");
+			GameObject.Find ("Briol_AwayFromPlayerAtEntrance").GetComponent<BoxCollider2D> ().enabled = true;
+			bNpc.DHF_NPCMoveToGameobject (GameObject.Find ("Briol_AwayFromPlayerAtEntrance"),false,2, true);
 			ds.m_dStoryFlagField.Remove("ToAEvent");
 			ds.m_dStoryFlagField.Add("ToAEvent", 1);
 		}

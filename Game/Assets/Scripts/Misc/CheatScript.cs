@@ -148,6 +148,36 @@ public class CheatScript : MonoBehaviour
 												}
 											}
 											break;
+
+										case "stats":
+											{
+												switch (pieces [2].Trim ()) 
+												{
+												case "runspeed":
+													{
+														switch (pieces [3].Trim ()) 
+														{
+														case "double":
+															{
+																GameObject.Find ("Player").GetComponent<FieldPlayerMovementScript> ().m_fRunningSpeed += GameObject.Find ("Player").GetComponent<FieldPlayerMovementScript> ().m_fRunningSpeed;
+																m_lChatLog.Add ("Doubling the player's running speed");
+																m_bAbleToFindCommand = true;
+															}
+															break;
+														case "half":
+															{
+																GameObject.Find ("Player").GetComponent<FieldPlayerMovementScript> ().m_fRunningSpeed -= GameObject.Find ("Player").GetComponent<FieldPlayerMovementScript> ().m_fRunningSpeed;
+																m_lChatLog.Add ("Halfing the player's running speed");
+																m_bAbleToFindCommand = true;
+															}
+															break;
+														}
+
+													}
+													break;
+												}
+											}
+											break;
 									}
 								}
 									break;
