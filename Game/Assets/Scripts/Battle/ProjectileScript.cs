@@ -41,10 +41,22 @@ public class ProjectileScript : MonoBehaviour
 				//HIT!
 				m_goTarget.GetComponent<UnitScript>().AdjustHP(m_nDamageDealt);
 				Destroy(gameObject, 0.2f);
-				Vector3 pos = m_goTarget.transform.position;
-				pos.x += m_goTarget.GetComponent<BoxCollider>().size.x;
-				pos.y += m_goTarget.GetComponent<BoxCollider>().size.y * 0.5f;
-				transform.position = pos;
+				//set the position to the center'ish of the target (keeping in mind that this may be on either the left or right side of the screen)
+				if (m_goTarget.tag == "Ally") {
+					//target is on the right, put projectile on the center left of the collision box
+					Vector3 pos = m_goTarget.transform.position;
+					//pos.x -= m_goTarget.GetComponent<BoxCollider>().size.x;
+					//pos.y -= m_goTarget.GetComponent<BoxCollider>().size.y * 0.5f;
+					transform.position = pos;
+				}
+				else {
+					//target is on the left, put projectile on the center right of the collision box
+					Vector3 pos = m_goTarget.transform.position;
+					pos.x += m_goTarget.GetComponent<BoxCollider>().size.x;
+					pos.y += m_goTarget.GetComponent<BoxCollider>().size.y * 0.5f;
+					transform.position = pos;
+				}
+
 			}
 			else
 			{
