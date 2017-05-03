@@ -63,6 +63,7 @@ public class ToAEventHandler : BaseEventSystemScript
 				//The player has gone into the entrance of the Temple for the first time
 				GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = true;
 				GameObject.Find("EncounterBoarBeforeRunOff").GetComponent<BoxCollider2D>().enabled = true;
+				m_goBoar.SetActive (false);
 			}
 				break;
 			case 2:
@@ -101,6 +102,8 @@ public class ToAEventHandler : BaseEventSystemScript
 				GameObject rubble4 = GameObject.Find("Temple of Azyre basment").transform.FindChild("rubble_03").gameObject;
 				rubble4.SetActive(false);
 				GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = false;
+				m_goBoar.SetActive (false);
+				m_goBoarBoss.SetActive (false);
 			}
 				break;
 			}

@@ -832,7 +832,6 @@ public class TurnWatcherScript : MonoBehaviour
 		GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		foreach(GameObject e in _enemies)
 		{
-			Debug.Log (e.GetComponent<UnitScript> ().FieldPosition + " vs " + p_nIndex);
 			if(e.GetComponent<UnitScript>().FieldPosition == p_nIndex)
 			{
 				if(e.GetComponent<UnitScript>().GetCurHP() > 0)
