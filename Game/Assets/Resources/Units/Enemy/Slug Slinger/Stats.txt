@@ -1,4 +1,4 @@
-HP:10
+HP:20
 POW:4
 DEF:2
 SPD:3

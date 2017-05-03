@@ -268,6 +268,11 @@ public class UnitScript : MonoBehaviour
 			gameObject.GetComponent<StandardEnemyScript>().AttackAnimEnd();
 		}
 			break;
+		case UnitTypes.RANGEDENEMY:
+		{
+			gameObject.GetComponent<StandardEnemyScript> ().RangedAttackAnimationEnded ();
+		}
+			break;
 		case UnitTypes.PERCENTENEMY:
 		{
 			gameObject.GetComponent<PercentStandardEnemyScript>().AttackAnimEnd();

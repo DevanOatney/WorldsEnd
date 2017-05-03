@@ -365,6 +365,62 @@ public class StandardEnemyScript : UnitScript
 		m_vTargetPosition = GameObject.Find("Enemy_StartPos" + FieldPosition).transform.position;
 	}
 
+	public void RangedAttackAnimationEnded()
+	{
+		GameObject goArrow = Instantiate(Resources.Load<GameObject>("Animation Effects/Slug")) as GameObject;
+		goArrow.transform.position = transform.position;
+		int dmg = 0;
+		if(CheckIfHit())
+			dmg  = UnityEngine.Random.Range(1, 5) + m_nStr;
+		else
+			dmg = -1;
+		goArrow.GetComponent<ProjectileScript>().m_fSpeed = 20;
+		goArrow.GetComponent<ProjectileScript>().m_fRotationSpeed = 50;
+		Physics.IgnoreCollision (goArrow.GetComponent<BoxCollider> (), gameObject.GetComponent<BoxCollider> ());
+		GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
+		foreach(GameObject tar in posTargs)
+		{
+			if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
+			{
+				goArrow.GetComponent<ProjectileScript>().m_goTarget = tar;
+			}
+		}
+		goArrow.GetComponent<ProjectileScript>().m_nDamageDealt = dmg;
+		Invoke ("EndTurn", 1.0f);
+	}
+
+	bool CheckIfHit()
+	{
+		GameObject[] posTargs = GameObject.FindGameObjectsWithTag("Ally");
+		foreach(GameObject tar in posTargs)
+		{
+			if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
+			{
+				int nChanceToHit = UnityEngine.Random.Range(0,100);
+				int nRange = 85 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
+				if(nRange < 5)
+					nRange = 5;
+				Debug.Log("Chance: " + nChanceToHit + "    Range: " + nRange);
+				if(nChanceToHit <	nRange)
+				{
+					//Target was hit
+					return true;
+				}
+				else
+				{
+					//target was missed
+					return false;
+				}
+			}
+		}
+		return false;
+	}
+
+	void EndTurn()
+	{
+		m_nState = (int)ENEMY_STATES.eSTATUS_EFFECT;
+	}
+
 	override public void Missed()
 	{
 		GameObject newText = Instantiate(m_goFadingText);
