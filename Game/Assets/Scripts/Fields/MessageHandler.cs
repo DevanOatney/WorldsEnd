@@ -28,8 +28,8 @@ public class MessageHandler : MonoBehaviour
 	string m_szTempName = "";
 	//Bust ID of whoever is saying whatever, set to -1 if you don't want a bust to be used.
 	int m_nTempBustID = -1;
-
-
+	//id flag for state of portrait sprite(reset every dialogue entry)    ((-1 : there is no portrait, 0: We haven't checked yet, 1: there is a portrait))
+	int m_nPortraitOptimizationIter = 0;
 
 	float bufferedInputTimer = 0.0f;
 	float bufferedInputBucket = 0.2f;
@@ -154,11 +154,7 @@ public class MessageHandler : MonoBehaviour
 						break;
 					}
 				}
-				line = "";
-				timer = 0.0f;
-				textIter = 0; 
-				GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
-				DisableUI();
+				ResetDialogueData ();
 				return;
 			}
 			else
@@ -192,44 +188,36 @@ public class MessageHandler : MonoBehaviour
 				GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
 			timer = 0.0f;
 		}
-		Sprite tBust;
-		string szName = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).CharacterName;
-		int bustID = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).BustID;
-		if(GameObject.Find("Portraits Container").GetComponent<PortraitContainerScript>().m_dPortraits.TryGetValue(
-			szName+bustID.ToString() , out tBust))
-		{
-			//This dialogue has a portrait!! Draw things
-			Texture2D _t2dTexture = TextureFromSprite(tBust);
-			EnableUIObject(m_goDialoguePortrait);
-			m_goDialoguePortrait.GetComponent<Image>().sprite = Sprite.Create(_t2dTexture, 
-				new Rect(0, 0, _t2dTexture.width,
-					_t2dTexture.height), new Vector2(0.5f, 0.5f));
-			DisableUIObject(m_goDialogueNameplate1);
-			EnableUIObject(m_goDialogueNameplate2);
-			m_goDialogueNameplate2.GetComponentInChildren<Text>().text = szName;
-			Vector3 ancPos = m_goNameplate2Origin.GetComponent<RectTransform>().anchoredPosition;
-			ancPos.x += (szName.Length * 20.0f * 0.5f);
-			ancPos.y -= (m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta.y * 0.5f);
-			m_goDialogueNameplate2.GetComponent<RectTransform>().sizeDelta = new Vector2( szName.Length * 20.0f, m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta.y);
-			m_goDialogueNameplate2.GetComponent<RectTransform>().anchoredPosition = ancPos;
-			ancPos = m_goNameplate2TextOrigin.GetComponent<RectTransform>().localPosition;
-			m_goDialogueNameplate2.GetComponentInChildren<Text>().gameObject.GetComponent<RectTransform>().anchoredPosition = ancPos;
+
+		//Let's check our portrait id flag.   -1 == no portrait, 0 == we don't know yet, 1 == there is a portrait
+		if (m_nPortraitOptimizationIter == -1) {
+			//So we've already found out there is no portrait, so just display the dialogue without bothering with a portrait
+			DisplayDialogueWithoutPortrait ();
 		}
 		else
-		{
-			//no bust, just have their name?
-			DisableUIObject(m_goDialoguePortrait);
-			EnableUIObject(m_goDialogueNameplate1);
-			m_goDialogueNameplate1.GetComponentInChildren<Text>().text = szName;
-			Vector3 ancPos = m_goNameplate1Origin.GetComponent<RectTransform>().anchoredPosition;
-			ancPos.x += (szName.Length * 20.0f * 0.5f);
-			ancPos.y -= (m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta.y * 0.5f);
-			m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta = new Vector2( szName.Length * 20.0f, m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta.y);
-			m_goDialogueNameplate1.GetComponent<RectTransform>().anchoredPosition = ancPos;
-			ancPos = m_goNameplate1TextOrigin.GetComponent<RectTransform>().localPosition;
-			m_goDialogueNameplate1.GetComponentInChildren<Text>().gameObject.GetComponent<RectTransform>().localPosition = ancPos;
-			DisableUIObject(m_goDialogueNameplate2);
+		if (m_nPortraitOptimizationIter == 0) {
+			//We haven't checked yet if there is a portrait, so let's check!
+			string szName = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents [m_nCurrentDialogueIter]).CharacterName;
+			int bustID = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents [m_nCurrentDialogueIter]).BustID;
+			Sprite tBust;
+			if (GameObject.Find ("Portraits Container").GetComponent<PortraitContainerScript> ().m_dPortraits.TryGetValue (
+				    szName + bustID.ToString (), out tBust)) {
+				//there IS a portrait, set the right data and display the dialogue.
+				Texture2D _t2dTexture = TextureFromSprite(tBust);
+				EnableUIObject(m_goDialoguePortrait);
+				m_goDialoguePortrait.GetComponent<Image>().sprite = Sprite.Create(_t2dTexture, 
+					new Rect(0, 0, _t2dTexture.width,
+						_t2dTexture.height), new Vector2(0.5f, 0.5f));
+				m_nPortraitOptimizationIter = 1;
+				DisplayDialogueWithPortrait ();
+			}
 		}
+		else
+		if (m_nPortraitOptimizationIter == 1) {
+				//we already know there is a portrait, draw out that dialogue!
+				DisplayDialogueWithPortrait();
+		}
+		
 		Color col = m_goDialogueBox.transform.FindChild ("Text").GetComponent<Text> ().color;
 		col.a = 255;
 		m_goDialogueBox.transform.FindChild ("Text").GetComponent<Text> ().color = col;
@@ -240,6 +228,38 @@ public class MessageHandler : MonoBehaviour
 		m_goDialogueBox.transform.FindChild("Text4").GetComponent<Text>().text = "";
 	}
 
+	void DisplayDialogueWithPortrait()
+	{
+		//This dialogue has a portrait!! Draw things
+		string szName = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).CharacterName;
+
+		DisableUIObject(m_goDialogueNameplate1);
+		EnableUIObject(m_goDialogueNameplate2);
+		m_goDialogueNameplate2.GetComponentInChildren<Text>().text = szName;
+		Vector3 ancPos = m_goNameplate2Origin.GetComponent<RectTransform>().anchoredPosition;
+		ancPos.x += (szName.Length * 20.0f * 0.5f);
+		ancPos.y -= (m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta.y * 0.5f);
+		m_goDialogueNameplate2.GetComponent<RectTransform>().sizeDelta = new Vector2( szName.Length * 20.0f, m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta.y);
+		m_goDialogueNameplate2.GetComponent<RectTransform>().anchoredPosition = ancPos;
+		ancPos = m_goNameplate2TextOrigin.GetComponent<RectTransform>().localPosition;
+		m_goDialogueNameplate2.GetComponentInChildren<Text>().gameObject.GetComponent<RectTransform>().anchoredPosition = ancPos;
+	}
+
+	void DisplayDialogueWithoutPortrait()
+	{
+		string szName = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).CharacterName;
+		DisableUIObject(m_goDialoguePortrait);
+		EnableUIObject(m_goDialogueNameplate1);
+		m_goDialogueNameplate1.GetComponentInChildren<Text>().text = szName;
+		Vector3 ancPos = m_goNameplate1Origin.GetComponent<RectTransform>().anchoredPosition;
+		ancPos.x += (szName.Length * 20.0f * 0.5f);
+		ancPos.y -= (m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta.y * 0.5f);
+		m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta = new Vector2( szName.Length * 20.0f, m_goDialogueNameplate1.GetComponent<RectTransform>().sizeDelta.y);
+		m_goDialogueNameplate1.GetComponent<RectTransform>().anchoredPosition = ancPos;
+		ancPos = m_goNameplate1TextOrigin.GetComponent<RectTransform>().localPosition;
+		m_goDialogueNameplate1.GetComponentInChildren<Text>().gameObject.GetComponent<RectTransform>().localPosition = ancPos;
+		DisableUIObject(m_goDialogueNameplate2);
+	}
 
 	void HandleHeroDialogue()
 	{
@@ -278,13 +298,7 @@ public class MessageHandler : MonoBehaviour
 					break;
 				}
 			}
-			line = "";
-			timer = 0.0f;
-			textIter = 0;
-			selectedIndex = 0;
-			m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.FindChild("Text" + (selectedIndex+1).ToString()).localPosition;
-			GetComponent<AudioSource>().Stop();
-			DisableUI();
+			ResetDialogueData ();
 			return;
 		}
 		EnableUIObject(m_goDialogueBox);
@@ -313,16 +327,9 @@ public class MessageHandler : MonoBehaviour
 			if(line.Length >= m_szTempLine.Length)
 			{
 				//Since this is just a random dialogue event don't assume action, just reset the flags and give the player back the ability to move n'stuff
-				m_szTempLine = "";
-				m_szTempName = "";
+				ResetDialogueData ();
 				m_bShouldDisplayTempDialogue = false;
 				m_bShouldDisplayDialogue = false;
-				m_nTempBustID = -1;
-				line = "";
-				timer = 0.0f;
-				textIter = 0; 
-				GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
-				DisableUI();
 				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 				return;
 			}
@@ -359,68 +366,33 @@ public class MessageHandler : MonoBehaviour
 		}
 
 		if (m_nTempBustID != -1) {
-			Sprite tBust;
-			string szName = m_szTempName;
-			int bustID = m_nTempBustID;
+			if (m_nPortraitOptimizationIter == -1)
+				DisplayDialogueWithoutPortrait ();
+			else
+			if (m_nPortraitOptimizationIter == 0) {
 
-			if (GameObject.Find ("Portraits Container").GetComponent<PortraitContainerScript> ().m_dPortraits.TryGetValue (
-				   szName + bustID.ToString (), out tBust)) {
-				//This dialogue has a portrait!! Draw things
-				Texture2D _t2dTexture = TextureFromSprite (tBust);
-				EnableUIObject (m_goDialoguePortrait);
-				m_goDialoguePortrait.GetComponent<Image> ().sprite = Sprite.Create (_t2dTexture, 
-					new Rect (0, 0, _t2dTexture.width,
-						_t2dTexture.height), new Vector2 (0.5f, 0.5f));
-				DisableUIObject (m_goDialogueNameplate1);
-				if (m_szTempName != "") 
-				{
-					EnableUIObject (m_goDialogueNameplate2);
-					m_goDialogueNameplate2.GetComponentInChildren<Text> ().text = szName;
-					Vector3 ancPos = m_goNameplate2Origin.GetComponent<RectTransform> ().anchoredPosition;
-					ancPos.x += (szName.Length * 20.0f * 0.5f);
-					ancPos.y -= (m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta.y * 0.5f);
-					m_goDialogueNameplate2.GetComponent<RectTransform> ().sizeDelta = new Vector2 (szName.Length * 20.0f, m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta.y);
-					m_goDialogueNameplate2.GetComponent<RectTransform> ().anchoredPosition = ancPos;
-					ancPos = m_goNameplate2TextOrigin.GetComponent<RectTransform> ().localPosition;
-					m_goDialogueNameplate2.GetComponentInChildren<Text> ().gameObject.GetComponent<RectTransform> ().anchoredPosition = ancPos;
-				}
-
-
-			}
-			else {
-				//no bust, just have their name?
-				DisableUIObject (m_goDialoguePortrait);
-				DisableUIObject (m_goDialogueNameplate2);
-				if (m_szTempName != "") 
-				{
-					EnableUIObject (m_goDialogueNameplate1);
-					m_goDialogueNameplate1.GetComponentInChildren<Text> ().text = szName;
-					Vector3 ancPos = m_goNameplate1Origin.GetComponent<RectTransform> ().anchoredPosition;
-					ancPos.x += (szName.Length * 20.0f * 0.5f);
-					ancPos.y -= (m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta.y * 0.5f);
-					m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta = new Vector2 (szName.Length * 20.0f, m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta.y);
-					m_goDialogueNameplate1.GetComponent<RectTransform> ().anchoredPosition = ancPos;
-					ancPos = m_goNameplate1TextOrigin.GetComponent<RectTransform> ().localPosition;
-					m_goDialogueNameplate1.GetComponentInChildren<Text> ().gameObject.GetComponent<RectTransform> ().localPosition = ancPos;
+				string szName = m_szTempName;
+				int bustID = m_nTempBustID;
+				Sprite tBust;
+				if (GameObject.Find ("Portraits Container").GetComponent<PortraitContainerScript> ().m_dPortraits.TryGetValue (
+						szName + bustID.ToString (), out tBust)) {
+					Texture2D _t2dTexture = TextureFromSprite(tBust);
+					EnableUIObject(m_goDialoguePortrait);
+					m_goDialoguePortrait.GetComponent<Image>().sprite = Sprite.Create(_t2dTexture, 
+						new Rect(0, 0, _t2dTexture.width,
+							_t2dTexture.height), new Vector2(0.5f, 0.5f));
+					m_nPortraitOptimizationIter = 1;
+					DisplayDialogueWithPortrait ();
 				}
 			}
-		}
+			else
+			if (m_nPortraitOptimizationIter == 1) {
+				DisplayDialogueWithPortrait ();
+			}
+			}
 		else {
 			//no bust, just have their name?
-			DisableUIObject (m_goDialoguePortrait);
-			DisableUIObject (m_goDialogueNameplate2);
-			if (m_szTempName != "") 
-			{
-				EnableUIObject (m_goDialogueNameplate1);
-				m_goDialogueNameplate1.GetComponentInChildren<Text> ().text = m_szTempName;
-				Vector3 ancPos = m_goNameplate1Origin.GetComponent<RectTransform> ().anchoredPosition;
-				ancPos.x += (m_szTempName.Length * 20.0f * 0.5f);
-				ancPos.y -= (m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta.y * 0.5f);
-				m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta = new Vector2 (m_szTempName.Length * 20.0f, m_goDialogueNameplate1.GetComponent<RectTransform> ().sizeDelta.y);
-				m_goDialogueNameplate1.GetComponent<RectTransform> ().anchoredPosition = ancPos;
-				ancPos = m_goNameplate1TextOrigin.GetComponent<RectTransform> ().localPosition;
-				m_goDialogueNameplate1.GetComponentInChildren<Text> ().gameObject.GetComponent<RectTransform> ().localPosition = ancPos;
-			}
+			DisplayDialogueWithoutPortrait();
 		}
 
 
@@ -532,5 +504,19 @@ public class MessageHandler : MonoBehaviour
 			return sprite.texture;
 	}
 
+
+	void ResetDialogueData()
+	{
+		line = "";
+		timer = 0.0f;
+		textIter = 0; 
+		GetComponent<MorseCodePlayer>().StopMorseCodeMessage();
+		DisableUI();
+		m_nPortraitOptimizationIter = 0;
+		m_szTempLine = "";
+		m_szTempName = "";
+		m_nTempBustID = -1;
+		m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.FindChild("Text" + (selectedIndex+1).ToString()).localPosition;
+	}
 }
  

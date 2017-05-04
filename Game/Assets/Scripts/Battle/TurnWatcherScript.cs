@@ -14,7 +14,6 @@ public class TurnWatcherScript : MonoBehaviour
 	[HideInInspector]
 	public GameObject m_goActionSelector;
 
-
 	//The amount of enemies on the field
 	int m_nEnemyCount = 0;
 	//The amount of allies on the field
@@ -121,6 +120,17 @@ public class TurnWatcherScript : MonoBehaviour
 
 	}
 
+	void InitializePortraits(CharacterPanelContainer _cpc, CAllyBattleScript _c)
+	{
+		if(_cpc == null || _c == null)
+			return;
+		_cpc.m_goCharacterName.GetComponent<Text>().text = _c.name;
+		Texture2D sprText = _c.TextureFromSprite (_c.m_tLargeBust);
+		_cpc.m_goCharacterPortrait.GetComponent<Image> ().sprite = Sprite.Create (sprText,
+			new Rect (0, 0, sprText.width, sprText.height),
+			new Vector2 (0.5f, 0.5f));
+	}
+
 	void Start () 
 	{
 		Camera.main.GetComponent<AudioSource>().volume = 0.5f + ds.m_fMusicVolume;
@@ -184,7 +194,7 @@ public class TurnWatcherScript : MonoBehaviour
 		for(int i = 0; i < allies.Count; ++i)
 		{
 			m_lPartyPanels.Add(GameObject.Find("Character"+i));
-			UpdateCharacterPanel(m_lPartyPanels[i].GetComponent<CharacterPanelContainer>(), GameObject.Find(allies[i].m_szCharacterName).GetComponent<CAllyBattleScript>());
+			InitializePortraits(m_lPartyPanels[i].GetComponent<CharacterPanelContainer>(), GameObject.Find(allies[i].m_szCharacterName).GetComponent<CAllyBattleScript>());
 		}
 		for(;FormationCounter < 6; ++FormationCounter)
 		{
@@ -200,17 +210,11 @@ public class TurnWatcherScript : MonoBehaviour
 	{
 		if(_cpc == null || _c == null)
 			return;
+
 		_cpc.m_goCharacterName.GetComponent<Text>().text = _c.name;
 		_cpc.m_goCharacterLevel.FindChild("Text").GetComponent<Text>().text = _c.GetUnitLevel().ToString();
 		_cpc.m_goCharacterEXP.FindChild("Text").GetComponent<Text>().text = _c.m_nCurrentExperience.ToString();
 		_cpc.m_goCharacterMaxHP.GetComponent<Text>().text = _c.GetMaxHP().ToString();
-		Texture2D sprText = _c.TextureFromSprite(_c.m_tLargeBust);
-		_cpc.m_goCharacterPortrait.GetComponent<Image>().sprite = Sprite.Create(sprText,
-			new Rect(0, 0, sprText.width, sprText.height),
-			new Vector2(0.5f, 0.5f));
-
-
-
 		//The rest is the mess that is figuring out the current hp in regards to digits and displaying the cur health value in a color coded manner... I really never want to look at this code again, lol
 		#region HealthMess
 		float fPercentHealthLeft = (float)(_c.GetCurHP() / _c.GetMaxHP());
@@ -306,11 +310,9 @@ public class TurnWatcherScript : MonoBehaviour
 				Catch.transform.position = pos;
 				Destroy(Catch, 1.35f);
 			}
-			foreach(GameObject panel in m_lPartyPanels)
-			{
-				if(panel.transform.FindChild("Character Name").GetComponent<Text>().text == gUnit.name)
-				{
-					UpdateCharacterPanel(panel.GetComponent<CharacterPanelContainer>(), gUnit.GetComponent<CAllyBattleScript>());
+			foreach (GameObject panel in m_lPartyPanels) {
+				if (panel.transform.FindChild ("Character Name").GetComponent<Text> ().text == gUnit.name) {
+					UpdateCharacterPanel (panel.GetComponent<CharacterPanelContainer> (), gUnit.GetComponent<CAllyBattleScript> ());
 				}
 			}
 			yield return new WaitForSeconds( m_fExpBucket);

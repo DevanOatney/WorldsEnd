@@ -362,6 +362,8 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "EncounterBoarBeforeRunOff":
 		{
 			//Encountering the boar that is going to run toward the stairs.
+			ds.m_dStoryFlagField.Remove ("ToAEvent");
+			ds.m_dStoryFlagField.Add("ToAEvent", 2);
 			GameObject Player = GameObject.Find("Player");
 			Player.GetComponent<FieldPlayerMovementScript>().BindInput();
 			Player.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("Callan_MoveTowardBoar"), false, 2);
@@ -442,6 +444,8 @@ public class ToAEventHandler : BaseEventSystemScript
    					Callan follows and Briol_Temple_Dialogue starts at line D0
    					Charcters form one unit and scene ends
 				*/
+			ds.m_dStoryFlagField.Remove ("ToAEvent");
+			ds.m_dStoryFlagField.Add("ToAEvent", 3);
 			GameObject player = GameObject.FindGameObjectWithTag ("Player");
 			if (player) 
 			{

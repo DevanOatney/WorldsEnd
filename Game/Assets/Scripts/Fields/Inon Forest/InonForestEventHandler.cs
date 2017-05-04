@@ -22,6 +22,12 @@ public class InonForestEventHandler : BaseEventSystemScript
 		SetWaypoints ();
 	}
 
+	void Update()
+	{
+		if (Input.GetKeyDown (KeyCode.H)) {
+			GameObject.Find ("Player").GetComponentInChildren<MessageHandler> ().BeginDialogue ("This is a test", "Callan", 2);
+		}
+	}
 
 	override public void HandleEvent(string eventID)
 	{
