@@ -27,17 +27,17 @@ public class SpellInSpellListScript : MonoBehaviour, IPointerEnterHandler, IPoin
 
 	public void OnPointerEnter (PointerEventData eventData)
 	{
-		m_goSpellWindow.transform.FindChild ("SpellName").GetComponentInChildren<Text> ().text = m_sSpell.m_szSpellName;
-		m_goSpellWindow.transform.FindChild ("SpellElement").GetComponentInChildren<Text> ().text = ((eElementTypes)m_sSpell.m_nElementType).ToString();
-		m_goSpellWindow.transform.FindChild ("SpellDescription").GetComponentInChildren<Text> ().text = m_sSpell.m_szDescription;
+		m_goSpellWindow.transform.Find ("SpellName").GetComponentInChildren<Text> ().text = m_sSpell.m_szSpellName;
+		m_goSpellWindow.transform.Find ("SpellElement").GetComponentInChildren<Text> ().text = ((eElementTypes)m_sSpell.m_nElementType).ToString();
+		m_goSpellWindow.transform.Find ("SpellDescription").GetComponentInChildren<Text> ().text = m_sSpell.m_szDescription;
 
 		if (m_sSpell.m_szSpellName == "KindRain") {
-			m_goSpellWindow.transform.FindChild ("HealEffect").gameObject.SetActive(true);
-			m_goSpellWindow.transform.FindChild ("LightningEffect").gameObject.SetActive(false);
+			m_goSpellWindow.transform.Find ("HealEffect").gameObject.SetActive(true);
+			m_goSpellWindow.transform.Find ("LightningEffect").gameObject.SetActive(false);
 		}
 		else {
-			m_goSpellWindow.transform.FindChild ("HealEffect").gameObject.SetActive(false);
-			m_goSpellWindow.transform.FindChild ("LightningEffect").gameObject.SetActive(true);
+			m_goSpellWindow.transform.Find ("HealEffect").gameObject.SetActive(false);
+			m_goSpellWindow.transform.Find ("LightningEffect").gameObject.SetActive(true);
 		}
 		Vector2 _ancPos = m_goSpellWindow.GetComponent<RectTransform> ().position;
 		_ancPos.y = GetComponent<RectTransform> ().position.y;

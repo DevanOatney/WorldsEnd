@@ -1,0 +1,2912 @@
+fileFormatVersion: 2
+guid: 1062057da11e194469f9befcc8c9d828
+timeCreated: 1501778701
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemy_soldiers_0
+    21300002: enemy_soldiers_1
+    21300004: enemy_soldiers_2
+    21300006: enemy_soldiers_3
+    21300008: enemy_soldiers_4
+    21300010: enemy_soldiers_5
+    21300012: enemy_soldiers_6
+    21300014: enemy_soldiers_7
+    21300016: enemy_soldiers_8
+    21300018: enemy_soldiers_9
+    21300020: enemy_soldiers_10
+    21300022: enemy_soldiers_11
+    21300024: enemy_soldiers_12
+    21300026: enemy_soldiers_13
+    21300028: enemy_soldiers_14
+    21300030: enemy_soldiers_15
+    21300032: enemy_soldiers_16
+    21300034: enemy_soldiers_17
+    21300036: enemy_soldiers_18
+    21300038: enemy_soldiers_19
+    21300040: enemy_soldiers_20
+    21300042: enemy_soldiers_21
+    21300044: enemy_soldiers_22
+    21300046: enemy_soldiers_23
+    21300048: enemy_soldiers_24
+    21300050: enemy_soldiers_25
+    21300052: enemy_soldiers_26
+    21300054: enemy_soldiers_27
+    21300056: enemy_soldiers_28
+    21300058: enemy_soldiers_29
+    21300060: enemy_soldiers_30
+    21300062: enemy_soldiers_31
+    21300064: enemy_soldiers_32
+    21300066: enemy_soldiers_33
+    21300068: enemy_soldiers_34
+    21300070: enemy_soldiers_35
+    21300072: enemy_soldiers_36
+    21300074: enemy_soldiers_37
+    21300076: enemy_soldiers_38
+    21300078: enemy_soldiers_39
+    21300080: enemy_soldiers_40
+    21300082: enemy_soldiers_41
+    21300084: enemy_soldiers_42
+    21300086: enemy_soldiers_43
+    21300088: enemy_soldiers_44
+    21300090: enemy_soldiers_45
+    21300092: enemy_soldiers_46
+    21300094: enemy_soldiers_47
+    21300096: enemy_soldiers_48
+    21300098: enemy_soldiers_49
+    21300100: enemy_soldiers_50
+    21300102: enemy_soldiers_51
+    21300104: enemy_soldiers_52
+    21300106: enemy_soldiers_53
+    21300108: enemy_soldiers_54
+    21300110: enemy_soldiers_55
+    21300112: enemy_soldiers_56
+    21300114: enemy_soldiers_57
+    21300116: enemy_soldiers_58
+    21300118: enemy_soldiers_59
+    21300120: enemy_soldiers_60
+    21300122: enemy_soldiers_61
+    21300124: enemy_soldiers_62
+    21300126: enemy_soldiers_63
+    21300128: enemy_soldiers_64
+    21300130: enemy_soldiers_65
+    21300132: enemy_soldiers_66
+    21300134: enemy_soldiers_67
+    21300136: enemy_soldiers_68
+    21300138: enemy_soldiers_69
+    21300140: enemy_soldiers_70
+    21300142: enemy_soldiers_71
+    21300144: enemy_soldiers_72
+    21300146: enemy_soldiers_73
+    21300148: enemy_soldiers_74
+    21300150: enemy_soldiers_75
+    21300152: enemy_soldiers_76
+    21300154: enemy_soldiers_77
+    21300156: enemy_soldiers_78
+    21300158: enemy_soldiers_79
+    21300160: enemy_soldiers_80
+    21300162: enemy_soldiers_81
+    21300164: enemy_soldiers_82
+    21300166: enemy_soldiers_83
+    21300168: enemy_soldiers_84
+    21300170: enemy_soldiers_85
+    21300172: enemy_soldiers_86
+    21300174: enemy_soldiers_87
+    21300176: enemy_soldiers_88
+    21300178: enemy_soldiers_89
+    21300180: enemy_soldiers_90
+    21300182: enemy_soldiers_91
+    21300184: enemy_soldiers_92
+    21300186: enemy_soldiers_93
+    21300188: enemy_soldiers_94
+    21300190: enemy_soldiers_95
+    21300192: enemy_soldiers_96
+    21300194: enemy_soldiers_97
+    21300196: enemy_soldiers_98
+    21300198: enemy_soldiers_99
+    21300200: enemy_soldiers_100
+    21300202: enemy_soldiers_101
+    21300204: enemy_soldiers_102
+    21300206: enemy_soldiers_103
+    21300208: enemy_soldiers_104
+    21300210: enemy_soldiers_105
+    21300212: enemy_soldiers_106
+    21300214: enemy_soldiers_107
+    21300216: enemy_soldiers_108
+    21300218: enemy_soldiers_109
+    21300220: enemy_soldiers_110
+    21300222: enemy_soldiers_111
+    21300224: enemy_soldiers_112
+    21300226: enemy_soldiers_113
+    21300228: enemy_soldiers_114
+    21300230: enemy_soldiers_115
+    21300232: enemy_soldiers_116
+    21300234: enemy_soldiers_117
+    21300236: enemy_soldiers_118
+    21300238: enemy_soldiers_119
+    21300240: enemy_soldiers_120
+    21300242: enemy_soldiers_121
+    21300244: enemy_soldiers_122
+    21300246: enemy_soldiers_123
+    21300248: enemy_soldiers_124
+    21300250: enemy_soldiers_125
+    21300252: enemy_soldiers_126
+    21300254: enemy_soldiers_127
+    21300256: enemy_soldiers_128
+    21300258: enemy_soldiers_129
+    21300260: enemy_soldiers_130
+    21300262: enemy_soldiers_131
+    21300264: enemy_soldiers_132
+    21300266: enemy_soldiers_133
+    21300268: enemy_soldiers_134
+    21300270: enemy_soldiers_135
+    21300272: enemy_soldiers_136
+    21300274: enemy_soldiers_137
+    21300276: enemy_soldiers_138
+    21300278: enemy_soldiers_139
+    21300280: enemy_soldiers_140
+    21300282: enemy_soldiers_141
+    21300284: enemy_soldiers_142
+    21300286: enemy_soldiers_143
+    21300288: enemy_soldiers_144
+    21300290: enemy_soldiers_145
+    21300292: enemy_soldiers_146
+    21300294: enemy_soldiers_147
+    21300296: enemy_soldiers_148
+    21300298: enemy_soldiers_149
+    21300300: enemy_soldiers_150
+    21300302: enemy_soldiers_151
+    21300304: enemy_soldiers_152
+    21300306: enemy_soldiers_153
+    21300308: enemy_soldiers_154
+    21300310: enemy_soldiers_155
+    21300312: enemy_soldiers_156
+    21300314: enemy_soldiers_157
+    21300316: enemy_soldiers_158
+    21300318: enemy_soldiers_159
+    21300320: enemy_soldiers_160
+    21300322: enemy_soldiers_161
+    21300324: enemy_soldiers_162
+    21300326: enemy_soldiers_163
+    21300328: enemy_soldiers_164
+    21300330: enemy_soldiers_165
+    21300332: enemy_soldiers_166
+    21300334: enemy_soldiers_167
+    21300336: enemy_soldiers_168
+    21300338: enemy_soldiers_169
+    21300340: enemy_soldiers_170
+    21300342: enemy_soldiers_171
+    21300344: enemy_soldiers_172
+    21300346: enemy_soldiers_173
+    21300348: enemy_soldiers_174
+    21300350: enemy_soldiers_175
+    21300352: enemy_soldiers_176
+    21300354: enemy_soldiers_177
+    21300356: enemy_soldiers_178
+    21300358: enemy_soldiers_179
+    21300360: enemy_soldiers_180
+    21300362: enemy_soldiers_181
+    21300364: enemy_soldiers_182
+    21300366: enemy_soldiers_183
+    21300368: enemy_soldiers_184
+    21300370: enemy_soldiers_185
+    21300372: enemy_soldiers_186
+    21300374: enemy_soldiers_187
+    21300376: enemy_soldiers_188
+    21300378: enemy_soldiers_189
+    21300380: enemy_soldiers_190
+    21300382: enemy_soldiers_191
+    21300384: enemy_soldiers_192
+    21300386: enemy_soldiers_193
+    21300388: enemy_soldiers_194
+    21300390: enemy_soldiers_195
+    21300392: enemy_soldiers_196
+    21300394: enemy_soldiers_197
+    21300396: enemy_soldiers_198
+    21300398: enemy_soldiers_199
+    21300400: enemy_soldiers_200
+    21300402: enemy_soldiers_201
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: enemy_soldiers_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 2049
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 2049
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 2049
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_3
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 2049
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_4
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 2049
+        width: 52
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_5
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 2049
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_6
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 2049
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_7
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1984
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_8
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1984
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_9
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1984
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_10
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1984
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_11
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1984
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_12
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1984
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_13
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1984
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_14
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1919
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_15
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1919
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1919
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_17
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1919
+        width: 38
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_18
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 1919
+        width: 52
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_19
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 1919
+        width: 50
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_20
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1919
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_21
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1856
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_22
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1856
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_23
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1856
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_24
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1856
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_25
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 1856
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_26
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1856
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_27
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1856
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_28
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1793
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_29
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1791
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_30
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1791
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_31
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1791
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_32
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1791
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_33
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1791
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_34
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1791
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_35
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 1791
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_36
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1728
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_37
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1728
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_38
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1728
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_39
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1727
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_40
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 1727
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_41
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1727
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_42
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1727
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_43
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 1727
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_44
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1663
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_45
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1664
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_46
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1664
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_47
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1664
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_48
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 1664
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_49
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1664
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_50
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1664
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_51
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1664
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_52
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1600
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_53
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1600
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_54
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1600
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_55
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1599
+        width: 31
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_56
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1599
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_57
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1599
+        width: 35
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_58
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1599
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_59
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1599
+        width: 31
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_60
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1538
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_61
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1538
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_62
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1537
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_63
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1536
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_64
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 1537
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_65
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 1538
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_66
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1537
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_67
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 1536
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_68
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 1537
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_69
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1472
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_70
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1473
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_71
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1474
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_72
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1474
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_73
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1473
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_74
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1473
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_75
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1473
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_76
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 1473
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_77
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1473
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_78
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1407
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_79
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1407
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_80
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1408
+        width: 36
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_81
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 1408
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_82
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 1407
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_83
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 1407
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_84
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1408
+        width: 36
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_85
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 1408
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_86
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 1407
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_87
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1344
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_88
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1345
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_89
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1346
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_90
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1346
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_91
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 1345
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_92
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 1345
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_93
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1345
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_94
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1345
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_95
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1345
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_96
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1281
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_97
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1280
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_98
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1280
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_99
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1280
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_100
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1280
+        width: 38
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_101
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1280
+        width: 41
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_102
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1216
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_103
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 1215
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_104
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1215
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_105
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1215
+        width: 36
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_106
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 1215
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_107
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 1215
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_108
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1150
+        width: 36
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_109
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1150
+        width: 32
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_110
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1150
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_111
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1151
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_112
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1151
+        width: 37
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_113
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1151
+        width: 41
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_114
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1087
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_115
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1086
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_116
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1086
+        width: 31
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_117
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1086
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_118
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1086
+        width: 38
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_119
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1086
+        width: 35
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_120
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1025
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_121
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 1023
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_122
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1023
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_123
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 1023
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_124
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 1023
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_125
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 1023
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_126
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1023
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_127
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 1023
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_128
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1023
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_129
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 1023
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_130
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 1023
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_131
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 1023
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_132
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 1023
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_133
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 960
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_134
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 960
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_135
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 960
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_136
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 959
+        width: 37
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_137
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 959
+        width: 37
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_138
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 959
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_139
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 959
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_140
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 959
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_141
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 959
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_142
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 959
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_143
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 959
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_144
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 959
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_145
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 959
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_146
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 895
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_147
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 896
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_148
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 897
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_149
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 895
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_150
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 895
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_151
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 895
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_152
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 895
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_153
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 895
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_154
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 895
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_155
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 895
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_156
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 895
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_157
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 895
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_158
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 895
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_159
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 832
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_160
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 832
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_161
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 832
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_162
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 831
+        width: 37
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_163
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 831
+        width: 37
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_164
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 831
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_165
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 831
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_166
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 831
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_167
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 831
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_168
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 831
+        width: 37
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_169
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 831
+        width: 37
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_170
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 831
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_171
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 831
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_172
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 767
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_173
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 767
+        width: 33
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_174
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 767
+        width: 32
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_175
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 770
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_176
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 770
+        width: 33
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_177
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 768
+        width: 36
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_178
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 641
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_179
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 640
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_180
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 640
+        width: 41
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_181
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 640
+        width: 33
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_182
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 640
+        width: 54
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_183
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 640
+        width: 58
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_184
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 448
+        width: 43
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_185
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 447
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_186
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 447
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_187
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 447
+        width: 37
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_188
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 447
+        width: 59
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_189
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 447
+        width: 47
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_190
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 255
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_191
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 255
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_192
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 255
+        width: 44
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_193
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 256
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_194
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 256
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_195
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 256
+        width: 63
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_196
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 63
+        width: 43
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_197
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 62
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_198
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 62
+        width: 31
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_199
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 62
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_200
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 62
+        width: 59
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_soldiers_201
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 62
+        width: 48
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

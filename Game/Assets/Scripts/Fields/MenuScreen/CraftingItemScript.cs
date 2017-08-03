@@ -16,7 +16,7 @@ public class CraftingItemScript : MonoBehaviour, IPointerClickHandler
 	{
 		m_ilItemData = _item;
 		GetComponentInChildren<Text>().text = m_ilItemData.m_szItemName;
-		GameObject _highlighter = transform.parent.parent.FindChild("CraftingItemHighlighter").gameObject;
+		GameObject _highlighter = transform.parent.parent.Find("CraftingItemHighlighter").gameObject;
 		if(_highlighter.GetComponent<CraftingItemHighlighterScript>().m_goHighlightedObject == null)
 		{
 			//This is the first item in the list.
@@ -31,7 +31,7 @@ public class CraftingItemScript : MonoBehaviour, IPointerClickHandler
 
 	void SetHighlighter()
 	{
-		transform.parent.parent.FindChild("CraftingItemHighlighter").GetComponent<CraftingItemHighlighterScript>().SetHighlightedObject(gameObject);
+		transform.parent.parent.Find("CraftingItemHighlighter").GetComponent<CraftingItemHighlighterScript>().SetHighlightedObject(gameObject);
 	}
 
 	#region IPointerClickHandler implementation

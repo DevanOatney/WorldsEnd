@@ -42,15 +42,15 @@ public class CBattleActionsScript : MonoBehaviour
 			if(_nCounter == m_nActionIter)
 			{
 				//this is the one selected
-				child.FindChild("Collider").GetComponent<ActionPanelScript>().m_bIsHighlighted = true;
-				child.FindChild("HoverImage").GetComponent<Image>().enabled = true;
-				child.FindChild("Text").GetComponent<Text>().enabled = true;
+				child.Find("Collider").GetComponent<ActionPanelScript>().m_bIsHighlighted = true;
+				child.Find("HoverImage").GetComponent<Image>().enabled = true;
+				child.Find("Text").GetComponent<Text>().enabled = true;
 			}
 			else
 			{
-				child.FindChild("Collider").GetComponent<ActionPanelScript>().m_bIsHighlighted = false;
-				child.FindChild("HoverImage").GetComponent<Image>().enabled = false;
-				child.FindChild("Text").GetComponent<Text>().enabled = false;
+				child.Find("Collider").GetComponent<ActionPanelScript>().m_bIsHighlighted = false;
+				child.Find("HoverImage").GetComponent<Image>().enabled = false;
+				child.Find("Text").GetComponent<Text>().enabled = false;
 			}
 			++_nCounter;
 		}

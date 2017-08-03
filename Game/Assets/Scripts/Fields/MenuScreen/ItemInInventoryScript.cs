@@ -28,7 +28,7 @@ public class ItemInInventoryScript : MonoBehaviour, IPointerClickHandler, IPoint
 	{
 		m_iItem = _iItem;
 		m_goFIELDUI = _goFIELDUI;
-		transform.FindChild ("ItemName").GetComponentInChildren<Text> ().text = m_iItem.m_szItemName;
+		transform.Find ("ItemName").GetComponentInChildren<Text> ().text = m_iItem.m_szItemName;
 		int nItemType = m_iItem.m_nItemType;
 		string szType = "";
 		//1-4 : useable item, 5 : weapon, 6: armor, 7: junk, 8- Key Items
@@ -43,8 +43,8 @@ public class ItemInInventoryScript : MonoBehaviour, IPointerClickHandler, IPoint
 				else
 					if (nItemType == 12)
 						szType = "Key Item";
-		transform.FindChild ("ItemType").GetComponentInChildren<Text> ().text = szType;
-		transform.FindChild ("ItemCount").GetComponentInChildren<Text> ().text = "x" + m_iItem.m_nItemCount.ToString ();
+		transform.Find ("ItemType").GetComponentInChildren<Text> ().text = szType;
+		transform.Find ("ItemCount").GetComponentInChildren<Text> ().text = "x" + m_iItem.m_nItemCount.ToString ();
 	}
 
 	#region IPointerClickHandler implementation
@@ -56,17 +56,17 @@ public class ItemInInventoryScript : MonoBehaviour, IPointerClickHandler, IPoint
 				m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.SetActive (true);
 				m_goFIELDUI.GetComponent<MenuScreenScript> ().m_iSelectedItem = m_iItem;
 				if (m_iItem.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eKEYITEM) {
-					m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.transform.FindChild ("Use_Button").GetComponent<Button> ().interactable = false;
-					m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.transform.FindChild ("Discard_Button").GetComponent<Button> ().interactable = false;
+					m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.transform.Find ("Use_Button").GetComponent<Button> ().interactable = false;
+					m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.transform.Find ("Discard_Button").GetComponent<Button> ().interactable = false;
 				}
 				else
 				if (m_iItem.m_nItemType != (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL && m_iItem.m_nItemType != (int)BaseItemScript.ITEM_TYPES.eGROUP_HEAL) {
-						m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.transform.FindChild ("Use_Button").GetComponent<Button> ().interactable = false;
-						m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.transform.FindChild ("Discard_Button").GetComponent<Button> ().interactable = true;
+						m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.transform.Find ("Use_Button").GetComponent<Button> ().interactable = false;
+						m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.transform.Find ("Discard_Button").GetComponent<Button> ().interactable = true;
 				}
 				else {
-						m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.transform.FindChild ("Use_Button").GetComponent<Button> ().interactable = true;
-						m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.transform.FindChild ("Discard_Button").GetComponent<Button> ().interactable = true;
+						m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.transform.Find ("Use_Button").GetComponent<Button> ().interactable = true;
+						m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.transform.Find ("Discard_Button").GetComponent<Button> ().interactable = true;
 				}
 				Vector3 newPos = Input.mousePosition;
 				newPos = Camera.main.ScreenToViewportPoint (newPos);
@@ -85,33 +85,33 @@ public class ItemInInventoryScript : MonoBehaviour, IPointerClickHandler, IPoint
 	{
 		if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.activeSelf == false && m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goUnitSelectWindow.activeSelf == false) {
 
-			Transform _root = m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goInventory.transform.FindChild ("ItemDescriptionPanel");
-			_root.FindChild ("ItemName").GetComponentInChildren<Text> ().text = m_iItem.m_szItemName;
-			_root.FindChild ("ItemDescription").GetComponentInChildren<Text> ().text = m_iItem.m_szItemDesc;
-			_root.FindChild ("ItemType").GetComponentInChildren<Text> ().text = m_iItem.GetItemTypeName ();
-			Transform _statRoot = _root.FindChild ("ItemStats");
+			Transform _root = m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goInventory.transform.Find ("ItemDescriptionPanel");
+			_root.Find ("ItemName").GetComponentInChildren<Text> ().text = m_iItem.m_szItemName;
+			_root.Find ("ItemDescription").GetComponentInChildren<Text> ().text = m_iItem.m_szItemDesc;
+			_root.Find ("ItemType").GetComponentInChildren<Text> ().text = m_iItem.GetItemTypeName ();
+			Transform _statRoot = _root.Find ("ItemStats");
 			ItemLibrary.ItemData _item = m_goFIELDUI.GetComponent<MenuScreenScript> ().dc.m_lItemLibrary.GetItemFromDictionary (m_iItem.m_szItemName);
 
-			_statRoot.FindChild ("HP").GetComponent<Text> ().color = DetermineColor (_item.m_nHPMod);
-			_statRoot.FindChild ("HP").GetComponent<Text> ().text = "HP: " + _item.m_nHPMod;
+			_statRoot.Find ("HP").GetComponent<Text> ().color = DetermineColor (_item.m_nHPMod);
+			_statRoot.Find ("HP").GetComponent<Text> ().text = "HP: " + _item.m_nHPMod;
 
-			_statRoot.FindChild ("MP").GetComponent<Text> ().color = DetermineColor (_item.m_nMPMod);
-			_statRoot.FindChild ("MP").GetComponent<Text> ().text = "MP: " + _item.m_nMPMod;
+			_statRoot.Find ("MP").GetComponent<Text> ().color = DetermineColor (_item.m_nMPMod);
+			_statRoot.Find ("MP").GetComponent<Text> ().text = "MP: " + _item.m_nMPMod;
 
-			_statRoot.FindChild ("POW").GetComponent<Text> ().color = DetermineColor (_item.m_nPowMod);
-			_statRoot.FindChild ("POW").GetComponent<Text> ().text = "POW: " + _item.m_nPowMod;
+			_statRoot.Find ("POW").GetComponent<Text> ().color = DetermineColor (_item.m_nPowMod);
+			_statRoot.Find ("POW").GetComponent<Text> ().text = "POW: " + _item.m_nPowMod;
 
-			_statRoot.FindChild ("DEF").GetComponent<Text> ().color = DetermineColor (_item.m_nDefMod);
-			_statRoot.FindChild ("DEF").GetComponent<Text> ().text = "DEF: " + _item.m_nDefMod;
+			_statRoot.Find ("DEF").GetComponent<Text> ().color = DetermineColor (_item.m_nDefMod);
+			_statRoot.Find ("DEF").GetComponent<Text> ().text = "DEF: " + _item.m_nDefMod;
 
-			_statRoot.FindChild ("SPD").GetComponent<Text> ().color = DetermineColor (_item.m_nSpdMod);
-			_statRoot.FindChild ("SPD").GetComponent<Text> ().text = "SPD: " + _item.m_nSpdMod;
+			_statRoot.Find ("SPD").GetComponent<Text> ().color = DetermineColor (_item.m_nSpdMod);
+			_statRoot.Find ("SPD").GetComponent<Text> ().text = "SPD: " + _item.m_nSpdMod;
 
-			_statRoot.FindChild ("EVA").GetComponent<Text> ().color = DetermineColor (_item.m_nEvaMod);
-			_statRoot.FindChild ("EVA").GetComponent<Text> ().text = "EVA: " + _item.m_nEvaMod;
+			_statRoot.Find ("EVA").GetComponent<Text> ().color = DetermineColor (_item.m_nEvaMod);
+			_statRoot.Find ("EVA").GetComponent<Text> ().text = "EVA: " + _item.m_nEvaMod;
 
-			_statRoot.FindChild ("HIT").GetComponent<Text> ().color = DetermineColor (_item.m_nHitMod);
-			_statRoot.FindChild ("HIT").GetComponent<Text> ().text = "HIT: " + _item.m_nHitMod;
+			_statRoot.Find ("HIT").GetComponent<Text> ().color = DetermineColor (_item.m_nHitMod);
+			_statRoot.Find ("HIT").GetComponent<Text> ().text = "HIT: " + _item.m_nHitMod;
 		}
 	}
 

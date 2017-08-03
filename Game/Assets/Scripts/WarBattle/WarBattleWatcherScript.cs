@@ -378,7 +378,7 @@ public class WarBattleWatcherScript : MonoBehaviour
         {
             return;
         }
-        GameObject _CompanyUI = m_goCompanyUIWindowRoot.transform.FindChild("CompanyUI").gameObject;
+        GameObject _CompanyUI = m_goCompanyUIWindowRoot.transform.Find("CompanyUI").gameObject;
         //First let's figure out the position of this unit in screen space to determine where best the Company UI window should be located.
         RectTransform _theCanvas = GameObject.Find("Canvas").GetComponent<RectTransform>();
         Vector2 _viewportPos = Camera.main.WorldToViewportPoint(_pos);
@@ -391,12 +391,12 @@ public class WarBattleWatcherScript : MonoBehaviour
             if (_objScreenPos.y >= 0)
             {
                 //Object is on the upper left quadrant.
-                _CompanyUI.transform.position = m_goCompanyUIWindowRoot.transform.FindChild("Pos_4").transform.position;
+                _CompanyUI.transform.position = m_goCompanyUIWindowRoot.transform.Find("Pos_4").transform.position;
             }
             else if (_objScreenPos.y < 0)
             {
                 //Object is on the lower left quadrant.
-                _CompanyUI.transform.position = m_goCompanyUIWindowRoot.transform.FindChild("Pos_2").transform.position;
+                _CompanyUI.transform.position = m_goCompanyUIWindowRoot.transform.Find("Pos_2").transform.position;
             }
         }
         else if (_objScreenPos.x >= 0)
@@ -405,12 +405,12 @@ public class WarBattleWatcherScript : MonoBehaviour
             if (_objScreenPos.y >= 0)
             {
                 //Object is on the upper right quadrant.
-                _CompanyUI.transform.position = m_goCompanyUIWindowRoot.transform.FindChild("Pos_3").transform.position;
+                _CompanyUI.transform.position = m_goCompanyUIWindowRoot.transform.Find("Pos_3").transform.position;
             }
             else if (_objScreenPos.y < 0)
             {
                 // Object is on the lower right quadrant
-                _CompanyUI.transform.position = m_goCompanyUIWindowRoot.transform.FindChild("Pos_1").transform.position;
+                _CompanyUI.transform.position = m_goCompanyUIWindowRoot.transform.Find("Pos_1").transform.position;
             }
         }
 
@@ -418,22 +418,22 @@ public class WarBattleWatcherScript : MonoBehaviour
         if (_unit.m_goLeaderSprite != null)
         {
             //This one has a leader, portrait it up!
-            _CompanyUI.transform.FindChild("LeaderPortrait").gameObject.SetActive(true);
+            _CompanyUI.transform.Find("LeaderPortrait").gameObject.SetActive(true);
         }
         else
         {
             //This company has no leader  TODO: render a faction/battle standard portrait instead.
-            _CompanyUI.transform.FindChild("LeaderPortrait").gameObject.SetActive(false);
+            _CompanyUI.transform.Find("LeaderPortrait").gameObject.SetActive(false);
         }
 
         //All right, team name!
-        _CompanyUI.transform.FindChild("CompanyName").GetComponent<Text>().text = _unit.m_szTeamName;
+        _CompanyUI.transform.Find("CompanyName").GetComponent<Text>().text = _unit.m_szTeamName;
 
         //Attack power!
-        _CompanyUI.transform.FindChild("CompanyATK").GetComponent<Text>().text = "ATK: " + _unit.m_cUnitData.m_nAttackPower.ToString();
+        _CompanyUI.transform.Find("CompanyATK").GetComponent<Text>().text = "ATK: " + _unit.m_cUnitData.m_nAttackPower.ToString();
 
         //Defense score
-        _CompanyUI.transform.FindChild("CompanyDEF").GetComponent<Text>().text = "DEF: " + _unit.m_cUnitData.m_nDefensePower.ToString();
+        _CompanyUI.transform.Find("CompanyDEF").GetComponent<Text>().text = "DEF: " + _unit.m_cUnitData.m_nDefensePower.ToString();
     }
 
 
@@ -774,7 +774,7 @@ public class WarBattleWatcherScript : MonoBehaviour
                 if (_lAllyUnits.Count <= 0)
                 {
                     //This is a debug battle, put in some debug ally units n'stuff(?)
-                    Transform _debugAllyContainer = _goCatchHelperObjectToDestroy.transform.FindChild("DebugAllies");
+                    Transform _debugAllyContainer = _goCatchHelperObjectToDestroy.transform.Find("DebugAllies");
                     Transform[] _debugAllies = _debugAllyContainer.GetComponentsInChildren<Transform>();
                     //set this to 1 instead of zero because the container above will contain itself, so skip over it.
                     int _nIter = 1;

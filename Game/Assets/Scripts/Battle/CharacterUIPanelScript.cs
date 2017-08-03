@@ -25,16 +25,16 @@ public class CharacterUIPanelScript : MonoBehaviour
 	void Start () 
 	{
 		m_goTurnWatcher = GameObject.Find("TurnWatcher");
-		m_goCharacterName = transform.FindChild("CharacterName").gameObject;
-		m_goCurrentHP = transform.FindChild("CurHP").gameObject;
-		m_goMaxHP = transform.FindChild("MaxHP").gameObject;
-		m_goCurrentMP = transform.FindChild("CurMP").gameObject;
-		m_goMaxMP = transform.FindChild("MaxMP").gameObject;
+		m_goCharacterName = transform.Find("CharacterName").gameObject;
+		m_goCurrentHP = transform.Find("CurHP").gameObject;
+		m_goMaxHP = transform.Find("MaxHP").gameObject;
+		m_goCurrentMP = transform.Find("CurMP").gameObject;
+		m_goMaxMP = transform.Find("MaxMP").gameObject;
 
-		m_goHP = transform.FindChild("HP").gameObject;
-		m_goMP = transform.FindChild("MP").gameObject;
-		m_goDivider = transform.FindChild("divider").gameObject;
-		m_goDivider2 = transform.FindChild("divider2").gameObject;
+		m_goHP = transform.Find("HP").gameObject;
+		m_goMP = transform.Find("MP").gameObject;
+		m_goDivider = transform.Find("divider").gameObject;
+		m_goDivider2 = transform.Find("divider2").gameObject;
 	}
 	
 	// Update is called once per frame

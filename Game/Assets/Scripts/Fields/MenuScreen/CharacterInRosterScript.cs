@@ -27,11 +27,11 @@ public class CharacterInRosterScript : MonoBehaviour, IBeginDragHandler, IDragHa
 
 	public void OnBeginDrag (PointerEventData eventData)
 	{
-		m_szCharacterBeingDragged = GetComponent<RectTransform>().FindChild("CharacterName").GetComponent<Text>().text;
+		m_szCharacterBeingDragged = GetComponent<RectTransform>().Find("CharacterName").GetComponent<Text>().text;
 		m_goNewDraggedObject = Instantiate(m_goDraggedObject);
 		m_goNewDraggedObject.GetComponent<RectTransform>().SetParent(GetComponent<RectTransform>().parent.parent.parent);
-		m_goNewDraggedObject.GetComponent<RectTransform>().FindChild("CharacterName").GetComponent<Text>().text = GetComponent<RectTransform>().FindChild("CharacterName").GetComponent<Text>().text;
-		m_goNewDraggedObject.GetComponent<RectTransform>().FindChild("CharacterLVL").GetComponent<Text>().text = GetComponent<RectTransform>().FindChild("CharacterLVL").GetComponent<Text>().text;
+		m_goNewDraggedObject.GetComponent<RectTransform>().Find("CharacterName").GetComponent<Text>().text = GetComponent<RectTransform>().Find("CharacterName").GetComponent<Text>().text;
+		m_goNewDraggedObject.GetComponent<RectTransform>().Find("CharacterLVL").GetComponent<Text>().text = GetComponent<RectTransform>().Find("CharacterLVL").GetComponent<Text>().text;
 	}
 
 	#endregion

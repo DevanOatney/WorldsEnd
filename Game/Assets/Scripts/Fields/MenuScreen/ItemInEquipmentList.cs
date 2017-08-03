@@ -21,16 +21,16 @@ public class ItemInEquipmentList : MonoBehaviour, IPointerClickHandler, IPointer
 	void UpdateModuleWindow()
 	{
 		Transform _tModule = m_goFieldUI.GetComponent<MenuScreenScript> ().m_goEquipmentItemDescModuleWindow.transform;
-		_tModule.FindChild ("ItemName").GetComponent<Text> ().text = m_iArmorData.m_szItemName;
-		_tModule.FindChild ("ItemDescription").GetComponent<Text> ().text = m_iArmorData.m_szDescription;
-		Transform _tStatParent = _tModule.FindChild ("ItemStats");
-		_tStatParent.FindChild ("HP").GetComponent<Text> ().text = "HP: " + m_iArmorData.m_nHPMod;
-		_tStatParent.FindChild ("MP").GetComponent<Text> ().text = "MP: " + m_iArmorData.m_nMPMod;
-		_tStatParent.FindChild ("POW").GetComponent<Text> ().text = "POW: " + m_iArmorData.m_nPowMod;
-		_tStatParent.FindChild ("DEF").GetComponent<Text> ().text = "DEF: " + m_iArmorData.m_nDefMod;
-		_tStatParent.FindChild ("SPD").GetComponent<Text> ().text = "SPD: " + m_iArmorData.m_nSpdMod;
-		_tStatParent.FindChild ("EVA").GetComponent<Text> ().text = "EVA: " + m_iArmorData.m_nEvaMod;
-		_tStatParent.FindChild ("HIT").GetComponent<Text> ().text = "HIT: " + m_iArmorData.m_nHitMod;
+		_tModule.Find ("ItemName").GetComponent<Text> ().text = m_iArmorData.m_szItemName;
+		_tModule.Find ("ItemDescription").GetComponent<Text> ().text = m_iArmorData.m_szDescription;
+		Transform _tStatParent = _tModule.Find ("ItemStats");
+		_tStatParent.Find ("HP").GetComponent<Text> ().text = "HP: " + m_iArmorData.m_nHPMod;
+		_tStatParent.Find ("MP").GetComponent<Text> ().text = "MP: " + m_iArmorData.m_nMPMod;
+		_tStatParent.Find ("POW").GetComponent<Text> ().text = "POW: " + m_iArmorData.m_nPowMod;
+		_tStatParent.Find ("DEF").GetComponent<Text> ().text = "DEF: " + m_iArmorData.m_nDefMod;
+		_tStatParent.Find ("SPD").GetComponent<Text> ().text = "SPD: " + m_iArmorData.m_nSpdMod;
+		_tStatParent.Find ("EVA").GetComponent<Text> ().text = "EVA: " + m_iArmorData.m_nEvaMod;
+		_tStatParent.Find ("HIT").GetComponent<Text> ().text = "HIT: " + m_iArmorData.m_nHitMod;
 	}
 
 	#region IPointerClickHandler implementation

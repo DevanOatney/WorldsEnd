@@ -212,8 +212,8 @@ public class TurnWatcherScript : MonoBehaviour
 			return;
 
 		_cpc.m_goCharacterName.GetComponent<Text>().text = _c.name;
-		_cpc.m_goCharacterLevel.FindChild("Text").GetComponent<Text>().text = _c.GetUnitLevel().ToString();
-		_cpc.m_goCharacterEXP.FindChild("Text").GetComponent<Text>().text = _c.m_nCurrentExperience.ToString();
+		_cpc.m_goCharacterLevel.Find("Text").GetComponent<Text>().text = _c.GetUnitLevel().ToString();
+		_cpc.m_goCharacterEXP.Find("Text").GetComponent<Text>().text = _c.m_nCurrentExperience.ToString();
 		_cpc.m_goCharacterMaxHP.GetComponent<Text>().text = _c.GetMaxHP().ToString();
 		//The rest is the mess that is figuring out the current hp in regards to digits and displaying the cur health value in a color coded manner... I really never want to look at this code again, lol
 		#region HealthMess
@@ -232,22 +232,22 @@ public class TurnWatcherScript : MonoBehaviour
 			{
 			case 0:
 				{
-					_tDigit = _cpc.m_goCharacterCurHP.FindChild("Single");
+					_tDigit = _cpc.m_goCharacterCurHP.Find("Single");
 				}
 				break;
 			case 1:
 				{
-					_tDigit = _cpc.m_goCharacterCurHP.FindChild("Ten");
+					_tDigit = _cpc.m_goCharacterCurHP.Find("Ten");
 				}
 				break;
 			case 2:
 				{
-					_tDigit = _cpc.m_goCharacterCurHP.FindChild("Hundred");
+					_tDigit = _cpc.m_goCharacterCurHP.Find("Hundred");
 				}
 				break;
 			case 3:
 				{
-					_tDigit = _cpc.m_goCharacterCurHP.FindChild("Thousand");
+					_tDigit = _cpc.m_goCharacterCurHP.Find("Thousand");
 				}
 				break;
 			}
@@ -260,19 +260,19 @@ public class TurnWatcherScript : MonoBehaviour
 			{
 			case 2:
 				{
-					Transform _tDigit = _cpc.m_goCharacterCurHP.FindChild("Ten");
+					Transform _tDigit = _cpc.m_goCharacterCurHP.Find("Ten");
 					_tDigit.GetComponent<Text>().text = "";
 				}
 				break;
 			case 3:
 				{
-					Transform _tDigit = _cpc.m_goCharacterCurHP.FindChild("Hundred");
+					Transform _tDigit = _cpc.m_goCharacterCurHP.Find("Hundred");
 					_tDigit.GetComponent<Text>().text = "";
 				}
 				break;
 			case 4:
 				{
-					Transform _tDigit = _cpc.m_goCharacterCurHP.FindChild("Thousand");
+					Transform _tDigit = _cpc.m_goCharacterCurHP.Find("Thousand");
 					_tDigit.GetComponent<Text>().text = "";
 				}
 				break;
@@ -311,7 +311,7 @@ public class TurnWatcherScript : MonoBehaviour
 				Destroy(Catch, 1.35f);
 			}
 			foreach (GameObject panel in m_lPartyPanels) {
-				if (panel.transform.FindChild ("Character Name").GetComponent<Text> ().text == gUnit.name) {
+				if (panel.transform.Find ("Character Name").GetComponent<Text> ().text == gUnit.name) {
 					UpdateCharacterPanel (panel.GetComponent<CharacterPanelContainer> (), gUnit.GetComponent<CAllyBattleScript> ());
 				}
 			}
@@ -405,18 +405,18 @@ public class TurnWatcherScript : MonoBehaviour
 				m_bOneShotAfterVictory = true;
 				GameObject.Find("Party").GetComponent<Animator>().Play("PartyRoster_SlideIn");
 				GameObject ItemsWon = GameObject.Find("Items Won");
-				GameObject GoldDropped = ItemsWon.transform.FindChild("GoldWon").gameObject;
+				GameObject GoldDropped = ItemsWon.transform.Find("GoldWon").gameObject;
 				GoldDropped.GetComponentInChildren<Text>().text = "Gold dropped: " + m_nGoldDropped.ToString();
 				ItemsWon.GetComponent<Animator>().Play("ItemsWon_SlideIn");
 				if(m_lItemsWon.Count > 0)
 				{
 					int _nItemCount = 1;
-					Transform itemsWonPanel = ItemsWon.transform.FindChild("Panel");
+					Transform itemsWonPanel = ItemsWon.transform.Find("Panel");
 					foreach(ItemLibrary.CharactersItems ciItem in m_lItemsWon)
 					{
-						Transform itemObject = itemsWonPanel.FindChild("Item"+_nItemCount.ToString());
-						itemObject.FindChild("ItemName").GetComponent<Text>().text = ciItem.m_szItemName;
-						itemObject.FindChild("ItemCount").GetComponent<Text>().text = ciItem.m_nItemCount.ToString();
+						Transform itemObject = itemsWonPanel.Find("Item"+_nItemCount.ToString());
+						itemObject.Find("ItemName").GetComponent<Text>().text = ciItem.m_szItemName;
+						itemObject.Find("ItemCount").GetComponent<Text>().text = ciItem.m_nItemCount.ToString();
 						++_nItemCount;
 					}
 				}
@@ -448,7 +448,7 @@ public class TurnWatcherScript : MonoBehaviour
 						m_lNewExperienceTotal[Ally.name] = 0;
 						foreach(GameObject panel in m_lPartyPanels)
 						{
-							if(panel.transform.FindChild("Character Name").GetComponent<Text>().text == Ally.name)
+							if(panel.transform.Find("Character Name").GetComponent<Text>().text == Ally.name)
 							{
 								UpdateCharacterPanel(panel.GetComponent<CharacterPanelContainer>(), Ally.GetComponent<CAllyBattleScript>());
 							}

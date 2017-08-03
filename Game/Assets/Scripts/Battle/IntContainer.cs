@@ -9,7 +9,7 @@ public class IntContainer : MonoBehaviour
 	Transform m_tSelectorChild;
 	// Use this for initialization
 	void Start () {
-		m_tSelectorChild = transform.FindChild("Selector");
+		m_tSelectorChild = transform.Find("Selector");
 	}
 	
 	// Update is called once per frame

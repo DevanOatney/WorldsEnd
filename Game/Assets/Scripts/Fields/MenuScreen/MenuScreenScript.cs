@@ -260,8 +260,8 @@ public class MenuScreenScript : MonoBehaviour
 			{
 				if (m_bWaiting == false) {
 					if (Input.GetKeyDown (KeyCode.Escape) || Input.GetMouseButtonDown (1)) {
-						if (m_goMagicScreen.transform.FindChild ("MagicPanel").gameObject.activeSelf == true) {
-							m_goMagicScreen.transform.FindChild ("MagicPanel").gameObject.SetActive (false);
+						if (m_goMagicScreen.transform.Find ("MagicPanel").gameObject.activeSelf == true) {
+							m_goMagicScreen.transform.Find ("MagicPanel").gameObject.SetActive (false);
 						}
 						else {
 							m_nMenuState = (int)MENU_STATES.eTOPTAB_SELECTION;
@@ -469,8 +469,8 @@ public class MenuScreenScript : MonoBehaviour
 					if(character.m_bHasBeenRecruited == true)
 					{
 						GameObject characterInList = Instantiate(m_goCharacterPrefab);
-						characterInList.transform.FindChild("CharacterName").GetComponent<Text>().text = character.m_szCharacterName;
-						characterInList.transform.FindChild("CharacterLVL").GetComponent<Text>().text = character.m_nLevel.ToString();
+						characterInList.transform.Find("CharacterName").GetComponent<Text>().text = character.m_szCharacterName;
+						characterInList.transform.Find("CharacterLVL").GetComponent<Text>().text = character.m_nLevel.ToString();
 						characterInList.transform.SetParent(m_goCharacterRoot.transform);
 						characterInList.transform.localScale = new Vector3(1, 1, 1);
 					}
@@ -916,7 +916,7 @@ public class MenuScreenScript : MonoBehaviour
 
 	void ClearSpellList()
 	{
-		Transform _root = m_goMagicScreen.transform.FindChild ("MagicPanel").FindChild ("SpellListContainer").FindChild ("ViewPort").FindChild ("Contents");
+		Transform _root = m_goMagicScreen.transform.Find ("MagicPanel").Find ("SpellListContainer").Find ("ViewPort").Find ("Contents");
 		foreach (Transform child in _root) {
 			Destroy (child.gameObject);
 		}
@@ -932,10 +932,10 @@ public class MenuScreenScript : MonoBehaviour
 			int _iter = ConvertFormationNumberToPanelIter(character.m_nFormationIter);
 			GameObject _unit = m_goUnitMagicCells [_iter];
 			_unit.SetActive (true);
-			Transform _root = _unit.transform.FindChild ("Background");
-			_root.FindChild ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
-			_root.FindChild ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
-			_root.FindChild ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
+			Transform _root = _unit.transform.Find ("Background");
+			_root.Find ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
+			_root.Find ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
+			_root.Find ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
 		}
 
 		m_goMagicScreen.SetActive (true);
@@ -944,18 +944,18 @@ public class MenuScreenScript : MonoBehaviour
 	public void DisplayMagicPanel(int _nFormation)
 	{
 		ClearSpellList ();
-		GameObject _magicPanel = m_goMagicScreen.transform.FindChild ("MagicPanel").gameObject;
+		GameObject _magicPanel = m_goMagicScreen.transform.Find ("MagicPanel").gameObject;
 		_magicPanel.SetActive (true);
 		int _formation = ConvertPanelIterToFormationNumber (_nFormation) - 1;
 		foreach (DCScript.CharacterData character in dc.GetParty ()) {
 			if (character.m_nFormationIter == _formation) {
 				foreach (string _spell in character.m_lSpellsKnown) {
 					GameObject _newSpell = Instantiate (m_goSpellInMagicListPrefab) as GameObject;
-					_newSpell.GetComponent<RectTransform> ().SetParent (m_goMagicScreen.transform.FindChild("MagicPanel").FindChild("SpellListContainer").FindChild("ViewPort").FindChild("Contents").gameObject.GetComponent<RectTransform> ());
+					_newSpell.GetComponent<RectTransform> ().SetParent (m_goMagicScreen.transform.Find("MagicPanel").Find("SpellListContainer").Find("ViewPort").Find("Contents").gameObject.GetComponent<RectTransform> ());
 					_newSpell.GetComponent<RectTransform> ().rotation = Quaternion.identity;
 					_newSpell.GetComponentInChildren<Text> ().text = _spell;
 					SpellLibrary.cSpellData _theSpell = dc.m_lSpellLibrary.GetSpellFromLibrary (_spell);
-					GameObject _spellWindow = m_goMagicScreen.transform.FindChild ("MagicPanel").FindChild ("SpellWindow").gameObject;
+					GameObject _spellWindow = m_goMagicScreen.transform.Find ("MagicPanel").Find ("SpellWindow").gameObject;
 					_newSpell.GetComponent<SpellInSpellListScript> ().Initialize (_spellWindow, _theSpell);
 				}
 			}
@@ -974,7 +974,7 @@ public class MenuScreenScript : MonoBehaviour
 	public void AdjustEquipmentScreenCharacter(int _nCharacterIter)
 	{
 		if (_nCharacterIter == -1) {
-			m_goEquipmentScreen.transform.FindChild ("EquipmentPanel").gameObject.SetActive (false);
+			m_goEquipmentScreen.transform.Find ("EquipmentPanel").gameObject.SetActive (false);
 			m_nEquipmentScreenIter = 0;
 		}
 		else {
@@ -993,29 +993,29 @@ public class MenuScreenScript : MonoBehaviour
 
 	public void UpdateEquipmentScreen(DCScript.CharacterData _character)
 	{
-		Transform _tEquipmentPanel = m_goEquipmentScreen.transform.FindChild ("EquipmentPanel");
+		Transform _tEquipmentPanel = m_goEquipmentScreen.transform.Find ("EquipmentPanel");
 		_tEquipmentPanel.gameObject.SetActive (true);
-		_tEquipmentPanel.FindChild ("CharacterName").GetComponent<Text> ().text = _character.m_szCharacterName;
-		Transform _tSecondEqPan = _tEquipmentPanel.FindChild ("EquipmentPanel");
-		GameObject _gRadar = _tEquipmentPanel.FindChild ("Radar").gameObject;
+		_tEquipmentPanel.Find ("CharacterName").GetComponent<Text> ().text = _character.m_szCharacterName;
+		Transform _tSecondEqPan = _tEquipmentPanel.Find ("EquipmentPanel");
+		GameObject _gRadar = _tEquipmentPanel.Find ("Radar").gameObject;
 		//So we need to create a list of 0-1 floats that represent the stat fill radar chart.
 		List<float> lStatDistances = new List<float>();
 		List<int> lStats = new List<int>();
 		//SPD, DEF, HP, POW, HIT, MP, EVA (I think this is the order, more testing.
 		lStats.Add(_character.m_nSPD);
-		_gRadar.transform.FindChild("SPD").FindChild("Stat").GetComponent<Text>().text = _character.m_nSPD.ToString();
+		_gRadar.transform.Find("SPD").Find("Stat").GetComponent<Text>().text = _character.m_nSPD.ToString();
 		lStats.Add(_character.m_nEVA);
-		_gRadar.transform.FindChild("EVA").FindChild("Stat").GetComponent<Text>().text = _character.m_nEVA.ToString();
+		_gRadar.transform.Find("EVA").Find("Stat").GetComponent<Text>().text = _character.m_nEVA.ToString();
 		lStats.Add(_character.m_nMaxMP);
-		_gRadar.transform.FindChild("MP").FindChild("Stat").GetComponent<Text>().text = _character.m_nMaxMP.ToString();
+		_gRadar.transform.Find("MP").Find("Stat").GetComponent<Text>().text = _character.m_nMaxMP.ToString();
 		lStats.Add(_character.m_nHIT);
-		_gRadar.transform.FindChild("HIT").FindChild("Stat").GetComponent<Text>().text = _character.m_nHIT.ToString();
+		_gRadar.transform.Find("HIT").Find("Stat").GetComponent<Text>().text = _character.m_nHIT.ToString();
 		lStats.Add(_character.m_nSTR);
-		_gRadar.transform.FindChild("POW").FindChild("Stat").GetComponent<Text>().text = _character.m_nSTR.ToString();
+		_gRadar.transform.Find("POW").Find("Stat").GetComponent<Text>().text = _character.m_nSTR.ToString();
 		lStats.Add(_character.m_nMaxHP);
-		_gRadar.transform.FindChild("HP").FindChild("Stat").GetComponent<Text>().text = _character.m_nMaxHP.ToString();
+		_gRadar.transform.Find("HP").Find("Stat").GetComponent<Text>().text = _character.m_nMaxHP.ToString();
 		lStats.Add(_character.m_nDEF);
-		_gRadar.transform.FindChild("DEF").FindChild("Stat").GetComponent<Text>().text = _character.m_nDEF.ToString();
+		_gRadar.transform.Find("DEF").Find("Stat").GetComponent<Text>().text = _character.m_nDEF.ToString();
 
 		int highestStat = 0;
 		foreach(int n in lStats)
@@ -1031,67 +1031,67 @@ public class MenuScreenScript : MonoBehaviour
 		//Now let's populate the equipment.
 		if(_character.m_idHelmSlot != null)
 		{
-			_tSecondEqPan.FindChild("Head").GetComponentInChildren<Text>().text = "Head Slot : " + _character.m_idHelmSlot.m_szItemName;
+			_tSecondEqPan.Find("Head").GetComponentInChildren<Text>().text = "Head Slot : " + _character.m_idHelmSlot.m_szItemName;
 		}
 		else
 		{
-			_tSecondEqPan.FindChild("Head").GetComponentInChildren<Text>().text = "Head Slot : None";
+			_tSecondEqPan.Find("Head").GetComponentInChildren<Text>().text = "Head Slot : None";
 		}
 		if(_character.m_idShoulderSlot != null)
 		{
-			_tSecondEqPan.FindChild("Shoulder").GetComponentInChildren<Text>().text = "Shoulder Slot : " + _character.m_idShoulderSlot.m_szItemName;
+			_tSecondEqPan.Find("Shoulder").GetComponentInChildren<Text>().text = "Shoulder Slot : " + _character.m_idShoulderSlot.m_szItemName;
 		}
 		else
 		{
-			_tSecondEqPan.FindChild("Shoulder").GetComponentInChildren<Text>().text = "Shoulder Slot : None";
+			_tSecondEqPan.Find("Shoulder").GetComponentInChildren<Text>().text = "Shoulder Slot : None";
 		}
 		if(_character.m_idChestSlot != null)
 		{
-			_tSecondEqPan.FindChild("Chest").GetComponentInChildren<Text>().text = "Chest Slot : " + _character.m_idChestSlot.m_szItemName;
+			_tSecondEqPan.Find("Chest").GetComponentInChildren<Text>().text = "Chest Slot : " + _character.m_idChestSlot.m_szItemName;
 		}
 		else
 		{
-			_tSecondEqPan.FindChild("Chest").GetComponentInChildren<Text>().text = "Chest Slot : None";
+			_tSecondEqPan.Find("Chest").GetComponentInChildren<Text>().text = "Chest Slot : None";
 		}
 		if(_character.m_idGloveSlot != null)
 		{
-			_tSecondEqPan.FindChild("Arms").GetComponentInChildren<Text>().text = "Glove Slot : " + _character.m_idGloveSlot.m_szItemName;
+			_tSecondEqPan.Find("Arms").GetComponentInChildren<Text>().text = "Glove Slot : " + _character.m_idGloveSlot.m_szItemName;
 		}
 		else
 		{
-			_tSecondEqPan.FindChild("Arms").GetComponentInChildren<Text>().text = "Glove Slot : None";
+			_tSecondEqPan.Find("Arms").GetComponentInChildren<Text>().text = "Glove Slot : None";
 		}
 		if(_character.m_idBeltSlot != null)
 		{
-			_tSecondEqPan.FindChild("Waist").GetComponentInChildren<Text>().text = "Belt Slot : " + _character.m_idBeltSlot.m_szItemName;
+			_tSecondEqPan.Find("Waist").GetComponentInChildren<Text>().text = "Belt Slot : " + _character.m_idBeltSlot.m_szItemName;
 		}
 		else
 		{
-			_tSecondEqPan.FindChild("Waist").GetComponentInChildren<Text>().text = "Waist Slot : None";
+			_tSecondEqPan.Find("Waist").GetComponentInChildren<Text>().text = "Waist Slot : None";
 		}
 		if(_character.m_idLegSlot != null)
 		{
-			_tSecondEqPan.FindChild("Legs").GetComponentInChildren<Text>().text = "Leg Slot : " + _character.m_idLegSlot.m_szItemName;
+			_tSecondEqPan.Find("Legs").GetComponentInChildren<Text>().text = "Leg Slot : " + _character.m_idLegSlot.m_szItemName;
 		}
 		else
 		{
-			_tSecondEqPan.FindChild("Legs").GetComponentInChildren<Text>().text = "Leg Slot : None";
+			_tSecondEqPan.Find("Legs").GetComponentInChildren<Text>().text = "Leg Slot : None";
 		}
 		if(_character.m_idTrinket1 != null)
 		{
-			_tSecondEqPan.FindChild("Trinket1").GetComponentInChildren<Text>().text = "Trinket Slot : " + _character.m_idTrinket1.m_szItemName;
+			_tSecondEqPan.Find("Trinket1").GetComponentInChildren<Text>().text = "Trinket Slot : " + _character.m_idTrinket1.m_szItemName;
 		}
 		else
 		{
-			_tSecondEqPan.FindChild("Trinket1").GetComponentInChildren<Text>().text = "Trinket Slot : None";
+			_tSecondEqPan.Find("Trinket1").GetComponentInChildren<Text>().text = "Trinket Slot : None";
 		}
 		if(_character.m_idTrinket2 != null)
 		{
-			_tSecondEqPan.FindChild("Trinket2").GetComponentInChildren<Text>().text = "Trinket Slot : " + _character.m_idTrinket2.m_szItemName;
+			_tSecondEqPan.Find("Trinket2").GetComponentInChildren<Text>().text = "Trinket Slot : " + _character.m_idTrinket2.m_szItemName;
 		}
 		else
 		{
-			_tSecondEqPan.FindChild("Trinket2").GetComponentInChildren<Text>().text = "Trinket Slot : None";
+			_tSecondEqPan.Find("Trinket2").GetComponentInChildren<Text>().text = "Trinket Slot : None";
 		}
 	}
 
@@ -1149,7 +1149,7 @@ public class MenuScreenScript : MonoBehaviour
 		foreach (ItemLibrary.CharactersItems item in _lItemsOfType) 
 		{
 			GameObject invItem = Instantiate (m_goEquipmentListItemPrefab) as GameObject;
-			invItem.GetComponent<RectTransform> ().SetParent (m_goEquipmentListRoot.transform.FindChild("ViewPort").FindChild("Contents").gameObject.GetComponent<RectTransform> ());
+			invItem.GetComponent<RectTransform> ().SetParent (m_goEquipmentListRoot.transform.Find("ViewPort").Find("Contents").gameObject.GetComponent<RectTransform> ());
 			invItem.GetComponent<RectTransform> ().rotation = Quaternion.identity;
 			ItemLibrary.ArmorData _armor = (ItemLibrary.ArmorData)dc.m_lItemLibrary.GetItemFromDictionary (item.m_szItemName);
 			invItem.GetComponent<ItemInEquipmentList> ().Initialize (_armor, _nIter, gameObject);
@@ -1162,7 +1162,7 @@ public class MenuScreenScript : MonoBehaviour
 
 	void ClearEquipmentList()
 	{
-		foreach (Transform child in m_goEquipmentListRoot.transform.FindChild("ViewPort").FindChild("Contents")) {
+		foreach (Transform child in m_goEquipmentListRoot.transform.Find("ViewPort").Find("Contents")) {
 			Destroy (child.gameObject);
 		}
 	}
@@ -1180,11 +1180,11 @@ public class MenuScreenScript : MonoBehaviour
 			if(character != null)
 			{
 				//populate this panel with this character's information
-				Transform cName = panel.transform.FindChild("CharacterName");
+				Transform cName = panel.transform.Find("CharacterName");
 				cName.GetComponent<Text>().text = character.m_szCharacterName;
-				Transform cLVL = panel.transform.FindChild("CharacterLVL");
+				Transform cLVL = panel.transform.Find("CharacterLVL");
 				cLVL.GetComponent<Text>().text = "Lvl : " + character.m_nLevel.ToString();
-				Transform cHP = panel.transform.FindChild("CharacterHP");
+				Transform cHP = panel.transform.Find("CharacterHP");
 				float fPercentHPLeft = (float)((float)character.m_nCurHP / (float)character.m_nMaxHP);
 				if(fPercentHPLeft > 0.8f)
 					cHP.GetComponent<Text>().color = Color.green;
@@ -1195,7 +1195,7 @@ public class MenuScreenScript : MonoBehaviour
 				else
 					cHP.GetComponent<Text>().color = Color.black;
 				cHP.GetComponent<Text>().text =  "HP : " + character.m_nCurHP.ToString();
-				Transform cMP = panel.transform.FindChild("CharacterMP");
+				Transform cMP = panel.transform.Find("CharacterMP");
 				fPercentHPLeft = (float)((float)character.m_nCurMP / (float)character.m_nMaxMP);
 				if(fPercentHPLeft > 0.8f)
 					cMP.GetComponent<Text>().color = Color.green;
@@ -1206,9 +1206,9 @@ public class MenuScreenScript : MonoBehaviour
 				else
 					cMP.GetComponent<Text>().color = Color.black;
 				cMP.GetComponent<Text>().text = "MP : " + character.m_nCurMP.ToString();
-				Transform cEXP = panel.transform.FindChild("CharacterEXP");
+				Transform cEXP = panel.transform.Find("CharacterEXP");
 				cEXP.GetComponent<Text>().text = "EXP : " + character.m_nCurrentEXP.ToString();
-				Transform cPort = panel.transform.FindChild("CharacterImage");
+				Transform cPort = panel.transform.Find("CharacterImage");
 				cPort.GetComponent<Image>().color = Color.white;
 				GameObject pCont = GameObject.Find("Portraits Container");
 				Sprite texture;
@@ -1236,14 +1236,14 @@ public class MenuScreenScript : MonoBehaviour
 						{
 							//This character is effected with poison, display the icon.
 							_isEffected = true;
-							Transform cPoison = panel.transform.FindChild("Poison_Icon");
+							Transform cPoison = panel.transform.Find("Poison_Icon");
 							cPoison.GetComponent<Image>().enabled = true;
 						}
 					}
 				}
 				if(_isEffected == false)
 				{
-					Transform cPoison = panel.transform.FindChild("Poison_Icon");
+					Transform cPoison = panel.transform.Find("Poison_Icon");
 					cPoison.GetComponent<Image>().enabled = false;
 				}
 
@@ -1251,20 +1251,20 @@ public class MenuScreenScript : MonoBehaviour
 			else
 			{
 				//no character in this slot, de-activate the panel.
-				Transform cName = panel.transform.FindChild("CharacterName");
+				Transform cName = panel.transform.Find("CharacterName");
 				cName.GetComponent<Text>().text = "";
-				Transform cLVL = panel.transform.FindChild("CharacterLVL");
+				Transform cLVL = panel.transform.Find("CharacterLVL");
 				cLVL.GetComponent<Text>().text = "";
-				Transform cHP = panel.transform.FindChild("CharacterHP");
+				Transform cHP = panel.transform.Find("CharacterHP");
 				cHP.GetComponent<Text>().text =  "";
-				Transform cMP = panel.transform.FindChild("CharacterMP");
+				Transform cMP = panel.transform.Find("CharacterMP");
 				cMP.GetComponent<Text>().text = "";
-				Transform cEXP = panel.transform.FindChild("CharacterEXP");
+				Transform cEXP = panel.transform.Find("CharacterEXP");
 				cEXP.GetComponent<Text>().text = "";
-				Transform cPort = panel.transform.FindChild("CharacterImage");
+				Transform cPort = panel.transform.Find("CharacterImage");
 				cPort.GetComponent<Image>().sprite = null;
 				cPort.GetComponent<Image>().color = Color.clear;
-				Transform cPoison = panel.transform.FindChild("Poison_Icon");
+				Transform cPoison = panel.transform.Find("Poison_Icon");
 				cPoison.GetComponent<Image>().enabled = false;
 			}
 			counter++;
@@ -1298,11 +1298,11 @@ public class MenuScreenScript : MonoBehaviour
 	}
 	void AdjustStatusScreen(DCScript.CharacterData character)
 	{
-		Transform characterName = m_goStatus.transform.FindChild("CharacterName");
+		Transform characterName = m_goStatus.transform.Find("CharacterName");
 		characterName.GetComponent<Text>().text = character.m_szCharacterName;
-		Transform characterDesc = m_goStatus.transform.FindChild("CharacterDescription");
+		Transform characterDesc = m_goStatus.transform.Find("CharacterDescription");
 		characterDesc.GetComponent<Text>().text = character.m_szCharacterBio;
-		Transform characterBody = m_goStatus.transform.FindChild("CharacterBody");
+		Transform characterBody = m_goStatus.transform.Find("CharacterBody");
 		Color fadedWhite = Color.white;
 		fadedWhite.a = 0.3f;
 		characterBody.GetComponent<Image>().color = fadedWhite;
@@ -1322,12 +1322,12 @@ public class MenuScreenScript : MonoBehaviour
 				new Rect(0, 0, sprTex.width, sprTex.height), new Vector2(0.5f, 0.5f));
 		}
 
-		Transform weaponPanel = m_goStatus.transform.FindChild("WeaponPanel");
-		Transform weaponName = weaponPanel.FindChild("WeaponName");
+		Transform weaponPanel = m_goStatus.transform.Find("WeaponPanel");
+		Transform weaponName = weaponPanel.Find("WeaponName");
 		weaponName.GetComponent<Text>().text = character.m_szWeaponName;
-		Transform weaponLevel = weaponPanel.FindChild("WeaponLevel");
+		Transform weaponLevel = weaponPanel.Find("WeaponLevel");
 		weaponLevel.GetComponent<Text>().text = "Weapon Level: " + character.m_nWeaponLevel.ToString();
-		Transform weaponMod = weaponPanel.FindChild("WeaponMod");
+		Transform weaponMod = weaponPanel.Find("WeaponMod");
 		if(character.m_szWeaponModifierName != "")
 			weaponMod.GetComponent<Text>().text = "Weapon Mod : " + character.m_szWeaponModifierName;
 		else
@@ -1339,19 +1339,19 @@ public class MenuScreenScript : MonoBehaviour
 		List<int> lStats = new List<int>();
 		//SPD, DEF, HP, POW, HIT, MP, EVA (I think this is the order, more testing.
 		lStats.Add(character.m_nSPD);
-		m_goRadarChart.transform.FindChild("SPD").FindChild("Stat").GetComponent<Text>().text = character.m_nSPD.ToString();
+		m_goRadarChart.transform.Find("SPD").Find("Stat").GetComponent<Text>().text = character.m_nSPD.ToString();
 		lStats.Add(character.m_nEVA);
-		m_goRadarChart.transform.FindChild("EVA").FindChild("Stat").GetComponent<Text>().text = character.m_nEVA.ToString();
+		m_goRadarChart.transform.Find("EVA").Find("Stat").GetComponent<Text>().text = character.m_nEVA.ToString();
 		lStats.Add(character.m_nMaxMP);
-		m_goRadarChart.transform.FindChild("MP").FindChild("Stat").GetComponent<Text>().text = character.m_nMaxMP.ToString();
+		m_goRadarChart.transform.Find("MP").Find("Stat").GetComponent<Text>().text = character.m_nMaxMP.ToString();
 		lStats.Add(character.m_nHIT);
-		m_goRadarChart.transform.FindChild("HIT").FindChild("Stat").GetComponent<Text>().text = character.m_nHIT.ToString();
+		m_goRadarChart.transform.Find("HIT").Find("Stat").GetComponent<Text>().text = character.m_nHIT.ToString();
 		lStats.Add(character.m_nSTR);
-		m_goRadarChart.transform.FindChild("POW").FindChild("Stat").GetComponent<Text>().text = character.m_nSTR.ToString();
+		m_goRadarChart.transform.Find("POW").Find("Stat").GetComponent<Text>().text = character.m_nSTR.ToString();
 		lStats.Add(character.m_nMaxHP);
-		m_goRadarChart.transform.FindChild("HP").FindChild("Stat").GetComponent<Text>().text = character.m_nMaxHP.ToString();
+		m_goRadarChart.transform.Find("HP").Find("Stat").GetComponent<Text>().text = character.m_nMaxHP.ToString();
 		lStats.Add(character.m_nDEF);
-		m_goRadarChart.transform.FindChild("DEF").FindChild("Stat").GetComponent<Text>().text = character.m_nDEF.ToString();
+		m_goRadarChart.transform.Find("DEF").Find("Stat").GetComponent<Text>().text = character.m_nDEF.ToString();
 
 		int highestStat = 0;
 		foreach(int n in lStats)
@@ -1367,67 +1367,67 @@ public class MenuScreenScript : MonoBehaviour
 		//Now let's populate the equipment.
 		if(character.m_idHelmSlot != null)
 		{
-			m_goEquipment.transform.FindChild("Head").GetComponent<Text>().text = "Head Slot : " + character.m_idHelmSlot.m_szItemName;
+			m_goEquipment.transform.Find("Head").GetComponent<Text>().text = "Head Slot : " + character.m_idHelmSlot.m_szItemName;
 		}
 		else
 		{
-			m_goEquipment.transform.FindChild("Head").GetComponent<Text>().text = "Head Slot : None";
+			m_goEquipment.transform.Find("Head").GetComponent<Text>().text = "Head Slot : None";
 		}
 		if(character.m_idShoulderSlot != null)
 		{
-			m_goEquipment.transform.FindChild("Shoulder").GetComponent<Text>().text = "Shoulder Slot : " + character.m_idShoulderSlot.m_szItemName;
+			m_goEquipment.transform.Find("Shoulder").GetComponent<Text>().text = "Shoulder Slot : " + character.m_idShoulderSlot.m_szItemName;
 		}
 		else
 		{
-			m_goEquipment.transform.FindChild("Shoulder").GetComponent<Text>().text = "Shoulder Slot : None";
+			m_goEquipment.transform.Find("Shoulder").GetComponent<Text>().text = "Shoulder Slot : None";
 		}
 		if(character.m_idChestSlot != null)
 		{
-			m_goEquipment.transform.FindChild("Chest").GetComponent<Text>().text = "Chest Slot : " + character.m_idChestSlot.m_szItemName;
+			m_goEquipment.transform.Find("Chest").GetComponent<Text>().text = "Chest Slot : " + character.m_idChestSlot.m_szItemName;
 		}
 		else
 		{
-			m_goEquipment.transform.FindChild("Chest").GetComponent<Text>().text = "Chest Slot : None";
+			m_goEquipment.transform.Find("Chest").GetComponent<Text>().text = "Chest Slot : None";
 		}
 		if(character.m_idGloveSlot != null)
 		{
-			m_goEquipment.transform.FindChild("Arms").GetComponent<Text>().text = "Glove Slot : " + character.m_idGloveSlot.m_szItemName;
+			m_goEquipment.transform.Find("Arms").GetComponent<Text>().text = "Glove Slot : " + character.m_idGloveSlot.m_szItemName;
 		}
 		else
 		{
-			m_goEquipment.transform.FindChild("Arms").GetComponent<Text>().text = "Glove Slot : None";
+			m_goEquipment.transform.Find("Arms").GetComponent<Text>().text = "Glove Slot : None";
 		}
 		if(character.m_idBeltSlot != null)
 		{
-			m_goEquipment.transform.FindChild("Waist").GetComponent<Text>().text = "Belt Slot : " + character.m_idBeltSlot.m_szItemName;
+			m_goEquipment.transform.Find("Waist").GetComponent<Text>().text = "Belt Slot : " + character.m_idBeltSlot.m_szItemName;
 		}
 		else
 		{
-			m_goEquipment.transform.FindChild("Waist").GetComponent<Text>().text = "Waist Slot : None";
+			m_goEquipment.transform.Find("Waist").GetComponent<Text>().text = "Waist Slot : None";
 		}
 		if(character.m_idLegSlot != null)
 		{
-			m_goEquipment.transform.FindChild("Legs").GetComponent<Text>().text = "Leg Slot : " + character.m_idLegSlot.m_szItemName;
+			m_goEquipment.transform.Find("Legs").GetComponent<Text>().text = "Leg Slot : " + character.m_idLegSlot.m_szItemName;
 		}
 		else
 		{
-			m_goEquipment.transform.FindChild("Legs").GetComponent<Text>().text = "Leg Slot : None";
+			m_goEquipment.transform.Find("Legs").GetComponent<Text>().text = "Leg Slot : None";
 		}
 		if(character.m_idTrinket1 != null)
 		{
-			m_goEquipment.transform.FindChild("Trinket1").GetComponent<Text>().text = "Trinket Slot : " + character.m_idTrinket1.m_szItemName;
+			m_goEquipment.transform.Find("Trinket1").GetComponent<Text>().text = "Trinket Slot : " + character.m_idTrinket1.m_szItemName;
 		}
 		else
 		{
-			m_goEquipment.transform.FindChild("Trinket1").GetComponent<Text>().text = "Trinket Slot : None";
+			m_goEquipment.transform.Find("Trinket1").GetComponent<Text>().text = "Trinket Slot : None";
 		}
 		if(character.m_idTrinket2 != null)
 		{
-			m_goEquipment.transform.FindChild("Trinket2").GetComponent<Text>().text = "Trinket Slot : " + character.m_idTrinket2.m_szItemName;
+			m_goEquipment.transform.Find("Trinket2").GetComponent<Text>().text = "Trinket Slot : " + character.m_idTrinket2.m_szItemName;
 		}
 		else
 		{
-			m_goEquipment.transform.FindChild("Trinket1").GetComponent<Text>().text = "Trinket Slot : None";
+			m_goEquipment.transform.Find("Trinket1").GetComponent<Text>().text = "Trinket Slot : None";
 		}
 
 	}
@@ -1512,15 +1512,15 @@ public class MenuScreenScript : MonoBehaviour
 			GameObject _unit = m_goUnitInventoryCells [_iter];
 		 	GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
 		 	Texture2D sprTex = unit.GetComponent<CAllyBattleScript>().TextureFromSprite(unit.GetComponent<CAllyBattleScript>().m_tLargeBust);
-			Transform _root = _unit.transform.FindChild ("Background");
-			_root.FindChild("Icon").GetComponent<Image>().sprite = Sprite.Create(sprTex, 
+			Transform _root = _unit.transform.Find ("Background");
+			_root.Find("Icon").GetComponent<Image>().sprite = Sprite.Create(sprTex, 
 						new Rect(0, 0, sprTex.width, sprTex.height), new Vector2(0.5f, 0.5f));
-			Color _col = _root.FindChild("Icon").GetComponent<Image> ().color;
+			Color _col = _root.Find("Icon").GetComponent<Image> ().color;
 			_col.a = 0.5f;
-			_root.FindChild("Icon").GetComponent<Image> ().color = _col;
-			_root.FindChild ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
-			_root.FindChild ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
-			_root.FindChild ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
+			_root.Find("Icon").GetComponent<Image> ().color = _col;
+			_root.Find ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
+			_root.Find ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
+			_root.Find ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
 		}
 	}
 
@@ -1533,10 +1533,10 @@ public class MenuScreenScript : MonoBehaviour
 			int _iter = ConvertFormationNumberToPanelIter(character.m_nFormationIter);
 			m_goUnitEquipmentCells [_iter].SetActive (true);
 			GameObject _unit = m_goUnitEquipmentCells [_iter];
-			Transform _root = _unit.transform.FindChild ("Background");
-			_root.FindChild ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
-			_root.FindChild ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
-			_root.FindChild ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
+			Transform _root = _unit.transform.Find ("Background");
+			_root.Find ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
+			_root.Find ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
+			_root.Find ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
 		}
 	}
 

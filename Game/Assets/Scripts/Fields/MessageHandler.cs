@@ -71,16 +71,16 @@ public class MessageHandler : MonoBehaviour
 		m_goDialogueCanvas = GameObject.Find("Canvas_Dialogue");
 		if(m_goDialogueCanvas)
 		{
-			m_goDialogueBox = m_goDialogueCanvas.transform.FindChild("DialogueBox").gameObject;
-			m_goDialoguePortrait = m_goDialogueCanvas.transform.FindChild("DialoguePortrait").gameObject;
-			m_goDialogueNameplate1 = m_goDialogueCanvas.transform.FindChild("Nameplate1").gameObject;
-			m_goDialogueNameplate2 = m_goDialogueCanvas.transform.FindChild("Nameplate2").gameObject;
-			m_goNameplate1Origin = m_goDialogueCanvas.transform.FindChild("Nameplate1Origin").gameObject;
-			m_goNameplate1TextOrigin = m_goDialogueNameplate1.transform.FindChild("Nameplate1TextOrigin").gameObject;
-			m_goNameplate2Origin = m_goDialogueCanvas.transform.FindChild("Nameplate2Origin").gameObject;
-			m_goNameplate2TextOrigin = m_goDialogueNameplate2.transform.FindChild("Nameplate2TextOrigin").gameObject;
+			m_goDialogueBox = m_goDialogueCanvas.transform.Find("DialogueBox").gameObject;
+			m_goDialoguePortrait = m_goDialogueCanvas.transform.Find("DialoguePortrait").gameObject;
+			m_goDialogueNameplate1 = m_goDialogueCanvas.transform.Find("Nameplate1").gameObject;
+			m_goDialogueNameplate2 = m_goDialogueCanvas.transform.Find("Nameplate2").gameObject;
+			m_goNameplate1Origin = m_goDialogueCanvas.transform.Find("Nameplate1Origin").gameObject;
+			m_goNameplate1TextOrigin = m_goDialogueNameplate1.transform.Find("Nameplate1TextOrigin").gameObject;
+			m_goNameplate2Origin = m_goDialogueCanvas.transform.Find("Nameplate2Origin").gameObject;
+			m_goNameplate2TextOrigin = m_goDialogueNameplate2.transform.Find("Nameplate2TextOrigin").gameObject;
 
-			m_goDialogueHighlighter = m_goDialogueBox.transform.FindChild("Highlighter").gameObject;
+			m_goDialogueHighlighter = m_goDialogueBox.transform.Find("Highlighter").gameObject;
 		}
 		else
 		{
@@ -218,14 +218,14 @@ public class MessageHandler : MonoBehaviour
 				DisplayDialogueWithPortrait();
 		}
 		
-		Color col = m_goDialogueBox.transform.FindChild ("Text").GetComponent<Text> ().color;
+		Color col = m_goDialogueBox.transform.Find ("Text").GetComponent<Text> ().color;
 		col.a = 255;
-		m_goDialogueBox.transform.FindChild ("Text").GetComponent<Text> ().color = col;
-		m_goDialogueBox.transform.FindChild("Text").GetComponent<Text>().text = line;
-		m_goDialogueBox.transform.FindChild("Text1").GetComponent<Text>().text = "";
-		m_goDialogueBox.transform.FindChild("Text2").GetComponent<Text>().text = "";
-		m_goDialogueBox.transform.FindChild("Text3").GetComponent<Text>().text = "";
-		m_goDialogueBox.transform.FindChild("Text4").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.Find ("Text").GetComponent<Text> ().color = col;
+		m_goDialogueBox.transform.Find("Text").GetComponent<Text>().text = line;
+		m_goDialogueBox.transform.Find("Text1").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.Find("Text2").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.Find("Text3").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.Find("Text4").GetComponent<Text>().text = "";
 	}
 
 	void DisplayDialogueWithPortrait()
@@ -271,7 +271,7 @@ public class MessageHandler : MonoBehaviour
 				if(selectedIndex >= ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).NumberOfChoices)
 					selectedIndex = 0;
 				bufferedInputTimer = 0.0f;
-				m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.FindChild("Text" + (selectedIndex+1).ToString()).localPosition;
+				m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.Find("Text" + (selectedIndex+1).ToString()).localPosition;
 			}
 		}
 		else if(Input.GetKey(KeyCode.UpArrow))
@@ -284,7 +284,7 @@ public class MessageHandler : MonoBehaviour
 					selectedIndex = ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).NumberOfChoices-1;
 				}
 				bufferedInputTimer = 0.0f;
-				m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.FindChild("Text" + (selectedIndex+1).ToString()).localPosition;
+				m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.Find("Text" + (selectedIndex+1).ToString()).localPosition;
 			}
 		}
 		else if(Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
@@ -303,7 +303,7 @@ public class MessageHandler : MonoBehaviour
 		}
 		EnableUIObject(m_goDialogueBox);
 		m_goDialogueHighlighter.GetComponent<Image>().enabled = true;
-		m_goDialogueBox.transform.FindChild("Text").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.Find("Text").GetComponent<Text>().text = "";
 		DisableUIObject(m_goDialogueNameplate1);
 		DisableUIObject(m_goDialoguePortrait);
 		DisableUIObject(m_goDialogueNameplate2);
@@ -311,9 +311,9 @@ public class MessageHandler : MonoBehaviour
 		for(int i = 1; i < 5; ++ i)
 		{
 			if((i-1) < ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).NumberOfChoices)
-				m_goDialogueBox.transform.FindChild("Text"+i.ToString()).GetComponent<Text>().text = ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).choices[i-1].Line;
+				m_goDialogueBox.transform.Find("Text"+i.ToString()).GetComponent<Text>().text = ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).choices[i-1].Line;
 			else
-				m_goDialogueBox.transform.FindChild("Text"+i.ToString()).GetComponent<Text>().text = "";
+				m_goDialogueBox.transform.Find("Text"+i.ToString()).GetComponent<Text>().text = "";
 		}
 	}
 
@@ -396,14 +396,14 @@ public class MessageHandler : MonoBehaviour
 		}
 
 
-		Color col = m_goDialogueBox.transform.FindChild ("Text").GetComponent<Text> ().color;
+		Color col = m_goDialogueBox.transform.Find ("Text").GetComponent<Text> ().color;
 		col.a = 255;
-		m_goDialogueBox.transform.FindChild ("Text").GetComponent<Text> ().color = col;
-		m_goDialogueBox.transform.FindChild("Text").GetComponent<Text>().text = line;
-		m_goDialogueBox.transform.FindChild("Text1").GetComponent<Text>().text = "";
-		m_goDialogueBox.transform.FindChild("Text2").GetComponent<Text>().text = "";
-		m_goDialogueBox.transform.FindChild("Text3").GetComponent<Text>().text = "";
-		m_goDialogueBox.transform.FindChild("Text4").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.Find ("Text").GetComponent<Text> ().color = col;
+		m_goDialogueBox.transform.Find("Text").GetComponent<Text>().text = line;
+		m_goDialogueBox.transform.Find("Text1").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.Find("Text2").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.Find("Text3").GetComponent<Text>().text = "";
+		m_goDialogueBox.transform.Find("Text4").GetComponent<Text>().text = "";
 	}
 
 	// Update is called once per frame
@@ -516,7 +516,7 @@ public class MessageHandler : MonoBehaviour
 		m_szTempLine = "";
 		m_szTempName = "";
 		m_nTempBustID = -1;
-		m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.FindChild("Text" + (selectedIndex+1).ToString()).localPosition;
+		m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.Find("Text" + (selectedIndex+1).ToString()).localPosition;
 	}
 }
  

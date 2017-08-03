@@ -122,10 +122,10 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 				{
 					//Create a new button and initialize it's data
 					GameObject newCell = Instantiate(m_goSelection);
-					newCell.transform.FindChild("Selection Name").GetComponent<Text>().text = item.m_szItemName;
-					newCell.transform.FindChild("Selection Count").GetComponent<Text>().text = item.m_nItemCount.ToString();
+					newCell.transform.Find("Selection Name").GetComponent<Text>().text = item.m_szItemName;
+					newCell.transform.Find("Selection Count").GetComponent<Text>().text = item.m_nItemCount.ToString();
 					//Hardcoded because I can't think of a time when an items icon would be different, since they're all just useable items (maybe by item type eventually when we have more artists?)
-					newCell.transform.FindChild("Icon").GetComponent<Image>().sprite = m_goSpriteIcons[0];
+					newCell.transform.Find("Icon").GetComponent<Image>().sprite = m_goSpriteIcons[0];
 					newCell.GetComponent<IntContainer>().m_nInteger = m_nElementCount;
 					newCell.GetComponent<IntContainer>().m_twTurnWatcher = gameObject;
 					newCell.transform.SetParent(m_goSelectionRoot.transform);
@@ -173,14 +173,14 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 						{
 							//Create a new button and initialize it's data
 							GameObject newCell = Instantiate(m_goSelection);
-							newCell.transform.FindChild("Selection Name").GetComponent<Text>().text = spell.m_szSpellName;
+							newCell.transform.Find("Selection Name").GetComponent<Text>().text = spell.m_szSpellName;
 							if(m_cCurrentCharacter.m_nCurMP >= spell.m_nMPCost)
 								newCell.GetComponent<Image>().color = Color.white;
 							else
 								newCell.GetComponent<Image>().color = Color.grey;
-							newCell.transform.FindChild("Selection Count").GetComponent<Text>().text = spell.m_nMPCost.ToString();
+							newCell.transform.Find("Selection Count").GetComponent<Text>().text = spell.m_nMPCost.ToString();
 							//Hardcoded because I can't think of a time when an items icon would be different, since they're all just useable items (maybe by item type eventually when we have more artists?)
-							newCell.transform.FindChild("Icon").GetComponent<Image>().sprite = m_goSpriteIcons[0];
+							newCell.transform.Find("Icon").GetComponent<Image>().sprite = m_goSpriteIcons[0];
 							newCell.GetComponent<IntContainer>().m_nInteger = m_nElementCount;
 							newCell.GetComponent<IntContainer>().m_twTurnWatcher = gameObject;
 							newCell.transform.SetParent(m_goSelectionRoot.transform);
@@ -307,36 +307,36 @@ public class ItemsAndSpellsContainer : MonoBehaviour
 
 	void ClearDescriptor()
 	{
-		Transform EleIcon = m_goItemAndSpellDescriptor.transform.FindChild("Element Icon");
+		Transform EleIcon = m_goItemAndSpellDescriptor.transform.Find("Element Icon");
 		EleIcon.GetComponent<Image>().color = Color.clear;
-		Transform EleName = m_goItemAndSpellDescriptor.transform.FindChild("Element Name");
+		Transform EleName = m_goItemAndSpellDescriptor.transform.Find("Element Name");
 		EleName.GetComponent<Text>().text = "";
-		Transform EleCount = m_goItemAndSpellDescriptor.transform.FindChild("Element Count");
+		Transform EleCount = m_goItemAndSpellDescriptor.transform.Find("Element Count");
 		EleCount.GetComponent<Text>().text = "";
-		Transform targetType = m_goItemAndSpellDescriptor.transform.FindChild("Target Type");
+		Transform targetType = m_goItemAndSpellDescriptor.transform.Find("Target Type");
 		targetType.GetComponent<Text>().text = "";
-		Transform EleDesc = m_goItemAndSpellDescriptor.transform.FindChild("Element Description");
+		Transform EleDesc = m_goItemAndSpellDescriptor.transform.Find("Element Description");
 		EleDesc.GetComponent<Text>().text = "";
-		Transform EleFlavor = m_goItemAndSpellDescriptor.transform.FindChild("Element Flavor");
+		Transform EleFlavor = m_goItemAndSpellDescriptor.transform.Find("Element Flavor");
 		EleFlavor.GetComponent<Text>().text = "";
 	}
 
 	void UpdateDescriptor(int nIndex)
 	{
-		Transform EleIcon = m_goItemAndSpellDescriptor.transform.FindChild("Element Icon");
+		Transform EleIcon = m_goItemAndSpellDescriptor.transform.Find("Element Icon");
 		EleIcon.GetComponent<Image>().sprite = m_goSpriteIcons[m_lElementList[nIndex].m_nIconType];
 		//Figure out which icon to change this to, should probably do something like this for the button as well.
-		Transform EleName = m_goItemAndSpellDescriptor.transform.FindChild("Element Name");
+		Transform EleName = m_goItemAndSpellDescriptor.transform.Find("Element Name");
 		EleName.GetComponent<Text>().text = m_lElementList[nIndex].m_szName;
 		//This is either the amount of items, or the cost of the spell (so for spells compare m_nAmount with the amount the current characters mp.  If it's too much, we need to grey this selection out.
-		Transform EleCount = m_goItemAndSpellDescriptor.transform.FindChild("Element Count");
+		Transform EleCount = m_goItemAndSpellDescriptor.transform.Find("Element Count");
 		EleCount.GetComponent<Text>().text = m_lElementList[nIndex].m_nAmount.ToString();
 		//Single Enemy, All Enemy, Single Ally, All Ally
-		Transform targetType = m_goItemAndSpellDescriptor.transform.FindChild("Target Type");
+		Transform targetType = m_goItemAndSpellDescriptor.transform.Find("Target Type");
 		//So this is the description of what the item is going to do.
-		Transform EleDesc = m_goItemAndSpellDescriptor.transform.FindChild("Element Description");
+		Transform EleDesc = m_goItemAndSpellDescriptor.transform.Find("Element Description");
 		//So this is for if there's flavor text.
-		Transform EleFlavor = m_goItemAndSpellDescriptor.transform.FindChild("Element Flavor");
+		Transform EleFlavor = m_goItemAndSpellDescriptor.transform.Find("Element Flavor");
 		switch(m_nKey)
 		{
 		case 0:

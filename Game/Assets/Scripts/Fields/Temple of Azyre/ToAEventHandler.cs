@@ -93,13 +93,13 @@ public class ToAEventHandler : BaseEventSystemScript
 			case 5:
 			{
 				//Temple was cleared out and a choice was made over Knight/Ranger
-				GameObject rubble1 = GameObject.Find("Temple of Azyre int").transform.FindChild("rubble_04").gameObject;
+				GameObject rubble1 = GameObject.Find("Temple of Azyre int").transform.Find("rubble_04").gameObject;
 				rubble1.SetActive(false);
-				GameObject rubble2 = GameObject.Find("Temple of Azyre int2").transform.FindChild("rubble_04").gameObject;
+				GameObject rubble2 = GameObject.Find("Temple of Azyre int2").transform.Find("rubble_04").gameObject;
 				rubble2.SetActive(false);
-				GameObject rubble3 = GameObject.Find("Temple of Azyre roof").transform.FindChild("rubble_04").gameObject;
+				GameObject rubble3 = GameObject.Find("Temple of Azyre roof").transform.Find("rubble_04").gameObject;
 				rubble3.SetActive(false);
-				GameObject rubble4 = GameObject.Find("Temple of Azyre basment").transform.FindChild("rubble_03").gameObject;
+				GameObject rubble4 = GameObject.Find("Temple of Azyre basment").transform.Find("rubble_03").gameObject;
 				rubble4.SetActive(false);
 				GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = false;
 				m_goBoar.SetActive (false);
@@ -276,13 +276,13 @@ public class ToAEventHandler : BaseEventSystemScript
 			player.GetComponent<Animator>().SetInteger("m_nFacingDir", 2);
 			briol.GetComponent<Animator>().SetInteger("m_nFacingDir", 1);
 			Camera.main.SendMessage("fadeOut");
-			GameObject rubble1 = GameObject.Find("Temple of Azyre int").transform.FindChild("rubble_04").gameObject;
+			GameObject rubble1 = GameObject.Find("Temple of Azyre int").transform.Find("rubble_04").gameObject;
 			rubble1.SetActive(false);
-			GameObject rubble2 = GameObject.Find("Temple of Azyre int2").transform.FindChild("rubble_04").gameObject;
+			GameObject rubble2 = GameObject.Find("Temple of Azyre int2").transform.Find("rubble_04").gameObject;
 			rubble2.SetActive(false);
-			GameObject rubble3 = GameObject.Find("Temple of Azyre roof").transform.FindChild("rubble_04").gameObject;
+			GameObject rubble3 = GameObject.Find("Temple of Azyre roof").transform.Find("rubble_04").gameObject;
 			rubble3.SetActive(false);
-			GameObject rubble4 = GameObject.Find("Temple of Azyre basment").transform.FindChild("rubble_03").gameObject;
+			GameObject rubble4 = GameObject.Find("Temple of Azyre basment").transform.Find("rubble_03").gameObject;
 			rubble4.SetActive(false);
 			Invoke("FadeBackIn", 1.0f);
 		}
