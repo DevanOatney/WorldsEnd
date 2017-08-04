@@ -104,9 +104,9 @@ public class TurnWatcherScript : MonoBehaviour
 			GameObject Briol = Resources.Load<GameObject>("Units/Ally/Briol/Briol");
 			Briol.GetComponent<CAllyBattleScript>().SetUnitStats();
 			ds.AddPartyMember("Briol");
-			GameObject Illuiyani = Resources.Load<GameObject>("Units/Ally/Illuiyani/Illuiyani");
-			Illuiyani.GetComponent<CAllyBattleScript>().SetUnitStats();
-			ds.AddPartyMember("Illuiyani");
+			GameObject Raik = Resources.Load<GameObject>("Units/Ally/Raik/Raik");
+			Raik.GetComponent<CAllyBattleScript>().SetUnitStats();
+			ds.AddPartyMember("Raik");
 			List<EncounterGroupLoaderScript.cEnemyData> lEnemies = new List<EncounterGroupLoaderScript.cEnemyData>();
 			EncounterGroupLoaderScript.cEnemyData enemy = new EncounterGroupLoaderScript.cEnemyData();
 			enemy.m_szEnemyName = "Slug Slinger";

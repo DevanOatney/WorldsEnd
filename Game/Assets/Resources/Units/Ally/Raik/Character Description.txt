@@ -1,0 +1,4 @@
+Name: Raik
+Description: Ranger
+Recruiting: Raikcan only be recruited after unlocking the base if you choose him, if you choose
+Domin instead Raik is not available

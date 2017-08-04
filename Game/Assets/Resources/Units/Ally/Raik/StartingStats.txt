@@ -1,0 +1,24 @@
+HP:40
+MP:50
+POW:999
+DEF:20
+SPD:20
+EVA:20
+HIT:20
+LEVEL:1
+RACE:Human
+CLASS:Ranger
+WEAPON NAME:Great Bow
+Weapon Level : 1
+Weapon dmg : 1
+Weapon Mod Name : NULL
+Head Slot:NULL
+Shoulder Slot:NULL
+Chest Slot:NULL
+Arm Slot:NULL
+Waist Slot:NULL
+Leg Slot:NULL
+Trinket1 Slot:NULL
+Trinket2 Slot:NULL
+BIO : Battle weary marksman
+Spell Count:0

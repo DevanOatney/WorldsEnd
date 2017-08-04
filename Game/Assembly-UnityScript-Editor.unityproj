@@ -60,6 +60,7 @@
      <Compile Include="Assets\2d Art Pack\Standard Assets\Editor\Image Effects\TonemappingEditor.js" />
      <Compile Include="Assets\2d Art Pack\Standard Assets\Editor\Image Effects\VignettingEditor.js" />
      <None Include="Assets\Tiled2Unity\Imported\Solomonia_house8of8.tiled2unity.xml" />
+     <None Include="Assets\Resources\Units\Ally\Raik\Character Description.txt" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
@@ -284,6 +285,7 @@
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrection3DLut.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SepiaToneEffect.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
+     <None Include="Assets\Resources\Units\Ally\Raik\StartingStats.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\EdgeDetectNormals.shader" />
      <None Include="Assets\Resources\Field\Battle Formations\Inon Forest\BATTLEZ.txt" />
      <None Include="Assets\Tiled2Unity\License.txt" />
