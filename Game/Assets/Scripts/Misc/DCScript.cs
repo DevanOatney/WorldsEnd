@@ -189,6 +189,7 @@ public class DCScript : MonoBehaviour
 	public class CharacterData
 	{
 		public string m_szCharacterName;
+		public bool m_bCombatCharacter = true;
 		public int m_nMaxHP, m_nCurHP, m_nMaxMP, m_nCurMP, m_nSTR, m_nDEF, m_nSPD, m_nEVA, m_nHIT, m_nLevel, m_nCurrentEXP;
 
 		public string m_szWeaponName;
@@ -482,6 +483,12 @@ public class DCScript : MonoBehaviour
 			m_bIsInParty = newData.m_bIsInParty;
 			m_bHasBeenRecruited = newData.m_bHasBeenRecruited;
 		}
+	}
+
+	[System.Serializable]
+	public class cNonCombatAlly : CharacterData
+	{
+		public string m_szSupportAbility;
 	}
 
 

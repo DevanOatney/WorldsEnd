@@ -28,7 +28,23 @@ public class RosterLoaderScript : MonoBehaviour
 				continue;
 			}
 			GameObject newCharacter = Resources.Load<GameObject>("Units/Ally/" + line.Trim() + "/" + line.Trim());
-			newCharacter.GetComponent<CAllyBattleScript>().SetUnitStats();
+			if (newCharacter != null)
+				newCharacter.GetComponent<CAllyBattleScript> ().SetUnitStats ();
+			else
+			{
+				//This is a character that doesn't have combat stats.
+				DCScript.cNonCombatAlly c = new DCScript.cNonCombatAlly();
+				c.m_szCharacterName = line.Trim ();
+				c.m_bCombatCharacter = false;
+				TextAsset _stats = Resources.Load<TextAsset> ("Units/Ally/" + line.Trim () + "/" + "NonCombatStats");
+				string[] Lines = _stats.text.Split('\n');
+				c.m_szCharacterRace = Lines [0].Split (':') [1].Trim ();
+				c.m_szCharacterClassType = Lines [1].Split (':') [1].Trim ();
+				c.m_szCharacterBio = Lines [2].Split (':') [1].Trim ();
+				c.m_szSupportAbility = Lines [3].Split (':') [1].Trim ();
+
+				int x = 5;
+			}
 
 		}
 	}

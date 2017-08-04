@@ -1,0 +1,4 @@
+Race: Human
+Class: Blacksmith
+Bio: This guy is a shirtless blacksmith, go figure.
+Support Ability: Blacksmith Bonus

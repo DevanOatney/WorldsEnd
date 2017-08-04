@@ -152,6 +152,7 @@
      <None Include="Assets\Resources\Units\NPCs\Female\Lydia\Lydia_InonDialogue.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Main Char. Room.tiled2unity.xml" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
+     <None Include="Assets\Resources\Units\Ally\Kenyon\NonCombatStats.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ContrastComposite.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset3.shader" />
