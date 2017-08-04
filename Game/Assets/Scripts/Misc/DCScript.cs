@@ -28,6 +28,11 @@ public class DCScript : MonoBehaviour
 	//flag field that is toggled depending on what the players actions are in the game
 	//["Name"] - 1 if activated 								  : Place Created
 	public Dictionary<string, int> m_dStoryFlagField = new Dictionary<string, int>();
+	//Dictionary for the state of the base.
+	//("BlacksmithLevel", 0-3) shows the current progress of the blacksmith shop.
+
+	public Dictionary<string, int> m_dBaseFlagField = new Dictionary<string, int>();
+
 	//-------
 	//FIELD INFORMATION
 
@@ -76,6 +81,9 @@ public class DCScript : MonoBehaviour
 
 	//the library of all of the status effects that exist in the game
 	public StatusEffectLibrary m_lStatusEffectLibrary = new StatusEffectLibrary();
+	//("BaseUnlocked", 0) - just a flag for if the base has been unlocked (defeated the boss boar at the lowest level), the return value is unimportant for now
+	//("BlacksmithLevel", 0-3) - Each level increases the amount of stuff in the blacksmith's area.
+
 
 	[System.Serializable]
 	public class StatusEffect

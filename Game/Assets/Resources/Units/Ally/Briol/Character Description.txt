@@ -1,0 +1,3 @@
+Name: Briol
+Description: Briol is Callan's sister
+Recruiting: Briol is automatically recruited after the ritual event in Inon.

@@ -116,6 +116,7 @@
      <None Include="Assets\Resources\Dialogue Scripts\Inon\Inon_Merchant1.txt" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
+     <None Include="Assets\Resources\Units\Ally\Domin\Character Description.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlur.shader" />
      <None Include="Assets\Tiled2Unity\Tiled2Unity.export.txt" />
@@ -166,6 +167,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\TwirlEffect.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
+     <None Include="Assets\Resources\Units\Ally\Illuiyani\Character Description.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
      <None Include="Assets\Resources\Units\NPCs\Male\Bartholomew\Bartholomew_InonDialogue.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
@@ -179,12 +181,14 @@
      <None Include="Assets\Tiled2Unity\Imported\Temple of Azyre.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\Temple of Azyre roof.tiled2unity.xml" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\MinMaxReduction.shader" />
+     <None Include="Assets\Resources\Units\Ally\Callan\Character Description.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader" />
      <None Include="Assets\Resources\Units\Ally\ClassStatProgression.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Main House_LivingRoom.tiled2unity.xml" />
      <None Include="Assets\Resources\Units\NPCs\Female\Cytheria\Cytheria_InonDialogue.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\MobileBlur.shader" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SSAOShader.shader" />
+     <None Include="Assets\Resources\Units\Ally\Callan&apos;s Father\Character Description.txt" />
      <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
      <None Include="Assets\Resources\Units\NPCs\Female\Cassandra\Cassandra_InonDialogue.txt" />
      <None Include="Assets\Resources\Field\Towns\Inon\Item Merchant.txt" />
@@ -206,6 +210,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Solomnia_Part6of7.tiled2unity.xml" />
+     <None Include="Assets\Resources\Units\Ally\Domin\StartingStats.txt" />
      <None Include="Assets\Resources\Items\CraftableItemsList.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlobalFog.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
@@ -296,6 +301,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
      <None Include="Assets\Resources\Dialogue Scripts\Inon Forest\Boar Boss.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SimpleClear.shader" />
+     <None Include="Assets\Resources\Units\Ally\Briol\Character Description.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
      <None Include="Assets\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />

@@ -21,6 +21,7 @@ public class CheatScript : MonoBehaviour
 		m_lCheatEntries.Add("event.");
 		m_lCheatEntries.Add("player.");
 		m_lCheatEntries.Add ("recruit.");
+		m_lCheatEntries.Add ("base.");
 		m_lCheatEntries.Add("nocombat");
 	}
 	
@@ -188,7 +189,7 @@ public class CheatScript : MonoBehaviour
 										string _recruitName = pieces [1].Trim ();
 										GameObject newRecruit = Resources.Load<GameObject> ("Units/Ally/" + _recruitName + "/" + _recruitName);
 										if (newRecruit != null) {
-											DCScript.CharacterData _charData = GameObject.Find ("PersistantData").GetComponent<DCScript> ().GetRosteredCharacterData (_recruitName);
+											DCScript.CharacterData _charData = dc.GetComponent<DCScript> ().GetRosteredCharacterData (_recruitName);
 											if (_charData != null && _charData.m_bHasBeenRecruited == false) {
 												dc.AddPartyMember(_recruitName);
 												m_lChatLog.Add (_recruitName + " has been recruited.");
@@ -200,6 +201,31 @@ public class CheatScript : MonoBehaviour
 											m_lChatLog.Add (_recruitName + " wasn't found as an available character to recruit.");
 									}
 									break;
+								case "base":
+									{
+											string _nextPiece = pieces [1].Trim ();
+											switch (_nextPiece)
+											{
+												case "blacksmith":
+													{
+														m_bAbleToFindCommand = true;
+														int _level = int.Parse( pieces [2].Trim ());
+														if (dc.GetComponent<DCScript> ().m_dBaseFlagField.ContainsKey ("BlacksmithLevel"))
+														{
+															dc.GetComponent<DCScript> ().m_dBaseFlagField.Remove ("BlacksmithLevel");
+															dc.GetComponent<DCScript> ().m_dBaseFlagField.Add ("BlacksmithLevel", _level);
+														}
+														else
+														{
+															dc.GetComponent<DCScript> ().m_dBaseFlagField.Add ("BlacksmithLevel", _level);
+														}
+														GameObject.Find ("Event system").GetComponent<BaseEventSystemScript> ().AdjustBuildings ();
+													}
+													break;
+											}
+											
+									}
+										break;
 								case "nocombat":
 									{
 										gameObject.GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = false;

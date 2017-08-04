@@ -1,0 +1,4 @@
+Name: Domin
+Description: Domin is the knight
+Recruiting: Domin can only be recruited after unlocking the base if you choose him, if you choose
+Raik instead Domin is not available

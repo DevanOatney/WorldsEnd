@@ -1,0 +1,3 @@
+Name: Callan
+Description: Main character
+Recruiting: Automatically recruited in the beginning

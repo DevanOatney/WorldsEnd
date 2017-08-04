@@ -8,6 +8,7 @@ public class ToAEventHandler : BaseEventSystemScript
 	public GameObject[] Phase1_waypoints;
 	public GameObject m_goBoar;
 	public GameObject m_goBoarBoss;
+	public GameObject[] m_goBlackSmithShop;
 	DCScript ds;
 	public List<GameObject[]> m_lEvents;
 	string m_szToABGM = "TempleOfAzyre_BGM";
@@ -22,6 +23,24 @@ public class ToAEventHandler : BaseEventSystemScript
 		GameObject player = GameObject.Find("Player");
 		GameObject briol = GameObject.Find("Briol");
 		Physics2D.IgnoreCollision(player.GetComponent<BoxCollider2D>(), briol.GetComponent<BoxCollider2D>());
+		AdjustBuildings ();
+	}
+
+	override public void AdjustBuildings()
+	{
+		int result = 0;
+		ds.m_dBaseFlagField.TryGetValue ("BlacksmithLevel", out result);
+		foreach (GameObject blacksmithLayer in m_goBlackSmithShop)
+		{
+			if (blacksmithLayer.GetComponent<BaseLayerLevelScript> ().m_nLevel <= result)
+			{
+				blacksmithLayer.SetActive (true);
+			}
+			else
+			{
+				blacksmithLayer.SetActive (false);
+			}
+		}
 	}
 
 	//putting this in it's own function so that when you cheat it can update it there without you having to re-start that scene.
