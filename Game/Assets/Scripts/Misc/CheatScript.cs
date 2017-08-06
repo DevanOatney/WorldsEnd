@@ -20,6 +20,7 @@ public class CheatScript : MonoBehaviour
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		m_lCheatEntries.Add("event.");
 		m_lCheatEntries.Add("player.");
+		m_lCheatEntries.Add ("party.");
 		m_lCheatEntries.Add ("recruit.");
 		m_lCheatEntries.Add ("base.");
 		m_lCheatEntries.Add("nocombat");
@@ -182,23 +183,51 @@ public class CheatScript : MonoBehaviour
 									}
 								}
 									break;
-
+								case "party":
+									{
+											string _secondPiece = pieces [1].Trim ();
+											if (_secondPiece == "add")
+											{
+												m_bAbleToFindCommand = true;
+												string _recruitName = pieces [2].Trim ();
+												DCScript.CharacterData _charData = dc.GetComponent<DCScript> ().GetRosteredCharacterData (_recruitName);
+												dc.AddPartyMember (_charData);
+												m_lChatLog.Add (_recruitName + " has been added into the party.");
+											}
+											else
+											if (_secondPiece == "remove")
+											{
+												m_bAbleToFindCommand = true;
+												string _recruitName = pieces [2].Trim ();
+												DCScript.CharacterData _charData = dc.GetComponent<DCScript> ().GetRosteredCharacterData (_recruitName);
+												dc.RemovePartyMember (_charData);
+												m_lChatLog.Add (_recruitName + " has been removed from the party.");
+											}
+									}
+									break;
 								case "recruit":
 									{
 										m_bAbleToFindCommand = true;
 										string _recruitName = pieces [1].Trim ();
-										GameObject newRecruit = Resources.Load<GameObject> ("Units/Ally/" + _recruitName + "/" + _recruitName);
-										if (newRecruit != null) {
-											DCScript.CharacterData _charData = dc.GetComponent<DCScript> ().GetRosteredCharacterData (_recruitName);
-											if (_charData != null && _charData.m_bHasBeenRecruited == false) {
-												dc.AddPartyMember(_recruitName);
+										//GameObject newRecruit = Resources.Load<GameObject> ("Units/Ally/" + _recruitName + "/" + _recruitName);
+										DCScript.CharacterData _charData = dc.GetComponent<DCScript> ().GetRosteredCharacterData (_recruitName);
+										if (_charData != null)
+										{
+											if (_charData.m_bHasBeenRecruited == false)
+											{
+												_charData.m_bHasBeenRecruited = true;
 												m_lChatLog.Add (_recruitName + " has been recruited.");
 											}
 											else
+											{
 												m_lChatLog.Add (_recruitName + " has already been recruited.");
+											}
 										}
 										else
+										{
 											m_lChatLog.Add (_recruitName + " wasn't found as an available character to recruit.");
+										}
+										
 									}
 									break;
 								case "base":

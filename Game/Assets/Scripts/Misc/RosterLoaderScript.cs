@@ -42,8 +42,7 @@ public class RosterLoaderScript : MonoBehaviour
 				c.m_szCharacterClassType = Lines [1].Split (':') [1].Trim ();
 				c.m_szCharacterBio = Lines [2].Split (':') [1].Trim ();
 				c.m_szSupportAbility = Lines [3].Split (':') [1].Trim ();
-
-				int x = 5;
+				gameObject.GetComponent<DCScript> ().SetRosteredCharacterData (c);
 			}
 
 		}

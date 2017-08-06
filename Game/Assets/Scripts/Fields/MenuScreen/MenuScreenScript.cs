@@ -470,7 +470,19 @@ public class MenuScreenScript : MonoBehaviour
 					{
 						GameObject characterInList = Instantiate(m_goCharacterPrefab);
 						characterInList.transform.Find("CharacterName").GetComponent<Text>().text = character.m_szCharacterName;
-						characterInList.transform.Find("CharacterLVL").GetComponent<Text>().text = character.m_nLevel.ToString();
+							if (character.m_bCombatCharacter == true)
+							{
+								//This is a combat character
+								characterInList.transform.Find ("CharacterLVL").GetComponent<Text> ().text = character.m_nLevel.ToString ();
+								characterInList.GetComponent<CharacterInRosterScript> ().m_bCanBeInCombat = true;
+							}
+							else
+							{
+								//This is a support character.
+								characterInList.transform.Find ("CharacterLVL").GetComponent<Text> ().text = "--";
+								characterInList.GetComponent<CharacterInRosterScript> ().m_bCanBeInCombat = false;
+							}
+
 						characterInList.transform.SetParent(m_goCharacterRoot.transform);
 						characterInList.transform.localScale = new Vector3(1, 1, 1);
 					}

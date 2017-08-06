@@ -94,37 +94,38 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 		else
 			character = dc.GetRosteredCharacterData (charName);
 		CharacterInRosterScript.m_szCharacterBeingDragged = "";
+
 		if(character != null)
 		{
 			m_bPanelDropped = true;
-			if(m_szPanelOfDraggedCharacter == "")
+			if (m_szPanelOfDraggedCharacter == "")
 			{
 				//in here means that the character was not dragged from another cell, and was instead from the list on the left instead.
-				foreach(DCScript.CharacterData c in dc.GetParty())
+				foreach (DCScript.CharacterData c in dc.GetParty())
 				{
 					//if the character is already in the party (shouldn't happen.. but check anyway) don't do anything
-					if(c.m_szCharacterName == character.m_szCharacterName)
+					if (c.m_szCharacterName == character.m_szCharacterName)
 					{
 						return;
 					}
 				}
-				InstantiateCharacter(character);
+				InstantiateCharacter (character);
 			}
-			else if(name != m_szPanelOfDraggedCharacter)
+			else if (name != m_szPanelOfDraggedCharacter)
 			{
 				//Swapping from one panel to another
-				SwapCharacters(gameObject, GameObject.Find(m_szPanelOfDraggedCharacter));
+				SwapCharacters (gameObject, GameObject.Find (m_szPanelOfDraggedCharacter));
 			}
-			else if(m_cCharacter.m_nFormationIter == m_nFormationIter)
+			else if (m_cCharacter.m_nFormationIter == m_nFormationIter)
 			{
 				//object has been dropped back into this same cell.
 				m_bDroppedInSamePanel = true;
-				m_goDraggedObject.GetComponent<RectTransform>().SetParent(GetComponent<RectTransform>());
-				m_goDraggedObject.GetComponent<RectTransform>().rotation = Quaternion.identity;
+				m_goDraggedObject.GetComponent<RectTransform> ().SetParent (GetComponent<RectTransform> ());
+				m_goDraggedObject.GetComponent<RectTransform> ().rotation = Quaternion.identity;
 				Vector3 characterPosition = m_vCharacterStartPos;
-				characterPosition.y += m_goDraggedObject.GetComponent<RectTransform>().sizeDelta.y * 0.5f;
-				m_goDraggedObject.GetComponent<RectTransform>().localPosition = characterPosition;
-				m_goDraggedObject = GetComponent<RectTransform>().GetChild(0);
+				characterPosition.y += m_goDraggedObject.GetComponent<RectTransform> ().sizeDelta.y * 0.5f;
+				m_goDraggedObject.GetComponent<RectTransform> ().localPosition = characterPosition;
+				m_goDraggedObject = GetComponent<RectTransform> ().GetChild (0);
 				m_cCharacter.m_nFormationIter = m_nFormationIter;
 			}
 		}
@@ -138,6 +139,28 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 		m_cCharacter = character;
 		if(m_cCharacter != null)
 		{
+			//the following if/else stuff is an exit condition- if this is a support character being put into a non-support position, escape.
+			bool _bOkayToContinue = false;
+			if (m_cCharacter.m_bCombatCharacter == false)
+			{
+				//non-combat character
+				if (m_nFormationIter == 6)
+				{
+					_bOkayToContinue = true;
+				}
+				else
+				{
+					_bOkayToContinue = false;
+				}
+			}
+			else
+			{
+				_bOkayToContinue = true;
+			}
+			if (_bOkayToContinue == false)
+			{
+				return;
+			}
 			GameObject.Find ("PersistantData").GetComponent<DCScript> ().AddPartyMember (m_cCharacter.m_szCharacterName);
 			GameObject newCharacter = Instantiate(Resources.Load<GameObject>("Units/Ally/" + m_cCharacter.m_szCharacterName + "/" + m_cCharacter.m_szCharacterName + "_UIAnimated")) as GameObject;
 			newCharacter.name = m_cCharacter.m_szCharacterName + "_UIAnimated";

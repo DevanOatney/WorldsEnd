@@ -310,7 +310,6 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "End_Temple_Clean_Dialogue1":
 			{
 				//The hunter has been chosen as the first recruit!
-				Debug.Log("hit");
 				ds.m_dStoryFlagField.Add("FirstRecruit", 0);
 				GameObject briol = GameObject.Find("Briol");
 				briol.GetComponent<NPCScript> ().DHF_NPCMoveIntoPlayer ();

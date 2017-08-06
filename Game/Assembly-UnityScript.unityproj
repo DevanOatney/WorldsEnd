@@ -135,7 +135,7 @@
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlur.shader" />
      <None Include="Assets\Tiled2Unity\Tiled2Unity.export.txt" />
      <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\MobileBloom.shader" />
-     <None Include="Assets\Resources\Units\Ally\Callan&apos;s Father\Mattach_InonDialogue.txt" />
+     <None Include="Assets\Resources\Units\Ally\Callan&apos;s Father\Animations\Mattach_InonDialogue.txt" />
      <None Include="Assets\Resources\Units\NPCs\Male\Merchant\Inon_Merchant1.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Solomonia_house1of8.tiled2unity.xml" />
      <None Include="Assets\Resources\Units\Enemy\BunnyRoo\Stats.txt" />

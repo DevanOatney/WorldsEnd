@@ -18,6 +18,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 		_goAudioHelper.GetComponent<CAudioHelper>().vPlayMusic(_goAudioHelper.GetComponent<CAudioHelper>().eFromName(m_szInonForestBGM),true, true);
 		GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = false;
 		ds = GameObject.Find ("PersistantData").GetComponent<DCScript> ();
+		ds.AddPartyMember ("Briol");
 
 		SetWaypoints ();
 	}

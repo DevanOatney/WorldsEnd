@@ -12,6 +12,8 @@ public class CharacterInRosterScript : MonoBehaviour, IBeginDragHandler, IDragHa
 	//for the newly instantiated object to be dragged around
 	GameObject m_goNewDraggedObject;
 	public static string m_szCharacterBeingDragged = "";
+	//Bool for if this is a combat character or a support character
+	public bool m_bCanBeInCombat;
 
 
 	void OnDestroy()

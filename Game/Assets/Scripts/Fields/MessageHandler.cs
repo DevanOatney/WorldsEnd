@@ -231,7 +231,15 @@ public class MessageHandler : MonoBehaviour
 	void DisplayDialogueWithPortrait()
 	{
 		//This dialogue has a portrait!! Draw things
-		string szName = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).CharacterName;
+		string szName = "";
+		if (m_bShouldDisplayTempDialogue == true)
+		{
+			szName = m_szTempName;  
+		}
+		else
+		{
+			szName = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents[m_nCurrentDialogueIter]).CharacterName;
+		}
 
 		DisableUIObject(m_goDialogueNameplate1);
 		EnableUIObject(m_goDialogueNameplate2);
