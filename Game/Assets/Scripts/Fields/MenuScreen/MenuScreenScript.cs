@@ -233,21 +233,26 @@ public class MenuScreenScript : MonoBehaviour
 			break;
 		case (int)MENU_STATES.eEQUIPMENT_SUBTAB:
 			{
-				if (m_bWaiting == false) {
-					if (Input.GetKeyDown (KeyCode.Escape) || Input.GetMouseButtonDown (1)) {
-						if (m_nEquipmentScreenIter == 2) {
+				if (m_bWaiting == false) 
+				{
+					if (Input.GetKeyDown (KeyCode.Escape) || Input.GetMouseButtonDown (1)) 
+					{
+						if (m_nEquipmentScreenIter == 2) 
+						{
 							//Deepest level, currently looking at a list of items for a specific slot.
 							m_goEquipmentItemDescModuleWindow.SetActive(false);
 							m_goEquipmentListRoot.SetActive (false);
 							m_nEquipmentScreenIter = 1;
 						}
-						else if (m_nEquipmentScreenIter == 1) {
+						else if (m_nEquipmentScreenIter == 1) 
+						{
 							//This means that a character screen is being shown on the equipment screen, but they haven't selected a slot yet.
 							m_nEquipmentScreenIter = 0;
 							AdjustEquipmentScreenCharacter (-1);
 
 						}
-						else {
+						else 
+						{
 							DisplayEquipmentScreen (false);
 							m_nMenuState = (int)MENU_STATES.eITEMTAB;
 						}
@@ -801,21 +806,33 @@ public class MenuScreenScript : MonoBehaviour
 							dc.RemoveStatusEffect(_se.m_szEffectName);
 							m_bResultFound = true;
 						}
-						else {
+						else 
+						{
 							//No one is effected by this ailment, play the error noise, and do nothing else.
 							GetComponent<AudioSource>().PlayOneShot(m_acMenuSelection);
 						}
 					}
-					else if (m_iSelectedItem.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL) {
+					else if (m_iSelectedItem.m_nItemType == (int)BaseItemScript.ITEM_TYPES.eSINGLE_HEAL) 
+					{
 						//So this is a single target cure, check to see if the targeted unit is afflicted by this status effect, if not, play the error noise and do nothing else.
 
-						foreach (DCScript.CharacterData character in dc.GetParty()) {
-							if (character.m_nFormationIter == _iter) {
+						foreach (DCScript.CharacterData character in dc.GetParty()) 
+						{
+							if (character.m_nFormationIter == _iter) 
+							{
 								//mmk, found the character... now is it effected by the status effect?
 								DCScript.StatusEffect _statusEff = dc.GetStatusEffect(_se.m_szEffectName);
-								if (_statusEff != null) {
-									foreach (DCScript.StatusEffect.cEffectedMember _mem in _statusEff.m_lEffectedMembers) {
-										if (character.m_szCharacterName == _mem.m_szCharacterName) {
+								if (_statusEff != null) 
+								{
+									foreach (DCScript.StatusEffect.cEffectedMember _mem in _statusEff.m_lEffectedMembers) 
+									{
+										if (character.m_bCombatCharacter == false)
+										{
+											//early exit, if this is the support character- ignore them.
+											break;
+										}
+										if (character.m_szCharacterName == _mem.m_szCharacterName) 
+										{
 											//We have found the character we want, and they ARE effected by this effect, time to cure some ailment!!
 											m_bResultFound = true;
 											_statusEff.RemoveMember (character.m_szCharacterName);
@@ -985,16 +1002,19 @@ public class MenuScreenScript : MonoBehaviour
 
 	public void AdjustEquipmentScreenCharacter(int _nCharacterIter)
 	{
-		if (_nCharacterIter == -1) {
+		if (_nCharacterIter == -1) 
+		{
 			m_goEquipmentScreen.transform.Find ("EquipmentPanel").gameObject.SetActive (false);
 			m_nEquipmentScreenIter = 0;
 		}
-		else {
+		else 
+		{
 			
 			int _formation = ConvertPanelIterToFormationNumber (_nCharacterIter) - 1;
 			foreach(DCScript.CharacterData _character in dc.GetParty())
 			{
-				if (_character.m_nFormationIter == _formation) {
+				if (_character.m_nFormationIter == _formation) 
+				{
 					m_cSelectedCharacter = _character;
 					UpdateEquipmentScreen (_character);
 				}
@@ -1196,30 +1216,61 @@ public class MenuScreenScript : MonoBehaviour
 				cName.GetComponent<Text>().text = character.m_szCharacterName;
 				Transform cLVL = panel.transform.Find("CharacterLVL");
 				cLVL.GetComponent<Text>().text = "Lvl : " + character.m_nLevel.ToString();
-				Transform cHP = panel.transform.Find("CharacterHP");
-				float fPercentHPLeft = (float)((float)character.m_nCurHP / (float)character.m_nMaxHP);
-				if(fPercentHPLeft > 0.8f)
-					cHP.GetComponent<Text>().color = Color.green;
-				else if(fPercentHPLeft > 0.3f)
-					cHP.GetComponent<Text>().color = Color.yellow;
-				else if(fPercentHPLeft > 0.001f)
-					cHP.GetComponent<Text>().color = Color.red;
-				else
-					cHP.GetComponent<Text>().color = Color.black;
-				cHP.GetComponent<Text>().text =  "HP : " + character.m_nCurHP.ToString();
-				Transform cMP = panel.transform.Find("CharacterMP");
-				fPercentHPLeft = (float)((float)character.m_nCurMP / (float)character.m_nMaxMP);
-				if(fPercentHPLeft > 0.8f)
-					cMP.GetComponent<Text>().color = Color.green;
-				else if(fPercentHPLeft > 0.3f)
-					cMP.GetComponent<Text>().color = Color.yellow;
-				else if(fPercentHPLeft > 0.001f)
-					cMP.GetComponent<Text>().color = Color.red;
-				else
-					cMP.GetComponent<Text>().color = Color.black;
-				cMP.GetComponent<Text>().text = "MP : " + character.m_nCurMP.ToString();
-				Transform cEXP = panel.transform.Find("CharacterEXP");
-				cEXP.GetComponent<Text>().text = "EXP : " + character.m_nCurrentEXP.ToString();
+
+				//Only do things with this stuff if the character is not a support character.
+				if (character.m_bCombatCharacter == true)
+				{
+					Transform cHP = panel.transform.Find ("CharacterHP");
+					float fPercentHPLeft = (float)((float)character.m_nCurHP / (float)character.m_nMaxHP);
+					if (fPercentHPLeft > 0.8f)
+						cHP.GetComponent<Text> ().color = Color.green;
+					else
+					if (fPercentHPLeft > 0.3f)
+						cHP.GetComponent<Text> ().color = Color.yellow;
+					else
+					if (fPercentHPLeft > 0.001f)
+						cHP.GetComponent<Text> ().color = Color.red;
+					else
+						cHP.GetComponent<Text> ().color = Color.black;
+					cHP.GetComponent<Text> ().text = "HP : " + character.m_nCurHP.ToString ();
+					Transform cMP = panel.transform.Find ("CharacterMP");
+					fPercentHPLeft = (float)((float)character.m_nCurMP / (float)character.m_nMaxMP);
+					if (fPercentHPLeft > 0.8f)
+						cMP.GetComponent<Text> ().color = Color.green;
+					else
+					if (fPercentHPLeft > 0.3f)
+						cMP.GetComponent<Text> ().color = Color.yellow;
+					else
+					if (fPercentHPLeft > 0.001f)
+						cMP.GetComponent<Text> ().color = Color.red;
+					else
+						cMP.GetComponent<Text> ().color = Color.black;
+					cMP.GetComponent<Text> ().text = "MP : " + character.m_nCurMP.ToString ();
+					Transform cEXP = panel.transform.Find ("CharacterEXP");
+					cEXP.GetComponent<Text> ().text = "EXP : " + character.m_nCurrentEXP.ToString ();
+					//Check to see if this unit is afflicted with poison, if it is, show the icon for it.
+					DCScript.StatusEffect _sePoison = dc.GetStatusEffect ("Poison");
+					bool _isEffected = false;
+					if (_sePoison != null)
+					{
+						foreach (DCScript.StatusEffect.cEffectedMember _member in _sePoison.m_lEffectedMembers)
+						{
+							if (_member.m_szCharacterName == character.m_szCharacterName)
+							{
+								//This character is effected with poison, display the icon.
+								_isEffected = true;
+								Transform cPoison = panel.transform.Find ("Poison_Icon");
+								cPoison.GetComponent<Image> ().enabled = true;
+							}
+						}
+					}
+					if (_isEffected == false)
+					{
+						Transform cPoison = panel.transform.Find ("Poison_Icon");
+						cPoison.GetComponent<Image> ().enabled = false;
+					}
+				}
+
 				Transform cPort = panel.transform.Find("CharacterImage");
 				cPort.GetComponent<Image>().color = Color.white;
 				GameObject pCont = GameObject.Find("Portraits Container");
@@ -1232,32 +1283,20 @@ public class MenuScreenScript : MonoBehaviour
 				}
 				else
 				{
-					GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
-					Texture2D sprTex = unit.GetComponent<CAllyBattleScript>().TextureFromSprite(unit.GetComponent<CAllyBattleScript>().m_tLargeBust);
-					cPort.GetComponent<Image>().sprite = Sprite.Create(sprTex, 
-						new Rect(0, 0, sprTex.width, sprTex.height), new Vector2(0.5f, 0.5f));
-				}
-				//Check to see if this unit is afflicted with poison, if it is, show the icon for it.
-				DCScript.StatusEffect _sePoison = dc.GetStatusEffect("Poison");
-				bool _isEffected = false;
-				if(_sePoison != null)
-				{
-					foreach(DCScript.StatusEffect.cEffectedMember _member in _sePoison.m_lEffectedMembers)
+					if (character.m_bCombatCharacter == true)
 					{
-						if(_member.m_szCharacterName == character.m_szCharacterName)
-						{
-							//This character is effected with poison, display the icon.
-							_isEffected = true;
-							Transform cPoison = panel.transform.Find("Poison_Icon");
-							cPoison.GetComponent<Image>().enabled = true;
-						}
+						//This is a combat unit, it's large bust is located in the default directory
+						GameObject unit = Resources.Load<GameObject> ("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
+						Texture2D sprTex = unit.GetComponent<CAllyBattleScript> ().TextureFromSprite (unit.GetComponent<CAllyBattleScript> ().m_tLargeBust);
+						cPort.GetComponent<Image> ().sprite = Sprite.Create (sprTex, 
+							new Rect (0, 0, sprTex.width, sprTex.height), new Vector2 (0.5f, 0.5f));
+					}
+					else
+					{
+						//This is a non-combat unit, their large bust isn't located in the same directory.
 					}
 				}
-				if(_isEffected == false)
-				{
-					Transform cPoison = panel.transform.Find("Poison_Icon");
-					cPoison.GetComponent<Image>().enabled = false;
-				}
+
 
 			}
 			else
@@ -1265,19 +1304,25 @@ public class MenuScreenScript : MonoBehaviour
 				//no character in this slot, de-activate the panel.
 				Transform cName = panel.transform.Find("CharacterName");
 				cName.GetComponent<Text>().text = "";
-				Transform cLVL = panel.transform.Find("CharacterLVL");
-				cLVL.GetComponent<Text>().text = "";
-				Transform cHP = panel.transform.Find("CharacterHP");
-				cHP.GetComponent<Text>().text =  "";
-				Transform cMP = panel.transform.Find("CharacterMP");
-				cMP.GetComponent<Text>().text = "";
-				Transform cEXP = panel.transform.Find("CharacterEXP");
-				cEXP.GetComponent<Text>().text = "";
+				Transform cLVL = panel.transform.Find ("CharacterLVL");
+				cLVL.GetComponent<Text> ().text = "";
+
+				if (counter != 6)
+				{
+					
+					Transform cHP = panel.transform.Find ("CharacterHP");
+					cHP.GetComponent<Text> ().text = "";
+					Transform cMP = panel.transform.Find ("CharacterMP");
+					cMP.GetComponent<Text> ().text = "";
+					Transform cEXP = panel.transform.Find ("CharacterEXP");
+					cEXP.GetComponent<Text> ().text = "";
+					Transform cPoison = panel.transform.Find("Poison_Icon");
+					cPoison.GetComponent<Image>().enabled = false;
+				}
 				Transform cPort = panel.transform.Find("CharacterImage");
 				cPort.GetComponent<Image>().sprite = null;
 				cPort.GetComponent<Image>().color = Color.clear;
-				Transform cPoison = panel.transform.Find("Poison_Icon");
-				cPoison.GetComponent<Image>().enabled = false;
+
 			}
 			counter++;
 		}
@@ -1328,118 +1373,127 @@ public class MenuScreenScript : MonoBehaviour
 		}
 		else
 		{
-			GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
-			Texture2D sprTex = unit.GetComponent<CAllyBattleScript>().TextureFromSprite(unit.GetComponent<CAllyBattleScript>().m_tLargeBust);
-			characterBody.GetComponent<Image>().sprite = Sprite.Create(sprTex, 
-				new Rect(0, 0, sprTex.width, sprTex.height), new Vector2(0.5f, 0.5f));
+			if (character.m_bCombatCharacter == true)
+			{
+				GameObject unit = Resources.Load<GameObject> ("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
+				Texture2D sprTex = unit.GetComponent<CAllyBattleScript> ().TextureFromSprite (unit.GetComponent<CAllyBattleScript> ().m_tLargeBust);
+				characterBody.GetComponent<Image> ().sprite = Sprite.Create (sprTex, 
+					new Rect (0, 0, sprTex.width, sprTex.height), new Vector2 (0.5f, 0.5f));
+			}
 		}
+		if (character.m_bCombatCharacter == true)
+		{
+			Transform weaponPanel = m_goStatus.transform.Find ("WeaponPanel");
+			Transform weaponName = weaponPanel.Find ("WeaponName");
+			weaponName.GetComponent<Text> ().text = character.m_szWeaponName;
+			Transform weaponLevel = weaponPanel.Find ("WeaponLevel");
+			weaponLevel.GetComponent<Text> ().text = "Weapon Level: " + character.m_nWeaponLevel.ToString ();
+			Transform weaponMod = weaponPanel.Find ("WeaponMod");
+			if (character.m_szWeaponModifierName != "")
+				weaponMod.GetComponent<Text> ().text = "Weapon Mod : " + character.m_szWeaponModifierName;
+			else
+				weaponMod.GetComponent<Text> ().text = "Weapon Mod : None";
 
-		Transform weaponPanel = m_goStatus.transform.Find("WeaponPanel");
-		Transform weaponName = weaponPanel.Find("WeaponName");
-		weaponName.GetComponent<Text>().text = character.m_szWeaponName;
-		Transform weaponLevel = weaponPanel.Find("WeaponLevel");
-		weaponLevel.GetComponent<Text>().text = "Weapon Level: " + character.m_nWeaponLevel.ToString();
-		Transform weaponMod = weaponPanel.Find("WeaponMod");
-		if(character.m_szWeaponModifierName != "")
-			weaponMod.GetComponent<Text>().text = "Weapon Mod : " + character.m_szWeaponModifierName;
-		else
-			weaponMod.GetComponent<Text>().text = "Weapon Mod : None";
 
+			//So we need to create a list of 0-1 floats that represent the stat fill radar chart.
+			List<float> lStatDistances = new List<float> ();
+			List<int> lStats = new List<int> ();
+			//SPD, DEF, HP, POW, HIT, MP, EVA (I think this is the order, more testing.
+			lStats.Add (character.m_nSPD);
+			m_goRadarChart.transform.Find ("SPD").Find ("Stat").GetComponent<Text> ().text = character.m_nSPD.ToString ();
+			lStats.Add (character.m_nEVA);
+			m_goRadarChart.transform.Find ("EVA").Find ("Stat").GetComponent<Text> ().text = character.m_nEVA.ToString ();
+			lStats.Add (character.m_nMaxMP);
+			m_goRadarChart.transform.Find ("MP").Find ("Stat").GetComponent<Text> ().text = character.m_nMaxMP.ToString ();
+			lStats.Add (character.m_nHIT);
+			m_goRadarChart.transform.Find ("HIT").Find ("Stat").GetComponent<Text> ().text = character.m_nHIT.ToString ();
+			lStats.Add (character.m_nSTR);
+			m_goRadarChart.transform.Find ("POW").Find ("Stat").GetComponent<Text> ().text = character.m_nSTR.ToString ();
+			lStats.Add (character.m_nMaxHP);
+			m_goRadarChart.transform.Find ("HP").Find ("Stat").GetComponent<Text> ().text = character.m_nMaxHP.ToString ();
+			lStats.Add (character.m_nDEF);
+			m_goRadarChart.transform.Find ("DEF").Find ("Stat").GetComponent<Text> ().text = character.m_nDEF.ToString ();
 
-		//So we need to create a list of 0-1 floats that represent the stat fill radar chart.
-		List<float> lStatDistances = new List<float>();
-		List<int> lStats = new List<int>();
-		//SPD, DEF, HP, POW, HIT, MP, EVA (I think this is the order, more testing.
-		lStats.Add(character.m_nSPD);
-		m_goRadarChart.transform.Find("SPD").Find("Stat").GetComponent<Text>().text = character.m_nSPD.ToString();
-		lStats.Add(character.m_nEVA);
-		m_goRadarChart.transform.Find("EVA").Find("Stat").GetComponent<Text>().text = character.m_nEVA.ToString();
-		lStats.Add(character.m_nMaxMP);
-		m_goRadarChart.transform.Find("MP").Find("Stat").GetComponent<Text>().text = character.m_nMaxMP.ToString();
-		lStats.Add(character.m_nHIT);
-		m_goRadarChart.transform.Find("HIT").Find("Stat").GetComponent<Text>().text = character.m_nHIT.ToString();
-		lStats.Add(character.m_nSTR);
-		m_goRadarChart.transform.Find("POW").Find("Stat").GetComponent<Text>().text = character.m_nSTR.ToString();
-		lStats.Add(character.m_nMaxHP);
-		m_goRadarChart.transform.Find("HP").Find("Stat").GetComponent<Text>().text = character.m_nMaxHP.ToString();
-		lStats.Add(character.m_nDEF);
-		m_goRadarChart.transform.Find("DEF").Find("Stat").GetComponent<Text>().text = character.m_nDEF.ToString();
+			int highestStat = 0;
+			foreach (int n in lStats)
+				if (highestStat < n)
+					highestStat = n;
+			foreach (int n in lStats)
+			{
+				float distance = (float)((float)n / (float)highestStat);
+				lStatDistances.Add (distance);
+			}
+			m_goRadarChart.GetComponent<RadarGraphScript> ().AdjustFill (lStatDistances);
 
-		int highestStat = 0;
-		foreach(int n in lStats)
-			if(highestStat < n)
-				highestStat = n;
-		foreach(int n in lStats)
-		{
-			float distance = (float)((float)n / (float)highestStat);
-			lStatDistances.Add(distance);
-		}
-		m_goRadarChart.GetComponent<RadarGraphScript>().AdjustFill(lStatDistances);
-
-		//Now let's populate the equipment.
-		if(character.m_idHelmSlot != null)
-		{
-			m_goEquipment.transform.Find("Head").GetComponent<Text>().text = "Head Slot : " + character.m_idHelmSlot.m_szItemName;
-		}
-		else
-		{
-			m_goEquipment.transform.Find("Head").GetComponent<Text>().text = "Head Slot : None";
-		}
-		if(character.m_idShoulderSlot != null)
-		{
-			m_goEquipment.transform.Find("Shoulder").GetComponent<Text>().text = "Shoulder Slot : " + character.m_idShoulderSlot.m_szItemName;
-		}
-		else
-		{
-			m_goEquipment.transform.Find("Shoulder").GetComponent<Text>().text = "Shoulder Slot : None";
-		}
-		if(character.m_idChestSlot != null)
-		{
-			m_goEquipment.transform.Find("Chest").GetComponent<Text>().text = "Chest Slot : " + character.m_idChestSlot.m_szItemName;
-		}
-		else
-		{
-			m_goEquipment.transform.Find("Chest").GetComponent<Text>().text = "Chest Slot : None";
-		}
-		if(character.m_idGloveSlot != null)
-		{
-			m_goEquipment.transform.Find("Arms").GetComponent<Text>().text = "Glove Slot : " + character.m_idGloveSlot.m_szItemName;
-		}
-		else
-		{
-			m_goEquipment.transform.Find("Arms").GetComponent<Text>().text = "Glove Slot : None";
-		}
-		if(character.m_idBeltSlot != null)
-		{
-			m_goEquipment.transform.Find("Waist").GetComponent<Text>().text = "Belt Slot : " + character.m_idBeltSlot.m_szItemName;
-		}
-		else
-		{
-			m_goEquipment.transform.Find("Waist").GetComponent<Text>().text = "Waist Slot : None";
-		}
-		if(character.m_idLegSlot != null)
-		{
-			m_goEquipment.transform.Find("Legs").GetComponent<Text>().text = "Leg Slot : " + character.m_idLegSlot.m_szItemName;
-		}
-		else
-		{
-			m_goEquipment.transform.Find("Legs").GetComponent<Text>().text = "Leg Slot : None";
-		}
-		if(character.m_idTrinket1 != null)
-		{
-			m_goEquipment.transform.Find("Trinket1").GetComponent<Text>().text = "Trinket Slot : " + character.m_idTrinket1.m_szItemName;
-		}
-		else
-		{
-			m_goEquipment.transform.Find("Trinket1").GetComponent<Text>().text = "Trinket Slot : None";
-		}
-		if(character.m_idTrinket2 != null)
-		{
-			m_goEquipment.transform.Find("Trinket2").GetComponent<Text>().text = "Trinket Slot : " + character.m_idTrinket2.m_szItemName;
+			//Now let's populate the equipment.
+			if (character.m_idHelmSlot != null)
+			{
+				m_goEquipment.transform.Find ("Head").GetComponent<Text> ().text = "Head Slot : " + character.m_idHelmSlot.m_szItemName;
+			}
+			else
+			{
+				m_goEquipment.transform.Find ("Head").GetComponent<Text> ().text = "Head Slot : None";
+			}
+			if (character.m_idShoulderSlot != null)
+			{
+				m_goEquipment.transform.Find ("Shoulder").GetComponent<Text> ().text = "Shoulder Slot : " + character.m_idShoulderSlot.m_szItemName;
+			}
+			else
+			{
+				m_goEquipment.transform.Find ("Shoulder").GetComponent<Text> ().text = "Shoulder Slot : None";
+			}
+			if (character.m_idChestSlot != null)
+			{
+				m_goEquipment.transform.Find ("Chest").GetComponent<Text> ().text = "Chest Slot : " + character.m_idChestSlot.m_szItemName;
+			}
+			else
+			{
+				m_goEquipment.transform.Find ("Chest").GetComponent<Text> ().text = "Chest Slot : None";
+			}
+			if (character.m_idGloveSlot != null)
+			{
+				m_goEquipment.transform.Find ("Arms").GetComponent<Text> ().text = "Glove Slot : " + character.m_idGloveSlot.m_szItemName;
+			}
+			else
+			{
+				m_goEquipment.transform.Find ("Arms").GetComponent<Text> ().text = "Glove Slot : None";
+			}
+			if (character.m_idBeltSlot != null)
+			{
+				m_goEquipment.transform.Find ("Waist").GetComponent<Text> ().text = "Belt Slot : " + character.m_idBeltSlot.m_szItemName;
+			}
+			else
+			{
+				m_goEquipment.transform.Find ("Waist").GetComponent<Text> ().text = "Waist Slot : None";
+			}
+			if (character.m_idLegSlot != null)
+			{
+				m_goEquipment.transform.Find ("Legs").GetComponent<Text> ().text = "Leg Slot : " + character.m_idLegSlot.m_szItemName;
+			}
+			else
+			{
+				m_goEquipment.transform.Find ("Legs").GetComponent<Text> ().text = "Leg Slot : None";
+			}
+			if (character.m_idTrinket1 != null)
+			{
+				m_goEquipment.transform.Find ("Trinket1").GetComponent<Text> ().text = "Trinket Slot : " + character.m_idTrinket1.m_szItemName;
+			}
+			else
+			{
+				m_goEquipment.transform.Find ("Trinket1").GetComponent<Text> ().text = "Trinket Slot : None";
+			}
+			if (character.m_idTrinket2 != null)
+			{
+				m_goEquipment.transform.Find ("Trinket2").GetComponent<Text> ().text = "Trinket Slot : " + character.m_idTrinket2.m_szItemName;
+			}
+			else
+			{
+				m_goEquipment.transform.Find ("Trinket1").GetComponent<Text> ().text = "Trinket Slot : None";
+			}
 		}
 		else
 		{
-			m_goEquipment.transform.Find("Trinket1").GetComponent<Text>().text = "Trinket Slot : None";
+			
 		}
 
 	}
@@ -1778,6 +1832,11 @@ public class MenuScreenScript : MonoBehaviour
 				//Bot Right
 				return 2;
 			}
+		case 6:
+			{
+				//Support
+				return 6;
+			}
 		}
 		//error catch
 		return -1;
@@ -1821,7 +1880,7 @@ public class MenuScreenScript : MonoBehaviour
 		case 6:
 			{
 				//The support character
-				return -1;
+				return 6;
 			}
 			default:
 			{

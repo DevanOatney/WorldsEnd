@@ -538,8 +538,33 @@ public class DCScript : MonoBehaviour
 
 	public void AddPartyMember(CharacterData character) 
 	{
+		//early exit, if the character is already in the party, ignore this command.
+		if (character.m_bIsInParty == true)
+			return;
+		//early exit for if this is the non-combat position.
+		if (character.m_bCombatCharacter == false)
+		{
+			foreach (CharacterData c in m_lPartyMembers)
+			{
+				if (c.m_nFormationIter == 6)
+				{
+					RemovePartyMember (c);
+				}
+			}
+			character.m_nFormationIter = 6;
+			character.m_bIsInParty = true;
+			character.m_bHasBeenRecruited = true;
+			m_lPartyMembers.Add(character);
+			SetRosteredCharacterData(character);
+			UpdateRostersPartiedCharacters();
+			return;
+		}
+
 		List<int> lAvailableSpots = new List<int>();
-		for(int i = 0; i < 6; ++i){lAvailableSpots.Add(i);}
+		for(int i = 0; i < 6; ++i)
+		{
+			lAvailableSpots.Add(i);
+		}
 		int nLowestSpot = 6;
 		foreach(CharacterData c in m_lPartyMembers)
 		{
@@ -551,6 +576,7 @@ public class DCScript : MonoBehaviour
 			if(nLowestSpot > n)
 				nLowestSpot = n;
 		}
+
 		character.m_nFormationIter = nLowestSpot;
 		character.m_bIsInParty = true;
 		character.m_bHasBeenRecruited = true;

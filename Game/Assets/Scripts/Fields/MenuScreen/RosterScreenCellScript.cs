@@ -21,15 +21,16 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 	public bool m_bPanelDropped = false;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		m_vCharacterStartPos = Vector3.zero;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		if(Input.GetKeyDown(KeyCode.P))
 			Debug.Break();
-	
 	}
 
 	#region IBeginDragHandler implementation
@@ -89,6 +90,8 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 
 		DCScript.CharacterData character;
 		string charName = CharacterInRosterScript.m_szCharacterBeingDragged;
+		if (charName == "")
+			return;
 		if (dc.GetRosteredCharacterData (charName).m_bIsInParty == true)
 			character = dc.GetCharacter (CharacterInRosterScript.m_szCharacterBeingDragged);
 		else
@@ -161,7 +164,7 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 			{
 				return;
 			}
-			GameObject.Find ("PersistantData").GetComponent<DCScript> ().AddPartyMember (m_cCharacter.m_szCharacterName);
+			GameObject.Find("PersistantData").GetComponent<DCScript>().AddPartyMember (m_cCharacter.m_szCharacterName);
 			GameObject newCharacter = Instantiate(Resources.Load<GameObject>("Units/Ally/" + m_cCharacter.m_szCharacterName + "/" + m_cCharacter.m_szCharacterName + "_UIAnimated")) as GameObject;
 			newCharacter.name = m_cCharacter.m_szCharacterName + "_UIAnimated";
 			newCharacter.GetComponent<RectTransform>().SetParent(GetComponent<RectTransform>());
@@ -190,6 +193,7 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 					characterPosition.y += m_goDraggedObject.GetComponent<RectTransform>().sizeDelta.y * 0.5f;
 					m_goDraggedObject.GetComponent<RectTransform>().localPosition = characterPosition;
 					m_goDraggedObject = m_goDraggedObject.transform;
+					m_szPanelOfDraggedCharacter = "";
 				}
 				else
 				{

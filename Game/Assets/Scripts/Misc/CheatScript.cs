@@ -188,20 +188,27 @@ public class CheatScript : MonoBehaviour
 											string _secondPiece = pieces [1].Trim ();
 											if (_secondPiece == "add")
 											{
-												m_bAbleToFindCommand = true;
 												string _recruitName = pieces [2].Trim ();
 												DCScript.CharacterData _charData = dc.GetComponent<DCScript> ().GetRosteredCharacterData (_recruitName);
-												dc.AddPartyMember (_charData);
-												m_lChatLog.Add (_recruitName + " has been added into the party.");
+												if (_charData != null)
+												{
+													m_bAbleToFindCommand = true;
+													dc.AddPartyMember (_charData);
+													m_lChatLog.Add (_recruitName + " has been added into the party.");
+												}
 											}
 											else
 											if (_secondPiece == "remove")
 											{
-												m_bAbleToFindCommand = true;
+
 												string _recruitName = pieces [2].Trim ();
 												DCScript.CharacterData _charData = dc.GetComponent<DCScript> ().GetRosteredCharacterData (_recruitName);
-												dc.RemovePartyMember (_charData);
-												m_lChatLog.Add (_recruitName + " has been removed from the party.");
+												if (_charData != null)
+												{
+													m_bAbleToFindCommand = true;
+													dc.RemovePartyMember (_charData);
+													m_lChatLog.Add (_recruitName + " has been removed from the party.");
+												}
 											}
 									}
 									break;
