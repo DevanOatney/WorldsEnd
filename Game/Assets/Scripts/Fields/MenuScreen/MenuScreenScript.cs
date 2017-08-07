@@ -1573,20 +1573,23 @@ public class MenuScreenScript : MonoBehaviour
 			go.SetActive (false);
 		foreach (DCScript.CharacterData character in dc.GetParty()) 
 		{
-			int _iter = ConvertFormationNumberToPanelIter(character.m_nFormationIter);
-			m_goUnitInventoryCells [_iter].SetActive (true);
-			GameObject _unit = m_goUnitInventoryCells [_iter];
-		 	GameObject unit = Resources.Load<GameObject>("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
-		 	Texture2D sprTex = unit.GetComponent<CAllyBattleScript>().TextureFromSprite(unit.GetComponent<CAllyBattleScript>().m_tLargeBust);
-			Transform _root = _unit.transform.Find ("Background");
-			_root.Find("Icon").GetComponent<Image>().sprite = Sprite.Create(sprTex, 
-						new Rect(0, 0, sprTex.width, sprTex.height), new Vector2(0.5f, 0.5f));
-			Color _col = _root.Find("Icon").GetComponent<Image> ().color;
-			_col.a = 0.5f;
-			_root.Find("Icon").GetComponent<Image> ().color = _col;
-			_root.Find ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
-			_root.Find ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
-			_root.Find ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
+			if (character.m_bCombatCharacter == true)
+			{
+				int _iter = ConvertFormationNumberToPanelIter (character.m_nFormationIter);
+				m_goUnitInventoryCells [_iter].SetActive (true);
+				GameObject _unit = m_goUnitInventoryCells [_iter];
+				GameObject unit = Resources.Load<GameObject> ("Units/Ally/" + character.m_szCharacterName + "/" + character.m_szCharacterName);
+				Texture2D sprTex = unit.GetComponent<CAllyBattleScript> ().TextureFromSprite (unit.GetComponent<CAllyBattleScript> ().m_tLargeBust);
+				Transform _root = _unit.transform.Find ("Background");
+				_root.Find ("Icon").GetComponent<Image> ().sprite = Sprite.Create (sprTex, 
+					new Rect (0, 0, sprTex.width, sprTex.height), new Vector2 (0.5f, 0.5f));
+				Color _col = _root.Find ("Icon").GetComponent<Image> ().color;
+				_col.a = 0.5f;
+				_root.Find ("Icon").GetComponent<Image> ().color = _col;
+				_root.Find ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
+				_root.Find ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
+				_root.Find ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
+			}
 		}
 	}
 
@@ -1596,13 +1599,16 @@ public class MenuScreenScript : MonoBehaviour
 			go.SetActive (false);
 		foreach (DCScript.CharacterData character in dc.GetParty()) 
 		{
-			int _iter = ConvertFormationNumberToPanelIter(character.m_nFormationIter);
-			m_goUnitEquipmentCells [_iter].SetActive (true);
-			GameObject _unit = m_goUnitEquipmentCells [_iter];
-			Transform _root = _unit.transform.Find ("Background");
-			_root.Find ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
-			_root.Find ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
-			_root.Find ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
+			if (character.m_bCombatCharacter == true)
+			{
+				int _iter = ConvertFormationNumberToPanelIter (character.m_nFormationIter);
+				m_goUnitEquipmentCells [_iter].SetActive (true);
+				GameObject _unit = m_goUnitEquipmentCells [_iter];
+				Transform _root = _unit.transform.Find ("Background");
+				_root.Find ("CharacterName").GetComponentInChildren<Text> ().text = character.m_szCharacterName;
+				_root.Find ("HP").GetComponentInChildren<Text> ().text = character.m_nCurHP + " / " + character.m_nMaxHP;
+				_root.Find ("MP").GetComponentInChildren<Text> ().text = character.m_nCurMP + " / " + character.m_nMaxMP;
+			}
 		}
 	}
 

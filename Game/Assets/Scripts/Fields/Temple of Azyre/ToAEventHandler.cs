@@ -9,6 +9,7 @@ public class ToAEventHandler : BaseEventSystemScript
 	public GameObject m_goBoar;
 	public GameObject m_goBoarBoss;
 	public GameObject[] m_goBlackSmithShop;
+	public GameObject m_RecruitPositionsRoot;
 	DCScript ds;
 	public List<GameObject[]> m_lEvents;
 	string m_szToABGM = "TempleOfAzyre_BGM";
@@ -75,6 +76,7 @@ public class ToAEventHandler : BaseEventSystemScript
 				//The player has gone through the opening event of this scene
 				GameObject.Find("OverWatcher").GetComponent<EncounterGroupLoaderScript>().m_bEncountersHappen = true;
 				GameObject.Find("Interior").GetComponent<BoxCollider2D>().enabled = true;
+				m_goBoar.SetActive (true);
 			}
 				break;
 			case 1:
@@ -125,6 +127,29 @@ public class ToAEventHandler : BaseEventSystemScript
 				m_goBoarBoss.SetActive (false);
 			}
 				break;
+			}
+			if (result >= 5)
+			{
+				//So passed this point , we should start doing some default things, like populating the base with recruits (and later some random npcs)
+				List<DCScript.CharacterData> _roster = ds.GetRoster();
+				foreach (DCScript.CharacterData c in _roster)
+				{
+					if (c.m_bHasBeenRecruited == true && c.m_bIsInParty == false)
+					{
+						//This character has been recruited, and is not in the party. Unless under some special circumstance, they SHOULD show up in the base.
+						foreach (Transform child in m_RecruitPositionsRoot.transform)
+						{
+							if (child.gameObject.name == c.m_szCharacterName)
+							{
+								
+								//All right, found the character, time to create one of them and put them in this position
+								GameObject _unit = Resources.Load<GameObject>("Units/Ally/" + c.m_szCharacterName + "/Field/" + c.m_szCharacterName);
+								_unit = Instantiate(_unit, child.position, Quaternion.identity);
+
+							}
+						}
+					}
+				}
 			}
 		}
 	}
