@@ -56,8 +56,10 @@ public class LoadingScript : MonoBehaviour
 
 		//Amount of gold the player has
 		saveData.m_nGold = fileData.m_nGold;
-
-		saveData.m_szFieldName = fileData.m_szSceneName;
+		saveData.m_nLevel = fileData.m_nLevel;
+		saveData.m_szFieldName = fileData.m_szSaveName;
+		saveData.m_szSceneName = fileData.m_szSceneName;
+		saveData.m_fTimePlayed = fileData.m_fTimePlayed;
 
 		return saveData;
 	}
@@ -87,14 +89,15 @@ public class LoadingScript : MonoBehaviour
 		{
 			NewData.m_dStoryFlagField.Add(fileData.m_lFlagKeys[i], fileData.m_lFlagValues[i]);
 		}
-
 		NewData.m_nGold = fileData.m_nGold;
+		NewData.m_fTimePlayed = fileData.m_fTimePlayed;
 		NewData.SetRoster(fileData.m_lRoster);
 		NewData.SetParty(fileData.m_lParty);
         NewData.SetWarUnits(fileData.m_lAllyUnits);
 		NewData.SetStatusEffects(fileData.m_lStatusEffects);
 		NewData.m_lItemLibrary.m_lInventory = fileData.m_lInventory;
 		NewData.SetPreviousFieldName(fileData.m_szSceneName);
+		NewData.m_szSaveLocationName = fileData.m_szSaveName;
 		Vector3 startingPos = new Vector3(fileData.m_vStartingPosition._fX, fileData.m_vStartingPosition._fY, fileData.m_vStartingPosition._fZ);
 		NewData.SetPreviousPosition(startingPos);
 		NewData.SetPreviousFacingDirection(fileData.m_nFacingDir);

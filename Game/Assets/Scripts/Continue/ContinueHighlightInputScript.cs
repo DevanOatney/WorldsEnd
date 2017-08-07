@@ -19,7 +19,9 @@ public class ContinueHighlightInputScript : MonoBehaviour {
 		public string m_szName;
 		public int m_nLevel;
 		public string m_szFieldName;
+		public string m_szSceneName;
 		public int m_nGold;
+		public float m_fTimePlayed;
 	}
 
 	// Use this for initialization
@@ -77,7 +79,7 @@ public class ContinueHighlightInputScript : MonoBehaviour {
 			{
 				GetComponent<AudioSource>().PlayOneShot(m_aSelectionMade, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
 				gameObject.GetComponent<LoadingScript>().Load(m_nSelectedIndex + 1);
-                SceneManager.LoadScene(m_lSaveFilesData[m_nSelectedIndex].m_szFieldName);
+                SceneManager.LoadScene(m_lSaveFilesData[m_nSelectedIndex].m_szSceneName);
 			}
 		}
 		if(Input.GetKeyUp(KeyCode.Escape))
@@ -103,10 +105,9 @@ public class ContinueHighlightInputScript : MonoBehaviour {
 			for(int i = 0; i < m_lSaveFilesData.Count; ++i)
 			{
 				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text = "";
-
 				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text += m_lSaveFilesData[i].m_szName + "   " + m_lSaveFilesData[i].m_nLevel + "   " + m_lSaveFilesData[i].m_nGold + '\n';
 
-				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text +=  "Field: " + m_lSaveFilesData[i].m_szFieldName;
+				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text +=  "Field: " + m_lSaveFilesData[i].m_szFieldName + "    Time Played: " + m_lSaveFilesData[i].m_fTimePlayed;
 			}
 		}
 	}

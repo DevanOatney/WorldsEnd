@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class SavePointOrbScript : MonoBehaviour 
 {
@@ -11,6 +12,7 @@ public class SavePointOrbScript : MonoBehaviour
 	int m_nSelectedIndex = 0;
 	public AudioClip m_acSaveSucceed;
 	public AudioClip m_acSaveSelectMovement;
+	public string m_szSaveLocationName = "";
 	// Use this for initialization
 	void Start () 
 	{
@@ -47,7 +49,8 @@ public class SavePointOrbScript : MonoBehaviour
 			{
 				FieldPlayerMovementScript go = GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>();
 				DCScript dcs = GameObject.Find("PersistantData").GetComponent<DCScript>();
-
+				dcs.m_szSaveLocationName = m_szSaveLocationName;
+				dcs.SetPreviousFieldName (SceneManager.GetActiveScene().name);
 				dcs.SetPreviousPosition(go.transform.position);
 				dcs.SetPreviousFacingDirection(go.m_nFacingDir);
 				GetComponent<SavingScript>().Save(m_nSelectedIndex+1);
@@ -103,7 +106,7 @@ public class SavePointOrbScript : MonoBehaviour
 			for(int i = 0; i < m_lSaveFiles.Count; ++i)
 			{
 				string szContent  = m_lSaveFiles[i].m_szName + "     Level: " + m_lSaveFiles[i].m_nLevel + "\n" +
-					m_lSaveFiles[i].m_szFieldName;
+					m_lSaveFiles[i].m_szFieldName + "     Time Played " + m_lSaveFiles[i].m_fTimePlayed;
 
 				GUI.Label(new Rect(25, size.y * 0.33f *i + 15.0f, size.x, size.y * 0.33f), szContent);
 			}

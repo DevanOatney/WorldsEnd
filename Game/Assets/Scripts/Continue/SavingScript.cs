@@ -23,9 +23,12 @@ public class SavingScript : MonoBehaviour
         public List<FightSceneControllerScript.cWarUnit> m_lAllyUnits;
 		public List<DCScript.StatusEffect> m_lStatusEffects;
 		public List<ItemLibrary.CharactersItems> m_lInventory;
+		public string m_szSaveName;
 		public string m_szSceneName;
 		public vVector3 m_vStartingPosition;
 		public int m_nFacingDir;
+		public int m_nLevel;
+		public float m_fTimePlayed;
 	}
 	[Serializable]
 	public class vVector3
@@ -52,11 +55,21 @@ public class SavingScript : MonoBehaviour
 		}
 		newData.m_nGold = dcs.m_nGold;
 		newData.m_lParty = dcs.GetParty();
+
+		foreach (DCScript.CharacterData character in newData.m_lParty)
+		{
+			if (character.m_szCharacterName == "Callan")
+			{
+				newData.m_nLevel = character.m_nLevel;
+			}
+		}
 		newData.m_lRoster = dcs.GetRoster();
         newData.m_lAllyUnits = dcs.GetWarUnits();
+		newData.m_fTimePlayed = dcs.m_fTimePlayed;
 		newData.m_lStatusEffects = dcs.GetStatusEffects();
 		newData.m_lInventory = dcs.m_lItemLibrary.m_lInventory;
-		newData.m_szSceneName = SceneManager.GetActiveScene().name;
+		newData.m_szSaveName = dcs.m_szSaveLocationName;dcs.GetPreviousFieldName ();
+		newData.m_szSceneName = dcs.GetPreviousFieldName ();
 		newData.m_vStartingPosition = new vVector3();
 		newData.m_vStartingPosition._fX = dcs.GetPreviousPosition().x;
 		newData.m_vStartingPosition._fY = dcs.GetPreviousPosition().y;
