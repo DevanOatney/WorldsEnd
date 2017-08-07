@@ -93,7 +93,7 @@ public class SavePointOrbScript : MonoBehaviour
 
 
 
-			Vector2 size = new Vector2(300, 200);
+			Vector2 size = new Vector2(450, 300);
 			Rect boxRect = new Rect(Screen.width * 0.5f - size.x * 0.5f, Screen.height * 0.5f - size.y * 0.5f, size.x, size.y);
 			GUI.BeginGroup(boxRect);
 			GUI.Box(new Rect(0, 0, size.x, size.y), m_tDisplayTexture);
@@ -105,8 +105,14 @@ public class SavePointOrbScript : MonoBehaviour
 			GUI.color = Color.black;
 			for(int i = 0; i < m_lSaveFiles.Count; ++i)
 			{
+				float _fTimer =  m_lSaveFiles[i].m_fTimePlayed;
+				float _fMinutes = Mathf.Floor (_fTimer / 60);
+				float _fSeconds = Mathf.Round (_fTimer % 60);
+				string _szMinutes = _fMinutes.ToString ("00");
+				string _szSeconds = _fSeconds.ToString ("00");
+
 				string szContent  = m_lSaveFiles[i].m_szName + "     Level: " + m_lSaveFiles[i].m_nLevel + "\n" +
-					m_lSaveFiles[i].m_szFieldName + "     Time Played " + m_lSaveFiles[i].m_fTimePlayed;
+					m_lSaveFiles[i].m_szFieldName + "     Time Played: " + _szMinutes + ":" + _szSeconds;
 
 				GUI.Label(new Rect(25, size.y * 0.33f *i + 15.0f, size.x, size.y * 0.33f), szContent);
 			}

@@ -105,9 +105,17 @@ public class ContinueHighlightInputScript : MonoBehaviour {
 			for(int i = 0; i < m_lSaveFilesData.Count; ++i)
 			{
 				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text = "";
-				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text += m_lSaveFilesData[i].m_szName + "   " + m_lSaveFilesData[i].m_nLevel + "   " + m_lSaveFilesData[i].m_nGold + '\n';
+				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text += m_lSaveFilesData[i].m_szName + "\t\t\tLevel: " + m_lSaveFilesData[i].m_nLevel + "\t\t\tGold: " + m_lSaveFilesData[i].m_nGold + '\n';
 
-				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text +=  "Field: " + m_lSaveFilesData[i].m_szFieldName + "    Time Played: " + m_lSaveFilesData[i].m_fTimePlayed;
+
+
+				//Save location name + time played
+				float _fTimer = m_lSaveFilesData [i].m_fTimePlayed;
+				float _fMinutes = Mathf.Floor (_fTimer / 60);
+				float _fSeconds = Mathf.Round (_fTimer % 60);
+				string _szMinutes = _fMinutes.ToString ("00");
+				string _szSeconds = _fSeconds.ToString ("00");
+				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text += m_lSaveFilesData[i].m_szFieldName + "    Time Played: " + _szMinutes + ":" + _szSeconds;
 			}
 		}
 	}
