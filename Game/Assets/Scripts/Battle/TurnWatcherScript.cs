@@ -160,6 +160,8 @@ public class TurnWatcherScript : MonoBehaviour
 		List<DCScript.CharacterData> allies = ds.GetParty();
 		foreach(DCScript.CharacterData g in allies)
 		{
+			if (g.m_bCombatCharacter == false)
+				return;
 			GameObject Ally = Instantiate(Resources.Load<GameObject>("Units/Ally/" + g.m_szCharacterName + "/" + g.m_szCharacterName)) as GameObject;
 			//Set the name so (Clone) isn't in the name.
 			Ally.name = g.m_szCharacterName;
@@ -668,6 +670,8 @@ public class TurnWatcherScript : MonoBehaviour
 		List<DCScript.CharacterData> party = ds.GetParty();
 		foreach(DCScript.CharacterData ally in party)
 		{
+			if (ally.m_bCombatCharacter == false)
+				continue;
 			GameObject foundAlly = GameObject.Find(ally.m_szCharacterName);
 
 			//Award experience (their script will check if it levels and return a bool .. maybe I want to do some level up effect?  Not sure..
@@ -697,6 +701,8 @@ public class TurnWatcherScript : MonoBehaviour
 		List<DCScript.CharacterData> party = ds.GetParty();
 		foreach(DCScript.CharacterData ally in party)
 		{
+			if (ally.m_bCombatCharacter == false)
+				continue;
 			GameObject foundAlly = GameObject.Find(ally.m_szCharacterName);
 			ally.m_nMaxHP = foundAlly.GetComponent<CAllyBattleScript>().GetMaxHP();
 			ally.m_nSTR = foundAlly.GetComponent<CAllyBattleScript>().GetSTR();

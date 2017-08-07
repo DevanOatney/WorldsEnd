@@ -29,8 +29,7 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Input.GetKeyDown(KeyCode.P))
-			Debug.Break();
+		m_bPanelDropped = false;
 	}
 
 	#region IBeginDragHandler implementation
@@ -76,7 +75,7 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 	public void OnEndDrag (PointerEventData eventData)
 	{
 		RemoveCharacter();
-
+		m_goDraggedObject = null;
 	} 
 
 	#endregion
@@ -114,12 +113,12 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 				}
 				InstantiateCharacter (character);
 			}
-			else if (name != m_szPanelOfDraggedCharacter)
+			else if (name != m_szPanelOfDraggedCharacter &&	((character.m_bCombatCharacter == true && m_nFormationIter == 6) == false) && character.m_bCombatCharacter == true)
 			{
 				//Swapping from one panel to another
 				SwapCharacters (gameObject, GameObject.Find (m_szPanelOfDraggedCharacter));
 			}
-			else if (m_cCharacter.m_nFormationIter == m_nFormationIter)
+			else if (character.m_nFormationIter == m_nFormationIter)
 			{
 				//object has been dropped back into this same cell.
 				m_bDroppedInSamePanel = true;
@@ -246,7 +245,6 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 		}
 		if(firstChar != null)
 		{
-			
 			p_secondCell.GetComponent<RosterScreenCellScript>().m_bDroppedInSamePanel = true;
 			p_secondCell.GetComponent<RosterScreenCellScript>().InstantiateCharacter(firstChar);
 		}
