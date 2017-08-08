@@ -473,7 +473,6 @@ public class MenuScreenScript : MonoBehaviour
 				GameObject[] previousCharacters = GameObject.FindGameObjectsWithTag("UI_Battle_Selection");
 				foreach(GameObject character in previousCharacters)
 					Destroy(character);
-				//TODO : Change this so that it goes of an entire roster, and not just the party
 				foreach(DCScript.CharacterData character in dc.GetRoster())
 				{
 					if(character.m_bHasBeenRecruited == true)

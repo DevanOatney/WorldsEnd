@@ -62,7 +62,7 @@ public class DCScript : MonoBehaviour
 	public void SetStartingPos(string strtPos) {m_szNextStartingPosition = strtPos;}
 	public string GetStartingPos() {return m_szNextStartingPosition;}
 	public string m_szSaveLocationName = "";
-
+	public List<string> m_lFieldResourceLocationsFound = new List<string> ();
 	//amount of cash that the player has
 	[HideInInspector]
 	public int m_nGold;

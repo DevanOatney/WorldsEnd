@@ -10,6 +10,7 @@ public class ToAEventHandler : BaseEventSystemScript
 	public GameObject m_goBoarBoss;
 	public GameObject[] m_goBlackSmithShop;
 	public GameObject m_RecruitPositionsRoot;
+	public GameObject m_WorldMapTable;
 	DCScript ds;
 	public List<GameObject[]> m_lEvents;
 	string m_szToABGM = "TempleOfAzyre_BGM";
@@ -150,6 +151,10 @@ public class ToAEventHandler : BaseEventSystemScript
 						}
 					}
 				}
+
+
+				//So not sure when we do want this to actually activate, but for now let's give them the world map mission table once they unlock the base.
+				m_WorldMapTable.SetActive(true);
 			}
 		}
 	}
