@@ -249,12 +249,17 @@ public class MenuScreenScript : MonoBehaviour
 							//This means that a character screen is being shown on the equipment screen, but they haven't selected a slot yet.
 							m_nEquipmentScreenIter = 0;
 							AdjustEquipmentScreenCharacter (-1);
+							
 
 						}
 						else 
 						{
 							DisplayEquipmentScreen (false);
 							m_nMenuState = (int)MENU_STATES.eITEMTAB;
+							foreach (GameObject _subTab in m_goItemSubTabs)
+							{
+								_subTab.SetActive (true);
+							}
 						}
 
 					}
@@ -716,6 +721,10 @@ public class MenuScreenScript : MonoBehaviour
 		case 2:
 			{
 				m_nMenuState = (int)MENU_STATES.eEQUIPMENT_SUBTAB;
+				foreach (GameObject _subTab in m_goItemSubTabs)
+				{
+					_subTab.SetActive (false);
+				}
 				UpdateUnitsOnEquipment ();
 				DisplayEquipmentScreen (true);
 			}
