@@ -23,25 +23,34 @@ public class DCScript : MonoBehaviour
 	//List of character in the roster
 	List<CharacterData> m_lRoster = new List<CharacterData>();
     //List of Generals in army
+	[HideInInspector]
     List<FightSceneControllerScript.cWarUnit> m_lAllyUnits = new List<FightSceneControllerScript.cWarUnit>();
     
+	//List of units out gathering resources.
+	public Dictionary<string, string> m_dUnitsGatheringResources = new Dictionary<string, string>();
 	//flag field that is toggled depending on what the players actions are in the game
 	//["Name"] - 1 if activated 								  : Place Created
+	[HideInInspector]
 	public Dictionary<string, int> m_dStoryFlagField = new Dictionary<string, int>();
 	//Dictionary for the state of the base.
 	//("BlacksmithLevel", 0-3) shows the current progress of the blacksmith shop.
-
+	[HideInInspector]
 	public Dictionary<string, int> m_dBaseFlagField = new Dictionary<string, int>();
+
+
 
 	//-------
 	//FIELD INFORMATION
 
 	//for encounter information
 	List<EncounterGroupLoaderScript.cEnemyData> m_lEnemies;
+	[HideInInspector]
 	public List<EncounterGroupLoaderScript.cEnemyData> GetEnemyNames() {return m_lEnemies;}
+	[HideInInspector]
 	public void SetEnemyNames(List<EncounterGroupLoaderScript.cEnemyData> e) {m_lEnemies = e;}
 
     //For war battle encounter
+	[HideInInspector]
     public string m_szWarBattleDataPath;
 
 	//The name of the scene that the player was on before the encounter started.  Needs to be set at the field just before the battle is started.
@@ -61,7 +70,9 @@ public class DCScript : MonoBehaviour
 	string m_szNextStartingPosition;
 	public void SetStartingPos(string strtPos) {m_szNextStartingPosition = strtPos;}
 	public string GetStartingPos() {return m_szNextStartingPosition;}
+	[HideInInspector]
 	public string m_szSaveLocationName = "";
+	[HideInInspector]
 	public List<string> m_lFieldResourceLocationsFound = new List<string> ();
 	//amount of cash that the player has
 	[HideInInspector]
@@ -74,12 +85,15 @@ public class DCScript : MonoBehaviour
 	public float m_fTimePlayed = 0.0f;
 
 	//the library of items (holds data for every item in the game, and also the inventory for the player)
+	[HideInInspector]
 	public ItemLibrary m_lItemLibrary = new ItemLibrary();
 
 	//the library of spells that exist in the game. (loaded at runtime, does not need to be saved/loaded with player)
+	[HideInInspector]
 	public SpellLibrary m_lSpellLibrary = new SpellLibrary();
 
 	//the library of all of the status effects that exist in the game
+	[HideInInspector]
 	public StatusEffectLibrary m_lStatusEffectLibrary = new StatusEffectLibrary();
 	//("BaseUnlocked", 0) - just a flag for if the base has been unlocked (defeated the boss boar at the lowest level), the return value is unimportant for now
 	//("BlacksmithLevel", 0-3) - Each level increases the amount of stuff in the blacksmith's area.

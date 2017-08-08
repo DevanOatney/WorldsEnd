@@ -89,6 +89,15 @@ public class LoadingScript : MonoBehaviour
 		{
 			NewData.m_dStoryFlagField.Add(fileData.m_lFlagKeys[i], fileData.m_lFlagValues[i]);
 		}
+		for (int i = 0; i < fileData.m_lResourceLocationNames.Count; ++i)
+		{
+			NewData.m_dUnitsGatheringResources.Add (fileData.m_lResourceLocationNames [i], fileData.m_lResourceLocationCharacterNames [i]);
+		}
+		for (int i = 0; i < fileData.m_lBaseUpgradeNames.Count; ++i)
+		{
+			NewData.m_dBaseFlagField.Add (fileData.m_lBaseUpgradeNames [i], fileData.m_lBaseUpgradeValues [i]);
+		}
+		NewData.m_lFieldResourceLocationsFound = fileData.m_lResourceLocationsUnlocked;
 		NewData.m_nGold = fileData.m_nGold;
 		NewData.m_fTimePlayed = fileData.m_fTimePlayed;
 		NewData.SetRoster(fileData.m_lRoster);

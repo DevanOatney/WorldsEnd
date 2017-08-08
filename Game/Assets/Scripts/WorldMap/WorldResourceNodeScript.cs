@@ -24,7 +24,7 @@ public class WorldResourceNodeScript : MonoBehaviour, IPointerClickHandler
 	#region IPointerClickHandler implementation
 	public void OnPointerClick (PointerEventData eventData)
 	{
-		m_goRoot.GetComponent<WorldMissionMapScript> ().ActivateRoster ();
+		m_goRoot.GetComponent<WorldMissionMapScript> ().ActivateRoster (m_szNodeLocationName);
 	}
 	#endregion
 }

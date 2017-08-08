@@ -47,12 +47,11 @@ public class WorldMissionMapScript : MonoBehaviour
 		{
 			_tabs.SetActive (false);
 		}
-		AdjustRoster ();
 
 	}
 
 
-	void AdjustRoster()
+	void AdjustRoster(string _szLocationName)
 	{
 		//First- clear it up incase any were left over from before
 		foreach(Transform go in m_goRosterListRoot.transform)
@@ -71,17 +70,16 @@ public class WorldMissionMapScript : MonoBehaviour
 				{
 					//This is a combat character
 					characterInList.transform.Find ("CharacterLVL").GetComponent<Text> ().text = character.m_nLevel.ToString ();
-					characterInList.GetComponent<CharacterInRosterScript> ().m_bCanBeInCombat = true;
 				}
 				else
 				{
 					//This is a support character.
 					characterInList.transform.Find ("CharacterLVL").GetComponent<Text> ().text = "--";
-					characterInList.GetComponent<CharacterInRosterScript> ().m_bCanBeInCombat = false;
 				}
 
 				characterInList.transform.SetParent(m_goRosterListRoot.transform);
 				characterInList.transform.localScale = new Vector3(1, 1, 1);
+				characterInList.GetComponent<CharacterInWorldMapRosterScript> ().Initialize (_szLocationName);
 			}
 		}
 	}
@@ -98,9 +96,10 @@ public class WorldMissionMapScript : MonoBehaviour
 
 	}
 
-	public void ActivateRoster ()
+	public void ActivateRoster (string _szLocationName)
 	{
 		m_goRoster.SetActive (true);
+		AdjustRoster (_szLocationName);
 	}
 
 	public void DeactivateRoster()

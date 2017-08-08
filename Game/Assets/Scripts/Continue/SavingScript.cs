@@ -17,6 +17,11 @@ public class SavingScript : MonoBehaviour
 		public int m_nTextSpeed;
 		public List<string> m_lFlagKeys = new List<string>();
 		public List<int> m_lFlagValues = new List<int>();
+		public List<string> m_lResourceLocationNames = new List<string>();
+		public List<string> m_lResourceLocationCharacterNames = new List<string> ();
+		public List<string> m_lBaseUpgradeNames = new List<string> ();
+		public List<int> m_lBaseUpgradeValues = new List<int> ();
+		public List<string> m_lResourceLocationsUnlocked = new List<string> ();
 		public int m_nGold;
 		public List<DCScript.CharacterData> m_lParty;
 		public List<DCScript.CharacterData> m_lRoster;
@@ -52,6 +57,20 @@ public class SavingScript : MonoBehaviour
 		{
 			newData.m_lFlagKeys.Add(entry.Key);
 			newData.m_lFlagValues.Add(entry.Value);
+		}
+		foreach (KeyValuePair<string, string> entry in dcs.m_dUnitsGatheringResources)
+		{
+			newData.m_lResourceLocationNames.Add (entry.Key);
+			newData.m_lResourceLocationCharacterNames.Add (entry.Value);
+		}
+		foreach (KeyValuePair<string, int> entry in dcs.m_dBaseFlagField)
+		{
+			newData.m_lBaseUpgradeNames.Add (entry.Key);
+			newData.m_lBaseUpgradeValues.Add (entry.Value);
+		}
+		foreach (string _locationUnlocked in dcs.m_lFieldResourceLocationsFound)
+		{
+			newData.m_lResourceLocationsUnlocked.Add (_locationUnlocked);
 		}
 		newData.m_nGold = dcs.m_nGold;
 		newData.m_lParty = dcs.GetParty();
