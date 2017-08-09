@@ -47,7 +47,7 @@ public class WorldMissionMapScript : MonoBehaviour
 		{
 			_tabs.SetActive (false);
 		}
-
+		DeactivateRoster ();
 	}
 
 
@@ -62,7 +62,7 @@ public class WorldMissionMapScript : MonoBehaviour
 
 		foreach(DCScript.CharacterData character in dc.GetRoster())
 		{
-			if(character.m_bHasBeenRecruited == true)
+			if(character.m_bHasBeenRecruited == true && character.m_bIsInParty == false)
 			{
 				GameObject characterInList = Instantiate(m_goCharacterInRosterPrefab);
 				characterInList.transform.Find("CharacterName").GetComponent<Text>().text = character.m_szCharacterName;
@@ -79,7 +79,16 @@ public class WorldMissionMapScript : MonoBehaviour
 
 				characterInList.transform.SetParent(m_goRosterListRoot.transform);
 				characterInList.transform.localScale = new Vector3(1, 1, 1);
-				characterInList.GetComponent<CharacterInWorldMapRosterScript> ().Initialize (_szLocationName);
+				characterInList.GetComponent<CharacterInWorldMapRosterScript> ().Initialize (_szLocationName, gameObject);
+				characterInList.GetComponent<Image>().color = Color.grey;
+				foreach (KeyValuePair<string, string> entry in dc.m_dUnitsGatheringResources)
+				{
+					if (entry.Value == character.m_szCharacterName)
+					{
+						//This means that this particular character is already on a resource gathering mission, for now just make their button a different color.
+						characterInList.GetComponent<Image>().color = Color.black;
+					}
+				}
 			}
 		}
 	}

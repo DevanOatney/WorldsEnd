@@ -525,7 +525,6 @@ public class DCScript : MonoBehaviour
 	//So this call is also updating character stats, so iterate through each character and update their stats on the roster
 	public void SetParty(List<CharacterData> p) 
 	{
-		Debug.Log("New party count " + p.Count);
 		m_lPartyMembers.Clear();
 		foreach(CharacterData character in p)
 		{
@@ -535,19 +534,16 @@ public class DCScript : MonoBehaviour
 				
 				if(character.m_szCharacterName == rosterCharacter.m_szCharacterName)
 				{
-					Debug.Log(rosterCharacter.m_szCharacterName + " to true");
 					rosterCharacter.UpdateCharacterData(character);
 					rosterCharacter.m_bIsInParty = true;
 					break;
 				}
 				else
 				{
-					Debug.Log(rosterCharacter.m_szCharacterName + " to false");
 					rosterCharacter.m_bIsInParty = false;
 				}
 			}
 		}
-		Debug.Log("Count is " + m_lPartyMembers.Count);
 	}
 
 	public void AddPartyMember(CharacterData character) 

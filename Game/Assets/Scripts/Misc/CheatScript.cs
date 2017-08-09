@@ -248,14 +248,23 @@ public class CheatScript : MonoBehaviour
 														int _level = int.Parse( pieces [2].Trim ());
 														if (dc.GetComponent<DCScript> ().m_dBaseFlagField.ContainsKey ("BlacksmithLevel"))
 														{
-															dc.GetComponent<DCScript> ().m_dBaseFlagField.Remove ("BlacksmithLevel");
-															dc.GetComponent<DCScript> ().m_dBaseFlagField.Add ("BlacksmithLevel", _level);
+															dc.m_dBaseFlagField.Remove ("BlacksmithLevel");
+															dc.m_dBaseFlagField.Add ("BlacksmithLevel", _level);
 														}
 														else
 														{
-															dc.GetComponent<DCScript> ().m_dBaseFlagField.Add ("BlacksmithLevel", _level);
+															dc.m_dBaseFlagField.Add ("BlacksmithLevel", _level);
 														}
+														m_lChatLog.Add ("Changed Blacksmith tier to level " + _level);
 														GameObject.Find ("Event system").GetComponent<BaseEventSystemScript> ().AdjustBuildings ();
+													}
+													break;
+												case "resource":
+													{
+														m_bAbleToFindCommand = true;
+														string _location = pieces [2].Trim ();
+														dc.m_lFieldResourceLocationsFound.Add (_location);
+														m_lChatLog.Add ("Added resource location : " + _location);
 													}
 													break;
 											}

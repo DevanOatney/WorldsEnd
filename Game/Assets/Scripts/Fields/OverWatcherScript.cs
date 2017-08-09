@@ -53,9 +53,6 @@ public class OverWatcherScript : MonoBehaviour
 	//iter for which background for battle during nighttime
 	public int nNightBattleBackgroundIter = 1;
 
-	//Textures for item type icons
-	public Texture2D[] m_tItemTypeTextures;
-
 	public GameObject m_goAudioPlayer;
 	//game data
 	DCScript dc;
@@ -109,6 +106,7 @@ public class OverWatcherScript : MonoBehaviour
 
 		//Adjust the master volume
 		dc.SetMasterVolume();
+
 
 	}
 

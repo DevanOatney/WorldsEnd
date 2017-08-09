@@ -11,6 +11,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 	public GameObject[] Phase2_waypoints;
 	public GameObject[] Mushrooms;
 	string m_szInonForestBGM = "InonForest_BGM";
+	public GameObject m_goResourceHarvestLocation;
 	// Use this for initialization
 	void Start () 
 	{
@@ -232,13 +233,30 @@ public class InonForestEventHandler : BaseEventSystemScript
 				wypnt.SetActive (true);
 
 		}
-		else if(result == 5)
+		else if(result >= 5)
 		{
 			//Player has finished the Temple of Azyre initial events and can now leave to the world map from the north of the forest
 			foreach(GameObject wypnt in Phase2_waypoints)
 			{
 				wypnt.SetActive(false);
 			}
+
+			//At this point it's also possible for there to be a recruited character at this harvest location- so let's find out.
+			foreach (string _location in ds.m_lFieldResourceLocationsFound)
+			{
+				if (_location == "Inon Forest")
+				{
+					//this is a possible location-
+					string _resourceResult;
+					if (ds.m_dUnitsGatheringResources.TryGetValue ("Inon Forest", out _resourceResult))
+					{
+						//This location is currently being used, spawn whichever unit is supposed to be here at the resource location!
+						GameObject _unit = Resources.Load<GameObject>("Units/Ally/" + _resourceResult + "/Field/" + _resourceResult);
+						_unit = Instantiate(_unit, m_goResourceHarvestLocation.transform.position, Quaternion.identity);
+					}
+				}
+			}
+
 		}
 		if (ds.m_dStoryFlagField.TryGetValue ("BoarBossPart1Finished", out result)) 
 		{
