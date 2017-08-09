@@ -163,7 +163,9 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 			{
 				return;
 			}
-			GameObject.Find("PersistantData").GetComponent<DCScript>().AddPartyMember (m_cCharacter.m_szCharacterName);
+			//add the character to the party (if they aren't already)
+			DCScript dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
+			dc.AddPartyMember (m_cCharacter.m_szCharacterName);
 			GameObject newCharacter = Instantiate(Resources.Load<GameObject>("Units/Ally/" + m_cCharacter.m_szCharacterName + "/" + m_cCharacter.m_szCharacterName + "_UIAnimated")) as GameObject;
 			newCharacter.name = m_cCharacter.m_szCharacterName + "_UIAnimated";
 			newCharacter.GetComponent<RectTransform>().SetParent(GetComponent<RectTransform>());
@@ -173,6 +175,13 @@ public class RosterScreenCellScript : MonoBehaviour, IDropHandler, IBeginDragHan
 			newCharacter.GetComponent<RectTransform>().localPosition = characterPosition;
 			m_goDraggedObject = newCharacter.transform;
 			m_cCharacter.m_nFormationIter = m_nFormationIter;
+			//if the character is out on a resource gathering mission- remove them from it.
+			string _result;
+			if (dc.m_dUnitsGatheringResources.TryGetValue (m_cCharacter.m_szCharacterName, out _result))
+			{
+				//this character IS out on a resource mission, remove them from it.
+				dc.m_dUnitsGatheringResources.Remove(m_cCharacter.m_szCharacterName);
+			}
 		}
 	}
 

@@ -492,6 +492,20 @@ public class MenuScreenScript : MonoBehaviour
 								characterInList.GetComponent<CharacterInRosterScript> ().m_bCanBeInCombat = false;
 							}
 
+						//check to see if this character is currently on a mission- if they are show it.
+							bool _bFound = false;
+							foreach (KeyValuePair<string, string> entry in dc.m_dUnitsGatheringResources)
+							{
+								if (entry.Value == character.m_szCharacterName)
+								{
+									characterInList.transform.Find("Mission").gameObject.SetActive(true);
+									_bFound = true;
+								}
+							}
+							if (_bFound == false)
+							{
+								characterInList.transform.Find("Mission").gameObject.SetActive(false);
+							}
 						characterInList.transform.SetParent(m_goCharacterRoot.transform);
 						characterInList.transform.localScale = new Vector3(1, 1, 1);
 					}
