@@ -5,50 +5,48 @@ using System.Collections.Generic;
 public class NPCScript : MonoBehaviour 
 {
 	#region DESIGNER_HELPER_FUNCTIONS
+	//moves into the player
+
 	public void DHF_NPCMoveIntoPlayer()
 	{
-		m_bReturnToPlayer = true;
+		m_bMoveIntoPlayer = true;
+		DHF_NPCMoveToGameobject (GameObject.Find ("Player"), false, 0, false);
+		GetComponent<Collider2D> ().enabled = false;
+
 	}
-	public void DHF_NPCMoveToGameobject(GameObject _target, bool _shouldIRun)
-	{
-		m_bMoveTowardLocation = true;
-        m_bShouldRun = _shouldIRun;
-		m_vTargetLocation = _target.transform.position;
-		m_vTargetLocation.y += _target.GetComponent<Collider2D>().bounds.size.y * 0.5f;
-	}
+
+	//Move toward location (single node)
 	public void DHF_NPCMoveToGameobject(GameObject _target, bool _shouldIRun, int _nextFacingDir, bool _comingFromPlayer = false)
 	{
-		m_bMoveTowardLocation = true;
 		m_bShouldRun = _shouldIRun;
-		m_vTargetLocation = _target.transform.position;
-		m_vTargetLocation.y += _target.GetComponent<Collider2D>().bounds.size.y * 0.5f;
 		m_nNextFacingDir = _nextFacingDir;
 		m_bIsComingOutOfPlayer = _comingFromPlayer;
 		if(m_bIsComingOutOfPlayer == true)
 			Invoke("DelayedCollisionActivation", 0.35f);
+		Vector3 _pos = _target.transform.position;
+		_pos.y += _target.GetComponent<Collider2D>().bounds.size.y * 0.5f;
+		m_lNodes.Add (_pos);
 	}
-	public void DHF_NPCPathfindToGameobject(GameObject _target, bool _shouldIRun, int _nextFacingDir, bool _allowDiagonal)
-	{
-        m_bShouldRun = _shouldIRun;
-		m_nNextFacingDir = _nextFacingDir;
-        CPathRequestManager.RequestPath(transform.position, _target.transform.position, FinishedPathRequest);
-	}
-	#endregion
 
-    void FinishedPathRequest(Vector3[] p_Path, bool p_bSuccess)
-    {
-        if (p_bSuccess == true)
-        {
-            //found a path
-            m_vWaypoints = p_Path;
-            m_bMoveTowardLocation = true;
-            m_nWaypointIndex = 0;
-        }
-        else
-        {
-            //couldn't find path
-        }
-    }
+	//Move toward location (multiple nodes)
+	public void DHF_NPCMoveToGameobject(GameObject[] _targets, bool _shouldRun, int _nextFacingDir, bool _comingFromPlayer = false)
+	{
+		foreach (GameObject _target in _targets)
+		{
+			Vector3 _pos = _target.transform.position;
+			_pos.y += _target.GetComponent<Collider2D>().bounds.size.y * 0.5f;
+			m_lNodes.Add (_pos);
+		}
+		m_bShouldRun = _shouldRun;
+		m_nNextFacingDir = _nextFacingDir;
+		m_bIsComingOutOfPlayer = _comingFromPlayer;
+		if (m_bIsComingOutOfPlayer == true)
+			Invoke ("DelayedCollisionActivation", 0.3f);
+	}
+
+
+
+	#endregion
 
 	public enum FACINGDIR {eDOWN, eLEFT, eRIGHT, eUP}
 	public int m_nFacingDir = 0;
@@ -72,16 +70,13 @@ public class NPCScript : MonoBehaviour
 	int m_nNextFacingDir = -1;
 	//cost for if it's an innkeeper
 	public int m_nCost = 0;
-
-	bool m_bReturnToPlayer = false;
-	bool m_bMoveTowardLocation = false;
-	Vector3 m_vTargetLocation = Vector3.zero;
+	bool m_bMoveIntoPlayer = false;
 
 
 
     //pathfinding stuff
-    Vector3[] m_vWaypoints;
-    int m_nWaypointIndex = 0;
+	List<Vector3> m_lNodes = new List<Vector3>();
+	int m_nNodeIndex = 0;
 
 
 
@@ -108,145 +103,66 @@ public class NPCScript : MonoBehaviour
 
 	protected void HandleMovement()
 	{
-		#region Return To Player
-		if(m_bReturnToPlayer == true)
+		if (m_lNodes.Count > 0)
 		{
-			GetComponent<Collider2D>().enabled = false;
-			Vector2 playerPos = GameObject.Find("Player").transform.position;
-			Vector2 npcPos = transform.position;
-			Vector2 toPlayer = playerPos - npcPos;
-			if(toPlayer.x > 0.05f || toPlayer.x < -0.05f)
+			//So, there is somewhere we should move- so let's do this shit!
+			float _fSpeed = 0.0f;
+			if (m_bShouldRun == false)
+				_fSpeed = m_fWalkingSpeed * Time.deltaTime;
+			else
+				_fSpeed = m_fRunningSpeed * Time.deltaTime;
+			Vector3 _vMovePos = Vector3.MoveTowards (transform.position, m_lNodes [m_nNodeIndex], _fSpeed);
+
+			if (_vMovePos == transform.position)
 			{
-				ResetAnimFlagsExcept(-1);
-				if(toPlayer.x > 0.05f)
-					m_aAnim.SetBool("m_bMoveRight", true);
-				else
-					m_aAnim.SetBool("m_bMoveLeft", true);
-				toPlayer.y = 0.0f;
-				toPlayer.Normalize();
-				toPlayer.x *= m_fWalkingSpeed;
-				gameObject.GetComponent<Rigidbody2D>().velocity = toPlayer;
-			}
-			else if(toPlayer.y > 0.05f || toPlayer.y  < -0.05f)
-			{
-				ResetAnimFlagsExcept(-1);
-				if(toPlayer.y > 0.05f)
-					m_aAnim.SetBool("m_bMoveUp", true);
-				else
-					m_aAnim.SetBool("m_bMoveDown", true);
-				toPlayer.x = 0.0f;
-				toPlayer.Normalize();
-				if(m_bShouldRun == true)
-					toPlayer.y *= m_fRunningSpeed;
-				else
-					toPlayer.y *= m_fWalkingSpeed;
-				gameObject.GetComponent<Rigidbody2D>().velocity = toPlayer;
+				//reached current destination
+				m_nNodeIndex += 1;
+				if (m_nNodeIndex >= m_lNodes.Count)
+				{
+					if (m_bMoveIntoPlayer == true)
+					{
+						//this was us moving back to the player, so this character should be set to innactive and hidden.
+						m_bMoveIntoPlayer = false;
+						GetComponent<Collider2D>().enabled = true;
+						gameObject.GetComponent<SpriteRenderer>().enabled = false;
+						gameObject.GetComponent<Collider2D>().enabled = false;
+						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+						Camera.main.GetComponent<CameraFollowTarget>().m_goNextTarget = GameObject.Find("Player");
+						StopMovement ();
+					}
+
+
+					//We've reached the end of the current node needed to reach, move to the next one.
+					m_nNodeIndex += 1;
+					if (m_nNodeIndex >= m_lNodes.Count)
+					{
+						//We've reached the final node in the list, stop movement and face the direction desired.
+						m_nNodeIndex = 0;
+						m_lNodes.Clear ();
+						StopMovement ();
+					}
+				}
 			}
 			else
 			{
-				m_bReturnToPlayer = false;
-				GetComponent<Collider2D>().enabled = true;
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				gameObject.GetComponent<Collider2D>().enabled = false;
-				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-				Camera.main.GetComponent<CameraFollowTarget>().m_goNextTarget = GameObject.Find("Player");
+				//Haven't reached destination yet.
+				Vector3 _toVec = (_vMovePos - transform.position).normalized;
+				m_aAnim.SetBool ("m_bMoving", true);
+				m_aAnim.SetFloat ("X", _toVec.x);
+				m_aAnim.SetFloat ("Y", _toVec.y);
+				transform.position = _vMovePos;
 			}
-		}
-		#endregion
-		else if(m_bMoveTowardLocation == true)
-		{
-			if(m_vWaypoints != null)
-			{
-            	if (m_vWaypoints.Length > 0)
-            	{
-            	    //doing pathfinding
-            	    m_vTargetLocation = m_vWaypoints[m_nWaypointIndex];
-				
-            	}
-			}
-            Vector3 npcPos = transform.position;
-            Vector3 toTarget = m_vTargetLocation - npcPos;
 
-			if(toTarget.x > 0.05f || toTarget.x < -0.05f)
-			{
-				ResetAnimFlagsExcept(-1);
-				if(m_aAnim != null)
-				{
-					if(toTarget.x > 0.05f)
-						m_aAnim.SetBool("m_bMoveRight", true);
-					else
-						m_aAnim.SetBool("m_bMoveLeft", true);
-				}
-				toTarget.y = 0.0f;
-				toTarget.Normalize();
-				if(m_bShouldRun == true)
-					toTarget.x *= m_fRunningSpeed;
-				else
-					toTarget.x *= m_fWalkingSpeed;
-				gameObject.GetComponent<Rigidbody2D>().velocity = toTarget;
-			}
-			else if(toTarget.y > 0.05f || toTarget.y  < -0.05f)
-			{
-				ResetAnimFlagsExcept(-1);
-				if(m_aAnim != null)
-				{
-					if(toTarget.y > 0.05f)
-						m_aAnim.SetBool("m_bMoveUp", true);
-					else
-						m_aAnim.SetBool("m_bMoveDown", true);
-				}
-				toTarget.x = 0.0f;
-				toTarget.Normalize();
-				if(m_bShouldRun == true)
-					toTarget.y *= m_fRunningSpeed;
-				else
-					toTarget.y *= m_fWalkingSpeed;
-				gameObject.GetComponent<Rigidbody2D>().velocity = toTarget;
-			}
-			else
-			{
-                //reached target location
-				if(m_vWaypoints != null)
-				{
-              	 	if (m_vWaypoints.Length > 0)
-                	{
-                	    //we're doing waypoints, so check to see if there's another location to go, if so, go there.
-                	    if (m_nWaypointIndex < m_vWaypoints.Length-1)
-                	    {
-							ResetAnimFlagsExcept(-1);
-                	        m_nWaypointIndex++;
-                	    }
-                	    else
-                	    {
-                	        //reached the end of the waypoints (maybe later adjust for looping paths?)
-                	        StopMovement();
-                	    }
-                	}
-				}
-                else
-                {
-                    //doing some non-waypoint movement (/shrug) stop movement now that destination is reached
-                    StopMovement();
-                }
-				
-			}
-		}
 
-		#region Scripted Pathing
-        #endregion
+		}
     }
 
     void StopMovement()
     {
-        ResetAnimFlagsExcept(-1);
-        if (m_nNextFacingDir != -1)
-        {
-            m_aAnim.SetInteger("m_nFacingDir", m_nNextFacingDir);
-            m_nNextFacingDir = -1;
-        }
-        m_bMoveTowardLocation = false;
-        m_vTargetLocation = Vector3.zero;
-		m_nWaypointIndex = 0;
+		m_aAnim.SetBool ("m_bMoving", false);
+		m_aAnim.SetFloat("m_nFacingDir", m_nNextFacingDir);
+		m_lNodes.Clear ();
+		m_nNodeIndex = 0;
     }
 
 	// Update is called once per frame
@@ -294,62 +210,8 @@ public class NPCScript : MonoBehaviour
          * */
 	}
 
-	public void ResetAnimFlagsExcept(int exception)
-	{
-		if(m_aAnim != null)
-		{
-			m_aAnim.SetInteger("m_nFacingDir", exception);
-			switch(exception)
-			{
-			case 0:
-			{
-				//Down
-				m_aAnim.SetBool("m_bMoveLeft", false);
-				m_aAnim.SetBool("m_bMoveRight", false);
-				m_aAnim.SetBool("m_bMoveUp", false);
-				m_aAnim.SetBool("m_bMoveDown", true);
-			
-			}
-				break;
-			case 1:
-			{
-				//Left
-				m_aAnim.SetBool("m_bMoveRight", false);
-				m_aAnim.SetBool("m_bMoveUp", false);
-				m_aAnim.SetBool("m_bMoveDown", false);
-				m_aAnim.SetBool("m_bMoveLeft", true);
-			}
-				break;
-			case 2:
-			{
-				//Right
-				m_aAnim.SetBool("m_bMoveDown", false);
-				m_aAnim.SetBool("m_bMoveLeft", false);
-				m_aAnim.SetBool("m_bMoveRight", true);
-				m_aAnim.SetBool("m_bMoveUp", false);
-			}
-				break;
-			case 3:
-			{
-				m_aAnim.SetBool("m_bMoveUp", true);
-				m_aAnim.SetBool("m_bMoveDown", false);
-				m_aAnim.SetBool("m_bMoveLeft", false);
-				m_aAnim.SetBool("m_bMoveRight", false);
-			}
-				break;
-			default:
-			{
-				m_aAnim.SetBool("m_bMoveUp", false);
-				m_aAnim.SetBool("m_bMoveDown", false);
-				m_aAnim.SetBool("m_bMoveLeft", false);
-				m_aAnim.SetBool("m_bMoveRight", false);
-			}
-				break;
-			}
-		}
-	}
-
-	public void OnTriggerEnter2D(Collider2D c)
+	//Used for if interracted with by the player.   If there is dialogue to display, do it!
+	virtual public void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.name == "Action Box(Clone)")
 		{
@@ -365,6 +227,7 @@ public class NPCScript : MonoBehaviour
 		}
 	}
 
+	//If you collide with something, don't keep moving forward.
 	void OnCollisionEnter2D(Collision2D c)
 	{
 		if(m_bIsComingOutOfPlayer == false)
@@ -375,27 +238,35 @@ public class NPCScript : MonoBehaviour
 		}
 	}
 
-	void OnCollisionExit2D(Collision2D c)
-	{
-		//m_bCanMove = true;
-	}
-
+	//Display the path that the character is walking.
 	public void OnDrawGizmos()
 	{
-		if(m_vWaypoints != null)
+		if(m_lNodes.Count > 0)
 		{
-			for(int i = m_nWaypointIndex; i < m_vWaypoints.Length; ++i)
-			{
-				Gizmos.color = Color.black;
-				Gizmos.DrawCube(m_vWaypoints[i], Vector3.one);
-				if(i == m_nWaypointIndex)
-					Gizmos.DrawLine(transform.position, m_vWaypoints[i]);
-				else
-					Gizmos.DrawLine(m_vWaypoints[i-1], m_vWaypoints[i]);
-			}
+				for (int i = m_nNodeIndex; i < m_lNodes.Count; ++i)
+				{
+					Gizmos.color = Color.black;
+					Gizmos.DrawCube (m_lNodes [i], Vector3.one);
+					if (i == m_nNodeIndex)
+						Gizmos.DrawLine (transform.position, m_lNodes [i]);
+					else
+					Gizmos.DrawLine (m_lNodes [i - 1], m_lNodes [i]);
+				}
+		}	}
+
+	//Stop moving, face the direction that you're already facing.
+	public void SetIdle()
+	{
+		if (m_aAnim != null)
+		{
+			m_aAnim.SetBool ("m_bMoveUp", false);
+			m_aAnim.SetBool ("m_bMoveDown", false);
+			m_aAnim.SetBool ("m_bMoveLeft", false);
+			m_aAnim.SetBool ("m_bMoveRight", false);
+			m_aAnim.SetInteger ("m_nFacingDir", m_nFacingDir);
 		}
 	}
-
+		
 	void DelayedCollisionActivation()
 	{
 		GetComponent<BoxCollider2D> ().enabled = true;

@@ -719,7 +719,7 @@ public class InonEventHandler : BaseEventSystemScript
                 break;
             case "RetrieveTusks":
                 {
-                    GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveToGameobject(Phase4_waypoints[0], false);
+                    GameObject.Find("Briol").GetComponent<NPCScript>().DHF_NPCMoveToGameobject(Phase4_waypoints[0], false, 0, false);
                 }
                 break;
             case "BriolArriveAtRitual":

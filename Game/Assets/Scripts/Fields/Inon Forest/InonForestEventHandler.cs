@@ -51,7 +51,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 		case "BoarChase":
 		{
 			m_goBossBoar.SetActive(true);
-			m_goBossBoar.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("BoarMove"),true);
+			m_goBossBoar.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("BoarMove"), true, 2, false);
 			m_goBossBoar.GetComponent<Animator>().SetBool("m_bIsMoving", true);
 			
 			GameObject.Find("to Temple").GetComponent<BoxCollider2D>().enabled = true;
@@ -253,6 +253,12 @@ public class InonForestEventHandler : BaseEventSystemScript
 						//This location is currently being used, spawn whichever unit is supposed to be here at the resource location!
 						GameObject _unit = Resources.Load<GameObject>("Units/Ally/" + _resourceResult + "/Field/" + _resourceResult);
 						_unit = Instantiate(_unit, m_goResourceHarvestLocation.transform.position, Quaternion.identity);
+						Destroy (_unit.GetComponent<NPCScript> ());
+						NPCResourceFarmerScript _script = _unit.AddComponent (typeof(NPCResourceFarmerScript)) as NPCResourceFarmerScript;
+						_script.m_lWaypoints = m_goResourceHarvestLocation.GetComponent<ResourceLocationScript> ().m_lWaypoints;
+						Vector3 _pos = _script.m_lWaypoints [0].transform.position;
+						_pos.y += _unit.GetComponent<Collider2D>().bounds.size.y * 0.5f;
+						_unit.transform.position = _pos;
 					}
 				}
 			}

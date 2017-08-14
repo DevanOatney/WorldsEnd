@@ -203,7 +203,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			m_goBoar.SetActive(true);
 			m_goBoar.transform.position = GameObject.Find("BoarRunOffStartPosition").transform.position;
 			GameObject.Find ("EncounterBoarDestination").GetComponent<BoxCollider2D>().enabled = true;
-			m_goBoar.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find ("EncounterBoarDestination"), false);
+			m_goBoar.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find ("EncounterBoarDestination"), false, 2, false);
 		}
 			break;
 		case "EndSeeBoar":
@@ -273,7 +273,7 @@ public class ToAEventHandler : BaseEventSystemScript
 				GameObject.Find("BoarBossChargePoint_Callan").GetComponent<BoxCollider2D>().enabled = true;
 				GameObject.Find("BoarBossChargePoint_Briol").GetComponent<BoxCollider2D>().enabled = true;
 				player.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("BoarBossChargePoint_Callan"), true);
-				briol.GetComponent<NPCScript> ().DHF_NPCMoveToGameobject (GameObject.Find ("BoarBossChargePoint_Briol"), true);
+				briol.GetComponent<NPCScript> ().DHF_NPCMoveToGameobject (GameObject.Find ("BoarBossChargePoint_Briol"), true, 3, false);
 				m_goBoarBoss.SetActive(true);
 			}
 			break;
@@ -303,7 +303,6 @@ public class ToAEventHandler : BaseEventSystemScript
 			briol.transform.position = GameObject.Find("BoarBossChargePoint_Briol").transform.position;
 			player.GetComponent<Animator>().SetInteger("m_nFacingDir", 2);
 			briol.GetComponent<SpriteRenderer>().enabled = true;
-			briol.GetComponent<NPCScript>().ResetAnimFlagsExcept(-1);
 			briol.GetComponent<Animator>().SetInteger("m_nFacingDir", 1);
 			m_goBoarBoss.SetActive (true);
 			m_goBoarBoss.GetComponentInChildren<Animator> ().Play ("BoarBoss_Dead");
@@ -403,7 +402,7 @@ public class ToAEventHandler : BaseEventSystemScript
 		{
 			//Player has ran upward after entering the temple for the first time.   Activate the boar and move it toward the waypoint near the player.
 			m_goBoar.SetActive(true);
-			m_goBoar.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("BoarStop_EncounterBoar"), true);
+			m_goBoar.GetComponent<NPCScript>().DHF_NPCMoveToGameobject(GameObject.Find("BoarStop_EncounterBoar"), true, 2, false);
 			GameObject.Find ("BoarStop_EncounterBoar").GetComponent<BoxCollider2D> ().enabled = true;
 		}
 			break;

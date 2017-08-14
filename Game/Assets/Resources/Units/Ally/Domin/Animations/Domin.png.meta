@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: de2b9ddc31c2b724aba6bfd300ecaf1c
-timeCreated: 1501866930
+timeCreated: 1502482219
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -1561,106 +1561,15 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Domin_112
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1280
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Domin_113
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 1280
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Domin_114
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 1280
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Domin_115
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 1280
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Domin_116
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 1280
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Domin_117
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 1280
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Domin_118
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1216
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: Domin_119
       rect:
         serializedVersion: 2
-        x: 64
-        y: 1216
+        x: 54
+        y: 1204
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.61085355, y: 0.42609787}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -1668,12 +1577,12 @@ TextureImporter:
       name: Domin_120
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1216
+        x: 130
+        y: 1210
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.70939016, y: 0.3645115}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -1681,12 +1590,12 @@ TextureImporter:
       name: Domin_121
       rect:
         serializedVersion: 2
-        x: 192
-        y: 1216
+        x: 212
+        y: 1211
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.72170734, y: 0.35219383}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -1694,12 +1603,12 @@ TextureImporter:
       name: Domin_122
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1216
+        x: 301
+        y: 1212
         width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 67
+      alignment: 9
+      pivot: {x: 0.70939016, y: 0.27645463}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -1707,90 +1616,12 @@ TextureImporter:
       name: Domin_123
       rect:
         serializedVersion: 2
-        x: 320
-        y: 1216
+        x: 405
+        y: 1210
         width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Domin_124
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1152
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Domin_125
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 1152
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Domin_126
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 1152
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Domin_127
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 1152
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Domin_128
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 1152
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Domin_129
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 1152
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 76
+      alignment: 9
+      pivot: {x: 0.46304893, y: 0.24069214}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
