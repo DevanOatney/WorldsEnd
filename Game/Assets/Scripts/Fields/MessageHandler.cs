@@ -194,8 +194,8 @@ public class MessageHandler : MonoBehaviour
 			//So we've already found out there is no portrait, so just display the dialogue without bothering with a portrait
 			DisplayDialogueWithoutPortrait ();
 		}
-		else
-		if (m_nPortraitOptimizationIter == 0) {
+		else if (m_nPortraitOptimizationIter == 0) 
+		{
 			//We haven't checked yet if there is a portrait, so let's check!
 			string szName = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents [m_nCurrentDialogueIter]).CharacterName;
 			int bustID = ((DialogueScriptLoaderScript.nrmlDlg)dialogueEvents [m_nCurrentDialogueIter]).BustID;
@@ -212,8 +212,8 @@ public class MessageHandler : MonoBehaviour
 				DisplayDialogueWithPortrait ();
 			}
 		}
-		else
-		if (m_nPortraitOptimizationIter == 1) {
+		else if (m_nPortraitOptimizationIter == 1) 
+		{
 				//we already know there is a portrait, draw out that dialogue!
 				DisplayDialogueWithPortrait();
 		}
@@ -497,6 +497,8 @@ public class MessageHandler : MonoBehaviour
 
 	Texture2D TextureFromSprite(Sprite sprite)
 	{
+		if (sprite == null)
+			return;
 		if(sprite.rect.width != sprite.texture.width)
 		{
 			Texture2D newText = new Texture2D((int)sprite.rect.width,(int)sprite.rect.height);

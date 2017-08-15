@@ -444,7 +444,7 @@ public class ToAEventHandler : BaseEventSystemScript
 			src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
 			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
 			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
-			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
+			src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 1);
 			src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
 			GameObject.Find("StepBack").GetComponent<BoxCollider2D>().enabled = true;
 			
