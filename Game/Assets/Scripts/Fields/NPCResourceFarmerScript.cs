@@ -29,7 +29,7 @@ public class NPCResourceFarmerScript : NPCScript
 	{
 		if (c.gameObject.name == "Waypoint")
 		{
-			SetIdle ();
+			StopMovement ();
 			m_bPausePathfinding = true;
 			if (m_lWaypoints [m_nCurrentWaypointTarget].tag == "Harvest Point")
 			{
@@ -43,7 +43,7 @@ public class NPCResourceFarmerScript : NPCScript
 				{
 					StartCoroutine (ResumePathfinding (false, 5.0f));
 				}
-				m_aAnim.SetTrigger ("m_tSwing");
+				m_aAnim.SetBool ("m_bSwinging", true);
 			}
 			else
 			{
@@ -57,7 +57,8 @@ public class NPCResourceFarmerScript : NPCScript
 	IEnumerator ResumePathfinding(bool _bToFlip, float _fDelay)
 	{
 		yield return new WaitForSeconds (_fDelay);
-
+		Debug.Log ("hit");
+		m_aAnim.SetBool ("m_bSwinging", false);
 		if (_bToFlip == true)
 		{
 			GetComponent<SpriteRenderer> ().flipX = !GetComponent<SpriteRenderer> ().flipX;
@@ -66,8 +67,7 @@ public class NPCResourceFarmerScript : NPCScript
 
 		if (m_nCurrentWaypointTarget >= m_lWaypoints.Count)
 			m_nCurrentWaypointTarget = 0;
-		m_aAnim.SetInteger ("m_nFacingDir", m_nFacingDir);
-		DHF_NPCMoveToGameobject (m_lWaypoints [m_nCurrentWaypointTarget], false,m_nFacingDir, false);
+		DHF_NPCMoveToGameobject (m_lWaypoints [m_nCurrentWaypointTarget], false,  -1, false);
 		m_bPausePathfinding = false;
 	}
 }

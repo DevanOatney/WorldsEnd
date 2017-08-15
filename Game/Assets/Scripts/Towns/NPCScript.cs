@@ -24,7 +24,8 @@ public class NPCScript : MonoBehaviour
 		if(m_bIsComingOutOfPlayer == true)
 			Invoke("DelayedCollisionActivation", 0.35f);
 		Vector3 _pos = _target.transform.position;
-		_pos.y += _target.GetComponent<Collider2D>().bounds.size.y * 0.5f;
+		float _offset = GetComponent<Collider2D> ().bounds.size.y * 0.5f;
+		_pos.y += _offset;
 		m_lNodes.Add (_pos);
 	}
 
@@ -34,7 +35,7 @@ public class NPCScript : MonoBehaviour
 		foreach (GameObject _target in _targets)
 		{
 			Vector3 _pos = _target.transform.position;
-			_pos.y += _target.GetComponent<Collider2D>().bounds.size.y * 0.5f;
+			_pos.y += GetComponent<Collider2D> ().bounds.size.y * 0.5f;
 			m_lNodes.Add (_pos);
 		}
 		m_bShouldRun = _shouldRun;
@@ -150,6 +151,7 @@ public class NPCScript : MonoBehaviour
 				m_aAnim.SetBool ("m_bMoving", true);
 				m_aAnim.SetFloat ("X", _toVec.x);
 				m_aAnim.SetFloat ("Y", _toVec.y);
+				SetNPCFacing (_toVec);
 				transform.position = _vMovePos;
 			}
 
@@ -157,12 +159,16 @@ public class NPCScript : MonoBehaviour
 		}
     }
 
-    void StopMovement()
+    protected void StopMovement()
     {
-		m_aAnim.SetBool ("m_bMoving", false);
-		m_aAnim.SetFloat("m_nFacingDir", m_nNextFacingDir);
-		m_lNodes.Clear ();
-		m_nNodeIndex = 0;
+		if (m_aAnim != null)
+		{
+			m_aAnim.SetBool ("m_bMoving", false);
+			if(m_nNextFacingDir != -1)
+				m_aAnim.SetFloat ("m_nFacingDir", m_nNextFacingDir);
+			m_lNodes.Clear ();
+			m_nNodeIndex = 0;
+		}
     }
 
 	// Update is called once per frame
@@ -171,22 +177,33 @@ public class NPCScript : MonoBehaviour
 		HandleMovement();
 	}
 
-	//Get the direction the NPC is looking
-	Vector2 GetNPCFacing()
+	//Set the direction the unit is facing based on the direction to the parameter passed in.
+	void SetNPCFacing(Vector3 _direction)
 	{
-		//Down, Left, Right, Up
-		switch(m_nFacingDir)
+		if (_direction.x > 0.8f)
 		{
-			case 0:
-				return new Vector2(0, -1);
-			case 1:
-				return new Vector2(-1, 0);
-			case 2:
-				return new Vector2(1, 0);
-			case 3:
-				return new Vector2(0, 1);
+			//right
+			m_nFacingDir = 2;
 		}
-		return new Vector2(0, 0);
+		else
+		if (_direction.x < -0.8f)
+		{
+			//Left
+			m_nFacingDir = 1;
+		}
+		else
+		if (_direction.y > 0.8f)
+		{
+			//up
+			m_nFacingDir = 3;
+		}
+		else
+		if (_direction.y < -0.8f)
+		{
+			//down
+			m_nFacingDir = 0;
+		}
+		m_aAnim.SetFloat ("m_nFacingDir", m_nFacingDir);
 	}
 
 	//Load the steps of the NPC
@@ -254,18 +271,6 @@ public class NPCScript : MonoBehaviour
 				}
 		}	}
 
-	//Stop moving, face the direction that you're already facing.
-	public void SetIdle()
-	{
-		if (m_aAnim != null)
-		{
-			m_aAnim.SetBool ("m_bMoveUp", false);
-			m_aAnim.SetBool ("m_bMoveDown", false);
-			m_aAnim.SetBool ("m_bMoveLeft", false);
-			m_aAnim.SetBool ("m_bMoveRight", false);
-			m_aAnim.SetInteger ("m_nFacingDir", m_nFacingDir);
-		}
-	}
 		
 	void DelayedCollisionActivation()
 	{

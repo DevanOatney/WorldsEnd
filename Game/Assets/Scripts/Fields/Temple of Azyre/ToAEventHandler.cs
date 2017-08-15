@@ -301,9 +301,9 @@ public class ToAEventHandler : BaseEventSystemScript
 
 			player.transform.position = GameObject.Find("BoarBossChargePoint_Callan").transform.position;
 			briol.transform.position = GameObject.Find("BoarBossChargePoint_Briol").transform.position;
-			player.GetComponent<Animator>().SetInteger("m_nFacingDir", 2);
+			player.GetComponent<Animator>().SetFloat("m_nFacingDir", 2);
 			briol.GetComponent<SpriteRenderer>().enabled = true;
-			briol.GetComponent<Animator>().SetInteger("m_nFacingDir", 1);
+			briol.GetComponent<Animator>().SetFloat("m_nFacingDir", 1);
 			m_goBoarBoss.SetActive (true);
 			m_goBoarBoss.GetComponentInChildren<Animator> ().Play ("BoarBoss_Dead");
 			briol.GetComponentInChildren<MessageHandler>().BeginDialogue("C5");
@@ -393,6 +393,7 @@ public class ToAEventHandler : BaseEventSystemScript
 		case "BoarStop_EncounterBoar":
 		{
 			//The boar has charged at the player after entering the temple for the first time, blur the camera and begin battle!
+			GameObject.Find ("Boar").GetComponent<Animator>().SetBool("m_bAttack", true);
 			Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
 			Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
 			StartBoarBattle();
@@ -630,8 +631,8 @@ public class ToAEventHandler : BaseEventSystemScript
 		GameObject briol = GameObject.Find("Briol");
 		player.transform.position = GameObject.Find("AfterBoarBattlePosition").transform.position;
 		briol.transform.position = GameObject.Find("AfterBoarBattlePositionBriol").transform.position;
-		player.GetComponent<Animator>().SetInteger("m_nFacingDir", 2);
-		briol.GetComponent<Animator>().SetInteger("m_nFacingDir", 1);
+		player.GetComponent<Animator>().SetFloat("m_nFacingDir", 2);
+		briol.GetComponent<Animator>().SetFloat("m_nFacingDir", 1);
 		Camera.main.SendMessage("fadeIn");
 		Invoke("StartChat", 1.0f);
 	}
