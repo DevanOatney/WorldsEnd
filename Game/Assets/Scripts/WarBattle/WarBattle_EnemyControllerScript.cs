@@ -140,7 +140,10 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
             case WB_AI_States.eStart:
                 {
                     //This is the start of the AI's turn. Need to iterate through each unit, giving them a desired location to move, and a desired action (that is valid)
-                    
+					if (m_nUnitIter >= m_lSameTeam.Count)
+					{
+						m_goWatcher.GetComponent<WarBattleWatcherScript> ().EndFactionTurn ();
+					}
                     m_goCurrentUnitActing = m_lSameTeam[m_nUnitIter];
                     m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_bIsMyTurn = true;
                     m_goWatcher.GetComponent<WarBattleWatcherScript>().m_goSelector.transform.position = m_goCurrentUnitActing.transform.position;
@@ -273,6 +276,36 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                 {
                 }
                 break;
+			case WB_AI_States.eInnactive:
+				{
+					
+					if (m_goWatcher.GetComponent<WarBattleWatcherScript> ().m_bIsAllyTurn == WarBattleWatcherScript.Turn_Order.EnemyTurn)
+					{
+						bool _EndTurn = true;
+						int _nCounter = 0;
+						if (m_lSameTeam != null)
+						{
+							foreach (GameObject _go in m_lSameTeam)
+							{
+								if (_go.GetComponent<TRPG_UnitScript> ().m_bHasActedThisTurn == false)
+								{
+									Debug.Log ("moved to new unit");
+									m_goCurrentUnitActing = _go;
+									m_eState = WB_AI_States.eStart;
+									_EndTurn = false;
+									m_nUnitIter = _nCounter;
+									break;
+								}
+								++_nCounter;
+							}
+							if (_EndTurn == true)
+							{
+								m_goWatcher.GetComponent<WarBattleWatcherScript> ().EndFactionTurn ();
+							}
+						}
+					}
+				}
+				break;
         }
     }
 
@@ -475,6 +508,12 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                     {
                         //we're at the end of the movement range, make this trimmed thing the path and call it good.
                         m_goDesiredTarget = null;
+						if (_vaTrimmedPath.Count == 0)
+						{
+							//I'm not sure what in the world this means, but this error came up and best fix I can think of is for the unit to just not move.
+							m_cDesiredDestination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(gameObject.transform.position);
+							return;
+						}
                         m_cDesiredDestination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_vaTrimmedPath[_vaTrimmedPath.Count - 1]);
                         return;
                     }
@@ -661,8 +700,14 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
         if (m_goDesiredTarget == null)
             return _newTarget;
 
+		//Quick error checking, if the previous target is already dead, don't bother with it.
+		if (m_goDesiredTarget._goTarget == null)
+			return _newTarget;
+
         //So we're going to add up the scores and see which one is higher.  Perhaps later we can add in multiplier weights to each to put a preference on one over the other on a character by character basis.
         float _oldScore = 0;
+		//Quick error check.  See if the previous target is even still alive, if they're not... we know the new target is better!
+
         _oldScore += m_goDesiredTarget._nStatDifference;
         _oldScore += m_goDesiredTarget._goTarget.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_fPercentRemaining;
         _oldScore -= m_goDesiredTarget._nDistanceToUnit;

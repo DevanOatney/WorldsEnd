@@ -1325,9 +1325,10 @@ public class CAllyBattleScript : UnitScript
 			
 			GameObject goArrow = Instantiate(Resources.Load<GameObject>("Animation Effects/Arrow")) as GameObject;
 			goArrow.transform.position = transform.position;
+			goArrow.GetComponent<SpriteRenderer> ().sortingOrder = 6;
 			int dmg = 0;
-			if(CheckIfHit())
-				dmg  = UnityEngine.Random.Range(1, 5) + m_nStr;
+			if (CheckIfHit ())
+				dmg = UnityEngine.Random.Range (1, 5) + GetTempSTR ();
 			else
 				dmg = -1;
 			goArrow.GetComponent<ProjectileScript>().m_fSpeed = 20;

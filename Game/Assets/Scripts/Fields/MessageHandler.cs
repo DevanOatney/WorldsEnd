@@ -204,12 +204,19 @@ public class MessageHandler : MonoBehaviour
 				    szName + bustID.ToString (), out tBust)) {
 				//there IS a portrait, set the right data and display the dialogue.
 				Texture2D _t2dTexture = TextureFromSprite(tBust);
-				EnableUIObject(m_goDialoguePortrait);
-				m_goDialoguePortrait.GetComponent<Image>().sprite = Sprite.Create(_t2dTexture, 
-					new Rect(0, 0, _t2dTexture.width,
-						_t2dTexture.height), new Vector2(0.5f, 0.5f));
-				m_nPortraitOptimizationIter = 1;
-				DisplayDialogueWithPortrait ();
+				if (_t2dTexture != null)
+				{
+					EnableUIObject (m_goDialoguePortrait);
+					m_goDialoguePortrait.GetComponent<Image> ().sprite = Sprite.Create (_t2dTexture, 
+						new Rect (0, 0, _t2dTexture.width,
+							_t2dTexture.height), new Vector2 (0.5f, 0.5f));
+					m_nPortraitOptimizationIter = 1;
+					DisplayDialogueWithPortrait ();
+				}
+				else
+				{
+					DisplayDialogueWithoutPortrait ();
+				}
 			}
 		}
 		else if (m_nPortraitOptimizationIter == 1) 
@@ -385,12 +392,19 @@ public class MessageHandler : MonoBehaviour
 				if (GameObject.Find ("Portraits Container").GetComponent<PortraitContainerScript> ().m_dPortraits.TryGetValue (
 						szName + bustID.ToString (), out tBust)) {
 					Texture2D _t2dTexture = TextureFromSprite(tBust);
-					EnableUIObject(m_goDialoguePortrait);
-					m_goDialoguePortrait.GetComponent<Image>().sprite = Sprite.Create(_t2dTexture, 
-						new Rect(0, 0, _t2dTexture.width,
-							_t2dTexture.height), new Vector2(0.5f, 0.5f));
-					m_nPortraitOptimizationIter = 1;
-					DisplayDialogueWithPortrait ();
+					if (_t2dTexture != null)
+					{
+						EnableUIObject (m_goDialoguePortrait);
+						m_goDialoguePortrait.GetComponent<Image> ().sprite = Sprite.Create (_t2dTexture, 
+							new Rect (0, 0, _t2dTexture.width,
+								_t2dTexture.height), new Vector2 (0.5f, 0.5f));
+						m_nPortraitOptimizationIter = 1;
+						DisplayDialogueWithPortrait ();
+					}
+					else
+					{
+						DisplayDialogueWithoutPortrait ();
+					}
 				}
 			}
 			else
@@ -498,7 +512,7 @@ public class MessageHandler : MonoBehaviour
 	Texture2D TextureFromSprite(Sprite sprite)
 	{
 		if (sprite == null)
-			return;
+			return null;
 		if(sprite.rect.width != sprite.texture.width)
 		{
 			Texture2D newText = new Texture2D((int)sprite.rect.width,(int)sprite.rect.height);

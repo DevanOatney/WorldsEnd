@@ -40,13 +40,20 @@ public class TRPG_UnitScript : MonoBehaviour
 	}
     void Awake()
     {
-        if(CPathRequestManager.m_Instance != null)
-            m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(transform.position);
+		if (CPathRequestManager.m_Instance != null)
+		{
+			m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint (transform.position);
+			transform.position = m_cPositionOnGrid.worldPosition;
+		}
     }
 	// Use this for initialization
 	void Start () 
 	{
-        
+		if (CPathRequestManager.m_Instance != null)
+		{
+			m_cPositionOnGrid = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint (transform.position);
+			transform.position = m_cPositionOnGrid.worldPosition;
+		}
 	}
 
     public void CheckHP()

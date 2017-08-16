@@ -58,6 +58,8 @@ public class WarBattleWatcherScript : MonoBehaviour
         GetComponent<WarBattle_EnemyControllerScript>().Initialize(gameObject, m_goActionWindow);
         m_bAllowInput = true;
         CAudioHelper.Instance.vPlayMusic(CAudioHelper.Instance.eFromName(m_szBackgroundMusic), true, true);
+
+		MoveCursor(1);
     }
 
     // Update is called once per frame
@@ -149,6 +151,11 @@ public class WarBattleWatcherScript : MonoBehaviour
         SelectorChangedPos();
     }
 
+	void LateUpdate()
+	{
+		CNode _base = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelector.transform.position);
+		m_goSelector.transform.position = _base.worldPosition;
+	}
     void BasicInputFunc()
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -341,6 +348,8 @@ public class WarBattleWatcherScript : MonoBehaviour
         CNode _selNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goSelector.transform.position);
         foreach (GameObject _go in m_lAllies)
         {
+			if (_go == null)
+				continue;
             //Is this object on the same grid position as the selector?
             if (_selNode == _go.GetComponent<TRPG_UnitScript>().GetIndexForUnit())
             {
@@ -351,6 +360,8 @@ public class WarBattleWatcherScript : MonoBehaviour
         }
         foreach (GameObject _go in m_lEnemies)
         {
+			if (_go == null)
+				continue;
             //Is this object on the same grid position as the selector?
             if (_selNode == _go.GetComponent<TRPG_UnitScript>().GetIndexForUnit())
             {
@@ -361,6 +372,8 @@ public class WarBattleWatcherScript : MonoBehaviour
         }
         foreach (GameObject _go in m_lGuests)
         {
+			if (_go == null)
+				continue;
             //Is this object on the same grid position as the selector?
             if (_selNode == _go.GetComponent<TRPG_UnitScript>().GetIndexForUnit())
             {
@@ -645,6 +658,11 @@ public class WarBattleWatcherScript : MonoBehaviour
         // Let's check if anything died...
         for (int i = m_lAllies.Count - 1; i >= 0; i--)
         {
+			if (m_lAllies [i] == null)
+			{
+				m_lAllies.RemoveAt (i);
+				continue;
+			}
             if (m_lAllies[i].GetComponent<TRPG_UnitScript>().m_wuUnitData.m_fPercentRemaining < 0.05f)
             {
                 GameObject _goCatchUnit = m_lAllies[i];
@@ -662,6 +680,11 @@ public class WarBattleWatcherScript : MonoBehaviour
         }
         for (int i = m_lEnemies.Count - 1; i >= 0; i--)
         {
+			if (m_lEnemies [i] == null)
+			{
+				m_lEnemies.RemoveAt (i);
+				continue;
+			}
             if (m_lEnemies[i].GetComponent<TRPG_UnitScript>().m_wuUnitData.m_fPercentRemaining < 0.05f)
             {
                 GameObject _goCatchUnit = m_lEnemies[i];
@@ -679,6 +702,11 @@ public class WarBattleWatcherScript : MonoBehaviour
         }
         for (int i = m_lGuests.Count - 1; i >= 0; i--)
         {
+			if (m_lGuests [i] == null)
+			{
+				m_lGuests.RemoveAt (i);
+				continue;
+			}
             if (m_lGuests[i].GetComponent<TRPG_UnitScript>().m_wuUnitData.m_fPercentRemaining < 0.05f)
             {
                 GameObject _goCatchUnit = m_lGuests[i];
