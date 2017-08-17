@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class FightSceneControllerScript : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class FightSceneControllerScript : MonoBehaviour
         public string m_szBaseUnitName;
         //Data path to the base unit for the TRPG
         public string m_szTRPGDataPath;
+		public Sprite m_goPortrait;
         [System.NonSerialized]
         public GameObject m_goLeaderSprite;
         [System.NonSerialized]
@@ -50,6 +52,8 @@ public class FightSceneControllerScript : MonoBehaviour
     public GameObject m_goLeftSide, m_goRightSide, m_goLowerBound, m_goLeftAttack, m_goRightAttack, m_goLeftStart, m_goRightStart;
     List<GameObject> m_lLeftUnits = new List<GameObject>();
     List<GameObject> m_lRightUnits = new List<GameObject>();
+	public GameObject m_goLeftSidePortrait;
+	public GameObject m_goRightSidePortrait;
     cWarUnit m_cLeftWarUnit, m_cRightWarUnit;
     float m_fUnitYOffset = 25.0f;
     float m_fYRangeOffset = 15.0f;
@@ -281,6 +285,8 @@ public class FightSceneControllerScript : MonoBehaviour
         m_fArrowTimer = 0.0f;
 		m_lLeftSideDeaths.Clear ();
 		m_lRightSideDeaths.Clear ();
+		m_goLeftSidePortrait.GetComponent<Image> ().sprite = _leftSide.m_goPortrait;
+		m_goRightSidePortrait.GetComponent<Image> ().sprite = _rightSide.m_goPortrait;
     }
 
     //-1 for if it's on the right, 1 for if it's on the left

@@ -428,15 +428,11 @@ public class WarBattleWatcherScript : MonoBehaviour
         }
 
         //Let's see if this group has a leader, if it does, show their portrait, if not show a portrait for whichever army you're fighting (need to get that second option worked out)
-        if (_unit.m_goLeaderSprite != null)
+		if (_unit.m_goPortrait != null)
         {
             //This one has a leader, portrait it up!
+			_CompanyUI.transform.Find("LeaderPortrait").GetComponent<Image>().sprite = _unit.m_goPortrait;
             _CompanyUI.transform.Find("LeaderPortrait").gameObject.SetActive(true);
-        }
-        else
-        {
-            //This company has no leader  TODO: render a faction/battle standard portrait instead.
-            _CompanyUI.transform.Find("LeaderPortrait").gameObject.SetActive(false);
         }
 
         //All right, team name!
