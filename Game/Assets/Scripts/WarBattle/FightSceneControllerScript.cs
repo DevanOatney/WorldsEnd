@@ -38,6 +38,10 @@ public class FightSceneControllerScript : MonoBehaviour
         public string m_szBaseUnitName;
         //Data path to the base unit for the TRPG
         public string m_szTRPGDataPath;
+		//String for what the character says during a critical attack
+		public string m_szCriticalStrikeQuote;
+		//String for what the character says during a critical defense
+		public string m_szCriticalDefenseQuote;
 		public Sprite m_goPortrait;
         [System.NonSerialized]
         public GameObject m_goLeaderSprite;
@@ -54,12 +58,15 @@ public class FightSceneControllerScript : MonoBehaviour
     List<GameObject> m_lRightUnits = new List<GameObject>();
 	public GameObject m_goLeftSidePortrait;
 	public GameObject m_goRightSidePortrait;
+	public GameObject m_goLeftSideCritBox;
+	public GameObject m_goRightSideCritBox;
     cWarUnit m_cLeftWarUnit, m_cRightWarUnit;
     float m_fUnitYOffset = 25.0f;
     float m_fYRangeOffset = 15.0f;
     float m_fUnitXOffset = 25.0f;
     float m_fXRangeOffset = 15.0f;
 
+	bool m_bCriticalDefenseActivated = false;
     bool m_bDamagePhaseEnded = false;
     bool m_bHasArrivedAtEnd = false;
     int m_nUnitsArrivedCounter = 0;
@@ -108,7 +115,6 @@ public class FightSceneControllerScript : MonoBehaviour
             m_fTimerTillFightStarts += Time.deltaTime;
             if (m_fTimerTillFightStarts >= m_fTimerTillFightStartsBucket)
             {
-
                 if (m_bsBattleState == Battle_States.eMeleeFight)
                 {
                     MeleeUpdate();
@@ -126,7 +132,6 @@ public class FightSceneControllerScript : MonoBehaviour
     //The name of this function is slightly misleading as it only gets called once.
     void MeleeUpdate()
     {
-
         foreach (GameObject _unit in m_lLeftUnits)
             _unit.GetComponent<WB_UnitScript>().TimeToMove();
         foreach (GameObject _unit in m_lRightUnits)
@@ -206,6 +211,13 @@ public class FightSceneControllerScript : MonoBehaviour
         if (m_cRightWarUnit.m_cUnitData.m_nAttackRange >= m_nRangeRequired)
         {
             m_nLeftSideDmg = DamageUnitReceives(m_cLeftWarUnit, m_cRightWarUnit);
+			Invoke ("HideChatBox", 1.0f);
+			if(m_bCriticalDefenseActivated == true)
+			{
+				m_goLeftSideCritBox.SetActive (true);
+				m_goLeftSideCritBox.GetComponentInChildren<Text>().text = m_cLeftWarUnit.m_szCriticalDefenseQuote;
+				m_bCriticalDefenseActivated = false;
+			}
             if (m_nLeftSideDmg <= 0)
             {
                 m_fLeftSideDeathDuration = m_fTotalArrowDuration * 5;
@@ -220,11 +232,17 @@ public class FightSceneControllerScript : MonoBehaviour
             }
             else
             {
+				if (m_nLeftSideDmg > 1)
+				{
+					//This was a critical strike, say something for the right side.
+					m_goRightSideCritBox.SetActive(true);
+					m_goRightSideCritBox.GetComponentInChildren<Text> ().text = m_cLeftWarUnit.m_szCriticalStrikeQuote;
+				}
                 float dmgMod = ((float)m_nLeftSideDmg * 0.33f);
-                int _nPrevUnitCnt = (int)(m_cLeftWarUnit.m_nTotalCount * m_cLeftWarUnit.m_fPercentRemaining);
+				int _nPrevUnitCnt = (int)(m_cLeftWarUnit.m_nTotalCount * m_cLeftWarUnit.m_fPercentRemaining);
                 m_cLeftWarUnit.m_fPercentRemaining -= dmgMod;
                 //So this int represents how many units need to die in this scene to make it look right (it's okay if this number is slightly low/high)
-                int _nNewUnitCnt = (int)(m_cLeftWarUnit.m_nTotalCount * m_cLeftWarUnit.m_fPercentRemaining);
+				int _nNewUnitCnt = (int)(m_cLeftWarUnit.m_nTotalCount * m_cLeftWarUnit.m_fPercentRemaining);
                 m_nLeftSideDeathCount = _nPrevUnitCnt - _nNewUnitCnt;
                 m_fLeftSideDeathDuration = m_fTotalArrowDuration / m_nLeftSideDeathCount;
             }
@@ -233,6 +251,13 @@ public class FightSceneControllerScript : MonoBehaviour
         if (m_cLeftWarUnit.m_cUnitData.m_nAttackRange >= m_nRangeRequired)
         {
             m_nRightSideDmg = DamageUnitReceives(m_cRightWarUnit, m_cLeftWarUnit);
+			Invoke ("HideChatBox", 1.0f);
+			if(m_bCriticalDefenseActivated == true)
+			{
+				m_goRightSideCritBox.SetActive (true);
+				m_goRightSideCritBox.GetComponentInChildren<Text>().text = m_cRightWarUnit.m_szCriticalDefenseQuote;
+				m_bCriticalDefenseActivated = false;
+			}
             if (m_nRightSideDmg <= 0)
             {
                 m_fRightSideDeathDuration = m_fTotalArrowDuration * 5;
@@ -247,6 +272,12 @@ public class FightSceneControllerScript : MonoBehaviour
             }
             else
             {
+				if (m_nRightSideDmg > 1)
+				{
+					//This was a critical strike, say something for the Left side.
+					m_goLeftSideCritBox.SetActive(true);
+					m_goLeftSideCritBox.GetComponentInChildren<Text> ().text = m_cLeftWarUnit.m_szCriticalStrikeQuote;
+				}
                 float dmgMod = ((float)m_nRightSideDmg * 0.33f);
                 int _nPrevUnitCnt = (int)(m_cRightWarUnit.m_nTotalCount * m_cRightWarUnit.m_fPercentRemaining);
                 m_cRightWarUnit.m_fPercentRemaining -= dmgMod;
@@ -287,6 +318,8 @@ public class FightSceneControllerScript : MonoBehaviour
 		m_lRightSideDeaths.Clear ();
 		m_goLeftSidePortrait.GetComponent<Image> ().sprite = _leftSide.m_goPortrait;
 		m_goRightSidePortrait.GetComponent<Image> ().sprite = _rightSide.m_goPortrait;
+		m_goLeftSideCritBox.SetActive (false);
+		m_goRightSideCritBox.SetActive (false);
     }
 
     //-1 for if it's on the right, 1 for if it's on the left
@@ -356,6 +389,13 @@ public class FightSceneControllerScript : MonoBehaviour
 
             //check if the left side took any damage
             int dmgRec = DamageUnitReceives(m_cLeftWarUnit, m_cRightWarUnit);
+			Invoke ("HideChatBox", 1.0f);
+			if(m_bCriticalDefenseActivated == true)
+			{
+				m_goLeftSideCritBox.SetActive (true);
+				m_goLeftSideCritBox.GetComponentInChildren<Text>().text = m_cLeftWarUnit.m_szCriticalDefenseQuote;
+				m_bCriticalDefenseActivated = false;
+			}
             if (dmgRec > 0)
             {
                 float dmgMod = ((float)dmgRec * 0.33f);
@@ -401,6 +441,13 @@ public class FightSceneControllerScript : MonoBehaviour
             }
             //check if the right side took any dmg
             dmgRec = DamageUnitReceives(m_cRightWarUnit, m_cLeftWarUnit);
+			Invoke ("HideChatBox", 1.0f);
+			if(m_bCriticalDefenseActivated == true)
+			{
+				m_goRightSideCritBox.SetActive (true);
+				m_goRightSideCritBox.GetComponentInChildren<Text>().text = m_cRightWarUnit.m_szCriticalDefenseQuote;
+				m_bCriticalDefenseActivated = false;
+			}
             if (dmgRec > 0)
             {
                 float dmgMod = ((float)dmgRec * 0.33f);
@@ -529,11 +576,24 @@ public class FightSceneControllerScript : MonoBehaviour
     //returns int for how much damage this group should receive.  0 = 0.0f loss. 1 = 0.3f loss, 2 = 0.6f loss, 3 = 1.0f loss
     int DamageUnitReceives(cWarUnit _defending, cWarUnit _attacking)
     {
+		int _defMod = 0;
+		if(_defending.m_cUnitData.m_nLuck > Random.Range(1,20))
+		{
+			//Defending unit is going to critically defend, so.. defend it up!
+			m_bCriticalDefenseActivated = true;
+			_defMod = 1;
+		}
+			else
+			m_bCriticalDefenseActivated = false;
         //Chance of damaging enemies in mass combat: IF ((Attack Power + 4) - Enemy DEF) > Random Number (0-19), then damage.
         if (((_attacking.m_cUnitData.m_nAttackPower + 4) - _defending.m_cUnitData.m_nDefensePower) > Random.Range(0, 20))
         {
             //Dealt damage, check crit/multiple hits
-            return 1;
+			if (_attacking.m_cUnitData.m_nLuck > Random.Range (1, 20))
+			{
+				return 2 - _defMod;
+			}
+			return 1 - _defMod;
         }
         return 0;
     }
@@ -605,10 +665,16 @@ public class FightSceneControllerScript : MonoBehaviour
 			if (m_lLeftSideDeaths.Count > 0)
 			{
 				int _roll = Random.Range (0, m_lLeftSideDeaths.Count - 1);
-				m_lLeftSideDeaths[_roll].GetComponent<WB_UnitScript>().TimeToDie();
+				m_lLeftSideDeaths [_roll].GetComponent<WB_UnitScript> ().TimeToDie ();
 				m_lLeftSideDeaths.RemoveAt (_roll);
 			}
 		}
 	}
 
+
+	void HideChatBox()
+	{
+		m_goLeftSideCritBox.SetActive (false);
+		m_goRightSideCritBox.SetActive (false);
+	}
 }

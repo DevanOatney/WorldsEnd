@@ -61,6 +61,9 @@ public class TRPG_UnitScript : MonoBehaviour
         if (m_wuUnitData.m_fPercentRemaining > 0.8f)
         {
             //above 80% hp remaning for this group, don't do anything.
+			m_goDamagedIcons[0].SetActive(false);
+			m_goDamagedIcons[2].SetActive(false);
+			m_goDamagedIcons[1].SetActive(false);
             return;
         }
         if (m_wuUnitData.m_fPercentRemaining > 0.5f)
@@ -76,6 +79,12 @@ public class TRPG_UnitScript : MonoBehaviour
         }
         if (m_wuUnitData.m_fPercentRemaining > 0.3f)
         {
+			if (m_goDamagedIcons[0].activeSelf == false)
+			{
+				//hasn't shown the damaged effect yet
+				m_goDamagedIcons[0].SetActive(true);
+				m_goDamagedIcons[0].GetComponentInChildren<Animator>().SetTrigger("m_tStartInflict");
+			}
             //group between 31-50%
             if (m_goDamagedIcons[1].activeSelf == false)
             {
@@ -87,6 +96,19 @@ public class TRPG_UnitScript : MonoBehaviour
         }
         if (m_wuUnitData.m_fPercentRemaining > 0.1f)
         {
+			if (m_goDamagedIcons[0].activeSelf == false)
+			{
+				//hasn't shown the damaged effect yet
+				m_goDamagedIcons[0].SetActive(true);
+				m_goDamagedIcons[0].GetComponentInChildren<Animator>().SetTrigger("m_tStartInflict");
+			}
+			//group between 31-50%
+			if (m_goDamagedIcons[1].activeSelf == false)
+			{
+				//hasn't shown the damaged effect yet
+				m_goDamagedIcons[1].SetActive(true);
+				m_goDamagedIcons[1].GetComponentInChildren<Animator>().SetTrigger("m_tStartInflict");
+			}
             //group between 11-30%
             if (m_goDamagedIcons[2].activeSelf == false)
             {
