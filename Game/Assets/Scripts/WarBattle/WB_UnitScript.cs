@@ -151,12 +151,16 @@ public class WB_UnitScript : MonoBehaviour
             _arrow.transform.SetParent(gameObject.transform.parent);
             _arrow.transform.localPosition = gameObject.transform.localPosition;
             _arrow.GetComponentInChildren<Animator>().SetTrigger("m_tToRight");
+			_arrow.GetComponentInChildren<WB_ArrowScript> ().m_eSide = WB_ArrowScript.SIDE.eRIGHT;
+			_arrow.GetComponentInChildren<WB_ArrowScript> ().m_goWarBattleWatcher = m_goController;
         }
         else
         {
             GameObject _arrow = Instantiate(m_goArrow, Vector3.zero, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
             _arrow.transform.SetParent(gameObject.transform.parent);
             _arrow.transform.localPosition = gameObject.transform.localPosition;
+			_arrow.GetComponentInChildren<WB_ArrowScript> ().m_eSide = WB_ArrowScript.SIDE.eLEFT;
+			_arrow.GetComponentInChildren<WB_ArrowScript> ().m_goWarBattleWatcher = m_goController;
         }
 
     }

@@ -87,6 +87,10 @@ public class FightSceneControllerScript : MonoBehaviour
     int m_nLeftSideDeathCount = 0;
     int m_nRightSideDeathCount = 0;
 
+
+	List<GameObject> m_lLeftSideDeaths = new List<GameObject>();
+	List<GameObject> m_lRightSideDeaths = new List<GameObject>();
+
     // Use this for initialization
     void Start()
     {
@@ -152,7 +156,7 @@ public class FightSceneControllerScript : MonoBehaviour
             if (m_fLeftSideDeathTimer >= m_fLeftSideDeathDuration)
             {
                 m_fLeftSideDeathTimer = 0.0f;
-                if (KillRandomUnit(m_lLeftUnits) == false)
+                if (KillRandomUnit(m_lLeftUnits, false) == false)
                 {
                     m_fLeftSideDeathDuration = m_fTotalArrowDuration * 5;
                 }
@@ -170,7 +174,7 @@ public class FightSceneControllerScript : MonoBehaviour
             {
                 m_fRightSideDeathTimer = 0.0f;
                 //if we weren't able to kill the unit, set the duration high so we stop iterating through this
-                if (KillRandomUnit(m_lRightUnits) == false)
+                if (KillRandomUnit(m_lRightUnits, true) == false)
                 {
                     m_fRightSideDeathDuration = m_fTotalArrowDuration * 5;
                 }
@@ -275,7 +279,8 @@ public class FightSceneControllerScript : MonoBehaviour
         LoadInASide(-1, _rightSide);
         m_fTimerTillFightStarts = 0.0f;
         m_fArrowTimer = 0.0f;
-
+		m_lLeftSideDeaths.Clear ();
+		m_lRightSideDeaths.Clear ();
     }
 
     //-1 for if it's on the right, 1 for if it's on the left
@@ -385,7 +390,7 @@ public class FightSceneControllerScript : MonoBehaviour
                 if (rndmChance < 3)
                 {
                     //K, let's kill one random unit for no reason lol.
-                    KillRandomUnit(m_lLeftUnits);
+                    KillRandomUnit(m_lLeftUnits, false);
                 }
             }
             //check if the right side took any dmg
@@ -430,7 +435,7 @@ public class FightSceneControllerScript : MonoBehaviour
                 if (rndmChance < 3)
                 {
                     //K, let's kill one random unit for no reason lol.
-                    KillRandomUnit(m_lLeftUnits);
+                    KillRandomUnit(m_lLeftUnits, true);
                 }
             }
         }
@@ -528,7 +533,7 @@ public class FightSceneControllerScript : MonoBehaviour
     }
 
     //Kills a random unit from this list, returns false if every unit in this list is already dead.
-    bool KillRandomUnit(List<GameObject> _lUnits)
+	bool KillRandomUnit(List<GameObject> _lUnits, bool _isRightSide)
     {
         List<int> _lItersOfAliveUnits = new List<int>();
         int _nCounter = 0;
@@ -545,7 +550,16 @@ public class FightSceneControllerScript : MonoBehaviour
         if (_bFoundAtleastOne == false)
             return false;
         int rndmRoll = Random.Range(0, _lItersOfAliveUnits.Count);
-        _lUnits[rndmRoll].GetComponent<WB_UnitScript>().TimeToDie();
+
+		if (_isRightSide == true)
+		{
+			m_lRightSideDeaths.Add (_lUnits [rndmRoll]);
+		}
+		else
+		{
+			m_lLeftSideDeaths.Add (_lUnits [rndmRoll]);
+		}
+        //_lUnits[rndmRoll].GetComponent<WB_UnitScript>().TimeToDie();
         return true;
     }
 
@@ -568,5 +582,27 @@ public class FightSceneControllerScript : MonoBehaviour
         int rndmRoll = Random.Range(0, _lItersOfAvailableUnits.Count);
         _lUnits[rndmRoll].GetComponent<WB_UnitScript>().TimeToAttack(true);
     }
+
+	public void KillUnit(bool _isRightSide)
+	{
+		if (_isRightSide == true)
+		{
+			if (m_lRightSideDeaths.Count > 0)
+			{
+				int _roll = Random.Range (0, m_lRightSideDeaths.Count - 1);
+				m_lRightSideDeaths [_roll].GetComponent<WB_UnitScript> ().TimeToDie ();
+				m_lRightSideDeaths.RemoveAt (_roll);
+			}
+		}
+		else
+		{
+			if (m_lLeftSideDeaths.Count > 0)
+			{
+				int _roll = Random.Range (0, m_lLeftSideDeaths.Count - 1);
+				m_lLeftSideDeaths[_roll].GetComponent<WB_UnitScript>().TimeToDie();
+				m_lLeftSideDeaths.RemoveAt (_roll);
+			}
+		}
+	}
 
 }

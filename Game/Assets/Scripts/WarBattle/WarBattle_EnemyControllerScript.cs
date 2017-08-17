@@ -722,4 +722,6 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
         else
             return m_goDesiredTarget;
     }
+
+
 }
