@@ -619,26 +619,6 @@ public class InonEventHandler : BaseEventSystemScript
                     }
                 }
                 break;
-            case "EndDialogue":
-                {
-                    //turn off all dialogues happening, release bind on input.. umn.. i think that's it?
-                    GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject>();
-                    foreach (GameObject g in gObjs)
-                    {
-                        if (g.GetComponentInChildren<MessageHandler>() != null)
-                        {
-                            if (g.GetComponent<NPCScript>() != null)
-                                g.GetComponent<NPCScript>().m_bIsBeingInterractedWith = false;
-                            g.GetComponentInChildren<MessageHandler>().m_bShouldDisplayDialogue = false;
-                        }
-                    }
-                    GameObject player = GameObject.FindGameObjectWithTag("Player");
-                    if (player)
-                    {
-                        player.GetComponent<FieldPlayerMovementScript>().ReleaseAllBinds();
-                    }
-                }
-                break;
             case "Merchant_EndDialogue":
                 {
                     GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -750,8 +730,11 @@ public class InonEventHandler : BaseEventSystemScript
                     GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseAllBinds();
                 }
                 break;
-            default:
-                break;
+			default:
+				{
+					base.HandleEvent (eventID);
+				}
+				break;
         }
     }
 

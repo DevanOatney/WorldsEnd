@@ -12,6 +12,7 @@ public class InonForestEventHandler : BaseEventSystemScript
 	public GameObject[] Mushrooms;
 	string m_szInonForestBGM = "InonForest_BGM";
 	public GameObject m_goResourceHarvestLocation;
+	public TextAsset m_goResourceDialogue;
 	// Use this for initialization
 	void Start () 
 	{
@@ -57,24 +58,9 @@ public class InonForestEventHandler : BaseEventSystemScript
 			GameObject.Find("to Temple").GetComponent<BoxCollider2D>().enabled = true;
 		}	
 		break;
-		case "EndDialogue":
+		default:
 			{
-				//turn off all dialogues happening, release bind on input.. umn.. i think that's it?
-				GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject>();
-				foreach(GameObject g in gObjs)
-				{
-					if(g.GetComponentInChildren<MessageHandler>() != null)
-					{
-						if(g.GetComponent<NPCScript>() != null)
-							g.GetComponent<NPCScript>().m_bIsBeingInterractedWith = false;
-						g.GetComponentInChildren<MessageHandler>().m_bShouldDisplayDialogue = false;
-					}
-				}
-				GameObject player = GameObject.FindGameObjectWithTag("Player");
-				if(player)
-				{
-					player.GetComponent<FieldPlayerMovementScript>().ReleaseAllBinds();
-				}
+					base.HandleEvent (eventID);
 			}
 			break;
 		}
@@ -253,9 +239,13 @@ public class InonForestEventHandler : BaseEventSystemScript
 						//This location is currently being used, spawn whichever unit is supposed to be here at the resource location!
 						GameObject _unit = Resources.Load<GameObject>("Units/Ally/" + _resourceResult + "/Field/" + _resourceResult);
 						_unit = Instantiate(_unit, m_goResourceHarvestLocation.transform.position, Quaternion.identity);
+						_unit.GetComponentInChildren<DialogueScriptLoaderScript> ().m_szFile = m_goResourceDialogue;
+						_unit.GetComponentInChildren<DialogueScriptLoaderScript> ().StartReadFile ();
 						Destroy (_unit.GetComponent<NPCScript> ());
 						NPCResourceFarmerScript _script = _unit.AddComponent (typeof(NPCResourceFarmerScript)) as NPCResourceFarmerScript;
 						_script.m_lWaypoints = m_goResourceHarvestLocation.GetComponent<ResourceLocationScript> ().m_lWaypoints;
+						_unit.name = _unit.name.Replace ("(Clone)", "");
+						_script.m_szDialoguePath = _unit.name;
 						Vector3 _pos = _script.m_lWaypoints [0].transform.position;
 						_pos.y += _unit.GetComponent<Collider2D>().bounds.size.y * 0.5f;
 						_unit.transform.position = _pos;

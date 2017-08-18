@@ -55,7 +55,7 @@ public class DialogueScriptLoaderScript : MonoBehaviour
 	void Update () {
 	
 	}
-	void StartReadFile() 
+	public void StartReadFile() 
 	{
 		string[] DialogueLines = m_szFile.text.Split('\n');
 		foreach(string line in DialogueLines)

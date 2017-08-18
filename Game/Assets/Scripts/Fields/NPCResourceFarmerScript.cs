@@ -16,7 +16,7 @@ public class NPCResourceFarmerScript : NPCScript
 	// Update is called once per frame
 	void Update () 
 	{
-		if (m_bPausePathfinding == false)
+		if (m_bPausePathfinding == false && m_bIsBeingInterractedWith == false)
 		{
 			if (m_lWaypoints.Count > 0)
 			{
@@ -50,14 +50,25 @@ public class NPCResourceFarmerScript : NPCScript
 				StartCoroutine (ResumePathfinding (false, 0.2f));
 			}
 		}
-		base.OnTriggerEnter2D (c);
+
+		if(c.name == "Action Box(Clone)")
+		{
+			m_bIsBeingInterractedWith = true;
+			if(GetComponentInChildren<MessageHandler>())
+			{
+				if(m_szDialoguePath != "")
+				{
+					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
+					GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent(m_szDialoguePath + ".ResourceFarming");
+				}
+			}
+		}
 	}
 
 
 	IEnumerator ResumePathfinding(bool _bToFlip, float _fDelay)
 	{
 		yield return new WaitForSeconds (_fDelay);
-		Debug.Log ("hit");
 		m_aAnim.SetBool ("m_bSwinging", false);
 		if (_bToFlip == true)
 		{

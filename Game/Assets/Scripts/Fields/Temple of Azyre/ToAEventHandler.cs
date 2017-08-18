@@ -167,7 +167,8 @@ public class ToAEventHandler : BaseEventSystemScript
 
 	override public void HandleEvent(string eventID)
 	{
-		switch (eventID) {
+		switch (eventID) 
+		{
 		case "Callan_runoff":
 			{
 				//Callan runs forward to bridge then stops and waits for Briol
@@ -351,28 +352,11 @@ public class ToAEventHandler : BaseEventSystemScript
 				briol.GetComponent<NPCScript> ().DHF_NPCMoveIntoPlayer ();
 			}
 			break;
-		case "EndDialogue":
-			{
-				//turn off all dialogues happening, release bind on input.. umn.. i think that's it?
-				GameObject[] gObjs = GameObject.FindObjectsOfType<GameObject> ();
-				foreach (GameObject g in gObjs) 
+			default:
 				{
-					if (g.GetComponentInChildren<MessageHandler> () != null) 
-					{
-						if (g.GetComponent<NPCScript> () != null)
-						{
-							g.GetComponent<NPCScript> ().m_bIsBeingInterractedWith = false;
-						}
-						g.GetComponentInChildren<MessageHandler> ().m_bShouldDisplayDialogue = false;
-					}
+					base.HandleEvent (eventID);
 				}
-				GameObject player = GameObject.FindGameObjectWithTag ("Player");
-				if (player) 
-				{
-					player.GetComponent<FieldPlayerMovementScript> ().ReleaseBind ();
-				}
-			}
-			break;
+				break;
 		}
 	}
 
