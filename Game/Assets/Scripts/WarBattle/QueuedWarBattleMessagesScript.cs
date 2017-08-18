@@ -68,6 +68,25 @@ public class QueuedWarBattleMessagesScript : MonoBehaviour
 			m_goLeftBox.SetActive (true);
 			m_goLeftBox.GetComponentInChildren<Text> ().text = m_mCurrentMessage.s_szMessage;
 		}
+		if (m_qDialogue.Count > 0)
+		{
+			if (m_qDialogue.Peek ().s_bIsRightSide != m_mCurrentMessage.s_bIsRightSide)
+			{
+				//This message is for the other side, feel free to display it too!
+				m_mCurrentMessage = m_qDialogue.Dequeue ();
+				if (m_mCurrentMessage.s_bIsRightSide == true)
+				{
+
+					m_goRightBox.SetActive (true);
+					m_goRightBox.GetComponentInChildren<Text> ().text = m_mCurrentMessage.s_szMessage;
+				}
+				else
+				{
+					m_goLeftBox.SetActive (true);
+					m_goLeftBox.GetComponentInChildren<Text> ().text = m_mCurrentMessage.s_szMessage;
+				}
+			}
+		}
 	}
 
 	public void Initialize(GameObject _leftBox, GameObject _rightBox, FightSceneControllerScript _script)
