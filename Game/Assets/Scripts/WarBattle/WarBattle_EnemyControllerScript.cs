@@ -496,28 +496,26 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
                     //We've reached the end of the desired path, before running out of movement space... so this really shouldn't happen, but I'm putting it here just incase
                     break;
                 }
-                if (m_goDesiredTarget._vPrefferedPath[i] != null)
-                {
-                    CNode _tNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goDesiredTarget._vPrefferedPath[i]);
-                    _nCost += 1 + _tNode.movementPenalty;
-                    if (_nCost <= m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nMovementRange)
-                    {
-                        _vaTrimmedPath.Add(m_goDesiredTarget._vPrefferedPath[i]);
-                    }
-                    else
-                    {
-                        //we're at the end of the movement range, make this trimmed thing the path and call it good.
-                        m_goDesiredTarget = null;
-						if (_vaTrimmedPath.Count == 0)
-						{
-							//I'm not sure what in the world this means, but this error came up and best fix I can think of is for the unit to just not move.
-							m_cDesiredDestination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(gameObject.transform.position);
-							return;
-						}
-                        m_cDesiredDestination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_vaTrimmedPath[_vaTrimmedPath.Count - 1]);
-                        return;
-                    }
-                }
+
+                   CNode _tNode = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(m_goDesiredTarget._vPrefferedPath[i]);
+                   _nCost += 1 + _tNode.movementPenalty;
+                   if (_nCost <= m_goCurrentUnitActing.GetComponent<TRPG_UnitScript>().m_wuUnitData.m_cUnitData.m_nMovementRange)
+                   {
+                       _vaTrimmedPath.Add(m_goDesiredTarget._vPrefferedPath[i]);
+                   }
+                   else
+                   {
+                       //we're at the end of the movement range, make this trimmed thing the path and call it good.
+                       m_goDesiredTarget = null;
+					if (_vaTrimmedPath.Count == 0)
+					{
+						//I'm not sure what in the world this means, but this error came up and best fix I can think of is for the unit to just not move.
+						m_cDesiredDestination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(gameObject.transform.position);
+						return;
+					}
+                       m_cDesiredDestination = CPathRequestManager.m_Instance.m_psPathfinding.grid.NodeFromWorldPoint(_vaTrimmedPath[_vaTrimmedPath.Count - 1]);
+                       return;
+                   }
             }
 
             //This should be the catch all, this will return the most optimal unit to move to, even outside of the units movement range.

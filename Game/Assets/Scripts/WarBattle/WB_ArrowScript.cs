@@ -17,7 +17,8 @@ public class WB_ArrowScript : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 	
 	}
 

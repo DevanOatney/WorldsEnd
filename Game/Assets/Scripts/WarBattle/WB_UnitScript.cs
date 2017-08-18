@@ -46,47 +46,50 @@ public class WB_UnitScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//Check to see if we're in the "swinging zone" and if we haven't started swinging, swing.  If we leave the swinging zone, stop swinging
-		if(transform.GetComponent<RectTransform>().anchoredPosition.x >= m_goLeftAttack.GetComponent<RectTransform>().anchoredPosition.x && transform.GetComponent<RectTransform>().anchoredPosition.x <= m_goRightAttack.GetComponent<RectTransform>().anchoredPosition.x && m_bStartDeath == false)
+		if (m_goController.GetComponent<FightSceneControllerScript> ().m_bPauseFightScene == false)
 		{
-			//in here, we're in the bounds of the swinging zone.
-			if(m_bShouldAttack == false)
+			//Check to see if we're in the "swinging zone" and if we haven't started swinging, swing.  If we leave the swinging zone, stop swinging
+			if (transform.GetComponent<RectTransform> ().anchoredPosition.x >= m_goLeftAttack.GetComponent<RectTransform> ().anchoredPosition.x && transform.GetComponent<RectTransform> ().anchoredPosition.x <= m_goRightAttack.GetComponent<RectTransform> ().anchoredPosition.x && m_bStartDeath == false)
 			{
-				//in here, we haven't started swinging yet.
-				m_bShouldAttack = true;
-				GetComponent<Animator>().SetBool("m_bAttack", true);
-				Invoke("SendMSGTimeToAttack", 1.0f);
-			}
-		}
-		else if(m_bShouldAttack == true && m_bStartDeath == false)
-		{
-			//In here we've left the swinging zone after attacking.
-			m_bShouldAttack = false;
-			GetComponent<Animator>().SetBool("m_bAttack", false);
-		}
-        //Check if we should move, if we should, do it until we get to the end location
-        if (AmIDead() == false && m_bShouldMove == true )
-		{
-            if (m_nDirection == -1)
-			{
-				if(transform.localPosition.x + m_fStopOffset <= m_goLeftBound.transform.localPosition.x && m_bHasReachedDestination == false)
+				//in here, we're in the bounds of the swinging zone.
+				if (m_bShouldAttack == false)
 				{
-                    m_bHasReachedDestination = true;
-                    m_goController.GetComponent<FightSceneControllerScript>().UnitReachedDestination();
+					//in here, we haven't started swinging yet.
+					m_bShouldAttack = true;
+					GetComponent<Animator> ().SetBool ("m_bAttack", true);
+					Invoke ("SendMSGTimeToAttack", 1.0f);
 				}
 			}
 			else
+			if (m_bShouldAttack == true && m_bStartDeath == false)
 			{
-				if(transform.localPosition.x - m_fStopOffset  >= m_goRightBound.transform.localPosition.x && m_bHasReachedDestination == false)
-				{
-                    m_bHasReachedDestination = true;
-                    m_goController.GetComponent<FightSceneControllerScript>().UnitReachedDestination();
-				}
+				//In here we've left the swinging zone after attacking.
+				m_bShouldAttack = false;
+				GetComponent<Animator> ().SetBool ("m_bAttack", false);
 			}
-			Vector3 vecDir = new Vector3(m_nDirection*m_fMovementSpeed*Time.deltaTime, 0, 0);
-			GetComponent<RectTransform>().Translate(vecDir);
+			//Check if we should move, if we should, do it until we get to the end location
+			if (AmIDead () == false && m_bShouldMove == true)
+			{
+				if (m_nDirection == -1)
+				{
+					if (transform.localPosition.x + m_fStopOffset <= m_goLeftBound.transform.localPosition.x && m_bHasReachedDestination == false)
+					{
+						m_bHasReachedDestination = true;
+						m_goController.GetComponent<FightSceneControllerScript> ().UnitReachedDestination ();
+					}
+				}
+				else
+				{
+					if (transform.localPosition.x - m_fStopOffset >= m_goRightBound.transform.localPosition.x && m_bHasReachedDestination == false)
+					{
+						m_bHasReachedDestination = true;
+						m_goController.GetComponent<FightSceneControllerScript> ().UnitReachedDestination ();
+					}
+				}
+				Vector3 vecDir = new Vector3 (m_nDirection * m_fMovementSpeed * Time.deltaTime, 0, 0);
+				GetComponent<RectTransform> ().Translate (vecDir);
+			}
 		}
-
 	}
 
 	void SendMSGTimeToAttack()
