@@ -18,6 +18,7 @@ public class NPCResourceFarmerScript : NPCScript
 	{
 		if (m_bPausePathfinding == false && m_bIsBeingInterractedWith == false)
 		{
+			m_aAnim.enabled = true;
 			if (m_lWaypoints.Count > 0)
 			{
 				HandleMovement ();
@@ -53,6 +54,7 @@ public class NPCResourceFarmerScript : NPCScript
 
 		if(c.name == "Action Box(Clone)")
 		{
+			m_aAnim.enabled = false;
 			m_bIsBeingInterractedWith = true;
 			if(GetComponentInChildren<MessageHandler>())
 			{
