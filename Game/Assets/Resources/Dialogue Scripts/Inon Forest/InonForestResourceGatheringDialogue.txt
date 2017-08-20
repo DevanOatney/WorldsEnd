@@ -1,5 +1,5 @@
-Domin|1|Domin||Just gathering resources like you told me to.||EndDialogue
-Raik|1|Raik||Just gathering resources like you told me to.||EndDialogue
-Kenyon|1|Kenyon||Just gathering resources like you told me to.||EndDialogue
-Briol|1|Briol||Just gathering resources like you told me to, brother.||EndDialogue
+Domin|1|Domin||Just gathering resources like you told me to.|1|EndDialogue
+Raik|1|Raik||Just gathering resources like you told me to.|1|EndDialogue
+Kenyon|1|Kenyon||Just gathering resources like you told me to.|1|EndDialogue
+Briol|1|Briol||Just gathering resources like you told me to, brother.|1|EndDialogue
 EndDialogue|3|EndDialogue
