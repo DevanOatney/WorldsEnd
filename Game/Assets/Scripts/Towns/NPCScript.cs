@@ -61,7 +61,6 @@ public class NPCScript : MonoBehaviour
 	bool m_bShouldRun = false;
 
 	//Should the characters moving logic be active? (Must have m_bActive set to true for this to effect the NPC)
-	public bool m_bIsMoving = false;
 	//Is the NPC being interracted with?  Will stop moving if it is.
 	public bool m_bIsBeingInterractedWith = false;
 	//Turn this on to ignore collision with the player
@@ -104,58 +103,59 @@ public class NPCScript : MonoBehaviour
 
 	protected void HandleMovement()
 	{
-		if (m_lNodes.Count > 0)
+		if (m_bIsBeingInterractedWith == false)
 		{
-			//So, there is somewhere we should move- so let's do this shit!
-			float _fSpeed = 0.0f;
-			if (m_bShouldRun == false)
-				_fSpeed = m_fWalkingSpeed * Time.deltaTime;
-			else
-				_fSpeed = m_fRunningSpeed * Time.deltaTime;
-			Vector3 _vMovePos = Vector3.MoveTowards (transform.position, m_lNodes [m_nNodeIndex], _fSpeed);
-
-			if (_vMovePos == transform.position)
+			if (m_lNodes.Count > 0)
 			{
-				//reached current destination
-				m_nNodeIndex += 1;
-				if (m_nNodeIndex >= m_lNodes.Count)
+				//So, there is somewhere we should move- so let's do this shit!
+				float _fSpeed = 0.0f;
+				if (m_bShouldRun == false)
+					_fSpeed = m_fWalkingSpeed * Time.deltaTime;
+				else
+					_fSpeed = m_fRunningSpeed * Time.deltaTime;
+				Vector3 _vMovePos = Vector3.MoveTowards (transform.position, m_lNodes [m_nNodeIndex], _fSpeed);
+
+				if (_vMovePos == transform.position)
 				{
-					if (m_bMoveIntoPlayer == true)
-					{
-						//this was us moving back to the player, so this character should be set to innactive and hidden.
-						m_bMoveIntoPlayer = false;
-						GetComponent<Collider2D>().enabled = true;
-						gameObject.GetComponent<SpriteRenderer>().enabled = false;
-						gameObject.GetComponent<Collider2D>().enabled = false;
-						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-						Camera.main.GetComponent<CameraFollowTarget>().m_goNextTarget = GameObject.Find("Player");
-						StopMovement ();
-					}
-
-
-					//We've reached the end of the current node needed to reach, move to the next one.
+					//reached current destination
 					m_nNodeIndex += 1;
 					if (m_nNodeIndex >= m_lNodes.Count)
 					{
-						//We've reached the final node in the list, stop movement and face the direction desired.
-						m_nNodeIndex = 0;
-						m_lNodes.Clear ();
-						StopMovement ();
+						if (m_bMoveIntoPlayer == true)
+						{
+							//this was us moving back to the player, so this character should be set to innactive and hidden.
+							m_bMoveIntoPlayer = false;
+							GetComponent<Collider2D> ().enabled = true;
+							gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+							gameObject.GetComponent<Collider2D> ().enabled = false;
+							GameObject.Find ("Player").GetComponent<FieldPlayerMovementScript> ().ReleaseBind ();
+							Camera.main.GetComponent<CameraFollowTarget> ().m_goNextTarget = GameObject.Find ("Player");
+							StopMovement ();
+						}
+
+
+						//We've reached the end of the current node needed to reach, move to the next one.
+						m_nNodeIndex += 1;
+						if (m_nNodeIndex >= m_lNodes.Count)
+						{
+							//We've reached the final node in the list, stop movement and face the direction desired.
+							m_nNodeIndex = 0;
+							m_lNodes.Clear ();
+							StopMovement ();
+						}
 					}
 				}
+				else
+				{
+					//Haven't reached destination yet.
+					Vector3 _toVec = (_vMovePos - transform.position).normalized;
+					m_aAnim.SetBool ("m_bMoving", true);
+					m_aAnim.SetFloat ("X", _toVec.x);
+					m_aAnim.SetFloat ("Y", _toVec.y);
+					SetNPCFacing (_toVec);
+					transform.position = _vMovePos;
+				}
 			}
-			else
-			{
-				//Haven't reached destination yet.
-				Vector3 _toVec = (_vMovePos - transform.position).normalized;
-				m_aAnim.SetBool ("m_bMoving", true);
-				m_aAnim.SetFloat ("X", _toVec.x);
-				m_aAnim.SetFloat ("Y", _toVec.y);
-				SetNPCFacing (_toVec);
-				transform.position = _vMovePos;
-			}
-
-
 		}
     }
 

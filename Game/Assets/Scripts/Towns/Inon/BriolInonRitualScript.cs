@@ -17,7 +17,6 @@ public class BriolInonRitualScript : MonoBehaviour
 	public void MoveDownward()
 	{
 		GetComponent<NPCScript>().m_bActive = true;
-		GetComponent<NPCScript>().m_bIsMoving = true;
 		GetComponent<NPCScript>().m_nFacingDir = 0;
 	}
 
@@ -26,7 +25,6 @@ public class BriolInonRitualScript : MonoBehaviour
 		if(c.name == "BriolArriveAtRitual")
 		{
 			GetComponent<NPCScript>().m_bActive = false;
-			GetComponent<NPCScript>().m_bIsMoving = false;
 			GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().HandleEvent("BriolArriveAtRitual");
 		}
 	}

@@ -782,7 +782,6 @@ public class NPC_ArmorMerchantScript : NPCScript
 			{
 				//set to about to be active
 				m_bAboutToBeActive = true;
-				m_bIsMoving = false;
 				m_bIsBeingInterractedWith = true;
 				if(m_szDialoguePath != "")
 				{
