@@ -11,6 +11,7 @@ public class BlacksmithShopUIScript : MonoBehaviour
 	public GameObject m_goOptionSelectWindow;
 	public GameObject m_goCharacterList;
 	public GameObject m_goModifierList;
+	public GameObject m_goContentsInList;
 	public GameObject m_goModifierDescriptionWindow;
 	public GameObject m_goSpyrTotal;
 	public GameObject m_goMainMenu;
@@ -22,6 +23,7 @@ public class BlacksmithShopUIScript : MonoBehaviour
 
 	GameObject m_goSender;
 	int m_nCharacterSelectIter = 0;
+	DCScript.cModifier m_mModSelected = null;
 	int m_nModifierIter = 0;
 	DCScript dc;
 
@@ -45,7 +47,6 @@ public class BlacksmithShopUIScript : MonoBehaviour
 		m_goSpyrTotal.SetActive (true);
 		dc = GameObject.Find ("PersistantData").GetComponent<DCScript> ();
 		m_goSpyrTotal.GetComponentInChildren<Text> ().text = dc.m_nGold.ToString();
-		Debug.Log (dc.m_nGold.ToString ());
 		m_goMainMenu.SetActive (false);
 	}
 
@@ -81,7 +82,7 @@ public class BlacksmithShopUIScript : MonoBehaviour
 		if(sum != -1 && sum <= dc.m_nGold && dc.GetParty()[_nCharacterIter].m_szWeaponModifierName != dc.GetModifierList()[_nModifierIter].m_szModifierName)
 		{
 			dc.m_nGold -= sum;
-			dc.GetParty()[_nCharacterIter].m_szWeaponModifierName = dc.GetModifierList()[_nModifierIter].m_szModifierName;
+			dc.GetParty () [_nCharacterIter].m_szWeaponModifierName = m_mModSelected.m_szModifierName;
 		}
 		m_goSpyrTotal.GetComponentInChildren<Text> ().text = dc.m_nGold.ToString();
 	}
@@ -143,6 +144,7 @@ public class BlacksmithShopUIScript : MonoBehaviour
 	public void ModifySelected()
 	{
 		m_eActiveWindow = eActiveWindow.eModifyWindow;
+		UpdateCharacterRoster ();
 		ToggleWindows ();
 	}
 
@@ -178,8 +180,34 @@ public class BlacksmithShopUIScript : MonoBehaviour
 		{
 			//Activate the window to show the possible modifiers to select for this character's weapons.
 			m_eActiveWindow = eActiveWindow.eModifierListWindow;
+			List<DCScript.cModifier> _mods = dc.GetModifierList ();
+			foreach (Transform t in m_goContentsInList.transform)
+			{
+				Destroy (t.gameObject);
+			}
+			foreach (DCScript.cModifier mod in _mods)
+			{
+				GameObject modInList = Instantiate(m_goModifierInList);
+				modInList.GetComponent<ModifierInListScript> ().m_goParent = gameObject;
+				modInList.GetComponent<ModifierInListScript> ().m_nModifier = mod;
+				modInList.GetComponent<ModifierInListScript> ().m_goDescriptionWindow = m_goModifierDescriptionWindow;
+				modInList.GetComponentInChildren<Text> ().text = mod.m_szModifierName;
+				m_goModifierDescriptionWindow.GetComponentInChildren<Text> ().text = mod.m_szModifierDesc;
+				modInList.transform.SetParent(m_goContentsInList.transform);
+				modInList.transform.localScale = new Vector3(1, 1, 1);
+			}
 			ToggleWindows ();
 		}
+	}
+
+	public void ModifierSelected(DCScript.cModifier _nMod)
+	{
+		//Show the confirmation window, keep track of the modification selected.
+		if (_nMod.m_szModifierName == dc.GetParty () [m_nCharacterSelectIter].m_szWeaponModifierName)
+			return;
+		m_mModSelected = _nMod;
+		m_goConfirmationWindow.SetActive(true);
+		m_goConfirmationWindow.transform.Find("Confirmation").GetComponent<Text>().text = "This modification will cost " + m_mModSelected.m_nModCost + " Spyr, are you sure you want to make this modification?";
 	}
 
 	void ToggleWindows()
@@ -193,6 +221,7 @@ public class BlacksmithShopUIScript : MonoBehaviour
 					m_goConfirmationWindow.SetActive(false);
 					m_goCharacterList.SetActive(false);
 					m_goModifierList.SetActive(false);
+
 					m_goModifierDescriptionWindow.SetActive(false);
 				}
 				break;
@@ -224,6 +253,7 @@ public class BlacksmithShopUIScript : MonoBehaviour
 					m_goConfirmationWindow.SetActive(false);
 					m_goCharacterList.SetActive(true);
 					m_goModifierList.SetActive(true);
+					m_goContentsInList.SetActive (true);
 					m_goModifierDescriptionWindow.SetActive(true);
 				}
 				break;
