@@ -41,7 +41,7 @@ public class SpellInSpellListScript : MonoBehaviour, IPointerEnterHandler, IPoin
 		}
 		Vector2 _ancPos = m_goSpellWindow.GetComponent<RectTransform> ().position;
 		_ancPos.y = GetComponent<RectTransform> ().position.y;
-		m_goSpellWindow.GetComponent<RectTransform> ().position = _ancPos;
+		//m_goSpellWindow.GetComponent<RectTransform> ().position = _ancPos;
 		m_goSpellWindow.SetActive (true);
 	}
 

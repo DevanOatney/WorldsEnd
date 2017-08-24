@@ -998,9 +998,12 @@ public class MenuScreenScript : MonoBehaviour
 		GameObject _magicPanel = m_goMagicScreen.transform.Find ("MagicPanel").gameObject;
 		_magicPanel.SetActive (true);
 		int _formation = ConvertPanelIterToFormationNumber (_nFormation) - 1;
-		foreach (DCScript.CharacterData character in dc.GetParty ()) {
-			if (character.m_nFormationIter == _formation) {
-				foreach (string _spell in character.m_lSpellsKnown) {
+		foreach (DCScript.CharacterData character in dc.GetParty ()) 
+		{
+			if (character.m_nFormationIter == _formation) 
+			{
+				foreach (string _spell in character.m_lSpellsKnown) 
+				{
 					GameObject _newSpell = Instantiate (m_goSpellInMagicListPrefab) as GameObject;
 					_newSpell.GetComponent<RectTransform> ().SetParent (m_goMagicScreen.transform.Find("MagicPanel").Find("SpellListContainer").Find("ViewPort").Find("Contents").gameObject.GetComponent<RectTransform> ());
 					_newSpell.GetComponent<RectTransform> ().rotation = Quaternion.identity;
