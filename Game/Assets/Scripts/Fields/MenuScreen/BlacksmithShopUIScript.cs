@@ -15,6 +15,7 @@ public class BlacksmithShopUIScript : MonoBehaviour
 	public GameObject m_goModifierDescriptionWindow;
 	public GameObject m_goSpyrTotal;
 	public GameObject m_goMainMenu;
+	public GameObject m_goErrorPrompt;
 	public GameObject[] m_goCharacterSlots;
 
 	//Not putting the confirmation window as that would then hide whether or not this is an enhance/modify selection (so just always assume we need to turn off the confirm window if going backwards ;)  )
@@ -24,7 +25,6 @@ public class BlacksmithShopUIScript : MonoBehaviour
 	GameObject m_goSender;
 	int m_nCharacterSelectIter = 0;
 	DCScript.cModifier m_mModSelected = null;
-	int m_nModifierIter = 0;
 	DCScript dc;
 
 	// Use this for initialization
@@ -75,16 +75,21 @@ public class BlacksmithShopUIScript : MonoBehaviour
 		m_goSpyrTotal.GetComponentInChildren<Text> ().text = dc.m_nGold.ToString();
 	}
 
-	void PurchaseWeaponModification(int _nModifierIter, int _nCharacterIter)
+	void PurchaseWeaponModification(int _nCharacterIter)
 	{
 		//purchase has been confirmed, do it!
-		int sum = dc.GetModifierList()[_nModifierIter].m_nModCost;
-		if(sum != -1 && sum <= dc.m_nGold && dc.GetParty()[_nCharacterIter].m_szWeaponModifierName != dc.GetModifierList()[_nModifierIter].m_szModifierName)
+		int sum = m_mModSelected.m_nModCost;
+		if (sum != -1 && sum <= dc.m_nGold && dc.GetParty () [_nCharacterIter].m_szWeaponModifierName != m_mModSelected.m_szModifierName)
 		{
 			dc.m_nGold -= sum;
 			dc.GetParty () [_nCharacterIter].m_szWeaponModifierName = m_mModSelected.m_szModifierName;
+			m_goSpyrTotal.GetComponentInChildren<Text> ().text = dc.m_nGold.ToString ();
 		}
-		m_goSpyrTotal.GetComponentInChildren<Text> ().text = dc.m_nGold.ToString();
+		else
+		{
+			EnableErrorPrompt ("Cannot afford this modification");
+		}
+
 	}
 
 	public void YesSelected()
@@ -97,10 +102,11 @@ public class BlacksmithShopUIScript : MonoBehaviour
 		else if (m_eActiveWindow == eActiveWindow.eModifierListWindow)
 		{
 			//Purchase the selected modifier to the selected character. (if the player can afford it)
-			PurchaseWeaponModification(m_nModifierIter , m_nCharacterSelectIter);
+			PurchaseWeaponModification(m_nCharacterSelectIter);
 		}
 		UpdateCharacterRoster ();
 		ToggleWindows ();
+
 	}
 
 	public void NoSelected()
@@ -163,9 +169,10 @@ public class BlacksmithShopUIScript : MonoBehaviour
 		DCScript.CharacterData _character = dc.GetCharacter (m_goCharacterSlots [_nCharacterIndex-1].transform.Find ("Name").GetComponent<Text> ().text);
 		if (_character == null )
 			return;
-		if (_character.m_nWeaponLevel + 1 > m_goSender.GetComponent<NPC_BlacksmithScript> ().m_nMaxEnhancementLevel)
+		if (_character.m_nWeaponLevel + 1 > m_goSender.GetComponent<NPC_BlacksmithScript> ().m_nMaxEnhancementLevel && m_eActiveWindow == eActiveWindow.eEnhanceWindow)
 		{
 			//Character cannot improve their weapon any further with this blacksmith.
+			EnableErrorPrompt("This Blacksmith is not skilled enough to enhance this weapon any further...");
 			return;
 		}
 		m_nCharacterSelectIter = _nCharacterIndex - 1;
@@ -204,10 +211,20 @@ public class BlacksmithShopUIScript : MonoBehaviour
 	{
 		//Show the confirmation window, keep track of the modification selected.
 		if (_nMod.m_szModifierName == dc.GetParty () [m_nCharacterSelectIter].m_szWeaponModifierName)
+		{
+			//This unit already has this modification.
+			EnableErrorPrompt("This weapon already has that modification!");
 			return;
+		}
 		m_mModSelected = _nMod;
 		m_goConfirmationWindow.SetActive(true);
 		m_goConfirmationWindow.transform.Find("Confirmation").GetComponent<Text>().text = "This modification will cost " + m_mModSelected.m_nModCost + " Spyr, are you sure you want to make this modification?";
+	}
+
+	void EnableErrorPrompt(string _errorMessage)
+	{
+		m_goErrorPrompt.SetActive (true);
+		m_goErrorPrompt.GetComponentInChildren<Text> ().text = _errorMessage;
 	}
 
 	void ToggleWindows()
