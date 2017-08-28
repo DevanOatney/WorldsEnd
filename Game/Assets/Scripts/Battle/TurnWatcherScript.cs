@@ -814,6 +814,7 @@ public class TurnWatcherScript : MonoBehaviour
 
 	public void Enemy_TargetHighlighted(int p_nIndex)
 	{
+		Debug.Log (p_nIndex);
 		GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		foreach(GameObject e in _enemies)
 		{
@@ -837,6 +838,7 @@ public class TurnWatcherScript : MonoBehaviour
 
 	public void Enemy_TargetSelected(int p_nIndex)
 	{
+		Debug.Log (p_nIndex);
 		GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		foreach(GameObject e in _enemies)
 		{

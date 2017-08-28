@@ -12,6 +12,7 @@ public class NPC_BlacksmithScript : NPCScript
 
 	GameObject m_goBlacksmithShopUI;
 
+
 	// Use this for initialization
 	void Start ()
 	{

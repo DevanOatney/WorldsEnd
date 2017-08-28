@@ -50,7 +50,7 @@ public class MenuScreenScript : MonoBehaviour
 	public DCScript dc;
 
 	public GameObject m_goCharacterSelector;
-
+	public GameObject m_goMainMenuHook;
 	public GameObject m_goRoster;
 	public GameObject m_goInventory;
 	public GameObject m_goStatus;
@@ -96,12 +96,13 @@ public class MenuScreenScript : MonoBehaviour
 	void Start () 
 	{
 		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
-		foreach(Transform child in transform)
+		//foreach(Transform child in m_goMainMenuHook.transform)
 		{
-			child.gameObject.SetActive(false);
+			//child.gameObject.SetActive(false);
 		}
 		PopulatePartyMembers();
-		m_goMainMenu.SetActive(false);
+		m_goMainMenuHook.SetActive (false);
+		//m_goMainMenu.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -124,7 +125,7 @@ public class MenuScreenScript : MonoBehaviour
 					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 					Camera.main.GetComponent<GreyScaleScript>().SendMessage("StartGreyScale");
 					GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ResetAnimFlagsExcept(-1);
-					m_goMainMenu.SetActive(true);
+					m_goMainMenuHook.SetActive(true);
 					DisplayCharacterPanels(false);
 				}
 			}	
@@ -289,7 +290,7 @@ public class MenuScreenScript : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
 		{
-			m_goMainMenu.SetActive(false);
+			m_goMainMenuHook.SetActive(false);
 			m_nMenuState = (int)MENU_STATES.eINNACTIVE;
 			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 			Camera.main.GetComponent<GreyScaleScript>().SendMessage("EndGreyScale");
