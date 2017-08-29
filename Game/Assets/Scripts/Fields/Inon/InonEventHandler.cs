@@ -683,6 +683,11 @@ public class InonEventHandler : BaseEventSystemScript
                 break;
             case "BoarTutorial":
                 {
+					GameObject player = GameObject.FindGameObjectWithTag("Player");
+					if (player)
+					{
+						player.GetComponent<FieldPlayerMovementScript> ().DHF_StopMovingFaceDirection (2);
+					}
                     m_goForestLine.GetComponent<EdgeCollider2D>().enabled = false;
                     m_goBoar.SetActive(true);
                     m_goBoar.GetComponent<BoarRitualScript>().ActivateBoar();
@@ -814,13 +819,10 @@ public class InonEventHandler : BaseEventSystemScript
                     GameObject player = GameObject.Find("Player");
                     if (player)
                     {
+						GameObject _wypnt = GameObject.Find("StepBackPoint");
+						_wypnt.GetComponent<BoxCollider2D> ().enabled = true;
                         player.GetComponent<FieldPlayerMovementScript>().BindInput();
-                        player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKLEFT);
-                        player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveLeft", true);
-                        player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
-                        player.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 1);
-                        player.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
-                        GameObject.Find("StepBackRitual").GetComponent<BoxCollider2D>().enabled = true;
+						player.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (_wypnt, false, 3);
                     }
                 }
                 break;
@@ -841,51 +843,12 @@ public class InonEventHandler : BaseEventSystemScript
                 {
 
                     //player has gotten close enough to the ritual for us to take over, first we need to make sure that the player is in the right x alignment, move toward that waypoint depending on the direction
-
                     GameObject.Find("StartArriveAtRitual").GetComponent<BoxCollider2D>().enabled = false;
-                    GameObject dest = GameObject.Find("XAlignedAtRitual");
                     GameObject src = GameObject.Find("Player");
                     src.GetComponent<FieldPlayerMovementScript>().BindInput();
-                    Vector2 dir = dest.transform.position - src.transform.position;
-                    if (dir.x > 0)
-                    {
-                        src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKRIGHT);
-                        src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveRight", true);
-                        src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
-                        src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 2);
-                        src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
-                        GameObject.Find("XAlignedAtRitual").GetComponent<BoxCollider2D>().enabled = true;
-                    }
-                    else if (dir.x < 0)
-                    {
-                        src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKLEFT);
-                        src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveLeft", true);
-                        src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
-                        src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 1);
-                        src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
-                        GameObject.Find("XAlignedAtRitual").GetComponent<BoxCollider2D>().enabled = true;
-                    }
-                    else
-                    {
-                        src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
-                        src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
-                        src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
-                        src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
-                        src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
-                        GameObject.Find("ArrivedAtRitualWaypoint").GetComponent<BoxCollider2D>().enabled = true;
-                    }
-                }
-                break;
-            case "XAlignedAtRitual":
-                {
-                    GameObject src = GameObject.Find("Player");
-                    src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eWALKUP);
-                    src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bMoveUp", true);
-                    src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetBool("m_bRunButtonIsPressed", false);
-                    src.GetComponent<FieldPlayerMovementScript>().GetAnimator().SetInteger("m_nFacingDir", 3);
-                    src.GetComponent<FieldPlayerMovementScript>().SetIsRunning(false);
-                    GameObject.Find("XAlignedAtRitual").GetComponent<BoxCollider2D>().enabled = false;
-                    GameObject.Find("ArrivedAtRitualWaypoint").GetComponent<BoxCollider2D>().enabled = true;
+					GameObject _wypnt = GameObject.Find ("ArrivedAtRitualWaypoint");
+					src.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (_wypnt, false, 3);
+					_wypnt.GetComponent<BoxCollider2D>().enabled = true;
                 }
                 break;
             case "ArrivedAtRitualWaypoint":

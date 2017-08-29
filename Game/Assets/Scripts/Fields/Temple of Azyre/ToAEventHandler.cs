@@ -193,7 +193,7 @@ public class ToAEventHandler : BaseEventSystemScript
 
 				//Callan begins to run upward after entering the temple for the first time.
 				GameObject src = GameObject.Find ("Player");
-				src.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("PlayerStop_EncounterBoar"), true);
+				src.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (GameObject.Find ("PlayerStop_EncounterBoar"), true, 1);
 				GameObject.Find ("PlayerStop_EncounterBoar").GetComponent<BoxCollider2D> ().enabled = true;
 			}
 			break;

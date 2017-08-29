@@ -106,7 +106,12 @@ public class ScreenSwitchScript : MonoBehaviour
 			}
 			player.transform.position = newPos;
 			Camera.main.SendMessage("fadeIn");
-			GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+			Invoke ("DelayedReleaseBind", 1.1f);
 		}
+	}
+
+	void DelayedReleaseBind()
+	{
+		GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
 	}
 }

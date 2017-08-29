@@ -6,7 +6,7 @@ public class CameraFollowTarget : MonoBehaviour {
 
 	public GameObject m_goTarget;
 	public GameObject m_goNextTarget = null;
-	float dampTime = 0.25f;
+	float dampTime = 0.1f;
 	private Vector3 velocity = Vector3.zero;
 
 	public bool m_bShouldSwirl = false;
@@ -45,26 +45,30 @@ public class CameraFollowTarget : MonoBehaviour {
 			//transform.position = pos;
 			Vector3 point = GetComponent<Camera>().WorldToViewportPoint(m_goTarget.transform.position);
 
-			Vector3 delta = m_goTarget.transform.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z)); 
-			if(delta.magnitude > 2.0f)
+			Vector3 toTarget = m_goTarget.transform.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z)); 
+			if(toTarget.magnitude > 5.0f)
 			{
-				transform.position = transform.position + delta;
+				transform.position = transform.position + toTarget;
 			}
 			else
 			{
-				if(delta.magnitude < 0.05f)
+				if(toTarget.magnitude < 0.006f)
 				{
-					if(m_goNextTarget != null)
+					if (m_goNextTarget != null)
 					{
 						m_goTarget = m_goNextTarget;
 						m_goNextTarget = null;
-						point = GetComponent<Camera>().WorldToViewportPoint(m_goTarget.transform.position);
-						delta = m_goTarget.transform.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z)); 
+						point = GetComponent<Camera> ().WorldToViewportPoint (m_goTarget.transform.position);
+						toTarget = m_goTarget.transform.position - GetComponent<Camera> ().ViewportToWorldPoint (new Vector3 (0.5f, 0.5f, point.z)); 
+					}
+					else
+					{
+						transform.position = transform.position + toTarget;
 					}
 				}
 				else
 				{
-					Vector3 destination = transform.position + delta;
+					Vector3 destination = transform.position + toTarget;
 					transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
 				}
 			}

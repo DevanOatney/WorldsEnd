@@ -38,16 +38,22 @@ public class BoarRitualScript : MonoBehaviour
 		GetComponent<Animator>().Play("Boar_Charge");
 	}
 
-	void OnTriggerEnter2D(Collider2D c)
+	void OnCollisionEnter2D(Collision2D c)
 	{
-		if(c.name == "BoarArriveAtRitual")
+		if(c.gameObject.name == "Player")
 		{
+			GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 			m_bIsActive = false;
 			m_bIsAttacking = true;
 			GetComponent<Animator>().SetBool("m_bAttack", true);
-			Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
-			Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
+			Invoke ("DelayStart", 0.4f);
 		}
+	}
+
+	void DelayStart()
+	{
+		Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
+		Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
 	}
 
 }

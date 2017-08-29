@@ -11,10 +11,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		BindInput();
 		m_bIsMovingToLocation = true;
 		m_vTargetLocation = (Vector2)_TargetLocation.transform.position;
-		if(_TargetLocation.GetComponent<Collider2D>() != null)
-		{
-			m_vTargetLocation.y += _TargetLocation.GetComponent<Collider2D>().bounds.size.y * 0.5f;
-		}
+		m_vTargetLocation.y += GetComponent<Collider2D>().bounds.size.y;
 		m_bIsRunning = false;
 		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
 
@@ -24,10 +21,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		BindInput();
 		m_bIsMovingToLocation = true;
 		m_vTargetLocation = (Vector2)_TargetLocation.transform.position;
-		if(_TargetLocation.GetComponent<Collider2D>() != null)
-		{
-			m_vTargetLocation.y += _TargetLocation.GetComponent<Collider2D>().bounds.size.y * 0.5f;
-		}
+		m_vTargetLocation.y += GetComponent<Collider2D>().bounds.size.y;
 		m_bIsRunning = _bShouldIRun;
 		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
 		
@@ -37,10 +31,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		BindInput();
 		m_bIsMovingToLocation = true;
 		m_vTargetLocation = (Vector2)_TargetLocation.transform.position;
-		if(_TargetLocation.GetComponent<Collider2D>() != null)
-		{
-			m_vTargetLocation.y += _TargetLocation.GetComponent<Collider2D>().bounds.size.y * 0.5f;
-		}
+		m_vTargetLocation.y += GetComponent<Collider2D>().bounds.size.y;
 		m_bIsRunning = _bShouldIRun;
 		m_nNextFacingDir = _nextFacingDirection;
 		m_aAnim.SetBool("m_bRunButtonIsPressed", m_bIsRunning);
