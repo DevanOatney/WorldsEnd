@@ -152,16 +152,20 @@ public class InonEventHandler : BaseEventSystemScript
             GameObject player = GameObject.Find("Player");
             if (player.GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
             {
-				if (Input.GetKey (KeyCode.UpArrow) && m_bUpDir == false) {
+				if (Input.GetKey (KeyCode.UpArrow) && m_bUpDir == false) 
+				{
 					m_bUpDir = true;
 				}
-				else if (Input.GetKey (KeyCode.DownArrow) && m_bDownDir == false) {
+				else if (Input.GetKey (KeyCode.DownArrow) && m_bDownDir == false) 
+				{
 					m_bDownDir = true;
 				}
-				else if (Input.GetKey (KeyCode.LeftArrow) && m_bLeftDir == false) {
+				else if (Input.GetKey (KeyCode.LeftArrow) && m_bLeftDir == false) 
+				{
 					m_bLeftDir = true;
 				}
-				else if (Input.GetKey (KeyCode.RightArrow) && m_bRightDir == false) {
+				else if (Input.GetKey (KeyCode.RightArrow) && m_bRightDir == false) 
+				{
 					m_bRightDir = true;
 				}
                 else if(m_bUpDir == true && m_bRightDir == true && m_bLeftDir == true && m_bDownDir == true)
@@ -177,7 +181,7 @@ public class InonEventHandler : BaseEventSystemScript
         }
     }
 
-    override public void HandleEvent(string eventID)
+	override public void HandleEvent(string eventID)
     {
         switch (eventID)
         {
@@ -782,6 +786,55 @@ public class InonEventHandler : BaseEventSystemScript
 
     override public void WaypointTriggered(Collider2D c)
     {
+		if (c.name.Contains ("StepBack"))
+		{
+			GameObject player = GameObject.Find ("Player");
+			player.GetComponent<FieldPlayerMovementScript> ().SetState ((int)FieldPlayerMovementScript.States.eIDLE);
+			player.GetComponent<FieldPlayerMovementScript> ().DHF_StopMovingFaceDirection (player.GetComponent<FieldPlayerMovementScript> ().m_nFacingDir);
+			int result;
+			if (ds.m_dStoryFlagField.TryGetValue ("Inon_KeyEvents", out result))
+			{
+				bool _found = false;
+				switch (result)
+				{
+					//0: Player has started the game, but hasn't yet even talked to the guy in the guild hall.
+					case 0:
+						{
+							//Okay it's possible that you're still in the main room still.. so check first to see if you've moved in each direction
+							if (ds.m_dStoryFlagField.TryGetValue ("Inon_HasMoved", out result) == false || GameObject.Find ("NoteFromFamily"))
+							{
+								GameObject.Find ("Player").GetComponentInChildren<MessageHandler> ().BeginDialogue ("F0");
+								_found = true;
+
+							}
+							else
+							{
+								GameObject.Find ("Player").GetComponentInChildren<MessageHandler> ().BeginDialogue ("F1");
+								_found = true;
+							}
+						}
+						break;
+						//1: Player has talked to the guy in the guild hall, but not the blacksmith
+					case 1:
+						{
+							GameObject.Find ("Player").GetComponentInChildren<MessageHandler> ().BeginDialogue ("F2");
+							_found = true;
+						}
+						break;
+						//2: Player has talked to the guy in the guild hall, the blacksmith, but not met with his dad/sister
+					case 2:
+						{
+							GameObject.Find ("Player").GetComponentInChildren<MessageHandler> ().BeginDialogue ("F3");
+							_found = true;
+						}
+						break;
+				}
+
+				if (_found == true)
+					c.enabled = false;
+			}
+		}
+
         switch (c.name)
         {
             case "IntoHallwayCheck":
@@ -800,19 +853,6 @@ public class InonEventHandler : BaseEventSystemScript
                     }
                 }
                 break;
-            case "StepBackWaypoint":
-                {
-                    //player has stepped back from going deeper into the cave, release the bind on input, disable collision box, umm.. change state to idle.
-                    GameObject player = GameObject.Find("Player");
-                    if (player)
-                    {
-                        player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-                        player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
-                        GameObject.Find("StepBackWaypoint").GetComponent<BoxCollider2D>().enabled = false;
-						GameObject.Find ("IntoHallwayCheck").GetComponent<BoxCollider2D> ().enabled = true;
-                    }
-                }
-                break;
             case "TowardRitualCheck":
                 {
                     //Stops the player from going up to the ritual site before doing the previous events.
@@ -820,22 +860,9 @@ public class InonEventHandler : BaseEventSystemScript
                     if (player)
                     {
 						GameObject _wypnt = GameObject.Find("StepBackPoint");
-						_wypnt.GetComponent<BoxCollider2D> ().enabled = true;
+						_wypnt.GetComponent<Collider2D> ().enabled = true;
                         player.GetComponent<FieldPlayerMovementScript>().BindInput();
 						player.GetComponent<FieldPlayerMovementScript> ().DHF_PlayerMoveToGameObject (_wypnt, false, 3);
-                    }
-                }
-                break;
-            case "StepBackRitual":
-                {
-                    //player has stepped back from going deeper into the cave, release the bind on input, disable collision box, umm.. change state to idle.
-                    GameObject player = GameObject.Find("Player");
-                    if (player)
-                    {
-                        player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
-                        player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
-                        GameObject.Find("StepBackRitual").GetComponent<BoxCollider2D>().enabled = false;
-                        GameObject.Find("TowardRitualCheck").GetComponent<BoxCollider2D>().enabled = true;
                     }
                 }
                 break;
@@ -864,30 +891,6 @@ public class InonEventHandler : BaseEventSystemScript
                 {
                     m_goBoar.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                     m_goBoar.GetComponent<Animator>().SetBool("m_bAttack", true);
-                }
-                break;
-            case "StepBackNorth":
-                {
-                    GameObject player = GameObject.Find("Player");
-                    if (player)
-                    {
-                        player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
-                        GameObject.Find("StepBackNorth").GetComponent<BoxCollider2D>().enabled = false;
-                        player.GetComponentInChildren<MessageHandler>().BeginDialogue("F0");
-                        GameObject.Find("LeaveFromNorthWaypoint").GetComponent<BoxCollider2D>().enabled = true;
-                    }
-                }
-                break;
-            case "StepBackSouth":
-                {
-                    GameObject player = GameObject.Find("Player");
-                    if (player)
-                    {
-                        player.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
-                        GameObject.Find("StepBackSouth").GetComponent<BoxCollider2D>().enabled = false;
-                        player.GetComponentInChildren<MessageHandler>().BeginDialogue("F0");
-                        GameObject.Find("LeaveFromSouthWaypoint").GetComponent<BoxCollider2D>().enabled = true;
-                    }
                 }
                 break;
             case "LeaveFromSouthWaypoint":

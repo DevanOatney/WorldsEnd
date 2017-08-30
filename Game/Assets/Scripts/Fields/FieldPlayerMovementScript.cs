@@ -44,6 +44,10 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		m_vTargetLocation = Vector3.zero;
 		m_bIsRunning = true;
 		m_aAnim.SetBool("m_bRunButtonIsPressed", false);
+		m_aAnim.SetBool ("m_bMoveUp", false);
+		m_aAnim.SetBool ("m_bMoveDown", false);
+		m_aAnim.SetBool ("m_bMoveLeft", false);
+		m_aAnim.SetBool ("m_bMoveRight", false);
 		m_nFacingDir = _facingDir;
 		m_aAnim.SetInteger("m_nFacingDir", m_nFacingDir);
 	}

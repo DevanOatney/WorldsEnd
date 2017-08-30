@@ -466,11 +466,13 @@ public class MessageHandler : MonoBehaviour
 	}
 	public void BeginDialogue(int iter)
 	{
+		ResetDialogueData ();
 		m_bShouldDisplayDialogue = true;
 		m_nCurrentDialogueIter = iter;
 	}
 	public void BeginDialogue(string id)
 	{
+		ResetDialogueData ();
 		int c = 0;
 		foreach(DialogueScriptLoaderScript.dlg dlg in dialogueEvents)
 		{
@@ -486,6 +488,7 @@ public class MessageHandler : MonoBehaviour
 				
 	public void BeginDialogue(string _message, string _name, int _bustID)
 	{
+		ResetDialogueData ();
 		GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
 		m_bShouldDisplayDialogue = true;
 		m_bShouldDisplayTempDialogue = true;

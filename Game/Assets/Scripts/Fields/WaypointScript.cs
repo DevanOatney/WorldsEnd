@@ -4,6 +4,7 @@ using System.Collections;
 public class WaypointScript : MonoBehaviour 
 {
 	public string m_szTarget = "Player";
+	public bool m_bShouldReset = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -20,7 +21,14 @@ public class WaypointScript : MonoBehaviour
 		{
 			GameObject.Find("Event system").GetComponent<BaseEventSystemScript>().WaypointTriggered(GetComponent<BoxCollider2D>());
 			GetComponent<BoxCollider2D>().enabled = false;
+			if (m_bShouldReset == true)
+				Invoke ("DelayedReset", 1.0f);
 		}
+	}
+
+	void DelayedReset()
+	{
+		GetComponent<BoxCollider2D>().enabled = true;
 	}
 
 }

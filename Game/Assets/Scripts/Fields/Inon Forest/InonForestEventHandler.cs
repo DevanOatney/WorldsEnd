@@ -93,6 +93,14 @@ public class InonForestEventHandler : BaseEventSystemScript
 
 	override public void WaypointTriggered(Collider2D c)
 	{
+		if (c.name.Contains ("StepBack"))
+		{
+			GameObject player = GameObject.Find ("Player");
+			player.GetComponent<FieldPlayerMovementScript> ().SetState ((int)FieldPlayerMovementScript.States.eIDLE);
+			player.GetComponent<FieldPlayerMovementScript> ().DHF_StopMovingFaceDirection (player.GetComponent<FieldPlayerMovementScript> ().m_nFacingDir);
+			player.GetComponentInChildren<MessageHandler>().BeginDialogue("A7");
+			c.enabled = false;
+		}
 		switch(c.name)
 		{
 		case "BriolWaypoint":
@@ -189,17 +197,9 @@ public class InonForestEventHandler : BaseEventSystemScript
 			{
 				GameObject src = GameObject.Find("Player");
 				src.GetComponent<FieldPlayerMovementScript>().BindInput();
-				src.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(GameObject.Find("ToWorldMapBackup"), false);
-				GameObject.Find("ToWorldMapBackup").GetComponent<BoxCollider2D>().enabled = true;
-			}
-			break;
-			//catches the player after they try to leave the forest, says some dialogue, then returns control to the player
-		case "ToWorldMapBackup":
-			{
-				GameObject src = GameObject.Find("Player");
-				src.GetComponent<FieldPlayerMovementScript>().SetState((int)FieldPlayerMovementScript.States.eIDLE);
-				src.GetComponentInChildren<MessageHandler>().BeginDialogue("A7");
-				GameObject.Find("ToWorldMapBackup").GetComponent<BoxCollider2D>().enabled = false;
+				GameObject _target = GameObject.Find ("StepBackWorldMapBackup");
+				src.GetComponent<FieldPlayerMovementScript>().DHF_PlayerMoveToGameObject(_target, false);
+				_target.GetComponent<BoxCollider2D>().enabled = true;
 			}
 			break;
 		default:
