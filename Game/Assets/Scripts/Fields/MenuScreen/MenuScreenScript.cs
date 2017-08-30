@@ -1043,6 +1043,7 @@ public class MenuScreenScript : MonoBehaviour
 				{
 					m_cSelectedCharacter = _character;
 					UpdateEquipmentScreen (_character);
+					break;
 				}
 			}
 			m_nEquipmentScreenIter = 1;
@@ -1054,6 +1055,20 @@ public class MenuScreenScript : MonoBehaviour
 		Transform _tEquipmentPanel = m_goEquipmentScreen.transform.Find ("EquipmentPanel");
 		_tEquipmentPanel.gameObject.SetActive (true);
 		_tEquipmentPanel.Find ("CharacterName").GetComponent<Text> ().text = _character.m_szCharacterName;
+
+		Transform characterBody = _tEquipmentPanel.Find("CharacterBody");
+		Color fadedWhite = Color.white;
+		fadedWhite.a = 0.3f;
+		characterBody.GetComponent<Image>().color = fadedWhite;
+		GameObject pCont = GameObject.Find("Portraits Container");
+		Sprite texture;
+		if(pCont.GetComponent<PortraitContainerScript>().m_dPortraits.TryGetValue(_character.m_szCharacterName + "0", out texture))
+		{
+			Texture2D _t2dTexture = TextureFromSprite(texture);
+			characterBody.GetComponent<Image>().sprite = Sprite.Create(_t2dTexture, 
+				new Rect(0, 0, _t2dTexture.width, _t2dTexture.height), new Vector2(0.5f, 0.5f));
+		}
+
 		Transform _tSecondEqPan = _tEquipmentPanel.Find ("EquipmentPanel");
 		GameObject _gRadar = _tEquipmentPanel.Find ("Radar").gameObject;
 		//So we need to create a list of 0-1 floats that represent the stat fill radar chart.
