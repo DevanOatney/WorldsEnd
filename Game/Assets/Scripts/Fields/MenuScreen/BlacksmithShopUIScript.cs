@@ -30,12 +30,41 @@ public class BlacksmithShopUIScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		m_eActiveWindow = eActiveWindow.eDisabled;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		if (m_eActiveWindow != eActiveWindow.eDisabled)
+		{
+			if (Input.GetKeyDown (KeyCode.Escape) || Input.GetMouseButtonDown (1))
+			{
+				if (m_eActiveWindow == eActiveWindow.eMainMenu)
+				{
+					//Turn off the window and give input back to the player
+					ExitSelected ();
+				}
+				else
+				if (m_eActiveWindow == eActiveWindow.eEnhanceWindow)
+				{
+					m_eActiveWindow = eActiveWindow.eMainMenu;
+					ToggleWindows ();
+				}
+				else
+				if (m_eActiveWindow == eActiveWindow.eModifyWindow)
+				{
+					m_eActiveWindow = eActiveWindow.eMainMenu;
+					ToggleWindows ();
+				}
+				else
+				if (m_eActiveWindow == eActiveWindow.eModifierListWindow)
+				{
+					m_eActiveWindow = eActiveWindow.eModifyWindow;
+					ToggleWindows ();
+				}
+			}
+		}
 	}
 
 	public void TurnOn(GameObject _sender)

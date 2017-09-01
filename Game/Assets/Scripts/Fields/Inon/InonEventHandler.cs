@@ -154,19 +154,23 @@ public class InonEventHandler : BaseEventSystemScript
             {
 				if (Input.GetKey (KeyCode.UpArrow) && m_bUpDir == false) 
 				{
-					m_bUpDir = true;
+					if(player.GetComponent<FieldPlayerMovementScript>().m_nFacingDir == 3)
+						m_bUpDir = true;
 				}
 				else if (Input.GetKey (KeyCode.DownArrow) && m_bDownDir == false) 
 				{
-					m_bDownDir = true;
+					if(player.GetComponent<FieldPlayerMovementScript>().m_nFacingDir == 0)
+						m_bDownDir = true;
 				}
 				else if (Input.GetKey (KeyCode.LeftArrow) && m_bLeftDir == false) 
 				{
-					m_bLeftDir = true;
+					if(player.GetComponent<FieldPlayerMovementScript>().m_nFacingDir == 1)
+						m_bLeftDir = true;
 				}
 				else if (Input.GetKey (KeyCode.RightArrow) && m_bRightDir == false) 
 				{
-					m_bRightDir = true;
+					if(player.GetComponent<FieldPlayerMovementScript>().m_nFacingDir == 2)
+						m_bRightDir = true;
 				}
                 else if(m_bUpDir == true && m_bRightDir == true && m_bLeftDir == true && m_bDownDir == true)
                 {

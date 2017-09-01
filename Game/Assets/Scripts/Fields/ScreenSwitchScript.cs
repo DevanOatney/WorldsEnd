@@ -106,7 +106,7 @@ public class ScreenSwitchScript : MonoBehaviour
 			}
 			player.transform.position = newPos;
 			Camera.main.SendMessage("fadeIn");
-			Invoke ("DelayedReleaseBind", 1.1f);
+			Invoke ("DelayedReleaseBind", 0.5f);
 		}
 	}
 

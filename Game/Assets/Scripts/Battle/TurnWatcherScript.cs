@@ -370,7 +370,7 @@ public class TurnWatcherScript : MonoBehaviour
 	{
 		m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = false;
 		GameObject messageWindow = GameObject.Find("MessageWindow");
-		messageWindow.GetComponent<SpriteRenderer>().enabled = true;
+		messageWindow.GetComponent<Image>().enabled = true;
 		GameObject.Find("TextOnWindow").SetActive(true);
 		messageWindow.GetComponent<MessageWindowScript>().AddMessage(p_szMessage);
 	}
@@ -379,7 +379,7 @@ public class TurnWatcherScript : MonoBehaviour
 	{
 		ds.m_dStoryFlagField.Remove("Battle_ReadMessage");
 		//the event window is done displaying it's message
-		GameObject.Find("MessageWindow").GetComponent<SpriteRenderer>().enabled = false;
+		GameObject.Find("MessageWindow").GetComponent<Image>().enabled = false;
 		GameObject.Find("TextOnWindow").SetActive(false);
 		m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
 	}

@@ -43,10 +43,11 @@ public class BoarRitualScript : MonoBehaviour
 		if(c.gameObject.name == "Player")
 		{
 			GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+			GetComponent<Collider2D>().enabled = false;
 			m_bIsActive = false;
 			m_bIsAttacking = true;
 			GetComponent<Animator>().SetBool("m_bAttack", true);
-			Invoke ("DelayStart", 0.4f);
+			DelayStart ();
 		}
 	}
 

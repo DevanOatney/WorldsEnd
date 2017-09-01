@@ -113,7 +113,13 @@ public class NPCScript : MonoBehaviour
 					_fSpeed = m_fWalkingSpeed * Time.deltaTime;
 				else
 					_fSpeed = m_fRunningSpeed * Time.deltaTime;
-				Vector3 _vMovePos = Vector3.MoveTowards (transform.position, m_lNodes [m_nNodeIndex], _fSpeed);
+				Vector3 _xDest = m_lNodes [m_nNodeIndex];
+				_xDest.y = transform.position.y;
+				Vector3 _vMovePos = Vector3.MoveTowards (transform.position, _xDest, _fSpeed);
+				if (_vMovePos.x == transform.position.x)
+				{
+					_vMovePos = Vector3.MoveTowards (transform.position, m_lNodes [m_nNodeIndex], _fSpeed);
+				}
 
 				if (_vMovePos == transform.position)
 				{

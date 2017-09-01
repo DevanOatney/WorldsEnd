@@ -63,7 +63,7 @@ public class CameraFollowTarget : MonoBehaviour {
 					}
 					else
 					{
-						transform.position = transform.position + toTarget;
+						//transform.position = transform.position + toTarget;
 					}
 				}
 				else
