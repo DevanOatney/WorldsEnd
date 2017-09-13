@@ -27,6 +27,10 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
     float m_fResponseTimer = 0.0f;
     float m_fResponseBucket = 0.25f;
 
+	//Something every now and then is causing this AI to hang and get caught, putting in some duct tape so that if this DOES hang, to end this factions turn and move on so that the entire game 
+	//doesn't just freeze
+	float m_fHangTimer = 0.0f;
+	float m_fHangBucket = 20.0f;
     class cTargetWeights
     {
         public int _nDistanceToUnit = 0;
@@ -92,30 +96,39 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
 
     public void RemoveUnit(GameObject _unit)
     {
-        for (int i = m_lAlliesOfTeam.Count - 1; i >= 0; i--)
-        {
-            if (_unit == m_lAlliesOfTeam[i])
-            {
-                m_lAlliesOfTeam.RemoveAt(i);
-                return;
-            }
-        }
-        for (int i = m_lEnemyTeam.Count - 1; i >= 0; i--)
-        {
-            if (_unit == m_lEnemyTeam[i])
-            {
-                m_lEnemyTeam.RemoveAt(i);
-                return;
-            }
-        }
-        for (int i = m_lSameTeam.Count - 1; i >= 0; i--)
-        {
-            if (_unit == m_lSameTeam[i])
-            {
-                m_lSameTeam.RemoveAt(i);
-                return;
-            }
-        }
+		if (m_lAlliesOfTeam != null)
+		{
+			for (int i = m_lAlliesOfTeam.Count - 1; i >= 0; i--)
+			{
+				if (_unit == m_lAlliesOfTeam [i])
+				{
+					m_lAlliesOfTeam.RemoveAt (i);
+					return;
+				}
+			}
+		}
+		if (m_lEnemyTeam != null)
+		{
+			for (int i = m_lEnemyTeam.Count - 1; i >= 0; i--)
+			{
+				if (_unit == m_lEnemyTeam [i])
+				{
+					m_lEnemyTeam.RemoveAt (i);
+					return;
+				}
+			}
+		}
+		if (m_lSameTeam != null)
+		{
+			for (int i = m_lSameTeam.Count - 1; i >= 0; i--)
+			{
+				if (_unit == m_lSameTeam [i])
+				{
+					m_lSameTeam.RemoveAt (i);
+					return;
+				}
+			}
+		}
     }
 
 	// Update is called once per frame

@@ -22,6 +22,7 @@ public class ContinueHighlightInputScript : MonoBehaviour {
 		public string m_szSceneName;
 		public int m_nGold;
 		public float m_fTimePlayed;
+		public int m_nSlotNumber;
 	}
 
 	// Use this for initialization

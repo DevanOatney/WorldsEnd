@@ -161,14 +161,14 @@ public class FightSceneControllerScript : MonoBehaviour
             if (_nRoll <= m_fShootArrowChance && m_cLeftWarUnit.m_cUnitData.m_nAttackRange >= m_nRangeRequired)
             {
                 //We're good to fire an arrow! loop through and find a unit that isn't firing and tell it to fire!
-                RandomUnitFireArrow(m_lLeftUnits);
+                RandomUnitFireArrow(m_lLeftUnits, false);
             }
             //Now let's give the right side a chance to shoot.
             _nRoll = Random.Range(0, 101);
             if (_nRoll <= m_fShootArrowChance && m_cRightWarUnit.m_cUnitData.m_nAttackRange >= m_nRangeRequired)
             {
                 //We're good to fire an arrow! loop through and find a unit that isn't firing and tell it to fire!
-                RandomUnitFireArrow(m_lRightUnits);
+                RandomUnitFireArrow(m_lRightUnits, true);
             }
 
 
@@ -361,6 +361,7 @@ public class FightSceneControllerScript : MonoBehaviour
         Vector3 _startPos = Vector3.zero;
         GameObject _char = null;
         _char = Instantiate(_unit) as GameObject;
+		_char.name = _unit.name;
         _char.transform.SetParent(gameObject.transform);
         _char.transform.localScale = Vector3.one * 2;
         _char.GetComponent<WB_UnitScript>().Initialize(gameObject, _side, false);
@@ -373,6 +374,7 @@ public class FightSceneControllerScript : MonoBehaviour
             Vector3 _scale = _char.transform.localScale;
             _scale.x *= -1;
             _char.transform.localScale = _scale;
+
             m_lLeftUnits.Add(_char);
         }
         else
@@ -654,17 +656,25 @@ public class FightSceneControllerScript : MonoBehaviour
         return true;
     }
 
-    void RandomUnitFireArrow(List<GameObject> _lUnits)
+	void RandomUnitFireArrow(List<GameObject> _lUnits, bool _bIsRightSide)
     {
         List<int> _lItersOfAvailableUnits = new List<int>();
         int _nCounter = 0;
         bool _bFoundAtleastOne = false;
+		int nIterOfLeader = -1;
         foreach (GameObject _go in _lUnits)
         {
             if (_go.GetComponent<WB_UnitScript>().AmIDead() == false && _go.GetComponent<WB_UnitScript>().m_bIsShootingArrow == false)
             {
                 _lItersOfAvailableUnits.Add(_nCounter);
                 _bFoundAtleastOne = true;
+				string _leaderName = "";
+				if (_bIsRightSide == true)
+					_leaderName = m_cRightWarUnit.m_szLeaderName;
+				else
+					_leaderName = m_cLeftWarUnit.m_szLeaderName;
+				if (_go.GetComponent<WB_UnitScript> ().name == _leaderName)
+					nIterOfLeader = _nCounter;
             }
             _nCounter++;
         }
@@ -672,6 +682,12 @@ public class FightSceneControllerScript : MonoBehaviour
             return;
         int rndmRoll = Random.Range(0, _lItersOfAvailableUnits.Count);
         _lUnits[rndmRoll].GetComponent<WB_UnitScript>().TimeToAttack(true);
+
+		if (rndmRoll != nIterOfLeader && nIterOfLeader != -1 && nIterOfLeader < _lUnits.Count)
+		{
+			if(Random.Range (0, 3)  == 1)
+				_lUnits [nIterOfLeader].GetComponent<WB_UnitScript> ().TimeToAttack (true);
+		}
     }
 
 	public void KillUnit(bool _isRightSide)

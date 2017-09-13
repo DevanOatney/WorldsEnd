@@ -581,46 +581,117 @@ public class WarBattleWatcherScript : MonoBehaviour
         m_goTurnOrderWindow.GetComponentInChildren<Text>().text = _szMessage;
     }
 
+	private void ResetClearList(List<int> _lList, List<GameObject> _units)
+	{
+		foreach (int n in _lList)
+		{
+			_units.RemoveAt (n);
+		}
+		_lList.Clear ();
+	}
     void StartFactionTurn()
     {
+		List<int> _lnIterOfObjectsToRemove = new List<int> ();
+		int c = 0;
         if (m_bIsAllyTurn == Turn_Order.AllyTurn)
         {
             m_bAllowInput = true;
             m_nState = (int)War_States.eMovement;
+
             foreach (GameObject _go in m_lAllies)
-            {
-                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = false;
-                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", false);
+			{
+				if (_go == null)
+				{
+					_lnIterOfObjectsToRemove.Add (c);
+				}
+				else
+				{
+					_go.GetComponent<TRPG_UnitScript> ().m_bHasActedThisTurn = false;
+					_go.GetComponentInChildren<Animator> ().SetBool ("m_bHasActed", false);
+				}
+				c++;
             }
+			ResetClearList (_lnIterOfObjectsToRemove, m_lAllies);
+			c = 0;
             foreach (GameObject _go in m_lEnemies)
             {
-                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
-                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
+				if (_go == null)
+				{
+					_lnIterOfObjectsToRemove.Add (c);
+				}
+				else
+				{
+					_go.GetComponent<TRPG_UnitScript> ().m_bHasActedThisTurn = true;
+					_go.GetComponentInChildren<Animator> ().SetBool ("m_bHasActed", true);
+				}
+				c++;
             }
+			ResetClearList (_lnIterOfObjectsToRemove, m_lEnemies);
+			c = 0;
             foreach (GameObject _go in m_lGuests)
             {
-                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
-                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
+				if (_go == null)
+				{
+					_lnIterOfObjectsToRemove.Add (c);
+				}
+				else
+				{
+					_go.GetComponent<TRPG_UnitScript> ().m_bHasActedThisTurn = true;
+					_go.GetComponentInChildren<Animator> ().SetBool ("m_bHasActed", true);
+				}
+				c++;
             }
-
+			ResetClearList (_lnIterOfObjectsToRemove, m_lGuests);
+			c = 0;
         }
         else if (m_bIsAllyTurn == Turn_Order.EnemyTurn)
         {
             foreach (GameObject _go in m_lAllies)
             {
-                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
-                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
+				if (_go == null)
+				{
+					_lnIterOfObjectsToRemove.Add (c);
+				}
+				else
+				{
+					_go.GetComponent<TRPG_UnitScript> ().m_bHasActedThisTurn = true;
+					_go.GetComponentInChildren<Animator> ().SetBool ("m_bHasActed", true);
+				}
+				c++;
             }
+			ResetClearList (_lnIterOfObjectsToRemove, m_lAllies);
+			c = 0;
             foreach (GameObject _go in m_lEnemies)
             {
-                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = false;
-                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", false);
+				if (_go == null)
+				{
+					_lnIterOfObjectsToRemove.Add (c);
+				}
+				else
+				{
+					_go.GetComponent<TRPG_UnitScript> ().m_bHasActedThisTurn = false;
+					_go.GetComponentInChildren<Animator> ().SetBool ("m_bHasActed", false);
+				}
+				c++;
             }
+			ResetClearList (_lnIterOfObjectsToRemove, m_lEnemies);
+			c = 0;
             foreach (GameObject _go in m_lGuests)
             {
-                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
-                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
+				if (_go == null)
+				{
+					_lnIterOfObjectsToRemove.Add (c);
+				}
+				else
+				{
+					_go.GetComponent<TRPG_UnitScript> ().m_bHasActedThisTurn = true;
+					_go.GetComponentInChildren<Animator> ().SetBool ("m_bHasActed", true);
+				}
+				c++;
             }
+			ResetClearList (_lnIterOfObjectsToRemove, m_lGuests);
+			c = 0;
+
             List<GameObject> _targets = new List<GameObject>();
             _targets.AddRange(m_lAllies);
             _targets.AddRange(m_lGuests);
@@ -630,19 +701,45 @@ public class WarBattleWatcherScript : MonoBehaviour
         {
             foreach (GameObject _go in m_lAllies)
             {
-                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
-                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
+				if (_go == null)
+				{
+					_lnIterOfObjectsToRemove.Add (c);
+				}
+				else
+				{
+					_go.GetComponent<TRPG_UnitScript> ().m_bHasActedThisTurn = true;
+					_go.GetComponentInChildren<Animator> ().SetBool ("m_bHasActed", true);
+				}
+				c++;
             }
+			ResetClearList (_lnIterOfObjectsToRemove, m_lAllies);
+			c = 0;
             foreach (GameObject _go in m_lEnemies)
             {
-                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = true;
-                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", true);
+				if (_go == null)
+					_lnIterOfObjectsToRemove.Add (c);
+				else
+				{
+					_go.GetComponent<TRPG_UnitScript> ().m_bHasActedThisTurn = true;
+					_go.GetComponentInChildren<Animator> ().SetBool ("m_bHasActed", true);
+				}
+				c++;
             }
+			ResetClearList (_lnIterOfObjectsToRemove, m_lEnemies);
+			c = 0;
             foreach (GameObject _go in m_lGuests)
             {
-                _go.GetComponent<TRPG_UnitScript>().m_bHasActedThisTurn = false;
-                _go.GetComponentInChildren<Animator>().SetBool("m_bHasActed", false);
+				if (_go == null)
+					_lnIterOfObjectsToRemove.Add (c);
+				else
+				{
+					_go.GetComponent<TRPG_UnitScript> ().m_bHasActedThisTurn = false;
+					_go.GetComponentInChildren<Animator> ().SetBool ("m_bHasActed", false);
+				}
+				c++;
             }
+			ResetClearList (_lnIterOfObjectsToRemove, m_lGuests);
+			c = 0;
             GetComponent<WarBattle_EnemyControllerScript>().StartFactionTurn(m_lGuests, m_lAllies, m_lEnemies);
         }
     }

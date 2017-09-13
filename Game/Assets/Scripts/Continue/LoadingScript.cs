@@ -53,7 +53,6 @@ public class LoadingScript : MonoBehaviour
 		SavingScript.cOutputData fileData = (SavingScript.cOutputData)bf.Deserialize(_fFile);
 		_fFile.Close();
 
-
 		//Amount of gold the player has
 		saveData.m_nGold = fileData.m_nGold;
 		saveData.m_nLevel = fileData.m_nLevel;

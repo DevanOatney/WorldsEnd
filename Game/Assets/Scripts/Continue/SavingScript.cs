@@ -95,6 +95,7 @@ public class SavingScript : MonoBehaviour
 		newData.m_vStartingPosition._fZ = dcs.GetPreviousPosition().z;
 		newData.m_nFacingDir = dcs.GetPreviousFacingDirection();
 
+
 		return newData;
 	}
 
