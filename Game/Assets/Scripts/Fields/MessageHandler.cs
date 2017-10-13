@@ -347,7 +347,7 @@ public class MessageHandler : MonoBehaviour
 				ResetDialogueData ();
 				m_bShouldDisplayTempDialogue = false;
 				m_bShouldDisplayDialogue = false;
-				GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+				GameObject.Find ("Player").GetComponent<FieldPlayerMovementScript> ().ReleaseAllBinds ();
 				return;
 			}
 			else

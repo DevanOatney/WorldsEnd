@@ -834,7 +834,6 @@ public class InonEventHandler : BaseEventSystemScript
 						break;
 					default:
 						{
-							Debug.Log ("hit");
 							GameObject.Find ("Player").GetComponentInChildren<MessageHandler> ().BeginDialogue ("I can't go this way yet!", "Callan", 1);
 							_found = true;
 						}

@@ -302,7 +302,6 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
 							{
 								if (_go.GetComponent<TRPG_UnitScript> ().m_bHasActedThisTurn == false)
 								{
-									Debug.Log ("moved to new unit");
 									m_goCurrentUnitActing = _go;
 									m_eState = WB_AI_States.eStart;
 									_EndTurn = false;
