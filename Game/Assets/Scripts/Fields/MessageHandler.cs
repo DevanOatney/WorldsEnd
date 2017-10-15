@@ -288,7 +288,7 @@ public class MessageHandler : MonoBehaviour
 				if(selectedIndex >= ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).NumberOfChoices)
 					selectedIndex = 0;
 				bufferedInputTimer = 0.0f;
-				m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.Find("Text" + (selectedIndex+1).ToString()).localPosition;
+				UpdateDialogueChoiceIter (selectedIndex);
 			}
 		}
 		else if(Input.GetKey(KeyCode.UpArrow))
@@ -301,7 +301,7 @@ public class MessageHandler : MonoBehaviour
 					selectedIndex = ((DialogueScriptLoaderScript.heroDlg)dialogueEvents[m_nCurrentDialogueIter]).NumberOfChoices-1;
 				}
 				bufferedInputTimer = 0.0f;
-				m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.Find("Text" + (selectedIndex+1).ToString()).localPosition;
+				UpdateDialogueChoiceIter (selectedIndex);
 			}
 		}
 		else if(Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
@@ -470,6 +470,7 @@ public class MessageHandler : MonoBehaviour
 	{
 		m_bShouldDisplayDialogue = true;
 		m_nCurrentDialogueIter = iter;
+		m_goDialogueHighlighter.GetComponent<UIDialogueChoiceMouseInputScript> ().m_goListener = gameObject;
 	}
 	public void BeginDialogue(string id)
 	{
@@ -484,6 +485,7 @@ public class MessageHandler : MonoBehaviour
 			}
 			c++;
 		}
+		m_goDialogueHighlighter.GetComponent<UIDialogueChoiceMouseInputScript> ().m_goListener = gameObject;
 	}
 				
 	public void BeginDialogue(string _message, string _name, int _bustID)
@@ -494,21 +496,13 @@ public class MessageHandler : MonoBehaviour
 		m_szTempLine = _message;
 		m_szTempName = _name;
 		m_nTempBustID = _bustID;
+		m_goDialogueHighlighter.GetComponent<UIDialogueChoiceMouseInputScript> ().m_goListener = gameObject;
 	}
-
-	public void ChangeDialogueEvent(string EventToGoTo)
+		
+	public void UpdateDialogueChoiceIter(int _nIndex)
 	{
-		for(int i = 0; i < dialogueEvents.Count; ++i)
-		{
-			if(EventToGoTo == dialogueEvents[i].TextID)
-			{
-				m_nCurrentDialogueIter = i;
-				break;
-			}
-		}
-		line = "";
-		timer = 0.0f;
-		textIter = 0; 
+		selectedIndex = _nIndex;
+		m_goDialogueHighlighter.transform.localPosition =  m_goDialogueBox.transform.Find("Text" + (selectedIndex+1).ToString()).localPosition;
 	}
 
 	Texture2D TextureFromSprite(Sprite sprite)

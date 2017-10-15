@@ -91,8 +91,8 @@ public class ScreenSwitchScript : MonoBehaviour
 			Vector3 newPos = m_goNextLocation.transform.position;
 			switch(m_nNewFacingDir)
 			{
-			case 0:
-				newPos.y -= player.GetComponent<Collider2D>().bounds.size.y;
+				case 0:
+				newPos.y -= player.GetComponent<Collider2D> ().bounds.size.y;
 				break;
 			case 1:
 				newPos.x -= player.GetComponent<Collider2D>().bounds.size.x;
@@ -101,7 +101,7 @@ public class ScreenSwitchScript : MonoBehaviour
 				newPos.x += player.GetComponent<Collider2D>().bounds.size.x;
 				break;
 			case 3:
-				newPos.y += player.GetComponent<Collider2D>().bounds.size.y *2;
+				newPos.y += player.GetComponent<Collider2D>().bounds.size.y *4;
 				break;
 			}
 			player.transform.position = newPos;

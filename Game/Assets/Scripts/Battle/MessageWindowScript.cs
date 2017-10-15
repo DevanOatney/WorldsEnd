@@ -39,6 +39,7 @@ public class MessageWindowScript : MonoBehaviour
 					{
 						m_szCompleteMessage = "";
 						GameObject.Find("TurnWatcher").SendMessage("DoneReadingMessage");
+						m_goTextWindow.GetComponent<Text> ().text = "";
 						m_bTimeToClose = false;
 						m_bReadMessage = false;
 						Input.ResetInputAxes();

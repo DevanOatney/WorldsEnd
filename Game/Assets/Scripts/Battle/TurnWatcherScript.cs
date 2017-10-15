@@ -371,7 +371,6 @@ public class TurnWatcherScript : MonoBehaviour
 		m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = false;
 		GameObject messageWindow = GameObject.Find("MessageWindow");
 		messageWindow.GetComponent<Image>().enabled = true;
-		GameObject.Find("TextOnWindow").SetActive(true);
 		messageWindow.GetComponent<MessageWindowScript>().AddMessage(p_szMessage);
 	}
 
@@ -380,7 +379,6 @@ public class TurnWatcherScript : MonoBehaviour
 		ds.m_dStoryFlagField.Remove("Battle_ReadMessage");
 		//the event window is done displaying it's message
 		GameObject.Find("MessageWindow").GetComponent<Image>().enabled = false;
-		GameObject.Find("TextOnWindow").SetActive(false);
 		m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
 	}
 
@@ -781,6 +779,11 @@ public class TurnWatcherScript : MonoBehaviour
 		}
 		string previousField = ds.GetPreviousFieldName();
 		ds.SetPreviousFieldName(SceneManager.GetActiveScene().name);
+		if (previousField == SceneManager.GetActiveScene ().name)
+		{
+			Debug.Log ("hit");
+			return;
+		}
         SceneManager.LoadScene(previousField);
 	}
 	void Lose()

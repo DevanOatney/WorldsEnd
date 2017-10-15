@@ -152,22 +152,22 @@ public class InonEventHandler : BaseEventSystemScript
             GameObject player = GameObject.Find("Player");
             if (player.GetComponent<FieldPlayerMovementScript>().GetAllowInput() == true)
             {
-				if (Input.GetKey (KeyCode.UpArrow) && m_bUpDir == false) 
+				if ((Input.GetKey (KeyCode.UpArrow) || (Input.GetKey(KeyCode.W))) && m_bUpDir == false) 
 				{
 					if(player.GetComponent<FieldPlayerMovementScript>().m_nFacingDir == 3)
 						m_bUpDir = true;
 				}
-				else if (Input.GetKey (KeyCode.DownArrow) && m_bDownDir == false) 
+				else if ((Input.GetKey (KeyCode.DownArrow) || (Input.GetKey(KeyCode.S))) && m_bDownDir == false) 
 				{
 					if(player.GetComponent<FieldPlayerMovementScript>().m_nFacingDir == 0)
 						m_bDownDir = true;
 				}
-				else if (Input.GetKey (KeyCode.LeftArrow) && m_bLeftDir == false) 
+				else if ((Input.GetKey (KeyCode.LeftArrow) || (Input.GetKey(KeyCode.A))) && m_bLeftDir == false) 
 				{
 					if(player.GetComponent<FieldPlayerMovementScript>().m_nFacingDir == 1)
 						m_bLeftDir = true;
 				}
-				else if (Input.GetKey (KeyCode.RightArrow) && m_bRightDir == false) 
+				else if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && m_bRightDir == false) 
 				{
 					if(player.GetComponent<FieldPlayerMovementScript>().m_nFacingDir == 2)
 						m_bRightDir = true;
