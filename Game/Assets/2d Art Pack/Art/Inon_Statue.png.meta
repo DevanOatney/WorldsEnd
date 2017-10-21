@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-guid: 962637b86b9250e429508f814fe04768
-timeCreated: 1508612903
+guid: 46239bd075d111345925cf5e7cd90fe6
+timeCreated: 1508611955
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: char_running_up_0
-    21300002: char_running_up_1
-    21300004: char_running_up_2
-    21300006: char_running_up_3
+  fileIDToRecycleName: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -28,17 +24,17 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: 16
+    filterMode: 0
+    aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -80,59 +76,7 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: char_running_up_0
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 3
-        width: 32
-        height: 54
-      alignment: 9
-      pivot: {x: 0.53638995, y: 0.3873862}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: char_running_up_1
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 5
-        width: 32
-        height: 52
-      alignment: 9
-      pivot: {x: 0.51617336, y: 0.36314937}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: char_running_up_2
-      rect:
-        serializedVersion: 2
-        x: 97
-        y: 3
-        width: 30
-        height: 54
-      alignment: 9
-      pivot: {x: 0.5172516, y: 0.38499016}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: char_running_up_3
-      rect:
-        serializedVersion: 2
-        x: 138
-        y: 5
-        width: 30
-        height: 52
-      alignment: 9
-      pivot: {x: 0.5431295, y: 0.36314937}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
+    sprites: []
     outline: []
   spritePackingTag: 
   userData: 

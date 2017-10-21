@@ -64,10 +64,6 @@ public class MessageHandler : MonoBehaviour
 		}
 		else
 			speed = 0.1f;
-	}
-
-	void Start () 
-	{
 		m_goDialogueCanvas = GameObject.Find("Canvas_Dialogue");
 		if(m_goDialogueCanvas)
 		{
@@ -86,6 +82,11 @@ public class MessageHandler : MonoBehaviour
 		{
 			Debug.Log(gameObject.transform.parent.gameObject.name + " Skipped");
 		}
+	}
+
+	void Start () 
+	{
+		
 		DisableUI();
 	}
 
@@ -470,6 +471,8 @@ public class MessageHandler : MonoBehaviour
 	{
 		m_bShouldDisplayDialogue = true;
 		m_nCurrentDialogueIter = iter;
+		if (m_goDialogueHighlighter == null)
+			Debug.Log ("ERRAWR");
 		m_goDialogueHighlighter.GetComponent<UIDialogueChoiceMouseInputScript> ().m_goListener = gameObject;
 	}
 	public void BeginDialogue(string id)

@@ -781,7 +781,6 @@ public class TurnWatcherScript : MonoBehaviour
 		ds.SetPreviousFieldName(SceneManager.GetActiveScene().name);
 		if (previousField == SceneManager.GetActiveScene ().name)
 		{
-			Debug.Log ("hit");
 			return;
 		}
         SceneManager.LoadScene(previousField);

@@ -15,7 +15,7 @@ public class OverWatcherScript : MonoBehaviour
 	Vector3 m_vLastPos;
 
 	//The distance the player can go before there's a chance for a random battle
-	float m_fThreshold = 0.2f;
+	float m_fThreshold = 0.6f;
 	//The distance the player has gone since the last threshold tick
 	float m_fDistanceStep = 0.0f;
 	//The initial percent chance that an encounter will occur (0-m_nEncounterRange)
@@ -187,23 +187,26 @@ public class OverWatcherScript : MonoBehaviour
 				if(m_fDistanceStep >= m_fThreshold)
 				{
 					m_fDistanceStep = 0.0f;
+
 					int randomChance = Random.Range(0, m_nEncounterRange);
 					//first check to see if Devan is a cheater and has turned off the chance to get into a fight
-					if(m_nEncounterChance != -1)
-					if(randomChance <= m_nEncounterChance)
+					if (m_nEncounterChance != -1)
 					{
-						m_bEncounterToHappen = true;
-						Camera.main.GetComponent<CameraFollowTarget>().m_bShouldSwirl = true;
-						Camera.main.GetComponent<VEffects>().SendMessage("StartBlur");
-						GameObject.Find("Player").GetComponent<FieldPlayerMovementScript>().BindInput();
-						Input.ResetInputAxes();
-						m_nEncounterChance = 10;
-						GameObject.Find("AudioHelper").GetComponent<CAudioHelper>().vStopMusic();
-						GetComponent<AudioSource>().PlayOneShot(m_acFoundEncounter, 0.5f + dc.m_fSFXVolume);
-					}
-					else
-					{
-						m_nEncounterChance += (m_nEncounterChance * m_nEncounterTick);
+						if (randomChance <= m_nEncounterChance)
+						{
+							m_bEncounterToHappen = true;
+							Camera.main.GetComponent<CameraFollowTarget> ().m_bShouldSwirl = true;
+							Camera.main.GetComponent<VEffects> ().SendMessage ("StartBlur");
+							GameObject.Find ("Player").GetComponent<FieldPlayerMovementScript> ().BindInput ();
+							Input.ResetInputAxes ();
+							m_nEncounterChance = -1;
+							GameObject.Find ("AudioHelper").GetComponent<CAudioHelper> ().vStopMusic ();
+							GetComponent<AudioSource> ().PlayOneShot (m_acFoundEncounter, 0.5f + dc.m_fSFXVolume);
+						}
+						else
+						{
+							m_nEncounterChance += m_nEncounterTick;
+						}
 					}
 				}
 			}

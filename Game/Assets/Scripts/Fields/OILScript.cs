@@ -6,8 +6,8 @@ using Tiled2Unity;
 public class OILScript : MonoBehaviour 
 {
 	float m_fBufferedTimer = 0.0f;
-	float m_fBucket = 0.2f;
-	string[] m_szTagsToOrganize = new string[] {"Player", "Treasure", "Merchant", "Ally", "Enemy", "Interractable", "InnKeeper"};
+	float m_fBucket = 0.1f;
+	string[] m_szTagsToOrganize = new string[] {"Player", "Treasure", "Merchant", "Ally", "Enemy", "Interractable", "InnKeeper", "LargeObject"};
 
 	// Use this for initialization
 	void Start () 
@@ -48,7 +48,8 @@ public class OILScript : MonoBehaviour
 			int c = 49;
 			foreach(GameObject g in lMovingObjs)
 			{
-				if (g.GetComponent<SpriteRenderer> () != null) {
+				if (g.GetComponent<SpriteRenderer> () != null) 
+				{
 					g.GetComponent<SpriteRenderer> ().sortingOrder = c;
 					if (g.name == "Poison Effect(Clone)")
 						g.GetComponent<SpriteRenderer> ().sortingOrder = c + 1;

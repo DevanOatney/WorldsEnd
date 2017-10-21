@@ -111,7 +111,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 	//flag to tell if the prompt should be showing
 	bool m_bPromptShouldRender = false;
 	float m_fTextBlinkTimer = 0.0f;
-	float m_fTextBlinkBucket = 0.75f;
+	float m_fTextBlinkBucket = 0.5f;
 
 	//bool for allowing input (turn off during.. events... screen switching... opening treasure chests?.. dialogue... other things I haven't thought of?
 	bool m_bAllowInput = true;
@@ -208,7 +208,7 @@ public class FieldPlayerMovementScript : MonoBehaviour
 		if(m_bPromptShouldRender == true)
 		{
 			Vector3 pos = transform.position;
-			pos.y += GetComponent<Collider2D>().bounds.size.y * 1.3f;
+			pos.y += GetComponent<Collider2D>().bounds.size.y * 3.0f;
 			m_goPrompter.transform.position = pos;
 			m_fTextBlinkTimer += Time.deltaTime;
 			if(m_fTextBlinkTimer >= m_fTextBlinkBucket)
