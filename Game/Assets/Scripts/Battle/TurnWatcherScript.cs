@@ -217,6 +217,7 @@ public class TurnWatcherScript : MonoBehaviour
 		_cpc.m_goCharacterLevel.Find("Text").GetComponent<Text>().text = _c.GetUnitLevel().ToString();
 		_cpc.m_goCharacterEXP.Find("Text").GetComponent<Text>().text = _c.m_nCurrentExperience.ToString();
 		_cpc.m_goCharacterMaxHP.GetComponent<Text>().text = _c.GetMaxHP().ToString();
+		
 		//The rest is the mess that is figuring out the current hp in regards to digits and displaying the cur health value in a color coded manner... I really never want to look at this code again, lol
 		#region HealthMess
 		float fPercentHealthLeft = (float)(_c.GetCurHP() / _c.GetMaxHP());
@@ -281,7 +282,6 @@ public class TurnWatcherScript : MonoBehaviour
 			}
 		}
 		#endregion
-
 	}
 
 	IEnumerator  GainExp (GameObject gUnit) 
@@ -303,17 +303,26 @@ public class TurnWatcherScript : MonoBehaviour
 			{
 				//Level!
 				gUnit.GetComponent<CAllyBattleScript>().LevelUp();
+				//TODO: Adjust the stat page for this characters panel.
+
 				gUnit.GetComponent<CAllyBattleScript>().m_nCurrentExperience = 0;
-				
-				
+				foreach (GameObject panel in m_lPartyPanels)
+				{
+					if (panel.transform.Find ("Character Name").GetComponent<Text> ().text == gUnit.GetComponent<CAllyBattleScript>().name)
+					{
+						AdjustStatPage ( panel.GetComponent<CharacterPanelContainer>(), gUnit.GetComponent<CAllyBattleScript>());
+					}
+				}
 				GameObject Catch = Instantiate(m_gLevelUpObj) as GameObject;
 				Vector3 pos = gUnit.transform.position;
 				pos.z -= 0.1f;
 				Catch.transform.position = pos;
 				Destroy(Catch, 1.35f);
 			}
-			foreach (GameObject panel in m_lPartyPanels) {
-				if (panel.transform.Find ("Character Name").GetComponent<Text> ().text == gUnit.name) {
+			foreach (GameObject panel in m_lPartyPanels) 
+			{
+				if (panel.transform.Find ("Character Name").GetComponent<Text> ().text == gUnit.name) 
+				{
 					UpdateCharacterPanel (panel.GetComponent<CharacterPanelContainer> (), gUnit.GetComponent<CAllyBattleScript> ());
 				}
 			}
@@ -440,16 +449,28 @@ public class TurnWatcherScript : MonoBehaviour
 					{
 						Ally.GetComponent<CAllyBattleScript>().m_nCurrentExperience = m_lNextExperience[Ally.name];
 						int remainder = m_lNextLevel[Ally.name] - Ally.GetComponent<CAllyBattleScript>().GetUnitLevel();
-						while(remainder > 0)
-						{
-							Ally.GetComponent<CAllyBattleScript>().LevelUp();
-							remainder--;
-						}
+
 						m_lNewExperienceTotal[Ally.name] = 0;
 						foreach(GameObject panel in m_lPartyPanels)
 						{
 							if(panel.transform.Find("Character Name").GetComponent<Text>().text == Ally.name)
 							{
+								//First adjust the stat page stuff.
+								CharacterPanelContainer _cpc = panel.GetComponent<CharacterPanelContainer> ();
+								CAllyBattleScript _ally = Ally.GetComponent<CAllyBattleScript> ();
+								_cpc.m_tHP.GetComponentsInChildren<Text>()[1].text = _ally.GetMaxHP ().ToString ();
+								_cpc.m_tPOW.GetComponentsInChildren<Text>()[1].text = _ally.GetSTR ().ToString ();
+								_cpc.m_tDEF.GetComponentsInChildren<Text>()[1].text = _ally.GetDEF ().ToString ();
+								_cpc.m_tSPD.GetComponentsInChildren<Text>()[1].text = _ally.GetSPD ().ToString ();
+								_cpc.m_tEVA.GetComponentsInChildren<Text>()[1].text = _ally.GetEVA ().ToString ();
+								_cpc.m_tHIT.GetComponentsInChildren<Text>()[1].text = _ally.GetHIT ().ToString ();
+								AdjustStatPage (panel.GetComponent<CharacterPanelContainer> (), Ally.GetComponent<CAllyBattleScript> ());
+								while(remainder > 0)
+								{
+									Ally.GetComponent<CAllyBattleScript>().LevelUp();
+									remainder--;
+								}
+								AdjustStatPage (panel.GetComponent<CharacterPanelContainer> (), Ally.GetComponent<CAllyBattleScript> ());
 								UpdateCharacterPanel(panel.GetComponent<CharacterPanelContainer>(), Ally.GetComponent<CAllyBattleScript>());
 							}
 						}
@@ -472,6 +493,61 @@ public class TurnWatcherScript : MonoBehaviour
 				//int digitCount = (int)(Mathf.Log10( m_lPreviousExperience[Ally.name]) +1);
 				//GUI.Label(new Rect(fXAdjust, fYAdjust, 30.0f, 25.0f), m_lPreviousExperience[Ally.name].ToString());
 		}
+	}
+
+	void AdjustStatPage(CharacterPanelContainer _cpc, CAllyBattleScript _unit)
+	{
+		if (_cpc.m_goStatPagePanel.gameObject.GetComponent<Image> ().enabled == false)
+		{
+			//If we're in here, the panels haven't been activated yet, so do that first.
+			_cpc.m_goStatPagePanel.gameObject.GetComponent<Image> ().enabled = true;
+			foreach (Transform child in _cpc.m_goStatPagePanel)
+			{
+				if (child.GetComponent<Text> () != null)
+				{
+					child.GetComponent<Text> ().enabled = true;
+				}
+				foreach (Transform child2 in child)
+				{
+					if (child2.GetComponent<Text> () != null)
+					{
+						child2.GetComponent<Text> ().enabled = true;
+					}
+				}
+			}
+		}
+		//Okay time to compare stats, turn the text to the green color if they're an upgrade
+		if (int.Parse (_cpc.m_tHP.GetComponentsInChildren<Text>()[1].text) < _unit.GetMaxHP ())
+		{
+			_cpc.m_tHP.GetComponentsInChildren<Text>()[1].text = _unit.GetMaxHP ().ToString();
+			_cpc.m_tHP.GetComponentsInChildren<Text>()[1].color = Color.green;
+		}
+		if (int.Parse (_cpc.m_tPOW.GetComponentsInChildren<Text>()[1].text) < _unit.GetSTR ())
+		{
+			_cpc.m_tPOW.GetComponentsInChildren<Text>()[1].text = _unit.GetSTR ().ToString();
+			_cpc.m_tPOW.GetComponentsInChildren<Text>()[1].color = Color.green;
+		}
+		if (int.Parse (_cpc.m_tDEF.GetComponentsInChildren<Text>()[1].text) < _unit.GetDEF ())
+		{
+			_cpc.m_tDEF.GetComponentsInChildren<Text>()[1].text = _unit.GetDEF ().ToString();
+			_cpc.m_tDEF.GetComponentsInChildren<Text>()[1].color = Color.green;
+		}
+		if (int.Parse (_cpc.m_tSPD.GetComponentsInChildren<Text>()[1].text) < _unit.GetSPD ())
+		{
+			_cpc.m_tSPD.GetComponentsInChildren<Text>()[1].text = _unit.GetSPD ().ToString();
+			_cpc.m_tSPD.GetComponentsInChildren<Text>()[1].color = Color.green;
+		}
+		if (int.Parse (_cpc.m_tEVA.GetComponentsInChildren<Text>()[1].text) < _unit.GetEVA ())
+		{
+			_cpc.m_tHP.GetComponentsInChildren<Text>()[1].text = _unit.GetEVA ().ToString();
+			_cpc.m_tHP.GetComponentsInChildren<Text>()[1].color = Color.green;
+		}
+		if (int.Parse (_cpc.m_tHIT.GetComponentsInChildren<Text>()[1].text) < _unit.GetHIT ())
+		{
+			_cpc.m_tHIT.GetComponentsInChildren<Text>()[1].text = _unit.GetHIT ().ToString();
+			_cpc.m_tHIT.GetComponentsInChildren<Text>()[1].color = Color.green;
+		}
+
 	}
 
 	public void MyTurnIsOver(GameObject go)

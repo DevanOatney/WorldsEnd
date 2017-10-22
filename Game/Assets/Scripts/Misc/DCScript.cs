@@ -761,15 +761,20 @@ public class DCScript : MonoBehaviour
 		string[] classes = m_taStatProgression.ToString().Split('\n');
 		foreach(string szClass in classes)
 		{
+			//command for a commented line, ignores this line and moves to the next.
+			if(szClass[0] == '/')
+			{
+				continue;
+			}
 			ClassStats cClass = new ClassStats();
 			string[] szpieces = szClass.Split(',');
 			cClass.m_szClassName = szpieces[0].Trim();
-			cClass.m_nHPProg = int.Parse(szpieces[1].Trim());
-			cClass.m_nStrProg = int.Parse(szpieces[2].Trim());
-			cClass.m_nDefProg = int.Parse(szpieces[3].Trim());
-			cClass.m_nSpdProg = int.Parse(szpieces[4].Trim());
-			cClass.m_nEvaProg = int.Parse(szpieces[5].Trim());
-			cClass.m_nHitProg = int.Parse(szpieces[6].Trim());
+			cClass.m_nHPProg =  int.Parse(szpieces[1].Split(':')[1].Trim());
+			cClass.m_nStrProg = int.Parse(szpieces[2].Split(':')[1].Trim());
+			cClass.m_nDefProg = int.Parse(szpieces[3].Split(':')[1].Trim());
+			cClass.m_nSpdProg = int.Parse(szpieces[4].Split(':')[1].Trim());
+			cClass.m_nEvaProg = int.Parse(szpieces[5].Split(':')[1].Trim());
+			cClass.m_nHitProg = int.Parse(szpieces[6].Split(':')[1].Trim());
 			m_lClassStatProgressions.Add(cClass);
 		}
 	}

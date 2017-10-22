@@ -950,19 +950,24 @@ public class CAllyBattleScript : UnitScript
 		}
 		return nTotalExp;
   	}
+
+	int RandomInt(int _nCap)
+	{
+		return Random.Range (0, 2);
+	}
 	public void LevelUp()
 	{
 		SetUnitLevel(GetUnitLevel() +1);
 		DCScript.ClassStats c = m_dcPersistantData.GetClassType(m_szClassName);
 		if(c != null)
 		{
-			SetMaxHP(GetMaxHP() + c.m_nHPProg);
+			SetMaxHP(GetMaxHP() + c.m_nHPProg + RandomInt(10));
 			SetCurHP(GetMaxHP());
-			SetSTR(GetSTR() + c.m_nStrProg);
-			SetDEF(GetDEF() + c.m_nDefProg);
-			SetSPD(GetSPD() + c.m_nSpdProg);
+			SetSTR(GetSTR() + c.m_nStrProg + RandomInt(3));
+			SetDEF(GetDEF() + c.m_nDefProg + RandomInt(3));
+			SetSPD(GetSPD() + c.m_nSpdProg + RandomInt(3));
 			SetEVA(GetEVA() + c.m_nEvaProg);
-			SetHIT(GetHIT() + c.m_nHitProg);
+			SetHIT(GetHIT() + c.m_nHitProg + RandomInt(2));
 		}
 		else
 		{
