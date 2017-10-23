@@ -205,7 +205,11 @@ public class TurnWatcherScript : MonoBehaviour
 
 		m_bHasStarted = false;
 		ds.SetMasterVolume();
-		GetComponent<AudioSource>().PlayOneShot(m_lACMuicFiles[ds.m_nMusicIter], 0.5f + ds.m_fMusicVolume); 
+		//GetComponent<AudioSource>().PlayOneShot(m_lACMuicFiles[ds.m_nMusicIter], 0.5f + ds.m_fMusicVolume); 
+		GetComponent<AudioSource> ().clip = m_lACMuicFiles [ds.m_nMusicIter];
+		GetComponent<AudioSource> ().loop = true;
+		GetComponent<AudioSource> ().volume = 0.5f + ds.m_fMusicVolume;
+		GetComponent<AudioSource> ().Play ();
 	}
 
 	void UpdateCharacterPanel(CharacterPanelContainer _cpc, CAllyBattleScript _c)
@@ -584,7 +588,11 @@ public class TurnWatcherScript : MonoBehaviour
 			m_nOrderIter++;
 			if(m_nOrderIter >= m_goUnits.Count)
 				m_nOrderIter = 0;
-			m_goUnits[m_nOrderIter].GetComponent<UnitScript>().m_bIsMyTurn = true;
+			//Check real quick, is this unit dead? then skip there turn (this may cause a freeze.. so check that)
+			if (m_goUnits [m_nOrderIter].GetComponent<UnitScript> ().GetCurHP () > 0)
+				m_goUnits [m_nOrderIter].GetComponent<UnitScript> ().m_bIsMyTurn = true;
+			else
+				MyTurnIsOver (m_goUnits [m_nOrderIter]);
 		}
 	}
 	public void RemoveMeFromList(GameObject go, float deathDuration)

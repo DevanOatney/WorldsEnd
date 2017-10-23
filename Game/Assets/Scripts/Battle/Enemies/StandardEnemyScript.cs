@@ -397,7 +397,7 @@ public class StandardEnemyScript : UnitScript
 			if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
 			{
 				int nChanceToHit = UnityEngine.Random.Range(0,100);
-				int nRange = 85 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
+				int nRange = 90 + m_nHit - tar.GetComponent<UnitScript>().GetEVA();
 				if(nRange < 5)
 					nRange = 5;
 				Debug.Log("Chance: " + nChanceToHit + "    Range: " + nRange);

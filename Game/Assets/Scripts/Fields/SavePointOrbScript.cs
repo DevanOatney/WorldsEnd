@@ -79,7 +79,10 @@ public class SavePointOrbScript : MonoBehaviour
 		foreach (Transform _child in m_goRootParent.transform)
 		{
 			if (_child.gameObject.name.Contains ("Slot"))
+			{
 				_saveFiles.Add (_child.gameObject);
+				_child.gameObject.GetComponent<SaveSlotScript> ().m_goSavePointOrbOrigin = gameObject;
+			}
 		}
 		if (m_lSaveFiles.Count > 0)
 		{

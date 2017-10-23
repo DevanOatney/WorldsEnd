@@ -27,10 +27,6 @@ public class WarBattle_EnemyControllerScript : MonoBehaviour
     float m_fResponseTimer = 0.0f;
     float m_fResponseBucket = 0.25f;
 
-	//Something every now and then is causing this AI to hang and get caught, putting in some duct tape so that if this DOES hang, to end this factions turn and move on so that the entire game 
-	//doesn't just freeze
-	float m_fHangTimer = 0.0f;
-	float m_fHangBucket = 20.0f;
     class cTargetWeights
     {
         public int _nDistanceToUnit = 0;

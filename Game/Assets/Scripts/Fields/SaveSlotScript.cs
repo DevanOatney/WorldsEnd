@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class SaveSlotScript : MonoBehaviour , IPointerClickHandler
 {
 	public int m_nSlotIndex;
+	public GameObject m_goSavePointOrbOrigin;
 	// Use this for initialization
 	void Start () 
 	{
@@ -23,7 +24,11 @@ public class SaveSlotScript : MonoBehaviour , IPointerClickHandler
 
 	public void OnPointerClick (PointerEventData eventData)
 	{
-		Object.FindObjectOfType<SavePointOrbScript> ().SaveFile (m_nSlotIndex);
+		if (m_goSavePointOrbOrigin != null)
+		{
+			m_goSavePointOrbOrigin.GetComponent<SavePointOrbScript> ().SaveFile (m_nSlotIndex);
+			//Object.FindObjectOfType<SavePointOrbScript> ().SaveFile (m_nSlotIndex);
+		}
 	}
 
 	#endregion

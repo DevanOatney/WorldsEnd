@@ -5,8 +5,6 @@ using System.Collections.Generic;
 public class NPC_BlacksmithScript : NPCScript 
 {
 
-	DCScript dc;
-
 	//The maximum amount that this blacksmith can enhance to
 	public int m_nMaxEnhancementLevel = 3;
 
@@ -16,7 +14,6 @@ public class NPC_BlacksmithScript : NPCScript
 	// Use this for initialization
 	void Start ()
 	{
-		dc = GameObject.Find("PersistantData").GetComponent<DCScript>();
 		m_goBlacksmithShopUI = GameObject.Find ("BlacksmithShopUI");
 		LoadSteps();
 	}

@@ -201,8 +201,13 @@ public class OverWatcherScript : MonoBehaviour
 							Input.ResetInputAxes ();
 							m_nEncounterChance = -1;
 							GameObject.Find ("AudioHelper").GetComponent<CAudioHelper> ().vStopMusic ();
-							GetComponent<AudioSource> ().PlayOneShot (m_acFoundEncounter, 0.5f + dc.m_fSFXVolume);
+							AudioSource[] _allAudioSources = FindObjectsOfType<AudioSource> ();
+							foreach (AudioSource _audioSource in _allAudioSources)
+								_audioSource.Stop ();
+							GetComponent<AudioSource> ().PlayOneShot (m_acFoundEncounter, 1.0f + dc.m_fSFXVolume);
+						
 						}
+						
 						else
 						{
 							m_nEncounterChance += m_nEncounterTick;
