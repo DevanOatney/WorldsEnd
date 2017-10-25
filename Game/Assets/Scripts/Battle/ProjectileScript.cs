@@ -9,6 +9,10 @@ public class ProjectileScript : MonoBehaviour
 	public int m_nDamageDealt;
 	public DCScript.cModifier m_mModToInflict = null;
 	bool m_bHasHitTarget = false;
+	public GameObject m_goPoisonArrowTrail;
+
+	float m_fTrailTimer = 0.0f;
+	float m_fTrailTimerBucket = 0.05f;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +31,23 @@ public class ProjectileScript : MonoBehaviour
 			Vector3 pos = src + dir * m_fSpeed * Time.deltaTime;
 			transform.position = pos;
 			transform.Rotate(new Vector2(m_fRotationSpeed * Time.deltaTime, 0.0f));
+
+			if (m_mModToInflict != null)
+			{
+				if (m_mModToInflict.m_eModifierType == DCScript.cModifier.eModifierType.ePOISON && m_goPoisonArrowTrail != null)
+				{
+					if (m_fTrailTimer >= m_fTrailTimerBucket)
+					{
+						m_fTrailTimer = 0.0f;
+						GameObject _trail = Instantiate (m_goPoisonArrowTrail, transform.position, Quaternion.identity) as GameObject;
+						Destroy (_trail, 0.2f);
+					}
+					else
+					{
+						m_fTrailTimer += Time.deltaTime;
+					}
+				}
+			}
 		}
 	}
 

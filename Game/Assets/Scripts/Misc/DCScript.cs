@@ -737,7 +737,7 @@ public class DCScript : MonoBehaviour
 		m_fTimePlayed = PlayerPrefs.GetFloat("Time_Played", 0.0f);
 		StartCoroutine(IncrementTimePlayed());
 		AdjustValues(); 
-		m_nGold = 100;
+		m_nGold = 1000;
 		LoadStatProgressions();
 	}
 

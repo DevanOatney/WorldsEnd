@@ -109,14 +109,7 @@ public class UnitScript : MonoBehaviour
 				effectScript.RefreshEffect(se);
 				if (m_twTurnWatcher.m_bHasStarted == true)
 				{
-					//See if we need to play an animation, if we do-- do it!
-					if (se.m_szEffectName == "Poison")
-					{
-						GameObject seAnimation = Instantiate(Resources.Load("Animation Effects/Spell Effects/DarkEffects/Dark_002"), transform.position, Quaternion.identity) as GameObject;
-						seAnimation.GetComponent<SpriteRenderer> ().sortingOrder = gameObject.GetComponentInChildren<SpriteRenderer> ().sortingOrder + 1;
-						Destroy (seAnimation, 0.5f);
-
-					}
+					StartCoroutine (StatusEffectAnimation (se));
 				}
 				return;
 					
@@ -132,14 +125,7 @@ public class UnitScript : MonoBehaviour
 			m_lStatusEffects.Add(newEffect);
 			if (m_twTurnWatcher.m_bHasStarted == true)
 			{
-				//See if we need to play an animation, if we do-- do it!
-				if (se.m_szEffectName == "Poison")
-				{
-					GameObject seAnimation = Instantiate(Resources.Load("Animation Effects/Spell Effects/DarkEffects/Dark_002"), transform.position, Quaternion.identity) as GameObject;
-					seAnimation.GetComponent<SpriteRenderer> ().sortingOrder = gameObject.GetComponentInChildren<SpriteRenderer> ().sortingOrder + 1;
-					Destroy (seAnimation, 0.5f);
-					
-				}
+				StartCoroutine (StatusEffectAnimation (se));
 			}
 		}
 		else
@@ -152,19 +138,25 @@ public class UnitScript : MonoBehaviour
 			m_lStatusEffects.Add(newEffect);
 			if (m_twTurnWatcher.m_bHasStarted == true)
 			{
-				//See if we need to play an animation, if we do-- do it!
-				if (se.m_szEffectName == "Poison")
-				{
-					GameObject seAnimation = Instantiate(Resources.Load("Animation Effects/Spell Effects/DarkEffects/Dark_002"), transform.position, Quaternion.identity) as GameObject;
-					seAnimation.GetComponent<SpriteRenderer> ().sortingOrder = gameObject.GetComponentInChildren<SpriteRenderer> ().sortingOrder + 1;
-					Destroy (seAnimation, 0.5f);
-
-				}
+				StartCoroutine (StatusEffectAnimation (se));
 			}
 		}
 
 
 	}
+
+	IEnumerator StatusEffectAnimation(DCScript.StatusEffect se)
+	{
+		yield return new WaitForSeconds (1.0f);
+		if (se.m_szEffectName == "Poison")
+		{
+			GameObject seAnimation = Instantiate(Resources.Load("Animation Effects/Spell Effects/DarkEffects/Dark_002"), transform.position, Quaternion.identity) as GameObject;
+			seAnimation.GetComponent<SpriteRenderer> ().sortingOrder = gameObject.GetComponentInChildren<SpriteRenderer> ().sortingOrder + 1;
+			Destroy (seAnimation, 0.5f);
+
+		}
+	}
+
 
 	public void RemoveStatusEffect(string effectName)
 	{
