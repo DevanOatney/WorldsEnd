@@ -104,9 +104,20 @@ public class UnitScript : MonoBehaviour
 		{
 			if(se.m_nEffectType == m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>().m_nEffectType)
 			{
-				
+				//This effect already exists, re-apply it.
 				BattleBaseEffectScript effectScript = m_lStatusEffects[i].GetComponent<BattleBaseEffectScript>();
 				effectScript.RefreshEffect(se);
+				if (m_twTurnWatcher.m_bHasStarted == true)
+				{
+					//See if we need to play an animation, if we do-- do it!
+					if (se.m_szEffectName == "Poison")
+					{
+						GameObject seAnimation = Instantiate(Resources.Load("Animation Effects/Spell Effects/DarkEffects/Dark_002"), transform.position, Quaternion.identity) as GameObject;
+						seAnimation.GetComponent<SpriteRenderer> ().sortingOrder = gameObject.GetComponentInChildren<SpriteRenderer> ().sortingOrder + 1;
+						Destroy (seAnimation, 0.5f);
+
+					}
+				}
 				return;
 					
 			}
@@ -119,6 +130,17 @@ public class UnitScript : MonoBehaviour
 			newEffect.name = se.m_szEffectName;
 			newEffect.GetComponent<BattleBaseEffectScript>().Initialize(gameObject,se.m_nEffectType, se.GetMember(name).m_nTicksLeft, se.m_nHPMod, se.m_nMPMod, se.m_nPOWMod, se.m_nDEFMod, se.m_nSPDMod, se.m_nHITMod, se.m_nEVAMod);
 			m_lStatusEffects.Add(newEffect);
+			if (m_twTurnWatcher.m_bHasStarted == true)
+			{
+				//See if we need to play an animation, if we do-- do it!
+				if (se.m_szEffectName == "Poison")
+				{
+					GameObject seAnimation = Instantiate(Resources.Load("Animation Effects/Spell Effects/DarkEffects/Dark_002"), transform.position, Quaternion.identity) as GameObject;
+					seAnimation.GetComponent<SpriteRenderer> ().sortingOrder = gameObject.GetComponentInChildren<SpriteRenderer> ().sortingOrder + 1;
+					Destroy (seAnimation, 0.5f);
+					
+				}
+			}
 		}
 		else
 		{
@@ -128,6 +150,17 @@ public class UnitScript : MonoBehaviour
 			newEffect.name = se.m_szEffectName;
 			newEffect.GetComponent<BattleBaseEffectScript>().Initialize(gameObject,se.m_nEffectType, se.m_nStartingTickCount, se.m_nHPMod, se.m_nMPMod, se.m_nPOWMod, se.m_nDEFMod, se.m_nSPDMod, se.m_nHITMod, se.m_nEVAMod);
 			m_lStatusEffects.Add(newEffect);
+			if (m_twTurnWatcher.m_bHasStarted == true)
+			{
+				//See if we need to play an animation, if we do-- do it!
+				if (se.m_szEffectName == "Poison")
+				{
+					GameObject seAnimation = Instantiate(Resources.Load("Animation Effects/Spell Effects/DarkEffects/Dark_002"), transform.position, Quaternion.identity) as GameObject;
+					seAnimation.GetComponent<SpriteRenderer> ().sortingOrder = gameObject.GetComponentInChildren<SpriteRenderer> ().sortingOrder + 1;
+					Destroy (seAnimation, 0.5f);
+
+				}
+			}
 		}
 
 

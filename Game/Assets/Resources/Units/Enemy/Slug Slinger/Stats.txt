@@ -1,8 +1,8 @@
-HP:20
-POW:4
-DEF:2
+HP:40
+POW:12
+DEF:4
 SPD:3
-HIT:6
+HIT:10
 EVA:5
 LVL:8
 Gold Dropped : 5

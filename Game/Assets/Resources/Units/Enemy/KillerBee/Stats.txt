@@ -1,4 +1,4 @@
-HP:15
+HP:8
 POW:2
 DEF:1
 SPD:4
@@ -6,5 +6,4 @@ HIT:9
 EVA:2
 UNIT LEVEL:3
 Gold Dropped : 5
-How many items can drop : 1
-name:Vampyric Amulet,amnt:1,chance:100
+How many items can drop : 0

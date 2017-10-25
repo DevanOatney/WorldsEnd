@@ -103,7 +103,7 @@ public class DCScript : MonoBehaviour
 	public class StatusEffect
 	{
 		public string m_szEffectName;
-		public int m_nEffectType; //0-Poison, 1-Paralyze, 2-Stone
+		public int m_nEffectType; //0-Poison, 1-Paralyze, 2-Stone, 3 - D
 		public int m_nStartingTickCount;
 		public int m_nHPMod;
 		public int m_nMPMod;
@@ -146,7 +146,7 @@ public class DCScript : MonoBehaviour
 	//list of status effects that are inflicting the party
 	List<StatusEffect> m_lStatusEffects = new List<StatusEffect>();
 	public List<StatusEffect> GetStatusEffects() {return m_lStatusEffects;}
-	public StatusEffect GetStatusEffect(string szName) {foreach(StatusEffect se in m_lStatusEffects){if(se.m_szEffectName == szName)return se;}return null;}
+	public StatusEffect GetStatusEffect(string szName) {foreach(StatusEffect se in m_lStatusEffects){Debug.Log (se.m_szEffectName);if(se.m_szEffectName == szName)return se;}return null;}
 	public void SetStatusEffects(List<StatusEffect> l) {m_lStatusEffects.Clear(); m_lStatusEffects = l;}
 	public void AddStatusEffect(StatusEffect se)
 	{
@@ -681,9 +681,12 @@ public class DCScript : MonoBehaviour
 
 	public class cModifier
 	{
+		public enum eModifierType {ePOISON, eDAMAGEINCREASE}
+		public eModifierType m_eModifierType;
 		public string m_szModifierName;
 		public string m_szModifierDesc;
 		public int m_nModCost;
+		public int m_nModPower;
 	}
 	List<cModifier> m_lModifiers = new List<cModifier>();
 	public List<cModifier> GetModifierList() {return m_lModifiers;}
@@ -734,7 +737,7 @@ public class DCScript : MonoBehaviour
 		m_fTimePlayed = PlayerPrefs.GetFloat("Time_Played", 0.0f);
 		StartCoroutine(IncrementTimePlayed());
 		AdjustValues(); 
-		m_nGold = 10000;
+		m_nGold = 100;
 		LoadStatProgressions();
 	}
 
@@ -750,10 +753,6 @@ public class DCScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Input.GetKeyDown(KeyCode.A))
-		{
-			AddPartyMember("Briol");
-		}
 	}
 
 	void LoadStatProgressions()

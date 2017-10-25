@@ -7,6 +7,7 @@ public class ProjectileScript : MonoBehaviour
 	public float m_fRotationSpeed;
 	public GameObject m_goTarget;
 	public int m_nDamageDealt;
+	public DCScript.cModifier m_mModToInflict = null;
 	bool m_bHasHitTarget = false;
 
 	// Use this for initialization
@@ -36,9 +37,45 @@ public class ProjectileScript : MonoBehaviour
 		if(c.gameObject.name == m_goTarget.name)
 		{
 			m_bHasHitTarget = true;
-			if(m_nDamageDealt >0)
+			if(m_nDamageDealt > 0)
 			{
 				//HIT!
+				if (m_mModToInflict != null)
+				{
+					//There is some sort of modification on this attack, so handle that first.
+					switch (m_mModToInflict.m_eModifierType)
+					{
+						case DCScript.cModifier.eModifierType.ePOISON:
+							{
+								if (m_mModToInflict.m_szModifierName == "Poison Shot")
+								{
+									//This is the first type of poison shot that the player can have. 
+									DCScript.StatusEffect se = GameObject.Find("PersistantData").GetComponent<DCScript>().m_lStatusEffectLibrary.ConvertToDCStatusEffect("Poison");
+									//Poison damage is equivalant to a percent of the damage that is going to be dealt.
+									se.m_nHPMod = m_nDamageDealt * (m_mModToInflict.m_nModPower/100);
+									m_goTarget.GetComponent<UnitScript> ().AddStatusEffect (se);
+								}
+							}
+							break;
+						case DCScript.cModifier.eModifierType.eDAMAGEINCREASE:
+							{
+								if (m_mModToInflict.m_szModifierName == "Charge Shot")
+								{
+									//This mod increases the damage, but reduces the hit chance.
+									m_nDamageDealt *= (1 + (m_mModToInflict.m_nModPower/100));
+
+									//Not really sure how to check the "hit chance" again since some of the data has gone, so let's just give it a .. 1 in 5 chance that the attack misses?
+									if(Random.Range(1, 5) <= 1)
+									{
+										//so if we're in here, it's a miss.
+										Miss();
+										return;
+									}
+								}
+							}
+							break;
+					}
+				}
 				m_goTarget.GetComponent<UnitScript>().AdjustHP(m_nDamageDealt);
 				Destroy(gameObject, 0.2f);
 				//set the position to the center'ish of the target (keeping in mind that this may be on either the left or right side of the screen)
@@ -61,10 +98,15 @@ public class ProjectileScript : MonoBehaviour
 			else
 			{
 				//MISS!
-				m_goTarget.GetComponent<UnitScript>().Missed();
-				Destroy(gameObject);
+				Miss();
 			}
 		}
+	}
+
+	void Miss()
+	{
+		m_goTarget.GetComponent<UnitScript>().Missed();
+		Destroy(gameObject);
 	}
 
 

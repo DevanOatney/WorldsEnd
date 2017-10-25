@@ -1309,6 +1309,51 @@ public class CAllyBattleScript : UnitScript
 				{
 					if(tar.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
 					{
+						DCScript.cModifier _mMod = CheckWeaponMod ();
+						if (_mMod != null)
+						{
+							switch (_mMod.m_eModifierType)
+							{
+								case DCScript.cModifier.eModifierType.ePOISON:
+									{
+										if (_mMod.m_szModifierName == "Poison Shot")
+										{
+											//This is the first type of poison shot that the player can have. 
+											DCScript.StatusEffect se = GameObject.Find ("PersistantData").GetComponent<DCScript> ().m_lStatusEffectLibrary.ConvertToDCStatusEffect ("Poison");
+											//Poison damage is equivalant to a percent of the damage that is going to be dealt.
+											se.m_nHPMod = dmgAdjustment * (_mMod.m_nModPower / 100);
+											tar.GetComponent<UnitScript> ().AddStatusEffect (se);
+										}
+									}
+									break;
+								case DCScript.cModifier.eModifierType.eDAMAGEINCREASE:
+									{
+										if (_mMod.m_szModifierName == "Charge Shot")
+										{
+											//This mod increases the damage, but reduces the hit chance.
+											dmgAdjustment *= (1 + (_mMod.m_nModPower / 100));
+
+											//Not really sure how to check the "hit chance" again since some of the data has gone, so let's just give it a .. 1 in 5 chance that the attack misses?
+											if (Random.Range (1, 5) <= 1)
+											{
+												//so if we're in here, it's a miss.
+												foreach(GameObject _target in posTargs)
+												{
+													if(_target.GetComponent<UnitScript>().FieldPosition == m_nTargetPositionOnField)
+													{
+														_target.GetComponent<UnitScript>().Missed();
+														return;
+													}
+												}
+
+											}
+										}
+									}
+									break;
+							}
+						}
+
+
 						tar.GetComponent<UnitScript>().AdjustHP(dmgAdjustment);
 					}
 				}
@@ -1334,7 +1379,7 @@ public class CAllyBattleScript : UnitScript
 			goArrow.GetComponent<SpriteRenderer> ().sortingOrder = 6;
 			int dmg = 0;
 			if (CheckIfHit ())
-				dmg = UnityEngine.Random.Range (1, 5) + GetTempSTR ();
+				dmg = UnityEngine.Random.Range((int)(m_nTempStr * -0.2f), (int)(m_nTempStr * 0.2f)) + m_nTempStr;
 			else
 				dmg = -1;
 			goArrow.GetComponent<ProjectileScript>().m_fSpeed = 20;
@@ -1348,9 +1393,26 @@ public class CAllyBattleScript : UnitScript
 				}
 			}
 			goArrow.GetComponent<ProjectileScript>().m_nDamageDealt = dmg;
+			DCScript.cModifier _mMod = CheckWeaponMod ();
+			if (_mMod != null)
+				goArrow.GetComponent<ProjectileScript> ().m_mModToInflict = _mMod;
 			Invoke("ChangeStateToStatusEffect", 2.0f);
 		}
 		m_aAnim.SetBool("m_bIsAttacking", false);
+	}
+
+	DCScript.cModifier CheckWeaponMod()
+	{
+		if (m_dcPersistantData.GetCharacter (name).m_szWeaponModifierName != "")
+		{
+			foreach (DCScript.cModifier mod in m_dcPersistantData.GetModifierList())
+			{
+				if (m_dcPersistantData.GetCharacter (name).m_szWeaponModifierName == mod.m_szModifierName)
+					return mod;
+			}
+		}
+
+		return null;
 	}
 
 	public override void CastingAnimationEnd()

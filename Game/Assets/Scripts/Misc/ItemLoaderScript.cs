@@ -48,8 +48,10 @@ public class ItemLoaderScript : MonoBehaviour
 			string[] szPieces = sz.Split(',');
 			DCScript.cModifier newMod = new DCScript.cModifier();
 			newMod.m_szModifierName = szPieces[0].Trim();
-			newMod.m_szModifierDesc = szPieces[1].Trim();
-			newMod.m_nModCost = int.Parse(szPieces[2].Trim());
+			newMod.m_eModifierType = (DCScript.cModifier.eModifierType)int.Parse(szPieces [1].Trim ());
+			newMod.m_nModPower = int.Parse (szPieces [2].Trim ());
+			newMod.m_szModifierDesc = szPieces[3].Trim();
+			newMod.m_nModCost = int.Parse(szPieces[4].Trim());
 			dcs.GetModifierList().Add(newMod);
 
 		}

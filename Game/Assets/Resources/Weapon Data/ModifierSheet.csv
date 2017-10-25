@@ -1,2 +1,2 @@
-Poison Shot,Hits target for moderate damage then does light damage over time,1000
-Charged Shot,Does heavy damage but has low accuracy,10000
+Poison Shot,0,20,Hits target for moderate damage then does light damage over time,1000
+Charged Shot,1,15,Does heavy damage but has low accuracy,10000

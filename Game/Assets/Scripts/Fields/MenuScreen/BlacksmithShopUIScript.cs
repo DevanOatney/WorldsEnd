@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BlacksmithShopUIScript : MonoBehaviour 
 {
-	public GameObject m_goCanvas;
+	//public GameObject m_goCanvas;
 	public GameObject m_goModifierInList;
 	public GameObject m_goConfirmationWindow;
 	public GameObject m_goOptionSelectWindow;
@@ -72,7 +72,6 @@ public class BlacksmithShopUIScript : MonoBehaviour
 		m_goSender = _sender;
 		m_eActiveWindow = eActiveWindow.eMainMenu;
 		m_goOptionSelectWindow.SetActive (true);
-		m_goCanvas.SetActive (true);
 		m_goSpyrTotal.SetActive (true);
 		dc = GameObject.Find ("PersistantData").GetComponent<DCScript> ();
 		m_goSpyrTotal.GetComponentInChildren<Text> ().text = dc.m_nGold.ToString();
@@ -95,7 +94,7 @@ public class BlacksmithShopUIScript : MonoBehaviour
 						if(dc.GetParty()[_nCharacterIter].m_nLevel == wpn.m_nLevel)
 						{
 							dc.GetParty()[_nCharacterIter].m_szWeaponName = wpn.m_szWeaponName;
-							dc.GetParty()[_nCharacterIter].m_nWeaponDamageModifier  = wpn.m_nDamage;
+							dc.GetParty()[_nCharacterIter].m_nWeaponDamageModifier  += dc.GetParty()[_nCharacterIter].m_nWeaponDamageModifier + wpn.m_nDamage;
 						}
 					}
 				}
@@ -172,7 +171,6 @@ public class BlacksmithShopUIScript : MonoBehaviour
 			m_goCharacterSlots [_cntr].transform.Find ("Weapon Level").GetComponentInChildren<Text> ().text = _character.m_nWeaponLevel.ToString();
 			m_goCharacterSlots [_cntr].transform.Find ("Weapon Modifier").GetComponentInChildren<Text> ().text = _character.m_szWeaponModifierName;
 			_cntr += 1;
-			Debug.Log (_cntr);
 		}
 	}
 
@@ -185,7 +183,6 @@ public class BlacksmithShopUIScript : MonoBehaviour
 
 	public void ExitSelected()
 	{
-		m_goCanvas.SetActive (false);
 		m_goSpyrTotal.SetActive (false);
 		m_eActiveWindow = eActiveWindow.eDisabled;
 		ToggleWindows ();

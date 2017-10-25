@@ -1,9 +1,9 @@
-HP:50
-POW:25
+HP:100
+POW:40
 DEF:24
 SPD:20
 HIT:15
 EVA:15
 LVL:12
-Gold Dropped : 5
+Gold Dropped : 200
 How many items can drop : 0

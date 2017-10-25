@@ -27,7 +27,8 @@ public class TurnWatcherScript : MonoBehaviour
 	float m_fFadeDuration = 1.0f;
 
 	//bool so that after everything is instantiated we can set up a turn order
-	bool m_bHasStarted = false;
+	[HideInInspector]
+	public bool m_bHasStarted = false;
 	bool m_bOneShotAfterVictory = false;
 
 	public List<AudioClip>   m_lACMuicFiles = new List<AudioClip> ();
