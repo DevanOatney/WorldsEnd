@@ -44,6 +44,16 @@ public class SavePointOrbScript : MonoBehaviour
 				++m_nSelectedIndex;
 				if(m_nSelectedIndex >= 3)
 					m_nSelectedIndex = 0;
+
+				m_goRootParent = GameObject.Find ("SaveScreen").transform.Find ("Background").gameObject;
+				List<GameObject> _saveFiles = new List<GameObject> ();
+				foreach (Transform _child in m_goRootParent.transform)
+				{
+					if (_child.gameObject.name.Contains ("Slot" + (m_nSelectedIndex+1).ToString()))
+					{
+						GameObject.Find ("SaveHighlighter").transform.localPosition = _child.transform.localPosition;
+					}
+				}
 			}
 			else if(Input.GetKeyUp(KeyCode.UpArrow))
 			{
@@ -51,6 +61,15 @@ public class SavePointOrbScript : MonoBehaviour
 				--m_nSelectedIndex;
 				if(m_nSelectedIndex < 0)
 					m_nSelectedIndex = 2;
+				m_goRootParent = GameObject.Find ("SaveScreen").transform.Find ("Background").gameObject;
+				List<GameObject> _saveFiles = new List<GameObject> ();
+				foreach (Transform _child in m_goRootParent.transform)
+				{
+					if (_child.gameObject.name.Contains ("Slot" + (m_nSelectedIndex+1).ToString()))
+					{
+						GameObject.Find ("SaveHighlighter").transform.localPosition = _child.transform.localPosition;
+					}
+				}
 			}
 			else if(Input.GetKey(KeyCode.Return))
 			{
