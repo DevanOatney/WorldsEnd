@@ -57,6 +57,43 @@ public class NPC_ArmorMerchantScript : NPCScript
 		LoadItems();
 	}
 
+	//Should only ever hit this if you're in the editor and the intro menu screen has been skipped
+	void DelayStart()
+	{
+		Debug.Log ("Editor mode, loading merchant data...");
+		if(m_taWares != null)
+		{
+			m_lItems.Clear();
+			string[] itemLines = m_taWares.text.Split('\n');
+			foreach(string item in itemLines)
+			{
+				string[] piece = item.Split(',');
+				if(piece.Length > 1)
+				{
+					MerchantItem newItem = new MerchantItem();
+					newItem.m_szItemName = piece[0].Trim();
+					newItem.m_nCost = int.Parse(piece[2].Trim());
+					ItemLibrary.CharactersItems cItem = dc.m_lItemLibrary.GetItemFromInventory (newItem.m_szItemName);
+					if (cItem == null)
+					{
+						//player doesn't have any of this item.
+						newItem.m_nAmountCarried = 0;
+						ItemLibrary.ItemData _itemData = dc.m_lItemLibrary.GetItemFromDictionary (newItem.m_szItemName);
+						newItem.m_nItemType = _itemData.m_nItemType;
+						newItem.m_szItemDescription = _itemData.m_szDescription;
+					}
+					else
+					{
+						newItem.m_nAmountCarried = cItem.m_nItemCount;
+						newItem.m_nItemType = cItem.m_nItemType;
+						newItem.m_szItemDescription = dc.m_lItemLibrary.GetItemFromDictionary(newItem.m_szItemName).m_szDescription;
+					}
+					m_lItems.Add(newItem);
+				}
+			}
+		}
+	}
+
 	void LoadItems()
 	{
 		if(m_taWares != null)
@@ -71,9 +108,21 @@ public class NPC_ArmorMerchantScript : NPCScript
 					MerchantItem newItem = new MerchantItem();
 					newItem.m_szItemName = piece[0].Trim();
 					newItem.m_nCost = int.Parse(piece[2].Trim());
-					ItemLibrary.CharactersItems cItem = dc.m_lItemLibrary.GetItemFromInventory(newItem.m_szItemName);
-					if(cItem == null)
-						Debug.Log("Merchant item loading data failed");
+					ItemLibrary.CharactersItems cItem = dc.m_lItemLibrary.GetItemFromInventory (newItem.m_szItemName);
+					if (cItem == null)
+					{
+						//player doesn't have any of this item.
+						newItem.m_nAmountCarried = 0;
+						ItemLibrary.ItemData _itemData = dc.m_lItemLibrary.GetItemFromDictionary (newItem.m_szItemName);
+						if (_itemData == null)
+						{
+							//We're playing in the editor and the main menu screen was skipped.
+							Invoke("DelayStart", 2.0f);
+							return;
+						}
+						newItem.m_nItemType = _itemData.m_nItemType;
+						newItem.m_szItemDescription = _itemData.m_szDescription;
+					}
 					else
 					{
 						newItem.m_nAmountCarried = cItem.m_nItemCount;
@@ -805,5 +854,10 @@ public class NPC_ArmorMerchantScript : NPCScript
 			}
 			Input.ResetInputAxes();
 		}
+	}
+
+	public void DontActivateMerchantScreen()
+	{
+		m_bAboutToBeActive = false;
 	}
 }

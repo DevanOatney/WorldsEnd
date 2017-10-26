@@ -1548,7 +1548,7 @@ public class CAllyBattleScript : UnitScript
 		if(dmg >= 0)
 		{
 			if(m_bAmIDefending == true)
-				dmg = dmg - GetTempDEF()*2;
+				dmg = (int)(dmg - GetTempDEF()*1.5f);
 			else 
 				dmg = dmg - GetTempDEF();
 
@@ -1565,8 +1565,9 @@ public class CAllyBattleScript : UnitScript
 			GameObject tw = GameObject.Find("TurnWatcher");
 			if(tw)
 			{
-				EndMyTurn();
+				tw.GetComponent<TurnWatcherScript> ().RemoveMeFromList (gameObject, 0.5f);
 			}
+
 		}
 		else if(dmg >= 0)
 		{

@@ -627,7 +627,7 @@ public class InonEventHandler : BaseEventSystemScript
                     }
                 }
                 break;
-            case "Merchant_EndDialogue":
+            case "Merchant_EndDialogueYES":
                 {
                     GameObject player = GameObject.FindGameObjectWithTag("Player");
                     if (player)
@@ -642,6 +642,20 @@ public class InonEventHandler : BaseEventSystemScript
 
                 }
                 break;
+			case "Merchant_EndDialogueNO":
+				{
+					GameObject player = GameObject.FindGameObjectWithTag("Player");
+					if (player)
+					{
+						player.GetComponent<FieldPlayerMovementScript>().ReleaseBind();
+					}
+					GameObject[] gObjs = GameObject.FindGameObjectsWithTag("Merchant");
+					foreach (GameObject g in gObjs)
+					{
+						g.GetComponent<NPC_ArmorMerchantScript> ().DontActivateMerchantScreen ();
+					}
+				}
+				break;
             case "InnKeeper_Sleep":
                 {
                     GameObject[] keepers = GameObject.FindGameObjectsWithTag("InnKeeper");

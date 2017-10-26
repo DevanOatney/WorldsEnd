@@ -2,6 +2,7 @@ A1|1|Constantinople|Sounds/Voice/Constantinople/Inon_Line_1|Today is the big day
 A2|3|EndDialogue
 A3|1|Constantinople|Sounds/Voice/Constantinople/Inon_Line_2|I am glad you stopped by. Why don't you take a look at my wares?|1|A4
 A4|2|1|2|Yes|A6|No|A7
-A6|3|Merchant_EndDialogue
+A6|3|Merchant_EndDialogueYES
+A7|3|Merchant_EndDialogueNO
 A7|1|Constantinople|Sounds/Voice/Constantinople/Inon_Line_3|Oh...ok. Thanks anyway...I guess.|1|A2
 A5|1|Constantinople|Sounds/Voice/Constantinople/Inon_Line_4|Thanks for shopping!||A2
