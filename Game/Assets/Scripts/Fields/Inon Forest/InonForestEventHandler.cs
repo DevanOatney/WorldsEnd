@@ -16,7 +16,6 @@ public class InonForestEventHandler : BaseEventSystemScript
 	// Use this for initialization
 	void Start () 
 	{
-		Debug.Log ("Entered Inon Forest");
 		GameObject _goAudioHelper = GameObject.Find("AudioHelper");
 		_goAudioHelper.GetComponent<CAudioHelper>().vPlayMusic(_goAudioHelper.GetComponent<CAudioHelper>().eFromName(m_szInonForestBGM),true, true);
 		GameObject.Find("Briol").GetComponent<SpriteRenderer>().enabled = false;

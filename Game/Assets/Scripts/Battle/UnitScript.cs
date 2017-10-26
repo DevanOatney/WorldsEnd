@@ -153,7 +153,6 @@ public class UnitScript : MonoBehaviour
 			GameObject seAnimation = Instantiate(Resources.Load("Animation Effects/Spell Effects/DarkEffects/Dark_002"), transform.position, Quaternion.identity) as GameObject;
 			seAnimation.GetComponent<SpriteRenderer> ().sortingOrder = gameObject.GetComponentInChildren<SpriteRenderer> ().sortingOrder + 1;
 			Destroy (seAnimation, 0.5f);
-
 		}
 	}
 

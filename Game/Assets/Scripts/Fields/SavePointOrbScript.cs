@@ -46,7 +46,6 @@ public class SavePointOrbScript : MonoBehaviour
 					m_nSelectedIndex = 0;
 
 				m_goRootParent = GameObject.Find ("SaveScreen").transform.Find ("Background").gameObject;
-				List<GameObject> _saveFiles = new List<GameObject> ();
 				foreach (Transform _child in m_goRootParent.transform)
 				{
 					if (_child.gameObject.name.Contains ("Slot" + (m_nSelectedIndex+1).ToString()))
@@ -62,7 +61,6 @@ public class SavePointOrbScript : MonoBehaviour
 				if(m_nSelectedIndex < 0)
 					m_nSelectedIndex = 2;
 				m_goRootParent = GameObject.Find ("SaveScreen").transform.Find ("Background").gameObject;
-				List<GameObject> _saveFiles = new List<GameObject> ();
 				foreach (Transform _child in m_goRootParent.transform)
 				{
 					if (_child.gameObject.name.Contains ("Slot" + (m_nSelectedIndex+1).ToString()))

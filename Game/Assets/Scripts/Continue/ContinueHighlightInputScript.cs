@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.UI;
 
 public class ContinueHighlightInputScript : MonoBehaviour {
 	
@@ -41,12 +41,13 @@ public class ContinueHighlightInputScript : MonoBehaviour {
 			}
 			else
 			{
+				m_lSaveFilesObjects [count].SetActive (false);
 				m_lSaveFilesObjects.RemoveAt(count);
 			}
 		}
 		if(count == 0)
 		{
-			GetComponent<SpriteRenderer>().enabled = false;
+			gameObject.GetComponent<Image> ().enabled = false;
 			m_bAllowInput = false;
 		}
 		else
@@ -83,13 +84,26 @@ public class ContinueHighlightInputScript : MonoBehaviour {
                 SceneManager.LoadScene(m_lSaveFilesData[m_nSelectedIndex].m_szSceneName);
 			}
 		}
-		if(Input.GetKeyUp(KeyCode.Escape))
+		if(Input.GetKeyUp(KeyCode.Escape) || Input.GetMouseButtonUp(1))
 		{
             SceneManager.LoadScene("IntroMenu_Scene");
 		}
 	}
 
-	
+	public void ChangeHighlightedPosition(int _nIndex)
+	{
+		m_nSelectedIndex = _nIndex;
+		ChangeHighlightedPosition ();
+	}
+
+	public void SelectSavePoint(int _nIndex)
+	{
+		m_nSelectedIndex = _nIndex;
+		GetComponent<AudioSource>().PlayOneShot(m_aSelectionMade, 0.5f + GameObject.Find("PersistantData").GetComponent<DCScript>().m_fSFXVolume);
+		gameObject.GetComponent<LoadingScript>().Load(m_nSelectedIndex + 1);
+		SceneManager.LoadScene(m_lSaveFilesData[m_nSelectedIndex].m_szSceneName);
+	}
+
 	void ChangeHighlightedPosition()
 	{
 		if(m_nSelectedIndex != -1)
@@ -105,8 +119,8 @@ public class ContinueHighlightInputScript : MonoBehaviour {
 			//iterate through each of the save slots available
 			for(int i = 0; i < m_lSaveFilesData.Count; ++i)
 			{
-				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text = "";
-				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text += m_lSaveFilesData[i].m_szName + "\t\t\tLevel: " + m_lSaveFilesData[i].m_nLevel + "\t\t\tGold: " + m_lSaveFilesData[i].m_nGold + '\n';
+				m_lSaveFilesObjects[i].GetComponentInChildren<Text>().text = "";
+				m_lSaveFilesObjects[i].GetComponentInChildren<Text>().text += m_lSaveFilesData[i].m_szName + "\t\t\tLevel: " + m_lSaveFilesData[i].m_nLevel + "\t\t\tGold: " + m_lSaveFilesData[i].m_nGold + '\n';
 
 
 
@@ -116,7 +130,7 @@ public class ContinueHighlightInputScript : MonoBehaviour {
 				float _fSeconds = Mathf.Round (_fTimer % 60);
 				string _szMinutes = _fMinutes.ToString ("00");
 				string _szSeconds = _fSeconds.ToString ("00");
-				m_lSaveFilesObjects[i].GetComponent<TextMesh>().text += m_lSaveFilesData[i].m_szFieldName + "    Time Played: " + _szMinutes + ":" + _szSeconds;
+				m_lSaveFilesObjects[i].GetComponentInChildren<Text>().text += m_lSaveFilesData[i].m_szFieldName + "    Time Played: " + _szMinutes + ":" + _szSeconds;
 			}
 		}
 	}

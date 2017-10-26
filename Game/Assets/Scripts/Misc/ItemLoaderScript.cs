@@ -24,7 +24,7 @@ public class ItemLoaderScript : MonoBehaviour
 		LoadWeaponData();
 		LoadQuestItems();
 
-
+		/*
 		foreach(KeyValuePair<string, ItemLibrary.ItemData> kvp in dcs.m_lItemLibrary.GetItemDictionary())
 		{
 			ItemLibrary.CharactersItems m_ciItemHeld = new ItemLibrary.CharactersItems();
@@ -34,6 +34,7 @@ public class ItemLoaderScript : MonoBehaviour
 			m_ciItemHeld.m_szItemDesc = kvp.Value.m_szDescription;
 			dcs.m_lItemLibrary.AddItem(m_ciItemHeld);
 		}
+		*/
 	}
 
 	void LoadModifiers()

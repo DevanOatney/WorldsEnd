@@ -86,6 +86,7 @@ public class ItemInInventoryScript : MonoBehaviour, IPointerClickHandler, IPoint
 		if (m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goItemSelectWindow.activeSelf == false && m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goUnitSelectWindow.activeSelf == false) {
 
 			Transform _root = m_goFIELDUI.GetComponent<MenuScreenScript> ().m_goInventory.transform.Find ("ItemDescriptionPanel");
+			_root.gameObject.SetActive (true);
 			_root.Find ("ItemName").GetComponentInChildren<Text> ().text = m_iItem.m_szItemName;
 			_root.Find ("ItemDescription").GetComponentInChildren<Text> ().text = m_iItem.m_szItemDesc;
 			_root.Find ("ItemType").GetComponentInChildren<Text> ().text = m_iItem.GetItemTypeName ();

@@ -1598,7 +1598,9 @@ public class MenuScreenScript : MonoBehaviour
 			}
 			break;
 		}
-		foreach (ItemLibrary.CharactersItems item in _items) {
+		m_goInventory.transform.Find ("ItemDescriptionPanel").gameObject.SetActive(false);
+		foreach (ItemLibrary.CharactersItems item in _items) 
+		{
 			GameObject invItem = Instantiate (m_goInventoryItemPrefab) as GameObject;
 			invItem.GetComponent<RectTransform> ().SetParent (m_goInventoryRoot.GetComponent<RectTransform> ());
 			invItem.GetComponent<RectTransform> ().rotation = Quaternion.identity;
