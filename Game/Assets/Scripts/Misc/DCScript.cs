@@ -731,6 +731,7 @@ public class DCScript : MonoBehaviour
 	{
         DontDestroyOnLoad (gameObject);
     }
+
 	// Use this for initialization
 	void Start () 
 	{

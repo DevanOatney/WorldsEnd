@@ -19,12 +19,6 @@ public class AutoStretchSprite : MonoBehaviour {
 
 	void FixedUpdate () 
 	{
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log("X : " + GetComponent<SpriteRenderer>().sprite.bounds.size.x * transform.localScale.x);
-            Debug.Log("Y : " + GetComponent<SpriteRenderer>().sprite.bounds.size.y * transform.localScale.y);
-
-        }
         if (ExecuteOnUpdate)
 		{
 			m_fUpdateTimer += Time.deltaTime;

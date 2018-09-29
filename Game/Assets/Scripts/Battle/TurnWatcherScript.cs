@@ -110,7 +110,7 @@ public class TurnWatcherScript : MonoBehaviour
 			ds.AddPartyMember("Raik");
 			List<EncounterGroupLoaderScript.cEnemyData> lEnemies = new List<EncounterGroupLoaderScript.cEnemyData>();
 			EncounterGroupLoaderScript.cEnemyData enemy = new EncounterGroupLoaderScript.cEnemyData();
-			enemy.m_szEnemyName = "Slug Slinger";
+			enemy.m_szEnemyName = "BunnyRoo";
 			enemy.m_nFormationIter = 3;
 			lEnemies.Add(enemy);
 			pdata.GetComponent<DCScript>().SetEnemyNames(lEnemies);

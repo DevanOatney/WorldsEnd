@@ -65,10 +65,13 @@ public class MorseCodePlayer : MonoBehaviour {
 					// Dot or Dash?
 					AudioClip       sound = dotSound;
 					if (bit == '-')	sound = dashSound;
-					
-					// Play the audio clip and wait for it to end before playing the next one.
-					GetComponent<AudioSource>().PlayOneShot(sound, 0.5f + m_dcPersistantData.m_fSFXVolume);
-					yield return new WaitForSeconds(sound.length + letterDelay);
+
+                    // Play the audio clip and wait for it to end before playing the next one.
+                    if (sound != null)
+                    {
+                        GetComponent<AudioSource>().PlayOneShot(sound, 0.5f + m_dcPersistantData.m_fSFXVolume);
+                        yield return new WaitForSeconds(sound.length + letterDelay);
+                    }
 				}
 			}
 		}

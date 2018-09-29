@@ -27,7 +27,7 @@ public class CameraFollowTarget : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () 
+	void LateUpdate () 
 	{
 		if(m_bShouldSwirl == true)
 		{
@@ -52,10 +52,12 @@ public class CameraFollowTarget : MonoBehaviour {
 			}
 			else
 			{
-				if(toTarget.magnitude < 0.006f)
+				if(toTarget.magnitude < 0.001f)
 				{
+					/*
 					if (m_goNextTarget != null)
 					{
+						Debug.Log ("hit");
 						m_goTarget = m_goNextTarget;
 						m_goNextTarget = null;
 						point = GetComponent<Camera> ().WorldToViewportPoint (m_goTarget.transform.position);
@@ -65,6 +67,7 @@ public class CameraFollowTarget : MonoBehaviour {
 					{
 						//transform.position = transform.position + toTarget;
 					}
+					*/
 				}
 				else
 				{

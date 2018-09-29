@@ -562,14 +562,18 @@ public class InonEventHandler : BaseEventSystemScript
                     GameObject messageSystem = GameObject.Find("Constantinople");
                     if (messageSystem)
                     {
-
-                        int constRes = -1;
-                        if (ds.m_dStoryFlagField.TryGetValue("Inon_CeremonyComplete", out constRes) == false)
-                            messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
-                        else
-                        {
-                            messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("A3");
-                        }
+						int constRes = -1;
+						if (ds.m_dStoryFlagField.TryGetValue("Inon_KeyEvents", out constRes))
+						{
+							if (constRes < 2)
+							{
+								messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue(0);
+							}
+							else
+							{
+								messageSystem.GetComponentInChildren<MessageHandler>().BeginDialogue("A3");
+							}
+						}
                     }
                 }
                 break;
@@ -806,7 +810,7 @@ public class InonEventHandler : BaseEventSystemScript
     {
 		if (c.name.Contains ("StepBack"))
 		{
-			GameObject player = GameObject.Find ("Player");
+            GameObject player = GameObject.Find ("Player");
 			player.GetComponent<FieldPlayerMovementScript> ().SetState ((int)FieldPlayerMovementScript.States.eIDLE);
 			player.GetComponent<FieldPlayerMovementScript> ().DHF_StopMovingFaceDirection (player.GetComponent<FieldPlayerMovementScript> ().m_nFacingDir);
 			int result;
@@ -863,6 +867,12 @@ public class InonEventHandler : BaseEventSystemScript
         {
             case "IntoHallwayCheck":
                 {
+                    int result = 0;
+                    if (ds.m_dStoryFlagField.TryGetValue("Inon_KeyEvents", out result) == true)
+                    {
+                        c.enabled = false;
+                        return;
+                    }
                     //The player needs to stay in this room, disable input and have him begin walking downwards, will get caught by child waypoint to release input and stop movement.
                     GameObject player = GameObject.Find("Player");
                     if (player)

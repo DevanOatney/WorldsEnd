@@ -15,6 +15,7 @@ public class ItemLibrary
 	public Dictionary<string, ItemLibrary.ItemData> m_dItemDictionary = new Dictionary<string, ItemData>();
 	//List of all items currently in inventory
 	public List<CharactersItems> m_lInventory = new List<CharactersItems>();
+	public int m_nMaxItemCount = 45;
 
 	[System.Serializable]
 	public class ItemData
@@ -218,8 +219,8 @@ public class ItemLibrary
 			if(item.m_szItemName == i.m_szItemName)
 			{
 				m_lInventory[iter].m_nItemCount += item.m_nItemCount;
-				if(m_lInventory[iter].m_nItemCount >= 45)
-					m_lInventory[iter].m_nItemCount = 45;
+				if(m_lInventory[iter].m_nItemCount >= m_nMaxItemCount)
+					m_lInventory[iter].m_nItemCount = m_nMaxItemCount;
 				return;
 			}
 			iter++;
@@ -235,8 +236,8 @@ public class ItemLibrary
 			if(szItemName == i.m_szItemName)
 			{
 				m_lInventory[iter].m_nItemCount += 1;
-				if(m_lInventory[iter].m_nItemCount >= 45)
-					m_lInventory[iter].m_nItemCount = 45;
+				if(m_lInventory[iter].m_nItemCount >= m_nMaxItemCount)
+					m_lInventory[iter].m_nItemCount = m_nMaxItemCount;
 				return;
 			}
 			iter++;

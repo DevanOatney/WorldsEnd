@@ -435,6 +435,7 @@ public class StandardEnemyScript : UnitScript
 
 	override public void IDied()
 	{
+        Debug.Log("die");
 		GameObject.Find("TurnWatcher").GetComponent<TurnWatcherScript>().RemoveMeFromList(gameObject, 0.0f);
 		Destroy(gameObject);
 	}
