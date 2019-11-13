@@ -1,52 +1,123 @@
 fileFormatVersion: 2
 guid: 3947480717e96b7419a7047833d24167
-timeCreated: 1457152380
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Magic_001_0
-    21300002: Magic_001_1
-    21300004: Magic_001_2
-    21300006: Magic_001_3
-    21300008: Magic_001_4
-    21300010: Magic_001_5
-    21300012: Magic_001_6
-    21300014: Magic_001_7
-    21300016: Magic_001_8
-    21300018: Magic_001_9
-    21300020: Magic_001_10
-    21300022: Magic_001_11
-    21300024: Magic_001_12
-    21300026: Magic_001_13
-    21300028: Magic_001_14
-    21300030: Magic_001_15
-    21300032: Magic_001_16
-    21300034: Magic_001_17
-    21300036: Magic_001_18
-    21300038: Magic_001_19
-    21300040: Magic_001_20
-    21300042: Magic_001_21
-    21300044: Magic_001_22
-    21300046: Magic_001_23
-    21300048: Magic_001_24
-    21300050: Magic_001_25
-    21300052: Magic_001_26
-    21300054: Magic_001_27
-    21300056: Magic_001_28
-    21300058: Magic_001_29
-    21300060: Magic_001_30
-    21300062: Magic_001_31
-    21300064: Magic_001_32
-    21300066: Magic_001_33
-    21300068: Magic_001_34
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Magic_001_0
+  - first:
+      213: 21300002
+    second: Magic_001_1
+  - first:
+      213: 21300004
+    second: Magic_001_2
+  - first:
+      213: 21300006
+    second: Magic_001_3
+  - first:
+      213: 21300008
+    second: Magic_001_4
+  - first:
+      213: 21300010
+    second: Magic_001_5
+  - first:
+      213: 21300012
+    second: Magic_001_6
+  - first:
+      213: 21300014
+    second: Magic_001_7
+  - first:
+      213: 21300016
+    second: Magic_001_8
+  - first:
+      213: 21300018
+    second: Magic_001_9
+  - first:
+      213: 21300020
+    second: Magic_001_10
+  - first:
+      213: 21300022
+    second: Magic_001_11
+  - first:
+      213: 21300024
+    second: Magic_001_12
+  - first:
+      213: 21300026
+    second: Magic_001_13
+  - first:
+      213: 21300028
+    second: Magic_001_14
+  - first:
+      213: 21300030
+    second: Magic_001_15
+  - first:
+      213: 21300032
+    second: Magic_001_16
+  - first:
+      213: 21300034
+    second: Magic_001_17
+  - first:
+      213: 21300036
+    second: Magic_001_18
+  - first:
+      213: 21300038
+    second: Magic_001_19
+  - first:
+      213: 21300040
+    second: Magic_001_20
+  - first:
+      213: 21300042
+    second: Magic_001_21
+  - first:
+      213: 21300044
+    second: Magic_001_22
+  - first:
+      213: 21300046
+    second: Magic_001_23
+  - first:
+      213: 21300048
+    second: Magic_001_24
+  - first:
+      213: 21300050
+    second: Magic_001_25
+  - first:
+      213: 21300052
+    second: Magic_001_26
+  - first:
+      213: 21300054
+    second: Magic_001_27
+  - first:
+      213: 21300056
+    second: Magic_001_28
+  - first:
+      213: 21300058
+    second: Magic_001_29
+  - first:
+      213: 21300060
+    second: Magic_001_30
+  - first:
+      213: 21300062
+    second: Magic_001_31
+  - first:
+      213: 21300064
+    second: Magic_001_32
+  - first:
+      213: 21300066
+    second: Magic_001_33
+  - first:
+      213: 21300068
+    second: Magic_001_34
+  externalObjects: {}
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -55,37 +126,60 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: Magic_001_0
+    - serializedVersion: 2
+      name: Magic_001_0
       rect:
         serializedVersion: 2
         x: 0
@@ -95,24 +189,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 13, y: -37}
-        - {x: -12, y: -37}
-        - {x: -26, y: -48}
-        - {x: -26, y: -77}
-        - {x: -15, y: -88}
-        - {x: 10, y: -88}
-        - {x: 25, y: -82}
-        - {x: 25, y: -50}
-        - {x: 17, y: -38}
-      - - {x: -22, y: 84}
-        - {x: -25, y: 74}
-        - {x: -25, y: 43}
-        - {x: -10, y: 33}
-        - {x: 12, y: 33}
-        - {x: 26, y: 35}
-        - {x: 26, y: 84}
-    - name: Magic_001_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_1
       rect:
         serializedVersion: 2
         x: 192
@@ -122,27 +210,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 7, y: -33}
-        - {x: -6, y: -43}
-        - {x: -6, y: -72}
-        - {x: -3, y: -78}
-        - {x: 12, y: -85}
-        - {x: 39, y: -85}
-        - {x: 46, y: -69}
-        - {x: 46, y: -37}
-        - {x: 41, y: -33}
-      - - {x: -9, y: 81}
-        - {x: -33, y: 81}
-        - {x: -46, y: 67}
-        - {x: -46, y: 39}
-        - {x: -34, y: 29}
-        - {x: -10, y: 29}
-        - {x: 5, y: 35}
-        - {x: 6, y: 45}
-        - {x: 6, y: 69}
-        - {x: 4, y: 75}
-    - name: Magic_001_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_2
       rect:
         serializedVersion: 2
         x: 384
@@ -152,33 +231,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 16, y: -23}
-        - {x: 13, y: -35}
-        - {x: 13, y: -68}
-        - {x: 23, y: -74}
-        - {x: 57, y: -74}
-        - {x: 65, y: -63}
-        - {x: 65, y: -35}
-        - {x: 52, y: -23}
-      - - {x: -51, y: 70}
-        - {x: -54, y: 69}
-        - {x: -64, y: 61}
-        - {x: -64, y: 32}
-        - {x: -58, y: 19}
-        - {x: -22, y: 19}
-        - {x: -13, y: 33}
-        - {x: -13, y: 58}
-        - {x: -23, y: 70}
-      - - {x: 1, y: 64}
-        - {x: -2, y: 61}
-        - {x: -2, y: 58}
-        - {x: 0, y: 56}
-        - {x: 5, y: 56}
-        - {x: 7, y: 60}
-        - {x: 7, y: 63}
-        - {x: 5, y: 64}
-    - name: Magic_001_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_3
       rect:
         serializedVersion: 2
         x: 576
@@ -188,56 +252,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -9, y: -60}
-        - {x: -10, y: -64}
-        - {x: -10, y: -72}
-        - {x: -7, y: -74}
-        - {x: -2, y: -74}
-        - {x: 3, y: -72}
-        - {x: 3, y: -64}
-        - {x: 0, y: -60}
-      - - {x: 11, y: -58}
-        - {x: 11, y: -61}
-        - {x: 13, y: -65}
-        - {x: 17, y: -65}
-        - {x: 22, y: -62}
-        - {x: 22, y: -59}
-        - {x: 17, y: -54}
-        - {x: 15, y: -54}
-      - - {x: 38, y: -7}
-        - {x: 27, y: -20}
-        - {x: 27, y: -42}
-        - {x: 37, y: -59}
-        - {x: 67, y: -59}
-        - {x: 78, y: -49}
-        - {x: 78, y: -22}
-        - {x: 72, y: -7}
-      - - {x: -67, y: 54}
-        - {x: -78, y: 41}
-        - {x: -78, y: 22}
-        - {x: -76, y: 17}
-        - {x: -74, y: 13}
-        - {x: -68, y: 3}
-        - {x: -35, y: 3}
-        - {x: -27, y: 13}
-        - {x: -27, y: 51}
-        - {x: -28, y: 54}
-      - - {x: -15, y: 60}
-        - {x: -20, y: 60}
-        - {x: -20, y: 53}
-        - {x: -15, y: 53}
-        - {x: -14, y: 55}
-        - {x: -14, y: 59}
-      - - {x: 1, y: 64}
-        - {x: -1, y: 62}
-        - {x: -1, y: 60}
-        - {x: 1, y: 58}
-        - {x: 4, y: 58}
-        - {x: 6, y: 60}
-        - {x: 6, y: 62}
-        - {x: 4, y: 64}
-    - name: Magic_001_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_4
       rect:
         serializedVersion: 2
         x: 768
@@ -247,70 +273,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -12, y: -61}
-        - {x: -12, y: -72}
-        - {x: -9, y: -74}
-        - {x: 1, y: -74}
-        - {x: 2, y: -72}
-        - {x: 2, y: -60}
-        - {x: -10, y: -59}
-      - - {x: 12, y: -59}
-        - {x: 13, y: -62}
-        - {x: 16, y: -62}
-        - {x: 18, y: -60}
-        - {x: 17, y: -57}
-        - {x: 14, y: -57}
-      - - {x: 46, y: -42}
-        - {x: 39, y: -45}
-        - {x: 35, y: -49}
-        - {x: 36, y: -53}
-        - {x: 42, y: -61}
-        - {x: 48, y: -59}
-        - {x: 54, y: -54}
-        - {x: 54, y: -49}
-        - {x: 48, y: -42}
-      - - {x: 34, y: -30}
-        - {x: 43, y: -39}
-        - {x: 74, y: -39}
-        - {x: 86, y: -31}
-        - {x: 86, y: 5}
-        - {x: 80, y: 13}
-        - {x: 45, y: 13}
-        - {x: 34, y: -1}
-      - - {x: -48, y: 35}
-        - {x: -69, y: 35}
-        - {x: -78, y: 33}
-        - {x: -86, y: 24}
-        - {x: -86, y: -4}
-        - {x: -78, y: -17}
-        - {x: -46, y: -17}
-        - {x: -34, y: -6}
-        - {x: -34, y: 16}
-        - {x: -36, y: 25}
-      - - {x: -34, y: 54}
-        - {x: -40, y: 49}
-        - {x: -40, y: 44}
-        - {x: -35, y: 37}
-        - {x: -29, y: 37}
-        - {x: -23, y: 44}
-        - {x: -23, y: 48}
-        - {x: -30, y: 54}
-      - - {x: -19, y: 60}
-        - {x: -22, y: 59}
-        - {x: -22, y: 54}
-        - {x: -19, y: 53}
-        - {x: -14, y: 53}
-        - {x: -14, y: 60}
-      - - {x: -2, y: 67}
-        - {x: -3, y: 64}
-        - {x: -3, y: 58}
-        - {x: 0, y: 56}
-        - {x: 5, y: 57}
-        - {x: 8, y: 59}
-        - {x: 8, y: 62}
-        - {x: 6, y: 67}
-    - name: Magic_001_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_5
       rect:
         serializedVersion: 2
         x: 0
@@ -320,77 +294,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 10, y: -52}
-        - {x: 7, y: -57}
-        - {x: 7, y: -64}
-        - {x: 10, y: -67}
-        - {x: 15, y: -67}
-        - {x: 21, y: -63}
-        - {x: 21, y: -58}
-        - {x: 15, y: -52}
-      - - {x: 46, y: -45}
-        - {x: 42, y: -49}
-        - {x: 42, y: -51}
-        - {x: 46, y: -55}
-        - {x: 47, y: -55}
-        - {x: 52, y: -50}
-        - {x: 52, y: -49}
-        - {x: 48, y: -45}
-      - - {x: 38, y: -52}
-        - {x: 41, y: -51}
-        - {x: 41, y: -48}
-        - {x: 38, y: -47}
-        - {x: 36, y: -49}
-      - - {x: -78, y: 14}
-        - {x: -86, y: 10}
-        - {x: -86, y: -35}
-        - {x: -79, y: -38}
-        - {x: -40, y: -38}
-        - {x: -34, y: -33}
-        - {x: -34, y: 3}
-        - {x: -40, y: 14}
-      - - {x: 44, y: 34}
-        - {x: 34, y: 28}
-        - {x: 34, y: -12}
-        - {x: 52, y: -23}
-        - {x: 71, y: -23}
-        - {x: 86, y: -9}
-        - {x: 86, y: 22}
-        - {x: 79, y: 34}
-      - - {x: -61, y: 31}
-        - {x: -62, y: 27}
-        - {x: -59, y: 23}
-        - {x: -54, y: 23}
-        - {x: -50, y: 24}
-        - {x: -49, y: 30}
-        - {x: -53, y: 34}
-        - {x: -57, y: 35}
-      - - {x: -26, y: 52}
-        - {x: -31, y: 53}
-        - {x: -38, y: 48}
-        - {x: -38, y: 43}
-        - {x: -36, y: 37}
-        - {x: -26, y: 37}
-        - {x: -23, y: 42}
-        - {x: -22, y: 44}
-        - {x: -22, y: 47}
-      - - {x: -22, y: 57}
-        - {x: -21, y: 54}
-        - {x: -16, y: 52}
-        - {x: -13, y: 53}
-        - {x: -12, y: 58}
-        - {x: -14, y: 60}
-        - {x: -18, y: 60}
-      - - {x: -4, y: 62}
-        - {x: -1, y: 56}
-        - {x: 3, y: 56}
-        - {x: 8, y: 58}
-        - {x: 8, y: 63}
-        - {x: 6, y: 69}
-        - {x: 2, y: 69}
-        - {x: -4, y: 65}
-    - name: Magic_001_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_6
       rect:
         serializedVersion: 2
         x: 192
@@ -400,97 +315,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -8, y: -55}
-        - {x: -14, y: -62}
-        - {x: -14, y: -66}
-        - {x: -8, y: -71}
-        - {x: -3, y: -71}
-        - {x: 2, y: -63}
-        - {x: 2, y: -61}
-        - {x: -4, y: -56}
-      - - {x: 13, y: -52}
-        - {x: 6, y: -57}
-        - {x: 6, y: -60}
-        - {x: 11, y: -67}
-        - {x: 14, y: -67}
-        - {x: 21, y: -63}
-        - {x: 21, y: -59}
-        - {x: 18, y: -52}
-      - - {x: 47, y: -34}
-        - {x: 43, y: -34}
-        - {x: 36, y: -44}
-        - {x: 35, y: -48}
-        - {x: 35, y: -52}
-        - {x: 47, y: -59}
-        - {x: 53, y: -59}
-        - {x: 61, y: -46}
-        - {x: 61, y: -43}
-        - {x: 59, y: -40}
-      - - {x: -71, y: -5}
-        - {x: -79, y: -19}
-        - {x: -79, y: -51}
-        - {x: -71, y: -58}
-        - {x: -42, y: -58}
-        - {x: -28, y: -51}
-        - {x: -27, y: -45}
-        - {x: -27, y: -18}
-        - {x: -44, y: -5}
-      - - {x: 56, y: -9}
-        - {x: 51, y: -12}
-        - {x: 51, y: -15}
-        - {x: 54, y: -20}
-        - {x: 59, y: -25}
-        - {x: 64, y: -25}
-        - {x: 67, y: -20}
-        - {x: 67, y: -16}
-        - {x: 59, y: -9}
-      - - {x: 40, y: 54}
-        - {x: 27, y: 41}
-        - {x: 27, y: 15}
-        - {x: 35, y: -1}
-        - {x: 68, y: -1}
-        - {x: 77, y: 0}
-        - {x: 79, y: 6}
-        - {x: 79, y: 38}
-        - {x: 74, y: 54}
-      - - {x: -63, y: 9}
-        - {x: -61, y: 7}
-        - {x: -58, y: 8}
-        - {x: -58, y: 11}
-        - {x: -60, y: 13}
-        - {x: -63, y: 12}
-      - - {x: -61, y: 27}
-        - {x: -56, y: 23}
-        - {x: -53, y: 24}
-        - {x: -52, y: 29}
-        - {x: -56, y: 32}
-        - {x: -59, y: 32}
-      - - {x: -29, y: 56}
-        - {x: -35, y: 55}
-        - {x: -40, y: 47}
-        - {x: -40, y: 41}
-        - {x: -30, y: 33}
-        - {x: -27, y: 33}
-        - {x: -17, y: 42}
-        - {x: -17, y: 47}
-        - {x: -25, y: 56}
-      - - {x: -17, y: 61}
-        - {x: -20, y: 58}
-        - {x: -20, y: 55}
-        - {x: -17, y: 52}
-        - {x: -14, y: 52}
-        - {x: -12, y: 54}
-        - {x: -12, y: 58}
-        - {x: -15, y: 61}
-      - - {x: 0, y: 66}
-        - {x: -2, y: 65}
-        - {x: -2, y: 60}
-        - {x: 4, y: 60}
-        - {x: 5, y: 62}
-        - {x: 5, y: 63}
-        - {x: 4, y: 66}
-    - name: Magic_001_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_7
       rect:
         serializedVersion: 2
         x: 384
@@ -500,105 +336,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -65, y: -23}
-        - {x: -65, y: -63}
-        - {x: -58, y: -75}
-        - {x: -21, y: -75}
-        - {x: -13, y: -60}
-        - {x: -13, y: -28}
-        - {x: -16, y: -23}
-      - - {x: -3, y: -53}
-        - {x: -7, y: -53}
-        - {x: -15, y: -57}
-        - {x: -15, y: -62}
-        - {x: -10, y: -71}
-        - {x: -6, y: -71}
-        - {x: 3, y: -64}
-        - {x: 3, y: -62}
-      - - {x: 56, y: -33}
-        - {x: 50, y: -30}
-        - {x: 40, y: -30}
-        - {x: 35, y: -41}
-        - {x: 35, y: -52}
-        - {x: 37, y: -54}
-        - {x: 46, y: -56}
-        - {x: 57, y: -56}
-        - {x: 61, y: -44}
-        - {x: 61, y: -37}
-      - - {x: 56, y: -20}
-        - {x: 56, y: -23}
-        - {x: 60, y: -24}
-        - {x: 63, y: -24}
-        - {x: 65, y: -19}
-        - {x: 65, y: -18}
-        - {x: 60, y: -16}
-      - - {x: 52, y: -13}
-        - {x: 52, y: -14}
-        - {x: 55, y: -17}
-        - {x: 58, y: -16}
-        - {x: 58, y: -13}
-        - {x: 56, y: -11}
-        - {x: 54, y: -11}
-      - - {x: -48, y: 10}
-        - {x: -58, y: 13}
-        - {x: -62, y: 13}
-        - {x: -67, y: 4}
-        - {x: -67, y: -7}
-        - {x: -66, y: -10}
-        - {x: -60, y: -14}
-        - {x: -56, y: -14}
-        - {x: -47, y: -8}
-        - {x: -45, y: 1}
-        - {x: -45, y: 7}
-      - - {x: 54, y: 9}
-        - {x: 52, y: 7}
-        - {x: 52, y: 0}
-        - {x: 54, y: -2}
-        - {x: 61, y: -2}
-        - {x: 63, y: 0}
-        - {x: 63, y: 7}
-        - {x: 61, y: 9}
-      - - {x: -62, y: 34}
-        - {x: -65, y: 31}
-        - {x: -65, y: 22}
-        - {x: -62, y: 18}
-        - {x: -52, y: 18}
-        - {x: -49, y: 25}
-        - {x: -49, y: 31}
-        - {x: -54, y: 34}
-      - - {x: 18, y: 71}
-        - {x: 13, y: 56}
-        - {x: 13, y: 26}
-        - {x: 19, y: 19}
-        - {x: 63, y: 19}
-        - {x: 65, y: 22}
-        - {x: 65, y: 60}
-        - {x: 59, y: 71}
-      - - {x: -28, y: 56}
-        - {x: -39, y: 49}
-        - {x: -39, y: 38}
-        - {x: -31, y: 31}
-        - {x: -26, y: 31}
-        - {x: -14, y: 38}
-        - {x: -14, y: 48}
-        - {x: -23, y: 56}
-      - - {x: -22, y: 53}
-        - {x: -19, y: 52}
-        - {x: -12, y: 52}
-        - {x: -11, y: 58}
-        - {x: -13, y: 61}
-        - {x: -18, y: 61}
-        - {x: -22, y: 59}
-      - - {x: -6, y: 62}
-        - {x: -2, y: 56}
-        - {x: 2, y: 56}
-        - {x: 7, y: 59}
-        - {x: 7, y: 64}
-        - {x: 4, y: 69}
-        - {x: -1, y: 69}
-        - {x: -6, y: 64}
-    - name: Magic_001_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_8
       rect:
         serializedVersion: 2
         x: 576
@@ -608,105 +357,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -44, y: -33}
-        - {x: -47, y: -37}
-        - {x: -47, y: -73}
-        - {x: -44, y: -85}
-        - {x: -8, y: -85}
-        - {x: 5, y: -72}
-        - {x: 5, y: -35}
-        - {x: -4, y: -33}
-      - - {x: 11, y: -52}
-        - {x: 8, y: -53}
-        - {x: 6, y: -55}
-        - {x: 6, y: -64}
-        - {x: 9, y: -67}
-        - {x: 13, y: -67}
-        - {x: 18, y: -66}
-        - {x: 21, y: -62}
-        - {x: 21, y: -59}
-        - {x: 17, y: -52}
-      - - {x: 36, y: -51}
-        - {x: 37, y: -54}
-        - {x: 40, y: -54}
-        - {x: 42, y: -52}
-        - {x: 41, y: -49}
-        - {x: 38, y: -49}
-      - - {x: -48, y: -27}
-        - {x: -56, y: -27}
-        - {x: -66, y: -31}
-        - {x: -66, y: -39}
-        - {x: -60, y: -48}
-        - {x: -57, y: -48}
-        - {x: -47, y: -43}
-        - {x: -47, y: -29}
-      - - {x: 44, y: -42}
-        - {x: 46, y: -44}
-        - {x: 49, y: -43}
-        - {x: 49, y: -40}
-        - {x: 47, y: -38}
-        - {x: 44, y: -39}
-      - - {x: 53, y: -7}
-        - {x: 49, y: -8}
-        - {x: 49, y: -18}
-        - {x: 51, y: -26}
-        - {x: 59, y: -30}
-        - {x: 66, y: -30}
-        - {x: 70, y: -23}
-        - {x: 70, y: -15}
-        - {x: 59, y: -7}
-      - - {x: -57, y: 14}
-        - {x: -63, y: 14}
-        - {x: -66, y: 13}
-        - {x: -71, y: -4}
-        - {x: -71, y: -8}
-        - {x: -55, y: -15}
-        - {x: -49, y: -15}
-        - {x: -43, y: 1}
-        - {x: -43, y: 5}
-      - - {x: 55, y: 7}
-        - {x: 53, y: 5}
-        - {x: 53, y: 2}
-        - {x: 56, y: -1}
-        - {x: 58, y: -1}
-        - {x: 60, y: 1}
-        - {x: 60, y: 4}
-        - {x: 57, y: 7}
-      - - {x: 56, y: 27}
-        - {x: 55, y: 24}
-        - {x: 55, y: 11}
-        - {x: 59, y: 5}
-        - {x: 65, y: 5}
-        - {x: 74, y: 6}
-        - {x: 77, y: 8}
-        - {x: 77, y: 18}
-        - {x: 75, y: 27}
-      - - {x: -65, y: 33}
-        - {x: -66, y: 32}
-        - {x: -66, y: 16}
-        - {x: -49, y: 16}
-        - {x: -49, y: 31}
-        - {x: -56, y: 33}
-      - - {x: 0, y: 81}
-        - {x: -7, y: 67}
-        - {x: -7, y: 44}
-        - {x: 7, y: 24}
-        - {x: 57, y: 24}
-        - {x: 57, y: 57}
-        - {x: 42, y: 81}
-      - - {x: -16, y: 59}
-        - {x: -23, y: 59}
-        - {x: -27, y: 58}
-        - {x: -39, y: 47}
-        - {x: -39, y: 42}
-        - {x: -31, y: 29}
-        - {x: -25, y: 29}
-        - {x: -14, y: 34}
-        - {x: -11, y: 40}
-        - {x: -11, y: 48}
-        - {x: -15, y: 56}
-    - name: Magic_001_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_9
       rect:
         serializedVersion: 2
         x: 768
@@ -716,21 +378,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 71, y: 35}
-        - {x: 26, y: 85}
-        - {x: -19, y: 85}
-        - {x: -28, y: 83}
-        - {x: -65, y: 28}
-        - {x: -66, y: 25}
-        - {x: -66, y: -55}
-        - {x: -53, y: -73}
-        - {x: -17, y: -89}
-        - {x: 26, y: -89}
-        - {x: 71, y: -37}
-        - {x: 79, y: 7}
-        - {x: 79, y: 28}
-    - name: Magic_001_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_10
       rect:
         serializedVersion: 2
         x: 0
@@ -740,17 +399,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 34, y: 85}
-        - {x: -57, y: 85}
-        - {x: -74, y: 30}
-        - {x: -74, y: -68}
-        - {x: -27, y: -89}
-        - {x: 29, y: -89}
-        - {x: 67, y: -30}
-        - {x: 67, y: 45}
-        - {x: 66, y: 57}
-    - name: Magic_001_11
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_11
       rect:
         serializedVersion: 2
         x: 192
@@ -760,17 +420,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 59, y: 85}
-        - {x: -27, y: 85}
-        - {x: -77, y: 20}
-        - {x: -77, y: -61}
-        - {x: -22, y: -89}
-        - {x: 30, y: -89}
-        - {x: 72, y: -35}
-        - {x: 75, y: -31}
-        - {x: 75, y: 69}
-    - name: Magic_001_12
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_12
       rect:
         serializedVersion: 2
         x: 384
@@ -780,18 +441,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -14, y: 85}
-        - {x: -68, y: 49}
-        - {x: -71, y: 29}
-        - {x: -71, y: -54}
-        - {x: -15, y: -88}
-        - {x: -13, y: -89}
-        - {x: 27, y: -89}
-        - {x: 74, y: -35}
-        - {x: 74, y: 26}
-        - {x: 20, y: 85}
-    - name: Magic_001_13
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_13
       rect:
         serializedVersion: 2
         x: 576
@@ -801,18 +462,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 39, y: 85}
-        - {x: -32, y: 85}
-        - {x: -79, y: 27}
-        - {x: -79, y: -33}
-        - {x: -30, y: -89}
-        - {x: 13, y: -89}
-        - {x: 54, y: -70}
-        - {x: 73, y: -33}
-        - {x: 73, y: 35}
-        - {x: 68, y: 68}
-    - name: Magic_001_14
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_14
       rect:
         serializedVersion: 2
         x: 768
@@ -822,15 +483,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -28, y: 85}
-        - {x: -81, y: 16}
-        - {x: -81, y: -79}
-        - {x: -34, y: -89}
-        - {x: 42, y: -89}
-        - {x: 72, y: -62}
-        - {x: 72, y: 85}
-    - name: Magic_001_15
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_15
       rect:
         serializedVersion: 2
         x: 0
@@ -840,18 +504,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 28, y: 85}
-        - {x: -22, y: 85}
-        - {x: -75, y: 25}
-        - {x: -75, y: -62}
-        - {x: -47, y: -89}
-        - {x: 29, y: -89}
-        - {x: 65, y: -74}
-        - {x: 72, y: -45}
-        - {x: 72, y: 26}
-        - {x: 30, y: 84}
-    - name: Magic_001_16
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_16
       rect:
         serializedVersion: 2
         x: 192
@@ -861,17 +525,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -31, y: 85}
-        - {x: -84, y: 19}
-        - {x: -84, y: -32}
-        - {x: -73, y: -52}
-        - {x: -29, y: -89}
-        - {x: 17, y: -89}
-        - {x: 73, y: -51}
-        - {x: 73, y: 72}
-        - {x: 56, y: 85}
-    - name: Magic_001_17
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_17
       rect:
         serializedVersion: 2
         x: 384
@@ -881,17 +546,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 34, y: 85}
-        - {x: -24, y: 85}
-        - {x: -86, y: 14}
-        - {x: -86, y: -48}
-        - {x: -31, y: -89}
-        - {x: 31, y: -89}
-        - {x: 72, y: -45}
-        - {x: 72, y: 28}
-        - {x: 61, y: 81}
-    - name: Magic_001_18
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_18
       rect:
         serializedVersion: 2
         x: 576
@@ -901,17 +567,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 32, y: 85}
-        - {x: -30, y: 85}
-        - {x: -75, y: 64}
-        - {x: -75, y: -75}
-        - {x: -28, y: -89}
-        - {x: 29, y: -89}
-        - {x: 73, y: -48}
-        - {x: 73, y: 18}
-        - {x: 65, y: 51}
-    - name: Magic_001_19
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_19
       rect:
         serializedVersion: 2
         x: 768
@@ -921,17 +588,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -88, y: -25}
-        - {x: -69, y: -62}
-        - {x: -45, y: -89}
-        - {x: 28, y: -89}
-        - {x: 73, y: -57}
-        - {x: 73, y: 64}
-        - {x: 64, y: 84}
-        - {x: -28, y: 84}
-        - {x: -88, y: 23}
-    - name: Magic_001_20
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_20
       rect:
         serializedVersion: 2
         x: 0
@@ -941,23 +609,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -31, y: 84}
-        - {x: -91, y: 25}
-        - {x: -91, y: -21}
-        - {x: -74, y: -63}
-        - {x: -34, y: -89}
-        - {x: 25, y: -89}
-        - {x: 74, y: -46}
-        - {x: 74, y: 78}
-        - {x: 52, y: 84}
-      - - {x: 45, y: -62}
-        - {x: 46, y: -65}
-        - {x: 49, y: -65}
-        - {x: 51, y: -63}
-        - {x: 50, y: -60}
-        - {x: 47, y: -60}
-    - name: Magic_001_21
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_21
       rect:
         serializedVersion: 2
         x: 192
@@ -967,24 +630,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -75, y: -54}
-        - {x: -63, y: -66}
-        - {x: -13, y: -93}
-        - {x: 11, y: -93}
-        - {x: 72, y: -42}
-        - {x: 72, y: 29}
-        - {x: 66, y: 50}
-        - {x: 46, y: 84}
-        - {x: -19, y: 84}
-        - {x: -75, y: 61}
-      - - {x: 46, y: -63}
-        - {x: 47, y: -66}
-        - {x: 50, y: -66}
-        - {x: 52, y: -64}
-        - {x: 51, y: -61}
-        - {x: 48, y: -61}
-    - name: Magic_001_22
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_22
       rect:
         serializedVersion: 2
         x: 384
@@ -994,19 +651,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 63, y: 84}
-        - {x: -26, y: 84}
-        - {x: -91, y: 65}
-        - {x: -96, y: 50}
-        - {x: -96, y: -37}
-        - {x: -38, y: -89}
-        - {x: 46, y: -89}
-        - {x: 55, y: -86}
-        - {x: 79, y: -52}
-        - {x: 79, y: 40}
-        - {x: 74, y: 65}
-    - name: Magic_001_23
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_23
       rect:
         serializedVersion: 2
         x: 576
@@ -1016,17 +672,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 38, y: 84}
-        - {x: -40, y: 84}
-        - {x: -96, y: 31}
-        - {x: -96, y: -68}
-        - {x: -85, y: -92}
-        - {x: 72, y: -92}
-        - {x: 82, y: -46}
-        - {x: 82, y: 51}
-        - {x: 78, y: 65}
-    - name: Magic_001_24
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_24
       rect:
         serializedVersion: 2
         x: 768
@@ -1036,28 +693,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -71, y: -74}
-        - {x: -30, y: -93}
-        - {x: 24, y: -93}
-        - {x: 71, y: -42}
-        - {x: 71, y: 55}
-        - {x: 70, y: 58}
-        - {x: 18, y: 84}
-        - {x: -37, y: 84}
-        - {x: -71, y: 67}
-      - - {x: 49, y: -69}
-        - {x: 51, y: -71}
-        - {x: 54, y: -70}
-        - {x: 54, y: -67}
-        - {x: 52, y: -65}
-        - {x: 49, y: -66}
-      - - {x: 74, y: 3}
-        - {x: 77, y: 4}
-        - {x: 77, y: 7}
-        - {x: 74, y: 8}
-        - {x: 72, y: 6}
-    - name: Magic_001_25
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_25
       rect:
         serializedVersion: 2
         x: 0
@@ -1067,17 +714,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -46, y: 86}
-        - {x: -75, y: 40}
-        - {x: -75, y: -68}
-        - {x: -29, y: -89}
-        - {x: 22, y: -89}
-        - {x: 58, y: -69}
-        - {x: 86, y: -28}
-        - {x: 86, y: 29}
-        - {x: 44, y: 86}
-    - name: Magic_001_26
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_26
       rect:
         serializedVersion: 2
         x: 192
@@ -1087,26 +735,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 41, y: 85}
-        - {x: -46, y: 85}
-        - {x: -75, y: 33}
-        - {x: -75, y: -76}
-        - {x: -47, y: -90}
-        - {x: 28, y: -90}
-        - {x: 66, y: -80}
-        - {x: 74, y: -56}
-        - {x: 74, y: 37}
-        - {x: 68, y: 69}
-      - - {x: 85, y: 12}
-        - {x: 74, y: 12}
-        - {x: 70, y: 8}
-        - {x: 70, y: -2}
-        - {x: 74, y: -6}
-        - {x: 79, y: -6}
-        - {x: 88, y: -3}
-        - {x: 88, y: 3}
-    - name: Magic_001_27
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_27
       rect:
         serializedVersion: 2
         x: 384
@@ -1116,23 +756,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -21, y: 84}
-        - {x: -68, y: 60}
-        - {x: -70, y: 38}
-        - {x: -70, y: -60}
-        - {x: -22, y: -89}
-        - {x: 12, y: -89}
-        - {x: 26, y: -84}
-        - {x: 73, y: -63}
-        - {x: 73, y: 53}
-        - {x: 30, y: 84}
-      - - {x: -61, y: -65}
-        - {x: -49, y: -65}
-        - {x: -49, y: -53}
-        - {x: -58, y: -53}
-        - {x: -61, y: -54}
-    - name: Magic_001_28
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_28
       rect:
         serializedVersion: 2
         x: 576
@@ -1142,31 +777,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 43, y: 84}
-        - {x: 30, y: 84}
-        - {x: 28, y: 80}
-        - {x: 24, y: 73}
-        - {x: 25, y: 73}
-        - {x: 17, y: 79}
-        - {x: 6, y: 84}
-        - {x: -7, y: 84}
-        - {x: -15, y: 83}
-        - {x: -74, y: 25}
-        - {x: -74, y: -66}
-        - {x: -38, y: -88}
-        - {x: 23, y: -88}
-        - {x: 69, y: -59}
-        - {x: 69, y: 9}
-        - {x: 63, y: 66}
-      - - {x: 76, y: 8}
-        - {x: 76, y: -8}
-        - {x: 77, y: -9}
-        - {x: 89, y: -9}
-        - {x: 92, y: -8}
-        - {x: 92, y: 5}
-        - {x: 88, y: 8}
-    - name: Magic_001_29
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_29
       rect:
         serializedVersion: 2
         x: 768
@@ -1176,45 +798,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 15, y: 84}
-        - {x: -19, y: 84}
-        - {x: -67, y: 25}
-        - {x: -75, y: -24}
-        - {x: -75, y: -45}
-        - {x: -70, y: -58}
-        - {x: -19, y: -86}
-        - {x: -13, y: -88}
-        - {x: 18, y: -88}
-        - {x: 73, y: -25}
-        - {x: 73, y: 24}
-        - {x: 67, y: 59}
-      - - {x: -58, y: -56}
-        - {x: -62, y: -60}
-        - {x: -62, y: -62}
-        - {x: -58, y: -68}
-        - {x: -54, y: -68}
-        - {x: -49, y: -64}
-        - {x: -49, y: -60}
-        - {x: -53, y: -55}
-      - - {x: 82, y: 6}
-        - {x: 78, y: 5}
-        - {x: 78, y: -10}
-        - {x: 81, y: -11}
-        - {x: 93, y: -11}
-        - {x: 95, y: -3}
-        - {x: 95, y: 3}
-        - {x: 93, y: 6}
-      - - {x: 33, y: 81}
-        - {x: 27, y: 71}
-        - {x: 27, y: 63}
-        - {x: 35, y: 56}
-        - {x: 45, y: 56}
-        - {x: 48, y: 57}
-        - {x: 51, y: 66}
-        - {x: 51, y: 76}
-        - {x: 42, y: 81}
-    - name: Magic_001_30
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_30
       rect:
         serializedVersion: 2
         x: 0
@@ -1224,36 +819,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 22, y: 84}
-        - {x: -37, y: 84}
-        - {x: -64, y: 49}
-        - {x: -75, y: -1}
-        - {x: -75, y: -67}
-        - {x: -14, y: -88}
-        - {x: 8, y: -88}
-        - {x: 15, y: -87}
-        - {x: 74, y: -28}
-        - {x: 77, y: -20}
-        - {x: 77, y: 63}
-      - - {x: -58, y: -57}
-        - {x: -62, y: -61}
-        - {x: -62, y: -67}
-        - {x: -58, y: -69}
-        - {x: -51, y: -69}
-        - {x: -49, y: -65}
-        - {x: -49, y: -61}
-        - {x: -54, y: -56}
-      - - {x: 85, y: 4}
-        - {x: 80, y: 1}
-        - {x: 80, y: -11}
-        - {x: 81, y: -12}
-        - {x: 88, y: -14}
-        - {x: 95, y: -14}
-        - {x: 96, y: -12}
-        - {x: 96, y: 1}
-        - {x: 95, y: 3}
-    - name: Magic_001_31
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_31
       rect:
         serializedVersion: 2
         x: 192
@@ -1263,138 +840,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 17, y: -37}
-        - {x: -16, y: -37}
-        - {x: -26, y: -45}
-        - {x: -26, y: -76}
-        - {x: -22, y: -88}
-        - {x: 11, y: -88}
-        - {x: 22, y: -79}
-        - {x: 29, y: -70}
-        - {x: 29, y: -59}
-      - - {x: -56, y: -66}
-        - {x: -53, y: -65}
-        - {x: -53, y: -62}
-        - {x: -56, y: -61}
-        - {x: -58, y: -63}
-      - - {x: -38, y: -49}
-        - {x: -43, y: -54}
-        - {x: -43, y: -59}
-        - {x: -38, y: -61}
-        - {x: -34, y: -61}
-        - {x: -31, y: -56}
-        - {x: -31, y: -54}
-        - {x: -36, y: -49}
-      - - {x: -64, y: -38}
-        - {x: -65, y: -39}
-        - {x: -65, y: -44}
-        - {x: -64, y: -47}
-        - {x: -58, y: -47}
-        - {x: -56, y: -46}
-        - {x: -56, y: -39}
-        - {x: -58, y: -38}
-      - - {x: 24, y: 3}
-        - {x: 21, y: -3}
-        - {x: 21, y: -17}
-        - {x: 31, y: -26}
-        - {x: 39, y: -26}
-        - {x: 44, y: -14}
-        - {x: 44, y: 2}
-        - {x: 43, y: 3}
-      - - {x: -44, y: -15}
-        - {x: -46, y: -16}
-        - {x: -46, y: -23}
-        - {x: -39, y: -23}
-        - {x: -37, y: -19}
-        - {x: -37, y: -16}
-        - {x: -39, y: -15}
-      - - {x: -56, y: -11}
-        - {x: -56, y: -16}
-        - {x: -53, y: -18}
-        - {x: -51, y: -18}
-        - {x: -47, y: -14}
-        - {x: -49, y: -9}
-        - {x: -54, y: -9}
-      - - {x: 68, y: 0}
-        - {x: 61, y: -4}
-        - {x: 61, y: -5}
-        - {x: 62, y: -8}
-        - {x: 66, y: -13}
-        - {x: 70, y: -12}
-        - {x: 74, y: -10}
-        - {x: 74, y: -6}
-        - {x: 71, y: 0}
-      - - {x: 45, y: 4}
-        - {x: 44, y: 3}
-        - {x: 44, y: -2}
-        - {x: 45, y: -4}
-        - {x: 52, y: -4}
-        - {x: 52, y: 4}
-      - - {x: -48, y: 7}
-        - {x: -50, y: 5}
-        - {x: -50, y: 3}
-        - {x: -48, y: 1}
-        - {x: -45, y: 1}
-        - {x: -43, y: 3}
-        - {x: -43, y: 5}
-        - {x: -45, y: 7}
-      - - {x: -41, y: 10}
-        - {x: -42, y: 8}
-        - {x: -42, y: 3}
-        - {x: -35, y: 3}
-        - {x: -35, y: 7}
-        - {x: -36, y: 10}
-      - - {x: -33, y: 27}
-        - {x: -33, y: 6}
-        - {x: -17, y: 6}
-        - {x: -12, y: 9}
-        - {x: -12, y: 18}
-        - {x: -14, y: 27}
-      - - {x: 45, y: 22}
-        - {x: 42, y: 18}
-        - {x: 42, y: 16}
-        - {x: 45, y: 13}
-        - {x: 49, y: 13}
-        - {x: 51, y: 15}
-        - {x: 52, y: 19}
-        - {x: 48, y: 22}
-      - - {x: 17, y: 23}
-        - {x: 14, y: 20}
-        - {x: 14, y: 18}
-        - {x: 17, y: 15}
-        - {x: 18, y: 15}
-        - {x: 21, y: 18}
-        - {x: 21, y: 20}
-        - {x: 18, y: 23}
-      - - {x: 47, y: 51}
-        - {x: 44, y: 50}
-        - {x: 42, y: 45}
-        - {x: 42, y: 36}
-        - {x: 47, y: 26}
-        - {x: 56, y: 26}
-        - {x: 64, y: 28}
-        - {x: 67, y: 29}
-        - {x: 67, y: 44}
-        - {x: 65, y: 51}
-      - - {x: 19, y: 84}
-        - {x: -15, y: 84}
-        - {x: -26, y: 77}
-        - {x: -26, y: 30}
-        - {x: 16, y: 30}
-        - {x: 26, y: 40}
-        - {x: 26, y: 71}
-        - {x: 22, y: 83}
-      - - {x: 30, y: 60}
-        - {x: 36, y: 53}
-        - {x: 41, y: 53}
-        - {x: 52, y: 59}
-        - {x: 52, y: 67}
-        - {x: 46, y: 76}
-        - {x: 38, y: 76}
-        - {x: 29, y: 70}
-        - {x: 29, y: 62}
-    - name: Magic_001_32
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_32
       rect:
         serializedVersion: 2
         x: 384
@@ -1404,116 +861,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -25, y: -38}
-        - {x: -25, y: -80}
-        - {x: -13, y: -87}
-        - {x: 19, y: -87}
-        - {x: 24, y: -83}
-        - {x: 24, y: -38}
-      - - {x: -38, y: -56}
-        - {x: -35, y: -55}
-        - {x: -35, y: -52}
-        - {x: -38, y: -51}
-        - {x: -40, y: -53}
-      - - {x: -67, y: -34}
-        - {x: -69, y: -37}
-        - {x: -69, y: -50}
-        - {x: -68, y: -51}
-        - {x: -54, y: -51}
-        - {x: -52, y: -49}
-        - {x: -52, y: -40}
-        - {x: -54, y: -34}
-      - - {x: 16, y: -26}
-        - {x: 16, y: -34}
-        - {x: 25, y: -34}
-        - {x: 25, y: -26}
-        - {x: 23, y: -24}
-        - {x: 18, y: -24}
-      - - {x: -53, y: -24}
-        - {x: -52, y: -27}
-        - {x: -49, y: -27}
-        - {x: -47, y: -25}
-        - {x: -48, y: -22}
-        - {x: -51, y: -22}
-      - - {x: -43, y: -16}
-        - {x: -46, y: -20}
-        - {x: -46, y: -24}
-        - {x: -42, y: -25}
-        - {x: -37, y: -25}
-        - {x: -37, y: -16}
-      - - {x: 41, y: 2}
-        - {x: 25, y: 2}
-        - {x: 22, y: 1}
-        - {x: 22, y: -17}
-        - {x: 27, y: -20}
-        - {x: 36, y: -23}
-        - {x: 44, y: -23}
-        - {x: 45, y: -20}
-        - {x: 45, y: -8}
-        - {x: 43, y: 0}
-      - - {x: -54, y: -8}
-        - {x: -56, y: -10}
-        - {x: -56, y: -13}
-        - {x: -53, y: -16}
-        - {x: -50, y: -16}
-        - {x: -48, y: -14}
-        - {x: -48, y: -10}
-        - {x: -50, y: -8}
-      - - {x: 62, y: -6}
-        - {x: 69, y: -14}
-        - {x: 73, y: -14}
-        - {x: 81, y: -7}
-        - {x: 81, y: -2}
-        - {x: 74, y: 6}
-        - {x: 71, y: 6}
-        - {x: 62, y: 1}
-      - - {x: -20, y: 26}
-        - {x: -28, y: 26}
-        - {x: -36, y: 23}
-        - {x: -36, y: 12}
-        - {x: -35, y: 7}
-        - {x: -19, y: -1}
-        - {x: -13, y: -1}
-        - {x: -8, y: 2}
-        - {x: -8, y: 7}
-        - {x: -11, y: 12}
-        - {x: -18, y: 25}
-      - - {x: 27, y: 27}
-        - {x: 22, y: 27}
-        - {x: 16, y: 19}
-        - {x: 16, y: 13}
-        - {x: 19, y: 11}
-        - {x: 27, y: 11}
-        - {x: 31, y: 13}
-        - {x: 32, y: 15}
-        - {x: 32, y: 26}
-      - - {x: 44, y: 16}
-        - {x: 45, y: 14}
-        - {x: 48, y: 14}
-        - {x: 53, y: 16}
-        - {x: 53, y: 21}
-        - {x: 52, y: 23}
-        - {x: 47, y: 23}
-        - {x: 44, y: 22}
-      - - {x: 18, y: 83}
-        - {x: -17, y: 83}
-        - {x: -25, y: 79}
-        - {x: -25, y: 34}
-        - {x: -18, y: 31}
-        - {x: 6, y: 31}
-        - {x: 15, y: 36}
-        - {x: 25, y: 43}
-        - {x: 25, y: 71}
-      - - {x: 38, y: 72}
-        - {x: 31, y: 69}
-        - {x: 31, y: 61}
-        - {x: 35, y: 53}
-        - {x: 43, y: 53}
-        - {x: 50, y: 58}
-        - {x: 49, y: 66}
-        - {x: 45, y: 73}
-    - name: Magic_001_33
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_33
       rect:
         serializedVersion: 2
         x: 576
@@ -1523,115 +882,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 16, y: -52}
-        - {x: 7, y: -48}
-        - {x: -7, y: -48}
-        - {x: -14, y: -55}
-        - {x: -14, y: -81}
-        - {x: 13, y: -81}
-        - {x: 25, y: -69}
-        - {x: 25, y: -65}
-      - - {x: -61, y: -68}
-        - {x: -59, y: -69}
-        - {x: -54, y: -69}
-        - {x: -52, y: -68}
-        - {x: -52, y: -63}
-        - {x: -53, y: -60}
-        - {x: -59, y: -60}
-        - {x: -61, y: -64}
-      - - {x: -20, y: -42}
-        - {x: -23, y: -42}
-        - {x: -27, y: -48}
-        - {x: -27, y: -54}
-        - {x: -21, y: -57}
-        - {x: -18, y: -57}
-        - {x: -13, y: -50}
-        - {x: -13, y: -47}
-      - - {x: -72, y: -32}
-        - {x: -72, y: -50}
-        - {x: -70, y: -54}
-        - {x: -59, y: -54}
-        - {x: -51, y: -53}
-        - {x: -49, y: -49}
-        - {x: -50, y: -39}
-        - {x: -53, y: -32}
-      - - {x: 15, y: -21}
-        - {x: 13, y: -25}
-        - {x: 14, y: -30}
-        - {x: 16, y: -34}
-        - {x: 20, y: -34}
-        - {x: 26, y: -32}
-        - {x: 26, y: -22}
-        - {x: 23, y: -21}
-      - - {x: 67, y: 10}
-        - {x: 62, y: 0}
-        - {x: 62, y: -7}
-        - {x: 74, y: -13}
-        - {x: 77, y: -13}
-        - {x: 81, y: -11}
-        - {x: 86, y: 2}
-        - {x: 79, y: 8}
-        - {x: 75, y: 10}
-      - - {x: -19, y: 6}
-        - {x: -23, y: -3}
-        - {x: -23, y: -6}
-        - {x: -17, y: -11}
-        - {x: -11, y: -11}
-        - {x: -6, y: -7}
-        - {x: -6, y: 3}
-        - {x: -13, y: 6}
-      - - {x: 47, y: 0}
-        - {x: 44, y: -3}
-        - {x: 44, y: -5}
-        - {x: 47, y: -7}
-        - {x: 50, y: -7}
-        - {x: 51, y: -5}
-        - {x: 51, y: -1}
-        - {x: 48, y: 0}
-      - - {x: -43, y: 17}
-        - {x: -45, y: 10}
-        - {x: -45, y: 0}
-        - {x: -43, y: -1}
-        - {x: -31, y: -1}
-        - {x: -27, y: 0}
-        - {x: -27, y: 15}
-        - {x: -35, y: 17}
-      - - {x: 32, y: 29}
-        - {x: 22, y: 29}
-        - {x: 19, y: 28}
-        - {x: 18, y: 25}
-        - {x: 18, y: 12}
-        - {x: 20, y: 8}
-        - {x: 28, y: 8}
-        - {x: 34, y: 15}
-        - {x: 34, y: 25}
-      - - {x: -7, y: 47}
-        - {x: -6, y: 48}
-        - {x: -2, y: 45}
-        - {x: 9, y: 42}
-        - {x: 19, y: 54}
-        - {x: 19, y: 58}
-        - {x: 8, y: 70}
-        - {x: -11, y: 70}
-        - {x: -21, y: 60}
-        - {x: -21, y: 28}
-        - {x: -4, y: 28}
-        - {x: -1, y: 35}
-        - {x: -1, y: 43}
-        - {x: -4, y: 46}
-      - - {x: 22, y: 48}
-        - {x: 25, y: 49}
-        - {x: 25, y: 52}
-        - {x: 22, y: 53}
-        - {x: 20, y: 51}
-      - - {x: 30, y: 71}
-        - {x: 30, y: 53}
-        - {x: 48, y: 53}
-        - {x: 48, y: 54}
-        - {x: 49, y: 58}
-        - {x: 49, y: 71}
-    - name: Magic_001_34
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic_001_34
       rect:
         serializedVersion: 2
         x: 768
@@ -1641,109 +903,29 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -12, y: -57}
-        - {x: -12, y: -72}
-        - {x: 5, y: -82}
-        - {x: 14, y: -82}
-        - {x: 23, y: -78}
-        - {x: 23, y: -59}
-        - {x: 20, y: -57}
-      - - {x: -60, y: -59}
-        - {x: -62, y: -61}
-        - {x: -62, y: -67}
-        - {x: -60, y: -69}
-        - {x: -54, y: -69}
-        - {x: -52, y: -67}
-        - {x: -52, y: -61}
-        - {x: -54, y: -59}
-      - - {x: -40, y: -47}
-        - {x: -42, y: -49}
-        - {x: -42, y: -53}
-        - {x: -40, y: -55}
-        - {x: -36, y: -55}
-        - {x: -34, y: -53}
-        - {x: -34, y: -50}
-        - {x: -37, y: -47}
-      - - {x: -18, y: -1}
-        - {x: -22, y: -7}
-        - {x: -22, y: -14}
-        - {x: -17, y: -18}
-        - {x: -10, y: -18}
-        - {x: -7, y: -17}
-        - {x: -5, y: -10}
-        - {x: -5, y: -6}
-        - {x: -12, y: -1}
-      - - {x: 53, y: -13}
-        - {x: 56, y: -18}
-        - {x: 61, y: -16}
-        - {x: 61, y: -13}
-        - {x: 58, y: -10}
-        - {x: 56, y: -10}
-      - - {x: 80, y: 12}
-        - {x: 69, y: 12}
-        - {x: 65, y: 3}
-        - {x: 65, y: -7}
-        - {x: 75, y: -10}
-        - {x: 83, y: -10}
-        - {x: 86, y: -4}
-        - {x: 86, y: 8}
-      - - {x: 46, y: -2}
-        - {x: 43, y: -3}
-        - {x: 43, y: -6}
-        - {x: 44, y: -9}
-        - {x: 51, y: -9}
-        - {x: 51, y: -3}
-        - {x: 49, y: -2}
-      - - {x: -35, y: 20}
-        - {x: -44, y: 20}
-        - {x: -47, y: 14}
-        - {x: -47, y: -3}
-        - {x: -25, y: -3}
-        - {x: -23, y: 8}
-        - {x: -23, y: 17}
-        - {x: -24, y: 18}
-      - - {x: 24, y: 16}
-        - {x: 22, y: 12}
-        - {x: 22, y: 9}
-        - {x: 26, y: 5}
-        - {x: 31, y: 5}
-        - {x: 33, y: 8}
-        - {x: 33, y: 15}
-        - {x: 29, y: 16}
-      - - {x: 49, y: 18}
-        - {x: 50, y: 17}
-        - {x: 53, y: 17}
-        - {x: 56, y: 18}
-        - {x: 56, y: 24}
-        - {x: 50, y: 24}
-        - {x: 49, y: 22}
-      - - {x: 28, y: 19}
-        - {x: 31, y: 20}
-        - {x: 31, y: 23}
-        - {x: 28, y: 24}
-        - {x: 26, y: 22}
-      - - {x: 15, y: 64}
-        - {x: 3, y: 72}
-        - {x: -4, y: 72}
-        - {x: -18, y: 69}
-        - {x: -24, y: 62}
-        - {x: -24, y: 48}
-        - {x: -19, y: 34}
-        - {x: -16, y: 32}
-        - {x: -11, y: 32}
-        - {x: -1, y: 37}
-        - {x: -4, y: 44}
-        - {x: 13, y: 41}
-        - {x: 15, y: 48}
-      - - {x: 18, y: 52}
-        - {x: 19, y: 49}
-        - {x: 22, y: 49}
-        - {x: 24, y: 51}
-        - {x: 23, y: 54}
-        - {x: 20, y: 54}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -1,68 +1,171 @@
 fileFormatVersion: 2
 guid: 6651e1993f215f04ea1f93cde3cc2352
-timeCreated: 1461626968
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: beams_0
-    21300002: beams_1
-    21300004: beams_2
-    21300006: beams_3
-    21300008: beams_4
-    21300010: beams_5
-    21300012: beams_6
-    21300014: beams_8
-    21300016: beams_9
-    21300018: beams_10
-    21300020: beams_11
-    21300022: beams_12
-    21300024: beams_13
-    21300026: beams_14
-    21300028: beams_15
-    21300030: beams_16
-    21300032: beams_17
-    21300034: beams_18
-    21300036: beams_19
-    21300038: beams_20
-    21300040: beams_21
-    21300042: beams_22
-    21300044: beams_23
-    21300046: beams_24
-    21300048: beams_25
-    21300050: beams_26
-    21300052: beams_27
-    21300054: beams_28
-    21300056: beams_29
-    21300058: beams_30
-    21300060: beams_31
-    21300062: beams_32
-    21300064: beams_33
-    21300066: beams_34
-    21300068: beams_35
-    21300070: beams_36
-    21300072: beams_37
-    21300074: beams_38
-    21300076: beams_39
-    21300078: beams_40
-    21300080: beams_41
-    21300082: beams_43
-    21300084: beams_44
-    21300086: beams_46
-    21300088: beams_48
-    21300090: beams_49
-    21300092: beams_50
-    21300094: beams_51
-    21300096: beams_52
-    21300098: beams_7
-    21300100: beams_42
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: beams_0
+  - first:
+      213: 21300002
+    second: beams_1
+  - first:
+      213: 21300004
+    second: beams_2
+  - first:
+      213: 21300006
+    second: beams_3
+  - first:
+      213: 21300008
+    second: beams_4
+  - first:
+      213: 21300010
+    second: beams_5
+  - first:
+      213: 21300012
+    second: beams_6
+  - first:
+      213: 21300014
+    second: beams_8
+  - first:
+      213: 21300016
+    second: beams_9
+  - first:
+      213: 21300018
+    second: beams_10
+  - first:
+      213: 21300020
+    second: beams_11
+  - first:
+      213: 21300022
+    second: beams_12
+  - first:
+      213: 21300024
+    second: beams_13
+  - first:
+      213: 21300026
+    second: beams_14
+  - first:
+      213: 21300028
+    second: beams_15
+  - first:
+      213: 21300030
+    second: beams_16
+  - first:
+      213: 21300032
+    second: beams_17
+  - first:
+      213: 21300034
+    second: beams_18
+  - first:
+      213: 21300036
+    second: beams_19
+  - first:
+      213: 21300038
+    second: beams_20
+  - first:
+      213: 21300040
+    second: beams_21
+  - first:
+      213: 21300042
+    second: beams_22
+  - first:
+      213: 21300044
+    second: beams_23
+  - first:
+      213: 21300046
+    second: beams_24
+  - first:
+      213: 21300048
+    second: beams_25
+  - first:
+      213: 21300050
+    second: beams_26
+  - first:
+      213: 21300052
+    second: beams_27
+  - first:
+      213: 21300054
+    second: beams_28
+  - first:
+      213: 21300056
+    second: beams_29
+  - first:
+      213: 21300058
+    second: beams_30
+  - first:
+      213: 21300060
+    second: beams_31
+  - first:
+      213: 21300062
+    second: beams_32
+  - first:
+      213: 21300064
+    second: beams_33
+  - first:
+      213: 21300066
+    second: beams_34
+  - first:
+      213: 21300068
+    second: beams_35
+  - first:
+      213: 21300070
+    second: beams_36
+  - first:
+      213: 21300072
+    second: beams_37
+  - first:
+      213: 21300074
+    second: beams_38
+  - first:
+      213: 21300076
+    second: beams_39
+  - first:
+      213: 21300078
+    second: beams_40
+  - first:
+      213: 21300080
+    second: beams_41
+  - first:
+      213: 21300082
+    second: beams_43
+  - first:
+      213: 21300084
+    second: beams_44
+  - first:
+      213: 21300086
+    second: beams_46
+  - first:
+      213: 21300088
+    second: beams_48
+  - first:
+      213: 21300090
+    second: beams_49
+  - first:
+      213: 21300092
+    second: beams_50
+  - first:
+      213: 21300094
+    second: beams_51
+  - first:
+      213: 21300096
+    second: beams_52
+  - first:
+      213: 21300098
+    second: beams_7
+  - first:
+      213: 21300100
+    second: beams_42
+  externalObjects: {}
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -71,37 +174,60 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: beams_0
+    - serializedVersion: 2
+      name: beams_0
       rect:
         serializedVersion: 2
         x: 36
@@ -112,7 +238,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_1
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_1
       rect:
         serializedVersion: 2
         x: 200
@@ -123,7 +259,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_3
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_3
       rect:
         serializedVersion: 2
         x: 4
@@ -134,7 +280,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_4
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_4
       rect:
         serializedVersion: 2
         x: 83
@@ -145,7 +301,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_5
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_5
       rect:
         serializedVersion: 2
         x: 115
@@ -156,7 +322,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_6
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_6
       rect:
         serializedVersion: 2
         x: 168
@@ -167,7 +343,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_8
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_8
       rect:
         serializedVersion: 2
         x: 236
@@ -177,13 +363,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -24.5, y: 41.5}
-        - {x: -24.5, y: -41.5}
-        - {x: 23.5, y: -41.5}
-        - {x: 24.5, y: -39.5}
-        - {x: 24.5, y: 41.5}
-    - name: beams_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_10
       rect:
         serializedVersion: 2
         x: 6
@@ -194,7 +385,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_11
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_11
       rect:
         serializedVersion: 2
         x: 38
@@ -205,7 +406,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_12
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_12
       rect:
         serializedVersion: 2
         x: 85
@@ -216,7 +427,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_13
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_13
       rect:
         serializedVersion: 2
         x: 117
@@ -227,7 +448,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_14
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_14
       rect:
         serializedVersion: 2
         x: 170
@@ -238,7 +469,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_15
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_15
       rect:
         serializedVersion: 2
         x: 202
@@ -249,7 +490,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_16
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_16
       rect:
         serializedVersion: 2
         x: 294
@@ -259,14 +510,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -33.5, y: 60}
-        - {x: -35.5, y: 59}
-        - {x: -35.5, y: -60}
-        - {x: 35.5, y: -60}
-        - {x: 35.5, y: 54}
-        - {x: 29.5, y: 60}
-    - name: beams_17
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_17
       rect:
         serializedVersion: 2
         x: 3
@@ -277,7 +532,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_18
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_18
       rect:
         serializedVersion: 2
         x: 39
@@ -288,7 +553,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_19
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_19
       rect:
         serializedVersion: 2
         x: 82
@@ -299,7 +574,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_20
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_20
       rect:
         serializedVersion: 2
         x: 118
@@ -310,7 +595,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_21
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_21
       rect:
         serializedVersion: 2
         x: 167
@@ -321,7 +616,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_22
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_22
       rect:
         serializedVersion: 2
         x: 203
@@ -332,7 +637,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_23
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_23
       rect:
         serializedVersion: 2
         x: 3
@@ -343,7 +658,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_24
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_24
       rect:
         serializedVersion: 2
         x: 35
@@ -354,7 +679,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_25
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_25
       rect:
         serializedVersion: 2
         x: 84
@@ -365,7 +700,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_26
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_26
       rect:
         serializedVersion: 2
         x: 116
@@ -376,7 +721,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_27
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_27
       rect:
         serializedVersion: 2
         x: 170
@@ -387,7 +742,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_28
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_28
       rect:
         serializedVersion: 2
         x: 202
@@ -398,7 +763,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_29
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_29
       rect:
         serializedVersion: 2
         x: 232
@@ -408,16 +783,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -27, y: 48.5}
-        - {x: -28, y: 47.5}
-        - {x: -28, y: -3.5}
-        - {x: -13, y: -48.5}
-        - {x: 21, y: -48.5}
-        - {x: 23, y: -47.5}
-        - {x: 28, y: -9.5}
-        - {x: 28, y: 48.5}
-    - name: beams_30
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_30
       rect:
         serializedVersion: 2
         x: 5
@@ -428,7 +805,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_31
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_31
       rect:
         serializedVersion: 2
         x: 37
@@ -439,7 +826,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_32
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_32
       rect:
         serializedVersion: 2
         x: 86
@@ -450,7 +847,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_33
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_33
       rect:
         serializedVersion: 2
         x: 118
@@ -461,7 +868,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_34
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_34
       rect:
         serializedVersion: 2
         x: 172
@@ -472,7 +889,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_35
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_35
       rect:
         serializedVersion: 2
         x: 204
@@ -483,7 +910,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_36
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_36
       rect:
         serializedVersion: 2
         x: 2
@@ -494,7 +931,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_37
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_37
       rect:
         serializedVersion: 2
         x: 38
@@ -505,7 +952,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_38
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_38
       rect:
         serializedVersion: 2
         x: 83
@@ -516,7 +973,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_39
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_39
       rect:
         serializedVersion: 2
         x: 119
@@ -527,7 +994,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_40
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_40
       rect:
         serializedVersion: 2
         x: 169
@@ -538,7 +1015,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_41
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_41
       rect:
         serializedVersion: 2
         x: 205
@@ -549,7 +1036,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: beams_43
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_43
       rect:
         serializedVersion: 2
         x: 227
@@ -559,13 +1056,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20, y: 42.5}
-        - {x: -24, y: 33.5}
-        - {x: -24, y: -42.5}
-        - {x: 24, y: -42.5}
-        - {x: 24, y: 42.5}
-    - name: beams_44
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27305410000000000800000000000000
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_44
       rect:
         serializedVersion: 2
         x: 162
@@ -575,14 +1077,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -23.5, y: 42.5}
-        - {x: -23.5, y: -25.5}
-        - {x: -21.5, y: -42.5}
-        - {x: 8.5, y: -42.5}
-        - {x: 23.5, y: -10.5}
-        - {x: 23.5, y: 42.5}
-    - name: beams_46
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47305410000000000800000000000000
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_46
       rect:
         serializedVersion: 2
         x: 0
@@ -592,14 +1098,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -7.5, y: 21.5}
-        - {x: -16.5, y: 13.5}
-        - {x: -16.5, y: -21.5}
-        - {x: 16.5, y: -21.5}
-        - {x: 16.5, y: 16.5}
-        - {x: 9.5, y: 21.5}
-    - name: beams_48
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67305410000000000800000000000000
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_48
       rect:
         serializedVersion: 2
         x: 117
@@ -609,14 +1119,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20.5, y: 35}
-        - {x: -20.5, y: -3}
-        - {x: -8.5, y: -35}
-        - {x: 11.5, y: -35}
-        - {x: 20.5, y: -12}
-        - {x: 20.5, y: 35}
-    - name: beams_49
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_49
       rect:
         serializedVersion: 2
         x: 77
@@ -626,14 +1140,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -17.5, y: 35}
-        - {x: -19.5, y: 34}
-        - {x: -19.5, y: -35}
-        - {x: 19.5, y: -35}
-        - {x: 19.5, y: 29}
-        - {x: 16.5, y: 35}
-    - name: beams_50
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_50
       rect:
         serializedVersion: 2
         x: 135
@@ -643,14 +1161,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -27, y: 48.5}
-        - {x: -27, y: -48.5}
-        - {x: 22, y: -48.5}
-        - {x: 27, y: -47.5}
-        - {x: 27, y: 39.5}
-        - {x: 21, y: 48.5}
-    - name: beams_51
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7305410000000000800000000000000
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_51
       rect:
         serializedVersion: 2
         x: 203
@@ -660,15 +1182,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -25, y: 54.5}
-        - {x: -31, y: 48.5}
-        - {x: -31, y: -54.5}
-        - {x: 30, y: -54.5}
-        - {x: 31, y: -53.5}
-        - {x: 31, y: 47.5}
-        - {x: 29, y: 54.5}
-    - name: beams_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7305410000000000800000000000000
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_7
       rect:
         serializedVersion: 2
         x: 8
@@ -678,12 +1203,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -31, y: 46.5}
-        - {x: -31, y: -46.5}
-        - {x: 31, y: -46.5}
-        - {x: 31, y: 46.5}
-    - name: beams_42
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28305410000000000800000000000000
+      internalID: 21300098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beams_42
       rect:
         serializedVersion: 2
         x: 57
@@ -693,15 +1224,29 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -15.5, y: 30.5}
-        - {x: -21.5, y: 22.5}
-        - {x: -21.5, y: -30.5}
-        - {x: 21.5, y: -30.5}
-        - {x: 21.5, y: 15.5}
-        - {x: 11.5, y: 30.5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48305410000000000800000000000000
+      internalID: 21300100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

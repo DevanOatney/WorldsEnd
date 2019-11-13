@@ -1,27 +1,48 @@
 fileFormatVersion: 2
 guid: 3a2b33e6ba3231d42a555fe038b59829
-timeCreated: 1457142992
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Light_003_0
-    21300002: Light_003_1
-    21300004: Light_003_2
-    21300006: Light_003_3
-    21300008: Light_003_4
-    21300010: Light_003_5
-    21300012: Light_003_6
-    21300014: Light_003_7
-    21300016: Light_003_8
-    21300018: Light_003_9
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Light_003_0
+  - first:
+      213: 21300002
+    second: Light_003_1
+  - first:
+      213: 21300004
+    second: Light_003_2
+  - first:
+      213: 21300006
+    second: Light_003_3
+  - first:
+      213: 21300008
+    second: Light_003_4
+  - first:
+      213: 21300010
+    second: Light_003_5
+  - first:
+      213: 21300012
+    second: Light_003_6
+  - first:
+      213: 21300014
+    second: Light_003_7
+  - first:
+      213: 21300016
+    second: Light_003_8
+  - first:
+      213: 21300018
+    second: Light_003_9
+  externalObjects: {}
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -30,37 +51,60 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: Light_003_0
+    - serializedVersion: 2
+      name: Light_003_0
       rect:
         serializedVersion: 2
         x: 0
@@ -70,38 +114,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -9, y: -77}
-        - {x: 63, y: -77}
-        - {x: 69, y: -75}
-        - {x: 69, y: -17}
-        - {x: 63, y: -3}
-        - {x: 36, y: 5}
-        - {x: 1, y: 5}
-        - {x: -9, y: -11}
-      - - {x: -9, y: 5}
-        - {x: -7, y: 3}
-        - {x: 0, y: 0}
-        - {x: 37, y: 6}
-        - {x: 64, y: 32}
-        - {x: 64, y: 65}
-        - {x: 49, y: 73}
-        - {x: -33, y: 73}
-        - {x: -38, y: 68}
-        - {x: -72, y: 31}
-        - {x: -72, y: 8}
-        - {x: -51, y: -3}
-        - {x: -38, y: -7}
-        - {x: -35, y: -7}
-        - {x: -37, y: -7}
-        - {x: -43, y: -10}
-        - {x: -70, y: -32}
-        - {x: -62, y: -52}
-        - {x: -40, y: -52}
-        - {x: -4, y: -29}
-        - {x: 0, y: -12}
-        - {x: -2, y: -5}
-    - name: Light_003_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_003_1
       rect:
         serializedVersion: 2
         x: 192
@@ -111,14 +135,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -86, y: 88}
-        - {x: -86, y: -91}
-        - {x: 55, y: -91}
-        - {x: 83, y: -52}
-        - {x: 83, y: 43}
-        - {x: 72, y: 88}
-    - name: Light_003_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_003_2
       rect:
         serializedVersion: 2
         x: 384
@@ -128,17 +156,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -96, y: 96}
-        - {x: -96, y: -79}
-        - {x: -76, y: -79}
-        - {x: -27, y: -67}
-        - {x: -4, y: -96}
-        - {x: 37, y: -96}
-        - {x: 60, y: -88}
-        - {x: 96, y: -57}
-        - {x: 96, y: 96}
-    - name: Light_003_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_003_3
       rect:
         serializedVersion: 2
         x: 576
@@ -148,16 +177,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -58, y: 96}
-        - {x: -96, y: 70}
-        - {x: -96, y: -76}
-        - {x: -88, y: -96}
-        - {x: 52, y: -96}
-        - {x: 96, y: -59}
-        - {x: 96, y: 75}
-        - {x: 72, y: 96}
-    - name: Light_003_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_003_4
       rect:
         serializedVersion: 2
         x: 768
@@ -167,17 +198,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 62, y: -96}
-        - {x: 66, y: -94}
-        - {x: 76, y: -76}
-        - {x: 96, y: -66}
-        - {x: 96, y: 87}
-        - {x: 94, y: 96}
-        - {x: -81, y: 96}
-        - {x: -96, y: 62}
-        - {x: -96, y: -96}
-    - name: Light_003_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_003_5
       rect:
         serializedVersion: 2
         x: 0
@@ -187,20 +219,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 93, y: 43}
-        - {x: 96, y: 51}
-        - {x: 96, y: 91}
-        - {x: 85, y: 96}
-        - {x: -75, y: 96}
-        - {x: -86, y: 86}
-        - {x: -96, y: 58}
-        - {x: -96, y: -82}
-        - {x: -87, y: -96}
-        - {x: 91, y: -96}
-        - {x: 96, y: -55}
-        - {x: 96, y: 41}
-    - name: Light_003_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_003_6
       rect:
         serializedVersion: 2
         x: 192
@@ -210,19 +240,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 85, y: 57}
-        - {x: 88, y: 96}
-        - {x: -81, y: 96}
-        - {x: -87, y: 91}
-        - {x: -96, y: 69}
-        - {x: -96, y: -82}
-        - {x: -92, y: -93}
-        - {x: -80, y: -96}
-        - {x: 89, y: -96}
-        - {x: 96, y: -94}
-        - {x: 96, y: 48}
-    - name: Light_003_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_003_7
       rect:
         serializedVersion: 2
         x: 384
@@ -232,16 +261,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 96, y: 64}
-        - {x: 73, y: 69}
-        - {x: 67, y: 96}
-        - {x: -95, y: 96}
-        - {x: -96, y: 94}
-        - {x: -96, y: -83}
-        - {x: -75, y: -96}
-        - {x: 96, y: -96}
-    - name: Light_003_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_003_8
       rect:
         serializedVersion: 2
         x: 576
@@ -251,21 +282,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 96, y: -81}
-        - {x: 96, y: 68}
-        - {x: 82, y: 77}
-        - {x: 56, y: 96}
-        - {x: -83, y: 96}
-        - {x: -96, y: 86}
-        - {x: -96, y: -81}
-        - {x: -88, y: -92}
-        - {x: -65, y: -96}
-        - {x: 44, y: -96}
-        - {x: 47, y: -90}
-        - {x: 62, y: -96}
-        - {x: 82, y: -96}
-    - name: Light_003_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_003_9
       rect:
         serializedVersion: 2
         x: 768
@@ -275,20 +303,29 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 82, y: 96}
-        - {x: -71, y: 96}
-        - {x: -96, y: 89}
-        - {x: -96, y: -82}
-        - {x: -93, y: -90}
-        - {x: -85, y: -92}
-        - {x: -66, y: -96}
-        - {x: 51, y: -96}
-        - {x: 91, y: -85}
-        - {x: 96, y: -81}
-        - {x: 96, y: 90}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

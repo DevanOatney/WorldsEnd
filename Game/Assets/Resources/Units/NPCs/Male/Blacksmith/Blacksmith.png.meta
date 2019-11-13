@@ -1,257 +1,686 @@
 fileFormatVersion: 2
 guid: d641d60769b35db4cb72bb7dab997e1f
-timeCreated: 1433295646
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Blacksmith_0
-    21300002: Blacksmith_1
-    21300004: Blacksmith_2
-    21300006: Blacksmith_3
-    21300008: Blacksmith_4
-    21300010: Blacksmith_5
-    21300012: Blacksmith_6
-    21300014: Blacksmith_7
-    21300016: Blacksmith_8
-    21300018: Blacksmith_9
-    21300020: Blacksmith_10
-    21300022: Blacksmith_11
-    21300024: Blacksmith_12
-    21300026: Blacksmith_13
-    21300028: Blacksmith_14
-    21300030: Blacksmith_15
-    21300032: Blacksmith_16
-    21300034: Blacksmith_17
-    21300036: Blacksmith_18
-    21300038: Blacksmith_19
-    21300040: Blacksmith_20
-    21300042: Blacksmith_21
-    21300044: Blacksmith_22
-    21300046: Blacksmith_23
-    21300048: Blacksmith_24
-    21300050: Blacksmith_25
-    21300052: Blacksmith_26
-    21300054: Blacksmith_27
-    21300056: Blacksmith_28
-    21300058: Blacksmith_29
-    21300060: Blacksmith_30
-    21300062: Blacksmith_31
-    21300064: Blacksmith_32
-    21300066: Blacksmith_33
-    21300068: Blacksmith_34
-    21300070: Blacksmith_35
-    21300072: Blacksmith_36
-    21300074: Blacksmith_37
-    21300076: Blacksmith_38
-    21300078: Blacksmith_39
-    21300080: Blacksmith_40
-    21300082: Blacksmith_41
-    21300084: Blacksmith_42
-    21300086: Blacksmith_43
-    21300088: Blacksmith_44
-    21300090: Blacksmith_45
-    21300092: Blacksmith_46
-    21300094: Blacksmith_47
-    21300096: Blacksmith_48
-    21300098: Blacksmith_49
-    21300100: Blacksmith_50
-    21300102: Blacksmith_51
-    21300104: Blacksmith_52
-    21300106: Blacksmith_53
-    21300108: Blacksmith_54
-    21300110: Blacksmith_55
-    21300112: Blacksmith_56
-    21300114: Blacksmith_57
-    21300116: Blacksmith_58
-    21300118: Blacksmith_59
-    21300120: Blacksmith_60
-    21300122: Blacksmith_61
-    21300124: Blacksmith_62
-    21300126: Blacksmith_63
-    21300128: Blacksmith_64
-    21300130: Blacksmith_65
-    21300132: Blacksmith_66
-    21300134: Blacksmith_67
-    21300136: Blacksmith_68
-    21300138: Blacksmith_69
-    21300140: Blacksmith_70
-    21300142: Blacksmith_71
-    21300144: Blacksmith_72
-    21300146: Blacksmith_73
-    21300148: Blacksmith_74
-    21300150: Blacksmith_75
-    21300152: Blacksmith_76
-    21300154: Blacksmith_77
-    21300156: Blacksmith_78
-    21300158: Blacksmith_79
-    21300160: Blacksmith_80
-    21300162: Blacksmith_81
-    21300164: Blacksmith_82
-    21300166: Blacksmith_83
-    21300168: Blacksmith_84
-    21300170: Blacksmith_85
-    21300172: Blacksmith_86
-    21300174: Blacksmith_87
-    21300176: Blacksmith_88
-    21300178: Blacksmith_89
-    21300180: Blacksmith_90
-    21300182: Blacksmith_91
-    21300184: Blacksmith_92
-    21300186: Blacksmith_93
-    21300188: Blacksmith_94
-    21300190: Blacksmith_95
-    21300192: Blacksmith_96
-    21300194: Blacksmith_97
-    21300196: Blacksmith_98
-    21300198: Blacksmith_99
-    21300200: Blacksmith_100
-    21300202: Blacksmith_101
-    21300204: Blacksmith_102
-    21300206: Blacksmith_103
-    21300208: Blacksmith_104
-    21300210: Blacksmith_105
-    21300212: Blacksmith_106
-    21300214: Blacksmith_107
-    21300216: Blacksmith_108
-    21300218: Blacksmith_109
-    21300220: Blacksmith_110
-    21300222: Blacksmith_111
-    21300224: Blacksmith_112
-    21300226: Blacksmith_113
-    21300228: Blacksmith_114
-    21300230: Blacksmith_115
-    21300232: Blacksmith_116
-    21300234: Blacksmith_117
-    21300236: Blacksmith_118
-    21300238: Blacksmith_119
-    21300240: Blacksmith_120
-    21300242: Blacksmith_121
-    21300244: Blacksmith_122
-    21300246: Blacksmith_123
-    21300248: Blacksmith_124
-    21300250: Blacksmith_125
-    21300252: Blacksmith_126
-    21300254: Blacksmith_127
-    21300256: Blacksmith_128
-    21300258: Blacksmith_129
-    21300260: Blacksmith_130
-    21300262: Blacksmith_131
-    21300264: Blacksmith_132
-    21300266: Blacksmith_133
-    21300268: Blacksmith_134
-    21300270: Blacksmith_135
-    21300272: Blacksmith_136
-    21300274: Blacksmith_137
-    21300276: Blacksmith_138
-    21300278: Blacksmith_139
-    21300280: Blacksmith_140
-    21300282: Blacksmith_141
-    21300284: Blacksmith_142
-    21300286: Blacksmith_143
-    21300288: Blacksmith_144
-    21300290: Blacksmith_145
-    21300292: Blacksmith_146
-    21300294: Blacksmith_147
-    21300296: Blacksmith_148
-    21300298: Blacksmith_149
-    21300300: Blacksmith_150
-    21300302: Blacksmith_151
-    21300304: Blacksmith_152
-    21300306: Blacksmith_153
-    21300308: Blacksmith_154
-    21300310: Blacksmith_155
-    21300312: Blacksmith_156
-    21300314: Blacksmith_157
-    21300316: Blacksmith_158
-    21300318: Blacksmith_159
-    21300320: Blacksmith_160
-    21300322: Blacksmith_161
-    21300324: Blacksmith_162
-    21300326: Blacksmith_163
-    21300328: Blacksmith_164
-    21300330: Blacksmith_165
-    21300332: Blacksmith_166
-    21300334: Blacksmith_167
-    21300336: Blacksmith_168
-    21300338: Blacksmith_169
-    21300340: Blacksmith_170
-    21300342: Blacksmith_171
-    21300344: Blacksmith_172
-    21300346: Blacksmith_173
-    21300348: Blacksmith_174
-    21300350: Blacksmith_175
-    21300352: Blacksmith_176
-    21300354: Blacksmith_177
-    21300356: Blacksmith_178
-    21300358: Blacksmith_179
-    21300360: Blacksmith_180
-    21300362: Blacksmith_181
-    21300364: Blacksmith_182
-    21300366: Blacksmith_183
-    21300368: Blacksmith_184
-    21300370: Blacksmith_185
-    21300372: Blacksmith_186
-    21300374: Blacksmith_187
-    21300376: Blacksmith_188
-    21300378: Blacksmith_189
-    21300380: Blacksmith_190
-    21300382: Blacksmith_191
-    21300384: Blacksmith_192
-    21300386: Blacksmith_193
-    21300388: Blacksmith_194
-    21300390: Blacksmith_195
-    21300392: Blacksmith_196
-    21300394: Blacksmith_197
-    21300396: Blacksmith_198
-    21300398: Blacksmith_199
-    21300400: Blacksmith_200
-    21300402: Blacksmith_201
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Blacksmith_0
+  - first:
+      213: 21300002
+    second: Blacksmith_1
+  - first:
+      213: 21300004
+    second: Blacksmith_2
+  - first:
+      213: 21300006
+    second: Blacksmith_3
+  - first:
+      213: 21300008
+    second: Blacksmith_4
+  - first:
+      213: 21300010
+    second: Blacksmith_5
+  - first:
+      213: 21300012
+    second: Blacksmith_6
+  - first:
+      213: 21300014
+    second: Blacksmith_7
+  - first:
+      213: 21300016
+    second: Blacksmith_8
+  - first:
+      213: 21300018
+    second: Blacksmith_9
+  - first:
+      213: 21300020
+    second: Blacksmith_10
+  - first:
+      213: 21300022
+    second: Blacksmith_11
+  - first:
+      213: 21300024
+    second: Blacksmith_12
+  - first:
+      213: 21300026
+    second: Blacksmith_13
+  - first:
+      213: 21300028
+    second: Blacksmith_14
+  - first:
+      213: 21300030
+    second: Blacksmith_15
+  - first:
+      213: 21300032
+    second: Blacksmith_16
+  - first:
+      213: 21300034
+    second: Blacksmith_17
+  - first:
+      213: 21300036
+    second: Blacksmith_18
+  - first:
+      213: 21300038
+    second: Blacksmith_19
+  - first:
+      213: 21300040
+    second: Blacksmith_20
+  - first:
+      213: 21300042
+    second: Blacksmith_21
+  - first:
+      213: 21300044
+    second: Blacksmith_22
+  - first:
+      213: 21300046
+    second: Blacksmith_23
+  - first:
+      213: 21300048
+    second: Blacksmith_24
+  - first:
+      213: 21300050
+    second: Blacksmith_25
+  - first:
+      213: 21300052
+    second: Blacksmith_26
+  - first:
+      213: 21300054
+    second: Blacksmith_27
+  - first:
+      213: 21300056
+    second: Blacksmith_28
+  - first:
+      213: 21300058
+    second: Blacksmith_29
+  - first:
+      213: 21300060
+    second: Blacksmith_30
+  - first:
+      213: 21300062
+    second: Blacksmith_31
+  - first:
+      213: 21300064
+    second: Blacksmith_32
+  - first:
+      213: 21300066
+    second: Blacksmith_33
+  - first:
+      213: 21300068
+    second: Blacksmith_34
+  - first:
+      213: 21300070
+    second: Blacksmith_35
+  - first:
+      213: 21300072
+    second: Blacksmith_36
+  - first:
+      213: 21300074
+    second: Blacksmith_37
+  - first:
+      213: 21300076
+    second: Blacksmith_38
+  - first:
+      213: 21300078
+    second: Blacksmith_39
+  - first:
+      213: 21300080
+    second: Blacksmith_40
+  - first:
+      213: 21300082
+    second: Blacksmith_41
+  - first:
+      213: 21300084
+    second: Blacksmith_42
+  - first:
+      213: 21300086
+    second: Blacksmith_43
+  - first:
+      213: 21300088
+    second: Blacksmith_44
+  - first:
+      213: 21300090
+    second: Blacksmith_45
+  - first:
+      213: 21300092
+    second: Blacksmith_46
+  - first:
+      213: 21300094
+    second: Blacksmith_47
+  - first:
+      213: 21300096
+    second: Blacksmith_48
+  - first:
+      213: 21300098
+    second: Blacksmith_49
+  - first:
+      213: 21300100
+    second: Blacksmith_50
+  - first:
+      213: 21300102
+    second: Blacksmith_51
+  - first:
+      213: 21300104
+    second: Blacksmith_52
+  - first:
+      213: 21300106
+    second: Blacksmith_53
+  - first:
+      213: 21300108
+    second: Blacksmith_54
+  - first:
+      213: 21300110
+    second: Blacksmith_55
+  - first:
+      213: 21300112
+    second: Blacksmith_56
+  - first:
+      213: 21300114
+    second: Blacksmith_57
+  - first:
+      213: 21300116
+    second: Blacksmith_58
+  - first:
+      213: 21300118
+    second: Blacksmith_59
+  - first:
+      213: 21300120
+    second: Blacksmith_60
+  - first:
+      213: 21300122
+    second: Blacksmith_61
+  - first:
+      213: 21300124
+    second: Blacksmith_62
+  - first:
+      213: 21300126
+    second: Blacksmith_63
+  - first:
+      213: 21300128
+    second: Blacksmith_64
+  - first:
+      213: 21300130
+    second: Blacksmith_65
+  - first:
+      213: 21300132
+    second: Blacksmith_66
+  - first:
+      213: 21300134
+    second: Blacksmith_67
+  - first:
+      213: 21300136
+    second: Blacksmith_68
+  - first:
+      213: 21300138
+    second: Blacksmith_69
+  - first:
+      213: 21300140
+    second: Blacksmith_70
+  - first:
+      213: 21300142
+    second: Blacksmith_71
+  - first:
+      213: 21300144
+    second: Blacksmith_72
+  - first:
+      213: 21300146
+    second: Blacksmith_73
+  - first:
+      213: 21300148
+    second: Blacksmith_74
+  - first:
+      213: 21300150
+    second: Blacksmith_75
+  - first:
+      213: 21300152
+    second: Blacksmith_76
+  - first:
+      213: 21300154
+    second: Blacksmith_77
+  - first:
+      213: 21300156
+    second: Blacksmith_78
+  - first:
+      213: 21300158
+    second: Blacksmith_79
+  - first:
+      213: 21300160
+    second: Blacksmith_80
+  - first:
+      213: 21300162
+    second: Blacksmith_81
+  - first:
+      213: 21300164
+    second: Blacksmith_82
+  - first:
+      213: 21300166
+    second: Blacksmith_83
+  - first:
+      213: 21300168
+    second: Blacksmith_84
+  - first:
+      213: 21300170
+    second: Blacksmith_85
+  - first:
+      213: 21300172
+    second: Blacksmith_86
+  - first:
+      213: 21300174
+    second: Blacksmith_87
+  - first:
+      213: 21300176
+    second: Blacksmith_88
+  - first:
+      213: 21300178
+    second: Blacksmith_89
+  - first:
+      213: 21300180
+    second: Blacksmith_90
+  - first:
+      213: 21300182
+    second: Blacksmith_91
+  - first:
+      213: 21300184
+    second: Blacksmith_92
+  - first:
+      213: 21300186
+    second: Blacksmith_93
+  - first:
+      213: 21300188
+    second: Blacksmith_94
+  - first:
+      213: 21300190
+    second: Blacksmith_95
+  - first:
+      213: 21300192
+    second: Blacksmith_96
+  - first:
+      213: 21300194
+    second: Blacksmith_97
+  - first:
+      213: 21300196
+    second: Blacksmith_98
+  - first:
+      213: 21300198
+    second: Blacksmith_99
+  - first:
+      213: 21300200
+    second: Blacksmith_100
+  - first:
+      213: 21300202
+    second: Blacksmith_101
+  - first:
+      213: 21300204
+    second: Blacksmith_102
+  - first:
+      213: 21300206
+    second: Blacksmith_103
+  - first:
+      213: 21300208
+    second: Blacksmith_104
+  - first:
+      213: 21300210
+    second: Blacksmith_105
+  - first:
+      213: 21300212
+    second: Blacksmith_106
+  - first:
+      213: 21300214
+    second: Blacksmith_107
+  - first:
+      213: 21300216
+    second: Blacksmith_108
+  - first:
+      213: 21300218
+    second: Blacksmith_109
+  - first:
+      213: 21300220
+    second: Blacksmith_110
+  - first:
+      213: 21300222
+    second: Blacksmith_111
+  - first:
+      213: 21300224
+    second: Blacksmith_112
+  - first:
+      213: 21300226
+    second: Blacksmith_113
+  - first:
+      213: 21300228
+    second: Blacksmith_114
+  - first:
+      213: 21300230
+    second: Blacksmith_115
+  - first:
+      213: 21300232
+    second: Blacksmith_116
+  - first:
+      213: 21300234
+    second: Blacksmith_117
+  - first:
+      213: 21300236
+    second: Blacksmith_118
+  - first:
+      213: 21300238
+    second: Blacksmith_119
+  - first:
+      213: 21300240
+    second: Blacksmith_120
+  - first:
+      213: 21300242
+    second: Blacksmith_121
+  - first:
+      213: 21300244
+    second: Blacksmith_122
+  - first:
+      213: 21300246
+    second: Blacksmith_123
+  - first:
+      213: 21300248
+    second: Blacksmith_124
+  - first:
+      213: 21300250
+    second: Blacksmith_125
+  - first:
+      213: 21300252
+    second: Blacksmith_126
+  - first:
+      213: 21300254
+    second: Blacksmith_127
+  - first:
+      213: 21300256
+    second: Blacksmith_128
+  - first:
+      213: 21300258
+    second: Blacksmith_129
+  - first:
+      213: 21300260
+    second: Blacksmith_130
+  - first:
+      213: 21300262
+    second: Blacksmith_131
+  - first:
+      213: 21300264
+    second: Blacksmith_132
+  - first:
+      213: 21300266
+    second: Blacksmith_133
+  - first:
+      213: 21300268
+    second: Blacksmith_134
+  - first:
+      213: 21300270
+    second: Blacksmith_135
+  - first:
+      213: 21300272
+    second: Blacksmith_136
+  - first:
+      213: 21300274
+    second: Blacksmith_137
+  - first:
+      213: 21300276
+    second: Blacksmith_138
+  - first:
+      213: 21300278
+    second: Blacksmith_139
+  - first:
+      213: 21300280
+    second: Blacksmith_140
+  - first:
+      213: 21300282
+    second: Blacksmith_141
+  - first:
+      213: 21300284
+    second: Blacksmith_142
+  - first:
+      213: 21300286
+    second: Blacksmith_143
+  - first:
+      213: 21300288
+    second: Blacksmith_144
+  - first:
+      213: 21300290
+    second: Blacksmith_145
+  - first:
+      213: 21300292
+    second: Blacksmith_146
+  - first:
+      213: 21300294
+    second: Blacksmith_147
+  - first:
+      213: 21300296
+    second: Blacksmith_148
+  - first:
+      213: 21300298
+    second: Blacksmith_149
+  - first:
+      213: 21300300
+    second: Blacksmith_150
+  - first:
+      213: 21300302
+    second: Blacksmith_151
+  - first:
+      213: 21300304
+    second: Blacksmith_152
+  - first:
+      213: 21300306
+    second: Blacksmith_153
+  - first:
+      213: 21300308
+    second: Blacksmith_154
+  - first:
+      213: 21300310
+    second: Blacksmith_155
+  - first:
+      213: 21300312
+    second: Blacksmith_156
+  - first:
+      213: 21300314
+    second: Blacksmith_157
+  - first:
+      213: 21300316
+    second: Blacksmith_158
+  - first:
+      213: 21300318
+    second: Blacksmith_159
+  - first:
+      213: 21300320
+    second: Blacksmith_160
+  - first:
+      213: 21300322
+    second: Blacksmith_161
+  - first:
+      213: 21300324
+    second: Blacksmith_162
+  - first:
+      213: 21300326
+    second: Blacksmith_163
+  - first:
+      213: 21300328
+    second: Blacksmith_164
+  - first:
+      213: 21300330
+    second: Blacksmith_165
+  - first:
+      213: 21300332
+    second: Blacksmith_166
+  - first:
+      213: 21300334
+    second: Blacksmith_167
+  - first:
+      213: 21300336
+    second: Blacksmith_168
+  - first:
+      213: 21300338
+    second: Blacksmith_169
+  - first:
+      213: 21300340
+    second: Blacksmith_170
+  - first:
+      213: 21300342
+    second: Blacksmith_171
+  - first:
+      213: 21300344
+    second: Blacksmith_172
+  - first:
+      213: 21300346
+    second: Blacksmith_173
+  - first:
+      213: 21300348
+    second: Blacksmith_174
+  - first:
+      213: 21300350
+    second: Blacksmith_175
+  - first:
+      213: 21300352
+    second: Blacksmith_176
+  - first:
+      213: 21300354
+    second: Blacksmith_177
+  - first:
+      213: 21300356
+    second: Blacksmith_178
+  - first:
+      213: 21300358
+    second: Blacksmith_179
+  - first:
+      213: 21300360
+    second: Blacksmith_180
+  - first:
+      213: 21300362
+    second: Blacksmith_181
+  - first:
+      213: 21300364
+    second: Blacksmith_182
+  - first:
+      213: 21300366
+    second: Blacksmith_183
+  - first:
+      213: 21300368
+    second: Blacksmith_184
+  - first:
+      213: 21300370
+    second: Blacksmith_185
+  - first:
+      213: 21300372
+    second: Blacksmith_186
+  - first:
+      213: 21300374
+    second: Blacksmith_187
+  - first:
+      213: 21300376
+    second: Blacksmith_188
+  - first:
+      213: 21300378
+    second: Blacksmith_189
+  - first:
+      213: 21300380
+    second: Blacksmith_190
+  - first:
+      213: 21300382
+    second: Blacksmith_191
+  - first:
+      213: 21300384
+    second: Blacksmith_192
+  - first:
+      213: 21300386
+    second: Blacksmith_193
+  - first:
+      213: 21300388
+    second: Blacksmith_194
+  - first:
+      213: 21300390
+    second: Blacksmith_195
+  - first:
+      213: 21300392
+    second: Blacksmith_196
+  - first:
+      213: 21300394
+    second: Blacksmith_197
+  - first:
+      213: 21300396
+    second: Blacksmith_198
+  - first:
+      213: 21300398
+    second: Blacksmith_199
+  - first:
+      213: 21300400
+    second: Blacksmith_200
+  - first:
+      213: 21300402
+    second: Blacksmith_201
+  externalObjects: {}
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: Blacksmith_0
+    - serializedVersion: 2
+      name: Blacksmith_0
       rect:
         serializedVersion: 2
         x: 11
@@ -261,7 +690,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_1
       rect:
         serializedVersion: 2
         x: 75
@@ -271,7 +711,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_2
       rect:
         serializedVersion: 2
         x: 139
@@ -281,7 +732,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_3
       rect:
         serializedVersion: 2
         x: 203
@@ -291,7 +753,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_4
       rect:
         serializedVersion: 2
         x: 267
@@ -301,7 +774,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_5
       rect:
         serializedVersion: 2
         x: 331
@@ -311,7 +795,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_6
       rect:
         serializedVersion: 2
         x: 395
@@ -321,7 +816,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_7
       rect:
         serializedVersion: 2
         x: 459
@@ -331,7 +837,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_8
       rect:
         serializedVersion: 2
         x: 523
@@ -341,7 +858,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_9
       rect:
         serializedVersion: 2
         x: 12
@@ -351,7 +879,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_10
       rect:
         serializedVersion: 2
         x: 76
@@ -361,7 +900,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_11
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_11
       rect:
         serializedVersion: 2
         x: 140
@@ -371,7 +921,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_12
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_12
       rect:
         serializedVersion: 2
         x: 204
@@ -381,7 +942,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_13
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_13
       rect:
         serializedVersion: 2
         x: 268
@@ -391,7 +963,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_14
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_14
       rect:
         serializedVersion: 2
         x: 332
@@ -401,7 +984,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_15
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_15
       rect:
         serializedVersion: 2
         x: 396
@@ -411,7 +1005,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_16
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_16
       rect:
         serializedVersion: 2
         x: 460
@@ -421,7 +1026,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_17
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_17
       rect:
         serializedVersion: 2
         x: 524
@@ -431,7 +1047,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_18
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_18
       rect:
         serializedVersion: 2
         x: 11
@@ -439,9 +1066,20 @@ TextureImporter:
         width: 30
         height: 52
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_19
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_19
       rect:
         serializedVersion: 2
         x: 75
@@ -451,7 +1089,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_20
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_20
       rect:
         serializedVersion: 2
         x: 139
@@ -461,7 +1110,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_21
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_21
       rect:
         serializedVersion: 2
         x: 203
@@ -469,9 +1129,20 @@ TextureImporter:
         width: 30
         height: 50
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_22
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_22
       rect:
         serializedVersion: 2
         x: 266
@@ -481,7 +1152,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_23
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_23
       rect:
         serializedVersion: 2
         x: 331
@@ -491,7 +1173,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_24
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_24
       rect:
         serializedVersion: 2
         x: 395
@@ -501,7 +1194,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_25
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_25
       rect:
         serializedVersion: 2
         x: 459
@@ -511,7 +1215,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_26
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_26
       rect:
         serializedVersion: 2
         x: 523
@@ -521,7 +1236,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_27
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_27
       rect:
         serializedVersion: 2
         x: 11
@@ -529,9 +1255,20 @@ TextureImporter:
         width: 29
         height: 52
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_28
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_28
       rect:
         serializedVersion: 2
         x: 75
@@ -539,9 +1276,20 @@ TextureImporter:
         width: 29
         height: 52
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_29
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_29
       rect:
         serializedVersion: 2
         x: 139
@@ -549,9 +1297,20 @@ TextureImporter:
         width: 29
         height: 52
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_30
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_30
       rect:
         serializedVersion: 2
         x: 204
@@ -559,9 +1318,20 @@ TextureImporter:
         width: 29
         height: 52
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_31
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_31
       rect:
         serializedVersion: 2
         x: 267
@@ -569,9 +1339,20 @@ TextureImporter:
         width: 29
         height: 52
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_32
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_32
       rect:
         serializedVersion: 2
         x: 329
@@ -579,9 +1360,20 @@ TextureImporter:
         width: 30
         height: 52
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_33
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_33
       rect:
         serializedVersion: 2
         x: 395
@@ -591,7 +1383,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_34
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_34
       rect:
         serializedVersion: 2
         x: 459
@@ -601,7 +1404,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blacksmith_35
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blacksmith_35
       rect:
         serializedVersion: 2
         x: 523
@@ -611,7 +1425,29 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

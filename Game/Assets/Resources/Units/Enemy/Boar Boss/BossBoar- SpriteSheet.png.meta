@@ -1,101 +1,218 @@
 fileFormatVersion: 2
 guid: 76df4cade5e5d85438226b894a680f24
-timeCreated: 1444080826
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: BossBoar- SpriteSheet_0
-    21300002: BossBoar- SpriteSheet_1
-    21300004: BossBoar- SpriteSheet_2
-    21300006: BossBoar- SpriteSheet_3
-    21300008: BossBoar- SpriteSheet_4
-    21300010: BossBoar- SpriteSheet_5
-    21300012: BossBoar- SpriteSheet_6
-    21300014: BossBoar- SpriteSheet_7
-    21300016: BossBoar- SpriteSheet_8
-    21300018: BossBoar- SpriteSheet_9
-    21300020: BossBoar- SpriteSheet_10
-    21300022: BossBoar- SpriteSheet_11
-    21300024: BossBoar- SpriteSheet_12
-    21300026: BossBoar- SpriteSheet_13
-    21300028: BossBoar- SpriteSheet_14
-    21300030: BossBoar- SpriteSheet_15
-    21300032: BossBoar- SpriteSheet_16
-    21300034: BossBoar- SpriteSheet_17
-    21300036: BossBoar- SpriteSheet_18
-    21300038: BossBoar- SpriteSheet_19
-    21300040: BossBoar- SpriteSheet_20
-    21300042: BossBoar- SpriteSheet_21
-    21300044: BossBoar- SpriteSheet_22
-    21300046: BossBoar- SpriteSheet_23
-    21300048: BossBoar- SpriteSheet_24
-    21300050: BossBoar- SpriteSheet_25
-    21300052: BossBoar- SpriteSheet_26
-    21300054: BossBoar- SpriteSheet_27
-    21300056: BossBoar- SpriteSheet_28
-    21300058: BossBoar- SpriteSheet_29
-    21300060: BossBoar- SpriteSheet_30
-    21300062: BossBoar- SpriteSheet_31
-    21300064: BossBoar- SpriteSheet_32
-    21300066: BossBoar- SpriteSheet_33
-    21300068: BossBoar- SpriteSheet_34
-    21300070: BossBoar- SpriteSheet_35
-    21300072: BossBoar- SpriteSheet_36
-    21300074: BossBoar- SpriteSheet_37
-    21300076: BossBoar- SpriteSheet_38
-    21300078: BossBoar- SpriteSheet_39
-    21300080: BossBoar- SpriteSheet_40
-    21300082: BossBoar- SpriteSheet_41
-    21300084: BossBoar- SpriteSheet_42
-    21300086: BossBoar- SpriteSheet_43
-    21300088: BossBoar- SpriteSheet_44
-    21300090: BossBoar- SpriteSheet_45
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: BossBoar- SpriteSheet_0
+  - first:
+      213: 21300002
+    second: BossBoar- SpriteSheet_1
+  - first:
+      213: 21300004
+    second: BossBoar- SpriteSheet_2
+  - first:
+      213: 21300006
+    second: BossBoar- SpriteSheet_3
+  - first:
+      213: 21300008
+    second: BossBoar- SpriteSheet_4
+  - first:
+      213: 21300010
+    second: BossBoar- SpriteSheet_5
+  - first:
+      213: 21300012
+    second: BossBoar- SpriteSheet_6
+  - first:
+      213: 21300014
+    second: BossBoar- SpriteSheet_7
+  - first:
+      213: 21300016
+    second: BossBoar- SpriteSheet_8
+  - first:
+      213: 21300018
+    second: BossBoar- SpriteSheet_9
+  - first:
+      213: 21300020
+    second: BossBoar- SpriteSheet_10
+  - first:
+      213: 21300022
+    second: BossBoar- SpriteSheet_11
+  - first:
+      213: 21300024
+    second: BossBoar- SpriteSheet_12
+  - first:
+      213: 21300026
+    second: BossBoar- SpriteSheet_13
+  - first:
+      213: 21300028
+    second: BossBoar- SpriteSheet_14
+  - first:
+      213: 21300030
+    second: BossBoar- SpriteSheet_15
+  - first:
+      213: 21300032
+    second: BossBoar- SpriteSheet_16
+  - first:
+      213: 21300034
+    second: BossBoar- SpriteSheet_17
+  - first:
+      213: 21300036
+    second: BossBoar- SpriteSheet_18
+  - first:
+      213: 21300038
+    second: BossBoar- SpriteSheet_19
+  - first:
+      213: 21300040
+    second: BossBoar- SpriteSheet_20
+  - first:
+      213: 21300042
+    second: BossBoar- SpriteSheet_21
+  - first:
+      213: 21300044
+    second: BossBoar- SpriteSheet_22
+  - first:
+      213: 21300046
+    second: BossBoar- SpriteSheet_23
+  - first:
+      213: 21300048
+    second: BossBoar- SpriteSheet_24
+  - first:
+      213: 21300050
+    second: BossBoar- SpriteSheet_25
+  - first:
+      213: 21300052
+    second: BossBoar- SpriteSheet_26
+  - first:
+      213: 21300054
+    second: BossBoar- SpriteSheet_27
+  - first:
+      213: 21300056
+    second: BossBoar- SpriteSheet_28
+  - first:
+      213: 21300058
+    second: BossBoar- SpriteSheet_29
+  - first:
+      213: 21300060
+    second: BossBoar- SpriteSheet_30
+  - first:
+      213: 21300062
+    second: BossBoar- SpriteSheet_31
+  - first:
+      213: 21300064
+    second: BossBoar- SpriteSheet_32
+  - first:
+      213: 21300066
+    second: BossBoar- SpriteSheet_33
+  - first:
+      213: 21300068
+    second: BossBoar- SpriteSheet_34
+  - first:
+      213: 21300070
+    second: BossBoar- SpriteSheet_35
+  - first:
+      213: 21300072
+    second: BossBoar- SpriteSheet_36
+  - first:
+      213: 21300074
+    second: BossBoar- SpriteSheet_37
+  - first:
+      213: 21300076
+    second: BossBoar- SpriteSheet_38
+  - first:
+      213: 21300078
+    second: BossBoar- SpriteSheet_39
+  - first:
+      213: 21300080
+    second: BossBoar- SpriteSheet_40
+  - first:
+      213: 21300082
+    second: BossBoar- SpriteSheet_41
+  - first:
+      213: 21300084
+    second: BossBoar- SpriteSheet_42
+  - first:
+      213: 21300086
+    second: BossBoar- SpriteSheet_43
+  - first:
+      213: 21300088
+    second: BossBoar- SpriteSheet_44
+  - first:
+      213: 21300090
+    second: BossBoar- SpriteSheet_45
+  externalObjects: {}
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 4096
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: BossBoar- SpriteSheet_0
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 17
@@ -105,7 +222,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_1
       rect:
         serializedVersion: 2
         x: 81
@@ -115,7 +243,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_2
       rect:
         serializedVersion: 2
         x: 17
@@ -125,7 +264,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_3
       rect:
         serializedVersion: 2
         x: 144
@@ -135,7 +285,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_4
       rect:
         serializedVersion: 2
         x: 17
@@ -145,7 +306,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_5
       rect:
         serializedVersion: 2
         x: 144
@@ -155,7 +327,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_6
       rect:
         serializedVersion: 2
         x: 272
@@ -165,7 +348,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_7
       rect:
         serializedVersion: 2
         x: 400
@@ -175,7 +369,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_8
       rect:
         serializedVersion: 2
         x: 17
@@ -185,7 +390,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_9
       rect:
         serializedVersion: 2
         x: 136
@@ -195,7 +411,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_10
       rect:
         serializedVersion: 2
         x: 273
@@ -205,7 +432,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_11
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_11
       rect:
         serializedVersion: 2
         x: 401
@@ -215,7 +453,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_12
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_12
       rect:
         serializedVersion: 2
         x: 17
@@ -225,7 +474,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_13
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_13
       rect:
         serializedVersion: 2
         x: 145
@@ -235,7 +495,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_14
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_14
       rect:
         serializedVersion: 2
         x: 273
@@ -245,7 +516,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_15
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_15
       rect:
         serializedVersion: 2
         x: 403
@@ -255,7 +537,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_16
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_16
       rect:
         serializedVersion: 2
         x: 529
@@ -265,7 +558,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_17
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_17
       rect:
         serializedVersion: 2
         x: 657
@@ -275,7 +579,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_18
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_18
       rect:
         serializedVersion: 2
         x: 17
@@ -285,7 +600,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_19
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_19
       rect:
         serializedVersion: 2
         x: 135
@@ -295,7 +621,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_20
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_20
       rect:
         serializedVersion: 2
         x: 14
@@ -305,7 +642,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_21
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_21
       rect:
         serializedVersion: 2
         x: 142
@@ -315,7 +663,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_22
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_22
       rect:
         serializedVersion: 2
         x: 270
@@ -325,7 +684,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_23
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_23
       rect:
         serializedVersion: 2
         x: 400
@@ -335,7 +705,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_24
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_24
       rect:
         serializedVersion: 2
         x: 17
@@ -345,7 +726,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_25
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_25
       rect:
         serializedVersion: 2
         x: 145
@@ -355,7 +747,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_26
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_26
       rect:
         serializedVersion: 2
         x: 16
@@ -365,7 +768,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_27
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_27
       rect:
         serializedVersion: 2
         x: 143
@@ -375,7 +789,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_28
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_28
       rect:
         serializedVersion: 2
         x: 271
@@ -385,7 +810,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_29
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_29
       rect:
         serializedVersion: 2
         x: 399
@@ -395,7 +831,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_30
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_30
       rect:
         serializedVersion: 2
         x: 18
@@ -405,7 +852,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_31
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_31
       rect:
         serializedVersion: 2
         x: 145
@@ -415,7 +873,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_32
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_32
       rect:
         serializedVersion: 2
         x: 273
@@ -425,7 +894,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_33
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_33
       rect:
         serializedVersion: 2
         x: 402
@@ -435,7 +915,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_34
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_34
       rect:
         serializedVersion: 2
         x: 17
@@ -445,7 +936,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_35
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_35
       rect:
         serializedVersion: 2
         x: 144
@@ -455,7 +957,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_36
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_36
       rect:
         serializedVersion: 2
         x: 284
@@ -465,7 +978,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_37
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_37
       rect:
         serializedVersion: 2
         x: 402
@@ -475,7 +999,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_38
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_38
       rect:
         serializedVersion: 2
         x: 531
@@ -485,7 +1020,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_39
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_39
       rect:
         serializedVersion: 2
         x: 657
@@ -495,7 +1041,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_40
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_40
       rect:
         serializedVersion: 2
         x: 18
@@ -505,7 +1062,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_41
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_41
       rect:
         serializedVersion: 2
         x: 134
@@ -515,7 +1083,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_42
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27305410000000000800000000000000
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_42
       rect:
         serializedVersion: 2
         x: 14
@@ -525,7 +1104,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_43
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47305410000000000800000000000000
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_43
       rect:
         serializedVersion: 2
         x: 144
@@ -535,7 +1125,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_44
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67305410000000000800000000000000
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_44
       rect:
         serializedVersion: 2
         x: 277
@@ -545,7 +1146,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BossBoar- SpriteSheet_45
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBoar- SpriteSheet_45
       rect:
         serializedVersion: 2
         x: 401
@@ -555,7 +1167,29 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

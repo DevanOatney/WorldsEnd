@@ -1,36 +1,75 @@
 fileFormatVersion: 2
 guid: 7cdfa85f8603e154cbca0dac5d061558
-timeCreated: 1457131087
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: earth_002_0
-    21300002: earth_002_1
-    21300004: earth_002_2
-    21300006: earth_002_3
-    21300008: earth_002_4
-    21300010: earth_002_5
-    21300012: earth_002_6
-    21300014: earth_002_7
-    21300016: earth_002_8
-    21300018: earth_002_9
-    21300020: earth_002_10
-    21300022: earth_002_11
-    21300024: earth_002_12
-    21300026: earth_002_13
-    21300028: earth_002_14
-    21300030: earth_002_15
-    21300032: earth_002_16
-    21300034: earth_002_17
-    21300036: earth_002_18
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: earth_002_0
+  - first:
+      213: 21300002
+    second: earth_002_1
+  - first:
+      213: 21300004
+    second: earth_002_2
+  - first:
+      213: 21300006
+    second: earth_002_3
+  - first:
+      213: 21300008
+    second: earth_002_4
+  - first:
+      213: 21300010
+    second: earth_002_5
+  - first:
+      213: 21300012
+    second: earth_002_6
+  - first:
+      213: 21300014
+    second: earth_002_7
+  - first:
+      213: 21300016
+    second: earth_002_8
+  - first:
+      213: 21300018
+    second: earth_002_9
+  - first:
+      213: 21300020
+    second: earth_002_10
+  - first:
+      213: 21300022
+    second: earth_002_11
+  - first:
+      213: 21300024
+    second: earth_002_12
+  - first:
+      213: 21300026
+    second: earth_002_13
+  - first:
+      213: 21300028
+    second: earth_002_14
+  - first:
+      213: 21300030
+    second: earth_002_15
+  - first:
+      213: 21300032
+    second: earth_002_16
+  - first:
+      213: 21300034
+    second: earth_002_17
+  - first:
+      213: 21300036
+    second: earth_002_18
+  externalObjects: {}
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -39,37 +78,60 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: earth_002_0
+    - serializedVersion: 2
+      name: earth_002_0
       rect:
         serializedVersion: 2
         x: 192
@@ -79,40 +141,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -24, y: -74}
-        - {x: -22, y: -76}
-        - {x: -19, y: -75}
-        - {x: -19, y: -72}
-        - {x: -21, y: -70}
-        - {x: -24, y: -71}
-      - - {x: -13, y: -68}
-        - {x: -10, y: -67}
-        - {x: -10, y: -64}
-        - {x: -13, y: -63}
-        - {x: -15, y: -65}
-      - - {x: -12, y: -55}
-        - {x: -12, y: -57}
-        - {x: -9, y: -61}
-        - {x: 3, y: -61}
-        - {x: 15, y: -59}
-        - {x: 17, y: -57}
-        - {x: 16, y: -54}
-        - {x: -10, y: -54}
-      - - {x: -35, y: -54}
-        - {x: -34, y: -58}
-        - {x: -15, y: -58}
-        - {x: -12, y: -54}
-        - {x: -13, y: -51}
-        - {x: -34, y: -51}
-      - - {x: 19, y: -51}
-        - {x: 18, y: -54}
-        - {x: 22, y: -58}
-        - {x: 36, y: -58}
-        - {x: 41, y: -55}
-        - {x: 40, y: -52}
-        - {x: 30, y: -51}
-    - name: earth_002_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_1
       rect:
         serializedVersion: 2
         x: 384
@@ -122,24 +162,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 22, y: 21}
-        - {x: -37, y: -49}
-        - {x: -39, y: -53}
-        - {x: -39, y: -58}
-        - {x: -31, y: -61}
-        - {x: -10, y: -69}
-        - {x: 34, y: -74}
-        - {x: 39, y: -74}
-        - {x: 45, y: -60}
-        - {x: 45, y: -29}
-        - {x: 40, y: 21}
-      - - {x: -23, y: -72}
-        - {x: -20, y: -71}
-        - {x: -19, y: -66}
-        - {x: -22, y: -64}
-        - {x: -26, y: -67}
-    - name: earth_002_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_2
       rect:
         serializedVersion: 2
         x: 576
@@ -149,30 +183,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 35, y: 19}
-        - {x: 10, y: 22}
-        - {x: 4, y: 22}
-        - {x: -41, y: -42}
-        - {x: -41, y: -68}
-        - {x: -14, y: -78}
-        - {x: 35, y: -78}
-        - {x: 37, y: -77}
-        - {x: 48, y: -60}
-        - {x: 48, y: -32}
-        - {x: 37, y: 17}
-      - - {x: 26, y: -71}
-        - {x: 29, y: -70}
-        - {x: 29, y: -67}
-        - {x: 26, y: -66}
-        - {x: 24, y: -68}
-      - - {x: -3, y: -47}
-        - {x: -1, y: -49}
-        - {x: 2, y: -48}
-        - {x: 2, y: -45}
-        - {x: 0, y: -43}
-        - {x: -3, y: -44}
-    - name: earth_002_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_3
       rect:
         serializedVersion: 2
         x: 768
@@ -182,23 +204,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -4, y: -40}
-        - {x: -3, y: -46}
-        - {x: -9, y: -36}
-        - {x: -10, y: 7}
-        - {x: -12, y: 9}
-        - {x: -15, y: 8}
-        - {x: -44, y: -44}
-        - {x: -44, y: -66}
-        - {x: -17, y: -79}
-        - {x: 32, y: -79}
-        - {x: 51, y: -68}
-        - {x: 51, y: -29}
-        - {x: 38, y: 24}
-        - {x: 35, y: 25}
-        - {x: 5, y: 20}
-    - name: earth_002_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_4
       rect:
         serializedVersion: 2
         x: 0
@@ -208,17 +225,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -5, y: 39}
-        - {x: -56, y: -40}
-        - {x: -56, y: -61}
-        - {x: -54, y: -63}
-        - {x: -12, y: -74}
-        - {x: 23, y: -74}
-        - {x: 64, y: -61}
-        - {x: 64, y: -40}
-        - {x: 47, y: 39}
-    - name: earth_002_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_5
       rect:
         serializedVersion: 2
         x: 192
@@ -228,32 +246,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 7, y: 40}
-        - {x: 6, y: 39}
-        - {x: 6, y: -2}
-        - {x: -4, y: -10}
-        - {x: -1, y: -17}
-        - {x: -7, y: 16}
-        - {x: -16, y: 12}
-        - {x: -27, y: -5}
-        - {x: -55, y: -26}
-        - {x: -55, y: -72}
-        - {x: 41, y: -72}
-        - {x: 63, y: -67}
-        - {x: 63, y: -48}
-        - {x: 12, y: 40}
-      - - {x: 40, y: -34}
-        - {x: 37, y: 58}
-        - {x: 35, y: 60}
-        - {x: 32, y: 59}
-        - {x: 32, y: -39}
-        - {x: 37, y: -43}
-        - {x: 46, y: -43}
-        - {x: 47, y: -41}
-        - {x: 47, y: -37}
-        - {x: 44, y: -34}
-    - name: earth_002_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_6
       rect:
         serializedVersion: 2
         x: 384
@@ -263,41 +267,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 20, y: 60}
-        - {x: 7, y: 60}
-        - {x: 6, y: 59}
-        - {x: 1, y: 8}
-        - {x: 2, y: -4}
-        - {x: -5, y: 17}
-        - {x: -12, y: 31}
-        - {x: -36, y: 0}
-        - {x: -54, y: -37}
-        - {x: -54, y: -65}
-        - {x: -49, y: -71}
-        - {x: -44, y: -72}
-        - {x: 52, y: -72}
-        - {x: 62, y: -65}
-        - {x: 62, y: -11}
-        - {x: 29, y: 56}
-      - - {x: 49, y: -41}
-        - {x: 49, y: -35}
-        - {x: 48, y: -33}
-        - {x: 43, y: -33}
-        - {x: 37, y: -35}
-        - {x: 37, y: -41}
-        - {x: 39, y: -43}
-        - {x: 42, y: -42}
-        - {x: 42, y: -39}
-        - {x: 44, y: -42}
-        - {x: 46, y: -42}
-      - - {x: 32, y: -7}
-        - {x: 34, y: -9}
-        - {x: 37, y: -8}
-        - {x: 37, y: 86}
-        - {x: 35, y: 88}
-        - {x: 32, y: 87}
-    - name: earth_002_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_7
       rect:
         serializedVersion: 2
         x: 576
@@ -307,53 +288,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 27, y: 40}
-        - {x: 24, y: 39}
-        - {x: 11, y: 76}
-        - {x: 9, y: 78}
-        - {x: 5, y: 77}
-        - {x: 3, y: 8}
-        - {x: 6, y: -15}
-        - {x: 8, y: -17}
-        - {x: 11, y: -16}
-        - {x: -2, y: -32}
-        - {x: -1, y: -36}
-        - {x: -5, y: -41}
-        - {x: -2, y: -48}
-        - {x: 1, y: -48}
-        - {x: -8, y: -49}
-        - {x: -6, y: -45}
-        - {x: -5, y: -34}
-        - {x: 6, y: -21}
-        - {x: 5, y: -10}
-        - {x: 3, y: -1}
-        - {x: 0, y: 32}
-        - {x: -12, y: 52}
-        - {x: -29, y: 27}
-        - {x: -30, y: -1}
-        - {x: -55, y: -45}
-        - {x: -55, y: -63}
-        - {x: -45, y: -76}
-        - {x: 58, y: -76}
-        - {x: 63, y: -73}
-        - {x: 63, y: -27}
-        - {x: 29, y: 38}
-      - - {x: 39, y: -43}
-        - {x: 41, y: -44}
-        - {x: 50, y: -40}
-        - {x: 50, y: -36}
-        - {x: 49, y: -34}
-        - {x: 44, y: -33}
-        - {x: 42, y: -33}
-        - {x: 39, y: -37}
-      - - {x: 32, y: 27}
-        - {x: 34, y: 25}
-        - {x: 37, y: 26}
-        - {x: 37, y: 95}
-        - {x: 36, y: 96}
-        - {x: 32, y: 96}
-    - name: earth_002_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_8
       rect:
         serializedVersion: 2
         x: 768
@@ -363,38 +309,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 14, y: 49}
-        - {x: 4, y: 31}
-        - {x: 4, y: 19}
-        - {x: 16, y: -4}
-        - {x: 7, y: -7}
-        - {x: -2, y: 53}
-        - {x: -10, y: 74}
-        - {x: -12, y: 76}
-        - {x: -24, y: 76}
-        - {x: -61, y: -28}
-        - {x: -61, y: -64}
-        - {x: -55, y: -71}
-        - {x: -45, y: -72}
-        - {x: 62, y: -72}
-        - {x: 69, y: -66}
-        - {x: 69, y: -27}
-        - {x: 29, y: 51}
-      - - {x: 41, y: -45}
-        - {x: 42, y: -46}
-        - {x: 44, y: -46}
-        - {x: 50, y: -42}
-        - {x: 50, y: -37}
-        - {x: 49, y: -34}
-        - {x: 41, y: -34}
-      - - {x: 32, y: 38}
-        - {x: 34, y: 36}
-        - {x: 37, y: 37}
-        - {x: 37, y: 95}
-        - {x: 36, y: 96}
-        - {x: 32, y: 96}
-    - name: earth_002_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_9
       rect:
         serializedVersion: 2
         x: 0
@@ -404,21 +330,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -58, y: -74}
-        - {x: 67, y: -74}
-        - {x: 67, y: -7}
-        - {x: 9, y: 96}
-        - {x: -27, y: 96}
-        - {x: -58, y: -12}
-      - - {x: 15, y: 59}
-        - {x: 5, y: 50}
-        - {x: 5, y: -27}
-        - {x: 19, y: -41}
-        - {x: 30, y: -41}
-        - {x: 30, y: 58}
-        - {x: 27, y: 59}
-    - name: earth_002_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_10
       rect:
         serializedVersion: 2
         x: 192
@@ -428,27 +351,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -2, y: 96}
-        - {x: -24, y: 96}
-        - {x: -56, y: -21}
-        - {x: -56, y: -73}
-        - {x: 64, y: -73}
-        - {x: 65, y: -70}
-        - {x: 65, y: -51}
-        - {x: 50, y: -36}
-      - - {x: 20, y: 79}
-        - {x: 9, y: 43}
-        - {x: 9, y: 27}
-        - {x: 17, y: 23}
-        - {x: 19, y: 23}
-        - {x: 14, y: -7}
-        - {x: 19, y: -21}
-        - {x: 26, y: -21}
-        - {x: 29, y: -20}
-        - {x: 29, y: 77}
-        - {x: 27, y: 79}
-    - name: earth_002_11
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_11
       rect:
         serializedVersion: 2
         x: 384
@@ -458,28 +372,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -11, y: 96}
-        - {x: -29, y: 65}
-        - {x: -29, y: -21}
-        - {x: -27, y: -23}
-        - {x: -24, y: -22}
-        - {x: -30, y: -35}
-        - {x: -29, y: 50}
-        - {x: -58, y: -35}
-        - {x: -58, y: -75}
-        - {x: 64, y: -75}
-        - {x: 64, y: -27}
-        - {x: -6, y: 96}
-      - - {x: 28, y: 96}
-        - {x: 21, y: 96}
-        - {x: 16, y: 46}
-        - {x: 16, y: -1}
-        - {x: 20, y: -4}
-        - {x: 26, y: -4}
-        - {x: 29, y: 1}
-        - {x: 29, y: 95}
-    - name: earth_002_12
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_12
       rect:
         serializedVersion: 2
         x: 576
@@ -489,34 +393,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -8, y: 75}
-        - {x: -9, y: 66}
-        - {x: -10, y: 30}
-        - {x: -17, y: 75}
-        - {x: -26, y: 75}
-        - {x: -29, y: 74}
-        - {x: -29, y: -7}
-        - {x: -27, y: -9}
-        - {x: -29, y: -26}
-        - {x: -30, y: 53}
-        - {x: -36, y: 44}
-        - {x: -56, y: -20}
-        - {x: -56, y: -71}
-        - {x: -45, y: -73}
-        - {x: 57, y: -73}
-        - {x: 65, y: -68}
-        - {x: 65, y: -32}
-        - {x: -7, y: 75}
-      - - {x: 23, y: 32}
-        - {x: 20, y: 32}
-        - {x: 15, y: 26}
-        - {x: 15, y: 17}
-        - {x: 21, y: 13}
-        - {x: 24, y: 13}
-        - {x: 28, y: 19}
-        - {x: 28, y: 26}
-    - name: earth_002_13
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_13
       rect:
         serializedVersion: 2
         x: 768
@@ -526,52 +414,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -16, y: 20}
-        - {x: -16, y: 17}
-        - {x: -14, y: 9}
-        - {x: -10, y: 4}
-        - {x: -11, y: -43}
-        - {x: -14, y: -43}
-        - {x: -16, y: -45}
-        - {x: -17, y: -51}
-        - {x: -17, y: -53}
-        - {x: -15, y: -55}
-        - {x: -17, y: -63}
-        - {x: -17, y: -42}
-        - {x: -11, y: -35}
-        - {x: -11, y: -27}
-        - {x: -16, y: 18}
-        - {x: -16, y: 21}
-        - {x: -13, y: 33}
-        - {x: -17, y: 75}
-        - {x: -20, y: 76}
-        - {x: -35, y: 65}
-        - {x: -35, y: -15}
-        - {x: -33, y: -17}
-        - {x: -30, y: -16}
-        - {x: -38, y: -39}
-        - {x: -30, y: -47}
-        - {x: -27, y: -47}
-        - {x: -34, y: -47}
-        - {x: -60, y: -49}
-        - {x: -60, y: -68}
-        - {x: -45, y: -82}
-        - {x: 73, y: -82}
-        - {x: 73, y: -5}
-        - {x: 27, y: 95}
-        - {x: -7, y: 95}
-        - {x: -9, y: 94}
-        - {x: -10, y: 35}
-      - - {x: 18, y: 46}
-        - {x: 15, y: 43}
-        - {x: 15, y: 33}
-        - {x: 18, y: 26}
-        - {x: 22, y: 26}
-        - {x: 27, y: 29}
-        - {x: 27, y: 41}
-        - {x: 25, y: 46}
-    - name: earth_002_14
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_14
       rect:
         serializedVersion: 2
         x: 0
@@ -581,45 +435,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 14, y: 86}
-        - {x: -4, y: 96}
-        - {x: -16, y: 96}
-        - {x: -16, y: 13}
-        - {x: -10, y: 14}
-        - {x: -10, y: -52}
-        - {x: -8, y: -54}
-        - {x: -10, y: -57}
-        - {x: -11, y: -61}
-        - {x: -10, y: -24}
-        - {x: -10, y: -14}
-        - {x: -15, y: -6}
-        - {x: -17, y: 76}
-        - {x: -20, y: 96}
-        - {x: -21, y: 96}
-        - {x: -56, y: -18}
-        - {x: -56, y: -75}
-        - {x: -34, y: -86}
-        - {x: 7, y: -86}
-        - {x: 33, y: -80}
-        - {x: 69, y: -67}
-        - {x: 69, y: -51}
-        - {x: 68, y: -50}
-      - - {x: -35, y: 14}
-        - {x: -33, y: 12}
-        - {x: -30, y: 13}
-        - {x: -30, y: 91}
-        - {x: -32, y: 93}
-        - {x: -35, y: 92}
-      - - {x: 15, y: 57}
-        - {x: 14, y: 52}
-        - {x: 14, y: 40}
-        - {x: 19, y: 37}
-        - {x: 23, y: 37}
-        - {x: 27, y: 43}
-        - {x: 27, y: 49}
-        - {x: 23, y: 57}
-    - name: earth_002_15
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_15
       rect:
         serializedVersion: 2
         x: 192
@@ -629,72 +456,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 34, y: -39}
-        - {x: 15, y: -43}
-        - {x: 16, y: -62}
-        - {x: 23, y: -62}
-        - {x: 15, y: -63}
-        - {x: 14, y: -64}
-        - {x: 14, y: -58}
-        - {x: 11, y: -53}
-        - {x: -4, y: -50}
-        - {x: -5, y: 67}
-        - {x: -7, y: 69}
-        - {x: -10, y: 68}
-        - {x: -10, y: -2}
-        - {x: -10, y: 0}
-        - {x: -17, y: 96}
-        - {x: -27, y: 96}
-        - {x: -41, y: -43}
-        - {x: -34, y: -48}
-        - {x: -33, y: -48}
-        - {x: -43, y: -48}
-        - {x: -55, y: -54}
-        - {x: -55, y: -62}
-        - {x: -41, y: -73}
-        - {x: -27, y: -78}
-        - {x: 12, y: -78}
-        - {x: 62, y: -74}
-        - {x: 68, y: -69}
-        - {x: 68, y: -58}
-        - {x: 62, y: -47}
-      - - {x: 8, y: -50}
-        - {x: 11, y: -49}
-        - {x: 11, y: -46}
-        - {x: 8, y: -45}
-        - {x: 6, y: -47}
-      - - {x: -4, y: -34}
-        - {x: -7, y: -35}
-        - {x: -9, y: -37}
-        - {x: -8, y: -40}
-        - {x: -5, y: -40}
-        - {x: -8, y: -42}
-        - {x: -6, y: -49}
-        - {x: 7, y: -49}
-        - {x: 7, y: -37}
-        - {x: 6, y: -34}
-      - - {x: -35, y: 47}
-        - {x: -33, y: 45}
-        - {x: -30, y: 46}
-        - {x: -30, y: 95}
-        - {x: -31, y: 96}
-        - {x: -35, y: 96}
-      - - {x: 16, y: 65}
-        - {x: 14, y: 57}
-        - {x: 14, y: 50}
-        - {x: 18, y: 46}
-        - {x: 22, y: 46}
-        - {x: 26, y: 51}
-        - {x: 26, y: 59}
-        - {x: 21, y: 65}
-      - - {x: -9, y: 72}
-        - {x: -7, y: 70}
-        - {x: -4, y: 71}
-        - {x: -4, y: 95}
-        - {x: -5, y: 96}
-        - {x: -9, y: 96}
-    - name: earth_002_16
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_16
       rect:
         serializedVersion: 2
         x: 384
@@ -704,40 +477,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 46, y: -45}
-        - {x: 36, y: -45}
-        - {x: 32, y: -47}
-        - {x: 31, y: -51}
-        - {x: 30, y: -46}
-        - {x: 29, y: -45}
-        - {x: -51, y: -45}
-        - {x: -51, y: -73}
-        - {x: -40, y: -77}
-        - {x: 59, y: -77}
-        - {x: 65, y: -67}
-        - {x: 65, y: -59}
-      - - {x: -29, y: -48}
-        - {x: -33, y: -50}
-        - {x: -33, y: -55}
-        - {x: -30, y: -57}
-        - {x: -21, y: -57}
-        - {x: -21, y: -49}
-        - {x: -22, y: -48}
-      - - {x: -10, y: -35}
-        - {x: -10, y: -48}
-        - {x: -8, y: -50}
-        - {x: 8, y: -50}
-        - {x: 8, y: -35}
-      - - {x: -13, y: 15}
-        - {x: -16, y: 15}
-        - {x: -22, y: 6}
-        - {x: -22, y: -3}
-        - {x: -16, y: -12}
-        - {x: -13, y: -12}
-        - {x: -6, y: -4}
-        - {x: -6, y: 7}
-    - name: earth_002_17
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_17
       rect:
         serializedVersion: 2
         x: 576
@@ -747,60 +498,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 34, y: -48}
-        - {x: 34, y: -52}
-        - {x: 37, y: -54}
-        - {x: 38, y: -54}
-        - {x: 42, y: -53}
-        - {x: 44, y: -52}
-        - {x: 42, y: -53}
-        - {x: 39, y: -54}
-        - {x: 39, y: -56}
-        - {x: 43, y: -61}
-        - {x: 48, y: -61}
-        - {x: 50, y: -58}
-        - {x: 50, y: -48}
-      - - {x: -27, y: -48}
-        - {x: -33, y: -52}
-        - {x: -33, y: -53}
-        - {x: -32, y: -56}
-        - {x: -24, y: -58}
-        - {x: -21, y: -58}
-        - {x: -20, y: -56}
-        - {x: -20, y: -49}
-        - {x: -22, y: -48}
-      - - {x: 19, y: -49}
-        - {x: 18, y: -51}
-        - {x: 18, y: -55}
-        - {x: 22, y: -57}
-        - {x: 24, y: -57}
-        - {x: 26, y: -56}
-        - {x: 26, y: -54}
-        - {x: 22, y: -49}
-      - - {x: 27, y: -52}
-        - {x: 30, y: -51}
-        - {x: 30, y: -48}
-        - {x: 27, y: -47}
-        - {x: 25, y: -49}
-      - - {x: 3, y: -36}
-        - {x: -1, y: -39}
-        - {x: -1, y: -43}
-        - {x: 3, y: -49}
-        - {x: 7, y: -49}
-        - {x: 9, y: -48}
-        - {x: 9, y: -37}
-        - {x: 6, y: -36}
-      - - {x: -16, y: 22}
-        - {x: -20, y: 21}
-        - {x: -21, y: 11}
-        - {x: -21, y: 3}
-        - {x: -13, y: -4}
-        - {x: -6, y: -4}
-        - {x: -4, y: 2}
-        - {x: -4, y: 18}
-        - {x: -9, y: 22}
-    - name: earth_002_18
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earth_002_18
       rect:
         serializedVersion: 2
         x: 768
@@ -810,23 +519,29 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -31, y: -59}
-        - {x: -20, y: -59}
-        - {x: -20, y: -51}
-        - {x: -21, y: -49}
-        - {x: -25, y: -49}
-        - {x: -32, y: -53}
-        - {x: -32, y: -56}
-      - - {x: 5, y: -38}
-        - {x: 1, y: -40}
-        - {x: 1, y: -49}
-        - {x: 6, y: -51}
-        - {x: 10, y: -51}
-        - {x: 10, y: -39}
-        - {x: 9, y: -38}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

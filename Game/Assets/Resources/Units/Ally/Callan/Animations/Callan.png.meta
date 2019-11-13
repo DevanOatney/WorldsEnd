@@ -1,188 +1,543 @@
 fileFormatVersion: 2
 guid: 69f7847c9d334cf44ae925ef7940eab6
-timeCreated: 1508613463
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Callan_0
-    21300002: Callan_1
-    21300004: Callan_2
-    21300006: Callan_3
-    21300008: Callan_4
-    21300010: Callan_5
-    21300012: Callan_6
-    21300014: Callan_7
-    21300016: Callan_8
-    21300018: Callan_9
-    21300020: Callan_10
-    21300022: Callan_11
-    21300024: Callan_12
-    21300026: Callan_13
-    21300028: Callan_14
-    21300030: Callan_15
-    21300032: Callan_16
-    21300034: Callan_17
-    21300036: Callan_18
-    21300038: Callan_19
-    21300040: Callan_20
-    21300042: Callan_21
-    21300044: Callan_22
-    21300046: Callan_23
-    21300048: Callan_24
-    21300050: Callan_25
-    21300052: Callan_26
-    21300054: Callan_27
-    21300056: Callan_28
-    21300058: Callan_29
-    21300060: Callan_30
-    21300062: Callan_31
-    21300064: Callan_32
-    21300066: Callan_33
-    21300068: Callan_34
-    21300070: Callan_35
-    21300072: Callan_36
-    21300074: Callan_37
-    21300076: Callan_38
-    21300078: Callan_39
-    21300080: Callan_40
-    21300082: Callan_41
-    21300084: Callan_42
-    21300086: Callan_43
-    21300088: Callan_44
-    21300090: Callan_45
-    21300092: Callan_46
-    21300094: Callan_47
-    21300096: Callan_48
-    21300098: Callan_49
-    21300100: Callan_50
-    21300102: Callan_51
-    21300104: Callan_52
-    21300106: Callan_53
-    21300108: Callan_54
-    21300110: Callan_55
-    21300112: Callan_56
-    21300114: Callan_57
-    21300116: Callan_58
-    21300118: Callan_59
-    21300120: Callan_60
-    21300122: Callan_61
-    21300124: Callan_62
-    21300126: Callan_63
-    21300128: Callan_64
-    21300130: Callan_65
-    21300132: Callan_66
-    21300134: Callan_67
-    21300136: Callan_68
-    21300138: Callan_69
-    21300140: Callan_70
-    21300142: Callan_71
-    21300144: Callan_72
-    21300146: Callan_73
-    21300148: Callan_74
-    21300150: Callan_75
-    21300152: Callan_76
-    21300154: Callan_77
-    21300156: Callan_78
-    21300158: Callan_79
-    21300160: Callan_80
-    21300162: Callan_81
-    21300164: Callan_82
-    21300166: Callan_83
-    21300168: Callan_84
-    21300170: Callan_85
-    21300172: Callan_86
-    21300174: Callan_87
-    21300176: Callan_88
-    21300178: Callan_89
-    21300180: Callan_90
-    21300182: Callan_91
-    21300184: Callan_92
-    21300186: Callan_93
-    21300188: Callan_94
-    21300190: Callan_95
-    21300192: Callan_96
-    21300194: Callan_97
-    21300196: Callan_98
-    21300198: Callan_99
-    21300200: Callan_100
-    21300202: Callan_101
-    21300204: Callan_102
-    21300206: Callan_103
-    21300208: Callan_104
-    21300210: Callan_105
-    21300212: Callan_106
-    21300214: Callan_107
-    21300216: Callan_108
-    21300218: Callan_109
-    21300220: Callan_110
-    21300222: Callan_111
-    21300224: Callan_112
-    21300226: Callan_113
-    21300228: Callan_114
-    21300230: Callan_115
-    21300232: Callan_116
-    21300234: Callan_117
-    21300236: Callan_118
-    21300238: Callan_119
-    21300240: Callan_120
-    21300242: Callan_121
-    21300244: Callan_122
-    21300246: Callan_123
-    21300248: Callan_124
-    21300250: Callan_125
-    21300252: Callan_126
-    21300254: Callan_127
-    21300256: Callan_128
-    21300258: Callan_129
-    21300260: Callan_130
-    21300262: Callan_131
-    21300264: Callan_132
-    21300266: Callan_133
-    21300268: Callan_134
-    21300270: Callan_135
-    21300272: Callan_136
-    21300274: Callan_137
-    21300276: Callan_138
-    21300278: Callan_139
-    21300280: Callan_140
-    21300282: Callan_141
-    21300284: Callan_142
-    21300286: Callan_143
-    21300288: Callan_144
-    21300290: Callan_145
-    21300292: Callan_146
-    21300294: Callan_147
-    21300296: Callan_148
-    21300298: Callan_149
-    21300300: Callan_150
-    21300302: Callan_151
-    21300304: Callan_152
-    21300306: Callan_153
-    21300308: Callan_154
-    21300310: Callan_155
-    21300312: Callan_156
-    21300314: Callan_157
-    21300316: Callan_158
-    21300318: Callan_159
-    21300320: Callan_160
-    21300322: Callan_161
-    21300324: Callan_162
-    21300326: Callan_163
-    21300328: Callan_164
-    21300330: Callan_165
-    21300332: Callan_166
-    21300334: Callan_167
-    21300336: Callan_168
-    21300338: Callan_169
-    21300340: Callan_170
-    21300342: Callan_171
-    21300344: Callan_172
-    21300346: Callan_173
-    21300348: Callan_174
-    21300350: Callan_175
-    21300352: Callan_176
-    21300354: Callan_177
-  serializedVersion: 4
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Callan_0
+  - first:
+      213: 21300002
+    second: Callan_1
+  - first:
+      213: 21300004
+    second: Callan_2
+  - first:
+      213: 21300006
+    second: Callan_3
+  - first:
+      213: 21300008
+    second: Callan_4
+  - first:
+      213: 21300010
+    second: Callan_5
+  - first:
+      213: 21300012
+    second: Callan_6
+  - first:
+      213: 21300014
+    second: Callan_7
+  - first:
+      213: 21300016
+    second: Callan_8
+  - first:
+      213: 21300018
+    second: Callan_9
+  - first:
+      213: 21300020
+    second: Callan_10
+  - first:
+      213: 21300022
+    second: Callan_11
+  - first:
+      213: 21300024
+    second: Callan_12
+  - first:
+      213: 21300026
+    second: Callan_13
+  - first:
+      213: 21300028
+    second: Callan_14
+  - first:
+      213: 21300030
+    second: Callan_15
+  - first:
+      213: 21300032
+    second: Callan_16
+  - first:
+      213: 21300034
+    second: Callan_17
+  - first:
+      213: 21300036
+    second: Callan_18
+  - first:
+      213: 21300038
+    second: Callan_19
+  - first:
+      213: 21300040
+    second: Callan_20
+  - first:
+      213: 21300042
+    second: Callan_21
+  - first:
+      213: 21300044
+    second: Callan_22
+  - first:
+      213: 21300046
+    second: Callan_23
+  - first:
+      213: 21300048
+    second: Callan_24
+  - first:
+      213: 21300050
+    second: Callan_25
+  - first:
+      213: 21300052
+    second: Callan_26
+  - first:
+      213: 21300054
+    second: Callan_27
+  - first:
+      213: 21300056
+    second: Callan_28
+  - first:
+      213: 21300058
+    second: Callan_29
+  - first:
+      213: 21300060
+    second: Callan_30
+  - first:
+      213: 21300062
+    second: Callan_31
+  - first:
+      213: 21300064
+    second: Callan_32
+  - first:
+      213: 21300066
+    second: Callan_33
+  - first:
+      213: 21300068
+    second: Callan_34
+  - first:
+      213: 21300070
+    second: Callan_35
+  - first:
+      213: 21300072
+    second: Callan_36
+  - first:
+      213: 21300074
+    second: Callan_37
+  - first:
+      213: 21300076
+    second: Callan_38
+  - first:
+      213: 21300078
+    second: Callan_39
+  - first:
+      213: 21300080
+    second: Callan_40
+  - first:
+      213: 21300082
+    second: Callan_41
+  - first:
+      213: 21300084
+    second: Callan_42
+  - first:
+      213: 21300086
+    second: Callan_43
+  - first:
+      213: 21300088
+    second: Callan_44
+  - first:
+      213: 21300090
+    second: Callan_45
+  - first:
+      213: 21300092
+    second: Callan_46
+  - first:
+      213: 21300094
+    second: Callan_47
+  - first:
+      213: 21300096
+    second: Callan_48
+  - first:
+      213: 21300098
+    second: Callan_49
+  - first:
+      213: 21300100
+    second: Callan_50
+  - first:
+      213: 21300102
+    second: Callan_51
+  - first:
+      213: 21300104
+    second: Callan_52
+  - first:
+      213: 21300106
+    second: Callan_53
+  - first:
+      213: 21300108
+    second: Callan_54
+  - first:
+      213: 21300110
+    second: Callan_55
+  - first:
+      213: 21300112
+    second: Callan_56
+  - first:
+      213: 21300114
+    second: Callan_57
+  - first:
+      213: 21300116
+    second: Callan_58
+  - first:
+      213: 21300118
+    second: Callan_59
+  - first:
+      213: 21300120
+    second: Callan_60
+  - first:
+      213: 21300122
+    second: Callan_61
+  - first:
+      213: 21300124
+    second: Callan_62
+  - first:
+      213: 21300126
+    second: Callan_63
+  - first:
+      213: 21300128
+    second: Callan_64
+  - first:
+      213: 21300130
+    second: Callan_65
+  - first:
+      213: 21300132
+    second: Callan_66
+  - first:
+      213: 21300134
+    second: Callan_67
+  - first:
+      213: 21300136
+    second: Callan_68
+  - first:
+      213: 21300138
+    second: Callan_69
+  - first:
+      213: 21300140
+    second: Callan_70
+  - first:
+      213: 21300142
+    second: Callan_71
+  - first:
+      213: 21300144
+    second: Callan_72
+  - first:
+      213: 21300146
+    second: Callan_73
+  - first:
+      213: 21300148
+    second: Callan_74
+  - first:
+      213: 21300150
+    second: Callan_75
+  - first:
+      213: 21300152
+    second: Callan_76
+  - first:
+      213: 21300154
+    second: Callan_77
+  - first:
+      213: 21300156
+    second: Callan_78
+  - first:
+      213: 21300158
+    second: Callan_79
+  - first:
+      213: 21300160
+    second: Callan_80
+  - first:
+      213: 21300162
+    second: Callan_81
+  - first:
+      213: 21300164
+    second: Callan_82
+  - first:
+      213: 21300166
+    second: Callan_83
+  - first:
+      213: 21300168
+    second: Callan_84
+  - first:
+      213: 21300170
+    second: Callan_85
+  - first:
+      213: 21300172
+    second: Callan_86
+  - first:
+      213: 21300174
+    second: Callan_87
+  - first:
+      213: 21300176
+    second: Callan_88
+  - first:
+      213: 21300178
+    second: Callan_89
+  - first:
+      213: 21300180
+    second: Callan_90
+  - first:
+      213: 21300182
+    second: Callan_91
+  - first:
+      213: 21300184
+    second: Callan_92
+  - first:
+      213: 21300186
+    second: Callan_93
+  - first:
+      213: 21300188
+    second: Callan_94
+  - first:
+      213: 21300190
+    second: Callan_95
+  - first:
+      213: 21300192
+    second: Callan_96
+  - first:
+      213: 21300194
+    second: Callan_97
+  - first:
+      213: 21300196
+    second: Callan_98
+  - first:
+      213: 21300198
+    second: Callan_99
+  - first:
+      213: 21300200
+    second: Callan_100
+  - first:
+      213: 21300202
+    second: Callan_101
+  - first:
+      213: 21300204
+    second: Callan_102
+  - first:
+      213: 21300206
+    second: Callan_103
+  - first:
+      213: 21300208
+    second: Callan_104
+  - first:
+      213: 21300210
+    second: Callan_105
+  - first:
+      213: 21300212
+    second: Callan_106
+  - first:
+      213: 21300214
+    second: Callan_107
+  - first:
+      213: 21300216
+    second: Callan_108
+  - first:
+      213: 21300218
+    second: Callan_109
+  - first:
+      213: 21300220
+    second: Callan_110
+  - first:
+      213: 21300222
+    second: Callan_111
+  - first:
+      213: 21300224
+    second: Callan_112
+  - first:
+      213: 21300226
+    second: Callan_113
+  - first:
+      213: 21300228
+    second: Callan_114
+  - first:
+      213: 21300230
+    second: Callan_115
+  - first:
+      213: 21300232
+    second: Callan_116
+  - first:
+      213: 21300234
+    second: Callan_117
+  - first:
+      213: 21300236
+    second: Callan_118
+  - first:
+      213: 21300238
+    second: Callan_119
+  - first:
+      213: 21300240
+    second: Callan_120
+  - first:
+      213: 21300242
+    second: Callan_121
+  - first:
+      213: 21300244
+    second: Callan_122
+  - first:
+      213: 21300246
+    second: Callan_123
+  - first:
+      213: 21300248
+    second: Callan_124
+  - first:
+      213: 21300250
+    second: Callan_125
+  - first:
+      213: 21300252
+    second: Callan_126
+  - first:
+      213: 21300254
+    second: Callan_127
+  - first:
+      213: 21300256
+    second: Callan_128
+  - first:
+      213: 21300258
+    second: Callan_129
+  - first:
+      213: 21300260
+    second: Callan_130
+  - first:
+      213: 21300262
+    second: Callan_131
+  - first:
+      213: 21300264
+    second: Callan_132
+  - first:
+      213: 21300266
+    second: Callan_133
+  - first:
+      213: 21300268
+    second: Callan_134
+  - first:
+      213: 21300270
+    second: Callan_135
+  - first:
+      213: 21300272
+    second: Callan_136
+  - first:
+      213: 21300274
+    second: Callan_137
+  - first:
+      213: 21300276
+    second: Callan_138
+  - first:
+      213: 21300278
+    second: Callan_139
+  - first:
+      213: 21300280
+    second: Callan_140
+  - first:
+      213: 21300282
+    second: Callan_141
+  - first:
+      213: 21300284
+    second: Callan_142
+  - first:
+      213: 21300286
+    second: Callan_143
+  - first:
+      213: 21300288
+    second: Callan_144
+  - first:
+      213: 21300290
+    second: Callan_145
+  - first:
+      213: 21300292
+    second: Callan_146
+  - first:
+      213: 21300294
+    second: Callan_147
+  - first:
+      213: 21300296
+    second: Callan_148
+  - first:
+      213: 21300298
+    second: Callan_149
+  - first:
+      213: 21300300
+    second: Callan_150
+  - first:
+      213: 21300302
+    second: Callan_151
+  - first:
+      213: 21300304
+    second: Callan_152
+  - first:
+      213: 21300306
+    second: Callan_153
+  - first:
+      213: 21300308
+    second: Callan_154
+  - first:
+      213: 21300310
+    second: Callan_155
+  - first:
+      213: 21300312
+    second: Callan_156
+  - first:
+      213: 21300314
+    second: Callan_157
+  - first:
+      213: 21300316
+    second: Callan_158
+  - first:
+      213: 21300318
+    second: Callan_159
+  - first:
+      213: 21300320
+    second: Callan_160
+  - first:
+      213: 21300322
+    second: Callan_161
+  - first:
+      213: 21300324
+    second: Callan_162
+  - first:
+      213: 21300326
+    second: Callan_163
+  - first:
+      213: 21300328
+    second: Callan_164
+  - first:
+      213: 21300330
+    second: Callan_165
+  - first:
+      213: 21300332
+    second: Callan_166
+  - first:
+      213: 21300334
+    second: Callan_167
+  - first:
+      213: 21300336
+    second: Callan_168
+  - first:
+      213: 21300338
+    second: Callan_169
+  - first:
+      213: 21300340
+    second: Callan_170
+  - first:
+      213: 21300342
+    second: Callan_171
+  - first:
+      213: 21300344
+    second: Callan_172
+  - first:
+      213: 21300346
+    second: Callan_173
+  - first:
+      213: 21300348
+    second: Callan_174
+  - first:
+      213: 21300350
+    second: Callan_175
+  - first:
+      213: 21300352
+    second: Callan_176
+  - first:
+      213: 21300354
+    second: Callan_177
+  externalObjects: {}
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -190,6 +545,8 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -198,6 +555,8 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -205,10 +564,13 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 4096
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -217,41 +579,55 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 4096
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Standalone
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
     maxTextureSize: 4096
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Android
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
     maxTextureSize: 4096
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -267,7 +643,15 @@ TextureImporter:
       pivot: {x: 0.5149787, y: 0.30623025}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_1
       rect:
@@ -280,7 +664,15 @@ TextureImporter:
       pivot: {x: 0.5618478, y: 0.31642962}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_2
       rect:
@@ -293,7 +685,15 @@ TextureImporter:
       pivot: {x: 0.51546156, y: 0.3266264}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_3
       rect:
@@ -306,7 +706,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.33682576}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_4
       rect:
@@ -319,7 +727,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.33682576}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_5
       rect:
@@ -332,7 +748,15 @@ TextureImporter:
       pivot: {x: 0.5099856, y: 0.31642962}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_6
       rect:
@@ -345,7 +769,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.3266264}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_7
       rect:
@@ -358,7 +790,15 @@ TextureImporter:
       pivot: {x: 0.547932, y: 0.2945756}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_8
       rect:
@@ -371,7 +811,15 @@ TextureImporter:
       pivot: {x: 0.5479319, y: 0.30435616}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_9
       rect:
@@ -384,7 +832,15 @@ TextureImporter:
       pivot: {x: 0.5159775, y: 0.30435616}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_10
       rect:
@@ -397,7 +853,15 @@ TextureImporter:
       pivot: {x: 0.53092366, y: 0.2945756}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_11
       rect:
@@ -410,7 +874,15 @@ TextureImporter:
       pivot: {x: 0.44674173, y: 0.28479254}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_12
       rect:
@@ -423,7 +895,15 @@ TextureImporter:
       pivot: {x: 0.44674173, y: 0.3239223}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_13
       rect:
@@ -436,7 +916,15 @@ TextureImporter:
       pivot: {x: 0.5145245, y: 0.30435616}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_14
       rect:
@@ -449,7 +937,15 @@ TextureImporter:
       pivot: {x: 0.42951152, y: 0.30435866}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_15
       rect:
@@ -462,7 +958,15 @@ TextureImporter:
       pivot: {x: 0.4577069, y: 0.33370286}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_16
       rect:
@@ -475,7 +979,15 @@ TextureImporter:
       pivot: {x: 0.44190055, y: 0.33370286}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_17
       rect:
@@ -488,7 +1000,15 @@ TextureImporter:
       pivot: {x: 0.46113586, y: 0.31413922}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_18
       rect:
@@ -501,7 +1021,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.3239223}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_19
       rect:
@@ -514,7 +1042,15 @@ TextureImporter:
       pivot: {x: 0.5099856, y: 0.2945756}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_20
       rect:
@@ -527,7 +1063,15 @@ TextureImporter:
       pivot: {x: 0.47337088, y: 0.3239223}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_21
       rect:
@@ -540,7 +1084,15 @@ TextureImporter:
       pivot: {x: 0.43609035, y: 0.30435866}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_22
       rect:
@@ -553,7 +1105,15 @@ TextureImporter:
       pivot: {x: 0.46804506, y: 0.30435866}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_23
       rect:
@@ -566,7 +1126,15 @@ TextureImporter:
       pivot: {x: 0.45206755, y: 0.2945756}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_24
       rect:
@@ -579,7 +1147,15 @@ TextureImporter:
       pivot: {x: 0.45361426, y: 0.30435866}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_25
       rect:
@@ -592,7 +1168,15 @@ TextureImporter:
       pivot: {x: 0.5399433, y: 0.30435866}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_26
       rect:
@@ -605,7 +1189,15 @@ TextureImporter:
       pivot: {x: 0.5399433, y: 0.2945756}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_27
       rect:
@@ -618,7 +1210,15 @@ TextureImporter:
       pivot: {x: 0.5145245, y: 0.31413922}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_28
       rect:
@@ -631,7 +1231,15 @@ TextureImporter:
       pivot: {x: 0.515462, y: 0.3266264}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_29
       rect:
@@ -644,7 +1252,15 @@ TextureImporter:
       pivot: {x: 0.49999973, y: 0.34348592}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_30
       rect:
@@ -657,7 +1273,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.34348592}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_31
       rect:
@@ -670,7 +1294,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.34348592}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_32
       rect:
@@ -683,7 +1315,15 @@ TextureImporter:
       pivot: {x: 0.46804506, y: 0.3502121}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_33
       rect:
@@ -696,7 +1336,15 @@ TextureImporter:
       pivot: {x: 0.51597697, y: 0.36019644}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_34
       rect:
@@ -709,7 +1357,15 @@ TextureImporter:
       pivot: {x: 0.46804506, y: 0.3502121}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_35
       rect:
@@ -722,7 +1378,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.35326898}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_36
       rect:
@@ -735,7 +1399,15 @@ TextureImporter:
       pivot: {x: 0.5319547, y: 0.28479376}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_37
       rect:
@@ -748,7 +1420,15 @@ TextureImporter:
       pivot: {x: 0.5319547, y: 0.3043574}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_38
       rect:
@@ -761,7 +1441,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.3043574}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_39
       rect:
@@ -774,7 +1462,15 @@ TextureImporter:
       pivot: {x: 0.49999952, y: 0.28479376}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_40
       rect:
@@ -787,7 +1483,15 @@ TextureImporter:
       pivot: {x: 0.51597697, y: 0.3043574}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_41
       rect:
@@ -800,7 +1504,15 @@ TextureImporter:
       pivot: {x: 0.5618473, y: 0.2945756}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 27305410000000000800000000000000
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_42
       rect:
@@ -813,7 +1525,15 @@ TextureImporter:
       pivot: {x: 0.53195393, y: 0.3043574}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 47305410000000000800000000000000
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_43
       rect:
@@ -826,7 +1546,15 @@ TextureImporter:
       pivot: {x: 0.49999905, y: 0.28479376}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 67305410000000000800000000000000
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_44
       rect:
@@ -839,7 +1567,15 @@ TextureImporter:
       pivot: {x: 0.42951152, y: 0.32392105}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_45
       rect:
@@ -852,7 +1588,15 @@ TextureImporter:
       pivot: {x: 0.41012716, y: 0.320254}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_46
       rect:
@@ -865,7 +1609,15 @@ TextureImporter:
       pivot: {x: 0.41012716, y: 0.31026712}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c7305410000000000800000000000000
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_47
       rect:
@@ -878,7 +1630,15 @@ TextureImporter:
       pivot: {x: 0.41012716, y: 0.33023962}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e7305410000000000800000000000000
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_48
       rect:
@@ -891,7 +1651,15 @@ TextureImporter:
       pivot: {x: 0.42510605, y: 0.33682576}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 08305410000000000800000000000000
+      internalID: 21300096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_49
       rect:
@@ -904,7 +1672,15 @@ TextureImporter:
       pivot: {x: 0.41012764, y: 0.30623025}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 28305410000000000800000000000000
+      internalID: 21300098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_50
       rect:
@@ -917,7 +1693,15 @@ TextureImporter:
       pivot: {x: 0.44008446, y: 0.3572219}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 48305410000000000800000000000000
+      internalID: 21300100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_51
       rect:
@@ -930,7 +1714,15 @@ TextureImporter:
       pivot: {x: 0.4101267, y: 0.35021082}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 68305410000000000800000000000000
+      internalID: 21300102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_52
       rect:
@@ -943,7 +1735,15 @@ TextureImporter:
       pivot: {x: 0.46804518, y: 0.3043574}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 88305410000000000800000000000000
+      internalID: 21300104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_53
       rect:
@@ -956,7 +1756,15 @@ TextureImporter:
       pivot: {x: 0.46804506, y: 0.27501196}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a8305410000000000800000000000000
+      internalID: 21300106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_54
       rect:
@@ -969,7 +1777,15 @@ TextureImporter:
       pivot: {x: 0.48453793, y: 0.2945756}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c8305410000000000800000000000000
+      internalID: 21300108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_55
       rect:
@@ -982,7 +1798,15 @@ TextureImporter:
       pivot: {x: 0.45506334, y: 0.28479376}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e8305410000000000800000000000000
+      internalID: 21300110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_56
       rect:
@@ -995,7 +1819,15 @@ TextureImporter:
       pivot: {x: 0.48402202, y: 0.29457435}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 09305410000000000800000000000000
+      internalID: 21300112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_57
       rect:
@@ -1008,7 +1840,15 @@ TextureImporter:
       pivot: {x: 0.45361426, y: 0.3239223}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 29305410000000000800000000000000
+      internalID: 21300114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_58
       rect:
@@ -1021,7 +1861,15 @@ TextureImporter:
       pivot: {x: 0.48402202, y: 0.27501196}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 49305410000000000800000000000000
+      internalID: 21300116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_59
       rect:
@@ -1034,7 +1882,15 @@ TextureImporter:
       pivot: {x: 0.51497746, y: 0.3043574}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 69305410000000000800000000000000
+      internalID: 21300118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_60
       rect:
@@ -1047,7 +1903,15 @@ TextureImporter:
       pivot: {x: 0.5394943, y: 0.31170136}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 89305410000000000800000000000000
+      internalID: 21300120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_61
       rect:
@@ -1060,7 +1924,15 @@ TextureImporter:
       pivot: {x: 0.5245154, y: 0.315405}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a9305410000000000800000000000000
+      internalID: 21300122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_62
       rect:
@@ -1073,7 +1945,15 @@ TextureImporter:
       pivot: {x: 0.54903126, y: 0.34468332}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c9305410000000000800000000000000
+      internalID: 21300124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_63
       rect:
@@ -1086,7 +1966,15 @@ TextureImporter:
       pivot: {x: 0.53515035, y: 0.3383255}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e9305410000000000800000000000000
+      internalID: 21300126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_64
       rect:
@@ -1099,7 +1987,15 @@ TextureImporter:
       pivot: {x: 0.49455833, y: 0.33106995}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 0a305410000000000800000000000000
+      internalID: 21300128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_65
       rect:
@@ -1112,7 +2008,15 @@ TextureImporter:
       pivot: {x: 0.53405285, y: 0.30058256}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 2a305410000000000800000000000000
+      internalID: 21300130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_66
       rect:
@@ -1125,7 +2029,15 @@ TextureImporter:
       pivot: {x: 0.5490284, y: 0.3374265}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 4a305410000000000800000000000000
+      internalID: 21300132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_67
       rect:
@@ -1138,7 +2050,15 @@ TextureImporter:
       pivot: {x: 0.5286093, y: 0.33469644}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 6a305410000000000800000000000000
+      internalID: 21300134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_68
       rect:
@@ -1151,7 +2071,15 @@ TextureImporter:
       pivot: {x: 0.578989, y: 0.33196768}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 8a305410000000000800000000000000
+      internalID: 21300136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_69
       rect:
@@ -1164,7 +2092,15 @@ TextureImporter:
       pivot: {x: 0.53051704, y: 0.31227827}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: aa305410000000000800000000000000
+      internalID: 21300138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_70
       rect:
@@ -1177,7 +2113,15 @@ TextureImporter:
       pivot: {x: 0.57408196, y: 0.2684237}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: ca305410000000000800000000000000
+      internalID: 21300140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_71
       rect:
@@ -1190,7 +2134,15 @@ TextureImporter:
       pivot: {x: 0.55810446, y: 0.27205276}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: ea305410000000000800000000000000
+      internalID: 21300142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_72
       rect:
@@ -1203,7 +2155,15 @@ TextureImporter:
       pivot: {x: 0.58425444, y: 0.2793096}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 0b305410000000000800000000000000
+      internalID: 21300144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_73
       rect:
@@ -1216,7 +2176,15 @@ TextureImporter:
       pivot: {x: 0.5716917, y: 0.29982337}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 2b305410000000000800000000000000
+      internalID: 21300146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_74
       rect:
@@ -1229,7 +2197,15 @@ TextureImporter:
       pivot: {x: 0.52377135, y: 0.28203836}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 4b305410000000000800000000000000
+      internalID: 21300148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_75
       rect:
@@ -1242,7 +2218,15 @@ TextureImporter:
       pivot: {x: 0.5506129, y: 0.3060502}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 6b305410000000000800000000000000
+      internalID: 21300150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_76
       rect:
@@ -1255,7 +2239,15 @@ TextureImporter:
       pivot: {x: 0.5784505, y: 0.29626837}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 8b305410000000000800000000000000
+      internalID: 21300152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_77
       rect:
@@ -1268,7 +2260,15 @@ TextureImporter:
       pivot: {x: 0.56247354, y: 0.31315893}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: ab305410000000000800000000000000
+      internalID: 21300154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_78
       rect:
@@ -1281,7 +2281,15 @@ TextureImporter:
       pivot: {x: 0.46282846, y: 0.31227827}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: cb305410000000000800000000000000
+      internalID: 21300156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_79
       rect:
@@ -1294,7 +2302,15 @@ TextureImporter:
       pivot: {x: 0.45385316, y: 0.30872455}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: eb305410000000000800000000000000
+      internalID: 21300158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_80
       rect:
@@ -1307,7 +2323,15 @@ TextureImporter:
       pivot: {x: 0.44360846, y: 0.3160327}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 0c305410000000000800000000000000
+      internalID: 21300160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_81
       rect:
@@ -1320,7 +2344,15 @@ TextureImporter:
       pivot: {x: 0.43395904, y: 0.29626837}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 2c305410000000000800000000000000
+      internalID: 21300162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_82
       rect:
@@ -1333,7 +2365,15 @@ TextureImporter:
       pivot: {x: 0.44487718, y: 0.31603393}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 4c305410000000000800000000000000
+      internalID: 21300164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_83
       rect:
@@ -1346,7 +2386,15 @@ TextureImporter:
       pivot: {x: 0.43077984, y: 0.33807}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 6c305410000000000800000000000000
+      internalID: 21300166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_84
       rect:
@@ -1359,7 +2407,15 @@ TextureImporter:
       pivot: {x: 0.4589754, y: 0.32562134}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 8c305410000000000800000000000000
+      internalID: 21300168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_85
       rect:
@@ -1372,7 +2428,15 @@ TextureImporter:
       pivot: {x: 0.46795115, y: 0.30516955}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: ac305410000000000800000000000000
+      internalID: 21300170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_86
       rect:
@@ -1385,7 +2449,15 @@ TextureImporter:
       pivot: {x: 0.45385203, y: 0.32562134}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: cc305410000000000800000000000000
+      internalID: 21300172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_87
       rect:
@@ -1398,7 +2470,15 @@ TextureImporter:
       pivot: {x: 0.5217818, y: 0.31227827}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: ec305410000000000800000000000000
+      internalID: 21300174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_88
       rect:
@@ -1411,7 +2491,15 @@ TextureImporter:
       pivot: {x: 0.47965494, y: 0.30473962}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 0d305410000000000800000000000000
+      internalID: 21300176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_89
       rect:
@@ -1424,7 +2512,15 @@ TextureImporter:
       pivot: {x: 0.50143737, y: 0.2620659}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 2d305410000000000800000000000000
+      internalID: 21300178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_90
       rect:
@@ -1437,7 +2533,15 @@ TextureImporter:
       pivot: {x: 0.5116099, y: 0.29565176}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 4d305410000000000800000000000000
+      internalID: 21300180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_91
       rect:
@@ -1450,7 +2554,15 @@ TextureImporter:
       pivot: {x: 0.53231514, y: 0.30872455}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 6d305410000000000800000000000000
+      internalID: 21300182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_92
       rect:
@@ -1463,7 +2575,15 @@ TextureImporter:
       pivot: {x: 0.56337667, y: 0.28203836}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 8d305410000000000800000000000000
+      internalID: 21300184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_93
       rect:
@@ -1476,7 +2596,15 @@ TextureImporter:
       pivot: {x: 0.49577183, y: 0.32206133}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: ad305410000000000800000000000000
+      internalID: 21300186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_94
       rect:
@@ -1489,7 +2617,15 @@ TextureImporter:
       pivot: {x: 0.47384948, y: 0.29359406}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: cd305410000000000800000000000000
+      internalID: 21300188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_95
       rect:
@@ -1502,7 +2638,15 @@ TextureImporter:
       pivot: {x: 0.5493693, y: 0.30249646}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: ed305410000000000800000000000000
+      internalID: 21300190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_96
       rect:
@@ -1515,7 +2659,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 0e305410000000000800000000000000
+      internalID: 21300192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_97
       rect:
@@ -1528,7 +2680,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 2e305410000000000800000000000000
+      internalID: 21300194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_98
       rect:
@@ -1541,7 +2701,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 4e305410000000000800000000000000
+      internalID: 21300196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_99
       rect:
@@ -1554,7 +2722,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 6e305410000000000800000000000000
+      internalID: 21300198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_100
       rect:
@@ -1567,7 +2743,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 8e305410000000000800000000000000
+      internalID: 21300200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_101
       rect:
@@ -1580,7 +2764,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: ae305410000000000800000000000000
+      internalID: 21300202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_102
       rect:
@@ -1593,7 +2785,15 @@ TextureImporter:
       pivot: {x: 0.4840226, y: 0.3043574}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: ce305410000000000800000000000000
+      internalID: 21300204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_103
       rect:
@@ -1606,7 +2806,15 @@ TextureImporter:
       pivot: {x: 0.5159772, y: 0.29603285}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: ee305410000000000800000000000000
+      internalID: 21300206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_104
       rect:
@@ -1619,7 +2827,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.31413984}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 0f305410000000000800000000000000
+      internalID: 21300208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_105
       rect:
@@ -1632,7 +2848,15 @@ TextureImporter:
       pivot: {x: 0.47180444, y: 0.32392168}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 2f305410000000000800000000000000
+      internalID: 21300210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_106
       rect:
@@ -1645,7 +2869,15 @@ TextureImporter:
       pivot: {x: 0.5133141, y: 0.3043574}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 4f305410000000000800000000000000
+      internalID: 21300212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_107
       rect:
@@ -1658,7 +2890,15 @@ TextureImporter:
       pivot: {x: 0.45642552, y: 0.3043574}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 6f305410000000000800000000000000
+      internalID: 21300214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_108
       rect:
@@ -1671,7 +2911,15 @@ TextureImporter:
       pivot: {x: 0.43152553, y: 0.32392168}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 8f305410000000000800000000000000
+      internalID: 21300216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_109
       rect:
@@ -1684,7 +2932,15 @@ TextureImporter:
       pivot: {x: 0.38721848, y: 0.32392168}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: af305410000000000800000000000000
+      internalID: 21300218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_110
       rect:
@@ -1697,7 +2953,15 @@ TextureImporter:
       pivot: {x: 0.3731205, y: 0.31642962}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: cf305410000000000800000000000000
+      internalID: 21300220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_111
       rect:
@@ -1710,7 +2974,15 @@ TextureImporter:
       pivot: {x: 0.4154138, y: 0.29029593}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: ef305410000000000800000000000000
+      internalID: 21300222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_112
       rect:
@@ -1723,7 +2995,15 @@ TextureImporter:
       pivot: {x: 0.43152553, y: 0.31413922}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 00405410000000000800000000000000
+      internalID: 21300224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_113
       rect:
@@ -1736,7 +3016,15 @@ TextureImporter:
       pivot: {x: 0.4262578, y: 0.3043574}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 20405410000000000800000000000000
+      internalID: 21300226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_114
       rect:
@@ -1749,7 +3037,15 @@ TextureImporter:
       pivot: {x: 0.46804518, y: 0.30435804}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 40405410000000000800000000000000
+      internalID: 21300228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_115
       rect:
@@ -1762,7 +3058,15 @@ TextureImporter:
       pivot: {x: 0.46804506, y: 0.26543733}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 60405410000000000800000000000000
+      internalID: 21300230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_116
       rect:
@@ -1775,7 +3079,15 @@ TextureImporter:
       pivot: {x: 0.51546156, y: 0.28479376}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 80405410000000000800000000000000
+      internalID: 21300232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_117
       rect:
@@ -1788,7 +3100,15 @@ TextureImporter:
       pivot: {x: 0.48590222, y: 0.30435804}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a0405410000000000800000000000000
+      internalID: 21300234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_118
       rect:
@@ -1801,7 +3121,15 @@ TextureImporter:
       pivot: {x: 0.47337088, y: 0.27501196}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c0405410000000000800000000000000
+      internalID: 21300236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_119
       rect:
@@ -1814,7 +3142,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.30435804}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e0405410000000000800000000000000
+      internalID: 21300238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_120
       rect:
@@ -1827,7 +3163,15 @@ TextureImporter:
       pivot: {x: 0.53344095, y: 0.31642962}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 01405410000000000800000000000000
+      internalID: 21300240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_121
       rect:
@@ -1840,7 +3184,15 @@ TextureImporter:
       pivot: {x: 0.52458054, y: 0.33024025}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 21405410000000000800000000000000
+      internalID: 21300242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_122
       rect:
@@ -1853,7 +3205,15 @@ TextureImporter:
       pivot: {x: 0.4621586, y: 0.3337041}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 41405410000000000800000000000000
+      internalID: 21300244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_123
       rect:
@@ -1866,7 +3226,15 @@ TextureImporter:
       pivot: {x: 0.5661132, y: 0.35449108}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 61405410000000000800000000000000
+      internalID: 21300246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_124
       rect:
@@ -1879,7 +3247,15 @@ TextureImporter:
       pivot: {x: 0.48502064, y: 0.31818837}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 81405410000000000800000000000000
+      internalID: 21300248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_125
       rect:
@@ -1892,7 +3268,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.3212694}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a1405410000000000800000000000000
+      internalID: 21300250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_126
       rect:
@@ -1905,7 +3289,15 @@ TextureImporter:
       pivot: {x: 0.48453742, y: 0.313145}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c1405410000000000800000000000000
+      internalID: 21300252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_127
       rect:
@@ -1918,7 +3310,15 @@ TextureImporter:
       pivot: {x: 0.49999905, y: 0.3264523}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e1405410000000000800000000000000
+      internalID: 21300254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_128
       rect:
@@ -1931,7 +3331,15 @@ TextureImporter:
       pivot: {x: 0.4564246, y: 0.32881328}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 02405410000000000800000000000000
+      internalID: 21300256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_129
       rect:
@@ -1944,7 +3352,15 @@ TextureImporter:
       pivot: {x: 0.4999981, y: 0.3293933}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 22405410000000000800000000000000
+      internalID: 21300258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_130
       rect:
@@ -1957,7 +3373,15 @@ TextureImporter:
       pivot: {x: 0.49999788, y: 0.34564158}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 42405410000000000800000000000000
+      internalID: 21300260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_131
       rect:
@@ -1970,7 +3394,15 @@ TextureImporter:
       pivot: {x: 0.5330558, y: 0.3212694}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 62405410000000000800000000000000
+      internalID: 21300262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_132
       rect:
@@ -1983,7 +3415,15 @@ TextureImporter:
       pivot: {x: 0.49999788, y: 0.33751768}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 82405410000000000800000000000000
+      internalID: 21300264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_133
       rect:
@@ -1996,7 +3436,15 @@ TextureImporter:
       pivot: {x: 0.5978206, y: 0.32392168}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a2405410000000000800000000000000
+      internalID: 21300266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_134
       rect:
@@ -2009,7 +3457,15 @@ TextureImporter:
       pivot: {x: 0.5491611, y: 0.2945756}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c2405410000000000800000000000000
+      internalID: 21300268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_135
       rect:
@@ -2022,7 +3478,15 @@ TextureImporter:
       pivot: {x: 0.5958641, y: 0.31413984}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e2405410000000000800000000000000
+      internalID: 21300270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_136
       rect:
@@ -2035,7 +3499,15 @@ TextureImporter:
       pivot: {x: 0.5860318, y: 0.35902196}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 03405410000000000800000000000000
+      internalID: 21300272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_137
       rect:
@@ -2048,7 +3520,15 @@ TextureImporter:
       pivot: {x: 0.61147004, y: 0.29720894}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 23405410000000000800000000000000
+      internalID: 21300274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_138
       rect:
@@ -2061,7 +3541,15 @@ TextureImporter:
       pivot: {x: 0.65629977, y: 0.27809116}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 43405410000000000800000000000000
+      internalID: 21300276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_139
       rect:
@@ -2074,7 +3562,15 @@ TextureImporter:
       pivot: {x: 0.67042506, y: 0.28601646}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 63405410000000000800000000000000
+      internalID: 21300278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_140
       rect:
@@ -2087,7 +3583,15 @@ TextureImporter:
       pivot: {x: 0.6278191, y: 0.27341142}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 83405410000000000800000000000000
+      internalID: 21300280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_141
       rect:
@@ -2100,7 +3604,15 @@ TextureImporter:
       pivot: {x: 0.53268015, y: 0.31202996}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a3405410000000000800000000000000
+      internalID: 21300282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_142
       rect:
@@ -2113,7 +3625,15 @@ TextureImporter:
       pivot: {x: 0.52662826, y: 0.3064267}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c3405410000000000800000000000000
+      internalID: 21300284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_143
       rect:
@@ -2126,7 +3646,15 @@ TextureImporter:
       pivot: {x: 0.56847274, y: 0.3064267}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e3405410000000000800000000000000
+      internalID: 21300286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_144
       rect:
@@ -2139,7 +3667,15 @@ TextureImporter:
       pivot: {x: 0.5704866, y: 0.28799146}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 04405410000000000800000000000000
+      internalID: 21300288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_145
       rect:
@@ -2152,7 +3688,15 @@ TextureImporter:
       pivot: {x: 0.5860314, y: 0.31564447}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 24405410000000000800000000000000
+      internalID: 21300290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_146
       rect:
@@ -2165,7 +3709,15 @@ TextureImporter:
       pivot: {x: 0.40167764, y: 0.30435804}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 44405410000000000800000000000000
+      internalID: 21300292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_147
       rect:
@@ -2178,7 +3730,15 @@ TextureImporter:
       pivot: {x: 0.47337088, y: 0.31026778}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 64405410000000000800000000000000
+      internalID: 21300294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_148
       rect:
@@ -2191,7 +3751,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.32025337}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 84405410000000000800000000000000
+      internalID: 21300296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_149
       rect:
@@ -2204,7 +3772,15 @@ TextureImporter:
       pivot: {x: 0.46804506, y: 0.35902256}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a4405410000000000800000000000000
+      internalID: 21300298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_150
       rect:
@@ -2217,7 +3793,15 @@ TextureImporter:
       pivot: {x: 0.45206705, y: 0.31414017}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c4405410000000000800000000000000
+      internalID: 21300300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_151
       rect:
@@ -2230,7 +3814,15 @@ TextureImporter:
       pivot: {x: 0.46804506, y: 0.30435804}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e4405410000000000800000000000000
+      internalID: 21300302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_152
       rect:
@@ -2243,7 +3835,15 @@ TextureImporter:
       pivot: {x: 0.45206705, y: 0.31414017}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 05405410000000000800000000000000
+      internalID: 21300304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_153
       rect:
@@ -2256,7 +3856,15 @@ TextureImporter:
       pivot: {x: 0.45206806, y: 0.3239223}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 25405410000000000800000000000000
+      internalID: 21300306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_154
       rect:
@@ -2269,7 +3877,15 @@ TextureImporter:
       pivot: {x: 0.46804607, y: 0.29457623}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 45405410000000000800000000000000
+      internalID: 21300308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_155
       rect:
@@ -2282,7 +3898,15 @@ TextureImporter:
       pivot: {x: 0.43609008, y: 0.3466159}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 65405410000000000800000000000000
+      internalID: 21300310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_156
       rect:
@@ -2295,7 +3919,15 @@ TextureImporter:
       pivot: {x: 0.4520691, y: 0.32744324}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 85405410000000000800000000000000
+      internalID: 21300312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_157
       rect:
@@ -2308,7 +3940,15 @@ TextureImporter:
       pivot: {x: 0.43609008, y: 0.32744324}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a5405410000000000800000000000000
+      internalID: 21300314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_158
       rect:
@@ -2321,7 +3961,15 @@ TextureImporter:
       pivot: {x: 0.468044, y: 0.33702973}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c5405410000000000800000000000000
+      internalID: 21300316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_159
       rect:
@@ -2334,7 +3982,15 @@ TextureImporter:
       pivot: {x: 0.38261515, y: 0.33370364}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e5405410000000000800000000000000
+      internalID: 21300318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_160
       rect:
@@ -2347,7 +4003,15 @@ TextureImporter:
       pivot: {x: 0.4631291, y: 0.33370364}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 06405410000000000800000000000000
+      internalID: 21300320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_161
       rect:
@@ -2360,7 +4024,15 @@ TextureImporter:
       pivot: {x: 0.41611862, y: 0.33370364}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 26405410000000000800000000000000
+      internalID: 21300322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_162
       rect:
@@ -2373,7 +4045,15 @@ TextureImporter:
       pivot: {x: 0.45083854, y: 0.34962448}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 46405410000000000800000000000000
+      internalID: 21300324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_163
       rect:
@@ -2386,7 +4066,15 @@ TextureImporter:
       pivot: {x: 0.38852993, y: 0.32486314}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 66405410000000000800000000000000
+      internalID: 21300326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_164
       rect:
@@ -2399,7 +4087,15 @@ TextureImporter:
       pivot: {x: 0.35411933, y: 0.2958446}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 86405410000000000800000000000000
+      internalID: 21300328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_165
       rect:
@@ -2412,7 +4108,15 @@ TextureImporter:
       pivot: {x: 0.35087755, y: 0.27745697}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a6405410000000000800000000000000
+      internalID: 21300330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_166
       rect:
@@ -2425,7 +4129,15 @@ TextureImporter:
       pivot: {x: 0.38283217, y: 0.28212613}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c6405410000000000800000000000000
+      internalID: 21300332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_167
       rect:
@@ -2438,7 +4150,15 @@ TextureImporter:
       pivot: {x: 0.47821185, y: 0.31202996}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e6405410000000000800000000000000
+      internalID: 21300334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_168
       rect:
@@ -2451,7 +4171,15 @@ TextureImporter:
       pivot: {x: 0.47337002, y: 0.3064276}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 07405410000000000800000000000000
+      internalID: 21300336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_169
       rect:
@@ -2464,7 +4192,15 @@ TextureImporter:
       pivot: {x: 0.47261092, y: 0.3064276}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 27405410000000000800000000000000
+      internalID: 21300338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_170
       rect:
@@ -2477,7 +4213,15 @@ TextureImporter:
       pivot: {x: 0.47180355, y: 0.32486314}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 47405410000000000800000000000000
+      internalID: 21300340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_171
       rect:
@@ -2490,7 +4234,15 @@ TextureImporter:
       pivot: {x: 0.38938707, y: 0.3064276}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 67405410000000000800000000000000
+      internalID: 21300342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_172
       rect:
@@ -2503,7 +4255,15 @@ TextureImporter:
       pivot: {x: 0.47180456, y: 0.33370414}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 87405410000000000800000000000000
+      internalID: 21300344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_173
       rect:
@@ -2516,7 +4276,15 @@ TextureImporter:
       pivot: {x: 0.47261003, y: 0.3202543}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: a7405410000000000800000000000000
+      internalID: 21300346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_174
       rect:
@@ -2529,7 +4297,15 @@ TextureImporter:
       pivot: {x: 0.45642507, y: 0.26033843}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: c7405410000000000800000000000000
+      internalID: 21300348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_175
       rect:
@@ -2542,7 +4318,15 @@ TextureImporter:
       pivot: {x: 0.48547503, y: 0.21499747}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: e7405410000000000800000000000000
+      internalID: 21300350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_176
       rect:
@@ -2555,7 +4339,15 @@ TextureImporter:
       pivot: {x: 0.4334276, y: 0.3299165}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 08405410000000000800000000000000
+      internalID: 21300352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Callan_177
       rect:
@@ -2568,9 +4360,28 @@ TextureImporter:
       pivot: {x: 0.4262578, y: 0.6597729}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 28405410000000000800000000000000
+      internalID: 21300354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

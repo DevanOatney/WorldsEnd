@@ -1,47 +1,108 @@
 fileFormatVersion: 2
 guid: 8fe7d1cfd2cb1904288a492d92781449
-timeCreated: 1457135041
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: water_005_0
-    21300002: water_005_1
-    21300004: water_005_2
-    21300006: water_005_3
-    21300008: water_005_4
-    21300010: water_005_5
-    21300012: water_005_6
-    21300014: water_005_7
-    21300016: water_005_8
-    21300018: water_005_9
-    21300020: water_005_10
-    21300022: water_005_11
-    21300024: water_005_12
-    21300026: water_005_13
-    21300028: water_005_14
-    21300030: water_005_15
-    21300032: water_005_16
-    21300034: water_005_17
-    21300036: water_005_18
-    21300038: water_005_19
-    21300040: water_005_20
-    21300042: water_005_21
-    21300044: water_005_22
-    21300046: water_005_23
-    21300048: water_005_24
-    21300050: water_005_25
-    21300052: water_005_26
-    21300054: water_005_27
-    21300056: water_005_28
-    21300058: water_005_29
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: water_005_0
+  - first:
+      213: 21300002
+    second: water_005_1
+  - first:
+      213: 21300004
+    second: water_005_2
+  - first:
+      213: 21300006
+    second: water_005_3
+  - first:
+      213: 21300008
+    second: water_005_4
+  - first:
+      213: 21300010
+    second: water_005_5
+  - first:
+      213: 21300012
+    second: water_005_6
+  - first:
+      213: 21300014
+    second: water_005_7
+  - first:
+      213: 21300016
+    second: water_005_8
+  - first:
+      213: 21300018
+    second: water_005_9
+  - first:
+      213: 21300020
+    second: water_005_10
+  - first:
+      213: 21300022
+    second: water_005_11
+  - first:
+      213: 21300024
+    second: water_005_12
+  - first:
+      213: 21300026
+    second: water_005_13
+  - first:
+      213: 21300028
+    second: water_005_14
+  - first:
+      213: 21300030
+    second: water_005_15
+  - first:
+      213: 21300032
+    second: water_005_16
+  - first:
+      213: 21300034
+    second: water_005_17
+  - first:
+      213: 21300036
+    second: water_005_18
+  - first:
+      213: 21300038
+    second: water_005_19
+  - first:
+      213: 21300040
+    second: water_005_20
+  - first:
+      213: 21300042
+    second: water_005_21
+  - first:
+      213: 21300044
+    second: water_005_22
+  - first:
+      213: 21300046
+    second: water_005_23
+  - first:
+      213: 21300048
+    second: water_005_24
+  - first:
+      213: 21300050
+    second: water_005_25
+  - first:
+      213: 21300052
+    second: water_005_26
+  - first:
+      213: 21300054
+    second: water_005_27
+  - first:
+      213: 21300056
+    second: water_005_28
+  - first:
+      213: 21300058
+    second: water_005_29
+  externalObjects: {}
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -50,37 +111,60 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: water_005_0
+    - serializedVersion: 2
+      name: water_005_0
       rect:
         serializedVersion: 2
         x: 0
@@ -90,18 +174,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -26, y: -16}
-        - {x: -46, y: -21}
-        - {x: -65, y: -61}
-        - {x: -65, y: -79}
-        - {x: -63, y: -87}
-        - {x: 28, y: -87}
-        - {x: 40, y: -86}
-        - {x: 59, y: -67}
-        - {x: 59, y: -33}
-        - {x: 45, y: -16}
-    - name: water_005_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_1
       rect:
         serializedVersion: 2
         x: 192
@@ -111,18 +195,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 29, y: 14}
-        - {x: -23, y: 14}
-        - {x: -50, y: 8}
-        - {x: -69, y: -53}
-        - {x: -69, y: -85}
-        - {x: -68, y: -88}
-        - {x: 49, y: -88}
-        - {x: 63, y: -61}
-        - {x: 63, y: -39}
-        - {x: 36, y: 7}
-    - name: water_005_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_2
       rect:
         serializedVersion: 2
         x: 384
@@ -132,45 +216,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -57, y: -94}
-        - {x: -54, y: -93}
-        - {x: -54, y: -90}
-        - {x: -57, y: -89}
-        - {x: -59, y: -91}
-      - - {x: 37, y: 13}
-        - {x: 24, y: 33}
-        - {x: 12, y: 42}
-        - {x: -26, y: 42}
-        - {x: -67, y: 7}
-        - {x: -71, y: -13}
-        - {x: -71, y: -87}
-        - {x: -68, y: -89}
-        - {x: 28, y: -89}
-        - {x: 43, y: -88}
-        - {x: 64, y: -68}
-        - {x: 64, y: -42}
-        - {x: 59, y: -22}
-      - - {x: -7, y: 26}
-        - {x: -5, y: 24}
-        - {x: -2, y: 25}
-        - {x: -2, y: 34}
-        - {x: -4, y: 36}
-        - {x: -7, y: 35}
-      - - {x: -31, y: 30}
-        - {x: -29, y: 28}
-        - {x: -26, y: 29}
-        - {x: -26, y: 35}
-        - {x: -28, y: 37}
-        - {x: -31, y: 36}
-      - - {x: 0, y: 37}
-        - {x: 0, y: 30}
-        - {x: 2, y: 28}
-        - {x: 4, y: 28}
-        - {x: 6, y: 30}
-        - {x: 6, y: 35}
-        - {x: 3, y: 38}
-    - name: water_005_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_3
       rect:
         serializedVersion: 2
         x: 576
@@ -180,41 +237,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 34, y: 49}
-        - {x: -64, y: 49}
-        - {x: -70, y: 27}
-        - {x: -70, y: -95}
-        - {x: 62, y: -95}
-        - {x: 69, y: -77}
-        - {x: 69, y: -9}
-        - {x: 58, y: 41}
-      - - {x: -58, y: -47}
-        - {x: -55, y: -46}
-        - {x: -55, y: -43}
-        - {x: -58, y: -42}
-        - {x: -60, y: -44}
-      - - {x: -3, y: 44}
-        - {x: -6, y: 44}
-        - {x: -7, y: 42}
-        - {x: -7, y: 33}
-        - {x: -5, y: 32}
-        - {x: -2, y: 32}
-        - {x: -1, y: 34}
-        - {x: -1, y: 43}
-      - - {x: -30, y: 45}
-        - {x: -32, y: 44}
-        - {x: -32, y: 34}
-        - {x: -26, y: 34}
-        - {x: -26, y: 45}
-      - - {x: -1, y: 43}
-        - {x: -1, y: 36}
-        - {x: 1, y: 34}
-        - {x: 4, y: 34}
-        - {x: 6, y: 36}
-        - {x: 5, y: 41}
-        - {x: 2, y: 44}
-    - name: water_005_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_4
       rect:
         serializedVersion: 2
         x: 768
@@ -224,55 +258,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 56, y: -24}
-        - {x: 53, y: -24}
-        - {x: 52, y: -27}
-        - {x: 53, y: -24}
-        - {x: 65, y: -19}
-        - {x: 32, y: 50}
-        - {x: -20, y: 50}
-        - {x: -53, y: 35}
-        - {x: -73, y: -25}
-        - {x: -73, y: -85}
-        - {x: -58, y: -96}
-        - {x: 17, y: -96}
-        - {x: 42, y: -85}
-        - {x: 74, y: -63}
-        - {x: 74, y: -54}
-      - - {x: -60, y: -90}
-        - {x: -60, y: -91}
-        - {x: -57, y: -94}
-        - {x: -54, y: -93}
-        - {x: -54, y: -90}
-        - {x: -56, y: -88}
-        - {x: -58, y: -88}
-      - - {x: 38, y: -91}
-        - {x: 41, y: -90}
-        - {x: 41, y: -87}
-        - {x: 38, y: -86}
-        - {x: 36, y: -88}
-      - - {x: -7, y: 39}
-        - {x: -4, y: 38}
-        - {x: 5, y: 38}
-        - {x: 5, y: 44}
-        - {x: 4, y: 50}
-        - {x: 1, y: 51}
-        - {x: -5, y: 51}
-        - {x: -7, y: 50}
-      - - {x: 6, y: 55}
-        - {x: 6, y: 41}
-        - {x: 8, y: 39}
-        - {x: 13, y: 39}
-        - {x: 13, y: 49}
-        - {x: 12, y: 55}
-      - - {x: -32, y: 40}
-        - {x: -28, y: 40}
-        - {x: -26, y: 41}
-        - {x: -26, y: 51}
-        - {x: -33, y: 51}
-        - {x: -33, y: 44}
-    - name: water_005_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_5
       rect:
         serializedVersion: 2
         x: 0
@@ -282,25 +279,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 35, y: 59}
-        - {x: -25, y: 59}
-        - {x: -55, y: 44}
-        - {x: -54, y: 21}
-        - {x: -50, y: 1}
-        - {x: -77, y: -53}
-        - {x: -77, y: -88}
-        - {x: -76, y: -94}
-        - {x: 60, y: -94}
-        - {x: 77, y: -66}
-        - {x: 77, y: -32}
-        - {x: 58, y: 18}
-      - - {x: -33, y: 57}
-        - {x: -33, y: 46}
-        - {x: -27, y: 46}
-        - {x: -27, y: 56}
-        - {x: -29, y: 57}
-    - name: water_005_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_6
       rect:
         serializedVersion: 2
         x: 192
@@ -310,26 +300,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 20, y: 60}
-        - {x: 16, y: 64}
-        - {x: -47, y: 64}
-        - {x: -79, y: -43}
-        - {x: -79, y: -61}
-        - {x: -61, y: -95}
-        - {x: 46, y: -95}
-        - {x: 79, y: -65}
-        - {x: 79, y: -30}
-        - {x: 39, y: 48}
-      - - {x: -34, y: 60}
-        - {x: -34, y: 57}
-        - {x: -33, y: 51}
-        - {x: -28, y: 51}
-        - {x: -27, y: 52}
-        - {x: -27, y: 59}
-        - {x: -29, y: 61}
-        - {x: -32, y: 61}
-    - name: water_005_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_7
       rect:
         serializedVersion: 2
         x: 384
@@ -339,16 +321,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -59, y: 69}
-        - {x: -82, y: 1}
-        - {x: -82, y: -93}
-        - {x: -81, y: -95}
-        - {x: 72, y: -95}
-        - {x: 82, y: -94}
-        - {x: 82, y: -26}
-        - {x: 36, y: 69}
-    - name: water_005_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_8
       rect:
         serializedVersion: 2
         x: 576
@@ -358,19 +342,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -63, y: 74}
-        - {x: -65, y: 70}
-        - {x: -84, y: -8}
-        - {x: -84, y: -67}
-        - {x: -60, y: -93}
-        - {x: -52, y: -94}
-        - {x: -12, y: -94}
-        - {x: 44, y: -84}
-        - {x: 84, y: -69}
-        - {x: 84, y: 30}
-        - {x: 48, y: 74}
-    - name: water_005_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_9
       rect:
         serializedVersion: 2
         x: 768
@@ -380,23 +363,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 54, y: -25}
-        - {x: 55, y: -30}
-        - {x: 54, y: -25}
-        - {x: 56, y: -19}
-        - {x: 48, y: 77}
-        - {x: 48, y: 78}
-        - {x: -57, y: 78}
-        - {x: -86, y: 36}
-        - {x: -86, y: -87}
-        - {x: -67, y: -94}
-        - {x: 17, y: -94}
-        - {x: 44, y: -85}
-        - {x: 86, y: -67}
-        - {x: 86, y: -50}
-        - {x: 66, y: -22}
-    - name: water_005_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_10
       rect:
         serializedVersion: 2
         x: 0
@@ -406,17 +384,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -41, y: 83}
-        - {x: -79, y: 56}
-        - {x: -86, y: -2}
-        - {x: -86, y: -80}
-        - {x: -79, y: -94}
-        - {x: 58, y: -94}
-        - {x: 87, y: -76}
-        - {x: 87, y: -2}
-        - {x: 48, y: 83}
-    - name: water_005_11
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_11
       rect:
         serializedVersion: 2
         x: 192
@@ -426,30 +405,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 59, y: -24}
-        - {x: 56, y: -25}
-        - {x: 51, y: 84}
-        - {x: 39, y: 90}
-        - {x: 24, y: 90}
-        - {x: 23, y: 89}
-        - {x: 22, y: 82}
-        - {x: 22, y: 79}
-        - {x: 22, y: 82}
-        - {x: 20, y: 90}
-        - {x: -24, y: 90}
-        - {x: -32, y: 88}
-        - {x: -63, y: 67}
-        - {x: -59, y: 35}
-        - {x: -85, y: -31}
-        - {x: -85, y: -68}
-        - {x: -70, y: -93}
-        - {x: -17, y: -93}
-        - {x: 44, y: -84}
-        - {x: 85, y: -67}
-        - {x: 85, y: -51}
-        - {x: 67, y: -22}
-    - name: water_005_12
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_12
       rect:
         serializedVersion: 2
         x: 384
@@ -459,30 +426,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 57, y: -25}
-        - {x: 57, y: -29}
-        - {x: 55, y: -30}
-        - {x: 57, y: -27}
-        - {x: 58, y: -12}
-        - {x: 55, y: 95}
-        - {x: -6, y: 95}
-        - {x: -16, y: 92}
-        - {x: -17, y: 90}
-        - {x: -17, y: 83}
-        - {x: -15, y: 80}
-        - {x: -31, y: 95}
-        - {x: -42, y: 95}
-        - {x: -80, y: 52}
-        - {x: -86, y: -18}
-        - {x: -86, y: -67}
-        - {x: -69, y: -93}
-        - {x: 17, y: -93}
-        - {x: 33, y: -91}
-        - {x: 87, y: -66}
-        - {x: 87, y: -51}
-        - {x: 61, y: -18}
-    - name: water_005_13
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_13
       rect:
         serializedVersion: 2
         x: 576
@@ -492,29 +447,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 61, y: -22}
-        - {x: 58, y: -25}
-        - {x: 57, y: -28}
-        - {x: 53, y: -30}
-        - {x: 55, y: -29}
-        - {x: 57, y: -27}
-        - {x: 56, y: -24}
-        - {x: 59, y: 96}
-        - {x: -22, y: 96}
-        - {x: -17, y: 89}
-        - {x: -16, y: 87}
-        - {x: -25, y: 92}
-        - {x: -37, y: 95}
-        - {x: -71, y: 78}
-        - {x: -87, y: -27}
-        - {x: -87, y: -68}
-        - {x: -65, y: -92}
-        - {x: 57, y: -92}
-        - {x: 85, y: -71}
-        - {x: 87, y: -67}
-        - {x: 87, y: -45}
-    - name: water_005_14
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_14
       rect:
         serializedVersion: 2
         x: 768
@@ -524,33 +468,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 58, y: -25}
-        - {x: 58, y: -29}
-        - {x: 56, y: -24}
-        - {x: 57, y: 62}
-        - {x: 46, y: 75}
-        - {x: 43, y: 75}
-        - {x: 41, y: 73}
-        - {x: 45, y: 87}
-        - {x: 47, y: 96}
-        - {x: -54, y: 96}
-        - {x: -58, y: 87}
-        - {x: -57, y: 76}
-        - {x: -53, y: 72}
-        - {x: -65, y: 82}
-        - {x: -69, y: 55}
-        - {x: -86, y: -37}
-        - {x: -86, y: -67}
-        - {x: -64, y: -91}
-        - {x: -59, y: -91}
-        - {x: -57, y: -89}
-        - {x: -54, y: -92}
-        - {x: 47, y: -92}
-        - {x: 87, y: -85}
-        - {x: 87, y: -51}
-        - {x: 61, y: -24}
-    - name: water_005_15
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_15
       rect:
         serializedVersion: 2
         x: 0
@@ -560,56 +489,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 26, y: -83}
-        - {x: 32, y: -81}
-        - {x: 61, y: -96}
-        - {x: 68, y: -96}
-        - {x: 85, y: -71}
-        - {x: 85, y: -53}
-        - {x: 63, y: -21}
-        - {x: 58, y: 68}
-        - {x: 30, y: 96}
-        - {x: 0, y: 96}
-        - {x: 0, y: 93}
-        - {x: 1, y: 92}
-        - {x: 1, y: 88}
-        - {x: 1, y: 89}
-        - {x: 0, y: 91}
-        - {x: 0, y: 96}
-        - {x: -33, y: 96}
-        - {x: -35, y: 94}
-        - {x: -33, y: 81}
-        - {x: -27, y: 79}
-        - {x: -32, y: 80}
-        - {x: -34, y: 81}
-        - {x: -34, y: 87}
-        - {x: -38, y: 93}
-        - {x: -42, y: 96}
-        - {x: -68, y: 79}
-        - {x: -85, y: -46}
-        - {x: -85, y: -61}
-        - {x: -71, y: -95}
-        - {x: -58, y: -96}
-        - {x: -5, y: -96}
-        - {x: 25, y: -86}
-        - {x: 28, y: -83}
-      - - {x: -65, y: 69}
-        - {x: -66, y: 67}
-        - {x: -66, y: 62}
-        - {x: -63, y: 60}
-        - {x: -60, y: 60}
-        - {x: -58, y: 61}
-        - {x: -58, y: 64}
-        - {x: -60, y: 69}
-      - - {x: -66, y: 82}
-        - {x: -66, y: 75}
-        - {x: -64, y: 72}
-        - {x: -60, y: 72}
-        - {x: -58, y: 73}
-        - {x: -58, y: 76}
-        - {x: -60, y: 82}
-    - name: water_005_16
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_16
       rect:
         serializedVersion: 2
         x: 192
@@ -619,69 +510,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 62, y: -25}
-        - {x: 60, y: -25}
-        - {x: 59, y: -28}
-        - {x: 47, y: -19}
-        - {x: 53, y: 33}
-        - {x: 54, y: 79}
-        - {x: 46, y: 80}
-        - {x: 42, y: 77}
-        - {x: 40, y: 75}
-        - {x: 44, y: 86}
-        - {x: 39, y: 96}
-        - {x: -69, y: 96}
-        - {x: -85, y: -17}
-        - {x: -85, y: -69}
-        - {x: -76, y: -96}
-        - {x: 30, y: -96}
-        - {x: 79, y: -93}
-        - {x: 85, y: -65}
-        - {x: 85, y: -53}
-        - {x: 66, y: -27}
-      - - {x: 24, y: -87}
-        - {x: 27, y: -86}
-        - {x: 27, y: -83}
-        - {x: 24, y: -82}
-        - {x: 22, y: -84}
-      - - {x: 54, y: -29}
-        - {x: 57, y: -28}
-        - {x: 57, y: -25}
-        - {x: 54, y: -24}
-        - {x: 52, y: -26}
-      - - {x: 52, y: 75}
-        - {x: 51, y: 72}
-        - {x: 50, y: 64}
-        - {x: 52, y: 62}
-        - {x: 56, y: 62}
-        - {x: 58, y: 65}
-        - {x: 58, y: 74}
-        - {x: 55, y: 75}
-      - - {x: -67, y: 66}
-        - {x: -66, y: 63}
-        - {x: -60, y: 63}
-        - {x: -60, y: 68}
-        - {x: -62, y: 72}
-        - {x: -66, y: 72}
-        - {x: -68, y: 70}
-      - - {x: -46, y: 93}
-        - {x: -47, y: 92}
-        - {x: -47, y: 88}
-        - {x: -45, y: 83}
-        - {x: -41, y: 83}
-        - {x: -39, y: 84}
-        - {x: -39, y: 87}
-        - {x: -41, y: 93}
-      - - {x: -32, y: 96}
-        - {x: -34, y: 95}
-        - {x: -34, y: 90}
-        - {x: -31, y: 86}
-        - {x: -29, y: 86}
-        - {x: -27, y: 88}
-        - {x: -27, y: 93}
-        - {x: -28, y: 96}
-    - name: water_005_17
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_17
       rect:
         serializedVersion: 2
         x: 384
@@ -691,31 +531,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -47, y: 96}
-        - {x: -62, y: 93}
-        - {x: -57, y: 79}
-        - {x: -55, y: 75}
-        - {x: -50, y: 70}
-        - {x: -53, y: 73}
-        - {x: -57, y: 72}
-        - {x: -65, y: 76}
-        - {x: -84, y: -29}
-        - {x: -84, y: -83}
-        - {x: -80, y: -96}
-        - {x: 78, y: -96}
-        - {x: 85, y: -76}
-        - {x: 85, y: -28}
-        - {x: 63, y: 96}
-      - - {x: 54, y: 80}
-        - {x: 52, y: 78}
-        - {x: 52, y: 70}
-        - {x: 54, y: 68}
-        - {x: 56, y: 68}
-        - {x: 59, y: 71}
-        - {x: 59, y: 78}
-        - {x: 57, y: 80}
-    - name: water_005_18
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_18
       rect:
         serializedVersion: 2
         x: 576
@@ -725,56 +552,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 67, y: -21}
-        - {x: 62, y: -27}
-        - {x: 61, y: -30}
-        - {x: 53, y: -23}
-        - {x: 58, y: 67}
-        - {x: 45, y: 74}
-        - {x: 44, y: 74}
-        - {x: 41, y: 71}
-        - {x: 41, y: 69}
-        - {x: 40, y: 74}
-        - {x: 37, y: 78}
-        - {x: 35, y: 78}
-        - {x: 38, y: 79}
-        - {x: 39, y: 76}
-        - {x: 40, y: 74}
-        - {x: 47, y: 74}
-        - {x: 51, y: 87}
-        - {x: 28, y: 95}
-        - {x: 24, y: 96}
-        - {x: -19, y: 96}
-        - {x: -16, y: 90}
-        - {x: -17, y: 89}
-        - {x: -20, y: 96}
-        - {x: -29, y: 96}
-        - {x: -66, y: 85}
-        - {x: -83, y: -29}
-        - {x: -83, y: -62}
-        - {x: -68, y: -95}
-        - {x: -57, y: -96}
-        - {x: -6, y: -96}
-        - {x: 71, y: -87}
-        - {x: 83, y: -71}
-        - {x: 83, y: -46}
-      - - {x: 53, y: 83}
-        - {x: 53, y: 77}
-        - {x: 54, y: 75}
-        - {x: 57, y: 75}
-        - {x: 60, y: 76}
-        - {x: 60, y: 83}
-        - {x: 58, y: 85}
-        - {x: 55, y: 85}
-      - - {x: -55, y: 92}
-        - {x: -60, y: 92}
-        - {x: -60, y: 86}
-        - {x: -56, y: 81}
-        - {x: -54, y: 81}
-        - {x: -52, y: 83}
-        - {x: -52, y: 90}
-    - name: water_005_19
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_19
       rect:
         serializedVersion: 2
         x: 768
@@ -784,44 +573,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 8, y: 96}
-        - {x: 8, y: 92}
-        - {x: 8, y: 93}
-        - {x: 7, y: 96}
-        - {x: -20, y: 96}
-        - {x: -22, y: 92}
-        - {x: -22, y: 86}
-        - {x: -21, y: 84}
-        - {x: -22, y: 85}
-        - {x: -22, y: 91}
-        - {x: -24, y: 96}
-        - {x: -55, y: 96}
-        - {x: -68, y: 94}
-        - {x: -83, y: 17}
-        - {x: -83, y: -79}
-        - {x: -73, y: -96}
-        - {x: 80, y: -96}
-        - {x: 82, y: -94}
-        - {x: 82, y: 44}
-        - {x: 59, y: 96}
-      - - {x: -61, y: 2}
-        - {x: -64, y: -3}
-        - {x: -64, y: -11}
-        - {x: -57, y: -11}
-        - {x: -55, y: -10}
-        - {x: -54, y: -5}
-        - {x: -54, y: 1}
-        - {x: -56, y: 2}
-      - - {x: 43, y: 91}
-        - {x: 40, y: 90}
-        - {x: 40, y: 83}
-        - {x: 42, y: 81}
-        - {x: 45, y: 81}
-        - {x: 47, y: 83}
-        - {x: 47, y: 89}
-        - {x: 46, y: 91}
-    - name: water_005_20
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_20
       rect:
         serializedVersion: 2
         x: 0
@@ -831,51 +594,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 17, y: 96}
-        - {x: 17, y: 81}
-        - {x: 15, y: 89}
-        - {x: -16, y: 96}
-        - {x: -60, y: 96}
-        - {x: -73, y: 93}
-        - {x: -83, y: 26}
-        - {x: -83, y: -96}
-        - {x: 80, y: -96}
-        - {x: 84, y: -82}
-        - {x: 84, y: -27}
-        - {x: 51, y: 96}
-      - - {x: 65, y: -89}
-        - {x: 66, y: -92}
-        - {x: 69, y: -92}
-        - {x: 71, y: -90}
-        - {x: 70, y: -87}
-        - {x: 67, y: -87}
-      - - {x: -63, y: -5}
-        - {x: -66, y: -6}
-        - {x: -68, y: -15}
-        - {x: -68, y: -18}
-        - {x: -67, y: -19}
-        - {x: -63, y: -19}
-        - {x: -59, y: -18}
-        - {x: -57, y: -8}
-        - {x: -57, y: -6}
-        - {x: -58, y: -5}
-      - - {x: 46, y: 0}
-        - {x: 50, y: -4}
-        - {x: 55, y: -1}
-        - {x: 54, y: 5}
-        - {x: 52, y: 8}
-        - {x: 46, y: 8}
-      - - {x: 45, y: 85}
-        - {x: 44, y: 81}
-        - {x: 44, y: 72}
-        - {x: 47, y: 69}
-        - {x: 50, y: 68}
-        - {x: 54, y: 68}
-        - {x: 56, y: 69}
-        - {x: 56, y: 80}
-        - {x: 52, y: 85}
-    - name: water_005_21
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_21
       rect:
         serializedVersion: 2
         x: 192
@@ -885,48 +615,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -35, y: 96}
-        - {x: -35, y: 93}
-        - {x: -42, y: 96}
-        - {x: -47, y: 96}
-        - {x: -49, y: 94}
-        - {x: -48, y: 85}
-        - {x: -45, y: 84}
-        - {x: -84, y: 85}
-        - {x: -84, y: -96}
-        - {x: 84, y: -96}
-        - {x: 84, y: 96}
-      - - {x: -71, y: -24}
-        - {x: -71, y: -26}
-        - {x: -66, y: -26}
-        - {x: -62, y: -24}
-        - {x: -60, y: -14}
-        - {x: -63, y: -12}
-        - {x: -68, y: -14}
-      - - {x: 53, y: 3}
-        - {x: 48, y: 0}
-        - {x: 48, y: -7}
-        - {x: 52, y: -10}
-        - {x: 56, y: -10}
-        - {x: 57, y: -9}
-        - {x: 57, y: -1}
-      - - {x: -65, y: 86}
-        - {x: -65, y: 79}
-        - {x: -61, y: 76}
-        - {x: -59, y: 76}
-        - {x: -57, y: 77}
-        - {x: -57, y: 80}
-        - {x: -59, y: 86}
-      - - {x: -57, y: 93}
-        - {x: -59, y: 92}
-        - {x: -59, y: 82}
-        - {x: -55, y: 81}
-        - {x: -52, y: 81}
-        - {x: -51, y: 82}
-        - {x: -51, y: 87}
-        - {x: -53, y: 93}
-    - name: water_005_22
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_22
       rect:
         serializedVersion: 2
         x: 384
@@ -936,50 +636,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 49, y: 96}
-        - {x: -27, y: 96}
-        - {x: -26, y: 92}
-        - {x: -24, y: 91}
-        - {x: -24, y: 87}
-        - {x: -24, y: 89}
-        - {x: -27, y: 92}
-        - {x: -27, y: 96}
-        - {x: -43, y: 96}
-        - {x: -70, y: 85}
-        - {x: -85, y: -3}
-        - {x: -85, y: -96}
-        - {x: 86, y: -96}
-        - {x: 86, y: -33}
-        - {x: 68, y: 45}
-      - - {x: -71, y: -20}
-        - {x: -74, y: -27}
-        - {x: -74, y: -34}
-        - {x: -66, y: -34}
-        - {x: -64, y: -30}
-        - {x: -64, y: -22}
-        - {x: -65, y: -20}
-      - - {x: 51, y: -4}
-        - {x: 51, y: -12}
-        - {x: 52, y: -16}
-        - {x: 56, y: -16}
-        - {x: 58, y: -14}
-        - {x: 58, y: -9}
-        - {x: 56, y: -4}
-      - - {x: -61, y: 96}
-        - {x: -60, y: 90}
-        - {x: -59, y: 88}
-        - {x: -55, y: 88}
-        - {x: -53, y: 89}
-        - {x: -53, y: 92}
-        - {x: -55, y: 96}
-      - - {x: -48, y: 96}
-        - {x: -48, y: 93}
-        - {x: -46, y: 91}
-        - {x: -43, y: 91}
-        - {x: -41, y: 93}
-        - {x: -41, y: 96}
-    - name: water_005_23
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_23
       rect:
         serializedVersion: 2
         x: 576
@@ -989,34 +657,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -24, y: 96}
-        - {x: -25, y: 92}
-        - {x: -27, y: 96}
-        - {x: -80, y: 96}
-        - {x: -87, y: 62}
-        - {x: -87, y: -85}
-        - {x: -72, y: -96}
-        - {x: 68, y: -96}
-        - {x: 87, y: -87}
-        - {x: 87, y: 36}
-        - {x: 59, y: 96}
-      - - {x: -74, y: -29}
-        - {x: -77, y: -35}
-        - {x: -77, y: -42}
-        - {x: -76, y: -43}
-        - {x: -71, y: -43}
-        - {x: -67, y: -36}
-        - {x: -67, y: -30}
-        - {x: -69, y: -29}
-      - - {x: 52, y: -11}
-        - {x: 52, y: -17}
-        - {x: 54, y: -23}
-        - {x: 58, y: -23}
-        - {x: 60, y: -22}
-        - {x: 60, y: -12}
-        - {x: 56, y: -11}
-    - name: water_005_24
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_24
       rect:
         serializedVersion: 2
         x: 768
@@ -1026,30 +678,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 58, y: -19}
-        - {x: 56, y: -19}
-        - {x: 57, y: 80}
-        - {x: 55, y: 88}
-        - {x: 48, y: 84}
-        - {x: 51, y: 86}
-        - {x: 55, y: 89}
-        - {x: 55, y: 96}
-        - {x: -75, y: 96}
-        - {x: -87, y: 27}
-        - {x: -87, y: -78}
-        - {x: -75, y: -96}
-        - {x: 77, y: -96}
-        - {x: 87, y: -66}
-        - {x: 87, y: -52}
-        - {x: 61, y: -21}
-      - - {x: -41, y: -91}
-        - {x: -38, y: -95}
-        - {x: -35, y: -94}
-        - {x: -35, y: -91}
-        - {x: -38, y: -88}
-        - {x: -40, y: -88}
-    - name: water_005_25
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_25
       rect:
         serializedVersion: 2
         x: 0
@@ -1059,29 +699,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -67, y: 96}
-        - {x: -79, y: 74}
-        - {x: -65, y: 6}
-        - {x: -57, y: -1}
-        - {x: -85, y: -42}
-        - {x: -85, y: -71}
-        - {x: -67, y: -96}
-        - {x: 77, y: -96}
-        - {x: 85, y: -81}
-        - {x: 85, y: 0}
-        - {x: 66, y: 96}
-      - - {x: -39, y: -94}
-        - {x: -36, y: -93}
-        - {x: -36, y: -90}
-        - {x: -39, y: -89}
-        - {x: -41, y: -91}
-      - - {x: 67, y: -94}
-        - {x: 70, y: -93}
-        - {x: 70, y: -90}
-        - {x: 67, y: -89}
-        - {x: 65, y: -91}
-    - name: water_005_26
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_26
       rect:
         serializedVersion: 2
         x: 192
@@ -1091,58 +720,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -53, y: 96}
-        - {x: -49, y: 92}
-        - {x: -46, y: 90}
-        - {x: -44, y: 85}
-        - {x: -46, y: 88}
-        - {x: -49, y: 91}
-        - {x: -64, y: 96}
-        - {x: -88, y: 96}
-        - {x: -88, y: -80}
-        - {x: -76, y: -96}
-        - {x: 73, y: -96}
-        - {x: 85, y: -82}
-        - {x: 85, y: 18}
-        - {x: 56, y: 96}
-      - - {x: 5, y: -88}
-        - {x: 6, y: -96}
-        - {x: 12, y: -96}
-        - {x: 12, y: -90}
-        - {x: 9, y: -86}
-        - {x: 7, y: -86}
-      - - {x: -40, y: -93}
-        - {x: -37, y: -92}
-        - {x: -37, y: -89}
-        - {x: -40, y: -88}
-        - {x: -42, y: -90}
-      - - {x: -50, y: 5}
-        - {x: -53, y: 5}
-        - {x: -57, y: 3}
-        - {x: -57, y: -4}
-        - {x: -55, y: -6}
-        - {x: -53, y: -6}
-        - {x: -51, y: -5}
-        - {x: -49, y: 0}
-        - {x: -49, y: 2}
-      - - {x: -67, y: 26}
-        - {x: -70, y: 21}
-        - {x: -70, y: 16}
-        - {x: -68, y: 14}
-        - {x: -64, y: 15}
-        - {x: -62, y: 18}
-        - {x: -61, y: 24}
-        - {x: -63, y: 26}
-      - - {x: 49, y: 87}
-        - {x: 48, y: 81}
-        - {x: 48, y: 73}
-        - {x: 51, y: 72}
-        - {x: 55, y: 72}
-        - {x: 56, y: 75}
-        - {x: 56, y: 86}
-        - {x: 54, y: 87}
-    - name: water_005_27
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_27
       rect:
         serializedVersion: 2
         x: 384
@@ -1152,54 +741,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -40, y: -94}
-        - {x: -37, y: -93}
-        - {x: -37, y: -90}
-        - {x: -40, y: -89}
-        - {x: -42, y: -91}
-      - - {x: -70, y: 96}
-        - {x: -69, y: 85}
-        - {x: -74, y: 15}
-        - {x: -72, y: 9}
-        - {x: -69, y: 8}
-        - {x: -83, y: -13}
-        - {x: -83, y: -85}
-        - {x: -59, y: -93}
-        - {x: 84, y: -93}
-        - {x: 84, y: 67}
-        - {x: 58, y: 96}
-      - - {x: -63, y: -88}
-        - {x: -60, y: -87}
-        - {x: -60, y: -84}
-        - {x: -63, y: -83}
-        - {x: -65, y: -85}
-      - - {x: -87, y: -68}
-        - {x: -91, y: -73}
-        - {x: -92, y: -79}
-        - {x: -92, y: -83}
-        - {x: -90, y: -84}
-        - {x: -85, y: -84}
-        - {x: -82, y: -81}
-        - {x: -82, y: -68}
-      - - {x: -57, y: -3}
-        - {x: -59, y: -8}
-        - {x: -59, y: -11}
-        - {x: -57, y: -13}
-        - {x: -54, y: -12}
-        - {x: -52, y: -7}
-        - {x: -52, y: -4}
-        - {x: -54, y: -2}
-      - - {x: -60, y: 17}
-        - {x: -63, y: 15}
-        - {x: -64, y: 12}
-        - {x: -64, y: 8}
-        - {x: -62, y: 7}
-        - {x: -58, y: 7}
-        - {x: -56, y: 11}
-        - {x: -55, y: 15}
-        - {x: -57, y: 17}
-    - name: water_005_28
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_28
       rect:
         serializedVersion: 2
         x: 576
@@ -1209,55 +762,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -94, y: -89}
-        - {x: -96, y: -93}
-        - {x: -96, y: -95}
-        - {x: -95, y: -96}
-        - {x: -91, y: -96}
-        - {x: -90, y: -95}
-        - {x: -89, y: -90}
-        - {x: -91, y: -88}
-      - - {x: -23, y: 96}
-        - {x: -20, y: 91}
-        - {x: -20, y: 85}
-        - {x: -20, y: 86}
-        - {x: -21, y: 92}
-        - {x: -34, y: 96}
-        - {x: -55, y: 96}
-        - {x: -59, y: 91}
-        - {x: -72, y: 62}
-        - {x: -79, y: -11}
-        - {x: -79, y: -68}
-        - {x: -74, y: -91}
-        - {x: 82, y: -91}
-        - {x: 82, y: 18}
-        - {x: 57, y: 96}
-      - - {x: -93, y: -85}
-        - {x: -93, y: -87}
-        - {x: -91, y: -88}
-        - {x: -89, y: -88}
-        - {x: -87, y: -85}
-        - {x: -87, y: -83}
-        - {x: -90, y: -82}
-      - - {x: -72, y: 14}
-        - {x: -74, y: 13}
-        - {x: -74, y: 3}
-        - {x: -73, y: 2}
-        - {x: -58, y: 2}
-        - {x: -58, y: 14}
-      - - {x: -63, y: 14}
-        - {x: -60, y: 15}
-        - {x: -60, y: 18}
-        - {x: -63, y: 19}
-        - {x: -65, y: 17}
-      - - {x: -13, y: 96}
-        - {x: -13, y: 90}
-        - {x: -11, y: 88}
-        - {x: -9, y: 88}
-        - {x: -7, y: 90}
-        - {x: -7, y: 96}
-    - name: water_005_29
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_005_29
       rect:
         serializedVersion: 2
         x: 768
@@ -1267,71 +783,29 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 35, y: 75}
-        - {x: 30, y: 76}
-        - {x: 34, y: 75}
-        - {x: 36, y: 75}
-        - {x: 39, y: 76}
-        - {x: 42, y: 91}
-        - {x: 39, y: 92}
-        - {x: 36, y: 91}
-        - {x: 31, y: 88}
-        - {x: 31, y: 86}
-        - {x: 32, y: 91}
-        - {x: 31, y: 94}
-        - {x: 28, y: 96}
-        - {x: 20, y: 96}
-        - {x: 18, y: 95}
-        - {x: 19, y: 90}
-        - {x: 9, y: 91}
-        - {x: -2, y: 96}
-        - {x: -76, y: 96}
-        - {x: -76, y: -81}
-        - {x: -63, y: -87}
-        - {x: 78, y: -87}
-        - {x: 78, y: 2}
-        - {x: 60, y: 96}
-        - {x: 59, y: 96}
-        - {x: 42, y: 83}
-        - {x: 38, y: 70}
-      - - {x: -73, y: -2}
-        - {x: -70, y: -1}
-        - {x: -70, y: 2}
-        - {x: -73, y: 3}
-        - {x: -75, y: 1}
-      - - {x: -66, y: 7}
-        - {x: -68, y: 4}
-        - {x: -68, y: -1}
-        - {x: -66, y: -2}
-        - {x: -64, y: -2}
-        - {x: -62, y: 1}
-        - {x: -61, y: 5}
-        - {x: -63, y: 7}
-      - - {x: 52, y: 76}
-        - {x: 50, y: 74}
-        - {x: 49, y: 69}
-        - {x: 51, y: 67}
-        - {x: 52, y: 67}
-        - {x: 55, y: 70}
-        - {x: 56, y: 74}
-        - {x: 54, y: 76}
-      - - {x: -6, y: 96}
-        - {x: -8, y: 95}
-        - {x: -8, y: 87}
-        - {x: -4, y: 85}
-        - {x: 3, y: 85}
-        - {x: 4, y: 86}
-        - {x: 4, y: 95}
-        - {x: 3, y: 96}
-      - - {x: -20, y: 96}
-        - {x: -20, y: 92}
-        - {x: -18, y: 90}
-        - {x: -16, y: 90}
-        - {x: -14, y: 92}
-        - {x: -15, y: 96}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

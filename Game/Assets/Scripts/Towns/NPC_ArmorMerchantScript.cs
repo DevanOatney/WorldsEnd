@@ -202,8 +202,8 @@ public class NPC_ArmorMerchantScript : NPCScript
 				player.GetComponent<FieldPlayerMovementScript>().BindInput();
 			}
 			Input.ResetInputAxes();
-
-			GameObject.Find ("ShopScreen").GetComponent<ShopScreenScript> ().ActivateShop (m_lItems, gameObject);
+          
+			//GameObject.Find ("ShopScreen").GetComponent<ShopScreenScript> ().ActivateShop (m_lItems, gameObject);
 		}
 	}
 
